@@ -63,7 +63,7 @@ const news = defineCollection({
     slug: z.string(),
     date: z.string(),
     author: z.string().default('Walton-on-Thames.org'),
-    category: z.enum(['community', 'events', 'local-news', 'history', 'food-drink', 'travel']).default('community'),
+    category: z.enum(['community', 'events', 'local-news', 'history', 'food-drink', 'travel', 'lifestyle']).default('community'),
     description: z.string(),
     image: z.string().optional(),
     featured: z.boolean().default(false),
