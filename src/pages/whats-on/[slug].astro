@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map(event => ({
+    params: { slug: event.data.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+
+const start = new Date(event.data.start);
+const end = event.data.end ? new Date(event.data.end) : null;
+const dateStr = start.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+const timeStr = start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+const endTimeStr = end ? end.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : null;
+const categoryLabel = event.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+---
+
+<BaseLayout
+  title={`${event.data.title} — ${dateStr}`}
+  description={event.data.description ?? `${event.data.title} — ${event.data.venue}`}
+  image={event.data.image}
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": event.data.title,
+      "startDate": event.data.start,
+      ...(event.data.end ? { "endDate": event.data.end } : {}),
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": event.data.venue,
+        "address": { "@type": "PostalAddress", "addressLocality": "Walton-on-Thames", "addressRegion": "Surrey", "addressCountry": "GB" }
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": event.data.price === 'Free' ? "0" : "",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock"
+      },
+      "organizer": { "@type": "Organization", "name": "Walton-on-Thames.org", "url": "https://walton-on-thames.org/" },
+      ...(event.data.image ? { "image": `https://walton-on-thames.org${event.data.image}` } : {}),
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/whats-on/">What's On</a></li>
+          <li aria-current="page">{event.data.title}</li>
+        </ol>
+      </nav>
+      <div class="hero-meta">
+        <span class="badge badge-accent">{categoryLabel}</span>
+        <span class="badge">{event.data.price}</span>
+      </div>
+      <h1>{event.data.title}</h1>
+      <div class="event-datetime">
+        <time datetime={event.data.start}>{dateStr} · {timeStr}{endTimeStr ? ` – ${endTimeStr}` : ''}</time>
+      </div>
+      <p class="event-venue">📍 {event.data.venue}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content-layout">
+      <article class="prose">
+        <Content />
+        {event.data.source_url && (
+          <p><a href={event.data.source_url} target="_blank" rel="noopener noreferrer">More information on the official event page ↗</a></p>
+        )}
+      </article>
+
+      <aside>
+        <div class="info-card">
+          <h2>Event details</h2>
+          <dl class="event-details">
+            <dt>Date</dt>
+            <dd><time datetime={event.data.start}>{dateStr}</time></dd>
+            <dt>Time</dt>
+            <dd>{timeStr}{endTimeStr ? ` – ${endTimeStr}` : ''}</dd>
+            <dt>Venue</dt>
+            <dd>{event.data.venue}</dd>
+            <dt>Price</dt>
+            <dd>{event.data.price}</dd>
+            {event.data.recurring && (
+              <>
+                <dt>Recurring</dt>
+                <dd>Yes — check for latest dates</dd>
+              </>
+            )}
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .event-datetime {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0.5rem;
+  }
+
+  .event-venue {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+  }
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 1rem;
+  }
+
+  .event-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .event-details dt {
+    color: var(--color-slate);
+    font-weight: 500;
+  }
+
+  .event-details dd {
+    color: var(--color-navy);
+  }
+
+  @media (max-width: 900px) {
+    .content-layout { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Schools in Walton-on-Thames & Hersham"
+  description="Primary and secondary schools serving Walton-on-Thames, Hersham and the surrounding area — Ofsted ratings, contacts and links."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/community/">Community</a></li>
+          <li aria-current="page">Schools</li>
+        </ol>
+      </nav>
+      <h1>Schools</h1>
+      <p>Primary and secondary schools serving Walton-on-Thames, Hersham and the surrounding area.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose" style="margin-bottom: 2rem; max-width: 70ch;">
+        <p><strong>Note:</strong> School information is provided for general guidance. Always verify directly with the school and consult <a href="https://www.surreycc.gov.uk/schools-and-learning/schools/admissions" target="_blank" rel="noopener noreferrer">Surrey County Council school admissions</a> for current catchment areas, Ofsted ratings, and place availability.</p>
+      </div>
+
+      <div class="schools-grid">
+        <div class="school-section">
+          <h2>Secondary Schools</h2>
+          <div class="school-list">
+            <div class="school-card">
+              <h3>Heathside School</h3>
+              <p class="school-type">Academy · Ages 11–18</p>
+              <p>Located in Weybridge, serving the Walton and Weybridge area. Mixed academy.</p>
+            </div>
+            <div class="school-card">
+              <h3>Rydens Enterprise School</h3>
+              <p class="school-type">Academy · Ages 11–18</p>
+              <p>Walton-on-Thames. Mixed secondary academy with sixth form.</p>
+            </div>
+            <div class="school-card">
+              <h3>Esher Church of England High School</h3>
+              <p class="school-type">Academy · Ages 11–18</p>
+              <p>Church of England academy in Esher, admitting students from across the borough.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="school-section">
+          <h2>Primary Schools (Walton)</h2>
+          <div class="school-list">
+            <div class="school-card">
+              <h3>Ashley Church of England Primary</h3>
+              <p class="school-type">Voluntary Aided · Ages 4–11</p>
+            </div>
+            <div class="school-card">
+              <h3>Burwood Park School</h3>
+              <p class="school-type">Independent · Ages 3–11</p>
+            </div>
+            <div class="school-card">
+              <h3>Manby Lodge Infant School</h3>
+              <p class="school-type">Community school · Ages 4–7</p>
+            </div>
+            <div class="school-card">
+              <h3>St Charles Borromeo Catholic Primary</h3>
+              <p class="school-type">Voluntary Aided · Ages 4–11</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="school-section">
+          <h2>Primary Schools (Hersham)</h2>
+          <div class="school-list">
+            <div class="school-card">
+              <h3>Hersham Primary School</h3>
+              <p class="school-type">Community school · Ages 4–11</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="schools-cta">
+        <p>For school admissions, catchment maps and Ofsted reports, visit <a href="https://www.surreycc.gov.uk/schools-and-learning/schools/admissions" target="_blank" rel="noopener noreferrer">Surrey County Council Schools ↗</a> and <a href="https://www.ofsted.gov.uk" target="_blank" rel="noopener noreferrer">Ofsted ↗</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .schools-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .school-section h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(11,36,46,0.08);
+  }
+
+  .school-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .school-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .school-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .school-type {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .school-card p:not(.school-type) {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+  }
+
+  .schools-cta {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    font-size: 0.9rem;
+    color: var(--color-slate);
+    line-height: 1.6;
+  }
+</style>

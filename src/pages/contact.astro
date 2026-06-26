@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact — Walton-on-Thames.org"
+  description="Get in touch with Walton-on-Thames.org — suggest an edit to a listing, submit an event, share a story, or ask about advertising your business."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Contact</li>
+        </ol>
+      </nav>
+      <h1>Get in Touch</h1>
+      <p>Suggest a listing edit, submit an event, share a local story, or ask about advertising your business.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container contact-layout">
+      <div>
+        <form
+          class="contact-form"
+          name="contact"
+          method="POST"
+          action="/contact/thank-you/"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          aria-label="Contact form"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;">
+            <label>Don't fill this in if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jane Smith" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="general">General enquiry</option>
+              <option value="listing-edit">Suggest a listing edit</option>
+              <option value="event-submission">Submit an event</option>
+              <option value="news-tip">Share a local story</option>
+              <option value="advertising">Advertising / list my business</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required rows="6" placeholder="Your message..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </div>
+
+      <aside class="contact-sidebar">
+        <div class="info-card">
+          <h2>What we can help with</h2>
+          <ul class="contact-list">
+            <li>🔧 Suggesting a correction to a listing</li>
+            <li>📅 Submitting a local event</li>
+            <li>📰 Sharing a news tip or story idea</li>
+            <li>🏪 Adding or claiming a business listing</li>
+            <li>📸 Sharing local photography</li>
+            <li>💬 General questions or feedback</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h2>Response times</h2>
+          <p>This is a one-person project — please allow up to 5 working days for a response. Urgent corrections to business listings are usually actioned more quickly.</p>
+        </div>
+        <div class="info-card">
+          <h2>Add your business</h2>
+          <p>Looking to list or promote your business?</p>
+          <a href="/advertise-your-business/" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:0.75rem;">
+            List your business →
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.625rem 0.875rem;
+    border: 1.5px solid rgba(11,36,46,0.18);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-navy);
+    background: var(--color-white);
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-color: var(--color-accent);
+  }
+
+  .form-group textarea { resize: vertical; }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card p {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    line-height: 1.6;
+  }
+
+  .contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact-list li {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+  }
+
+  @media (max-width: 900px) {
+    .contact-layout { grid-template-columns: 1fr; }
+    .contact-sidebar { order: -1; }
+  }
+</style>

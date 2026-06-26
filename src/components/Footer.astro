@@ -1,0 +1,200 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label="Walton-on-Thames.org — Home">
+        <img src="/images/logo.png" alt="" width="44" height="44" />
+        <span class="footer-logo-text">Walton-on-Thames<span>.org</span></span>
+      </a>
+      <p class="footer-tagline">An independent community guide to Walton-on-Thames, Hersham &amp; Whiteley Village.</p>
+      <div class="footer-social">
+        <!-- Social links to be added once accounts are set up -->
+      </div>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <div class="footer-nav-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="/visit/">Visit</a></li>
+          <li><a href="/visit/things-to-do/">Things to Do</a></li>
+          <li><a href="/visit/walks-and-the-river/">Walks & the River</a></li>
+          <li><a href="/visit/history-and-heritage/">History & Heritage</a></li>
+          <li><a href="/visit/getting-here/">Getting Here</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h3>Out & About</h3>
+        <ul>
+          <li><a href="/eat-and-drink/">Eat & Drink</a></li>
+          <li><a href="/shopping/">Shopping</a></li>
+          <li><a href="/whats-on/">What's On</a></li>
+          <li><a href="/directory/">Business Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h3>Neighbourhoods</h3>
+        <ul>
+          <li><a href="/neighbourhoods/walton-on-thames/">Walton-on-Thames</a></li>
+          <li><a href="/neighbourhoods/hersham/">Hersham</a></li>
+          <li><a href="/neighbourhoods/whiteley-village/">Whiteley Village</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="/community/news/">Local News</a></li>
+          <li><a href="/community/clubs-and-groups/">Clubs & Groups</a></li>
+          <li><a href="/community/council-and-services/">Council & Services</a></li>
+          <li><a href="/about/">About This Site</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/advertise-your-business/">List Your Business</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>
+        &copy; {year} Walton-on-Thames.org. An independent community resource, not affiliated with Elmbridge Borough Council or any official body.
+      </p>
+      <ul class="footer-legal">
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="/terms-and-conditions/">Terms</a></li>
+        <li><a href="/accessibility-statement/">Accessibility</a></li>
+        <li><a href="/sitemap-0.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-navy-ink);
+    color: rgba(255,255,255,0.7);
+    margin-top: auto;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .footer-logo-text {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+  }
+
+  .footer-logo-text span {
+    color: var(--color-accent);
+  }
+
+  .footer-tagline {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    max-width: 28ch;
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-nav-col h3 {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.875rem;
+  }
+
+  .footer-nav-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-nav-col a {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-nav-col a:hover {
+    color: var(--color-white);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer-legal {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-legal a {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-legal a:hover {
+    color: rgba(255,255,255,0.7);
+  }
+
+  @media (max-width: 1024px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-nav { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .footer-nav { grid-template-columns: 1fr 1fr; }
+    .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

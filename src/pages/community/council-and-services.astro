@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Council & Local Services — Walton-on-Thames"
+  description="Links to Elmbridge Borough Council, Surrey County Council, libraries, NHS, bins and local services for Walton-on-Thames and Hersham residents."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/community/">Community</a></li>
+          <li aria-current="page">Council & Services</li>
+        </ol>
+      </nav>
+      <h1>Council & Local Services</h1>
+      <p>Useful links to local government and public services. <strong>Note:</strong> This page links out to official sources — all information should be verified on the relevant council or service website.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container services-grid">
+
+      <div class="service-block">
+        <h2>Elmbridge Borough Council</h2>
+        <p>Elmbridge Borough Council is responsible for most local services in Walton-on-Thames and Hersham including planning, housing, parks, bin collections and leisure facilities.</p>
+        <ul class="service-links">
+          <li><a href="https://www.elmbridge.gov.uk" target="_blank" rel="noopener noreferrer">Elmbridge Borough Council website ↗</a></li>
+          <li><a href="https://www.elmbridge.gov.uk/bins-waste-and-recycling/" target="_blank" rel="noopener noreferrer">Bins & recycling collection ↗</a></li>
+          <li><a href="https://www.elmbridge.gov.uk/planning/" target="_blank" rel="noopener noreferrer">Planning applications ↗</a></li>
+          <li><a href="https://www.elmbridge.gov.uk/parks-and-open-spaces/" target="_blank" rel="noopener noreferrer">Parks & open spaces ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="service-block">
+        <h2>Surrey County Council</h2>
+        <p>Surrey County Council is responsible for roads, schools, libraries, social care, and some other strategic services.</p>
+        <ul class="service-links">
+          <li><a href="https://www.surreycc.gov.uk" target="_blank" rel="noopener noreferrer">Surrey County Council website ↗</a></li>
+          <li><a href="https://www.surreycc.gov.uk/libraries" target="_blank" rel="noopener noreferrer">Surrey Libraries (inc. Walton Library) ↗</a></li>
+          <li><a href="https://www.surreycc.gov.uk/roads-and-transport" target="_blank" rel="noopener noreferrer">Roads & transport ↗</a></li>
+          <li><a href="https://www.surreycc.gov.uk/schools-and-learning" target="_blank" rel="noopener noreferrer">Schools & learning ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="service-block">
+        <h2>NHS & Health</h2>
+        <p>NHS services in the area are managed by NHS Surrey Heartlands. The nearest general hospital with A&E is St Peter's Hospital in Chertsey.</p>
+        <ul class="service-links">
+          <li><a href="https://www.nhs.uk/service-search/find-a-gp/" target="_blank" rel="noopener noreferrer">Find a GP near you ↗</a></li>
+          <li><a href="https://www.ashfordsthetershealth.nhs.uk" target="_blank" rel="noopener noreferrer">Ashford & St Peter's NHS Trust ↗</a></li>
+          <li><a href="https://111.nhs.uk" target="_blank" rel="noopener noreferrer">NHS 111 online ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="service-block">
+        <h2>Transport</h2>
+        <ul class="service-links">
+          <li><a href="https://www.nationalrail.co.uk" target="_blank" rel="noopener noreferrer">National Rail — train times & tickets ↗</a></li>
+          <li><a href="https://www.swr.co.uk" target="_blank" rel="noopener noreferrer">South Western Railway ↗</a></li>
+          <li><a href="https://www.traveline.info" target="_blank" rel="noopener noreferrer">Traveline — bus journey planner ↗</a></li>
+          <li><a href="https://www.elmbridge.gov.uk/parking/" target="_blank" rel="noopener noreferrer">Elmbridge parking information ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="service-block">
+        <h2>Emergency Services</h2>
+        <ul class="service-links">
+          <li><strong>Emergency:</strong> 999</li>
+          <li><strong>Non-emergency police:</strong> 101</li>
+          <li><a href="https://www.surrey.police.uk" target="_blank" rel="noopener noreferrer">Surrey Police ↗</a></li>
+          <li><a href="https://www.surreyfire.gov.uk" target="_blank" rel="noopener noreferrer">Surrey Fire & Rescue ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="service-block">
+        <h2>Utilities</h2>
+        <ul class="service-links">
+          <li><a href="https://www.thameswater.co.uk" target="_blank" rel="noopener noreferrer">Thames Water ↗</a></li>
+          <li><a href="https://www.ukpowernetworks.co.uk" target="_blank" rel="noopener noreferrer">UK Power Networks (electricity) ↗</a></li>
+          <li><a href="https://www.cadentgas.com" target="_blank" rel="noopener noreferrer">Cadent (gas network) ↗</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .service-block {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .service-block h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-block p {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .service-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .service-links li { font-size: 0.875rem; }
+
+  .service-links a {
+    color: var(--color-navy);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>

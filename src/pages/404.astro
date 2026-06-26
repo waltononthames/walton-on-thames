@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — Walton-on-Thames.org"
+  description="The page you were looking for could not be found."
+  noIndex={true}
+>
+  <section class="not-found-page">
+    <div class="container not-found-inner">
+      <div class="not-found-icon" aria-hidden="true">🦢</div>
+      <h1>Page not found</h1>
+      <p>The page you were looking for doesn't exist or may have moved.</p>
+      <div class="not-found-links">
+        <a href="/" class="btn btn-primary">Back to home</a>
+        <a href="/directory/" class="btn btn-outline">Browse directory</a>
+        <a href="/visit/" class="btn btn-outline">Things to do</a>
+      </div>
+      <p class="not-found-help">
+        If you followed a link that should work, please <a href="/contact/">let us know</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .not-found-inner {
+    max-width: 480px;
+  }
+
+  .not-found-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .not-found-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .not-found-page > div > p {
+    color: var(--color-slate);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .not-found-links {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .not-found-help {
+    font-size: 0.875rem;
+    color: var(--color-slate-soft);
+  }
+</style>

@@ -1,0 +1,214 @@
+---
+const navItems = [
+  { label: 'Visit', href: '/visit/' },
+  { label: 'Eat & Drink', href: '/eat-and-drink/' },
+  { label: 'Shopping', href: '/shopping/' },
+  { label: "What's On", href: '/whats-on/' },
+  { label: 'Directory', href: '/directory/' },
+  { label: 'Neighbourhoods', href: '/neighbourhoods/' },
+  { label: 'Community', href: '/community/' },
+  { label: 'About', href: '/about/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Walton-on-Thames.org — Home">
+      <img src="/images/logo.png" alt="Walton-on-Thames.org logo" width="48" height="48" />
+      <span class="logo-text">
+        <span class="logo-name">Walton-on-Thames</span>
+        <span class="logo-tld">.org</span>
+      </span>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <ul class="nav-list" role="list">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={['nav-link', { 'nav-link--active': currentPath.startsWith(item.href) }]}
+              aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-nav-list" role="list">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={['mobile-nav-link', { 'mobile-nav-link--active': currentPath.startsWith(item.href) }]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    if (menu) menu.hidden = open;
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-navy);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: var(--nav-height);
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .logo-name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    white-space: nowrap;
+  }
+
+  .logo-tld {
+    font-size: 0.7rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Desktop nav */
+  nav { margin-left: auto; }
+
+  .nav-list {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: color 0.15s, background-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover,
+  .nav-link--active {
+    color: var(--color-white);
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* Hamburger */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-toggle span {
+    display: block;
+    height: 2px;
+    background: var(--color-white);
+    border-radius: 2px;
+    transition: transform 0.2s;
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    background: var(--color-navy-ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1rem 0;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.15s, background-color 0.15s;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link--active {
+    color: var(--color-white);
+    background: rgba(255,255,255,0.06);
+  }
+
+  @media (max-width: 900px) {
+    .logo-name { font-size: 0.875rem; }
+    nav { display: none; }
+    .nav-toggle { display: flex; }
+  }
+</style>

@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import { getCollection } from 'astro:content';
+
+const businesses = await getCollection('businesses');
+const sorted = businesses.sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+const categories = [...new Set(businesses.map(b => b.data.category))].sort();
+const neighbourhoods = ['walton-on-thames', 'hersham', 'whiteley-village'];
+---
+
+<BaseLayout
+  title="Walton-on-Thames Business Directory — Local Businesses, Services & Shops"
+  description="A comprehensive directory of businesses, services and attractions in Walton-on-Thames, Hersham and Whiteley Village."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Directory", "item": "https://walton-on-thames.org/directory/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Directory</li>
+        </ol>
+      </nav>
+      <h1>Business Directory</h1>
+      <p>A growing directory of businesses, services and places across Walton-on-Thames, Hersham and Whiteley Village.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar" role="search" aria-label="Filter directory">
+        <div class="filter-group">
+          <label for="filter-category" class="filter-label">Category</label>
+          <select id="filter-category" class="filter-select">
+            <option value="">All categories</option>
+            {categories.map(cat => (
+              <option value={cat}>{cat.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filter-neighbourhood" class="filter-label">Neighbourhood</label>
+          <select id="filter-neighbourhood" class="filter-select">
+            <option value="">All neighbourhoods</option>
+            {neighbourhoods.map(n => (
+              <option value={n}>{n.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-count" id="results-count" aria-live="polite">
+          {sorted.length} listings
+        </div>
+      </div>
+
+      <div class="card-grid card-grid-3" id="directory-grid">
+        {sorted.map(biz => (
+          <div
+            class="directory-item"
+            data-category={biz.data.category}
+            data-neighbourhood={biz.data.neighbourhood}
+          >
+            <BusinessCard
+              name={biz.data.name}
+              slug={biz.data.slug}
+              category={biz.data.category}
+              neighbourhood={biz.data.neighbourhood}
+              description={biz.data.description}
+              images={biz.data.images}
+              featured={biz.data.featured}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div class="directory-cta">
+        <p>Is your business missing from the directory?</p>
+        <a href="/advertise-your-business/" class="btn btn-primary">Add your listing</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const catSelect = document.getElementById('filter-category') as HTMLSelectElement;
+  const nbrSelect = document.getElementById('filter-neighbourhood') as HTMLSelectElement;
+  const countEl = document.getElementById('results-count');
+  const items = document.querySelectorAll<HTMLElement>('.directory-item');
+
+  function applyFilters() {
+    const cat = catSelect.value;
+    const nbr = nbrSelect.value;
+    let visible = 0;
+    items.forEach(item => {
+      const matchCat = !cat || item.dataset.category === cat;
+      const matchNbr = !nbr || item.dataset.neighbourhood === nbr;
+      const show = matchCat && matchNbr;
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    if (countEl) countEl.textContent = `${visible} listing${visible !== 1 ? 's' : ''}`;
+  }
+
+  catSelect?.addEventListener('change', applyFilters);
+  nbrSelect?.addEventListener('change', applyFilters);
+</script>
+
+<style>
+  .filter-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    background: var(--color-white);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .filter-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+  }
+
+  .filter-select {
+    padding: 0.5rem 0.875rem;
+    border: 1.5px solid rgba(11,36,46,0.15);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    background: var(--color-cream);
+    cursor: pointer;
+    min-width: 180px;
+  }
+
+  .filter-select:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-color: var(--color-accent);
+  }
+
+  .filter-count {
+    margin-left: auto;
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    align-self: flex-end;
+    padding-bottom: 0.5rem;
+  }
+
+  .directory-cta {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .directory-cta p {
+    font-size: 1rem;
+    color: var(--color-slate);
+  }
+</style>

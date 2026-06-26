@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const businesses = await getCollection('businesses');
+  return businesses.map(biz => ({
+    params: { slug: biz.data.slug },
+    props: { biz },
+  }));
+}
+
+const { biz } = Astro.props;
+const { Content } = await render(biz);
+
+const categoryLabel = biz.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+const neighbourhoodLabel = biz.data.neighbourhood.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+
+const dayNames: Record<string, string> = { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' };
+const days = ['mon','tue','wed','thu','fri','sat','sun'];
+---
+
+<BaseLayout
+  title={`${biz.data.name} — ${categoryLabel} in ${neighbourhoodLabel}`}
+  description={biz.data.description}
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": biz.data.name,
+      "description": biz.data.description,
+      "url": `https://walton-on-thames.org/directory/${biz.data.slug}/`,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": biz.data.address,
+        "addressLocality": neighbourhoodLabel,
+        "addressRegion": "Surrey",
+        "addressCountry": "GB"
+      },
+      ...(biz.data.phone ? { "telephone": biz.data.phone } : {}),
+      ...(biz.data.website ? { "sameAs": biz.data.website } : {}),
+      ...(biz.data.lat && biz.data.lng ? {
+        "geo": { "@type": "GeoCoordinates", "latitude": biz.data.lat, "longitude": biz.data.lng }
+      } : {}),
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Directory", "item": "https://walton-on-thames.org/directory/" },
+        { "@type": "ListItem", "position": 3, "name": biz.data.name, "item": `https://walton-on-thames.org/directory/${biz.data.slug}/` }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/directory/">Directory</a></li>
+          <li aria-current="page">{biz.data.name}</li>
+        </ol>
+      </nav>
+      <div class="hero-meta">
+        <span class="badge badge-accent">{categoryLabel}</span>
+        <span class="badge">{neighbourhoodLabel}</span>
+        {biz.data.featured && <span class="badge badge-accent">Featured</span>}
+      </div>
+      <h1>{biz.data.name}</h1>
+      <p>{biz.data.description}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content-layout">
+      <article class="prose">
+        <Content />
+      </article>
+
+      <aside class="biz-sidebar">
+        <!-- Address -->
+        <div class="info-card">
+          <h2>Address</h2>
+          <address class="biz-address">{biz.data.address}</address>
+          {biz.data.phone && (
+            <a href={`tel:${biz.data.phone}`} class="contact-link">📞 {biz.data.phone}</a>
+          )}
+          {biz.data.website && (
+            <a href={biz.data.website} target="_blank" rel="noopener noreferrer" class="contact-link">
+              🌐 Visit website ↗
+            </a>
+          )}
+        </div>
+
+        <!-- Opening hours -->
+        {biz.data.hours && (
+          <div class="info-card">
+            <h2>Opening Hours</h2>
+            <table class="hours-table">
+              {days.filter(d => biz.data.hours?.[d]).map(day => (
+                <tr>
+                  <th>{dayNames[day]}</th>
+                  <td>{biz.data.hours?.[day]}</td>
+                </tr>
+              ))}
+            </table>
+          </div>
+        )}
+
+        <!-- Map -->
+        {biz.data.lat && biz.data.lng && (
+          <div class="info-card">
+            <h2>Map</h2>
+            <iframe
+              title={`Map showing ${biz.data.name}`}
+              src={`https://www.openstreetmap.org/export/embed.html?bbox=${biz.data.lng - 0.008},${biz.data.lat - 0.005},${biz.data.lng + 0.008},${biz.data.lat + 0.005}&layer=mapnik&marker=${biz.data.lat},${biz.data.lng}`}
+              loading="lazy"
+              width="100%"
+              height="220"
+              style="border: none; border-radius: 8px;"
+            ></iframe>
+          </div>
+        )}
+
+        <!-- Suggest an edit -->
+        <div class="info-card suggest-edit">
+          <h2>Suggest an edit</h2>
+          <p>Is this listing out of date? Own this business?</p>
+          <a href={`/contact/?subject=Listing+edit:+${encodeURIComponent(biz.data.name)}`} class="btn btn-outline" style="width:100%; justify-content:center; margin-top: 0.5rem;">
+            Suggest an edit
+          </a>
+          {biz.data.verified_date && (
+            <p class="verified-note">Last verified: {biz.data.verified_date}</p>
+          )}
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .biz-address {
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--color-navy);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-link {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    transition: color 0.15s;
+  }
+
+  .contact-link:hover { color: var(--color-accent); }
+
+  .hours-table { width: 100%; border-collapse: collapse; }
+  .hours-table tr + tr { border-top: 1px solid rgba(11,36,46,0.06); }
+  .hours-table th, .hours-table td {
+    padding: 0.4rem 0;
+    font-size: 0.875rem;
+    text-align: left;
+  }
+  .hours-table th { color: var(--color-slate); font-weight: 500; width: 50%; }
+  .hours-table td { color: var(--color-navy); }
+
+  .verified-note {
+    font-size: 0.75rem;
+    color: var(--color-slate-soft);
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .content-layout { grid-template-columns: 1fr; }
+  }
+</style>

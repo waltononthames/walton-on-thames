@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PlaceCard from '../../components/PlaceCard.astro';
+import { getCollection } from 'astro:content';
+
+const places = await getCollection('places');
+const walks = places.filter(p => p.data.category === 'riverside-walk' || p.data.category === 'nature' || p.data.category === 'park');
+---
+
+<BaseLayout
+  title="Walks & the River Thames in Walton-on-Thames"
+  description="Explore the Thames Path and riverside walks around Walton-on-Thames — Cowey Sale, the riverbank, and green spaces in Hersham and beyond."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/visit/">Visit</a></li>
+          <li aria-current="page">Walks & the River</li>
+        </ol>
+      </nav>
+      <h1>Walks & the River</h1>
+      <p>The Thames at Walton is one of Surrey's finest stretches of river — and the walks along it are among the best in the county.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose" style="margin-bottom: 3rem; max-width: 70ch;">
+        <h2>The Thames Path</h2>
+        <p>The Thames Path National Trail passes directly through Walton-on-Thames, following the south bank of the river. From Walton Bridge you can walk west along Cowey Sale towards Weybridge and the River Wey confluence, or east along the towpath towards Hampton Court and Kingston.</p>
+        <p>The towpath is flat, well-maintained, and accessible for pushchairs and wheelchairs for most of its length between Walton Bridge and Weybridge.</p>
+
+        <h2>Cowey Sale</h2>
+        <p>The jewel of Walton's riverside is Cowey Sale — a long meadow running along the north bank of the Thames. Common land for centuries, it's the town's living room: dog walkers, joggers, families, and anyone who simply wants to watch the river go by all find their place here.</p>
+        <p>On summer weekends you'll see rowing eights on the water from Walton Rowing Club, and narrowboats moored along the bank. It connects directly to the Thames Path and is a 10-minute walk from the town centre.</p>
+      </div>
+
+      {walks.length > 0 && (
+        <div>
+          <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Parks, Walks & Green Spaces</h2>
+          <div class="card-grid card-grid-3">
+            {walks.map(place => (
+              <PlaceCard
+                name={place.data.name}
+                slug={place.data.slug}
+                category={place.data.category}
+                neighbourhood={place.data.neighbourhood}
+                description={place.data.description}
+                images={place.data.images}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

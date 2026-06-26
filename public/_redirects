@@ -1,0 +1,2 @@
+/blog/* /community/news/:splat 301
+/news/* /community/news/:splat 301

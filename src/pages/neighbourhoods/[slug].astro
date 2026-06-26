@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import PlaceCard from '../../components/PlaceCard.astro';
+import EventCard from '../../components/EventCard.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const neighbourhoods = await getCollection('neighbourhoods');
+  return neighbourhoods.map(nbr => ({
+    params: { slug: nbr.data.slug },
+    props: { nbr },
+  }));
+}
+
+const { nbr } = Astro.props;
+const { Content } = await render(nbr);
+
+const allBusinesses = await getCollection('businesses');
+const localBusinesses = allBusinesses
+  .filter(b => b.data.neighbourhood === nbr.data.slug)
+  .slice(0, 6);
+
+const allPlaces = await getCollection('places');
+const localPlaces = allPlaces.filter(p => p.data.neighbourhood === nbr.data.slug);
+
+const allEvents = await getCollection('events');
+const localEvents = allEvents
+  .filter(e => e.data.neighbourhood === nbr.data.slug)
+  .sort((a, b) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={`${nbr.data.name} — Guide to the Area`}
+  description={nbr.data.description}
+  image={nbr.data.image}
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Neighbourhoods", "item": "https://walton-on-thames.org/neighbourhoods/" },
+        { "@type": "ListItem", "position": 3, "name": nbr.data.name, "item": `https://walton-on-thames.org/neighbourhoods/${nbr.data.slug}/` }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/neighbourhoods/">Neighbourhoods</a></li>
+          <li aria-current="page">{nbr.data.name}</li>
+        </ol>
+      </nav>
+      <h1>{nbr.data.name}</h1>
+      <p class="nbr-tagline">{nbr.data.tagline}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container nbr-layout">
+      <article class="prose">
+        <Content />
+      </article>
+
+      <aside class="nbr-sidebar">
+        <div class="info-card quick-links">
+          <h2>Quick links</h2>
+          <ul>
+            {localPlaces.length > 0 && <li><a href="#places">Things to do here</a></li>}
+            {localBusinesses.length > 0 && <li><a href="#businesses">Local businesses</a></li>}
+            {localEvents.length > 0 && <li><a href="#events">Upcoming events</a></li>}
+            <li><a href="/directory/?neighbourhood={nbr.data.slug}">Full directory</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {localPlaces.length > 0 && (
+    <section class="section section-tinted" id="places" aria-labelledby="nbr-places-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="nbr-places-heading">Things to Do in {nbr.data.name}</h2>
+        </div>
+        <div class="card-grid card-grid-3">
+          {localPlaces.map(place => (
+            <PlaceCard
+              name={place.data.name}
+              slug={place.data.slug}
+              category={place.data.category}
+              neighbourhood={place.data.neighbourhood}
+              description={place.data.description}
+              images={place.data.images}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {localBusinesses.length > 0 && (
+    <section class="section" id="businesses" aria-labelledby="nbr-biz-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="nbr-biz-heading">Local Businesses</h2>
+        </div>
+        <div class="card-grid card-grid-3">
+          {localBusinesses.map(biz => (
+            <BusinessCard
+              name={biz.data.name}
+              slug={biz.data.slug}
+              category={biz.data.category}
+              neighbourhood={biz.data.neighbourhood}
+              description={biz.data.description}
+              images={biz.data.images}
+              featured={biz.data.featured}
+            />
+          ))}
+        </div>
+        <div class="section-footer">
+          <a href={`/directory/`} class="btn btn-outline">All {nbr.data.name} businesses →</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {localEvents.length > 0 && (
+    <section class="section section-tinted" id="events" aria-labelledby="nbr-events-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="nbr-events-heading">Events in {nbr.data.name}</h2>
+        </div>
+        <div class="card-grid card-grid-3">
+          {localEvents.map(event => (
+            <EventCard
+              title={event.data.title}
+              slug={event.data.slug}
+              start={event.data.start}
+              venue={event.data.venue}
+              category={event.data.category}
+              price={event.data.price}
+              image={event.data.image}
+              description={event.data.description}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .nbr-tagline {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  .nbr-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .quick-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .quick-links a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11,36,46,0.06);
+    display: block;
+  }
+
+  .quick-links a:hover { color: var(--color-accent); }
+
+  @media (max-width: 900px) {
+    .nbr-layout { grid-template-columns: 1fr; }
+    .nbr-sidebar { order: -1; }
+  }
+</style>

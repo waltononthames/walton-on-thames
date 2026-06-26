@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const neighbourhoods = await getCollection('neighbourhoods');
+const sorted = ['walton-on-thames', 'hersham', 'whiteley-village'].map(slug =>
+  neighbourhoods.find(n => n.data.slug === slug)!
+).filter(Boolean);
+---
+
+<BaseLayout
+  title="Neighbourhoods — Walton-on-Thames, Hersham & Whiteley Village"
+  description="Explore the three distinct communities that make up this part of Surrey — Walton-on-Thames, Hersham village, and the extraordinary Whiteley Village."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Neighbourhoods</li>
+        </ol>
+      </nav>
+      <h1>Neighbourhoods</h1>
+      <p>Three distinct communities, each with its own character — from a bustling riverside town to a tranquil Arts & Crafts village in the woods.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="nbr-grid">
+        {sorted.map(nbr => (
+          <a href={`/neighbourhoods/${nbr.data.slug}/`} class="nbr-card">
+            <div class="nbr-image">
+              <img
+                src={nbr.data.image ?? '/images/neighbourhoods/placeholder.jpg'}
+                alt={nbr.data.name}
+                loading="lazy"
+                width="800"
+                height="500"
+              />
+              <div class="nbr-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="nbr-body">
+              <h2>{nbr.data.name}</h2>
+              <p class="nbr-tagline">{nbr.data.tagline}</p>
+              <p class="nbr-desc">{nbr.data.description}</p>
+              <span class="btn btn-outline-white" style="display:inline-flex; margin-top: 1rem;">Explore {nbr.data.name} →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nbr-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .nbr-card {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    min-height: 380px;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    color: var(--color-white);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s;
+  }
+
+  .nbr-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    color: var(--color-white);
+  }
+
+  .nbr-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .nbr-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nbr-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(1,32,44,0.88) 0%, rgba(1,32,44,0.4) 60%, rgba(1,32,44,0.15) 100%);
+  }
+
+  .nbr-body {
+    position: relative;
+    z-index: 1;
+    padding: 2.5rem 3rem;
+    max-width: 540px;
+  }
+
+  .nbr-body h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--color-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .nbr-tagline {
+    font-size: 1.05rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .nbr-desc {
+    font-size: 0.925rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 600px) {
+    .nbr-body { padding: 1.5rem; }
+    .nbr-card { min-height: 280px; }
+    .nbr-overlay {
+      background: linear-gradient(to top, rgba(1,32,44,0.92) 0%, rgba(1,32,44,0.5) 60%, transparent 100%);
+    }
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EventCard from '../../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+
+const events = await getCollection('events');
+const now = new Date();
+const upcoming = events
+  .filter(e => new Date(e.data.start) >= now)
+  .sort((a, b) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime());
+const past = events
+  .filter(e => new Date(e.data.start) < now)
+  .sort((a, b) => new Date(b.data.start).getTime() - new Date(a.data.start).getTime());
+---
+
+<BaseLayout
+  title="What's On in Walton-on-Thames — Events, Festivals & Things to Do"
+  description="Events and things to do in Walton-on-Thames, Hersham and Whiteley Village — festivals, markets, community events, sport and more."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "What's On", "item": "https://walton-on-thames.org/whats-on/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">What's On</li>
+        </ol>
+      </nav>
+      <h1>What's On</h1>
+      <p>Events, festivals, markets and community activities across Walton-on-Thames, Hersham and Whiteley Village.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      {upcoming.length > 0 ? (
+        <>
+          <div class="section-header">
+            <h2>Upcoming Events</h2>
+          </div>
+          <div class="card-grid card-grid-3">
+            {upcoming.map(event => (
+              <EventCard
+                title={event.data.title}
+                slug={event.data.slug}
+                start={event.data.start}
+                venue={event.data.venue}
+                category={event.data.category}
+                price={event.data.price}
+                image={event.data.image}
+                description={event.data.description}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <p class="empty-state">No upcoming events right now — check back soon or <a href="/community/news/">read the local news</a>.</p>
+      )}
+
+      {past.length > 0 && (
+        <div style="margin-top: 4rem;">
+          <div class="section-header">
+            <h2>Past Events</h2>
+          </div>
+          <div class="card-grid card-grid-3">
+            {past.map(event => (
+              <EventCard
+                title={event.data.title}
+                slug={event.data.slug}
+                start={event.data.start}
+                venue={event.data.venue}
+                category={event.data.category}
+                price={event.data.price}
+                image={event.data.image}
+                description={event.data.description}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="submit-event">
+        <p>Know of an event that should be listed here?</p>
+        <a href="/contact/?subject=Event+submission" class="btn btn-primary">Submit an event</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .empty-state {
+    color: var(--color-slate);
+    font-size: 1.05rem;
+    padding: 2rem 0;
+  }
+
+  .submit-event {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .submit-event p { color: var(--color-slate); }
+</style>

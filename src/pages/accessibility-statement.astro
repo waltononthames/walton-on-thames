@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Accessibility Statement — Walton-on-Thames.org"
+  description="Accessibility statement for Walton-on-Thames.org — our commitment to making this site accessible to all users."
+  noIndex={true}
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Accessibility Statement</li>
+        </ol>
+      </nav>
+      <h1>Accessibility Statement</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <p>Walton-on-Thames.org is committed to making this website accessible to as many people as possible, regardless of disability, device, or connection speed.</p>
+
+        <h2>What we've done</h2>
+        <ul>
+          <li>Semantic HTML with a logical heading hierarchy</li>
+          <li>All images have descriptive alt text (decorative images have empty alt attributes)</li>
+          <li>Keyboard navigable throughout, with visible focus indicators</li>
+          <li>Sufficient colour contrast between text and backgrounds (aiming for WCAG 2.1 AA)</li>
+          <li>Skip link to main content</li>
+          <li>No autoplay video or audio</li>
+          <li>Resizable text — content remains readable at 200% zoom</li>
+          <li>ARIA landmarks and roles where appropriate</li>
+        </ul>
+
+        <h2>Known limitations</h2>
+        <ul>
+          <li>Some third-party embeds (OpenStreetMap iframes) may not be fully accessible to screen reader users</li>
+          <li>Older listings may have incomplete information</li>
+        </ul>
+
+        <h2>Reporting accessibility issues</h2>
+        <p>If you encounter an accessibility problem on this site, please <a href="/contact/">contact us</a> with details of the issue and the page on which you found it. We will aim to respond within 5 working days and address genuine issues as quickly as possible.</p>
+
+        <h2>Technical specification</h2>
+        <p>This website is built with Astro, generating static HTML. It relies on the following technologies for accessibility: HTML, CSS, and minimal JavaScript. No JavaScript is required for core content access.</p>
+
+        <h2>Conformance status</h2>
+        <p>We aim for WCAG 2.1 Level AA conformance. This is an ongoing effort and we will continue to improve accessibility as the site develops.</p>
+
+        <p><em>Statement prepared June 2026.</em></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

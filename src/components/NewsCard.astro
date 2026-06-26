@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  date: string;
+  category: string;
+  description: string;
+  image?: string;
+}
+
+const { title, slug, date, category, description, image } = Astro.props;
+
+const dateObj = new Date(date);
+const dateStr = dateObj.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+---
+
+<a href={`/community/news/${slug}/`} class="card news-card">
+  {image
+    ? <img class="card-image" src={image} alt={title} loading="lazy" />
+    : <div class="card-image-placeholder" aria-hidden="true">📰</div>
+  }
+  <div class="card-body">
+    <span class="card-category">{categoryLabel}</span>
+    <h3 class="card-title">{title}</h3>
+    <p class="card-description">{description}</p>
+    <time class="news-date" datetime={date}>{dateStr}</time>
+  </div>
+</a>
+
+<style>
+  .news-date {
+    font-size: 0.8rem;
+    color: var(--color-slate-soft);
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+</style>

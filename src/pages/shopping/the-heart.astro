@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import { getCollection } from 'astro:content';
+
+const businesses = await getCollection('businesses');
+const heartBiz = businesses.filter(b => b.data.slug === 'the-heart-shopping-centre');
+---
+
+<BaseLayout
+  title="The Heart Shopping Centre — Walton-on-Thames"
+  description="The Heart is Walton's main shopping destination — over 60 stores, a Vue Cinema, restaurants and regular community events in the town centre."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/shopping/">Shopping</a></li>
+          <li aria-current="page">The Heart</li>
+        </ol>
+      </nav>
+      <h1>The Heart Shopping Centre</h1>
+      <p>Walton's main shopping destination, with 60+ stores, a cinema, restaurants and regular events.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <p>The Heart Shopping Centre is the hub of Walton-on-Thames town centre, a modern covered mall offering a broad range of high-street retailers, food and drink, and entertainment.</p>
+
+        <h2>What's there</h2>
+        <ul>
+          <li><strong>Fashion & accessories:</strong> a mix of mid-market high-street brands</li>
+          <li><strong>Vue Cinema:</strong> multi-screen cinema with regular screenings</li>
+          <li><strong>Food court & restaurants:</strong> from quick bites to sit-down dining</li>
+          <li><strong>Walton Library:</strong> Surrey County Council public library within the centre</li>
+          <li><strong>Health & beauty:</strong> several salons and pharmacies</li>
+          <li><strong>Banks & services:</strong> most major high-street banks have branches nearby</li>
+        </ul>
+
+        <h2>Events at The Heart</h2>
+        <p>The central atrium hosts regular community events including the Walton Christmas Lights Switch-On, seasonal markets, food fairs, and charity fundraisers. Check the <a href="/whats-on/">What's On</a> section for upcoming events.</p>
+
+        <h2>Getting there</h2>
+        <p>The Heart is in the centre of Walton-on-Thames, a 10-minute walk from Walton-on-Thames railway station. Multi-storey parking is available within the centre. <a href="/visit/getting-here/">Full transport information →</a></p>
+
+        <p><a href="https://www.theheartshoppingcentre.co.uk" target="_blank" rel="noopener noreferrer">Visit the official Heart Shopping Centre website ↗</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

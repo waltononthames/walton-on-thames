@@ -1,0 +1,41 @@
+---
+interface Props {
+  name: string;
+  slug: string;
+  category: string;
+  neighbourhood: string;
+  description: string;
+  images?: string[];
+  featured?: boolean;
+}
+
+const { name, slug, category, neighbourhood, description, images = [], featured = false } = Astro.props;
+
+const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+const thumbUrl = images[0] ?? null;
+---
+
+<a href={`/directory/${slug}/`} class="card business-card">
+  {thumbUrl
+    ? <img class="card-image" src={thumbUrl} alt={name} loading="lazy" />
+    : <div class="card-image-placeholder" aria-hidden="true">🏪</div>
+  }
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="card-category">{categoryLabel}</span>
+      {featured && <span class="badge badge-accent">Featured</span>}
+    </div>
+    <h3 class="card-title">{name}</h3>
+    <p class="card-description">{description}</p>
+    <span class="badge">{neighbourhood.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</span>
+  </div>
+</a>
+
+<style>
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import { getCollection } from 'astro:content';
+
+const businesses = await getCollection('businesses');
+const shops = businesses.filter(b => b.data.category === 'shopping');
+---
+
+<BaseLayout
+  title="Shopping in Walton-on-Thames — The Heart & Independent Shops"
+  description="Shopping in Walton-on-Thames — The Heart shopping centre, independent shops on Church Street and High Street, and local markets."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Shopping</li>
+        </ol>
+      </nav>
+      <h1>Shopping</h1>
+      <p>From the 60+ stores of The Heart shopping centre to independent boutiques on Church Street — Walton has a genuinely varied retail offer.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="shopping-nav">
+        <a href="/shopping/the-heart/" class="shopping-nav-item">
+          <span>🛍️</span>
+          <strong>The Heart</strong>
+          <span>The main shopping centre</span>
+        </a>
+        <a href="/shopping/independent-shops/" class="shopping-nav-item">
+          <span>🏪</span>
+          <strong>Independent Shops</strong>
+          <span>Local boutiques & specialists</span>
+        </a>
+      </div>
+
+      {shops.length > 0 ? (
+        <div style="margin-top: 2rem;">
+          <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">All Shopping Listings</h2>
+          <div class="card-grid card-grid-3">
+            {shops.map(biz => (
+              <BusinessCard
+                name={biz.data.name}
+                slug={biz.data.slug}
+                category={biz.data.category}
+                neighbourhood={biz.data.neighbourhood}
+                description={biz.data.description}
+                images={biz.data.images}
+                featured={biz.data.featured}
+              />
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .shopping-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+  }
+
+  .shopping-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .shopping-nav-item:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+    color: inherit;
+  }
+
+  .shopping-nav-item span:first-child { font-size: 1.75rem; }
+  .shopping-nav-item strong { font-family: var(--font-heading); font-size: 1.05rem; color: var(--color-navy); }
+  .shopping-nav-item span:last-child { font-size: 0.8rem; color: var(--color-slate); }
+
+  @media (max-width: 480px) {
+    .shopping-nav { grid-template-columns: 1fr; }
+  }
+</style>

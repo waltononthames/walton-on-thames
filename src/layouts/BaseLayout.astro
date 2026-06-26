@@ -1,0 +1,135 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: 'website' | 'article';
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-default.jpg',
+  canonicalURL = Astro.url.href,
+  type = 'website',
+  noIndex = false,
+} = Astro.props;
+
+const siteTitle = title.includes('Walton-on-Thames')
+  ? title
+  : `${title} | Walton-on-Thames.org`;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>{siteTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noIndex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta property="og:site_name" content="Walton-on-Thames.org" />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site).href} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Sitemap / RSS -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Walton-on-Thames.org News" href="/rss.xml" />
+
+    <!-- Cloudflare Web Analytics — replace TOKEN with your real token after deployment -->
+    <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script> -->
+
+    <!-- Structured data: WebSite + Organization (homepage only) -->
+    {Astro.url.pathname === '/' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://walton-on-thames.org/#website",
+            "url": "https://walton-on-thames.org/",
+            "name": "Walton-on-Thames.org",
+            "description": "An independent community guide to Walton-on-Thames, Hersham & Whiteley Village",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://walton-on-thames.org/directory/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://walton-on-thames.org/#organization",
+            "name": "Walton-on-Thames.org",
+            "url": "https://walton-on-thames.org/",
+            "logo": "https://walton-on-thames.org/images/logo.png"
+          }
+        ]
+      })} />
+    )}
+
+    <!-- BreadcrumbList -->
+    <slot name="structured-data" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Header />
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.1s;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+  }
+</style>

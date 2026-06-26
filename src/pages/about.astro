@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About Walton-on-Thames.org — Who We Are"
+  description="About Walton-on-Thames.org — an independent community guide to Walton-on-Thames, Hersham and Whiteley Village, built and maintained by a local resident."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">About</li>
+        </ol>
+      </nav>
+      <h1>About This Site</h1>
+      <p>An independent community guide to Walton-on-Thames, Hersham and Whiteley Village.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container about-layout">
+      <article class="prose">
+        <h2>Who runs this site?</h2>
+        <p>Walton-on-Thames.org is a personal passion project built by a local resident who wanted a single, well-organised online guide to this part of Surrey — the kind of site that actually helps you find things, rather than sending you down a rabbit warren of generic directories and outdated listings.</p>
+
+        <div class="about-author-placeholder">
+          <div class="author-photo-placeholder" aria-hidden="true">👤</div>
+          <div>
+            <p><em>Owner bio to be added here — name, connection to the area, why you built the site. This is the most important trust signal on the page; make it genuine and personal.</em></p>
+          </div>
+        </div>
+
+        <h2>What this site is (and isn't)</h2>
+        <p>This is an <strong>independent community resource</strong>. It is not:</p>
+        <ul>
+          <li>Affiliated with Elmbridge Borough Council</li>
+          <li>A Visit Surrey or official tourism board site</li>
+          <li>A paid PR platform for businesses</li>
+        </ul>
+        <p>Independence is a feature, not a bug. It means we can be direct about what's good, flag things that aren't working, and write about the area the way a well-informed local would — not the way a tourism marketing department would.</p>
+
+        <h2>How listings work</h2>
+        <p>Every listing in the directory is researched using publicly available information — business websites, official directories, Google Maps, and firsthand knowledge. We don't accept payment for basic listings.</p>
+        <p>We aim to verify each listing before publishing, but things change. If you notice an error, please <a href="/contact/">get in touch</a> or use the "Suggest an edit" link on any listing page — we genuinely read and act on corrections.</p>
+        <p>Each listing shows a <strong>last verified date</strong> so you can see how recent the information is.</p>
+
+        <h2>Photography</h2>
+        <p>All photography on this site (unless otherwise credited) is original photography of Walton-on-Thames, Hersham and Whiteley Village. No stock imagery. The photos show the area as it actually is.</p>
+
+        <h2>Getting involved</h2>
+        <p>If you have a local business that should be listed, a community event that needs publicising, or a story about the area worth telling — please <a href="/contact/">get in touch</a>. This site is most useful when it reflects the full breadth of local life, and that requires input from local people.</p>
+        <p>You can also <a href="/advertise-your-business/">add or claim your business listing</a>.</p>
+
+        <h2>Technical</h2>
+        <p>This site is built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>, hosted on <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>, and uses Cloudflare Web Analytics (privacy-friendly, no cookies required). No personal data is stored without your knowledge.</p>
+      </article>
+
+      <aside class="about-sidebar">
+        <div class="info-card">
+          <h2>Quick links</h2>
+          <ul class="about-links">
+            <li><a href="/contact/">Contact us</a></li>
+            <li><a href="/advertise-your-business/">List your business</a></li>
+            <li><a href="/privacy-policy/">Privacy policy</a></li>
+            <li><a href="/accessibility-statement/">Accessibility statement</a></li>
+          </ul>
+        </div>
+        <div class="info-card disclaimer-card">
+          <h2>Disclaimer</h2>
+          <p>Walton-on-Thames.org is an independent community resource. While we take reasonable care with accuracy, information may be out of date. Always verify time-sensitive details (opening hours, event dates, prices) directly with the business or organisation concerned.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-author-placeholder {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: rgba(11,36,46,0.04);
+    border-radius: var(--radius-lg);
+    border: 1.5px dashed rgba(11,36,46,0.15);
+    margin: 1.5rem 0;
+  }
+
+  .author-photo-placeholder {
+    font-size: 3rem;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11,36,46,0.06);
+    border-radius: 50%;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .about-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .about-links a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .about-links a:hover { color: var(--color-accent); }
+
+  .disclaimer-card p {
+    font-size: 0.8rem;
+    color: var(--color-slate);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .about-layout { grid-template-columns: 1fr; }
+    .about-sidebar { order: -1; }
+  }
+</style>

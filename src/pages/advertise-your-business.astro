@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="List Your Business — Walton-on-Thames.org Directory"
+  description="Add or claim your business listing in the Walton-on-Thames.org directory — free to get started, with optional featured listing upgrades."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">List Your Business</li>
+        </ol>
+      </nav>
+      <h1>List Your Business</h1>
+      <p>Get your business in front of people actively looking for local services and places in Walton-on-Thames, Hersham and Whiteley Village.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container advert-layout">
+      <div>
+        <div class="tier-grid">
+          <div class="tier-card tier-free">
+            <div class="tier-badge">Free</div>
+            <h2>Standard Listing</h2>
+            <ul class="tier-features">
+              <li>✓ Listed in the directory</li>
+              <li>✓ Business name, address & contact details</li>
+              <li>✓ Description & category</li>
+              <li>✓ Link to your website</li>
+              <li>✓ Neighbourhood tag</li>
+              <li>✓ OpenStreetMap embed</li>
+            </ul>
+            <p class="tier-note">Free forever — we believe a useful local directory should be accessible to all local businesses.</p>
+            <a href="/contact/?subject=advertising" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:1rem;">
+              Request a free listing
+            </a>
+          </div>
+
+          <div class="tier-card tier-featured">
+            <div class="tier-badge tier-badge-accent">Featured</div>
+            <h2>Featured Listing</h2>
+            <ul class="tier-features">
+              <li>✓ Everything in Standard</li>
+              <li>✓ Featured badge on your listing</li>
+              <li>✓ Appears at the top of your category</li>
+              <li>✓ "Featured" rotation on the homepage</li>
+              <li>✓ Up to 5 photos</li>
+              <li>✓ Extended description</li>
+            </ul>
+            <p class="tier-note">Pricing to be announced — contact us for early-adopter rates.</p>
+            <a href="/contact/?subject=advertising" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:1rem;">
+              Get in touch
+            </a>
+          </div>
+        </div>
+
+        <div class="prose" style="margin-top: 3rem;">
+          <h2>How to get listed</h2>
+          <ol>
+            <li>Use the contact form to send us your business name, address, category, phone number, website URL, and a short description (1–3 sentences).</li>
+            <li>We'll review and add the listing within a few days.</li>
+            <li>You'll be notified when it's live and can request edits at any time.</li>
+          </ol>
+
+          <h2>Already listed?</h2>
+          <p>If your business is already in the directory but has incorrect or outdated information, use the "Suggest an edit" link on your listing page, or <a href="/contact/?subject=listing-edit">contact us directly</a>.</p>
+        </div>
+      </div>
+
+      <aside class="advert-sidebar">
+        <div class="info-card">
+          <h2>About the directory</h2>
+          <p>Walton-on-Thames.org is an independent local guide with a growing audience of residents and visitors actively searching for local services and places. We focus on quality over quantity — every listing is manually reviewed.</p>
+        </div>
+        <div class="info-card">
+          <h2>Our commitment</h2>
+          <p>We never accept payment to influence the editorial content of this site. Featured listings are promoted within the directory UI, but our news coverage, reviews and guides are independent.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .advert-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .tier-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+
+  .tier-featured {
+    border: 2px solid var(--color-accent);
+  }
+
+  .tier-badge {
+    display: inline-block;
+    padding: 0.2rem 0.75rem;
+    background: rgba(11,36,46,0.08);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .tier-badge-accent {
+    background: rgba(184,134,46,0.15);
+    color: var(--color-accent-dark);
+  }
+
+  .tier-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .tier-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tier-features li {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+  }
+
+  .tier-note {
+    font-size: 0.8rem;
+    color: var(--color-slate-soft);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card p {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .advert-layout { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .tier-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Getting to Walton-on-Thames — Trains, Roads, Parking & Buses"
+  description="How to get to Walton-on-Thames by train, car, and bus — including travel times from London, parking information, and local transport links."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/visit/">Visit</a></li>
+          <li aria-current="page">Getting Here</li>
+        </ol>
+      </nav>
+      <h1>Getting Here</h1>
+      <p>Walton-on-Thames is well-connected by rail and road — 32 minutes from London Waterloo and 2 miles from the M25.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="transport-grid">
+
+        <div class="transport-card">
+          <div class="transport-icon">🚂</div>
+          <h2>By Train</h2>
+          <p><strong>Walton-on-Thames station</strong> is served by South Western Railway on the London Waterloo to Weybridge/Woking line.</p>
+          <ul>
+            <li><strong>London Waterloo:</strong> approx. 32 minutes</li>
+            <li><strong>Clapham Junction:</strong> approx. 22 minutes</li>
+            <li><strong>Wimbledon:</strong> approx. 17 minutes</li>
+            <li><strong>Weybridge:</strong> 5 minutes</li>
+          </ul>
+          <p>The station is about a 10-minute walk from the town centre and The Heart shopping centre.</p>
+          <p><strong>Hersham station</strong> is also on the same line and useful for the village.</p>
+          <p class="transport-note">Train times and fares: <a href="https://www.nationalrail.co.uk" target="_blank" rel="noopener noreferrer">National Rail ↗</a></p>
+        </div>
+
+        <div class="transport-card">
+          <div class="transport-icon">🚗</div>
+          <h2>By Car</h2>
+          <p>Walton-on-Thames is easily reached by road from the M25 and surrounding Surrey towns.</p>
+          <ul>
+            <li><strong>M25 Junction 11</strong> (Chertsey): 2 miles via A317</li>
+            <li><strong>M25 Junction 12</strong> (M3 interchange): 5 miles</li>
+            <li><strong>Central London (A316):</strong> approximately 18 miles</li>
+            <li><strong>Guildford (A3):</strong> approximately 16 miles</li>
+            <li><strong>Heathrow Airport:</strong> approximately 12 miles</li>
+          </ul>
+        </div>
+
+        <div class="transport-card">
+          <div class="transport-icon">🅿️</div>
+          <h2>Parking</h2>
+          <p>There is a good range of car parks in and around Walton town centre. Most are managed by Elmbridge Borough Council and Surrey County Council.</p>
+          <ul>
+            <li><strong>The Heart multi-storey</strong> — central, covered, pay & display</li>
+            <li><strong>Manor Road car park</strong> — convenient for the river and Cowey Sale</li>
+            <li><strong>High Street / Church Street</strong> — on-street, limited duration</li>
+          </ul>
+          <p class="transport-note">For current parking charges and availability, check the Elmbridge Borough Council website. Many streets around the town centre have residents-only restrictions — check signs carefully.</p>
+        </div>
+
+        <div class="transport-card">
+          <div class="transport-icon">🚌</div>
+          <h2>By Bus</h2>
+          <p>Several bus routes serve Walton-on-Thames and the surrounding area:</p>
+          <ul>
+            <li><strong>465:</strong> Kingston upon Thames – Walton – Staines</li>
+            <li><strong>461:</strong> Kingston – Esher – Walton</li>
+            <li><strong>514:</strong> Walton – Weybridge – Woking</li>
+          </ul>
+          <p>Bus routes are operated by various operators. For current timetables and journey planning, use the <a href="https://www.traveline.info" target="_blank" rel="noopener noreferrer">Traveline ↗</a> or <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>.</p>
+          <p class="transport-note">Note: bus frequency varies significantly by route and time of day. For regular commuting, the train is generally more reliable.</p>
+        </div>
+
+        <div class="transport-card">
+          <div class="transport-icon">🚲</div>
+          <h2>By Bike</h2>
+          <p>Walton is part of the wider Surrey cycling network and is accessible by bike from several directions.</p>
+          <ul>
+            <li>The <strong>Thames Path</strong> can be cycled on shared-use sections</li>
+            <li>The <strong>Mole Valley Cycle Route</strong> passes through Hersham</li>
+            <li>National Cycle Network Route 4 runs nearby</li>
+          </ul>
+          <p class="transport-note">Cycle parking is available at the train station and at various points in the town centre.</p>
+        </div>
+
+        <div class="transport-card">
+          <div class="transport-icon">✈️</div>
+          <h2>From the Airports</h2>
+          <ul>
+            <li><strong>Heathrow:</strong> ~12 miles / 30 min by car; or train via Feltham</li>
+            <li><strong>Gatwick:</strong> ~24 miles / 45 min by car; or train via Clapham Junction</li>
+            <li><strong>London City:</strong> ~22 miles / 50 min by car or train via Waterloo</li>
+          </ul>
+          <p class="transport-note">Journey times are estimates and will vary with traffic and connections.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .transport-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .transport-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .transport-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .transport-card h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .transport-card p {
+    font-size: 0.9rem;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .transport-card ul {
+    list-style: none;
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .transport-card li {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .transport-card li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  .transport-note {
+    font-size: 0.8rem !important;
+    color: var(--color-slate-soft) !important;
+    font-style: italic;
+    border-top: 1px solid rgba(11,36,46,0.08);
+    padding-top: 0.75rem !important;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .transport-grid { grid-template-columns: 1fr; }
+  }
+</style>

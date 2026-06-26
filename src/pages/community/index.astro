@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Community — Walton-on-Thames Local News, Clubs & Services"
+  description="Community resources for Walton-on-Thames, Hersham and Whiteley Village — local news, clubs and groups, schools, and council services."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Community</li>
+        </ol>
+      </nav>
+      <h1>Community</h1>
+      <p>Local news, clubs and groups, schools, and links to council services across Walton-on-Thames, Hersham and Whiteley Village.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="community-grid">
+        <a href="/community/news/" class="community-card">
+          <span class="community-icon">📰</span>
+          <h2>Local News</h2>
+          <p>Community stories, local history features, and news from across the three neighbourhoods.</p>
+        </a>
+        <a href="/community/clubs-and-groups/" class="community-card">
+          <span class="community-icon">🤝</span>
+          <h2>Clubs & Groups</h2>
+          <p>Sports clubs, societies, community organisations and social groups.</p>
+        </a>
+        <a href="/community/schools/" class="community-card">
+          <span class="community-icon">🏫</span>
+          <h2>Schools</h2>
+          <p>Primary and secondary schools serving Walton-on-Thames, Hersham and the surrounding area.</p>
+        </a>
+        <a href="/community/council-and-services/" class="community-card">
+          <span class="community-icon">🏛️</span>
+          <h2>Council & Services</h2>
+          <p>Links to Elmbridge Borough Council, Surrey County Council, libraries, bins, and local NHS services.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .community-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .community-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .community-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+    color: inherit;
+  }
+
+  .community-icon { font-size: 2rem; }
+
+  .community-card h2 {
+    font-size: 1.35rem;
+    color: var(--color-navy);
+  }
+
+  .community-card p {
+    font-size: 0.9rem;
+    color: var(--color-slate);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .community-grid { grid-template-columns: 1fr; }
+  }
+</style>

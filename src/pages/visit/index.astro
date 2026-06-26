@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PlaceCard from '../../components/PlaceCard.astro';
+import { getCollection } from 'astro:content';
+
+const places = await getCollection('places');
+const featuredPlaces = places.filter(p => p.data.featured);
+const allPlaces = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+
+<BaseLayout
+  title="Visit Walton-on-Thames — Things to Do, Walks & Heritage"
+  description="Discover the best of Walton-on-Thames, Hersham and Whiteley Village — riverside walks, historic landmarks, parks and green spaces."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Visit", "item": "https://walton-on-thames.org/visit/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Visit</li>
+        </ol>
+      </nav>
+      <h1>Visit Walton-on-Thames</h1>
+      <p>From the River Thames to the Surrey hills, there's far more to discover here than the high street.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="visit-nav">
+        <a href="/visit/things-to-do/" class="visit-nav-item">
+          <span class="visit-nav-icon">🎯</span>
+          <strong>Things to Do</strong>
+          <span>Attractions, activities & days out</span>
+        </a>
+        <a href="/visit/walks-and-the-river/" class="visit-nav-item">
+          <span class="visit-nav-icon">🚶</span>
+          <strong>Walks & the River</strong>
+          <span>Thames Path, Cowey Sale & more</span>
+        </a>
+        <a href="/visit/history-and-heritage/" class="visit-nav-item">
+          <span class="visit-nav-icon">🏛️</span>
+          <strong>History & Heritage</strong>
+          <span>Canaletto's bridge, Whiteley Village...</span>
+        </a>
+        <a href="/visit/getting-here/" class="visit-nav-item">
+          <span class="visit-nav-icon">🚂</span>
+          <strong>Getting Here</strong>
+          <span>Trains, roads, parking & buses</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {featuredPlaces.length > 0 && (
+    <section class="section section-tinted" aria-labelledby="highlights-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="highlights-heading">Highlights</h2>
+          <p>The best places to start exploring the area</p>
+        </div>
+        <div class="card-grid card-grid-3">
+          {featuredPlaces.map(place => (
+            <PlaceCard
+              name={place.data.name}
+              slug={place.data.slug}
+              category={place.data.category}
+              neighbourhood={place.data.neighbourhood}
+              description={place.data.description}
+              images={place.data.images}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section" aria-labelledby="all-places-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="all-places-heading">All Places & Attractions</h2>
+      </div>
+      <div class="card-grid card-grid-3">
+        {allPlaces.map(place => (
+          <PlaceCard
+            name={place.data.name}
+            slug={place.data.slug}
+            category={place.data.category}
+            neighbourhood={place.data.neighbourhood}
+            description={place.data.description}
+            images={place.data.images}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .visit-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .visit-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .visit-nav-item:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+    color: inherit;
+  }
+
+  .visit-nav-icon { font-size: 1.75rem; }
+
+  .visit-nav-item strong {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--color-navy);
+  }
+
+  .visit-nav-item span {
+    font-size: 0.8rem;
+    color: var(--color-slate);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .visit-nav { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .visit-nav { grid-template-columns: 1fr; }
+  }
+</style>

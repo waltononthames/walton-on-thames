@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const places = await getCollection('places');
+  return places.map(place => ({
+    params: { slug: place.data.slug },
+    props: { place },
+  }));
+}
+
+const { place } = Astro.props;
+const { Content } = await render(place);
+
+const categoryLabel = place.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+const neighbourhoodLabel = place.data.neighbourhood.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+---
+
+<BaseLayout
+  title={`${place.data.name} — ${neighbourhoodLabel}`}
+  description={place.data.description}
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TouristAttraction",
+      "name": place.data.name,
+      "description": place.data.description,
+      "url": `https://walton-on-thames.org/visit/things-to-do/${place.data.slug}/`,
+      ...(place.data.lat && place.data.lng ? {
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": place.data.lat,
+          "longitude": place.data.lng,
+        }
+      } : {}),
+      "containedInPlace": {
+        "@type": "Place",
+        "name": neighbourhoodLabel,
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Visit", "item": "https://walton-on-thames.org/visit/" },
+        { "@type": "ListItem", "position": 3, "name": "Things to Do", "item": "https://walton-on-thames.org/visit/things-to-do/" },
+        { "@type": "ListItem", "position": 4, "name": place.data.name, "item": `https://walton-on-thames.org/visit/things-to-do/${place.data.slug}/` }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/visit/">Visit</a></li>
+          <li><a href="/visit/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">{place.data.name}</li>
+        </ol>
+      </nav>
+      <div class="hero-meta">
+        <span class="badge badge-accent">{categoryLabel}</span>
+        <span class="badge">{neighbourhoodLabel}</span>
+      </div>
+      <h1>{place.data.name}</h1>
+      <p>{place.data.description}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content-layout">
+      <article class="prose">
+        <Content />
+      </article>
+
+      {place.data.lat && place.data.lng && (
+        <aside class="place-sidebar">
+          <div class="info-card">
+            <h2>Find it on the map</h2>
+            <div class="map-embed">
+              <iframe
+                title={`Map showing ${place.data.name}`}
+                src={`https://www.openstreetmap.org/export/embed.html?bbox=${place.data.lng - 0.01},${place.data.lat - 0.007},${place.data.lng + 0.01},${place.data.lat + 0.007}&layer=mapnik&marker=${place.data.lat},${place.data.lng}`}
+                loading="lazy"
+                width="100%"
+                height="300"
+                style="border: none; border-radius: 8px;"
+              ></iframe>
+            </div>
+            <a
+              href={`https://www.openstreetmap.org/?mlat=${place.data.lat}&mlon=${place.data.lng}#map=16/${place.data.lat}/${place.data.lng}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              style="margin-top: 1rem; width: 100%; justify-content: center;"
+            >
+              Open in OpenStreetMap
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h2>Neighbourhood</h2>
+            <p>{neighbourhoodLabel}</p>
+            <a href={`/neighbourhoods/${place.data.neighbourhood}/`} class="btn btn-outline" style="margin-top: 0.75rem; width: 100%; justify-content: center;">
+              Explore {neighbourhoodLabel}
+            </a>
+          </div>
+        </aside>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-slate);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 900px) {
+    .content-layout { grid-template-columns: 1fr; }
+  }
+</style>

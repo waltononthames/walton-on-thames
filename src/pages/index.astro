@@ -1,0 +1,531 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+import BusinessCard from '../components/BusinessCard.astro';
+import PlaceCard from '../components/PlaceCard.astro';
+import NewsCard from '../components/NewsCard.astro';
+import { getCollection } from 'astro:content';
+
+const allEvents = await getCollection('events');
+const upcomingEvents = allEvents
+  .sort((a, b) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime())
+  .slice(0, 3);
+
+const allBusinesses = await getCollection('businesses');
+const featuredBusinesses = allBusinesses.filter(b => b.data.featured).slice(0, 6);
+
+const allPlaces = await getCollection('places');
+const featuredPlaces = allPlaces.filter(p => p.data.featured).slice(0, 3);
+
+const allNews = await getCollection('news');
+const latestNews = allNews
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+const categories = [
+  { label: 'Visit', href: '/visit/', icon: '🏛️', desc: 'Sights, walks & heritage' },
+  { label: 'Eat & Drink', href: '/eat-and-drink/', icon: '🍽️', desc: 'Restaurants, pubs & cafes' },
+  { label: 'Shopping', href: '/shopping/', icon: '🛍️', desc: 'The Heart & independents' },
+  { label: "What's On", href: '/whats-on/', icon: '🎉', desc: 'Events & festivals' },
+  { label: 'Directory', href: '/directory/', icon: '📋', desc: 'All local businesses' },
+  { label: 'Neighbourhoods', href: '/neighbourhoods/', icon: '🗺️', desc: 'Walton · Hersham · Whiteley' },
+];
+
+const neighbourhoods = [
+  {
+    name: 'Walton-on-Thames',
+    slug: 'walton-on-thames',
+    tagline: 'Thames-side town with great eating, heritage and easy London connections.',
+    image: '/images/neighbourhoods/walton-on-thames.jpg',
+  },
+  {
+    name: 'Hersham',
+    slug: 'hersham',
+    tagline: 'A proper Surrey village — green, pond, and its own railway station.',
+    image: '/images/neighbourhoods/hersham.jpg',
+  },
+  {
+    name: 'Whiteley Village',
+    slug: 'whiteley-village',
+    tagline: 'An extraordinary Arts & Crafts village hidden in Surrey woodland.',
+    image: '/images/neighbourhoods/whiteley-village.jpg',
+  },
+];
+---
+
+<BaseLayout
+  title="Walton-on-Thames.org — Your Independent Guide to Walton-on-Thames, Hersham & Whiteley Village"
+  description="An independent community guide to Walton-on-Thames, Hersham and Whiteley Village — things to do, places to eat, local events, and a full business directory."
+>
+  <!-- Hero -->
+  <section class="hero" aria-label="Welcome">
+    <div class="hero-bg" aria-hidden="true">
+      <img
+        src="/images/hero.jpg"
+        alt=""
+        fetchpriority="high"
+        width="1600"
+        height="800"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-content">
+      <p class="hero-eyebrow">An independent guide to</p>
+      <h1>Walton-on-Thames,<br />Hersham & Whiteley Village</h1>
+      <p class="hero-subtitle">Discover the best of three of Surrey's most distinctive communities — from riverside walks and local restaurants to events, history and everything in between.</p>
+      <div class="hero-cta">
+        <a href="/visit/" class="btn btn-primary">Explore the area</a>
+        <a href="/directory/" class="btn btn-outline-white">Business directory</a>
+      </div>
+      <p class="hero-disclaimer">An independent community resource · Not affiliated with Elmbridge Borough Council</p>
+    </div>
+  </section>
+
+  <!-- Category nav -->
+  <section class="category-bar section" aria-label="Browse by category">
+    <div class="container">
+      <ul class="category-list" role="list">
+        {categories.map(cat => (
+          <li>
+            <a href={cat.href} class="category-item">
+              <span class="category-icon" aria-hidden="true">{cat.icon}</span>
+              <span class="category-label">{cat.label}</span>
+              <span class="category-desc">{cat.desc}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Upcoming events -->
+  {upcomingEvents.length > 0 && (
+    <section class="section" aria-labelledby="events-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="events-heading">Coming Up</h2>
+          <p>Events and things to do across Walton-on-Thames, Hersham and Whiteley Village</p>
+        </div>
+        <div class="card-grid card-grid-3">
+          {upcomingEvents.map(event => (
+            <EventCard
+              title={event.data.title}
+              slug={event.data.slug}
+              start={event.data.start}
+              venue={event.data.venue}
+              category={event.data.category}
+              price={event.data.price}
+              image={event.data.image}
+              description={event.data.description}
+            />
+          ))}
+        </div>
+        <div class="section-footer">
+          <a href="/whats-on/" class="btn btn-outline">See all events</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Things to do -->
+  {featuredPlaces.length > 0 && (
+    <section class="section section-tinted" aria-labelledby="places-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="places-heading">Things to Do</h2>
+          <p>From riverside walks to heritage landmarks — there's more to Walton than the high street</p>
+        </div>
+        <div class="card-grid card-grid-3">
+          {featuredPlaces.map(place => (
+            <PlaceCard
+              name={place.data.name}
+              slug={place.data.slug}
+              category={place.data.category}
+              neighbourhood={place.data.neighbourhood}
+              description={place.data.description}
+              images={place.data.images}
+            />
+          ))}
+        </div>
+        <div class="section-footer">
+          <a href="/visit/things-to-do/" class="btn btn-outline">All things to do</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Neighbourhoods -->
+  <section class="section" aria-labelledby="neighbourhoods-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="neighbourhoods-heading">Explore the Neighbourhoods</h2>
+        <p>Three distinct communities, each with its own character and appeal</p>
+      </div>
+      <div class="neighbourhood-grid">
+        {neighbourhoods.map(n => (
+          <a href={`/neighbourhoods/${n.slug}/`} class="neighbourhood-card">
+            <div class="neighbourhood-img">
+              <img src={n.image} alt={n.name} loading="lazy" width="600" height="400" />
+              <div class="neighbourhood-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="neighbourhood-body">
+              <h3>{n.name}</h3>
+              <p>{n.tagline}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured directory -->
+  {featuredBusinesses.length > 0 && (
+    <section class="section section-tinted" aria-labelledby="directory-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="directory-heading">Local Highlights</h2>
+          <p>Hand-picked local businesses and places worth knowing about</p>
+        </div>
+        <div class="card-grid card-grid-3">
+          {featuredBusinesses.map(biz => (
+            <BusinessCard
+              name={biz.data.name}
+              slug={biz.data.slug}
+              category={biz.data.category}
+              neighbourhood={biz.data.neighbourhood}
+              description={biz.data.description}
+              images={biz.data.images}
+              featured={biz.data.featured}
+            />
+          ))}
+        </div>
+        <div class="section-footer">
+          <a href="/directory/" class="btn btn-outline">Full directory</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- News -->
+  {latestNews.length > 0 && (
+    <section class="section" aria-labelledby="news-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="news-heading">Local News & Stories</h2>
+          <p>Community news, local history, and stories from across the area</p>
+        </div>
+        <div class="card-grid card-grid-3">
+          {latestNews.map(post => (
+            <NewsCard
+              title={post.data.title}
+              slug={post.data.slug}
+              date={post.data.date}
+              category={post.data.category}
+              description={post.data.description}
+              image={post.data.image}
+            />
+          ))}
+        </div>
+        <div class="section-footer">
+          <a href="/community/news/" class="btn btn-outline">All local news</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- About strip -->
+  <section class="about-strip" aria-labelledby="about-strip-heading">
+    <div class="container about-strip-inner">
+      <div>
+        <h2 id="about-strip-heading">About This Site</h2>
+        <p>Walton-on-Thames.org is an independent community guide — not affiliated with Elmbridge Borough Council or any official tourism body. It's built and maintained by a local resident who wanted a single, honest, well-organised resource for this area.</p>
+        <a href="/about/" class="btn btn-outline-white" style="margin-top:1rem;">Read more about us</a>
+      </div>
+      <div class="about-strip-links">
+        <a href="/advertise-your-business/" class="about-strip-link">
+          <strong>List your business</strong>
+          <span>Add or claim your listing in the directory — free to get started</span>
+        </a>
+        <a href="/contact/" class="about-strip-link">
+          <strong>Get in touch</strong>
+          <span>Suggest an edit, share a story, or just say hello</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--color-white);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(1, 32, 44, 0.55) 0%,
+      rgba(1, 32, 44, 0.72) 60%,
+      rgba(1, 32, 44, 0.9) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--color-white);
+    margin-bottom: 1.25rem;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: rgba(255,255,255,0.82);
+    max-width: 56ch;
+    margin-bottom: 2rem;
+    line-height: 1.65;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .hero-disclaimer {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.03em;
+  }
+
+  /* Category bar */
+  .category-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .category-item:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+    color: inherit;
+  }
+
+  .category-icon { font-size: 1.75rem; }
+
+  .category-label {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .category-desc {
+    font-size: 0.75rem;
+    color: var(--color-slate);
+    line-height: 1.4;
+  }
+
+  /* Section tinted */
+  .section-tinted {
+    background: rgba(11, 36, 46, 0.03);
+  }
+
+  /* Section footer */
+  .section-footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Neighbourhood grid */
+  .neighbourhood-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .neighbourhood-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--color-white);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .neighbourhood-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+    color: var(--color-white);
+  }
+
+  .neighbourhood-img {
+    position: absolute;
+    inset: 0;
+  }
+
+  .neighbourhood-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .neighbourhood-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(1,32,44,0.88) 0%, rgba(1,32,44,0.2) 60%, transparent 100%);
+  }
+
+  .neighbourhood-body {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+  }
+
+  .neighbourhood-body h3 {
+    font-size: 1.35rem;
+    color: var(--color-white);
+    margin-bottom: 0.35rem;
+  }
+
+  .neighbourhood-body p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+  }
+
+  /* About strip */
+  .about-strip {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 4rem 0;
+  }
+
+  .about-strip-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-strip h2 {
+    color: var(--color-white);
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-strip p {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    max-width: 50ch;
+  }
+
+  .about-strip-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-strip-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .about-strip-link:hover {
+    border-color: var(--color-accent);
+    background: rgba(184,134,46,0.08);
+    color: inherit;
+  }
+
+  .about-strip-link strong {
+    color: var(--color-white);
+    font-size: 1rem;
+  }
+
+  .about-strip-link span {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .category-list { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .neighbourhood-grid { grid-template-columns: 1fr; }
+    .about-strip-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .category-list { grid-template-columns: repeat(2, 1fr); }
+    .hero { min-height: 70vh; }
+  }
+
+  @media (max-width: 480px) {
+    .category-list { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .category-item { padding: 1rem 0.75rem; }
+  }
+</style>

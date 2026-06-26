@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news');
+  return posts.map(post => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const date = new Date(post.data.date);
+const dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const categoryLabel = post.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  type="article"
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.data.title,
+      "description": post.data.description,
+      "datePublished": post.data.date,
+      "author": { "@type": "Organization", "name": post.data.author, "url": "https://walton-on-thames.org/" },
+      "publisher": { "@type": "Organization", "name": "Walton-on-Thames.org", "url": "https://walton-on-thames.org/" },
+      ...(post.data.image ? { "image": `https://walton-on-thames.org${post.data.image}` } : {}),
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/community/">Community</a></li>
+          <li><a href="/community/news/">News</a></li>
+          <li aria-current="page">{post.data.title}</li>
+        </ol>
+      </nav>
+      <div class="hero-meta">
+        <span class="badge badge-accent">{categoryLabel}</span>
+      </div>
+      <h1>{post.data.title}</h1>
+      <div class="article-meta">
+        <time datetime={post.data.date}>{dateStr}</time>
+        <span>·</span>
+        <span>{post.data.author}</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <Content />
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="info-card">
+          <h2>About this article</h2>
+          <dl class="article-details">
+            <dt>Published</dt>
+            <dd><time datetime={post.data.date}>{dateStr}</time></dd>
+            <dt>By</dt>
+            <dd>{post.data.author}</dd>
+            <dt>Category</dt>
+            <dd>{categoryLabel}</dd>
+          </dl>
+        </div>
+        <div class="info-card">
+          <h2>More news</h2>
+          <a href="/community/news/" class="btn btn-outline" style="width:100%; justify-content:center;">All local news →</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 1rem;
+  }
+
+  .article-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .article-details dt { color: var(--color-slate); font-weight: 500; }
+  .article-details dd { color: var(--color-navy); }
+
+  @media (max-width: 900px) {
+    .article-layout { grid-template-columns: 1fr; }
+  }
+</style>
