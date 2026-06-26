@@ -4,7 +4,7 @@ slug: "boogietown-2026"
 start: "2026-07-11T12:00:00"
 end: "2026-07-11T23:00:00"
 venue: "Apps Court, Hurst Road, Hersham"
-neighbourhood: "hersham"
+neighbourhood: "walton-on-thames"
 category: "festival"
 recurring: false
 price: "From £54.50"
