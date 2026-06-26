@@ -49,6 +49,11 @@ const allPlaces = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
           <strong>Walks & the River</strong>
           <span>Thames Path, Cowey Sale & more</span>
         </a>
+        <a href="/visit/places-to-stay/" class="visit-nav-item">
+          <span class="visit-nav-icon">🛏️</span>
+          <strong>Places to Stay</strong>
+          <span>Hotels & B&Bs in the area</span>
+        </a>
         <a href="/visit/history-and-heritage/" class="visit-nav-item">
           <span class="visit-nav-icon">🏛️</span>
           <strong>History & Heritage</strong>
@@ -110,7 +115,7 @@ const allPlaces = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
 <style>
   .visit-nav {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
   }
 

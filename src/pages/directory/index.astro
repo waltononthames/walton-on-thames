@@ -7,7 +7,6 @@ const businesses = await getCollection('businesses');
 const sorted = businesses.sort((a, b) => a.data.name.localeCompare(b.data.name));
 
 const categories = [...new Set(businesses.map(b => b.data.category))].sort();
-const neighbourhoods = ['walton-on-thames', 'hersham', 'whiteley-village'];
 ---
 
 <BaseLayout
@@ -51,12 +50,19 @@ const neighbourhoods = ['walton-on-thames', 'hersham', 'whiteley-village'];
           </select>
         </div>
         <div class="filter-group">
-          <label for="filter-neighbourhood" class="filter-label">Neighbourhood</label>
+          <label for="filter-neighbourhood" class="filter-label">Area</label>
           <select id="filter-neighbourhood" class="filter-select">
-            <option value="">All neighbourhoods</option>
-            {neighbourhoods.map(n => (
-              <option value={n}>{n.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</option>
-            ))}
+            <option value="">All areas</option>
+            <optgroup label="Walton-on-Thames area">
+              <option value="walton-on-thames">Walton-on-Thames</option>
+              <option value="hersham">Hersham</option>
+              <option value="whiteley-village">Whiteley Village</option>
+            </optgroup>
+            <optgroup label="Nearby">
+              <option value="weybridge">Weybridge</option>
+              <option value="shepperton">Shepperton</option>
+              <option value="esher">Esher</option>
+            </optgroup>
           </select>
         </div>
         <div class="filter-count" id="results-count" aria-live="polite">

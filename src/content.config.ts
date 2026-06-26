@@ -8,7 +8,7 @@ const businesses = defineCollection({
     slug: z.string(),
     category: z.string(),
     subcategories: z.array(z.string()).default([]),
-    neighbourhood: z.enum(['walton-on-thames', 'hersham', 'whiteley-village']),
+    neighbourhood: z.string(),
     address: z.string(),
     lat: z.number().optional(),
     lng: z.number().optional(),
