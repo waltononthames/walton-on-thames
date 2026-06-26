@@ -15,6 +15,10 @@ A mile south of Walton-on-Thames, Hersham has managed to preserve a distinct ide
 
 The Barley Mow pub occupies a prime spot beside the green and is the social hub of the village. The green itself — with its pond, mature trees, and surrounding period architecture — is one of the most photographed views in the borough.
 
+## A surprising history
+
+Hersham has a deeper historical character than its modest size suggests. **William Lilly** (1602–1681) — the 17th-century astrologer known as the "English Merlin," personal acquaintance of Oliver Cromwell, and the man who apparently predicted the Great Fire of London — retired to a small estate in Hersham following the Restoration, and practised medicine here until his death. [Read his remarkable story →](/community/news/william-lilly-hersham-english-merlin/)
+
 ## Beyond the green
 
 Away from the village centre, Hersham is mostly quiet residential streets with good schools and easy access to the green belt. The Mole Valley cycle route passes nearby, and Fieldcommon Farm is a popular local nature walk.
