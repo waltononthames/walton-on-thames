@@ -4,10 +4,18 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
-  return events.map(event => ({
-    params: { slug: event.data.slug },
-    props: { event },
-  }));
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return events
+    .filter(e => {
+      const d = new Date(e.data.end ?? e.data.start);
+      d.setHours(0, 0, 0, 0);
+      return d >= today;
+    })
+    .map(event => ({
+      params: { slug: event.data.slug },
+      props: { event },
+    }));
 }
 
 const { event } = Astro.props;

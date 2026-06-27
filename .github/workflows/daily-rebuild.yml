@@ -1,0 +1,19 @@
+name: Daily rebuild
+
+# Triggers a Cloudflare Pages rebuild every morning at 01:00 UTC (02:00 BST / 02:00 GMT).
+# This ensures past events are removed from the site the morning after they end,
+# since events are filtered by date at build time.
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 01:00 UTC daily
+  workflow_dispatch:       # allows manual trigger from GitHub Actions UI
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages deploy hook
+        run: |
+          curl -s -X POST "${{ secrets.CF_DEPLOY_HOOK }}" \
+            -o /dev/null -w "HTTP status: %{http_code}\n"

@@ -7,7 +7,14 @@ import NewsCard from '../components/NewsCard.astro';
 import { getCollection } from 'astro:content';
 
 const allEvents = await getCollection('events');
+const _today = new Date();
+_today.setHours(0, 0, 0, 0);
 const upcomingEvents = allEvents
+  .filter(e => {
+    const d = new Date(e.data.end ?? e.data.start);
+    d.setHours(0, 0, 0, 0);
+    return d >= _today;
+  })
   .sort((a, b) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime())
   .slice(0, 3);
 

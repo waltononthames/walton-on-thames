@@ -4,13 +4,22 @@ import EventCard from '../../components/EventCard.astro';
 import { getCollection } from 'astro:content';
 
 const events = await getCollection('events');
-const now = new Date();
+
+// Filter to events whose end date (or start date if no end) is today or in the future.
+// "Today" is midnight at build time — Cloudflare Pages rebuilds nightly so past events
+// drop off the site the morning after they finish.
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+function eventEndDay(e: (typeof events)[number]): Date {
+  const d = new Date(e.data.end ?? e.data.start);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
 const upcoming = events
-  .filter(e => new Date(e.data.start) >= now)
+  .filter(e => eventEndDay(e) >= today)
   .sort((a, b) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime());
-const past = events
-  .filter(e => new Date(e.data.start) < now)
-  .sort((a, b) => new Date(b.data.start).getTime() - new Date(a.data.start).getTime());
 ---
 
 <BaseLayout
@@ -65,28 +74,6 @@ const past = events
         </>
       ) : (
         <p class="empty-state">No upcoming events right now — check back soon or <a href="/community/news/">read the local news</a>.</p>
-      )}
-
-      {past.length > 0 && (
-        <div style="margin-top: 4rem;">
-          <div class="section-header">
-            <h2>Past Events</h2>
-          </div>
-          <div class="card-grid card-grid-3">
-            {past.map(event => (
-              <EventCard
-                title={event.data.title}
-                slug={event.data.slug}
-                start={event.data.start}
-                venue={event.data.venue}
-                category={event.data.category}
-                price={event.data.price}
-                image={event.data.image}
-                description={event.data.description}
-              />
-            ))}
-          </div>
-        </div>
       )}
 
       <div class="submit-event">
