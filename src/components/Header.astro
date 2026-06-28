@@ -104,9 +104,6 @@ const currentPath = Astro.url.pathname;
     z-index: 100;
     background: var(--color-navy);
     box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-    /* iOS Safari: forces a compositing layer so click events reach children */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
   }
 
   .header-inner {
@@ -246,6 +243,15 @@ const currentPath = Astro.url.pathname;
   }
 
   @media (max-width: 900px) {
+    /* Switch to fixed on mobile — position:sticky has a known iOS Safari
+       bug where click events are not delivered to children after scrolling */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+    }
     .logo-name { font-size: 0.875rem; }
     nav { display: none; }
     .nav-toggle { display: flex; }
