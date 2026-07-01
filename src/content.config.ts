@@ -83,4 +83,30 @@ const neighbourhoods = defineCollection({
   }),
 });
 
-export const collections = { businesses, events, places, news, neighbourhoods };
+const historySchema = z.object({
+  title: z.string(),
+  metaTitle: z.string().max(60),
+  metaDescription: z.string().max(155),
+  slug: z.string(),
+  cluster: z.enum(['walton-history', 'hersham']),
+  era: z.array(z.string()).optional(),
+  entityType: z.enum(['place', 'person', 'event', 'institution', 'overview']),
+  heroImage: z.string().optional(),
+  heroAlt: z.string().optional(),
+  publishDate: z.date(),
+  reviewedDate: z.date(),
+  sources: z.array(z.object({ label: z.string(), url: z.string().url() })),
+  related: z.array(z.string()),
+});
+
+const history = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/history' }),
+  schema: historySchema,
+});
+
+const hersham = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/hersham' }),
+  schema: historySchema,
+});
+
+export const collections = { businesses, events, places, news, neighbourhoods, history, hersham };
