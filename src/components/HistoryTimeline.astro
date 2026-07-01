@@ -1,0 +1,97 @@
+---
+interface EraEntity {
+  label: string;
+  href: string;
+}
+
+interface Era {
+  label: string;
+  anchor: string;
+  entities?: EraEntity[];
+}
+
+interface Props {
+  eras: Era[];
+}
+
+const { eras } = Astro.props;
+---
+
+<ol class="history-timeline">
+  {eras.map(era => (
+    <li class="timeline-era">
+      <a href={era.anchor} class="timeline-era-link">{era.label}</a>
+      {era.entities && era.entities.length > 0 && (
+        <ul class="timeline-entities">
+          {era.entities.map(entity => (
+            <li><a href={entity.href}>{entity.label}</a></li>
+          ))}
+        </ul>
+      )}
+    </li>
+  ))}
+</ol>
+
+<style>
+  .history-timeline {
+    list-style: none;
+    counter-reset: era;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .timeline-era {
+    counter-increment: era;
+    position: relative;
+    padding-left: 2.25rem;
+  }
+
+  .timeline-era::before {
+    content: counter(era);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-navy);
+    color: var(--color-white);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .timeline-era-link {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .timeline-era-link:hover { color: var(--color-accent); }
+
+  .timeline-entities {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 0.4rem;
+  }
+
+  .timeline-entities li::before {
+    content: '·';
+    margin-right: 0.4rem;
+    color: var(--color-slate-soft);
+  }
+
+  .timeline-entities a {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+  }
+
+  .timeline-entities a:hover { color: var(--color-accent); }
+</style>

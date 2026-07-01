@@ -1,0 +1,189 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'history'> | CollectionEntry<'hersham'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+
+const hubHref = data.cluster === 'hersham' ? '/hersham/' : '/history/';
+const hubLabel = data.cluster === 'hersham' ? 'Hersham' : 'History';
+const selfHref = `/${data.cluster === 'hersham' ? 'hersham' : 'history'}/${data.slug}/`;
+
+const allHistory = await getCollection('history');
+const allHersham = await getCollection('hersham');
+const allEntries = [...allHistory, ...allHersham];
+const relatedEntries = data.related
+  .map((slug: string) => allEntries.find((e) => e.data.slug === slug))
+  .filter((e): e is typeof allEntries[number] => Boolean(e));
+
+const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={data.metaTitle}
+  description={data.metaDescription}
+  image={data.heroImage}
+  type="article"
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": data.title,
+      "description": data.metaDescription,
+      "datePublished": data.publishDate.toISOString(),
+      "dateModified": data.reviewedDate.toISOString(),
+      "author": { "@type": "Person", "name": "Darren Bayley", "url": "https://walton-on-thames.org/about/" },
+      "publisher": { "@type": "Organization", "name": "Walton-on-Thames.org", "url": "https://walton-on-thames.org/" },
+      ...(data.heroImage ? { "image": `https://walton-on-thames.org${data.heroImage}` } : {}),
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": hubLabel, "item": `https://walton-on-thames.org${hubHref}` },
+        { "@type": "ListItem", "position": 3, "name": data.title, "item": `https://walton-on-thames.org${selfHref}` }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href={hubHref}>{hubLabel}</a></li>
+          <li aria-current="page">{data.title}</li>
+        </ol>
+      </nav>
+      <h1>{data.title}</h1>
+      <p class="byline">By Darren Bayley · Last reviewed {reviewedDateStr}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <Content />
+
+        {data.sources.length > 0 && (
+          <div class="sources-block">
+            <h2>Sources</h2>
+            <ul>
+              {data.sources.map((s: { label: string; url: string }) => (
+                <li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.label} ↗</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </article>
+
+      <aside class="history-sidebar">
+        {relatedEntries.length > 0 && (
+          <div class="info-card">
+            <h2>Related reading</h2>
+            <ul>
+              {relatedEntries.map((r) => (
+                <li><a href={`/${r.data.cluster === 'hersham' ? 'hersham' : 'history'}/${r.data.slug}/`}>{r.data.title}</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div class="info-card">
+          <a href={hubHref} class="btn btn-outline hub-back-link">← Back to {hubLabel}</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11,36,46,0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li { font-size: 0.875rem; }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11,36,46,0.06);
+    display: block;
+  }
+
+  .info-card a:hover { color: var(--color-accent); }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout { grid-template-columns: 1fr; }
+  }
+</style>
