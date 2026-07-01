@@ -69,15 +69,28 @@ const currentPath = Astro.url.pathname;
       var menu = document.getElementById('mobile-menu');
       if (!toggle || !menu) return;
 
-      toggle.addEventListener('click', function () {
+      var tapped = false;
+
+      function doToggle() {
         var open = toggle.getAttribute('aria-expanded') === 'true';
         toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
         toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
-        if (open) {
-          menu.classList.remove('is-open');
-        } else {
-          menu.classList.add('is-open');
-        }
+        menu.classList.toggle('is-open', !open);
+      }
+
+      // touchend is more reliably fired than click on iOS Safari
+      // inside position:fixed elements. preventDefault stops the
+      // subsequent synthetic click from double-toggling the menu.
+      toggle.addEventListener('touchend', function (e) {
+        e.preventDefault();
+        tapped = true;
+        doToggle();
+      });
+
+      // click handles mouse users and keyboards; skip if touchend already fired
+      toggle.addEventListener('click', function () {
+        if (tapped) { tapped = false; return; }
+        doToggle();
       });
 
       menu.querySelectorAll('a').forEach(function (link) {
@@ -184,12 +197,12 @@ const currentPath = Astro.url.pathname;
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    padding: 8px;
     margin-left: auto;
     border-radius: var(--radius-sm);
   }
