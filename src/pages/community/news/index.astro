@@ -17,8 +17,7 @@ const sorted = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Community", "item": "https://walton-on-thames.org/community/" },
-        { "@type": "ListItem", "position": 3, "name": "News", "item": "https://walton-on-thames.org/community/news/" }
+        { "@type": "ListItem", "position": 2, "name": "News", "item": "https://walton-on-thames.org/community/news/" }
       ]
     })} />
   </slot>
@@ -28,7 +27,6 @@ const sorted = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
-          <li><a href="/community/">Community</a></li>
           <li aria-current="page">News</li>
         </ol>
       </nav>

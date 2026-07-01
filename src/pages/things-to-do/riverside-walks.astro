@@ -11,12 +11,24 @@ const walks = places.filter(p => p.data.category === 'riverside-walk' || p.data.
   title="Walks & the River Thames in Walton-on-Thames"
   description="Explore the Thames Path and riverside walks around Walton-on-Thames — Cowey Sale, the riverbank, and green spaces in Hersham and beyond."
 >
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Things to Do", "item": "https://walton-on-thames.org/things-to-do/" },
+        { "@type": "ListItem", "position": 3, "name": "Walks & the River", "item": "https://walton-on-thames.org/things-to-do/riverside-walks/" }
+      ]
+    })} />
+  </slot>
+
   <div class="page-hero">
     <div class="container">
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
-          <li><a href="/visit/">Visit</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
           <li aria-current="page">Walks & the River</li>
         </ol>
       </nav>

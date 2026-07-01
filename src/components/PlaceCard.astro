@@ -14,7 +14,7 @@ const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUppe
 const thumbUrl = images[0] ?? null;
 ---
 
-<a href={`/visit/things-to-do/${slug}/`} class="card place-card">
+<a href={`/things-to-do/${slug}/`} class="card place-card">
   {thumbUrl
     ? <img class="card-image" src={thumbUrl} alt={name} loading="lazy" />
     : <div class="card-image-placeholder" aria-hidden="true">🌿</div>

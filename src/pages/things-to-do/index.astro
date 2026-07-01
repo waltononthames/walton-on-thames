@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import PlaceCard from '../../../components/PlaceCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PlaceCard from '../../components/PlaceCard.astro';
 import { getCollection } from 'astro:content';
 
 const places = await getCollection('places');
@@ -17,8 +17,7 @@ const sorted = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Visit", "item": "https://walton-on-thames.org/visit/" },
-        { "@type": "ListItem", "position": 3, "name": "Things to Do", "item": "https://walton-on-thames.org/visit/things-to-do/" }
+        { "@type": "ListItem", "position": 2, "name": "Things to Do", "item": "https://walton-on-thames.org/things-to-do/" }
       ]
     })} />
   </slot>
@@ -28,7 +27,6 @@ const sorted = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
-          <li><a href="/visit/">Visit</a></li>
           <li aria-current="page">Things to Do</li>
         </ol>
       </nav>

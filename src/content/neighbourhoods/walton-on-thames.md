@@ -80,7 +80,7 @@ Mental health services are provided through **Surrey and Borders Partnership NHS
 
 Walton-on-Thames is served by local and regional bus routes within Surrey's wider network. Current verified operators include **Falcon Buses** and **White Bus**, with routes linking Walton with Staines, Shepperton, Esher, Kingston, Weybridge, Hersham, Brooklands, Hatton Cross and St Peter's Hospital. For current timetables, check Surrey County Council's bus pages or Traveline.
 
-For full transport information, see our [getting here guide](/visit/getting-here/).
+For full transport information, see our [getting here guide](/getting-here/).
 
 ---
 
@@ -94,7 +94,7 @@ Walton-on-Thames appears in **Domesday Book in 1086** as *Waletona*. The entry r
 
 ### Cowey Stakes and Julius Caesar
 
-One of Walton's best-known early-history stories is the tradition that Julius Caesar crossed the Thames at **Cowey Stakes**, near the present [Cowey Sale](/visit/things-to-do/cowey-sale/). This is a long-standing local tradition rather than proven historical fact, and should be treated as such — though it is historically interesting precisely because of the debate surrounding it.
+One of Walton's best-known early-history stories is the tradition that Julius Caesar crossed the Thames at **Cowey Stakes**, near the present [Cowey Sale](/things-to-do/cowey-sale/). This is a long-standing local tradition rather than proven historical fact, and should be treated as such — though it is historically interesting precisely because of the debate surrounding it.
 
 ### Medieval Walton and St Mary's Church
 
@@ -102,11 +102,11 @@ One of Walton's best-known early-history stories is the tradition that Julius Ca
 
 ### Manors, estates and Ashley Park
 
-Walton's history was shaped by manors and estates as well as by the river. **[Ashley Park](/visit/things-to-do/ashley-park/)** was one of the town's defining estates, associated with prominent local families and civic life before it was broken up and developed. Ashley Park is also connected with one of Walton's more unusual sporting claims: a **1749 reference to a game at Ashley Park** is often cited in baseball history as one of the earliest documentary references to the game — explored in more detail in our [history of baseball in Walton](/community/news/birth-of-baseball-walton-on-thames/).
+Walton's history was shaped by manors and estates as well as by the river. **[Ashley Park](/things-to-do/ashley-park/)** was one of the town's defining estates, associated with prominent local families and civic life before it was broken up and developed. Ashley Park is also connected with one of Walton's more unusual sporting claims: a **1749 reference to a game at Ashley Park** is often cited in baseball history as one of the earliest documentary references to the game — explored in more detail in our [history of baseball in Walton](/community/news/birth-of-baseball-walton-on-thames/).
 
 ### Walton Bridge and the Thames crossing
 
-The Thames crossing is central to Walton's story. Before the modern bridge, ferries and earlier bridge structures shaped movement between Walton and Shepperton. The first bridge was built in the eighteenth century, and the site inspired Canaletto's famous paintings of Walton Bridge. The **present Walton Bridge opened in 2013** — its modern design and single-span structure make it one of the town's most recognisable landmarks. Read the full story in our [history of Walton Bridge](/community/news/walton-bridge-history/) and visit the [Walton Bridge attraction page](/visit/things-to-do/walton-bridge/).
+The Thames crossing is central to Walton's story. Before the modern bridge, ferries and earlier bridge structures shaped movement between Walton and Shepperton. The first bridge was built in the eighteenth century, and the site inspired Canaletto's famous paintings of Walton Bridge. The **present Walton Bridge opened in 2013** — its modern design and single-span structure make it one of the town's most recognisable landmarks. Read the full story in our [history of Walton Bridge](/community/news/walton-bridge-history/) and visit the [Walton Bridge attraction page](/things-to-do/walton-bridge/).
 
 ### Mount Felix and the New Zealand hospital
 
@@ -139,11 +139,11 @@ For a deeper dive, see our [history and heritage](/visit/history-and-heritage/) 
 
 ## The River Thames and Walton Bridge
 
-The River Thames is central to Walton-on-Thames — it shaped the town's crossing point, landscape, leisure identity and relationship with neighbouring riverside places. [Walton Bridge](/visit/things-to-do/walton-bridge/) is the town's most prominent river landmark, while the Thames towpath provides some of the finest recreational walking in Surrey.
+The River Thames is central to Walton-on-Thames — it shaped the town's crossing point, landscape, leisure identity and relationship with neighbouring riverside places. [Walton Bridge](/things-to-do/walton-bridge/) is the town's most prominent river landmark, while the Thames towpath provides some of the finest recreational walking in Surrey.
 
 The riverside is one of Walton's most attractive public spaces. **Cowey Sale**, **Riverside Gardens** and the towpath give residents and visitors access to walks, river views and open space, including Elmbridge's Broadwater Lake and Desborough Island circular walk route.
 
-See our full guide to [walks and the river](/visit/walks-and-the-river/).
+See our full guide to [walks and the river](/things-to-do/riverside-walks/).
 
 ---
 
@@ -164,11 +164,11 @@ Walton-on-Thames has lost some important buildings over the years, but retains s
 
 Walton-on-Thames has an excellent network of open spaces:
 
-- **[Cowey Sale](/visit/things-to-do/cowey-sale/)** — riverside open space with towpath walking, open views and the starting point for the Broadwater Lake and Desborough Island circular walk
+- **[Cowey Sale](/things-to-do/cowey-sale/)** — riverside open space with towpath walking, open views and the starting point for the Broadwater Lake and Desborough Island circular walk
 - **Riverside Gardens** — an accessible riverside green space close to the town centre, useful for short walks and family visits
 - **Walton Lane Open Space** and other parks listed by Elmbridge Borough Council
 
-For walking routes, towpath access and riverside information, see our [walks and the river guide](/visit/walks-and-the-river/).
+For walking routes, towpath access and riverside information, see our [walks and the river guide](/things-to-do/riverside-walks/).
 
 ---
 
@@ -180,7 +180,7 @@ Road connections are shaped by Walton Bridge, with routes towards Weybridge, Her
 
 Bus services connect Walton with nearby towns. Verified routes include connections to Staines, Shepperton, Esher, Kingston, Weybridge, Hersham, Brooklands, Hatton Cross and St Peter's Hospital.
 
-Full details in our [getting here guide](/visit/getting-here/).
+Full details in our [getting here guide](/getting-here/).
 
 ---
 
@@ -196,7 +196,7 @@ For admissions, catchments and official school profiles, use Surrey County Counc
 
 Walton town centre is focused around **The High Street** and **[The Heart](/shopping/the-heart/)** — a major mixed-use development that reshaped the town centre, bringing together retail, housing and public facilities including the library. The town centre functions as a local shopping, services, hospitality and civic centre, with independent cafés and restaurants alongside the high-street names.
 
-Browse local businesses in our [directory](/directory/), or explore [eating and drinking in Walton](/eat-and-drink/).
+Browse local businesses in our [directory](/directory/), or explore [eating and drinking in Walton](/food-and-drink/).
 
 ---
 
@@ -221,15 +221,15 @@ See [what's on in Walton-on-Thames](/whats-on/) for upcoming events.
 
 ## Things to do in Walton-on-Thames
 
-The best starting point for visitors is the riverside. Walk from [Cowey Sale](/visit/things-to-do/cowey-sale/), explore the Thames towpath, or follow the Broadwater Lake and Desborough Island route for a circular walk with river and open-space views.
+The best starting point for visitors is the riverside. Walk from [Cowey Sale](/things-to-do/cowey-sale/), explore the Thames towpath, or follow the Broadwater Lake and Desborough Island route for a circular walk with river and open-space views.
 
-For heritage, visit St Mary's Church, explore the older Church Street and Bridge Street area, discover [Walton Bridge](/visit/things-to-do/walton-bridge/) and learn about Mount Felix and the New Zealand hospital.
+For heritage, visit St Mary's Church, explore the older Church Street and Bridge Street area, discover [Walton Bridge](/things-to-do/walton-bridge/) and learn about Mount Felix and the New Zealand hospital.
 
 Families can use Riverside Gardens, the [Xcel Leisure Complex](/directory/elmbridge-xcel/) and the town's parks. Arts visitors should check the Riverhouse Barn programme. Food and drink visitors will find the best concentration of options on the High Street and around [The Heart](/shopping/the-heart/).
 
-Looking for somewhere to stay? See our [places to stay guide](/visit/places-to-stay/).
+Looking for somewhere to stay? See our [places to stay guide](/places-to-stay/).
 
-Full details at [things to do in Walton-on-Thames](/visit/things-to-do/).
+Full details at [things to do in Walton-on-Thames](/things-to-do/).
 
 ---
 
@@ -275,4 +275,4 @@ The River Thames runs along the northern edge of Walton-on-Thames.
 Nearby towns and areas include [Hersham](/neighbourhoods/hersham/), Weybridge, Esher, Shepperton, Molesey and Oatlands.
 
 ### What are the best things to do in Walton-on-Thames?
-Good starting points include [Cowey Sale](/visit/things-to-do/cowey-sale/) and the Thames towpath, [Walton Bridge](/visit/things-to-do/walton-bridge/), St Mary's Church, [Ashley Park](/visit/things-to-do/ashley-park/), the [Xcel Leisure Complex](/directory/elmbridge-xcel/), Riverhouse Barn Arts Centre and the town centre around [The Heart](/shopping/the-heart/).
+Good starting points include [Cowey Sale](/things-to-do/cowey-sale/) and the Thames towpath, [Walton Bridge](/things-to-do/walton-bridge/), St Mary's Church, [Ashley Park](/things-to-do/ashley-park/), the [Xcel Leisure Complex](/directory/elmbridge-xcel/), Riverhouse Barn Arts Centre and the town centre around [The Heart](/shopping/the-heart/).

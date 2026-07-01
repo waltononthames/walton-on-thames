@@ -23,4 +23,4 @@ The pub serves food throughout the day, with a riverside terrace that fills quic
 
 **Location:** A 10–15 minute walk from Walton-on-Thames town centre and railway station. The Thames Path runs right past the front door.
 
-[More about Walton Bridge and the River Thames →](/visit/things-to-do/walton-bridge/)
+[More about Walton Bridge and the River Thames →](/things-to-do/walton-bridge/)

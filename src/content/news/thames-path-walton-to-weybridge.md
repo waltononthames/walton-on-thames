@@ -92,4 +92,4 @@ The Thames Path continues in both directions:
 - **West from Weybridge** → Shepperton, Chertsey, Staines (further 8 miles to Staines)
 - **South on the Wey Navigation** → Send, Guildford (11 miles)
 
-[More walks and green spaces around Walton-on-Thames →](/visit/walks-and-the-river/)
+[More walks and green spaces around Walton-on-Thames →](/things-to-do/riverside-walks/)

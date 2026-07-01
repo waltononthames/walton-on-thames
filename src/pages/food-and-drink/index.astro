@@ -17,7 +17,7 @@ const categories = [
 ---
 
 <BaseLayout
-  title="Eat & Drink in Walton-on-Thames — Restaurants, Pubs & Cafes"
+  title="Food & Drink in Walton-on-Thames — Restaurants, Pubs & Cafes"
   description="The best places to eat and drink in Walton-on-Thames, Hersham and Whiteley Village — from riverside pubs to Italian restaurants, cafes and takeaways."
 >
   <slot name="structured-data">
@@ -26,7 +26,7 @@ const categories = [
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Eat & Drink", "item": "https://walton-on-thames.org/eat-and-drink/" }
+        { "@type": "ListItem", "position": 2, "name": "Food & Drink", "item": "https://walton-on-thames.org/food-and-drink/" }
       ]
     })} />
   </slot>
@@ -36,10 +36,10 @@ const categories = [
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
-          <li aria-current="page">Eat & Drink</li>
+          <li aria-current="page">Food & Drink</li>
         </ol>
       </nav>
-      <h1>Eat & Drink</h1>
+      <h1>Food & Drink</h1>
       <p>From riverside pubs with Thames views to independent restaurants and neighbourhood cafes — Walton has a genuinely good food and drink scene.</p>
     </div>
   </div>
@@ -48,7 +48,7 @@ const categories = [
     <div class="container">
       <div class="cat-tabs">
         {categories.map(cat => (
-          <a href={`/eat-and-drink/${cat.slug}/`} class="cat-tab">{cat.label}</a>
+          <a href={`/food-and-drink/${cat.slug}/`} class="cat-tab">{cat.label}</a>
         ))}
       </div>
 
@@ -67,7 +67,7 @@ const categories = [
           ))}
         </div>
       ) : (
-        <p class="empty-state">Eat & drink listings are being added — check back soon, or <a href="/directory/">browse the full directory</a>.</p>
+        <p class="empty-state">Food & drink listings are being added — check back soon, or <a href="/directory/">browse the full directory</a>.</p>
       )}
     </div>
   </section>

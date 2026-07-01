@@ -1,2 +1,16 @@
 /blog/* /community/news/:splat 301
 /news/* /community/news/:splat 301
+
+# URL migration per docs/site-audit.md Decision 1
+/visit/things-to-do/ /things-to-do/ 301
+/visit/things-to-do/* /things-to-do/:splat 301
+/visit/walks-and-the-river/ /things-to-do/riverside-walks/ 301
+/visit/getting-here/ /getting-here/ 301
+/visit/places-to-stay/ /places-to-stay/ 301
+/visit/ /things-to-do/ 301
+/eat-and-drink/ /food-and-drink/ 301
+/eat-and-drink/* /food-and-drink/:splat 301
+/community/ /living/ 301
+/community/schools/ /living/schools/ 301
+/community/clubs-and-groups/ /living/community/ 301
+/community/council-and-services/ /living/council-and-services/ 301
