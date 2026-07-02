@@ -24,3 +24,11 @@
 # News articles superseded by Tranche 2/3 history pages
 /community/news/walton-bridge-history/ /history/walton-bridge/ 301
 /community/news/hersham-village-guide/ /hersham/ 301
+/community/news/birth-of-baseball-walton-on-thames/ /history/origins-of-baseball/ 301
+/community/news/birds-eye-walton-court-history/ /history/the-heart-and-town-centre/ 301
+
+# /neighbourhoods/ retired per Decision 2 — content folded into homepage/hersham/living
+/neighbourhoods/walton-on-thames/ / 301
+/neighbourhoods/hersham/ /hersham/ 301
+/neighbourhoods/whiteley-village/ /hersham/whiteley-village/ 301
+/neighbourhoods/ / 301

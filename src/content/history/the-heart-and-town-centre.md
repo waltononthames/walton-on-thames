@@ -7,14 +7,16 @@ cluster: "walton-history"
 era: ["postwar", "contemporary"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-07-03
 sources:
+  - label: "Wikipedia — Walton Court, Walton-on-Thames"
+    url: "https://en.wikipedia.org/wiki/Walton_Court,_Walton-on-Thames"
   - label: "Historic England — Walton Court, formerly Birds Eye Offices"
     url: "https://historicengland.org.uk/listing/the-list/list-entry/1271706"
 related: ["film-studios", "walton-in-wartime"]
 ---
 
-Walton's modern town centre is largely a twenty-first-century creation, built over a 1960s development that had become tired and run down by the time it was redeveloped. A short walk away, a very different, more distinctive piece of 1960s architecture tells a stranger story: a corporate headquarters that once kept flamingos and penguins in its internal courtyards.
+Walton's modern town centre is largely a twenty-first-century creation, built over a 1960s development that had become tired and run down by the time it was redeveloped. A short walk away, a very different, more distinctive piece of 1960s architecture told a stranger story until its own demolition a few years ago: a corporate headquarters that once kept flamingos, penguins and alligators in its internal courtyards.
 
 <!-- IMAGE: the-heart-shopping-centre-exterior.jpg — alt: "The Heart shopping centre, Walton-on-Thames town centre" -->
 
@@ -28,8 +30,10 @@ The Heart's High Street entrance carries a small, deliberate piece of local memo
 
 ## The Birds Eye building
 
-A short distance from The Heart, on Station Avenue, stands a very different piece of twentieth-century commercial architecture: Walton Court, built in 1961 to 1962 by the architects Sir John Burnet, Tait and Partners as the headquarters of Birds Eye Foods. It was one of the first prestige office buildings built for a major company outside London, arranged around two internal courtyards where Birds Eye reportedly kept flamingos and penguins to entertain staff, an unusually flamboyant touch for a corporate headquarters in commuter-belt Surrey. The building was listed Grade II in recognition of its architectural significance, though more recently Elmbridge Council approved plans for its demolition and redevelopment, a reminder that even listed twentieth-century buildings are not automatically permanent.
+A short distance from The Heart, on Station Avenue, stood one of the more unusual pieces of twentieth-century commercial architecture in Surrey: Walton Court, built in 1961 to 1962 by the architects Sir John Burnet, Tait and Partners, with an extension added in 1967 to 1968, as the UK headquarters of Birds Eye Foods. It was a long, three-storey rectangular building faced in full-height plate glass curtain walling and dark blue vitreous enamelled spandrel panels, set beside a reflective pool with a bronze bird sculpture by John McCarthy, and was later listed Grade II, in November 1995, in recognition of its architectural significance.
+
+The building's most talked-about feature, though, was never the architecture. Its two internal courtyards housed a small menagerie of exotic animals, flamingos, penguins and, most improbably, alligators, kept to entertain staff and impress visitors before eventually being relocated to London Zoo. Birds Eye, and later Unilever after it acquired the brand, occupied the building until 2008, after which it stood empty for roughly a decade. Demolition began in 2019, and the site has since been redeveloped as Walton Court Gardens, a residential scheme of 375 apartments across nine blocks; publicly stated plans for the scheme include reinstalling the site's war memorial, the same memorial associated nearby with [Flight Sergeant Charles Sydney](/history/walton-in-wartime/), whose Spitfire crashed in Station Avenue in 1940.
 
 ## Retail history and redevelopment
 
-Between them, The Heart and the former Birds Eye building tell two different versions of the same story: a town centre that has been substantially rebuilt more than once in the last sixty years, each time responding to what the previous generation's development got wrong. Walton's town centre today, focused on the High Street and The Heart, functions as the practical heart of the modern town exactly as its name suggests, while carrying, in small deliberate details like the Hepworth film screenings, a genuine memory of what stood on or near the same ground before it.
+Between them, The Heart and the former Birds Eye building tell two different versions of the same story: a town centre that has been substantially rebuilt more than once in the last sixty years, each time responding to what the previous generation's development got wrong. Walton's town centre today, focused on the High Street and The Heart, functions as the practical heart of the modern town exactly as its name suggests, while carrying, in details like the Hepworth film screenings and the planned reinstatement of the war memorial at Walton Court Gardens, a genuine memory of what stood on or near the same ground before it.

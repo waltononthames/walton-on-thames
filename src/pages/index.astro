@@ -35,28 +35,30 @@ const categories = [
   { label: 'Shopping', href: '/shopping/', icon: '🛍️', desc: 'The Heart & independents' },
   { label: "What's On", href: '/whats-on/', icon: '🎉', desc: 'Events & festivals' },
   { label: 'Directory', href: '/directory/', icon: '📋', desc: 'All local businesses' },
-  { label: 'Neighbourhoods', href: '/neighbourhoods/', icon: '🗺️', desc: 'Walton · Hersham · Whiteley' },
+  { label: 'History', href: '/history/', icon: '🗺️', desc: 'From Caesar to cinema' },
 ];
 
-const neighbourhoods = [
-  {
-    name: 'Walton-on-Thames',
-    slug: 'walton-on-thames',
-    tagline: 'Thames-side town with great eating, heritage and easy London connections.',
-    image: '/images/neighbourhoods/walton-on-thames.jpg',
-  },
+const nearby = [
   {
     name: 'Hersham',
-    slug: 'hersham',
+    href: '/hersham/',
     tagline: 'A proper Surrey village — green, pond, and its own railway station.',
     image: '/images/neighbourhoods/hersham.jpg',
   },
   {
     name: 'Whiteley Village',
-    slug: 'whiteley-village',
+    href: '/hersham/whiteley-village/',
     tagline: 'An extraordinary Arts & Crafts village hidden in Surrey woodland.',
     image: '/images/neighbourhoods/whiteley-village.jpg',
   },
+];
+
+const faqs = [
+  { q: 'Is Walton-on-Thames in London?', a: 'No. Walton-on-Thames is in Surrey, within the Borough of Elmbridge, although it is part of the wider London commuter belt with direct rail links to London Waterloo.' },
+  { q: 'What is Walton-on-Thames famous for?', a: "Walton is known for Walton Bridge, the River Thames, St Mary's Church, Ashley Park, Mount Felix and its First World War New Zealand hospital, The Heart town centre, and its outsized role in the early history of British film." },
+  { q: 'Who is the MP for Walton-on-Thames?', a: 'Walton-on-Thames is in the Esher and Walton constituency. The current MP is Monica Harding, Liberal Democrat, elected in July 2024.' },
+  { q: 'How far is Walton-on-Thames from London?', a: "Walton-on-Thames station is on the South Western Railway network, with trains to London Waterloo in around 32 minutes." },
+  { q: 'Which towns are near Walton-on-Thames?', a: 'Nearby towns and areas include Hersham, Weybridge, Esher, Shepperton, Molesey and Oatlands.' },
 ];
 ---
 
@@ -64,6 +66,18 @@ const neighbourhoods = [
   title="Walton-on-Thames.org — Your Independent Guide to Walton-on-Thames, Hersham & Whiteley Village"
   description="An independent community guide to Walton-on-Thames, Hersham and Whiteley Village — things to do, places to eat, local events, and a full business directory."
 >
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": { "@type": "Answer", "text": item.a },
+      })),
+    })} />
+  </slot>
+
   <!-- Hero -->
   <section class="hero" aria-label="Welcome">
     <div class="hero-bg" aria-hidden="true">
@@ -161,16 +175,16 @@ const neighbourhoods = [
     </section>
   )}
 
-  <!-- Neighbourhoods -->
+  <!-- Nearby -->
   <section class="section" aria-labelledby="neighbourhoods-heading">
     <div class="container">
       <div class="section-header">
-        <h2 id="neighbourhoods-heading">Explore the Neighbourhoods</h2>
-        <p>Three distinct communities, each with its own character and appeal</p>
+        <h2 id="neighbourhoods-heading">Beyond the Town</h2>
+        <p>Just south of Walton, two very different neighbours are worth the short trip</p>
       </div>
       <div class="neighbourhood-grid">
-        {neighbourhoods.map(n => (
-          <a href={`/neighbourhoods/${n.slug}/`} class="neighbourhood-card">
+        {nearby.map(n => (
+          <a href={n.href} class="neighbourhood-card">
             <div class="neighbourhood-img">
               <img src={n.image} alt={n.name} loading="lazy" width="600" height="400" />
               <div class="neighbourhood-overlay" aria-hidden="true"></div>
@@ -239,6 +253,23 @@ const neighbourhoods = [
       </div>
     </section>
   )}
+
+  <!-- FAQ -->
+  <section class="section section-tinted" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="faq-heading">Common Questions</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map(item => (
+          <div class="faq-item">
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- About strip -->
   <section class="about-strip" aria-labelledby="about-strip-heading">
@@ -401,8 +432,9 @@ const neighbourhoods = [
   /* Neighbourhood grid */
   .neighbourhood-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    max-width: 800px;
   }
 
   .neighbourhood-card {
@@ -457,6 +489,29 @@ const neighbourhoods = [
     font-size: 0.875rem;
     color: rgba(255,255,255,0.75);
     line-height: 1.5;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 3rem;
+    max-width: 900px;
+  }
+
+  .faq-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .faq-item p {
+    font-size: 0.9rem;
+    color: var(--color-slate);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .faq-list { grid-template-columns: 1fr; }
   }
 
   /* About strip */

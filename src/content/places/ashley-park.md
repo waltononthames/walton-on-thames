@@ -16,4 +16,4 @@ The parkland is a favourite with dog walkers and families, offering shade and gr
 
 Ashley Park also holds a remarkable place in sporting history: in September 1749, Prince Frederick of Wales and the Earl of Middlesex played what is now recognised as the **first recorded game of baseball in history** on these grounds. A blue heritage plaque at the adjacent Walton Cricket Club on Ashley Road commemorates the event.
 
-[Read the full story of baseball's birthplace in Walton-on-Thames →](/community/news/birth-of-baseball-walton-on-thames/)
+[Read the full story of baseball's birthplace in Walton-on-Thames →](/history/origins-of-baseball/)

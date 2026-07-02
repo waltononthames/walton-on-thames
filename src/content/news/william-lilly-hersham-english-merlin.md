@@ -78,4 +78,4 @@ He retired here because it was quiet. It still is. That, presumably, was rather 
 
 *William Lilly's* Christian Astrology *(1647) is available in modern reprint editions. His autobiography, written in 1668, is one of the most vivid personal accounts of life in 17th-century England and is freely available online.*
 
-[Explore Hersham village →](/neighbourhoods/hersham/)
+[Explore Hersham village →](/hersham/)

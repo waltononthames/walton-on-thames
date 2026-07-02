@@ -70,19 +70,6 @@ const news = defineCollection({
   }),
 });
 
-const neighbourhoods = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/neighbourhoods' }),
-  schema: z.object({
-    name: z.string(),
-    slug: z.enum(['walton-on-thames', 'hersham', 'whiteley-village']),
-    tagline: z.string(),
-    description: z.string(),
-    image: z.string().optional(),
-    lat: z.number().optional(),
-    lng: z.number().optional(),
-  }),
-});
-
 const historySchema = z.object({
   title: z.string(),
   metaTitle: z.string().max(60),
@@ -109,4 +96,4 @@ const hersham = defineCollection({
   schema: historySchema,
 });
 
-export const collections = { businesses, events, places, news, neighbourhoods, history, hersham };
+export const collections = { businesses, events, places, news, history, hersham };

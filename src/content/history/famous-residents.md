@@ -14,7 +14,7 @@ sources:
 related: ["film-studios", "walton-bridge"]
 ---
 
-[Walton-on-Thames](/neighbourhoods/walton-on-thames/) has produced or hosted a genuinely varied list of notable people across three centuries, from an eighteenth-century admiral to a punk-adjacent singer-songwriter. What follows is ordered roughly by how widely each name is recognised today, starting with the person Walton is most likely to be known for.
+[Walton-on-Thames](/) has produced or hosted a genuinely varied list of notable people across three centuries, from an eighteenth-century admiral to a punk-adjacent singer-songwriter. What follows is ordered roughly by how widely each name is recognised today, starting with the person Walton is most likely to be known for.
 
 <!-- IMAGE: rodney-house-plaque.jpg — alt: "Commemorative plaque near the site of Rodney House, Julie Andrews's birthplace" -->
 

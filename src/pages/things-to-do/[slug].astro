@@ -16,6 +16,12 @@ const { Content } = await render(place);
 
 const categoryLabel = place.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
 const neighbourhoodLabel = place.data.neighbourhood.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+
+const neighbourhoodHref: Record<string, string> = {
+  'walton-on-thames': '/',
+  'hersham': '/hersham/',
+  'whiteley-village': '/hersham/whiteley-village/',
+};
 ---
 
 <BaseLayout
@@ -104,7 +110,7 @@ const neighbourhoodLabel = place.data.neighbourhood.replace(/-/g, ' ').replace(/
           <div class="info-card">
             <h2>Neighbourhood</h2>
             <p>{neighbourhoodLabel}</p>
-            <a href={`/neighbourhoods/${place.data.neighbourhood}/`} class="btn btn-outline" style="margin-top: 0.75rem; width: 100%; justify-content: center;">
+            <a href={neighbourhoodHref[place.data.neighbourhood] ?? '/'} class="btn btn-outline" style="margin-top: 0.75rem; width: 100%; justify-content: center;">
               Explore {neighbourhoodLabel}
             </a>
           </div>

@@ -77,39 +77,40 @@ Biggest gap: the entire `/history/` section per blueprint Section 3/4.7 and exte
 |---|---|---|---|
 | `src/pages/visit/history-and-heritage.astro` | Blueprint 4.7 `/history/` hub + extension Section 3 entity pages | **RETIRED** (2026-07-02) | Deleted. The "Hepworth Sculpture Walpole" error was dropped, not migrated (Decision 4). Content rebuilt as `/history/` (full pillar page) plus dedicated entity pages. Redirect `/visit/history-and-heritage/` → `/history/` is live in `public/_redirects`. |
 | `content/news/walton-bridge-history.md` | `/history/walton-bridge/` | **RETIRED** (2026-07-03) | Deleted, redirected to `/history/walton-bridge/`. Fixed the one remaining internal link (in `content/neighbourhoods/walton-on-thames.md`) that pointed at the old URL. |
-| `content/news/birth-of-baseball-walton-on-thames.md` | `/history/origins-of-baseball/` (extension 3.14 — VERIFY flagged in spec) | MERGE, redirect — **not yet actioned** | `/history/origins-of-baseball/` is now built and fully verified (the Whitehall Evening Post citation checks out precisely). This older article still exists at its old URL; folding it in and redirecting is still open. |
-| `content/news/birds-eye-walton-court-history.md` | `/history/the-heart-and-town-centre/` (blueprint 3.17) | MERGE, redirect — **not yet actioned** | `/history/the-heart-and-town-centre/` is now built. This article still exists separately; folding it in and redirecting is still open. |
+| `content/news/birth-of-baseball-walton-on-thames.md` | `/history/origins-of-baseball/` (extension 3.14 — VERIFY flagged in spec) | **RETIRED** (2026-07-03) | Deleted, redirected. Its blue-plaque and documentary-lineage detail was verified and merged into `/history/origins-of-baseball/` first — see `docs/build-log.md`. One unverifiable claim (Bobby Davro/Bill Nankeville attendance) was dropped rather than carried forward. |
+| `content/news/birds-eye-walton-court-history.md` | `/history/the-heart-and-town-centre/` (blueprint 3.17) | **RETIRED** (2026-07-03) | Deleted, redirected. Its alligators/architecture/demolition detail was verified independently and merged into `/history/the-heart-and-town-centre/` first — see `docs/build-log.md`. The article's Milly Dowler CCTV detail (also true) was deliberately not carried forward as tonally inappropriate for the page. |
 | `content/news/julie-andrews-walton-on-thames.md` | `/history/famous-residents/` (summary) — extension explicitly names Julie Andrews as "first candidate" for her own child page | KEEP standalone + cross-link | `/history/famous-residents/` is now built and includes a Julie Andrews section; this standalone article remains separate, as the extension specifies. |
 | **Built 2026-07-02 (Tranche 2)** | `/history/` hub, `/history/cowey-stakes/`, `/history/walton-bridge/`, `/history/st-marys-church/`, `/history/film-studios/`, `/history/famous-residents/` | **DONE** | See `docs/build-log.md`. |
 | **Built 2026-07-02 (Tranche 4)** | `/history/mount-felix/`, `/history/walton-in-wartime/`, `/history/hwm-and-motor-racing/`, `/history/walton-hop/` (sensitive — handled per spec's explicit caution), `/history/monty-python-and-film-locations/` | **DONE** | See `docs/build-log.md` — several spec claims for the Monty Python page couldn't be verified and were dropped; the Walton Hop page required careful precision distinguishing Jonathan King's unconnected 2001 conviction from the 2018 Hop-connected trial that ended without conviction. |
 | **Built 2026-07-02/03 (Tranche 5)** | `/history/domesday-and-origins/`, `/history/ashley-park-estate/`, `/history/origins-of-baseball/`, `/history/river-thames-at-walton/`, `/history/the-heart-and-town-centre/`, `/history/old-manor-house/`, `/history/oatlands-and-the-royal-connection/`, `/history/elmbridge-hundred/` | **DONE** | See `docs/build-log.md` — several spec facts corrected against sourcing found during research (Ashley Park demolition date, Lord Desborough's Thames Conservancy title). |
-| — | `walton-charity` (extension 3.15) | **NOT BUILT — needs owner input** | The spec's own build note requires Darren's direct archival access via his Walton Charity trusteeship; deliberately not researched/written from public sources. The one page in the entire five-tranche build order not completed. |
+| **Built 2026-07-03 (provisional)** | `walton-charity` (extension 3.15) | **PROVISIONAL** | Built from public Charity Commission facts only (registration number, purpose, area of benefit) — explicitly marked on the page as a placeholder. The spec's own build note requires Darren's direct archival access via his trusteeship for the full version; still open. |
 | `src/content.config.ts` | Extension 2.1 `history` collection schema | **DONE** | Added 2026-07-02, along with the matching `hersham` collection. |
 
 ## 7. Hersham section (new top-level, per extension — do not nest under Walton)
 
 | Existing page | Spec target | Class | Notes |
 |---|---|---|---|
-| `content/neighbourhoods/hersham.md` | `/hersham/` hub (extension 4.1) | MERGE, redirect — **not yet actioned** | `/hersham/` is now built independently from the extension's own facts (not migrated from this file). This neighbourhood page still exists at its old URL; folding it in and redirecting per Decision 2 is still open. |
+| `content/neighbourhoods/hersham.md` | `/hersham/` hub (extension 4.1) | **RETIRED** (2026-07-03) | Deleted, redirected to `/hersham/`. |
 | `content/news/hersham-village-guide.md` | `/hersham/` hub | **RETIRED** (2026-07-03) | Deleted, redirected to `/hersham/`. |
 | `content/news/whiteley-village-visiting-guide.md` | `/hersham/whiteley-village/` (extension 4.5) | **RETIRED** (2026-07-02) | Deleted per Decision 3, redirected to `/hersham/whiteley-village/`. |
 | `content/places/whiteley-village.md` | `/hersham/whiteley-village/` (extension 4.5) | **RETIRED** (2026-07-02) | Deleted per Decision 3, redirected. Was previously routed at `/things-to-do/whiteley-village/`. |
-| `content/neighbourhoods/whiteley-village.md` | `/hersham/whiteley-village/` (extension 4.5) | KEPT for now — scoping decision | Deliberately **not** retired alongside the other two duplicates. See the scoping note in `docs/build-log.md` (2026-07-02, whiteley-village entry) — retiring it ahead of the Walton-on-Thames and Hersham neighbourhood pages would leave `/neighbourhoods/` inconsistently migrated. Still counts as open Decision 2 work. |
+| `content/neighbourhoods/whiteley-village.md` | `/hersham/whiteley-village/` (extension 4.5) | **RETIRED** (2026-07-03) | The scoping deferral from 2026-07-02 was resolved once all three `/neighbourhoods/` pages were retired together (Decision 2) — deleted, redirected to `/hersham/whiteley-village/`. |
 | `content/news/william-lilly-hersham-english-merlin.md` | `/hersham/famous-residents/` (summary), cross-link to `/history/st-marys-church/` | KEEP standalone + cross-link | `/hersham/famous-residents/` is now built and links to this article, exactly as the extension specifies. |
 | **Built 2026-07-02 (Tranche 3)** | `/hersham/` hub, `/hersham/history/` hub, `/hersham/hersham-green/`, `/hersham/sham-69/`, `/hersham/food-and-drink/` | **DONE** | See `docs/build-log.md`, including a genuine mobile-menu bug found and fixed while wiring up the new nav item. |
 | **Built 2026-07-02 (Tranche 4)** | `/hersham/whiteley-village/`, `/hersham/famous-residents/`, `/hersham/parakeets/` | **DONE** | See `docs/build-log.md` — Whiteley Village consolidates the three duplicate sources above; corrected a factual error in the old source content (wrong managing organisation) and dropped an unverifiable "Registered Park and Garden" claim. |
 | **Built 2026-07-02/03 (Tranche 5)** | `/hersham/river-mole-walks/`, `/hersham/st-peters-church/`, `/hersham/burhill-and-golf/` | **DONE** | See `docs/build-log.md` — river-mole-walks was written as a general orientation page rather than a first-hand-walked route guide, since the latter genuinely can't be produced remotely. This completes the entire extension Section 4 page list. |
 | `src/content.config.ts` | Extension 2.1 `hersham` collection schema | **DONE** | Added alongside `history` on 2026-07-02. |
-| `src/components/Header.astro` nav | Extension 2.3 "Add Hersham as a top-level nav item" | NEW (nav change) | Not built — current nav has no Hersham entry, only the generic "Neighbourhoods" item. |
-| `src/layouts/*` | Extension 2.2 `HistoryArticle.astro` layout + `HistoryTimeline.astro` component | NEW | Neither exists; required before any history/Hersham entity page can ship per the extension's own build order. |
+| `src/components/Header.astro` nav | Extension 2.3 "Add Hersham as a top-level nav item" | **DONE** | Added 2026-07-02 (Tranche 3). The "Neighbourhoods" item it originally sat alongside was itself retired 2026-07-03 and swapped for "History". |
+| `src/layouts/*` | Extension 2.2 `HistoryArticle.astro` layout + `HistoryTimeline.astro` component | **DONE** | Both built 2026-07-02 (Tranche 1), used by every history/Hersham entity page since. |
 
-## 8. Neighbourhoods (existing collection — retiring per Decision 2)
+## 8. Neighbourhoods (existing collection — RETIRED 2026-07-03)
 
 | Existing page | Spec target | Class | Notes |
 |---|---|---|---|
-| `src/pages/neighbourhoods/index.astro` | No blueprint equivalent | RETIRE | Blueprint's intent-based architecture has no "neighbourhoods" concept as a public hub. Retires once both entries below have migrated. |
-| `content/neighbourhoods/walton-on-thames.md` | Overlaps homepage (4.1) + `/history/` hub + `/living/` hub | MERGE, redirect | Per Decision 2 — content folds into the homepage + `/history/` + `/living/` hubs, then `/neighbourhoods/walton-on-thames/` 301s to `/`. |
-| `content/neighbourhoods/whiteley-village.md` | `/hersham/whiteley-village/` | MERGE, redirect | Second of three duplicate sources, all consolidating into one page (Decision 3). |
+| `src/pages/neighbourhoods/index.astro`, `[slug].astro` | No blueprint equivalent | **RETIRED** (2026-07-03) | Deleted entirely, along with `src/content/neighbourhoods/` and the now-unused `neighbourhoods` collection in `src/content.config.ts`. Redirect `/neighbourhoods/` → `/`. |
+| `content/neighbourhoods/walton-on-thames.md` | Overlaps homepage (4.1) + `/history/` hub + `/living/` hub | **RETIRED** (2026-07-03) | Deleted. Civic/admin facts table folded into `/living/index.astro` ("Fast facts"); FAQ content folded into a new homepage FAQ section (with `FAQPage` schema). Historical content was already superseded by the richer `/history/` hub built in Tranches 2/4/5. Redirect `/neighbourhoods/walton-on-thames/` → `/`. |
+| `content/neighbourhoods/hersham.md` | `/hersham/` hub | **RETIRED** (2026-07-03) | Deleted, redirected to `/hersham/` — see Section 7. |
+| `content/neighbourhoods/whiteley-village.md` | `/hersham/whiteley-village/` | **RETIRED** (2026-07-03) | Deleted, redirected — see Section 7 (third of three duplicate sources, Decision 3). |
 
 ## 9. Directory and What's On
 
@@ -166,16 +167,16 @@ Live in `public/_redirects` (2026-07-02):
 # News articles superseded by Tranche 2/3 history pages — added 2026-07-03
 /community/news/walton-bridge-history/              -> /history/walton-bridge/
 /community/news/hersham-village-guide/               -> /hersham/
-```
-
-Not yet applied — still pending the corresponding MERGE work (see Sections 6–8 above):
-
-```
 /community/news/birth-of-baseball-walton-on-thames/ -> /history/origins-of-baseball/
 /community/news/birds-eye-walton-court-history/      -> /history/the-heart-and-town-centre/
-/neighbourhoods/hersham/                             -> /hersham/
+
+# /neighbourhoods/ retired per Decision 2 — added 2026-07-03
 /neighbourhoods/walton-on-thames/                    -> /
-/visit/things-to-do/hersham-village-green/           -> /hersham/hersham-green/  (superseded — this path already 301s to /things-to-do/hersham-village-green/ under the live rules above; re-target once needed)
+/neighbourhoods/hersham/                             -> /hersham/
+/neighbourhoods/whiteley-village/                    -> /hersham/whiteley-village/
+/neighbourhoods/                                     -> /
 ```
 
-Decisions 1–4 are resolved (see Section 0). Add each remaining `_redirects` entry in the same commit that retires the old URL, not before the replacement page exists.
+Everything from the original "still open" list is now resolved. One cosmetic-only note remains: `/visit/things-to-do/hersham-village-green/` currently 301s to `/things-to-do/hersham-village-green/` under the general `/visit/things-to-do/*` rule above, rather than directly to `/hersham/hersham-green/` — a harmless two-hop redirect, not worth a dedicated rule unless traffic analytics ever show it matters.
+
+Decisions 1–4 are resolved (see Section 0), and so is every item that was open as of the 2026-07-02 "still open" review. The only remaining open item in the entire project is `walton-charity`'s full version — see `docs/build-log.md`.

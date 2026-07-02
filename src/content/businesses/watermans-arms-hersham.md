@@ -21,4 +21,4 @@ This is a practical base for visitors who want to be in the heart of Hersham vil
 
 **Getting around:** Hersham railway station is a 10-minute walk, with South Western Railway services to London Waterloo and connecting buses to Walton-on-Thames. Bookings are made through the OYO website or app.
 
-[Explore Hersham village →](/neighbourhoods/hersham/)
+[Explore Hersham village →](/hersham/)

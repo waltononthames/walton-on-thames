@@ -7,12 +7,14 @@ cluster: "walton-history"
 era: ["georgian"]
 entityType: "event"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-07-03
 sources:
   - label: "SABR — New discovery confirms baseball was played by royalty in England in 1700s"
     url: "https://sabr.org/latest/new-discovery-by-sabr-member-david-block-confirms-baseball-was-played-by-royalty-in-england-in-1700s/"
   - label: "Protoball — Prince of Wales Plays 'bass-ball': September 19 1749"
     url: "https://protoball.org/Block:Prince_of_Wales_Plays_%22bass-ball%22:_September_19_1749"
+  - label: "insidethegames.biz — Blue Plaque to honour first recorded baseball match"
+    url: "https://www.insidethegames.biz/articles/1080093/blue-plaque-to-honour-first-recorded-baseball-match-270-years-after-it-was-played-at-walton-on-thames-in-england"
 related: ["ashley-park-estate"]
 ---
 
@@ -35,6 +37,12 @@ Eighteenth-century "bass-ball" was not the codified sport that would later devel
 ## The evidence and its limits
 
 The discovery was made in 2013 by the American baseball historian David Block, a researcher for the Society for American Baseball Research, while searching newspaper archives for early references to the game. It is a genuinely well-documented find: the newspaper issue itself survives in library collections in both the UK and the US, and the text is unambiguous about the date, the players and the location as "Walton in Surry." The one point that rests on inference rather than direct statement is the precise venue within Walton, Ashley Park, which follows from the Sackville family's ownership of the estate rather than from the newspaper item naming it directly.
+
+It is worth placing the Walton reference in its proper company rather than overstating it in isolation. The earliest known mention of the game in print at all is a rhymed description of "base-ball" in the 1744 children's book *A Little Pretty Pocket-Book*, six years before the Walton match; a separate diary entry by William Bray, dated Easter Monday, 31 March 1755, recording a game played near Guildford, is the earliest surviving manuscript reference. The Walton match sits between the two: not the first time the game was ever mentioned, but the earliest known record of a specific, named, dated game actually being played, at a specific location, by named players.
+
+## The blue plaque
+
+On 7 July 2019, almost exactly two hundred and seventy years to the day after the match itself, a blue heritage plaque was unveiled at Walton Cricket Club in Ashley Park, on or near the site of the 1749 game. It reads: "The Prince of Wales played in the world's first recorded game of baseball on 12th September 1749 here in Ashley Park." The unveiling was jointly organised by BaseballSoftballUK, Walton Cricket Club, the Walton-on-Thames Trading Alliance and the British Plaque Trust's chairman, Mike Read, giving the story a genuine, visitable landmark rather than leaving it as a piece of archive trivia. The plaque is visible from the road at the cricket ground on match days and beyond.
 
 ## Why it matters
 

@@ -7,10 +7,12 @@ cluster: "hersham"
 era: ["contemporary"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-07-03
 sources:
   - label: "Wikipedia — Hersham"
     url: "https://en.wikipedia.org/wiki/Hersham"
+  - label: "AllTrails — Molesey Heath Nature Reserve from Field Common"
+    url: "https://www.alltrails.com/en-gb/poi/england/surrey/walton-on-thames--2/walton-on-thames-camping-and-caravanning-club-site"
 related: ["hersham-green"]
 ---
 
@@ -28,7 +30,7 @@ The Mole eventually joins the Thames a short distance from Walton, meaning it is
 
 ## Wildlife
 
-The Mole valley's mix of meadow, farmland and riverbank supports a genuinely good range of wildlife, and the area's water birds and waterside plants reward an unhurried pace rather than a fast circuit. Hersham's [ring-necked parakeets](/hersham/parakeets/) are also frequently seen and heard over this stretch of countryside, particularly towards dusk as the colony returns to roost.
+The Mole valley's mix of meadow, farmland and riverbank supports a genuinely good range of wildlife, and the area's water birds and waterside plants reward an unhurried pace rather than a fast circuit. Hersham's [ring-necked parakeets](/hersham/parakeets/) are also frequently seen and heard over this stretch of countryside, particularly towards dusk as the colony returns to roost. Nearby, reached from the Field Common area, Molesey Heath Nature Reserve adds a different kind of habitat entirely: a former gravel pit and landfill site naturally colonised by rough grassland and scrub, now home to burrowing bees and wasps and to birds including little ringed plovers and redshanks.
 
 ## Practical notes
 
