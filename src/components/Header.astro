@@ -6,6 +6,7 @@ const navItems = [
   { label: "What's On", href: '/whats-on/' },
   { label: 'Directory', href: '/directory/' },
   { label: 'Neighbourhoods', href: '/neighbourhoods/' },
+  { label: 'Hersham', href: '/hersham/' },
   { label: 'Living', href: '/living/' },
   { label: 'About', href: '/about/' },
 ];
@@ -23,7 +24,7 @@ const currentPath = Astro.url.pathname;
       </span>
     </a>
 
-    <nav aria-label="Primary navigation">
+    <nav aria-label="Primary navigation" class="primary-nav">
       <ul class="nav-list" role="list">
         {navItems.map((item) => (
           <li>
@@ -165,7 +166,7 @@ const currentPath = Astro.url.pathname;
   }
 
   /* Desktop nav */
-  nav { margin-left: auto; }
+  .primary-nav { margin-left: auto; }
 
   .nav-list {
     display: flex;
@@ -255,9 +256,11 @@ const currentPath = Astro.url.pathname;
     background: rgba(255,255,255,0.06);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     /* Switch to fixed on mobile — position:sticky has a known iOS Safari
-       bug where click events are not delivered to children after scrolling */
+       bug where click events are not delivered to children after scrolling.
+       Threshold matches --max-width so the 9-item desktop nav only ever
+       renders at its full container width, never in a squeezed viewport. */
     .site-header {
       position: fixed;
       top: 0;
@@ -266,7 +269,7 @@ const currentPath = Astro.url.pathname;
       width: 100%;
     }
     .logo-name { font-size: 0.875rem; }
-    nav { display: none; }
+    .primary-nav { display: none; }
     .nav-toggle { display: flex; }
   }
 </style>

@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HistoryTimeline from '../../../components/HistoryTimeline.astro';
+
+const eras = [
+  { label: 'Before the Village', anchor: '#before-the-village' },
+  { label: 'Haverichesham', anchor: '#haverichesham' },
+  { label: 'Becoming a Parish', anchor: '#becoming-a-parish', entities: [{ label: 'Hersham Green', href: '/hersham/hersham-green/' }] },
+  { label: 'Royal Glimpses', anchor: '#royal-glimpses' },
+  { label: 'Industry', anchor: '#industry' },
+  { label: 'Whiteley Village', anchor: '#whiteley-village' },
+  { label: 'Hersham Boys', anchor: '#hersham-boys', entities: [{ label: 'Sham 69', href: '/hersham/sham-69/' }] },
+];
+---
+
+<BaseLayout
+  title="The History of Hersham: From Flint Tools to Hersham Boys"
+  description="A history of Hersham, Surrey — from Mesolithic flint finds beside the Mole, through its 1851 formation as a parish, to the industry and punk band that shaped the modern village."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Hersham", "item": "https://walton-on-thames.org/hersham/" },
+        { "@type": "ListItem", "position": 3, "name": "History", "item": "https://walton-on-thames.org/hersham/history/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/hersham/">Hersham</a></li>
+          <li aria-current="page">History</li>
+        </ol>
+      </nav>
+      <h1>A history of Hersham</h1>
+      <p>Hersham's history runs from Mesolithic flint tools beside the River Mole to a punk single that reached number 6 in the charts, by way of a royal drill plough, a vanished chapel and a coachbuilder's workshop. It is a shorter written history than Walton's, largely because Hersham only became a parish in its own right in 1851, but it is no less full.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container history-layout">
+      <article class="prose">
+        <h2 id="before-the-village">Before the village</h2>
+        <p>The earliest evidence of activity in the area comes from Mesolithic flint tools found in some numbers beside the River Mole at Southwood Manor Farm, suggesting people were using this stretch of the river valley for hunting and gathering long before anything resembling a settlement existed. A short distance away, on St George's Hill in neighbouring Weybridge, an Iron Age hillfort earthwork and Bronze Age burials show that the wider area around Hersham was occupied across several prehistoric periods. St George's Hill is also where, in 1649, Gerrard Winstanley and a small group of Diggers occupied common land in one of the more striking episodes of English radical history; the site and its story belong properly to Weybridge, not Hersham, and readers wanting the full account should see <a href="https://elmbridgemuseum.org.uk/network/blog-3-seventeenth-century-squatters-the-diggers-and-the-occupation-of-st-georges-hill/" target="_blank" rel="noopener noreferrer">Elmbridge Museum's account of the Diggers</a> rather than a summary borrowed here.</p>
+
+        <h2 id="haverichesham">Haverichesham</h2>
+        <p>Hersham's own documentary history begins in the twelfth century, when it is recorded as Haverichesham, probably deriving from a lost Old English name meaning something like Haeferic's settlement. The manor was known at various points as Morehall, alias Sylkesmore, or Southwood, and a manorial court was held at Hersham in 1272 under Reginald de Imworth. Timber from Southwood is recorded as having supplied Henry VIII's palace at Nonsuch, a genuine if indirect royal connection running through the village's medieval woodland.</p>
+
+        <h2 id="becoming-a-parish">Becoming a parish</h2>
+        <p>For most of its history, Hersham was administratively part of Walton, not a parish in its own right. That changed on 1 August 1851, when Hersham became a separate ecclesiastical parish. A chapel of ease, Holy Trinity, had already been built in 1839 to serve the growing village, but it was demolished in 1889 and replaced by St Peter's, designed by the architect J. L. Pearson. Kelly's Directory recorded a population of 4,306 by 1901, and <a href="/hersham/hersham-green/">the village hall beside the green</a> was built in 1885 and enlarged in 1892 for the Working Men's Club, physical evidence of a community organising itself for the first time as something distinct from Walton.</p>
+
+        <h2 id="royal-glimpses">Royal glimpses</h2>
+        <p>Hersham has two small but genuine brushes with royal history. George III is recorded visiting Weylands Farm in the village to see a demonstration of the first drill plough, an agricultural innovation significant enough to draw a reigning monarch's attention. And Queen Victoria, as a young girl, recorded in her own diary that she saw her first steam train while at Hersham, a detail that places the future queen at the edge of the railway age in a village that would later be transformed by exactly that technology.</p>
+
+        <h2 id="industry">Industry</h2>
+        <p>The twentieth century brought serious industry to a village that had previously been almost entirely agricultural. ABC Motors built cars and, in 1929, a Fletcher-designed aeroplane that was test flown from nearby Brooklands, though the company did not survive the economic pressures of the depression. Air Products and the engineering firm Hackbridge and Hewittic both operated locally, and the coachbuilders Compton and Herman worked from premises on Molesey Road through the 1920s. Vickers-Armstrongs also had a presence in the area, part of the same aircraft industry that made the Brooklands works a target during the daylight bombing raid of 4 September 1940, which killed nearly ninety people.</p>
+
+        <h2 id="whiteley-village">Whiteley Village</h2>
+        <p>To the south of Hersham lies Whiteley Village, the planned retirement community built between 1911 and 1921 and endowed by the roughly £1 million bequest of the department store founder William Whiteley. It is one of the more remarkable pieces of early twentieth-century planning in Surrey, and deserves its own full treatment rather than a summary here; a dedicated Whiteley Village page is in progress.</p>
+
+        <h2 id="hersham-boys">Hersham Boys</h2>
+        <p>Hersham's most unexpected cultural export arrived in 1975, when a covers band called Jimmy & The Ferrets, fronted by Jimmy Pursey and known for miming at the Walton Hop, reformed as the punk band <a href="/hersham/sham-69/">Sham 69</a> after seeing the Sex Pistols play live. Their biggest hit, "Hersham Boys", reached number 6 in the UK singles chart in 1979, naming the village on national radio in a way nothing else in its history had managed.</p>
+
+        <p>For the history of the neighbouring town, see <a href="/history/">a history of Walton-on-Thames</a>.</p>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Explore by era</h2>
+          <HistoryTimeline eras={eras} />
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .history-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    position: sticky;
+    top: calc(var(--nav-height) + 1.5rem);
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .history-layout { grid-template-columns: 1fr; }
+    .info-card { position: static; }
+  }
+</style>

@@ -88,11 +88,13 @@ Biggest gap: the entire `/history/` section per blueprint Section 3/4.7 and exte
 
 | Existing page | Spec target | Class | Notes |
 |---|---|---|---|
-| `content/neighbourhoods/hersham.md` | `/hersham/` hub (extension 4.1) | MERGE, redirect | Per Decision 2 — folds into the new dedicated `/hersham/` section (which per the extension must not nest under Walton pages). Redirect `/neighbourhoods/hersham/` → `/hersham/` once merged. |
-| `content/news/hersham-village-guide.md` | `/hersham/` hub | MERGE, redirect | Draft-quality overlap with the hub copy already written in extension 4.1. |
-| `content/news/whiteley-village-visiting-guide.md` | `/hersham/whiteley-village/` (extension 4.5) | MERGE, redirect | Third of the three duplicate Whiteley Village sources, all consolidating into one page (Decision 3) — no standalone deep-dive kept for this topic. |
-| `content/news/william-lilly-hersham-english-merlin.md` | `/hersham/famous-residents/` (summary), cross-link to `/history/st-marys-church/` | KEEP standalone + cross-link | Same "promote to child page" pattern as Julie Andrews. |
-| — | Extension 4.2–4.10: `/hersham/history/` hub, `hersham-green`, `sham-69`, `whiteley-village`, `famous-residents`, `parakeets`, `river-mole-walks`, `st-peters-church`, `food-and-drink`, `burhill-and-golf` | NEW | None built. |
+| `content/neighbourhoods/hersham.md` | `/hersham/` hub (extension 4.1) | MERGE, redirect — **not yet actioned** | `/hersham/` is now built independently from the extension's own facts (not migrated from this file). This neighbourhood page still exists at its old URL; folding it in and redirecting per Decision 2 is still open. |
+| `content/news/hersham-village-guide.md` | `/hersham/` hub | MERGE, redirect — not yet actioned | Same as above — the new hub was built fresh, not from this draft. |
+| `content/news/whiteley-village-visiting-guide.md` | `/hersham/whiteley-village/` (extension 4.5) | MERGE, redirect — not yet built | `/hersham/whiteley-village/` itself doesn't exist yet (Tranche 4). |
+| `content/news/william-lilly-hersham-english-merlin.md` | `/hersham/famous-residents/` (summary), cross-link to `/history/st-marys-church/` | KEEP standalone + cross-link — not yet built | `/hersham/famous-residents/` doesn't exist yet (Tranche 4). |
+| **Built 2026-07-02** | `/hersham/` hub, `/hersham/history/` hub, `/hersham/hersham-green/`, `/hersham/sham-69/`, `/hersham/food-and-drink/` | **DONE** | Tranche 3 (extension Section 7). `hersham` content collection populated with `hersham-green` and `sham-69`. See `docs/build-log.md`, including a genuine mobile-menu bug found and fixed while wiring up the new nav item. |
+| — | Extension 4.5–4.10 remaining: `whiteley-village`, `famous-residents`, `parakeets`, `river-mole-walks`, `st-peters-church`, `burhill-and-golf` (second half) | NEW | Not yet built (Tranche 4). |
+| `src/content.config.ts` | Extension 2.1 `hersham` collection schema | **DONE** | Added alongside `history` on 2026-07-02. |
 | `src/content.config.ts` | Extension 2.1 `hersham` collection schema | NEW | Same schema as `history`, different `cluster` enum value — collection doesn't exist yet. |
 | `src/components/Header.astro` nav | Extension 2.3 "Add Hersham as a top-level nav item" | NEW (nav change) | Not built — current nav has no Hersham entry, only the generic "Neighbourhoods" item. |
 | `src/layouts/*` | Extension 2.2 `HistoryArticle.astro` layout + `HistoryTimeline.astro` component | NEW | Neither exists; required before any history/Hersham entity page can ship per the extension's own build order. |

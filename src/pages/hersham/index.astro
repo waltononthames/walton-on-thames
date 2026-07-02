@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Hersham, Surrey: The Local Guide to the Village"
+  description="A local guide to Hersham, Surrey: the green, food and drink, walks by the River Mole, history from the Domesday era to Sham 69, and village life."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Place",
+      "name": "Hersham",
+      "description": "A village in the Borough of Elmbridge, Surrey, between Walton-on-Thames and Esher.",
+      "url": "https://walton-on-thames.org/hersham/"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Hersham", "item": "https://walton-on-thames.org/hersham/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Hersham</li>
+        </ol>
+      </nav>
+      <h1>Hersham</h1>
+      <p>Hersham is a village in the Borough of Elmbridge, Surrey, sitting between Walton-on-Thames to the north and Esher to the east, with the River Mole running along its edge. Around 12,400 people live here, according to the 2011 census. Hersham is contiguous with Walton and shares its post town, but it has kept a distinct identity: a proper village green, its own shopping parade, its own station on the main line to Waterloo, and a history that runs from medieval field-names to the punk band that put the village's name in the charts.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <article class="prose">
+        <h2>The green</h2>
+        <p><a href="/hersham/hersham-green/">Hersham Green</a>, around three and a half acres at the centre of the village, hosts regular events through the year and is faced by the village's shops, pub and pond. It is the natural starting point for any visit, and the closest thing Hersham has to a town square.</p>
+
+        <h2>Food, drink and shopping</h2>
+        <p>The parade by the green carries the village's everyday shops and eating, with pubs distributed through the village and towards the Mole. Full listings live in the <a href="/hersham/food-and-drink/">Hersham food and drink guide</a>, and the wider <a href="/directory/">directory</a> covers everything else, from trades to services.</p>
+
+        <h2>Walks and green space</h2>
+        <p>Within a few minutes of the built-up centre you are in fields and meadow beside the River Mole, and much of the surrounding land is Metropolitan Green Belt, wooded or farmed. Two golf courses sit within the village bounds: Burhill, whose Old Course dates to 1907, and the shorter Hersham Village course beside the Mole. Hersham is also home to one of Britain's largest colonies of ring-necked parakeets, roosting near Esher Rugby Club in numbers estimated at around 7,000 birds.</p>
+
+        <h2>A short history</h2>
+        <p>Hersham appears in the twelfth century as Haverichesham, probably Haeferic's settlement, and only became a parish in its own right in 1851, carved out of Walton. Queen Victoria recorded seeing her first steam train here as a girl, and George III visited Weylands Farm to see the first drill plough. In the twentieth century the village housed serious industry, from ABC Motors to Vickers-Armstrongs, and in 1975 it produced <a href="/hersham/sham-69/">Sham 69</a>, whose "Hersham Boys" reached number 6 in the charts and named the village to a generation. The full <a href="/hersham/history/">Hersham history section</a> covers all of it.</p>
+
+        <h2>Getting here and around</h2>
+        <p>Hersham station sits on the South Western Main Line with at least two trains an hour to London Waterloo; <a href="/getting-here/">Walton-on-Thames station</a> also serves the west of the village. The A3 passes nearby, and the M25 is minutes away.</p>
+
+        <h2>Common questions about Hersham</h2>
+
+        <h3>Is Hersham part of Walton-on-Thames?</h3>
+        <p>No, though the two are easily confused. Hersham is a distinct village with its own parish history, formed out of Walton in 1851, and the two now share a post town and a borough council rather than a single identity.</p>
+
+        <h3>Is Hersham a nice place to live?</h3>
+        <p>Hersham combines a genuine village green and easy access to the River Mole with fast rail links to London, which is the main reason it consistently attracts people weighing up a move from further into the city.</p>
+
+        <h3>What is Hersham famous for?</h3>
+        <p>Hersham is best known locally for its green, its River Mole meadows, its parakeet colony, and for producing the punk band Sham 69, whose biggest hit is named directly after the village.</p>
+
+        <h3>Where do the Hersham parakeets roost?</h3>
+        <p>The main roost is near Esher Rugby Club, on the edge of Hersham, where the colony has been estimated at around 7,000 birds.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

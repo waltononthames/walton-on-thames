@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import { getCollection } from 'astro:content';
+
+const businesses = await getCollection('businesses');
+const hershamFood = businesses.filter(b =>
+  b.data.neighbourhood === 'hersham' &&
+  ['eat-and-drink', 'pubs-and-bars', 'cafes', 'restaurants', 'takeaways'].includes(b.data.category)
+);
+---
+
+<BaseLayout
+  title="Food & Drink in Hersham, Surrey"
+  description="Where to eat and drink in Hersham, Surrey — the parade by the green, the Barley Mow, and the wider Walton-on-Thames food and drink scene close by."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Hersham", "item": "https://walton-on-thames.org/hersham/" },
+        { "@type": "ListItem", "position": 3, "name": "Food & Drink", "item": "https://walton-on-thames.org/hersham/food-and-drink/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/hersham/">Hersham</a></li>
+          <li aria-current="page">Food & Drink</li>
+        </ol>
+      </nav>
+      <h1>Food & Drink in Hersham</h1>
+      <p>Hersham's eating and drinking centres on the parade beside <a href="/hersham/hersham-green/">the green</a>, anchored by the Barley Mow, which has stood beside the pond for generations. It is a small, village-scale scene rather than a large one, and for a wider choice of restaurants, cafes and riverside pubs, Walton-on-Thames town centre is only a short journey away.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      {hershamFood.length > 0 ? (
+        <div class="card-grid card-grid-3">
+          {hershamFood.map(biz => (
+            <BusinessCard
+              name={biz.data.name}
+              slug={biz.data.slug}
+              category={biz.data.category}
+              neighbourhood={biz.data.neighbourhood}
+              description={biz.data.description}
+              images={biz.data.images}
+              featured={biz.data.featured}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">Hersham food and drink listings are being added — check back soon, or browse <a href="/food-and-drink/">Walton-on-Thames food and drink</a> and the full <a href="/directory/">directory</a> in the meantime.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .empty-state {
+    color: var(--color-slate);
+    font-size: 1.05rem;
+    padding: 2rem 0;
+  }
+</style>

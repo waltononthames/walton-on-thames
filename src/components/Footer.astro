@@ -53,6 +53,17 @@ const year = new Date().getFullYear();
           <li><a href="/advertise-your-business/">List Your Business</a></li>
         </ul>
       </div>
+      <div class="footer-nav-col">
+        <h3>Local History</h3>
+        <ul>
+          <li><a href="/history/">A History of Walton-on-Thames</a></li>
+          <li><a href="/history/film-studios/">Hepworth Studios</a></li>
+          <li><a href="/history/walton-bridge/">Walton Bridge</a></li>
+          <li><a href="/history/cowey-stakes/">Cowey Stakes</a></li>
+          <li><a href="/history/st-marys-church/">St Mary's Church</a></li>
+          <li><a href="/history/famous-residents/">Famous Residents</a></li>
+        </ul>
+      </div>
     </nav>
   </div>
 
@@ -119,7 +130,7 @@ const year = new Date().getFullYear();
 
   .footer-nav {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 2rem;
   }
 
@@ -189,11 +200,9 @@ const year = new Date().getFullYear();
 
   @media (max-width: 1024px) {
     .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .footer-nav { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 600px) {
-    .footer-nav { grid-template-columns: 1fr 1fr; }
     .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
   }
 </style>
