@@ -106,7 +106,7 @@ Walton's history was shaped by manors and estates as well as by the river. **[As
 
 ### Walton Bridge and the Thames crossing
 
-The Thames crossing is central to Walton's story. Before the modern bridge, ferries and earlier bridge structures shaped movement between Walton and Shepperton. The first bridge was built in the eighteenth century, and the site inspired Canaletto's famous paintings of Walton Bridge. The **present Walton Bridge opened in 2013** — its modern design and single-span structure make it one of the town's most recognisable landmarks. Read the full story in our [history of Walton Bridge](/community/news/walton-bridge-history/) and visit the [Walton Bridge attraction page](/things-to-do/walton-bridge/).
+The Thames crossing is central to Walton's story. Before the modern bridge, ferries and earlier bridge structures shaped movement between Walton and Shepperton. The first bridge was built in the eighteenth century, and the site inspired Canaletto's famous paintings of Walton Bridge. The **present Walton Bridge opened in 2013** — its modern design and single-span structure make it one of the town's most recognisable landmarks. Read the full story in our [history of Walton Bridge](/history/walton-bridge/) and visit the [Walton Bridge attraction page](/things-to-do/walton-bridge/).
 
 ### Mount Felix and the New Zealand hospital
 

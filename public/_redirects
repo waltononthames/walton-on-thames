@@ -20,3 +20,7 @@
 # Whiteley Village consolidation per docs/site-audit.md Decision 3
 /things-to-do/whiteley-village/ /hersham/whiteley-village/ 301
 /community/news/whiteley-village-visiting-guide/ /hersham/whiteley-village/ 301
+
+# News articles superseded by Tranche 2/3 history pages
+/community/news/walton-bridge-history/ /history/walton-bridge/ 301
+/community/news/hersham-village-guide/ /hersham/ 301
