@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import HistoryTimeline from '../../../components/HistoryTimeline.astro';
+import { getCollection } from 'astro:content';
+
+const allHersham = await getCollection('hersham');
+const topics = allHersham.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 const eras = [
   { label: 'Before the Village', anchor: '#before-the-village' },
@@ -8,8 +12,8 @@ const eras = [
   { label: 'Becoming a Parish', anchor: '#becoming-a-parish', entities: [{ label: 'Hersham Green', href: '/hersham/hersham-green/' }] },
   { label: 'Royal Glimpses', anchor: '#royal-glimpses' },
   { label: 'Industry', anchor: '#industry' },
-  { label: 'Whiteley Village', anchor: '#whiteley-village' },
-  { label: 'Hersham Boys', anchor: '#hersham-boys', entities: [{ label: 'Sham 69', href: '/hersham/sham-69/' }] },
+  { label: 'Whiteley Village', anchor: '#whiteley-village', entities: [{ label: 'Whiteley Village', href: '/hersham/whiteley-village/' }] },
+  { label: 'Hersham Boys', anchor: '#hersham-boys', entities: [{ label: 'Sham 69', href: '/hersham/sham-69/' }, { label: 'Famous Residents', href: '/hersham/famous-residents/' }] },
 ];
 ---
 
@@ -62,10 +66,12 @@ const eras = [
         <p>The twentieth century brought serious industry to a village that had previously been almost entirely agricultural. ABC Motors built cars and, in 1929, a Fletcher-designed aeroplane that was test flown from nearby Brooklands, though the company did not survive the economic pressures of the depression. Air Products and the engineering firm Hackbridge and Hewittic both operated locally, and the coachbuilders Compton and Herman worked from premises on Molesey Road through the 1920s. Vickers-Armstrongs also had a presence in the area, part of the same aircraft industry that made the Brooklands works a target during the daylight bombing raid of 4 September 1940, which killed nearly ninety people.</p>
 
         <h2 id="whiteley-village">Whiteley Village</h2>
-        <p>To the south of Hersham lies Whiteley Village, the planned retirement community built between 1911 and 1921 and endowed by the roughly £1 million bequest of the department store founder William Whiteley. It is one of the more remarkable pieces of early twentieth-century planning in Surrey, and deserves its own full treatment rather than a summary here; a dedicated Whiteley Village page is in progress.</p>
+        <p>To the south of Hersham lies <a href="/hersham/whiteley-village/">Whiteley Village</a>, the planned retirement community endowed by the roughly £1 million bequest of the department store founder William Whiteley, with its first residents moving in from 1917. It is one of the more remarkable pieces of early twentieth-century planning in Surrey, and has a full page of its own covering the bequest, the octagonal layout and how to visit respectfully.</p>
 
         <h2 id="hersham-boys">Hersham Boys</h2>
-        <p>Hersham's most unexpected cultural export arrived in 1975, when a covers band called Jimmy & The Ferrets, fronted by Jimmy Pursey and known for miming at the Walton Hop, reformed as the punk band <a href="/hersham/sham-69/">Sham 69</a> after seeing the Sex Pistols play live. Their biggest hit, "Hersham Boys", reached number 6 in the UK singles chart in 1979, naming the village on national radio in a way nothing else in its history had managed.</p>
+        <p>Hersham's most unexpected cultural export arrived in 1975, when a covers band called Jimmy & The Ferrets, fronted by Jimmy Pursey and known for miming at the Walton Hop, reformed as the punk band <a href="/hersham/sham-69/">Sham 69</a> after seeing the Sex Pistols play live. Their biggest hit, "Hersham Boys", reached number 6 in the UK singles chart in 1979, naming the village on national radio in a way nothing else in its history had managed. Pursey is one of several names covered in full on our <a href="/hersham/famous-residents/">Hersham famous residents</a> page, alongside John Profumo, the SOE agent Odette Sansom, and others.</p>
+
+        <p>Not everything distinctive about modern Hersham is historical. The village is also home to one of Britain's largest colonies of <a href="/hersham/parakeets/">ring-necked parakeets</a>, a wild, noisy, and entirely more recent addition to the village's identity.</p>
 
         <p>For the history of the neighbouring town, see <a href="/history/">a history of Walton-on-Thames</a>.</p>
       </article>
@@ -76,6 +82,26 @@ const eras = [
           <HistoryTimeline eras={eras} />
         </div>
       </aside>
+    </div>
+  </section>
+
+  <section class="section section-tinted" aria-labelledby="topics-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="topics-heading">Explore by topic</h2>
+        <p>Every Hersham page published so far, in one place.</p>
+      </div>
+      <div class="card-grid card-grid-3">
+        {topics.map(entry => (
+          <a href={`/hersham/${entry.data.slug}/`} class="card topic-card">
+            <div class="card-body">
+              <span class="card-category">{entry.data.entityType}</span>
+              <h3 class="card-title">{entry.data.title}</h3>
+              <p class="card-description">{entry.data.metaDescription}</p>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
