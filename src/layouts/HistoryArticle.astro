@@ -52,6 +52,16 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
         { "@type": "ListItem", "position": 3, "name": data.title, "item": `https://walton-on-thames.org${selfHref}` }
       ]
     })} />
+    {data.entityType === 'place' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LandmarksOrHistoricalBuildings",
+        "name": data.title,
+        "description": data.metaDescription,
+        "url": `https://walton-on-thames.org${selfHref}`,
+        ...(data.heroImage ? { "image": `https://walton-on-thames.org${data.heroImage}` } : {}),
+      })} />
+    )}
   </slot>
 
   <div class="page-hero">

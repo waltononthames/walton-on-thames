@@ -116,7 +116,7 @@ The Thames crossing is central to Walton's story. Before the modern bridge, ferr
 
 The arrival of the railway transformed Walton, driving expansion beyond the older parish core and connecting the town to London and the wider south-west suburban rail network. In the twentieth century, Walton became part of Walton and Weybridge Urban District, later replaced by Elmbridge Borough in the 1974 local government reorganisation. More recent change has included the redevelopment of **The Heart**, which brought together retail, housing and public facilities including the library.
 
-For a deeper dive, see our [history and heritage](/visit/history-and-heritage/) section.
+For a deeper dive, see our [history and heritage](/history/) section.
 
 ---
 

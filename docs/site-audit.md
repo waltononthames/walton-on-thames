@@ -75,13 +75,14 @@ Biggest gap: the entire `/history/` section per blueprint Section 3/4.7 and exte
 
 | Existing page | Spec target | Class | Notes |
 |---|---|---|---|
-| `src/pages/visit/history-and-heritage.astro` | Blueprint 4.7 `/history/` hub + extension Section 3 entity pages | RETIRE | Single catch-all page with six shallow sections. Contains the "Hepworth Sculpture Walpole" error — confirmed dropped, not migrated (Decision 4). Remaining content is broken up into the hub plus dedicated entity pages. Redirect `/visit/history-and-heritage/` → `/history/`. |
-| `content/news/walton-bridge-history.md` | `/history/walton-bridge/` | MERGE, redirect | Direct overlap — this article is essentially a draft of the spec'd page. |
-| `content/news/birth-of-baseball-walton-on-thames.md` | `/history/origins-of-baseball/` (extension 3.14 — VERIFY flagged in spec) | MERGE, redirect | Extension requires verifying the Whitehall Evening Post citation before publishing; don't carry this over unverified. |
-| `content/news/birds-eye-walton-court-history.md` | `/history/the-heart-and-town-centre/` (blueprint 3.17) | MERGE, redirect | |
-| `content/news/julie-andrews-walton-on-thames.md` | `/history/famous-residents/` (summary) — extension explicitly names Julie Andrews as "first candidate" for her own child page | KEEP standalone + cross-link | No redirect needed; extension endorses exactly this structure. |
-| — | Extension 3.2–3.17: `cowey-stakes`, `domesday-and-origins`, `film-studios` (expand), `walton-hop`, `mount-felix`, `walton-in-wartime`, `famous-residents` (expand), `monty-python-and-film-locations`, `hwm-and-motor-racing`, `ashley-park-estate`, `st-marys-church` (expand), `origins-of-baseball`, `walton-charity`, `river-thames-at-walton`, plus 3.17 briefs (`the-heart-and-town-centre`, `old-manor-house`, `oatlands-and-the-royal-connection`, `elmbridge-hundred`) | NEW | ~16 entity pages with no existing draft at all. |
-| `src/content.config.ts` | Extension 2.1 `history` collection schema | NEW | Collection doesn't exist; must be added before any history page is built. |
+| `src/pages/visit/history-and-heritage.astro` | Blueprint 4.7 `/history/` hub + extension Section 3 entity pages | **RETIRED** (2026-07-02) | Deleted. The "Hepworth Sculpture Walpole" error was dropped, not migrated (Decision 4). Content rebuilt as `/history/` (full pillar page) plus dedicated entity pages. Redirect `/visit/history-and-heritage/` → `/history/` is live in `public/_redirects`. |
+| `content/news/walton-bridge-history.md` | `/history/walton-bridge/` | MERGE, redirect — **not yet actioned** | `/history/walton-bridge/` is now built independently from the blueprint/extension facts (not migrated from this article). This news article still exists at its old URL; folding it in and redirecting is still open. |
+| `content/news/birth-of-baseball-walton-on-thames.md` | `/history/origins-of-baseball/` (extension 3.14 — VERIFY flagged in spec) | MERGE, redirect — not yet built | Deferred to a later tranche; still requires verifying the Whitehall Evening Post citation before publishing. |
+| `content/news/birds-eye-walton-court-history.md` | `/history/the-heart-and-town-centre/` (blueprint 3.17) | MERGE, redirect — not yet built | Deferred to a later tranche. |
+| `content/news/julie-andrews-walton-on-thames.md` | `/history/famous-residents/` (summary) — extension explicitly names Julie Andrews as "first candidate" for her own child page | KEEP standalone + cross-link | `/history/famous-residents/` is now built and includes a Julie Andrews section; this standalone article remains separate, as the extension specifies. |
+| **Built 2026-07-02** | `/history/` hub, `/history/cowey-stakes/`, `/history/walton-bridge/`, `/history/st-marys-church/`, `/history/film-studios/`, `/history/famous-residents/` | **DONE** | Tranche 2 (blueprint launch sequence / extension Section 7). See `docs/build-log.md`. |
+| — | Extension 3.7–3.17 remaining: `domesday-and-origins`, `walton-hop`, `mount-felix`, `walton-in-wartime`, `monty-python-and-film-locations`, `hwm-and-motor-racing`, `ashley-park-estate`, `origins-of-baseball`, `walton-charity`, `river-thames-at-walton`, plus 3.17 briefs (`the-heart-and-town-centre`, `old-manor-house`, `oatlands-and-the-royal-connection`, `elmbridge-hundred`) | NEW | ~10 entity pages still with no draft (Tranches 3–5). |
+| `src/content.config.ts` | Extension 2.1 `history` collection schema | **DONE** | Added 2026-07-02, along with the matching `hersham` collection. |
 
 ## 7. Hersham section (new top-level, per extension — do not nest under Walton)
 
@@ -132,27 +133,39 @@ Biggest gap: the entire `/history/` section per blueprint Section 3/4.7 and exte
 
 ---
 
-## Redirect list (accumulate here as URLs actually migrate — none of these have been applied yet)
+## Redirect list
+
+Live in `public/_redirects` (2026-07-02):
 
 ```
-/visit/things-to-do/                              -> /things-to-do/
-/visit/things-to-do/hersham-village-green/         -> /hersham/hersham-green/
-/visit/things-to-do/whiteley-village/              -> /hersham/whiteley-village/
+/visit/things-to-do/                               -> /things-to-do/
+/visit/things-to-do/*                              -> /things-to-do/:splat
 /visit/walks-and-the-river/                        -> /things-to-do/riverside-walks/
-/visit/getting-here/                               -> /getting-here/
-/visit/history-and-heritage/                       -> /history/
-/eat-and-drink/                                    -> /food-and-drink/
-/community/                                        -> /living/
-/community/schools/                                -> /living/schools/
-/community/clubs-and-groups/                       -> /living/community/
-/community/news/walton-bridge-history/             -> /history/walton-bridge/
-/community/news/birth-of-baseball-walton-on-thames/ -> /history/origins-of-baseball/
-/community/news/birds-eye-walton-court-history/     -> /history/the-heart-and-town-centre/
-/community/news/hersham-village-guide/              -> /hersham/
-/community/news/whiteley-village-visiting-guide/    -> /hersham/whiteley-village/
-/neighbourhoods/hersham/                            -> /hersham/
-/neighbourhoods/walton-on-thames/                   -> /
-/community/news/whiteley-village-visiting-guide/    -> /hersham/whiteley-village/
+/visit/getting-here/                                -> /getting-here/
+/visit/places-to-stay/                              -> /places-to-stay/
+/visit/history-and-heritage/                        -> /history/
+/visit/*                                            -> /things-to-do/:splat   (fallback)
+/visit/                                             -> /things-to-do/
+/eat-and-drink/                                      -> /food-and-drink/
+/eat-and-drink/*                                    -> /food-and-drink/:splat
+/community/                                         -> /living/
+/community/schools/                                 -> /living/schools/
+/community/clubs-and-groups/                        -> /living/community/
+/community/council-and-services/                    -> /living/council-and-services/
 ```
 
-Decisions 1–4 are resolved (see Section 0). These redirects are ready to implement as each corresponding page is actually built and merged — add the `_redirects` entry in the same commit that retires the old URL, not before the replacement page exists.
+Not yet applied — still pending the corresponding MERGE work (see Sections 6–8 above):
+
+```
+/community/news/walton-bridge-history/              -> /history/walton-bridge/
+/community/news/birth-of-baseball-walton-on-thames/ -> /history/origins-of-baseball/
+/community/news/birds-eye-walton-court-history/      -> /history/the-heart-and-town-centre/
+/community/news/hersham-village-guide/               -> /hersham/
+/community/news/whiteley-village-visiting-guide/     -> /hersham/whiteley-village/
+/neighbourhoods/hersham/                             -> /hersham/
+/neighbourhoods/walton-on-thames/                    -> /
+/visit/things-to-do/hersham-village-green/           -> /hersham/hersham-green/
+/visit/things-to-do/whiteley-village/                -> /hersham/whiteley-village/  (superseded — this path already 301s to /things-to-do/whiteley-village/ under the live rules above; re-target once /hersham/whiteley-village/ exists)
+```
+
+Decisions 1–4 are resolved (see Section 0). Add each remaining `_redirects` entry in the same commit that retires the old URL, not before the replacement page exists.

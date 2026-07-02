@@ -1,0 +1,16 @@
+---
+import HistoryArticle from '../../layouts/HistoryArticle.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('history');
+  return entries.map(entry => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<HistoryArticle entry={entry} />

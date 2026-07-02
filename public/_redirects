@@ -7,6 +7,8 @@
 /visit/walks-and-the-river/ /things-to-do/riverside-walks/ 301
 /visit/getting-here/ /getting-here/ 301
 /visit/places-to-stay/ /places-to-stay/ 301
+/visit/history-and-heritage/ /history/ 301
+/visit/* /things-to-do/:splat 301
 /visit/ /things-to-do/ 301
 /eat-and-drink/ /food-and-drink/ 301
 /eat-and-drink/* /food-and-drink/:splat 301

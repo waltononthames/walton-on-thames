@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HistoryTimeline from '../../components/HistoryTimeline.astro';
+
+const eras = [
+  { label: 'Prehistory & Roman Walton', anchor: '#prehistory', entities: [{ label: 'Cowey Stakes', href: '/history/cowey-stakes/' }] },
+  { label: 'Domesday & the Saxon Parish', anchor: '#domesday' },
+  { label: 'Tudor & Stuart Walton', anchor: '#tudor-stuart', entities: [{ label: "St Mary's Church", href: '/history/st-marys-church/' }] },
+  { label: 'Georgian Walton', anchor: '#georgian', entities: [{ label: 'Walton Bridge', href: '/history/walton-bridge/' }, { label: 'Ashley Park', href: '/things-to-do/ashley-park/' }] },
+  { label: 'Victorian Walton', anchor: '#victorian' },
+  { label: 'The Film Era', anchor: '#film-era', entities: [{ label: 'Hepworth Studios', href: '/history/film-studios/' }] },
+  { label: 'Wartime Walton', anchor: '#wartime' },
+  { label: 'Post-war Walton', anchor: '#postwar', entities: [{ label: 'Famous Residents', href: '/history/famous-residents/' }] },
+];
+---
+
+<BaseLayout
+  title="The History of Walton-on-Thames | From Caesar to Cinema"
+  description="Walton-on-Thames history, from the Cowey Stakes legend and the Domesday Book to Hepworth Studios, the birthplace of British film, and six bridges across the Thames."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "History", "item": "https://walton-on-thames.org/history/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">History</li>
+        </ol>
+      </nav>
+      <h1>A history of Walton-on-Thames</h1>
+      <p>Walton's name is older than England. It derives from the Old English for a settlement of the Wealas, the Britons, which suggests a community here before the Saxons arrived. The town appears in the Domesday Book of 1086 as Waletona, with a church, two mills and a fishery, and the centuries since have added a Georgian bridge painted by Canaletto, a film studio that helped invent British cinema, and a New Zealand military hospital that still connects Walton to the other side of the world every year.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container history-layout">
+      <article class="prose">
+        <h2 id="prehistory">Prehistory & Roman Walton</h2>
+        <p>Walton's oldest story is also its least provable: the tradition, first proposed by the Elizabethan antiquarian William Camden, that Julius Caesar forded the Thames near the present <a href="/history/cowey-stakes/">Cowey Stakes</a> during his second invasion of Britain in 54 BC. Iron-shod wooden stakes were reportedly pulled from the riverbed in the eighteenth century and sold to the Earl of Sandwich, but Elmbridge Museum is careful to note that the evidence rests on conflicting early accounts rather than independent confirmation. It remains a genuinely good piece of local tradition, told honestly rather than oversold.</p>
+
+        <h2 id="domesday">Domesday & the Saxon Parish</h2>
+        <p>Walton appears in the Domesday Book of 1086 as Waletona, held by Edward of Salisbury and Richard de Tonbridge, with six hides, a church, two mills worth £1 5s and a fishery worth 5s. That church is <a href="/history/st-marys-church/">St Mary's</a>, which still stands at the top of Church Street and still contains Saxon material within a structure substantially built up in the twelfth century. Walton lay within the ancient Elmbridge hundred, the administrative unit whose name the modern borough later inherited.</p>
+
+        <h2 id="tudor-stuart">Tudor & Stuart Walton</h2>
+        <p>The parish church again carries most of Walton's Tudor and Stuart story. A 1587 brass at <a href="/history/st-marys-church/">St Mary's</a> commemorates John Selwyn, keeper of the royal park at nearby Oatlands, shown with his wife and eleven children, and the church preserves a copy of a seventeenth-century scold's bridle, later made locally famous by Jerome K. Jerome's mention of it in <em>Three Men in a Boat</em>. The timber-framed Old Manor House on Manor Road is traditionally associated with John Bradshaw, the judge whose signature headed Charles I's death warrant in 1649; Bradshaw is said to have leased the property rather than owned it, but the local tradition has stuck firmly enough that the house is still sometimes known locally as Bradshaw's house.</p>
+
+        <h2 id="georgian">Georgian Walton</h2>
+        <p>The eighteenth century gave Walton its first serious river crossing and one of its best artistic connections. The first <a href="/history/walton-bridge/">Walton Bridge</a> opened around 1750 and was painted by Canaletto in 1754, one of only two English subjects he is known to have painted; its 1788 replacement was later painted by Turner. The same period saw <a href="/things-to-do/ashley-park/">Ashley Park</a> at the height of its life as a great estate, home to Richard Boyle, 2nd Viscount Shannon, whose 1755 monument by Roubiliac remains one of the finest objects inside St Mary's.</p>
+
+        <h2 id="victorian">Victorian Walton</h2>
+        <p>The railway reached Walton in the nineteenth century and reshaped the town more thoroughly than any single building could, pulling growth away from the old church-and-river core and out towards the station. A third, more solidly Victorian <a href="/history/walton-bridge/">Walton Bridge</a> replaced the Georgian crossing in 1864, a girder bridge on stone piers whose brick flood-plain viaduct still stands today. By the century's end, Walton had grown from a river parish into a recognisably suburban Surrey town, connected to London in a way its Georgian residents would not have known.</p>
+
+        <h2 id="film-era">The Film Era</h2>
+        <p>In 1899, Cecil Hepworth leased a house on Hurst Grove and built one of the first serious film studios in Britain, a site that would operate under three names for over sixty years. The studio released the first film version of <em>Alice in Wonderland</em> in 1903, and by 1914 was one of only three major film studios in the country. Hepworth's 1923 bankruptcy saw his entire negative catalogue melted down for its silver content, destroying a huge proportion of early British cinema; the site continued as Nettlefold Studios and later <a href="/history/film-studios/">Walton Studios</a>, closing for good in 1961. Read the full story of how a Surrey house's back garden became one of Britain's most important early film sites.</p>
+
+        <h2 id="wartime">Wartime Walton</h2>
+        <p>Both world wars left a mark on Walton. During the First World War, the New Zealand military hospital at Mount Felix treated around 27,000 men, and those who died there are still remembered every year at St Mary's Church and in the name of New Zealand Avenue. During the Second World War, Walton's proximity to the aircraft works at Brooklands made it a target: the Victorian girder <a href="/history/walton-bridge/">Walton Bridge</a> was damaged in bombing in 1940, and the wider area saw repeated Luftwaffe raids aimed at wartime aircraft production nearby.</p>
+
+        <h2 id="postwar">Post-war Walton</h2>
+        <p>Walton Studios closed in 1961, its equipment moving to Shepperton, and the site was eventually redeveloped for housing, but the town's twentieth century kept producing notable names, from Julie Andrews, born on Rodney Road in 1935, to <a href="/history/famous-residents/">a list of admirals, songwriters and diplomats</a> that reads far more varied than most towns Walton's size can claim. More recently, the redevelopment of The Heart brought retail, housing and the library together in the town centre, and the current Walton Bridge, the sixth crossing on the site, opened in 2013.</p>
+
+        <h2>Researching Walton</h2>
+        <p>This site aims to be a genuinely useful gateway into Walton's history, not the last word on it. For primary sources and deeper research, Elmbridge Museum holds the borough's principal local history collection and is the first port of call for verifying any specific claim. Surrey History Centre, in Woking, holds the county's archival records, including parish and estate documents relevant to Walton. The Victoria County History for Surrey provides the standard scholarly account of the county's development, parish by parish. For historic mapping, the National Library of Scotland's collection of digitised Ordnance Survey maps covers Walton across multiple editions and is freely searchable online, and is one of the best ways to see exactly how the town's streets and fields have changed since the Victorian period.</p>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Explore by era</h2>
+          <HistoryTimeline eras={eras} />
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .history-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    position: sticky;
+    top: calc(var(--nav-height) + 1.5rem);
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .history-layout { grid-template-columns: 1fr; }
+    .info-card { position: static; }
+  }
+</style>
