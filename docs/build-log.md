@@ -1,5 +1,8 @@
 # Build log
 
+## ⚠️ PRE-LAUNCH: site is currently noindexed — MUST REMOVE BEFORE LAUNCH
+`public/_headers` sends `X-Robots-Tag: noindex, nofollow` on every response (added 2026-07-03), so the .org domain accumulates no search-engine index history before the site is ready to launch. `robots.txt` deliberately still `Allow: /` — crawling must stay allowed or bots will never see the noindex header and could index the URL anyway via external links, with no snippet. **Delete the `X-Robots-Tag: noindex, nofollow` line from `public/_headers` as the very last step before public launch.** Verify removal by checking response headers on the live domain (`curl -I https://walton-on-thames.org/` should NOT show `x-robots-tag`) before announcing/sharing the site anywhere.
+
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
 Format:
