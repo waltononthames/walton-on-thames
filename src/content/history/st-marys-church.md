@@ -36,7 +36,7 @@ The church also holds a 1587 brass commemorating John Selwyn, keeper of the roya
 
 ## Jerome Kern's wedding
 
-St Mary's has one more claim that has nothing to do with the medieval period at all. The American composer Jerome Kern, later famous for *Show Boat* and "Ol' Man River", stopped at the Swan Inn on a Thames boat trip in 1909 and met Eva Leale, the landlord's daughter, working behind the bar. The couple married at St Mary's on 25 October 1910, before Kern returned to America to build the career that would make him one of the most significant composers in American musical theatre. It is a small, specific story, and it sits oddly well alongside a Georgian sculptor and a Saxon church wall: proof that a parish church accumulates all kinds of history, not just the kind that gets carved in stone.
+St Mary's has one more claim that has nothing to do with the medieval period at all. The American composer Jerome Kern, later famous for *Show Boat* and "Ol' Man River", stopped at [the Swan Inn](/directory/the-swan/) on a Thames boat trip in 1909 and met Eva Leale, the landlord's daughter, working behind the bar. The couple married at St Mary's on 25 October 1910, before Kern returned to America to build the career that would make him one of the most significant composers in American musical theatre. It is a small, specific story, and it sits oddly well alongside a Georgian sculptor and a Saxon church wall: proof that a parish church accumulates all kinds of history, not just the kind that gets carved in stone.
 
 ## The New Zealand memorial
 

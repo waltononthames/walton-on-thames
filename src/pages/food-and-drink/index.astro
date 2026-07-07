@@ -3,9 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BusinessCard from '../../components/BusinessCard.astro';
 import { getCollection } from 'astro:content';
 
+const CORE_AREAS = ['walton-on-thames', 'hersham', 'whiteley-village'];
+
 const businesses = await getCollection('businesses');
 const eatDrink = businesses.filter(b =>
-  ['eat-and-drink', 'pubs-and-bars', 'cafes', 'restaurants', 'takeaways'].includes(b.data.category)
+  ['eat-and-drink', 'pubs-and-bars', 'cafes', 'restaurants', 'takeaways'].includes(b.data.category) ||
+  (b.data.subcategories.includes('pub-with-rooms') && CORE_AREAS.includes(b.data.neighbourhood))
 );
 
 const categories = [

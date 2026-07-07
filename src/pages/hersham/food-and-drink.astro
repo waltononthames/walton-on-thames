@@ -6,7 +6,8 @@ import { getCollection } from 'astro:content';
 const businesses = await getCollection('businesses');
 const hershamFood = businesses.filter(b =>
   b.data.neighbourhood === 'hersham' &&
-  ['eat-and-drink', 'pubs-and-bars', 'cafes', 'restaurants', 'takeaways'].includes(b.data.category)
+  (['eat-and-drink', 'pubs-and-bars', 'cafes', 'restaurants', 'takeaways'].includes(b.data.category) ||
+    b.data.subcategories.includes('pub-with-rooms'))
 );
 ---
 
@@ -36,7 +37,7 @@ const hershamFood = businesses.filter(b =>
         </ol>
       </nav>
       <h1>Food & Drink in Hersham</h1>
-      <p>Hersham's eating and drinking centres on the parade beside <a href="/hersham/hersham-green/">the green</a>, anchored by the Barley Mow, which has stood beside the pond for generations. It is a small, village-scale scene rather than a large one, and for a wider choice of restaurants, cafes and riverside pubs, Walton-on-Thames town centre is only a short journey away.</p>
+      <p>Hersham's eating and drinking centres on the parade beside <a href="/hersham/hersham-green/">the green</a>, anchored by <a href="/directory/the-barley-mow/">the Barley Mow</a>, which has stood beside the pond for generations. It is a small, village-scale scene rather than a large one, and for a wider choice of restaurants, cafes and riverside pubs, Walton-on-Thames town centre is only a short journey away.</p>
     </div>
   </div>
 

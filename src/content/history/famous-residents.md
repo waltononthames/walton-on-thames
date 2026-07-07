@@ -60,7 +60,7 @@ Bede Griffiths, the Benedictine monk and interfaith theologian known for his wor
 
 ## Jerome Kern
 
-The American composer Jerome Kern, later responsible for *Show Boat* and standards including "Ol' Man River", is a Walton resident only briefly and only by marriage. He met Eva Leale, daughter of the landlord of the Swan Inn, during a Thames boat trip in 1909, and the couple married at [St Mary's Church](/history/st-marys-church/) on 25 October 1910, before Kern returned to the United States to build the career that would make him one of the most significant figures in American musical theatre. It is a brief Walton chapter in a much longer American story, but a well-documented one, marked today by a plaque on the wall of the Swan.
+The American composer Jerome Kern, later responsible for *Show Boat* and standards including "Ol' Man River", is a Walton resident only briefly and only by marriage. He met Eva Leale, daughter of the landlord of [the Swan Inn](/directory/the-swan/), during a Thames boat trip in 1909, and the couple married at [St Mary's Church](/history/st-marys-church/) on 25 October 1910, before Kern returned to the United States to build the career that would make him one of the most significant figures in American musical theatre. It is a brief Walton chapter in a much longer American story, but a well-documented one, marked today by a plaque on the wall of the Swan.
 
 ## A cultural cross-section
 

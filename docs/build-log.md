@@ -5,6 +5,25 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-08 — Bulk restaurant/cafe directory import (outside the extension build order)
+Owner supplied `walton_hersham_whiteley_restaurant_directory.xlsx` (58 rows: 42 Walton, 15 Hersham, 1 Whiteley Village, with name/address/phone/description/source URL per business). This directly addresses a real gap: `/food-and-drink/` and `/hersham/food-and-drink/` had almost no listings and were showing empty-state messages.
+
+**Removed a fabricated listing first (unrelated to the spreadsheet):** the owner flagged that "Campo de' Fiori" doesn't exist. Checked its `source` field — it was the only business in the whole collection tagged `"Local knowledge"` with no operator website, unlike every other entry. Deleted. Flagged two other weak-sourced entries (`sam-b-fit.md`, `impulse-on-pilates.md`) to the owner for their own review since neither is confirmed fake, just similarly thin on sourcing.
+
+**Merges instead of duplicates (owner-confirmed):**
+- `the-anglers.md` — spreadsheet gave a different address (Manor Road) than the existing listing (Riverside). Owner confirmed the correct address is "Riverside Cottages, Manor Road, Walton-on-Thames, KT12 2PF" — updated address, coordinates, phone.
+- `the-weir-hotel.md` and `watermans-arms-hersham.md` — both already existed as accommodation-only listings; the spreadsheet described them as pub/restaurant venues at the same addresses. Rather than duplicate, added phone numbers, swapped Watermans Arms' website from the third-party OYO booking platform to its own official site, and updated `/food-and-drink/index.astro` + `/hersham/food-and-drink.astro` to also match businesses with `subcategories` containing `pub-with-rooms` (both already had this tag), so accommodation-categorised venues that are genuinely also pubs/restaurants now appear on the food pages without needing a second `category` value the schema doesn't support.
+
+**55 new business files generated** via a script (`category`/`subcategories` mapped from the spreadsheet's `Type` column; `neighbourhood` matched to existing convention). Data-quality fixes applied before publishing:
+- Excluded several `Source URL` values from the `website` field: one pointed to a recruitment site (jobtoday.com) instead of the restaurant, one row (McDonald's) had KFC's URL — a spreadsheet copy-paste error — and four rows pointed to generic directory *category* pages (cylex-uk.co.uk, yell.com) rather than the specific business, one of which was reused identically across three unrelated businesses. All left with address/phone only rather than a misleading or non-specific link.
+- Fixed a script bug that was writing the literal string `"nan"` into the `source` field for the two rows with no source URL (Le Petit Cafe, Halfway Cafe).
+
+**Bug found during verification, fixed before commit:** the `subcategories.includes('pub-with-rooms')` filter added to `/food-and-drink/index.astro` had no neighbourhood restriction, so it pulled in accommodation listings from Esher/Weybridge/Shepperton (e.g. The Albert Arms, Esher) that happen to share that subcategory tag — venues well outside the site's three core areas. Scoped the match to `walton-on-thames`/`hersham`/`whiteley-village` only. Caught by checking the actual rendered card count and names in the browser preview rather than just confirming the build succeeded.
+
+**Cross-links added:** "the Swan Inn" (Jerome Kern story, mentioned in `/history/famous-residents/` and `/history/st-marys-church/`) and "the Barley Mow" (mentioned in `/hersham/hersham-green/` and `/hersham/food-and-drink/`) were previously plain text with no real listing to point to — now linked to their new `/directory/` pages.
+
+Verified: full build (168 pages, up from 115), stale-link sweep, and browser preview confirming card counts on both food-and-drink pages before and after the neighbourhood-scope fix.
+
 Format:
 
 ```

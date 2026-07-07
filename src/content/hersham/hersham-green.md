@@ -20,7 +20,7 @@ Hersham Green is what gives the village its identity. At around 3.4 acres, it si
 
 ## The green today
 
-The green is bordered by the Barley Mow, a pub that has stood beside it for generations, and by a run of period cottages and Victorian villas that give the green its settled, established character. It is the natural place to start any visit to the village: a genuine village green, complete with pond, in a location that is still only a short walk from Hersham railway station and about a mile from Walton town centre along Queen's Road.
+The green is bordered by [the Barley Mow](/directory/the-barley-mow/), a pub that has stood beside it for generations, and by a run of period cottages and Victorian villas that give the green its settled, established character. It is the natural place to start any visit to the village: a genuine village green, complete with pond, in a location that is still only a short walk from Hersham railway station and about a mile from Walton town centre along Queen's Road.
 
 What makes the green work as a public space is precisely that it has stayed a working green rather than becoming a museum piece. Dog walkers cross it on ordinary weekday mornings, families use it at weekends, and the pond is close enough to the pub and the parade that a walk around it naturally becomes part of a longer visit rather than a destination on its own. It is a small, unforced kind of civic space, and Hersham is fortunate to have kept it intact while the village around it has grown.
 
