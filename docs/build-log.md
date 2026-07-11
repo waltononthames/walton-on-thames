@@ -1,9 +1,28 @@
 # Build log
 
-## ⚠️ PRE-LAUNCH: site is currently noindexed — MUST REMOVE BEFORE LAUNCH
-`public/_headers` sends `X-Robots-Tag: noindex, nofollow` on every response (added 2026-07-03), so the .org domain accumulates no search-engine index history before the site is ready to launch. `robots.txt` deliberately still `Allow: /` — crawling must stay allowed or bots will never see the noindex header and could index the URL anyway via external links, with no snippet. **Delete the `X-Robots-Tag: noindex, nofollow` line from `public/_headers` as the very last step before public launch.** Verify removal by checking response headers on the live domain (`curl -I https://walton-on-thames.org/` should NOT show `x-robots-tag`) before announcing/sharing the site anywhere.
-
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
+
+## 2026-07-11 — Removed pre-launch noindex header
+`public/_headers` no longer sends `X-Robots-Tag: noindex, nofollow` (removed the line; header block otherwise unchanged). `robots.txt` was already `Allow: /`. Owner had just pointed the domain's DNS at Cloudflare and asked to remove the restrictions preventing search engines visiting the site. Confirmed in a fresh `npm run build` that `dist/_headers` no longer contains the tag. Note: the site still has no GitHub remote and isn't yet connected to a Cloudflare Pages project, so this change has no live effect until deployed — it just means the *next* deploy won't be noindexed.
+
+## 2026-07-11 — /hersham/queen-victoria-first-steam-train/ (owner-supplied draft, outside the extension build order)
+Owner supplied a full SEO-formatted draft (title/meta/keywords/body/FAQ/sources) plus an AI-generated "period engraving" image captioned as if published in an 1837 chronicle. Rewrote rather than published as-is:
+
+**Fact-checked every specific claim before building anything**, since `/hersham/history/` and `/hersham/` already carried a brief, unsourced version of this same fact ("Victoria saw her first steam train while at Hersham"):
+- Diary quote and February 1837 date: confirmed via [PBS Empires — Queen Victoria](https://www.pbs.org/empires/victoria/history/index.html).
+- Age 17: correct (born 24 May 1819; she would not turn 18 until after this sighting and would not become queen until June 1837).
+- Claremont/Leopold connection: confirmed, but Claremont sits under a mile south of **Esher**, not in Hersham itself ([Wikipedia — Claremont](https://en.wikipedia.org/wiki/Claremont_(country_house))). The draft's own title question ("at Hersham?") is the right framing — kept that honest ambiguity in the page rather than asserting the sighting happened at Claremont.
+- First actual train journey was 13 June 1842, Slough–Paddington on the GWR (not the draft's implied later Scotland trip) — confirmed via [royal.uk](https://www.royal.uk/queen-celebrates-175th-anniversary-first-royal-train-journey).
+- Hersham station didn't open until 28 September 1936, and the London and Southampton Railway's Nine Elms–Woking section didn't open to the public until May 1838 — both confirmed via Wikipedia, both correctly used in the draft to show the 1837 sighting predates public passenger service.
+- Dropped the draft's "ReadOnlineFree" book-excerpt source (unidentifiable, not a citable publisher) and National Archives/Network Rail links (too generic to support specific claims); used PBS, royal.uk, and three Wikipedia articles instead.
+
+**Declined the AI-generated image.** It was captioned "PUBLISHED IN A CHRONICLE OF THE DAY, 1837" with a fabricated quote overlay — presenting an AI illustration as genuine period material, which conflicts with this site's sourcing standards. Used the site's standard `<!-- IMAGE -->` placeholder convention instead, one per H2, for the owner's own photography/illustration later.
+
+**Rewrote the body** to the site's measured house style (dropped the FAQ block, "Internal link opportunities" meta-section, and hedging SEO phrasing like "the safest conclusion is") and built as a proper `hersham` collection entry (`entityType: "event"`) rather than a standalone route, so it inherits the shared history layout, sources block, and Related Reading sidebar automatically.
+
+**Updated the two existing brief mentions** on `/hersham/history/` (Royal Glimpses section) and `/hersham/` (short history section) to link through to the new page instead of duplicating/contradicting it.
+
+Verified: full build (169 pages, up from 168), browser preview of the new page and both edited hub pages, confirmed the new entry appears correctly in the Hersham "Explore by topic" grid.
 
 ## 2026-07-08 — Bulk restaurant/cafe directory import (outside the extension build order)
 Owner supplied `walton_hersham_whiteley_restaurant_directory.xlsx` (58 rows: 42 Walton, 15 Hersham, 1 Whiteley Village, with name/address/phone/description/source URL per business). This directly addresses a real gap: `/food-and-drink/` and `/hersham/food-and-drink/` had almost no listings and were showing empty-state messages.
