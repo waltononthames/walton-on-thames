@@ -32,6 +32,11 @@ Among the roughly 27,000 New Zealand soldiers treated at Mount Felix during the 
 
 Arthur was born in Leicester, England, on 25 August 1888, the son of Charles Taylor White and Annie Sarah (Leedham) White. In December 1912 he left England for New Zealand with his mother and sister, Hilda Florence White, sailing from Tilbury Dock aboard the RMS Remuera, a New Zealand Shipping Company liner under Captain Greenstreet. They arrived in Wellington on 3 February 1913.
 
+<figure>
+  <img src="/images/history/charles-and-annie-white.jpg" alt="Charles Taylor White and Annie Sarah (Leedham) White, Arthur's parents" loading="lazy" />
+  <figcaption>Arthur's parents, Charles Taylor White and Annie Sarah (Leedham) White. This photograph has been upscaled using AI from the original.</figcaption>
+</figure>
+
 ## War service and Mount Felix
 
 In April 1916 Arthur returned to England, escorting his mother home aboard the Rimutaka, and on 28 June 1916 he joined the New Zealand Expeditionary Force at Hornchurch in Essex, then home to the NZEF's depot at Grey Towers. After only three weeks of training he was sent to France as a Gunner with the 4th Howitzer Battery. He later worked as a cook in the sergeants' mess and, having passed a cook's examination, drew a Bombardier's pay without holding the rank itself, a discrepancy he apparently never minded, being simply glad of the extra money.
