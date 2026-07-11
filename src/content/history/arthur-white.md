@@ -41,7 +41,10 @@ Arthur was born in Leicester, England, on 25 August 1888, the son of Charles Tay
 
 In April 1916 Arthur returned to England, escorting his mother home aboard the Rimutaka, and on 28 June 1916 he joined the New Zealand Expeditionary Force at Hornchurch in Essex, then home to the NZEF's depot at Grey Towers. After only three weeks of training he was sent to France as a Gunner with the 4th Howitzer Battery. He later worked as a cook in the sergeants' mess and, having passed a cook's examination, drew a Bombardier's pay without holding the rank itself, a discrepancy he apparently never minded, being simply glad of the extra money.
 
-<!-- IMAGE: mount-felix-ward-1917.jpg — alt: "A ward at No. 2 New Zealand General Hospital, Mount Felix, during the First World War" -->
+<figure>
+  <img src="/images/history/mount-felix-ward-1917.jpg" alt="A ward at No. 2 New Zealand General Hospital, Mount Felix, during the First World War" loading="lazy" />
+  <figcaption>A ward at Mount Felix. Arthur occupies the first bed on the right-hand side. This photograph has been upscaled using AI, as the original was in poor condition.</figcaption>
+</figure>
 
 Around 10 October 1917, while working in the cookhouse, Arthur was wounded in the thigh by an exploding German artillery shell. The wound turned septic, and he was evacuated to England and admitted to No. 2 New Zealand General Hospital at Mount Felix, Walton-on-Thames, where he underwent three operations before recovering. Once fit again, he returned to active service with the 6th Howitzer Battery, this time as a driver bringing shells up to the guns.
 
