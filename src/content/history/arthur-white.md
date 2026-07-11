@@ -80,6 +80,11 @@ Ethel Baxter was born at Coton in the Elms, Derbyshire, on 16 April 1888. While 
 
 Arthur and Ethel left England from Plymouth aboard the troopship RMS Athenic on 15 July 1919, returning to Wellington. Arthur was formally discharged from the New Zealand Expeditionary Force on 29 September 1919, having completed three years and 93 days of active service, and was awarded the British War Medal and the Victory Medal.
 
+<figure>
+  <img src="/images/history/arthur-white-certificate-of-service.jpg" alt="Arthur White's Certificate of Service in the New Zealand Expeditionary Forces" loading="lazy" />
+  <figcaption>Arthur's Certificate of Service, recording his discharge and medals.</figcaption>
+</figure>
+
 ## Life in New Zealand
 
 Arthur and Ethel had two children, Doris Mary and Leslie Arthur. Arthur joined the New Zealand Police Force in Auckland on 19 December 1919, serving over the course of his career at Auckland, Newmarket, Thames, Papakura, Whitianga and Mount Roskill, before retiring on 16 January 1949. He and Ethel then retired to Cockle Bay, a seaside suburb of Auckland, where Arthur died on 10 July 1952.
