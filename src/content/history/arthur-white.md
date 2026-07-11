@@ -25,7 +25,7 @@ Among the roughly 27,000 New Zealand soldiers treated at Mount Felix during the 
 
 <figure>
   <img src="/images/history/arthur-white-portrait.jpg" alt="Portrait of Arthur White in New Zealand Expeditionary Force uniform" loading="lazy" />
-  <figcaption>Arthur White. This photograph has been upscaled using AI from the original.</figcaption>
+  <figcaption>Arthur White, taken from a postcard photograph he sent to Ethel during the war. This photograph has been upscaled using AI from the original.</figcaption>
 </figure>
 
 ## From Leicester to New Zealand
@@ -55,6 +55,11 @@ Arthur lost most of his wartime souvenirs in the explosion that wounded him, but
 ## Marriage and the journey home
 
 Ethel Baxter was born at Coton in the Elms, Derbyshire, on 16 April 1888. While still serving with the Expeditionary Force, Arthur married her at St Werburgh's Church, Spondon, Derbyshire, on 24 February 1919. The two had met through Arthur's aunt, Mary Leedham, who worked as a cook for the Bunning family at The Hollies, Borrowash, where Ethel was employed as a maid, and the couple had corresponded throughout the war.
+
+<figure>
+  <img src="/images/history/arthur-postcard-to-ethel.jpg" alt="A postcard sent by Arthur White to Ethel Baxter during the war, addressed to The Hollies, Borrowash" loading="lazy" />
+  <figcaption>One of the postcards Arthur sent to Ethel during the war. The portrait of Arthur used on this page was taken from one of these postcards.</figcaption>
+</figure>
 
 <figure>
   <img src="/images/history/the-hollies-borrowash.jpg" alt="The Hollies, Borrowash, Derbyshire" loading="lazy" />
