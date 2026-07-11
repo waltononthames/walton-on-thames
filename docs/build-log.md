@@ -2,6 +2,13 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-11 — Redirect walton-on-thames.pages.dev to the custom domain
+Added `functions/_middleware.js`, a Cloudflare Pages Function (separate from the Astro static build) that 301-redirects any request arriving via the exact host `walton-on-thames.pages.dev` to the equivalent `https://walton-on-thames.org` URL, preserving path and query string. Only the exact production `.pages.dev` alias is matched — preview-deployment subdomains (e.g. `<hash>.walton-on-thames.pages.dev`) are left untouched so branch previews still work if ever used.
+
+Context: canonical link tags and the sitemap already only reference `walton-on-thames.org` (both derive from `site` in `astro.config.mjs` at build time, baked into the static HTML regardless of which hostname serves it), so duplicate-content risk from the `.pages.dev` URL being publicly reachable was already low. This closes the gap fully by making the `.pages.dev` URL never actually serve content — it always bounces to the real domain.
+
+Verified: simulated the middleware's `onRequest` against three cases (production `.pages.dev` URL → redirects correctly with path/query preserved; custom domain → passes through; preview subdomain → passes through) via a local Node script, and confirmed a full `npm run build` still succeeds with `functions/` present (this directory isn't touched by the Astro build; Cloudflare Pages picks it up independently). Could not verify the live redirect itself pre-push since Pages Functions only run under Cloudflare's edge runtime, not `astro dev` — to be confirmed post-deploy with `curl -I https://walton-on-thames.pages.dev/`.
+
 ## 2026-07-11 — Removed pre-launch noindex header
 `public/_headers` no longer sends `X-Robots-Tag: noindex, nofollow` (removed the line; header block otherwise unchanged). `robots.txt` was already `Allow: /`. Owner had just pointed the domain's DNS at Cloudflare and asked to remove the restrictions preventing search engines visiting the site. Confirmed in a fresh `npm run build` that `dist/_headers` no longer contains the tag. Note: the site still has no GitHub remote and isn't yet connected to a Cloudflare Pages project, so this change has no live effect until deployed — it just means the *next* deploy won't be noindexed.
 
