@@ -76,8 +76,6 @@ Ethel Baxter was born at Coton in the Elms, Derbyshire, on 16 April 1888. While 
   <figcaption>Ethel Baxter, Arthur's future wife. This photograph has been upscaled using AI from the original.</figcaption>
 </figure>
 
-<!-- IMAGE: arthur-ethel-white-wedding.jpg — alt: "Arthur and Ethel White on their wedding day, 1919" -->
-
 Arthur and Ethel left England from Plymouth aboard the troopship RMS Athenic on 15 July 1919, returning to Wellington. Arthur was formally discharged from the New Zealand Expeditionary Force on 29 September 1919, having completed three years and 93 days of active service, and was awarded the British War Medal and the Victory Medal.
 
 <figure>
