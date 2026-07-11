@@ -2,6 +2,19 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-11 — /history/arthur-white/ (first of a soldiers' stories series linked to Mount Felix)
+Owner is contributing a series of individual soldier profiles connected to Mount Felix / No. 2 New Zealand General Hospital, submitted by descendants. First one: Arthur White, contributed by his grandson Kevin Murphy.
+
+**Schema/layout change required first:** `HistoryArticle.astro` hardcoded `By Darren Bayley` as the byline and JSON-LD author on every page. That's wrong for contributed family-history content — this piece wasn't researched/written by Darren, it's a family's own record. Added an optional `contributor` field to `historySchema` in `content.config.ts`; `HistoryArticle.astro` now shows `Contributed by {contributor}` and uses that name in the Article JSON-LD `author` when present, falling back to the original Darren Bayley byline otherwise. Verified no regression: `/history/mount-felix/` still shows "By Darren Bayley" after this change.
+
+**Treated as contributed primary-source content, not independently fact-checked in the usual sense** (personal/family details like birth, marriage and death dates are taken on the family's authority, same as any genealogy contribution). Did spot-check the independently verifiable historical background woven through the account, all of which checked out: RMS Remuera and RMS Rimutaka were real New Zealand Shipping Company vessels of the right era; Grey Towers, Hornchurch was indeed the NZEF depot from 1916, consistent with Arthur's 28 June 1916 enlistment date; No. 2 New Zealand General Hospital at Mount Felix matches the existing page.
+
+**Privacy call:** the owner's draft included Kevin Murphy's personal email address. Asked the owner before publishing it; decision was to not publish the raw address but add a line noting contact details are available on request via the site's `/contact/` page.
+
+Built as `src/content/history/arthur-white.md` (`cluster: walton-history`, `entityType: person`, `related: [mount-felix]`). Restructured the supplied text into H2 sections with an image placeholder per section (owner is sending titled images next, to be slotted in). Cross-linked both directions: added `arthur-white` to `mount-felix.md`'s `related` array and a new sentence in its "The men who stayed" section pointing to the story and flagging it as the first of an ongoing series.
+
+Verified: full build (169 pages), browser check of both pages confirming the contributor byline renders correctly on the new page and the standard byline is unchanged on Mount Felix.
+
 ## 2026-07-11 — Removed fabricated "Walton Carnival" event listing
 Owner flagged `/whats-on/walton-carnival-2026/` as a suspected hallucination. Investigated and confirmed: its `source_url` (`waltonfestival.org.uk`) is a non-existent domain (DNS lookup fails outright), its stated venue "Stompond Lane Recreation Ground" was actually a sports ground demolished for housing in 2017, and no search turns up any real event by this name. Deleted `src/content/events/walton-carnival.md` entirely and swapped the passing mention in `src/content/news/welcome-post.md` ("from the annual Walton Carnival to weekly markets...") for the real Walton & Weybridge Regatta.
 

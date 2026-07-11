@@ -39,7 +39,9 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
       "description": data.metaDescription,
       "datePublished": data.publishDate.toISOString(),
       "dateModified": data.reviewedDate.toISOString(),
-      "author": { "@type": "Person", "name": "Darren Bayley", "url": "https://walton-on-thames.org/about/" },
+      "author": data.contributor
+        ? { "@type": "Person", "name": data.contributor }
+        : { "@type": "Person", "name": "Darren Bayley", "url": "https://walton-on-thames.org/about/" },
       "publisher": { "@type": "Organization", "name": "Walton-on-Thames.org", "url": "https://walton-on-thames.org/" },
       ...(data.heroImage ? { "image": `https://walton-on-thames.org${data.heroImage}` } : {}),
     })} />
@@ -74,7 +76,7 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
         </ol>
       </nav>
       <h1>{data.title}</h1>
-      <p class="byline">By Darren Bayley · Last reviewed {reviewedDateStr}</p>
+      <p class="byline">{data.contributor ? `Contributed by ${data.contributor}` : 'By Darren Bayley'} · Last reviewed {reviewedDateStr}</p>
     </div>
   </div>
 

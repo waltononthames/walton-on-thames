@@ -78,6 +78,7 @@ const historySchema = z.object({
   cluster: z.enum(['walton-history', 'hersham']),
   era: z.array(z.string()).optional(),
   entityType: z.enum(['place', 'person', 'event', 'institution', 'overview']),
+  contributor: z.string().optional(),
   heroImage: z.string().optional(),
   heroAlt: z.string().optional(),
   publishDate: z.date(),
