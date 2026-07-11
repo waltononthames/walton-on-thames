@@ -57,6 +57,11 @@ Arthur lost most of his wartime souvenirs in the explosion that wounded him, but
 Ethel Baxter was born at Coton in the Elms, Derbyshire, on 16 April 1888. While still serving with the Expeditionary Force, Arthur married her at St Werburgh's Church, Spondon, Derbyshire, on 24 February 1919. The two had met through Arthur's aunt, Mary Leedham, who worked as a cook for the Bunning family at The Hollies, Borrowash, where Ethel was employed as a maid, and the couple had corresponded throughout the war.
 
 <figure>
+  <img src="/images/history/st-werburghs-church-spondon.jpg" alt="St Werburgh's Church, Spondon, Derbyshire" loading="lazy" />
+  <figcaption>St Werburgh's Church, Spondon, Derbyshire, where Arthur and Ethel married on 24 February 1919.</figcaption>
+</figure>
+
+<figure>
   <img src="/images/history/ethel-baxter-portrait.jpg" alt="Portrait of Ethel Baxter, Arthur White's future wife" loading="lazy" />
   <figcaption>Ethel Baxter, Arthur's future wife. This photograph has been upscaled using AI from the original.</figcaption>
 </figure>
