@@ -20,7 +20,7 @@ This site is a passion project built by someone who loves this area and wanted a
 
 **A local directory** — a growing catalogue of local businesses, services, and community organisations.
 
-**Events listings** — what's on across the three neighbourhoods, from the annual Walton Carnival to weekly markets and seasonal celebrations.
+**Events listings** — what's on across the three neighbourhoods, from the annual Walton & Weybridge Regatta to weekly markets and seasonal celebrations.
 
 **Community news** — local stories, history features, and updates that don't always make the Surrey papers.
 

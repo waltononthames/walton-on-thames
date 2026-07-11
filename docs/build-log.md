@@ -2,6 +2,15 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-11 — Removed fabricated "Walton Carnival" event listing
+Owner flagged `/whats-on/walton-carnival-2026/` as a suspected hallucination. Investigated and confirmed: its `source_url` (`waltonfestival.org.uk`) is a non-existent domain (DNS lookup fails outright), its stated venue "Stompond Lane Recreation Ground" was actually a sports ground demolished for housing in 2017, and no search turns up any real event by this name. Deleted `src/content/events/walton-carnival.md` entirely and swapped the passing mention in `src/content/news/welcome-post.md` ("from the annual Walton Carnival to weekly markets...") for the real Walton & Weybridge Regatta.
+
+**While investigating, checked the other two original seed events** (same batch, created before this project's rigorous verification practice was established) for the same pattern — both contain the same "hedge language" tell ("check local notice boards for current dates", "exact dates confirmed in spring — check the website"):
+- `farmers-market.md`: real market, but wrong location (file says Church Street; actually [The Heart Shopping Centre](https://www.surreymarkets.co.uk/walton-on-thames-market/)) and wrong day (file says Sunday; actually first Saturday of the month). **Not yet fixed** — flagged to owner, awaiting decision.
+- `rowing-regatta.md`: real club (Walton Rowing Club, est. 1927), but wrong event name (file says "Walton Regatta"; the actual annual event is the [Walton & Weybridge Regatta](http://wandwregatta.org.uk/), run since 1862) and unverified date. **Not yet fixed** — flagged to owner, awaiting decision.
+
+Verified: full build (168 pages, down from 169), no other references to the removed event anywhere in `src/`.
+
 ## 2026-07-11 — Redirect walton-on-thames.pages.dev to the custom domain
 Added `functions/_middleware.js`, a Cloudflare Pages Function (separate from the Astro static build) that 301-redirects any request arriving via the exact host `walton-on-thames.pages.dev` to the equivalent `https://walton-on-thames.org` URL, preserving path and query string. Only the exact production `.pages.dev` alias is matched — preview-deployment subdomains (e.g. `<hash>.walton-on-thames.pages.dev`) are left untouched so branch previews still work if ever used.
 
