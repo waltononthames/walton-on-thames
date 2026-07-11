@@ -81,6 +81,11 @@ Ethel Baxter was born at Coton in the Elms, Derbyshire, on 16 April 1888. While 
 Arthur and Ethel left England from Plymouth aboard the troopship RMS Athenic on 15 July 1919, returning to Wellington. Arthur was formally discharged from the New Zealand Expeditionary Force on 29 September 1919, having completed three years and 93 days of active service, and was awarded the British War Medal and the Victory Medal.
 
 <figure>
+  <img src="/images/history/arthur-white-british-war-medal.jpg" alt="Arthur White's British War Medal, obverse and reverse" loading="lazy" />
+  <figcaption>Arthur's British War Medal.</figcaption>
+</figure>
+
+<figure>
   <img src="/images/history/arthur-white-certificate-of-service.jpg" alt="Arthur White's Certificate of Service in the New Zealand Expeditionary Forces" loading="lazy" />
   <figcaption>Arthur's Certificate of Service, recording his discharge and medals.</figcaption>
 </figure>
