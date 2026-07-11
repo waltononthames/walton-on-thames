@@ -80,7 +80,7 @@ Alternatively, **take the train**: Weybridge station is a 10-minute walk from th
 ## Seasonal highlights
 
 - **Spring:** Willows in fresh leaf along the bank; early swallows hunting low over the water
-- **Summer:** Busy with boats, swimmers at informal spots, Walton Regatta typically held in August
+- **Summer:** Busy with boats, swimmers at informal spots, the Walton & Weybridge Regatta held in June
 - **Autumn:** Quieter, mist on the water in the mornings, the best light for photography
 - **Winter:** Flooded meadows (Cowey Sale floods regularly), large wildfowl gatherings, clear views through bare trees
 

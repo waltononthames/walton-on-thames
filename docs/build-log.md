@@ -11,6 +11,16 @@ Owner flagged `/whats-on/walton-carnival-2026/` as a suspected hallucination. In
 
 Verified: full build (168 pages, down from 169), no other references to the removed event anywhere in `src/`.
 
+## 2026-07-11 — Corrected the other two seed events flagged above
+Owner asked to also fix `farmers-market.md` and `rowing-regatta.md`.
+
+- **`farmers-market.md` corrected**: venue → "New Zealand Avenue, outside The Heart Shopping Centre, Walton-on-Thames" (verified via [Surrey Markets](https://www.surreymarkets.co.uk/walton-on-thames-market/)), schedule → first Saturday of the month, 9:30am–2pm (was: Church Street, Sunday). Added `source_url`. Next occurrence set to 2026-08-01 (confirmed Saturday).
+- **`rowing-regatta.md` deleted, replaced with `walton-and-weybridge-regatta.md`**: correct name "Walton & Weybridge Regatta" (annual since 1862, per [official site](http://wandwregatta.org.uk/)), correct 2026 date 6–7 June (file previously guessed 15–16 August), correct course/spectating detail (starts below Walton Marina, finishes near the clubhouse, free from the towpath between Felix Road and Sunbury Lane) replacing an unverified "Thames Street" address and an unverified Cowey Sale spectating claim. New slug `walton-and-weybridge-regatta-2026`. Also fixed a stray reference to the old wrong name/month ("Walton Regatta typically held in August") in `src/content/news/thames-path-walton-to-weybridge.md`.
+
+**Note on the regatta's visibility:** its confirmed 2026 date (6–7 June) is already in the past relative to build time (11 July), and both `/whats-on/` and `/whats-on/[slug].astro` filter past events out of `getStaticPaths()` entirely, not just the listing — so the corrected page currently builds zero output and won't appear on the site until it's updated with a confirmed future date (the club hasn't announced 2027's date yet). This is the site's existing, correct behaviour for past events, not a bug; chose an accurate past date over fabricating a future one.
+
+Verified: full build (168 pages), no other stray references to the old fabricated/incorrect event names or slugs anywhere in `src/`.
+
 ## 2026-07-11 — Redirect walton-on-thames.pages.dev to the custom domain
 Added `functions/_middleware.js`, a Cloudflare Pages Function (separate from the Astro static build) that 301-redirects any request arriving via the exact host `walton-on-thames.pages.dev` to the equivalent `https://walton-on-thames.org` URL, preserving path and query string. Only the exact production `.pages.dev` alias is matched — preview-deployment subdomains (e.g. `<hash>.walton-on-thames.pages.dev`) are left untouched so branch previews still work if ever used.
 
