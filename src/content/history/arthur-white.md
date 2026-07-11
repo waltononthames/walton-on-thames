@@ -7,6 +7,8 @@ cluster: "walton-history"
 era: ["wartime"]
 entityType: "person"
 contributor: "Kevin Murphy, Arthur White's grandson"
+heroImage: "/images/history/arthur-white-portrait.jpg"
+heroAlt: "Portrait of Arthur White in New Zealand Expeditionary Force uniform"
 publishDate: 2026-07-11
 reviewedDate: 2026-07-11
 sources:
@@ -21,7 +23,10 @@ related: ["mount-felix"]
 
 Among the roughly 27,000 New Zealand soldiers treated at Mount Felix during the First World War was Gunner Arthur White, wounded on the Western Front and shipped home to Walton-on-Thames to recover. His story survives today because his grandson, Kevin Murphy, has kept it.
 
-<!-- IMAGE: arthur-white-portrait.jpg — alt: "Portrait of Arthur White, New Zealand Expeditionary Force" -->
+<figure>
+  <img src="/images/history/arthur-white-portrait.jpg" alt="Portrait of Arthur White in New Zealand Expeditionary Force uniform" loading="lazy" />
+  <figcaption>Arthur White</figcaption>
+</figure>
 
 ## From Leicester to New Zealand
 

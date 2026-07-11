@@ -336,6 +336,25 @@ img {
 .prose li { margin-bottom: 0.3rem; }
 .prose strong { font-weight: 600; }
 
+.prose figure {
+  margin: 1.5rem 0;
+}
+
+.prose figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.prose figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-slate);
+  font-style: italic;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .section { padding: 2.5rem 0; }
