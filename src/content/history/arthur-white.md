@@ -86,6 +86,11 @@ Arthur and Ethel left England from Plymouth aboard the troopship RMS Athenic on 
 </figure>
 
 <figure>
+  <img src="/images/history/arthur-white-victory-medal.jpg" alt="Arthur White's Victory Medal, obverse and reverse" loading="lazy" />
+  <figcaption>Arthur's Victory Medal.</figcaption>
+</figure>
+
+<figure>
   <img src="/images/history/arthur-white-certificate-of-service.jpg" alt="Arthur White's Certificate of Service in the New Zealand Expeditionary Forces" loading="lazy" />
   <figcaption>Arthur's Certificate of Service, recording his discharge and medals.</figcaption>
 </figure>
@@ -93,5 +98,10 @@ Arthur and Ethel left England from Plymouth aboard the troopship RMS Athenic on 
 ## Life in New Zealand
 
 Arthur and Ethel had two children, Doris Mary and Leslie Arthur. Arthur joined the New Zealand Police Force in Auckland on 19 December 1919, serving over the course of his career at Auckland, Newmarket, Thames, Papakura, Whitianga and Mount Roskill, before retiring on 16 January 1949. He and Ethel then retired to Cockle Bay, a seaside suburb of Auckland, where Arthur died on 10 July 1952.
+
+<figure>
+  <img src="/images/history/arthur-white-family-police-uniform.jpg" alt="Arthur White in New Zealand Police uniform with his wife Ethel and children Doris and Leslie" loading="lazy" />
+  <figcaption>Arthur in his New Zealand Police uniform with Ethel, daughter Doris and son Leslie. This photograph has been upscaled using AI from the original.</figcaption>
+</figure>
 
 This account was contributed by Kevin Murphy, Arthur's grandson, and is one of a series of soldiers' stories connected to [Mount Felix](/history/mount-felix/) that we will be adding over time. If you would like to get in touch with the contributor, contact details are available on request via our [contact page](/contact/).
