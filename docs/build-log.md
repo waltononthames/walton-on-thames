@@ -2,6 +2,19 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-11 — Illustrated /history/arthur-white/ with 11 images (family-supplied)
+Owner supplied images one at a time over several turns, mostly by saving files directly into `public/images/history/` rather than pasting them in chat (no in-chat image → file path exists, so files on disk were the only way to get pixels into the repo). Final set: Arthur's portrait, his parents, the Mount Felix ward (with his specific bed noted), a wartime postcard to Ethel (source of the portrait photo), Ethel's portrait, The Hollies (Borrowash), St Werburgh's Church (Spondon), his Certificate of Service, British War Medal, Victory Medal, and a family photo in NZ Police uniform. No wedding-day photo existed, so that placeholder was removed rather than left unfilled.
+
+**Recurring pattern worth remembering for the rest of this series:**
+- Owner's file-save dialog kept producing double extensions (e.g. `foo.jpg.jpg`, `foo.jpg.png`) when renaming — always `ls` the actual filename before assuming it matches what was asked for.
+- Several images were later replaced with AI-upscaled versions (owner has an upscaling tool with invisible SynthID watermarking) at 2–10MB PNG. Every one was compressed with `sharp` (already a transitive dependency of Astro, no install needed) via a one-off `node -e` script: resize to 1000–1400px wide (wider for the panoramic ward shot) + `.jpeg({ quality: 82, mozjpeg: true })`. Typical result: 2–10MB → 90–260KB.
+- Every AI-upscaled image's caption discloses it in-page ("This photograph has been upscaled using AI..."), per owner's explicit confirmation each time and consistent with this site's stance against presenting AI-modified images as unaltered originals without saying so (same principle as declining the fabricated "1837 chronicle" framing on the Queen Victoria draft earlier).
+- Original, non-upscaled photos supplied at reasonable size (20–150KB) were used as-is with no processing.
+- The batch of 11 candidate images arrived pre-saved to disk in one go with random UUID filenames; going through them one at a time by owner instruction (rather than guessing captions from content alone) avoided any risk of mislabelling family members.
+- One image was never identified: `d5d36c02-aa31-41d3-ab15-3e9ad88611dd.jpg`, a large house exterior with a tower and cedar tree, left untracked in `public/images/history/`. Strong resemblance to the clock tower described on `/history/mount-felix/` (which has no real photo yet, only a placeholder) — asked the owner to confirm before using it there. **Check this before starting the next soldier article**, since it may still be awaiting an answer.
+
+Verified: full build after every single image addition (11 rebuilds total), browser check of `.prose figure` captions/src after each to confirm order and content before every commit+push.
+
 ## 2026-07-11 — /history/arthur-white/ (first of a soldiers' stories series linked to Mount Felix)
 Owner is contributing a series of individual soldier profiles connected to Mount Felix / No. 2 New Zealand General Hospital, submitted by descendants. First one: Arthur White, contributed by his grandson Kevin Murphy.
 
