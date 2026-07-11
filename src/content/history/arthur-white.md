@@ -25,7 +25,7 @@ Among the roughly 27,000 New Zealand soldiers treated at Mount Felix during the 
 
 <figure>
   <img src="/images/history/arthur-white-portrait.jpg" alt="Portrait of Arthur White in New Zealand Expeditionary Force uniform" loading="lazy" />
-  <figcaption>Arthur White</figcaption>
+  <figcaption>Arthur White. This photograph has been upscaled using AI from the original.</figcaption>
 </figure>
 
 ## From Leicester to New Zealand
