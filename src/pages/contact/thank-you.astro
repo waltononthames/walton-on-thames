@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Message Sent — Walton-on-Thames.org"
+  description="Thank you for getting in touch with Walton-on-Thames.org."
+  noIndex={true}
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li aria-current="page">Message Sent</li>
+        </ol>
+      </nav>
+      <h1>Thanks for getting in touch</h1>
+      <p>Your message has been sent. Please allow up to 5 working days for a response.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <p>In the meantime, you might want to <a href="/things-to-do/">explore things to do</a>, browse the <a href="/directory/">business directory</a>, or see <a href="/whats-on/">what's on</a> across Walton-on-Thames, Hersham and Whiteley Village.</p>
+        <p><a href="/" class="btn btn-primary">Back to homepage</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

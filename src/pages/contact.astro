@@ -24,16 +24,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div>
         <form
           class="contact-form"
-          name="contact"
           method="POST"
-          action="/contact/thank-you/"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
+          action="https://formspree.io/f/FORMSPREE_FORM_ID"
           aria-label="Contact form"
         >
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="_next" value="https://walton-on-thames.org/contact/thank-you/" />
+          <input type="hidden" name="_subject" value="New message from walton-on-thames.org" />
           <p style="display:none;">
-            <label>Don't fill this in if you're human: <input name="bot-field" /></label>
+            <label>Don't fill this in if you're human: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
           </p>
 
           <div class="form-group">
@@ -43,7 +41,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+            <input type="email" id="email" name="_replyto" required autocomplete="email" placeholder="you@example.com" />
           </div>
 
           <div class="form-group">
