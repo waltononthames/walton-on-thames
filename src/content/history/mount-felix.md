@@ -15,7 +15,7 @@ sources:
     url: "https://en.wikipedia.org/wiki/No._2_New_Zealand_General_Hospital"
   - label: "Elmbridge Museum — The Mount Felix War Hospital"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/the-mount-felix-war-hospital/"
-related: ["walton-in-wartime", "st-marys-church", "arthur-white"]
+related: ["walton-in-wartime", "st-marys-church", "arthur-white", "mount-felix-tapestry"]
 ---
 
 For four years during the First World War, a Surrey country house became the first hospital in Britain dedicated specifically to New Zealand's wounded. Mount Felix is largely gone now, but the connection it created between Walton-on-Thames and New Zealand has outlasted the building by a century.
@@ -47,4 +47,6 @@ That connection has been kept alive rather than simply archived. St Mary's Churc
 
 The clearest everyday reminder of the hospital is New Zealand Avenue, a Walton street that takes its name directly from the wartime hospital nearby. It is a small piece of naming that most residents drive past without a second thought, but it marks the same history as the memorial inside St Mary's: a New Zealand connection written permanently into the map of the town.
 
-Most of Mount Felix itself has gone, but the stable block and clock tower survive and are Grade II listed, the last physical fragments of the house that once held nearly two thousand beds and thousands of recovering soldiers a very long way from home. For the wider story of Walton during both world wars, see our guide to [Walton in wartime](/history/walton-in-wartime/).
+Most of Mount Felix itself has gone. A fire in June 1966 led to the demolition of the main house the following year; only the stable block and clock tower survive, Grade II listed and since converted to office use, the last physical fragments of the house that once held nearly two thousand beds and thousands of recovering soldiers a very long way from home.
+
+More recently, the story has been retold in thread rather than brick: see our guide to the [Mount Felix Tapestry](/history/mount-felix-tapestry/), the community embroidery project that spent two years telling individual stories from the hospital. For the wider story of Walton during both world wars, see our guide to [Walton in wartime](/history/walton-in-wartime/).

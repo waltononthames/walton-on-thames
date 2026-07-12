@@ -18,7 +18,7 @@ sources:
     url: "https://en.wikipedia.org/wiki/Grey_Towers"
   - label: "Remuera Heritage — RMS Remuera"
     url: "https://remueraheritage.org.nz/story/rms-remuera/"
-related: ["mount-felix"]
+related: ["mount-felix", "mount-felix-tapestry"]
 ---
 
 Among the roughly 27,000 New Zealand soldiers treated at Mount Felix during the First World War was Gunner Arthur White, wounded on the Western Front and shipped home to Walton-on-Thames to recover. His story survives today because his grandson, Kevin Murphy, has kept it.
