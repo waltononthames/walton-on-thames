@@ -2,6 +2,15 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-12 — /history/mount-felix-memorial-banner/ (third Mount Felix-linked article)
+Owner asked for a dedicated article on the circa-1919 memorial banner (already covered briefly within `mount-felix-tapestry.md`'s "not the same as..." section), linking to Te Papa's own collection page for images: https://collections.tepapa.govt.nz/object/972921
+
+Fetched the Te Papa collection record directly (dimensions 980×890×58mm, materials, "Gift of the New Zealand Army Department, 1961", registration GH017123) and Te Papa's own 2011 research blog post, which turned out to have much richer detail than what was used for the tapestry article: the full list of the 18 soldiers and 1 nurse named on the banner, confirmation that it was installed at St Mary's Church in January 1920 and carried to the graveside every Anzac Day until a brass tablet replaced it in 1932 (both dates were only in the owner's earlier unverified draft text until this fetch confirmed them directly from Te Papa), and a specific soldier's story (Private James Porter) to open the "nineteen names" section with.
+
+Built at `/history/mount-felix-memorial-banner/`. Cross-linked in all directions: added to the `related` arrays of `mount-felix.md`, `mount-felix-tapestry.md`, and `st-marys-church.md`; replaced the tapestry page's inline description of the banner with a link to this new dedicated page; added the January 1920 / 1932 dates to `st-marys-church.md`'s and `mount-felix.md`'s existing brief mentions, which previously only said the church "holds a memorial" without dates.
+
+Verified: full build (188 pages), browser check of the new page's 19-name list, sources, and related reading, plus all three cross-linking pages' updated body links and sidebars.
+
 ## 2026-07-11 — /history/mount-felix-tapestry/ (owner-supplied SEO draft, outside the extension build order)
 Owner supplied a heavily-structured ~3000-word SEO draft (FAQPage JSON-LD, image plan, Harvard-style references, contextual-internal-link table, a full `@graph` schema block) for a second Mount Felix-linked article, this time about the Mount Felix Tapestry (the 2015–2017 community embroidery project, not to be confused with the older circa-1919 memorial banner held by Te Papa). Rebuilt rather than published as-is, same pattern as the Queen Victoria draft earlier in this project:
 
