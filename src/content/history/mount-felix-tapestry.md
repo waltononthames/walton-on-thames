@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["wartime", "contemporary"]
 entityType: "event"
 publishDate: 2026-07-11
-reviewedDate: 2026-07-11
+reviewedDate: 2026-07-12
 sources:
   - label: "Elmbridge Museum — The Mount Felix War Hospital"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/the-mount-felix-war-hospital/"
@@ -19,6 +19,8 @@ sources:
     url: "https://riverhousebarn.co.uk/get-involved/mount-felix-tapestry/"
   - label: "Lost Heritage — Mount Felix"
     url: "https://www.lostheritage.org.uk/houses/lh_surrey_mountfelix.html"
+  - label: "kinderzimmer Walton-on-Thames"
+    url: "https://kinderzimmer.co.uk/location/walton-on-thames/"
 related: ["mount-felix", "arthur-white", "st-marys-church"]
 ---
 
@@ -30,7 +32,7 @@ Mount Felix operated as No. 2 New Zealand General Hospital from July 1915, treat
 
 ## How the tapestry was made
 
-The project was organised through Riverhouse Barn Arts Centre in Walton, launched in April 2015 to mark the centenary of the hospital's opening, and completed in April 2017. Scottish artist Andrew Crummy designed a shared visual framework for the panels, within which community groups and individual stitchers in Walton and in New Zealand embroidered the 44 finished panels, contributing more than 6,000 hours of work between them. Despite the name, the finished work is technically a series of embroidered panels rather than a woven tapestry, though "tapestry" has stuck as its popular title.
+The idea began with Emily Boulting, director of Riverhouse Barn Arts Centre in Walton, who came across the story of the Mount Felix hospital in 2013 and was struck by how little the town seemed to remember of it. The project she launched through Riverhouse Barn in April 2015 marked the centenary of the hospital's opening. Scottish artist Andrew Crummy designed a shared visual framework for the panels, within which community groups and individual stitchers in Walton and in New Zealand embroidered the 44 finished panels, contributing more than 6,000 hours of work between them. The completed tapestry was formally opened in Walton on 23 April 2017 by the New Zealand High Commissioner and the Mayor of Walton. Despite the name, the finished work is technically a series of embroidered panels rather than a woven tapestry, though "tapestry" has stuck as its popular title.
 
 <!-- IMAGE: mount-felix-tapestry-stitching.jpg — alt: "Close view of hand embroidery on a Mount Felix Tapestry panel" -->
 
@@ -52,7 +54,7 @@ The tapestry is often confused with a much older piece of embroidery connected t
 
 ## What remains of Mount Felix today
 
-Mount Felix House itself is gone. A serious fire in June 1966 led to the demolition of the main house and its tower in 1967. Only the stable block and clock tower survive, Grade II listed and since converted to office use, a short walk from where the hospital once stood.
+Mount Felix House itself is gone. A serious fire in June 1966 led to the demolition of the main house and its tower in 1967. Only the stable block and clock tower survive, Grade II listed, a short walk from where the hospital once stood. Having previously been used as offices, the building is now home to a day nursery, [kinderzimmer Walton-on-Thames](https://kinderzimmer.co.uk/location/walton-on-thames/).
 
 <!-- IMAGE: mount-felix-clock-tower-today.jpg — alt: "The surviving Grade II listed clock tower and stable block of Mount Felix" -->
 

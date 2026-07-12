@@ -9,7 +9,7 @@ entityType: "place"
 heroImage: "/images/history/mount-felix-clock-tower.jpg"
 heroAlt: "Mount Felix House, Walton-on-Thames, during the First World War"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-11
+reviewedDate: 2026-07-12
 sources:
   - label: "Wikipedia — No. 2 New Zealand General Hospital"
     url: "https://en.wikipedia.org/wiki/No._2_New_Zealand_General_Hospital"
@@ -47,6 +47,6 @@ That connection has been kept alive rather than simply archived. St Mary's Churc
 
 The clearest everyday reminder of the hospital is New Zealand Avenue, a Walton street that takes its name directly from the wartime hospital nearby. It is a small piece of naming that most residents drive past without a second thought, but it marks the same history as the memorial inside St Mary's: a New Zealand connection written permanently into the map of the town.
 
-Most of Mount Felix itself has gone. A fire in June 1966 led to the demolition of the main house the following year; only the stable block and clock tower survive, Grade II listed and since converted to office use, the last physical fragments of the house that once held nearly two thousand beds and thousands of recovering soldiers a very long way from home.
+Most of Mount Felix itself has gone. A fire in June 1966 led to the demolition of the main house the following year; only the stable block and clock tower survive, Grade II listed, the last physical fragments of the house that once held nearly two thousand beds and thousands of recovering soldiers a very long way from home. Having previously served as offices, the surviving building is now a day nursery.
 
 More recently, the story has been retold in thread rather than brick: see our guide to the [Mount Felix Tapestry](/history/mount-felix-tapestry/), the community embroidery project that spent two years telling individual stories from the hospital. For the wider story of Walton during both world wars, see our guide to [Walton in wartime](/history/walton-in-wartime/).
