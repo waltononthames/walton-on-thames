@@ -2,6 +2,23 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-11 — /history/mount-felix-tapestry/ (owner-supplied SEO draft, outside the extension build order)
+Owner supplied a heavily-structured ~3000-word SEO draft (FAQPage JSON-LD, image plan, Harvard-style references, contextual-internal-link table, a full `@graph` schema block) for a second Mount Felix-linked article, this time about the Mount Felix Tapestry (the 2015–2017 community embroidery project, not to be confused with the older circa-1919 memorial banner held by Te Papa). Rebuilt rather than published as-is, same pattern as the Queen Victoria draft earlier in this project:
+
+**Fact-checked every load-bearing claim.** Most of the draft held up well against primary sources (Elmbridge Museum, Canterbury Museum's own tapestry article, Te Papa's collection record, Riverhouse Barn's own project page): the 44 panels, Andrew Crummy as designer, April 2015–April 2017 project dates, 600+ volunteers and 6,000+ hours, the Edith Popplewell/Lorna Rattray/Hugh Acland *Marquette*-sinking story, the Alexander Grant/Ruth Rosewell romance, Henry Percy Pickerill, and the Te Papa banner's details (circa 1919, 19 names, the "Fox" embroidered as "Cox" error, 1961 acquisition) all checked out.
+
+**Two claims did not hold up and were corrected:**
+- Draft stated the royal visit (King George V, Queen Mary, Prince of Wales) was "13 August 1915, only 13 days after opening" — suspiciously neat arithmetic against the hospital's 31 July 1915 opening date, and Elmbridge Museum's own dated postcard record places the visit in **1917**. Used 1917, dropped the "13 days after opening" framing.
+- Draft hedged the hospital's closure as "in stages between June 1919 and March 1920" — Elmbridge Museum states plainly it closed in **March 1920**, "six months after its counterpart at Oatlands Park." Used the confident date, matching what `mount-felix.md` already said.
+
+**Dropped everything that doesn't match how this site actually works**, rather than publishing it: the FAQPage JSON-LD block and manual `@graph` schema (the shared `HistoryArticle` layout already emits Article/BreadcrumbList JSON-LD from frontmatter — a second hand-written schema block would just conflict), the "Recommended image plan" section (replaced with the site's normal one-`<!-- IMAGE -->`-placeholder-per-H2 convention), the "Contextual internal links" table (implemented as real inline links instead, the draft itself said not to publish this table visibly), the Harvard-style References list (replaced with the standard frontmatter `sources` array, using only the 5 sources actually fetched and checked, dropping unverified specifics like a book ISBN and an unconfirmed Historic England list-entry number), the "Interesting facts" numbered list and "Key facts"/"Timeline" tables (folded the genuinely load-bearing facts into prose instead).
+
+**URL deviates from the draft's request.** Draft asked for a flat `/mount-felix-tapestry/`; built at `/history/mount-felix-tapestry/` instead to stay inside the existing `history` collection architecture (auto sources block, Related Reading sidebar, JSON-LD, breadcrumb) rather than a one-off page outside it.
+
+Condensed from ~3000 words to a normal entity-page length. Cross-linked both directions with `mount-felix.md` and `arthur-white.md` (added to both `related` arrays); also added the 1966 fire / 1967 demolition detail — verified but previously missing — to `mount-felix.md`'s closing section.
+
+Verified: full build (183 pages), browser check of the new page's content/sources/related-reading, and both cross-linking pages' updated related-reading sidebars and body links.
+
 ## 2026-07-11 — Illustrated /history/arthur-white/ with 11 images (family-supplied)
 Owner supplied images one at a time over several turns, mostly by saving files directly into `public/images/history/` rather than pasting them in chat (no in-chat image → file path exists, so files on disk were the only way to get pixels into the repo). Final set: Arthur's portrait, his parents, the Mount Felix ward (with his specific bed noted), a wartime postcard to Ethel (source of the portrait photo), Ethel's portrait, The Hollies (Borrowash), St Werburgh's Church (Spondon), his Certificate of Service, British War Medal, Victory Medal, and a family photo in NZ Police uniform. No wedding-day photo existed, so that placeholder was removed rather than left unfilled.
 
