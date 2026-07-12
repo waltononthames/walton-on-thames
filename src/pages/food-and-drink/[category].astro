@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import { getCollection } from 'astro:content';
+
+const CORE_AREAS = ['walton-on-thames', 'hersham', 'whiteley-village'];
+
+export async function getStaticPaths() {
+  const categories = [
+    { slug: 'restaurants', label: 'Restaurants' },
+    { slug: 'pubs-and-bars', label: 'Pubs & Bars' },
+    { slug: 'cafes', label: 'Cafes' },
+    { slug: 'takeaways', label: 'Takeaways' },
+  ];
+  return categories.map(cat => ({
+    params: { category: cat.slug },
+    props: { category: cat },
+  }));
+}
+
+const { category } = Astro.props;
+
+const categories = [
+  { slug: 'restaurants', label: 'Restaurants' },
+  { slug: 'pubs-and-bars', label: 'Pubs & Bars' },
+  { slug: 'cafes', label: 'Cafes' },
+  { slug: 'takeaways', label: 'Takeaways' },
+];
+
+const businesses = await getCollection('businesses');
+const filtered = businesses.filter(b =>
+  b.data.category === category.slug ||
+  (category.slug === 'pubs-and-bars' && b.data.subcategories.includes('pub-with-rooms') && CORE_AREAS.includes(b.data.neighbourhood))
+);
+---
+
+<BaseLayout
+  title={`${category.label} in Walton-on-Thames — Food & Drink`}
+  description={`${category.label} in Walton-on-Thames, Hersham and Whiteley Village — find the full list with our food and drink guide.`}
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Food & Drink", "item": "https://walton-on-thames.org/food-and-drink/" },
+        { "@type": "ListItem", "position": 3, "name": category.label, "item": `https://walton-on-thames.org/food-and-drink/${category.slug}/` }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/food-and-drink/">Food & Drink</a></li>
+          <li aria-current="page">{category.label}</li>
+        </ol>
+      </nav>
+      <h1>{category.label} in Walton-on-Thames</h1>
+      <p>Browse {category.label.toLowerCase()} across Walton-on-Thames, Hersham and Whiteley Village.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cat-tabs">
+        <a href="/food-and-drink/" class="cat-tab">All</a>
+        {categories.map(cat => (
+          <a href={`/food-and-drink/${cat.slug}/`} class={`cat-tab ${cat.slug === category.slug ? 'is-active' : ''}`}>{cat.label}</a>
+        ))}
+      </div>
+
+      {filtered.length > 0 ? (
+        <div class="card-grid card-grid-3">
+          {filtered.map(biz => (
+            <BusinessCard
+              name={biz.data.name}
+              slug={biz.data.slug}
+              category={biz.data.category}
+              neighbourhood={biz.data.neighbourhood}
+              description={biz.data.description}
+              images={biz.data.images}
+              featured={biz.data.featured}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">No {category.label.toLowerCase()} listed yet — check back soon, or <a href="/directory/">browse the full directory</a>.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cat-tabs {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cat-tab {
+    padding: 0.5rem 1.25rem;
+    border: 1.5px solid rgba(11,36,46,0.15);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-navy);
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .cat-tab:hover,
+  .cat-tab.is-active {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  .empty-state {
+    color: var(--color-slate);
+    font-size: 1.05rem;
+    padding: 2rem 0;
+  }
+</style>
