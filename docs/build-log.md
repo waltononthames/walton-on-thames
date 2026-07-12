@@ -2,6 +2,15 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-12 — Fixed /food-and-drink/ category tab 404s
+Owner reported that filtering by category (e.g. Cafes) on `/food-and-drink/` led to a 404. The category tabs linked to `/food-and-drink/<category>/` but no route existed to handle those URLs — only `index.astro` existed in that directory. Added `src/pages/food-and-drink/[category].astro`, mirroring the index page's layout and filter logic (including the pub-with-rooms subcategory match for Pubs & Bars), with the active tab highlighted.
+
+Hit an Astro-specific gotcha while building it: `getStaticPaths()` is extracted into its own isolated module chunk at build time and cannot reference other top-level frontmatter variables, even ones declared earlier in the same file — `categories is not defined` at build time despite being valid-looking JS. Fixed by declaring the categories array separately inside `getStaticPaths()` and again at top level for the render body, rather than sharing one declaration.
+
+Had a general-purpose agent audit the rest of the site for the same pattern (a `.map()`-generated `href` with no matching route) — confirmed this was the only instance; every other card/link generator was checked against its matching `[slug].astro`/route and collection.
+
+Verified: full build (197 pages), browser check of all 4 category pages (correct card counts, correct active-tab highlighting, "All" tab linking back to the index).
+
 ## 2026-07-12 — /history/mount-felix-memorial-banner/ (third Mount Felix-linked article)
 Owner asked for a dedicated article on the circa-1919 memorial banner (already covered briefly within `mount-felix-tapestry.md`'s "not the same as..." section), linking to Te Papa's own collection page for images: https://collections.tepapa.govt.nz/object/972921
 
