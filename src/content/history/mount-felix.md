@@ -15,7 +15,7 @@ sources:
     url: "https://en.wikipedia.org/wiki/No._2_New_Zealand_General_Hospital"
   - label: "Elmbridge Museum — The Mount Felix War Hospital"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/the-mount-felix-war-hospital/"
-related: ["walton-in-wartime", "st-marys-church", "arthur-white", "mount-felix-tapestry"]
+related: ["walton-in-wartime", "st-marys-church", "arthur-white", "mount-felix-tapestry", "mount-felix-memorial-banner"]
 ---
 
 For four years during the First World War, a Surrey country house became the first hospital in Britain dedicated specifically to New Zealand's wounded. Mount Felix is largely gone now, but the connection it created between Walton-on-Thames and New Zealand has outlasted the building by a century.
@@ -41,7 +41,7 @@ Behind the treatment figures are individual stories, kept alive by families on t
 
 ## Remembrance today
 
-That connection has been kept alive rather than simply archived. St Mary's Church, a short distance from the Mount Felix site, holds a memorial to the New Zealand soldiers who died here and hosts an annual remembrance service, meaning the link between Walton and New Zealand is renewed every year rather than left to fade. Read more about the [church itself](/history/st-marys-church/), which carries this alongside its own much older history.
+That connection has been kept alive rather than simply archived. St Mary's Church, a short distance from the Mount Felix site, holds a memorial to the New Zealand soldiers who died here and hosts an annual remembrance service, meaning the link between Walton and New Zealand is renewed every year rather than left to fade. A patient-made [memorial banner](/history/mount-felix-memorial-banner/), now held by New Zealand's national museum, was carried to the graveside every Anzac Day before a permanent brass tablet took over in 1932. Read more about the [church itself](/history/st-marys-church/), which carries this alongside its own much older history.
 
 ## New Zealand Avenue
 

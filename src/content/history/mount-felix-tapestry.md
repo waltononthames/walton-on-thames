@@ -21,7 +21,7 @@ sources:
     url: "https://www.lostheritage.org.uk/houses/lh_surrey_mountfelix.html"
   - label: "kinderzimmer Walton-on-Thames"
     url: "https://kinderzimmer.co.uk/location/walton-on-thames/"
-related: ["mount-felix", "arthur-white", "st-marys-church"]
+related: ["mount-felix", "arthur-white", "st-marys-church", "mount-felix-memorial-banner"]
 ---
 
 The Mount Felix Tapestry is a set of 44 embroidered panels telling the story of the New Zealand military hospital that once stood in Walton-on-Thames. Made between 2015 and 2017 by more than 600 volunteers in Britain and New Zealand, it is a very different, much newer piece of work from the embroidered memorial banner hospital patients made around 1919, which is now held in New Zealand's national museum.
@@ -48,7 +48,7 @@ The finished tapestry toured New Zealand for around 18 months from 2018, shown a
 
 ## Not the same as the older war memorial banner
 
-The tapestry is often confused with a much older piece of embroidery connected to the same hospital: a memorial banner worked by patients at Mount Felix around 1919. That banner commemorates 19 New Zealand soldiers who died at the hospital and are buried in the churchyard of [St Mary's Church](/history/st-marys-church/), Walton-on-Thames, and it is still carried from the church to their graves during the annual Anzac Day service. One name on the banner was embroidered incorrectly, recording William Fox as "Cox". The banner was given to New Zealand's national museum, then the Dominion Museum, in 1961, and is now held by the Museum of New Zealand Te Papa Tongarewa in Wellington. The modern Mount Felix Tapestry, by contrast, is a twenty-first-century project, made almost a century after the banner and by an entirely different set of contributors.
+The tapestry is often confused with a much older piece of embroidery connected to the same hospital: a [memorial banner](/history/mount-felix-memorial-banner/) worked by a recovering patient at Mount Felix around 1919, naming 18 soldiers and one nurse who died at the hospital, and installed at [St Mary's Church](/history/st-marys-church/), Walton-on-Thames, in January 1920. It is now held by the Museum of New Zealand Te Papa Tongarewa in Wellington. The modern Mount Felix Tapestry, by contrast, is a twenty-first-century project, made almost a century after the banner and by an entirely different set of contributors.
 
 <!-- IMAGE: mount-felix-memorial-banner.jpg — alt: "First World War New Zealand memorial banner made at Walton-on-Thames, held by Te Papa" -->
 

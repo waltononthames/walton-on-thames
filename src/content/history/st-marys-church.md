@@ -11,7 +11,7 @@ reviewedDate: 2026-07-02
 sources:
   - label: "Wikipedia — Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
-related: ["walton-bridge", "famous-residents"]
+related: ["walton-bridge", "famous-residents", "mount-felix-memorial-banner", "mount-felix"]
 ---
 
 St Mary's Church, on Church Street, is Walton's oldest building and the direct physical link between the modern town and its medieval parish. It is Grade I listed, and its fabric alone tells a longer story than most local histories manage: Saxon material survives within a structure that was substantially built up in the twelfth century, with additions made across most of the centuries since. It stands a short walk from [Walton Bridge](/history/walton-bridge/) and the older riverside core of the town.
@@ -40,7 +40,7 @@ St Mary's has one more claim that has nothing to do with the medieval period at 
 
 ## The New Zealand memorial
 
-St Mary's carries one more layer, this one from the twentieth century. During the First World War, the New Zealand military hospital at Mount Felix treated around 27,000 men, and those who died there are buried in the churchyard and cemetery nearby. St Mary's holds a memorial to them and hosts an annual remembrance service, which means the church remains, in a very direct sense, a place where Walton's history and New Zealand's history intersect every year rather than only in the archives.
+St Mary's carries one more layer, this one from the twentieth century. During the First World War, the New Zealand military hospital at [Mount Felix](/history/mount-felix/) treated around 27,000 men, and those who died there are buried in the churchyard and cemetery nearby. A [memorial banner](/history/mount-felix-memorial-banner/) embroidered by a recovering patient was installed at the church in January 1920 and carried to the graveside every Anzac Day for over a decade, before a brass memorial tablet took over as the church's permanent memorial in 1932. The connection is still marked with an annual remembrance service, which means the church remains, in a very direct sense, a place where Walton's history and New Zealand's history intersect every year rather than only in the archives.
 
 ## Visiting
 
