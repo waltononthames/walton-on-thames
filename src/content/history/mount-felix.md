@@ -6,7 +6,7 @@ slug: "mount-felix"
 cluster: "walton-history"
 era: ["wartime", "edwardian"]
 entityType: "place"
-heroImage: "/images/history/mount-felix-clock-tower.jpg"
+heroImage: "/images/history/mount-felix-clock-tower.webp"
 heroAlt: "Mount Felix House, Walton-on-Thames, during the First World War"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-12
@@ -21,7 +21,7 @@ related: ["walton-in-wartime", "st-marys-church", "arthur-white", "mount-felix-t
 For four years during the First World War, a Surrey country house became the first hospital in Britain dedicated specifically to New Zealand's wounded. Mount Felix is largely gone now, but the connection it created between Walton-on-Thames and New Zealand has outlasted the building by a century.
 
 <figure>
-  <img src="/images/history/mount-felix-clock-tower.jpg" alt="Mount Felix House, Walton-on-Thames, during the First World War" loading="lazy" />
+  <img src="/images/history/mount-felix-clock-tower.webp" alt="Mount Felix House, Walton-on-Thames, during the First World War" loading="lazy" />
   <figcaption>Mount Felix, Walton-on-Thames, home of No. 2 New Zealand General Hospital, where Arthur White and thousands of others were treated. Photograph courtesy of the White family.</figcaption>
 </figure>
 

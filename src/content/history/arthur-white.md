@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["wartime"]
 entityType: "person"
 contributor: "Kevin Murphy, Arthur White's grandson"
-heroImage: "/images/history/arthur-white-portrait.jpg"
+heroImage: "/images/history/arthur-white-portrait.webp"
 heroAlt: "Portrait of Arthur White in New Zealand Expeditionary Force uniform"
 publishDate: 2026-07-11
 reviewedDate: 2026-07-11
@@ -24,7 +24,7 @@ related: ["mount-felix", "mount-felix-tapestry"]
 Among the roughly 27,000 New Zealand soldiers treated at Mount Felix during the First World War was Gunner Arthur White, wounded on the Western Front and shipped home to Walton-on-Thames to recover. His story survives today because his grandson, Kevin Murphy, has kept it.
 
 <figure>
-  <img src="/images/history/arthur-white-portrait.jpg" alt="Portrait of Arthur White in New Zealand Expeditionary Force uniform" loading="lazy" />
+  <img src="/images/history/arthur-white-portrait.webp" alt="Portrait of Arthur White in New Zealand Expeditionary Force uniform" loading="lazy" />
   <figcaption>Arthur White, taken from a postcard photograph he sent to Ethel during the war. This photograph has been upscaled using AI from the original.</figcaption>
 </figure>
 
@@ -33,7 +33,7 @@ Among the roughly 27,000 New Zealand soldiers treated at Mount Felix during the 
 Arthur was born in Leicester, England, on 25 August 1888, the son of Charles Taylor White and Annie Sarah (Leedham) White. In December 1912 he left England for New Zealand with his mother and sister, Hilda Florence White, sailing from Tilbury Dock aboard the RMS Remuera, a New Zealand Shipping Company liner under Captain Greenstreet. They arrived in Wellington on 3 February 1913.
 
 <figure>
-  <img src="/images/history/charles-and-annie-white.jpg" alt="Charles Taylor White and Annie Sarah (Leedham) White, Arthur's parents" loading="lazy" />
+  <img src="/images/history/charles-and-annie-white.webp" alt="Charles Taylor White and Annie Sarah (Leedham) White, Arthur's parents" loading="lazy" />
   <figcaption>Arthur's parents, Charles Taylor White and Annie Sarah (Leedham) White. This photograph has been upscaled using AI from the original.</figcaption>
 </figure>
 
@@ -42,7 +42,7 @@ Arthur was born in Leicester, England, on 25 August 1888, the son of Charles Tay
 In April 1916 Arthur returned to England, escorting his mother home aboard the Rimutaka, and on 28 June 1916 he joined the New Zealand Expeditionary Force at Hornchurch in Essex, then home to the NZEF's depot at Grey Towers. After only three weeks of training he was sent to France as a Gunner with the 4th Howitzer Battery. He later worked as a cook in the sergeants' mess and, having passed a cook's examination, drew a Bombardier's pay without holding the rank itself, a discrepancy he apparently never minded, being simply glad of the extra money.
 
 <figure>
-  <img src="/images/history/mount-felix-ward-1917.jpg" alt="A ward at No. 2 New Zealand General Hospital, Mount Felix, during the First World War" loading="lazy" />
+  <img src="/images/history/mount-felix-ward-1917.webp" alt="A ward at No. 2 New Zealand General Hospital, Mount Felix, during the First World War" loading="lazy" />
   <figcaption>A ward at Mount Felix. Arthur occupies the first bed on the right-hand side. This photograph has been upscaled using AI, as the original was in poor condition.</figcaption>
 </figure>
 
@@ -57,39 +57,39 @@ Arthur lost most of his wartime souvenirs in the explosion that wounded him, but
 Ethel Baxter was born at Coton in the Elms, Derbyshire, on 16 April 1888. While still serving with the Expeditionary Force, Arthur married her at St Werburgh's Church, Spondon, Derbyshire, on 24 February 1919. The two had met through Arthur's aunt, Mary Leedham, who worked as a cook for the Bunning family at The Hollies, Borrowash, where Ethel was employed as a maid, and the couple had corresponded throughout the war.
 
 <figure>
-  <img src="/images/history/arthur-postcard-to-ethel.jpg" alt="A postcard sent by Arthur White to Ethel Baxter during the war, addressed to The Hollies, Borrowash" loading="lazy" />
+  <img src="/images/history/arthur-postcard-to-ethel.webp" alt="A postcard sent by Arthur White to Ethel Baxter during the war, addressed to The Hollies, Borrowash" loading="lazy" />
   <figcaption>One of the postcards Arthur sent to Ethel during the war. The portrait of Arthur used on this page was taken from one of these postcards.</figcaption>
 </figure>
 
 <figure>
-  <img src="/images/history/the-hollies-borrowash.jpg" alt="The Hollies, Borrowash, Derbyshire" loading="lazy" />
+  <img src="/images/history/the-hollies-borrowash.webp" alt="The Hollies, Borrowash, Derbyshire" loading="lazy" />
   <figcaption>The Hollies, Borrowash, Derbyshire, home of the Bunning family, where Ethel and Mary Leedham worked.</figcaption>
 </figure>
 
 <figure>
-  <img src="/images/history/st-werburghs-church-spondon.jpg" alt="St Werburgh's Church, Spondon, Derbyshire" loading="lazy" />
+  <img src="/images/history/st-werburghs-church-spondon.webp" alt="St Werburgh's Church, Spondon, Derbyshire" loading="lazy" />
   <figcaption>St Werburgh's Church, Spondon, Derbyshire, where Arthur and Ethel married on 24 February 1919.</figcaption>
 </figure>
 
 <figure>
-  <img src="/images/history/ethel-baxter-portrait.jpg" alt="Portrait of Ethel Baxter, Arthur White's future wife" loading="lazy" />
+  <img src="/images/history/ethel-baxter-portrait.webp" alt="Portrait of Ethel Baxter, Arthur White's future wife" loading="lazy" />
   <figcaption>Ethel Baxter, Arthur's future wife. This photograph has been upscaled using AI from the original.</figcaption>
 </figure>
 
 Arthur and Ethel left England from Plymouth aboard the troopship RMS Athenic on 15 July 1919, returning to Wellington. Arthur was formally discharged from the New Zealand Expeditionary Force on 29 September 1919, having completed three years and 93 days of active service, and was awarded the British War Medal and the Victory Medal.
 
 <figure>
-  <img src="/images/history/arthur-white-british-war-medal.jpg" alt="Arthur White's British War Medal, obverse and reverse" loading="lazy" />
+  <img src="/images/history/arthur-white-british-war-medal.webp" alt="Arthur White's British War Medal, obverse and reverse" loading="lazy" />
   <figcaption>Arthur's British War Medal.</figcaption>
 </figure>
 
 <figure>
-  <img src="/images/history/arthur-white-victory-medal.jpg" alt="Arthur White's Victory Medal, obverse and reverse" loading="lazy" />
+  <img src="/images/history/arthur-white-victory-medal.webp" alt="Arthur White's Victory Medal, obverse and reverse" loading="lazy" />
   <figcaption>Arthur's Victory Medal.</figcaption>
 </figure>
 
 <figure>
-  <img src="/images/history/arthur-white-certificate-of-service.jpg" alt="Arthur White's Certificate of Service in the New Zealand Expeditionary Forces" loading="lazy" />
+  <img src="/images/history/arthur-white-certificate-of-service.webp" alt="Arthur White's Certificate of Service in the New Zealand Expeditionary Forces" loading="lazy" />
   <figcaption>Arthur's Certificate of Service, recording his discharge and medals.</figcaption>
 </figure>
 
@@ -98,7 +98,7 @@ Arthur and Ethel left England from Plymouth aboard the troopship RMS Athenic on 
 Arthur and Ethel had two children, Doris Mary and Leslie Arthur. Arthur joined the New Zealand Police Force in Auckland on 19 December 1919, serving over the course of his career at Auckland, Newmarket, Thames, Papakura, Whitianga and Mount Roskill, before retiring on 16 January 1949. He and Ethel then retired to Cockle Bay, a seaside suburb of Auckland, where Arthur died on 10 July 1952.
 
 <figure>
-  <img src="/images/history/arthur-white-family-police-uniform.jpg" alt="Arthur White in New Zealand Police uniform with his wife Ethel and children Doris and Leslie" loading="lazy" />
+  <img src="/images/history/arthur-white-family-police-uniform.webp" alt="Arthur White in New Zealand Police uniform with his wife Ethel and children Doris and Leslie" loading="lazy" />
   <figcaption>Arthur in his New Zealand Police uniform with Ethel, daughter Doris and son Leslie. This photograph has been upscaled using AI from the original.</figcaption>
 </figure>
 
