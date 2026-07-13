@@ -1,4 +1,6 @@
 ---
+import { formatPlaceName } from '../utils/format';
+
 interface Props {
   name: string;
   slug: string;
@@ -12,6 +14,7 @@ interface Props {
 const { name, slug, category, neighbourhood, description, images = [], featured = false } = Astro.props;
 
 const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+const neighbourhoodLabel = formatPlaceName(neighbourhood);
 const thumbUrl = images[0] ?? null;
 ---
 
@@ -27,7 +30,7 @@ const thumbUrl = images[0] ?? null;
     </div>
     <h3 class="card-title">{name}</h3>
     <p class="card-description">{description}</p>
-    <span class="badge">{neighbourhood.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</span>
+    <span class="badge">{neighbourhoodLabel}</span>
   </div>
 </a>
 

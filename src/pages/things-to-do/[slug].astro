@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
+import { formatPlaceName } from '../../utils/format';
 
 export async function getStaticPaths() {
   const places = await getCollection('places');
@@ -15,7 +16,7 @@ const { place } = Astro.props;
 const { Content } = await render(place);
 
 const categoryLabel = place.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
-const neighbourhoodLabel = place.data.neighbourhood.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+const neighbourhoodLabel = formatPlaceName(place.data.neighbourhood);
 
 const neighbourhoodHref: Record<string, string> = {
   'walton-on-thames': '/',

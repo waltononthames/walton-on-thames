@@ -27,6 +27,7 @@ const dateStr = start.toLocaleDateString('en-GB', { weekday: 'long', day: 'numer
 const timeStr = start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 const endTimeStr = end ? end.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : null;
 const categoryLabel = event.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+const isFreeEvent = /^free/i.test(event.data.price);
 ---
 
 <BaseLayout
@@ -48,12 +49,15 @@ const categoryLabel = event.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c
         "name": event.data.venue,
         "address": { "@type": "PostalAddress", "addressLocality": "Walton-on-Thames", "addressRegion": "Surrey", "addressCountry": "GB" }
       },
-      "offers": {
-        "@type": "Offer",
-        "price": event.data.price === 'Free' ? "0" : "",
-        "priceCurrency": "GBP",
-        "availability": "https://schema.org/InStock"
-      },
+      ...(isFreeEvent ? {
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP",
+          "availability": "https://schema.org/InStock",
+          "url": `https://walton-on-thames.org/whats-on/${event.data.slug}/`
+        }
+      } : {}),
       "organizer": { "@type": "Organization", "name": "Walton-on-Thames.org", "url": "https://walton-on-thames.org/" },
       ...(event.data.image ? { "image": `https://walton-on-thames.org${event.data.image}` } : {}),
     })} />
