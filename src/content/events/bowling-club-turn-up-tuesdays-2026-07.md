@@ -1,5 +1,5 @@
 ---
-title: "Walton on Thames Bowling Club: Turn up Tuesdays"
+title: "Walton-on-Thames Bowling Club: Turn up Tuesdays"
 slug: "bowling-club-turn-up-tuesdays-2026-07"
 start: "2026-07-14T17:00:00"
 end: "2026-07-14T20:00:00"
@@ -12,7 +12,7 @@ description: "A weekly drop-in bowls session open to all, beginners welcome, at 
 source_url: "https://lovewalton.co.uk/whats-on/"
 ---
 
-Walton on Thames Bowling Club opens its green to anyone wanting to try lawn bowls, with equipment and guidance available for newcomers. No experience or membership needed to turn up.
+Walton-on-Thames Bowling Club opens its green to anyone wanting to try lawn bowls, with equipment and guidance available for newcomers. No experience or membership needed to turn up.
 
 Held every Tuesday, 5pm to 8pm.
 
