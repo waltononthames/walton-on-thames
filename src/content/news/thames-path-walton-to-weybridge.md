@@ -43,13 +43,13 @@ If the tide is right and the light is good, look north from the meadow to the ca
 
 At the western end of Cowey Sale, the path passes **Walton Rowing Club** — one of the most active clubs in the region, with eights and fours out on the water most mornings. If you're walking on a weekend, there will likely be coaching sessions underway, the coxswains calling rhythm across the water.
 
-Beyond the club, the river widens and **Desborough Island** comes into view on the north bank — a large, semi-natural island created when the Desborough Cut was dug in 1935 to straighten and deepen the navigation channel. The island is now owned by Surrey County Council and managed as a nature reserve; it's accessible by a footbridge from the Weybridge side.
+Beyond the club, the river widens and **Desborough Island** comes into view on the north bank, a large, semi-natural island created by the Desborough Cut, dug between 1930 and 1935 to straighten and deepen the navigation channel. Ownership is split between the Environment Agency, Surrey County Council and Elmbridge Borough Council, with Elmbridge's commons management team caring for it as a site of nature conservation importance. Two footbridges from Walton Lane provide access, one towards Weybridge and one towards Walton-on-Thames.
 
 ### D'Oyly Carte Island
 
 A little further west, look carefully in the middle of the river for the small, densely-wooded **D'Oyly Carte Island** — named after Richard D'Oyly Carte, the Victorian impresario who produced the Gilbert and Sullivan operas and built the Savoy Hotel. He owned the island as a private retreat in the 1890s.
 
-Today it is privately owned and inaccessible, but makes a distinctive mid-river landmark visible from the towpath. The Victorian house glimpsed through the trees gives it a pleasingly gothic quality in winter.
+The island remains privately owned, but since 2023 it has reopened to the public on a ticketed basis, with a seasonal café, bar and a programme of events including summer concerts; visitors arrive by advance booking via a footbridge, not via the towpath. See [D'Oyly Carte Island's website](https://www.doylycarteisland.com/) for current opening details. Seen from the Thames Path itself, it remains best appreciated as a distinctive mid-river landmark, the Victorian house glimpsed through the trees giving it a pleasingly gothic quality in winter.
 
 ### The River Wey confluence
 
