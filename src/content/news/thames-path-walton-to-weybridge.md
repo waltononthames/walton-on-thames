@@ -75,7 +75,7 @@ Alternatively, **take the train**: Weybridge station is a 10-minute walk from th
 
 **Before the walk:** The Heart in Walton town centre has several cafes and the riverside has a good option or two near the bridge.
 
-**After the walk:** The Walton Arms or similar riverside pubs near Weybridge are a natural end to a return walk.
+**After the walk:** [The Old Crown](http://theoldcrownweybridge.co.uk/), on Thames Street in Weybridge, sits right at the Wey confluence itself, with a riverside garden overlooking the point where the two rivers meet, a natural end to the walk.
 
 ## Seasonal highlights
 
