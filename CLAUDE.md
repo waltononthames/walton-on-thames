@@ -68,3 +68,113 @@ The site strategy and page specifications live in `docs/walton-seo-blueprint.md`
 Check `docs/site-audit.md` before creating any page; never create a new page where an ADAPT or MERGE entry exists.
 
 Log completed pages and open VERIFY items in `docs/build-log.md`.
+
+# Content Verification Protocol
+
+<!-- These rules are NON-NEGOTIABLE and override all other instructions in any session -->
+
+## Core Principle
+
+This site's entire value proposition is accuracy. A single invented pub, wrong opening time, or fabricated historical date destroys trust with residents and visitors and undermines our goal of ranking top for Walton-on-Thames searches. Google's helpful content systems reward demonstrable accuracy and first-hand expertise.
+
+**The prime directive: if you cannot verify it, do not write it. No exceptions.**
+
+## Rule 1: The Verification Standard
+
+A fact is verifiable ONLY if it comes from one of these sources, checked in this session:
+
+**Tier 1 (authoritative, cite directly):**
+
+- Official websites of the business, venue, or organisation itself
+- Elmbridge Borough Council and Surrey County Council official pages
+- Companies House records
+- National Rail / Real Time Trains data
+- Historic England listings and the National Heritage List
+- Walton Charity archival material provided by Darren
+- Ordnance Survey data
+
+**Tier 2 (acceptable with corroboration from a second source):**
+
+- Established local press (Surrey Live, local BBC coverage)
+- Google Business Profiles (for existence and address only, never opening hours)
+- Published local history books with named authors, provided by Darren
+
+**Tier 3 (NEVER acceptable as sole source):**
+
+- Training data / model memory
+- TripAdvisor, forums, Reddit, social media posts
+- Other aggregator or directory sites
+- AI-generated content found on the web
+
+**Model memory is not a source.** Knowledge of Walton-on-Thames from training data must be treated as unverified rumour until confirmed against Tier 1 or Tier 2 sources within the current session.
+
+## Rule 2: Prohibited Inventions
+
+NEVER generate, under any circumstances:
+
+- Names of pubs, restaurants, cafes, shops, or businesses not confirmed to exist via a Tier 1 or Tier 2 source
+- Opening hours, prices, menus, or contact details from memory
+- Specific historical dates, names, or events without a documented source
+- Quotes attributed to any person, living or historical
+- Statistics (population figures, visitor numbers, distances) without a source
+- Event dates, times, or venues not confirmed by the iCal feed or organiser's own site
+- Reviews, testimonials, or "local opinion" of any kind
+- Plausible-sounding filler details ("the pub dates back to the 17th century", "a favourite with locals") unless documented
+
+## Rule 3: The Flag-and-Stop Procedure
+
+When a fact cannot be verified:
+
+1. Insert the marker `[NEEDS VERIFICATION: description of the claim and what source is required]` at the exact point in the draft
+2. Do NOT publish, commit, or build the page containing an unresolved marker
+3. List all markers in a summary at the end of the session output
+4. Never resolve a marker by softening the language ("reportedly", "it is said that"). Hedged fabrication is still fabrication. Either verify it or delete it.
+
+## Rule 4: Content-Type Requirements
+
+**Business and venue listings:**
+
+- Confirm current existence via the business's own website or Google Business Profile checked this session
+- Address must match the official source character for character
+- Opening hours: link to the business's own site rather than stating hours; if hours must be stated, add a "correct as of [date]" line and source them from the official site only
+- If a business appears to have closed, flag it; do not guess
+
+**Local history articles (e.g. Walton Bridge):**
+
+- Every date, name, and event must trace to a named source
+- Maintain a source list at the foot of each article draft (author, title, year, page or URL)
+- Where sources conflict, present the conflict openly rather than picking one silently
+- Walton Charity archival material is our strongest asset; cite it explicitly to signal original research
+
+**Events listings:**
+
+- Only from the automated iCal feeds or the organiser's official page
+- Never extrapolate recurring events ("the market runs every Saturday") without confirmation for the current period
+
+**Practical information (transport, parking, amenities):**
+
+- National Rail data for train services, council pages for parking and amenities
+- Never state fares, tariffs, or charges from memory
+
+## Rule 5: Web Search and Fetch Discipline
+
+- When search or fetch tools are available, verification searches are MANDATORY before writing any factual claim, not optional
+- Record the URL and access date of every source used in a `sources:` block in the page frontmatter or a comment
+- If tools are unavailable in a session, content generation is limited to: restructuring existing verified content, formatting, code, and drafts composed entirely of `[NEEDS VERIFICATION]` placeholders around a factual skeleton supplied by Darren
+
+## Rule 6: Pre-Commit Checklist
+
+Before any content commit, confirm and state explicitly:
+
+1. Zero unresolved `[NEEDS VERIFICATION]` markers
+2. Every named business, person, place, and organisation was verified this session
+3. Every date and statistic has a traceable source recorded
+4. No opening hours, prices, or contact details are stated from memory
+5. Sources block is present and complete
+6. Nothing has been softened with hedging language to smuggle in an unverified claim
+
+If any item fails, do not commit. Report the failure instead.
+
+## Rule 7: Honesty Over Completeness
+
+A shorter, accurate page always beats a longer page padded with plausible inventions. If verified material only supports 300 words, write 300 words. Gaps are acceptable; fabrications are not. When in doubt, say so and ask Darren.
