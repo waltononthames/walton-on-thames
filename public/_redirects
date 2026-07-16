@@ -12,6 +12,8 @@
 /visit/ /things-to-do/ 301
 /eat-and-drink/ /food-and-drink/ 301
 /eat-and-drink/* /food-and-drink/:splat 301
+/hotels-and-b%26bs/ /places-to-stay/ 301
+/hotels-and-bbs/ /places-to-stay/ 301
 /community/ /living/ 301
 /community/schools/ /living/schools/ 301
 /community/clubs-and-groups/ /living/community/ 301

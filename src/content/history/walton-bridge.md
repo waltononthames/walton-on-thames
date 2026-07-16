@@ -7,10 +7,14 @@ cluster: "walton-history"
 era: ["georgian", "victorian", "wartime", "modern"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-07-16
 sources:
   - label: "Wikipedia — Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
+  - label: "Tate — Canaletto (artist page)"
+    url: "https://www.tate.org.uk/art/artists/canaletto-2302"
+  - label: "Wikipedia — A View of Walton Bridge"
+    url: "https://en.wikipedia.org/wiki/A_View_of_Walton_Bridge"
 related: ["cowey-stakes"]
 ---
 
@@ -20,7 +24,7 @@ Six bridges have crossed the Thames between Walton and Shepperton since the midd
 
 ## The first bridge, and Canaletto
 
-The first bridge at Walton was built between 1748 and 1750, a timber structure carrying the road across to Shepperton. It stood for little more than thirty years before being dismantled in 1783, but it left behind one of the town's most improbable claims to fame: in 1754, the Venetian painter Canaletto, then working in London, painted it. The result is one of only two English subjects Canaletto is known to have painted during his years in Britain, and it shows a bridge in a distinctly rococo, almost oriental style, rising from the Surrey bank in a way that looks more like a garden folly than a piece of road infrastructure. The painting itself now hangs at Dulwich Picture Gallery, which means the definitive image of Walton's first bridge lives a few miles from Walton but has never actually returned to it.
+The first bridge at Walton was built between 1748 and 1750, a timber structure carrying the road across to Shepperton. It stood for little more than thirty years before being dismantled in 1783, but it left behind one of the town's most improbable claims to fame: in 1754, the Venetian painter Canaletto, then working in London, painted it. The painting shows a bridge in a distinctly rococo, almost oriental style, rising from the Surrey bank in a way that looks more like a garden folly than a piece of road infrastructure. The painting itself now hangs at Dulwich Picture Gallery, which means the definitive image of Walton's first bridge lives a few miles from Walton but has never actually returned to it.
 
 ## The second bridge, and Turner
 

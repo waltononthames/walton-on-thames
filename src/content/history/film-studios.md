@@ -7,10 +7,14 @@ cluster: "walton-history"
 era: ["edwardian", "wartime", "interwar", "postwar"]
 entityType: "institution"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-07-16
 sources:
   - label: "Wikipedia — Walton Studios"
     url: "https://en.wikipedia.org/wiki/Walton_Studios"
+  - label: "Surrey Brass — Hepworth Film Studios Timeline"
+    url: "https://www.surreybrass.co.uk/hepworthfilm/index.php/studios/45-the-studios-a-timeline"
+  - label: "BFI — Most Wanted (lost British films)"
+    url: "https://www.bfi.org.uk/bfi-national-archive/inside-archive/bfi-most-wanted"
 related: ["famous-residents", "walton-bridge"]
 ---
 
@@ -40,7 +44,7 @@ By 1914, Hepworth's studio at Walton was one of only three major film studios op
 
 ## The 1923 bankruptcy and the melted negatives
 
-The studio's most dramatic chapter is also its worst. Hepworth's company went bankrupt in 1923, undone by mounting competition from bigger, better-capitalised rivals, particularly from the United States. What happened next is the detail that makes the story genuinely painful rather than simply a business failure: the receiver appointed to wind up the company melted down the entire negative catalogue, roughly two thousand films, to recover the silver content of the film stock. Estimates suggest this single act of asset recovery destroyed something like eighty per cent of all British films made between 1900 and 1929. It is one of the starkest single losses in the history of British cinema, and it happened in Walton, to a catalogue built up over more than two decades of continuous production.
+The studio's most dramatic chapter is also its worst. Hepworth's company went bankrupt in 1923, undone by mounting competition from bigger, better-capitalised rivals, particularly from the United States. What happened next is the detail that makes the story genuinely painful rather than simply a business failure: the receiver appointed to wind up the company melted down Hepworth's original negatives, around two thousand films built up over more than two decades of continuous production. Accounts differ on the exact reason: some say the material was sold for its silver content, others that it was reprocessed to make waterproofing resin. Whatever the reason, the loss itself is well documented and is commonly cited as accounting for around eighty per cent of all British films made between 1900 and 1929, making it one of the starkest single losses in the history of British cinema — and it happened in Walton.
 
 ## Nettlefold and Walton Studios
 
