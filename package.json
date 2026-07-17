@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/check-verification-markers.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check"

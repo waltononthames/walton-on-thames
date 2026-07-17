@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 export PATH="/c/nvm4w/nodejs:$PATH"
 
 npm run dev      # local dev server at http://localhost:4321
-npm run build    # production build → dist/
+npm run build    # production build → dist/ (prebuild fails the build if any [NEEDS VERIFICATION] marker exists in src/ — see Content Verification Protocol Rule 3)
 npm run preview  # serve dist/ locally
 npm run check    # Astro type-check (run before pushing)
 ```
