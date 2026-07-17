@@ -5,8 +5,8 @@ category: "shopping"
 subcategories: ["shopping-centre", "food-court"]
 neighbourhood: "walton-on-thames"
 address: "The Heart Shopping Centre, Walton-on-Thames, KT12 1GH"
-lat: 51.3863
-lng: -0.4050
+lat: 51.3853
+lng: -0.4202
 phone: "+44 1932 222722"
 website: "https://heartshopping.co.uk/"
 description: "Walton's main covered shopping centre in the town centre, with a range of high-street shops, restaurants and cafes, plus a library and gym."
