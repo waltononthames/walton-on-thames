@@ -13,6 +13,8 @@ interface UpcomingItem {
   price: string;
   image?: string;
   description?: string;
+  /** Away fixtures are not in Walton — their venue string (which includes the town) is used as the address instead of the local PostalAddress */
+  isAwayFixture?: boolean;
 }
 
 const events = await getCollection('events');
@@ -39,6 +41,7 @@ const fixtureItems: UpcomingItem[] = fixtures.map(f => ({
   category: 'sport',
   price: 'See club for ticket prices',
   description: `${f.data.competition} fixture${f.data.matchWeek ? ` (match week ${f.data.matchWeek})` : ''} — Walton & Hersham ${f.data.homeAway === 'home' ? 'at home' : 'away'}.`,
+  isAwayFixture: f.data.homeAway === 'away',
 }));
 
 // Filter to items whose end date (or start date if no end) is today or in the future.
@@ -70,7 +73,9 @@ function eventSchema(item: UpcomingItem) {
     "location": {
       "@type": "Place",
       "name": item.venue,
-      "address": { "@type": "PostalAddress", "addressLocality": "Walton-on-Thames", "addressRegion": "Surrey", "addressCountry": "GB" }
+      "address": item.isAwayFixture
+        ? item.venue
+        : { "@type": "PostalAddress", "addressLocality": "Walton-on-Thames", "addressRegion": "Surrey", "addressCountry": "GB" }
     },
     ...(isFreeEvent ? {
       "offers": {

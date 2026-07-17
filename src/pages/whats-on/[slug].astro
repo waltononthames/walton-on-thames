@@ -47,6 +47,8 @@ const description = kind === 'event'
   ? Astro.props.event.data.description
   : `${Astro.props.fixture.data.competition} fixture — Walton & Hersham ${Astro.props.fixture.data.homeAway === 'home' ? 'at home' : 'away'} to ${Astro.props.fixture.data.homeAway === 'home' ? Astro.props.fixture.data.awayTeam : Astro.props.fixture.data.homeTeam}.`;
 
+const isAwayFixture = kind === 'fixture' && Astro.props.fixture.data.homeAway === 'away';
+
 const { Content } = kind === 'event' ? await render(Astro.props.event) : { Content: undefined };
 
 const start = new Date(startRaw);
@@ -74,7 +76,9 @@ const isFreeEvent = /^free/i.test(price);
       "location": {
         "@type": "Place",
         "name": venue,
-        "address": { "@type": "PostalAddress", "addressLocality": "Walton-on-Thames", "addressRegion": "Surrey", "addressCountry": "GB" }
+        "address": isAwayFixture
+          ? venue
+          : { "@type": "PostalAddress", "addressLocality": "Walton-on-Thames", "addressRegion": "Surrey", "addressCountry": "GB" }
       },
       ...(isFreeEvent ? {
         "offers": {
