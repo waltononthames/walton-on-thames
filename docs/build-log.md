@@ -336,5 +336,21 @@ Owner added a new "Content Verification Protocol" to CLAUDE.md (Tier 1/2/3 sourc
 
 **Still not done from this round:** `news` collection schema has no `sources:` field (unlike `history`/`hersham`) — a structural gap, not yet fixed. Tasks #44–47 and #49 (full protocol inventory across news/places/neighbourhoods collections and remaining static pages) remain open.
 
+## 2026-07-17 — Walton & Hersham FC fixtures feed into What's On
+
+Owner supplied the club's official ECAL calendar feed (`webcal://ics.ecal.com/ecal-sub/6a590c1f9d270a000297ec85/Enterprise%20National%20League.ics`) and asked for both home and away fixtures to appear in `/whats-on/`. This is exactly the kind of source the protocol wants for events (an organiser's own automated feed), so built it as a live build-time integration rather than a one-off import that would silently go stale mid-season.
+
+**New `fixtures` content collection** (`src/content.config.ts`), populated by a custom Astro Content Layer loader (`src/loaders/fixtures-loader.ts`) that fetches the live ICS feed on every build — no committed markdown files to maintain, and the existing daily 01:00 UTC Cloudflare rebuild cron keeps it in sync automatically as the club's own schedule changes (postponements, rearranged kick-offs, etc.), the same way past events already drop off nightly.
+
+Implementation notes:
+- Hand-wrote the ICS parser (line unfolding, VEVENT extraction, `\,`/`\;`/`\\` unescaping) rather than add a new dependency — the feed only uses simple UTC timestamps, no RRULE/VALUE=DATE forms, so a full ical library wasn't needed.
+- Home vs away is derived from SUMMARY's team order (home team listed first, per the feed's own convention), not guessed.
+- **Caught and fixed a real timezone bug before shipping**: the feed's DTSTART/DTEND are UTC (`Z` suffix). A naive pass-through would have shown kickoffs an hour early during BST (e.g. a real 3pm Saturday kickoff, encoded as `14:00:00Z`, would render as "14:00" instead of "15:00"). Added a `toLondonLocalIso()` helper using `Intl.DateTimeFormat` with `timeZone: 'Europe/London'` to convert to correct local wall-clock time regardless of the build machine's own timezone, then verified against the live feed in the browser preview (confirmed both a BST fixture and an 18:45Z→19:45 BST fixture rendered correctly).
+- Deliberately dropped the feed's own DESCRIPTION text (ticket links, social media promos, DAZN streaming plugs) rather than publish it verbatim — replaced with a short factual line built from the feed's own competition/match-week/home-or-away fields instead.
+- Price is never stated as a number (protocol Rule 2) — fixtures show "See club for ticket prices," matching the existing "See venue for prices" convention already used for Baby Brunch Club.
+- `/whats-on/index.astro` and `/whats-on/[slug].astro` now merge `events` and `fixtures` into one normalized shape for the card grid, sort, and JSON-LD — fixture detail pages skip the markdown `<Content />` render path (fixtures have no prose body) and instead show a structured summary plus an outbound link to `waltonhershamfc.com/fixtures/first-team/` (the club's own official fixtures page, confirmed via search — preferred per Rule 4 over linking straight to the raw ICS URL).
+
+Verified: full build (233 pages, up from 189 — 46 fixture pages), `astro check` confirmed my changes didn't add net type errors (pre-existing baseline was 185 errors before this session touched anything; after cleanup it's 154, i.e. lower not higher), and browser-checked both the `/whats-on/` grid (fixtures correctly interleaved chronologically with hand-authored events) and an individual fixture detail page.
+
 ## Still open
 `content/neighbourhoods/*` MERGE work is now fully resolved (see above) — no longer open. The only remaining open item from the entire project is `walton-charity`'s full version, which needs Darren's own archival material to move beyond the provisional public-facts page built above. The broader blueprint spoke pages outside the history/Hersham extension remain their own separate body of work, deliberately not started per the user's explicit "pause here" answer.

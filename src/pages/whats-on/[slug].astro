@@ -4,49 +4,76 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
+  const fixtures = await getCollection('fixtures');
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  return events
-    .filter(e => {
-      const d = new Date(e.data.end ?? e.data.start);
-      d.setHours(0, 0, 0, 0);
-      return d >= today;
-    })
-    .map(event => ({
+
+  const isUpcoming = (start: string, end?: string) => {
+    const d = new Date(end ?? start);
+    d.setHours(0, 0, 0, 0);
+    return d >= today;
+  };
+
+  const eventPaths = events
+    .filter((e: (typeof events)[number]) => isUpcoming(e.data.start, e.data.end))
+    .map((event: (typeof events)[number]) => ({
       params: { slug: event.data.slug },
-      props: { event },
+      props: { kind: 'event' as const, event },
     }));
+
+  const fixturePaths = fixtures
+    .filter((f: (typeof fixtures)[number]) => isUpcoming(f.data.start, f.data.end))
+    .map((fixture: (typeof fixtures)[number]) => ({
+      params: { slug: fixture.data.slug },
+      props: { kind: 'fixture' as const, fixture },
+    }));
+
+  return [...eventPaths, ...fixturePaths];
 }
 
-const { event } = Astro.props;
-const { Content } = await render(event);
+const { kind } = Astro.props;
 
-const start = new Date(event.data.start);
-const end = event.data.end ? new Date(event.data.end) : null;
+const title = kind === 'event' ? Astro.props.event.data.title : `${Astro.props.fixture.data.homeTeam} vs ${Astro.props.fixture.data.awayTeam}`;
+const slug = kind === 'event' ? Astro.props.event.data.slug : Astro.props.fixture.data.slug;
+const startRaw = kind === 'event' ? Astro.props.event.data.start : Astro.props.fixture.data.start;
+const endRaw = kind === 'event' ? Astro.props.event.data.end : Astro.props.fixture.data.end;
+const venue = kind === 'event' ? Astro.props.event.data.venue : Astro.props.fixture.data.venue;
+const price = kind === 'event' ? Astro.props.event.data.price : 'See club for ticket prices';
+const categoryLabel = kind === 'event'
+  ? Astro.props.event.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())
+  : 'Sport';
+const image = kind === 'event' ? Astro.props.event.data.image : undefined;
+const description = kind === 'event'
+  ? Astro.props.event.data.description
+  : `${Astro.props.fixture.data.competition} fixture — Walton & Hersham ${Astro.props.fixture.data.homeAway === 'home' ? 'at home' : 'away'} to ${Astro.props.fixture.data.homeAway === 'home' ? Astro.props.fixture.data.awayTeam : Astro.props.fixture.data.homeTeam}.`;
+
+const { Content } = kind === 'event' ? await render(Astro.props.event) : { Content: undefined };
+
+const start = new Date(startRaw);
+const end = endRaw ? new Date(endRaw) : null;
 const dateStr = start.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const timeStr = start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 const endTimeStr = end ? end.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : null;
-const categoryLabel = event.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
-const isFreeEvent = /^free/i.test(event.data.price);
+const isFreeEvent = /^free/i.test(price);
 ---
 
 <BaseLayout
-  title={`${event.data.title} — ${dateStr}`}
-  description={event.data.description ?? `${event.data.title} — ${event.data.venue}`}
-  image={event.data.image}
+  title={`${title} — ${dateStr}`}
+  description={description ?? `${title} — ${venue}`}
+  image={image}
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Event",
-      "name": event.data.title,
-      "startDate": event.data.start,
-      ...(event.data.end ? { "endDate": event.data.end } : {}),
+      "name": title,
+      "startDate": startRaw,
+      ...(endRaw ? { "endDate": endRaw } : {}),
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
-        "name": event.data.venue,
+        "name": venue,
         "address": { "@type": "PostalAddress", "addressLocality": "Walton-on-Thames", "addressRegion": "Surrey", "addressCountry": "GB" }
       },
       ...(isFreeEvent ? {
@@ -55,11 +82,11 @@ const isFreeEvent = /^free/i.test(event.data.price);
           "price": "0",
           "priceCurrency": "GBP",
           "availability": "https://schema.org/InStock",
-          "url": `https://walton-on-thames.org/whats-on/${event.data.slug}/`
+          "url": `https://walton-on-thames.org/whats-on/${slug}/`
         }
       } : {}),
       "organizer": { "@type": "Organization", "name": "Walton-on-Thames.org", "url": "https://walton-on-thames.org/" },
-      ...(event.data.image ? { "image": `https://walton-on-thames.org${event.data.image}` } : {}),
+      ...(image ? { "image": `https://walton-on-thames.org${image}` } : {}),
     })} />
   </slot>
 
@@ -69,27 +96,30 @@ const isFreeEvent = /^free/i.test(event.data.price);
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
           <li><a href="/whats-on/">What's On</a></li>
-          <li aria-current="page">{event.data.title}</li>
+          <li aria-current="page">{title}</li>
         </ol>
       </nav>
       <div class="hero-meta">
         <span class="badge badge-accent">{categoryLabel}</span>
-        <span class="badge">{event.data.price}</span>
+        <span class="badge">{price}</span>
       </div>
-      <h1>{event.data.title}</h1>
+      <h1>{title}</h1>
       <div class="event-datetime">
-        <time datetime={event.data.start}>{dateStr} · {timeStr}{endTimeStr ? ` – ${endTimeStr}` : ''}</time>
+        <time datetime={startRaw}>{dateStr} · {timeStr}{endTimeStr ? ` – ${endTimeStr}` : ''}</time>
       </div>
-      <p class="event-venue">📍 {event.data.venue}</p>
+      <p class="event-venue">📍 {venue}</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container content-layout">
       <article class="prose">
-        <Content />
-        {event.data.source_url && (
-          <p><a href={event.data.source_url} target="_blank" rel="noopener noreferrer">More information on the official event page ↗</a></p>
+        {kind === 'event' && Content ? <Content /> : <p>{description}</p>}
+        {kind === 'event' && Astro.props.event.data.source_url && (
+          <p><a href={Astro.props.event.data.source_url} target="_blank" rel="noopener noreferrer">More information on the official event page ↗</a></p>
+        )}
+        {kind === 'fixture' && (
+          <p><a href="https://waltonhershamfc.com/fixtures/first-team/" target="_blank" rel="noopener noreferrer">Full fixture list on the official Walton & Hersham FC site ↗</a></p>
         )}
       </article>
 
@@ -98,14 +128,14 @@ const isFreeEvent = /^free/i.test(event.data.price);
           <h2>Event details</h2>
           <dl class="event-details">
             <dt>Date</dt>
-            <dd><time datetime={event.data.start}>{dateStr}</time></dd>
+            <dd><time datetime={startRaw}>{dateStr}</time></dd>
             <dt>Time</dt>
             <dd>{timeStr}{endTimeStr ? ` – ${endTimeStr}` : ''}</dd>
             <dt>Venue</dt>
-            <dd>{event.data.venue}</dd>
+            <dd>{venue}</dd>
             <dt>Price</dt>
-            <dd>{event.data.price}</dd>
-            {event.data.recurring && (
+            <dd>{price}</dd>
+            {kind === 'event' && Astro.props.event.data.recurring && (
               <>
                 <dt>Recurring</dt>
                 <dd>Yes — check for latest dates</dd>

@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { fixturesLoader } from './loaders/fixtures-loader';
 
 const businesses = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/businesses' }),
@@ -97,4 +98,24 @@ const hersham = defineCollection({
   schema: historySchema,
 });
 
-export const collections = { businesses, events, places, news, history, hersham };
+// Walton & Hersham FC first-team fixtures, fetched live from the club's official
+// ECAL calendar feed at every build. Home and away fixtures both included.
+const fixtures = defineCollection({
+  loader: fixturesLoader({
+    url: 'https://ics.ecal.com/ecal-sub/6a590c1f9d270a000297ec85/Enterprise%20National%20League.ics',
+    teamName: 'Walton & Hersham',
+  }),
+  schema: z.object({
+    homeTeam: z.string(),
+    awayTeam: z.string(),
+    homeAway: z.enum(['home', 'away']),
+    competition: z.string(),
+    matchWeek: z.number().optional(),
+    start: z.string(),
+    end: z.string().optional(),
+    venue: z.string(),
+    slug: z.string(),
+  }),
+});
+
+export const collections = { businesses, events, places, news, history, hersham, fixtures };

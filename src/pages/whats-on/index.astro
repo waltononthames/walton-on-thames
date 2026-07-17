@@ -3,37 +3,73 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import EventCard from '../../components/EventCard.astro';
 import { getCollection } from 'astro:content';
 
-const events = await getCollection('events');
+interface UpcomingItem {
+  title: string;
+  slug: string;
+  start: string;
+  end?: string;
+  venue: string;
+  category: string;
+  price: string;
+  image?: string;
+  description?: string;
+}
 
-// Filter to events whose end date (or start date if no end) is today or in the future.
+const events = await getCollection('events');
+const fixtures = await getCollection('fixtures');
+
+const eventItems: UpcomingItem[] = events.map(e => ({
+  title: e.data.title,
+  slug: e.data.slug,
+  start: e.data.start,
+  end: e.data.end,
+  venue: e.data.venue,
+  category: e.data.category,
+  price: e.data.price,
+  image: e.data.image,
+  description: e.data.description,
+}));
+
+const fixtureItems: UpcomingItem[] = fixtures.map(f => ({
+  title: `${f.data.homeTeam} vs ${f.data.awayTeam}`,
+  slug: f.data.slug,
+  start: f.data.start,
+  end: f.data.end,
+  venue: f.data.venue,
+  category: 'sport',
+  price: 'See club for ticket prices',
+  description: `${f.data.competition} fixture${f.data.matchWeek ? ` (match week ${f.data.matchWeek})` : ''} — Walton & Hersham ${f.data.homeAway === 'home' ? 'at home' : 'away'}.`,
+}));
+
+// Filter to items whose end date (or start date if no end) is today or in the future.
 // "Today" is midnight at build time — Cloudflare Pages rebuilds nightly so past events
-// drop off the site the morning after they finish.
+// (and played fixtures) drop off the site the morning after they finish.
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
-function eventEndDay(e: (typeof events)[number]): Date {
-  const d = new Date(e.data.end ?? e.data.start);
+function itemEndDay(item: UpcomingItem): Date {
+  const d = new Date(item.end ?? item.start);
   d.setHours(0, 0, 0, 0);
   return d;
 }
 
-const upcoming = events
-  .filter(e => eventEndDay(e) >= today)
-  .sort((a, b) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime());
+const upcoming = [...eventItems, ...fixtureItems]
+  .filter(item => itemEndDay(item) >= today)
+  .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
 
-function eventSchema(event: (typeof events)[number]) {
-  const isFreeEvent = /^free/i.test(event.data.price);
+function eventSchema(item: UpcomingItem) {
+  const isFreeEvent = /^free/i.test(item.price);
   return {
     "@type": "Event",
-    "name": event.data.title,
-    "url": `https://walton-on-thames.org/whats-on/${event.data.slug}/`,
-    "startDate": event.data.start,
-    ...(event.data.end ? { "endDate": event.data.end } : {}),
+    "name": item.title,
+    "url": `https://walton-on-thames.org/whats-on/${item.slug}/`,
+    "startDate": item.start,
+    ...(item.end ? { "endDate": item.end } : {}),
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {
       "@type": "Place",
-      "name": event.data.venue,
+      "name": item.venue,
       "address": { "@type": "PostalAddress", "addressLocality": "Walton-on-Thames", "addressRegion": "Surrey", "addressCountry": "GB" }
     },
     ...(isFreeEvent ? {
@@ -42,10 +78,10 @@ function eventSchema(event: (typeof events)[number]) {
         "price": "0",
         "priceCurrency": "GBP",
         "availability": "https://schema.org/InStock",
-        "url": `https://walton-on-thames.org/whats-on/${event.data.slug}/`
+        "url": `https://walton-on-thames.org/whats-on/${item.slug}/`
       }
     } : {}),
-    ...(event.data.image ? { "image": `https://walton-on-thames.org${event.data.image}` } : {}),
+    ...(item.image ? { "image": `https://walton-on-thames.org${item.image}` } : {}),
   };
 }
 ---
@@ -97,16 +133,16 @@ function eventSchema(event: (typeof events)[number]) {
             <h2>Upcoming Events</h2>
           </div>
           <div class="card-grid card-grid-3">
-            {upcoming.map(event => (
+            {upcoming.map(item => (
               <EventCard
-                title={event.data.title}
-                slug={event.data.slug}
-                start={event.data.start}
-                venue={event.data.venue}
-                category={event.data.category}
-                price={event.data.price}
-                image={event.data.image}
-                description={event.data.description}
+                title={item.title}
+                slug={item.slug}
+                start={item.start}
+                venue={item.venue}
+                category={item.category}
+                price={item.price}
+                image={item.image}
+                description={item.description}
               />
             ))}
           </div>
