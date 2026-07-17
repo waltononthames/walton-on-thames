@@ -18,12 +18,15 @@ npm run check    # Astro type-check (run before pushing)
 
 Astro v7 static site generator. All pages are pre-rendered at build time (`output: 'static'`). No server-side rendering.
 
-**Content Collections (v2, glob loaders)** in `src/content/`:
+**Content Collections (v2)** in `src/content/` (all glob-loaded markdown except `fixtures`):
 - `businesses` — local business listings; `neighbourhood` is a free string (not enum) to support Weybridge/Shepperton/Esher
-- `events` — time-filtered at build time: events whose `end` (or `start` if no `end`) date is in the past are excluded from `getCollection` results
+- `events` — one-off and recurring local events; past events are filtered out by the listing pages at build time (see Key constraints), not by the schema
 - `places` — points of interest used on neighbourhood and visit pages
 - `news` — editorial articles
-- `neighbourhoods` — area guide pages (walton-on-thames, hersham, whiteley-village)
+- `history` / `hersham` — long-form local history articles; stricter schema than the rest: required `sources:` array (label + URL), `metaTitle` max 60 chars, `metaDescription` max 155, `publishDate`/`reviewedDate` as dates
+- `fixtures` — Walton & Hersham FC fixtures, no markdown files: a custom loader (`src/loaders/fixtures-loader.ts`) fetches the club's official ECAL ICS feed live at build time and converts UTC kickoffs to Europe/London wall-clock time
+
+(The former `neighbourhoods` collection was retired; its content was folded into the homepage, `/hersham/` and `/living/`.)
 
 Schemas are in `src/content.config.ts`. Route pages live in `src/pages/` with `[slug].astro` dynamic routes powered by `getStaticPaths()`.
 
@@ -35,7 +38,13 @@ Schemas are in `src/content.config.ts`. Route pages live in `src/pages/` with `[
 
 **Cloudflare Pages** auto-deploys on push to `main`. Build command: `npm run build`. Output directory: `dist`. No `wrangler.toml` — that file caused Cloudflare to run `npx wrangler deploy` (Workers mode) and fail. Do not recreate it.
 
-**Daily rebuild:** `.github/workflows/daily-rebuild.yml` calls a Cloudflare deploy hook at 01:00 UTC so past events are filtered from the live site. The `CF_DEPLOY_HOOK` secret must be set in GitHub repository settings.
+**Daily rebuild:** `.github/workflows/daily-rebuild.yml` calls a Cloudflare deploy hook at 01:00 UTC so past events are filtered from the live site and the FC fixtures feed is re-fetched. The `CF_DEPLOY_HOOK` secret must be set in GitHub repository settings.
+
+**Builds need network access:** the fixtures loader fetches a remote ICS feed during `astro build`/`astro sync`. If the fetch fails it logs an error and keeps previously synced entries (a cold build with no cache will simply have zero fixtures — it will not fail the build).
+
+**Edge cache gotcha:** a Cloudflare dashboard-level Cache Rule (not in this repo — `public/_headers` only covers `/assets/*` and `/images/*`) caches HTML at the edge for up to 7 days. A successful deploy can therefore appear "not live" for days. If a verified deploy isn't showing, the fix is a manual "Purge Everything" in the Cloudflare dashboard, not a code change.
+
+**Redirects:** legacy URL migrations (old GoDaddy-era paths, `/visit/*`, `/community/*`, retired pages) live in `public/_redirects`. `functions/_middleware.js` 301s the `walton-on-thames.pages.dev` host to the canonical domain.
 
 ## Key constraints
 
@@ -47,6 +56,10 @@ Schemas are in `src/content.config.ts`. Route pages live in `src/pages/` with `[
 
 **`is:inline` scripts:** Required for any script that must run before hydration or that interacts with the DOM immediately. Without it, Astro may defer/bundle the script and it will miss the `DOMContentLoaded` window.
 
+**`getStaticPaths()` isolation:** Astro extracts `getStaticPaths()` into its own module chunk at build time. It cannot reference top-level frontmatter variables declared outside it, even in the same file — you get `X is not defined` at build time despite valid-looking JS. Declare anything it needs inside the function (duplicating a declaration at top level for the render body if both need it).
+
+**Title suffix:** `BaseLayout.astro` silently appends `" | Walton-on-Thames.org"` to any `title` prop that doesn't already contain that literal phrase. Rendered titles are therefore ~23 chars longer than the prop unless the phrase is worked into the title — check the built output, not the source, when judging title length.
+
 ## Adding content
 
 All content files are Markdown with YAML frontmatter. Match the schema in `src/content.config.ts` exactly — extra fields are ignored; missing required fields cause a build error.
@@ -55,7 +68,8 @@ All content files are Markdown with YAML frontmatter. Match the schema in `src/c
 - **New event:** `src/content/events/<slug>.md` — required: `title`, `slug`, `start`, `neighbourhood`, `category`, `venue`; optional `end`
 - **New place:** `src/content/places/<slug>.md` — required: `name`, `slug`, `category`, `neighbourhood`, `description`
 - **New article:** `src/content/news/<slug>.md` — required: `title`, `slug`, `date`, `category`, `description`
-- **New neighbourhood:** add to `src/content/neighbourhoods/<slug>.md` and add slug to the enum in `src/content.config.ts`
+- **New history/Hersham article:** `src/content/history/<slug>.md` or `src/content/hersham/<slug>.md` — required: `title`, `metaTitle` (≤60), `metaDescription` (≤155), `slug`, `cluster`, `entityType`, `publishDate`, `reviewedDate`, `sources` (array of label+URL, required by the Content Verification Protocol below), `related`
+- **FC fixtures:** never add manually — they come from the live feed via `src/loaders/fixtures-loader.ts`
 
 ## SEO and structured data
 
