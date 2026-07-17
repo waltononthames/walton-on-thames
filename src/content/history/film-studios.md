@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["edwardian", "wartime", "interwar", "postwar"]
 entityType: "institution"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-16
+reviewedDate: 2026-07-17
 sources:
   - label: "Wikipedia — Walton Studios"
     url: "https://en.wikipedia.org/wiki/Walton_Studios"
@@ -44,7 +44,7 @@ By 1914, Hepworth's studio at Walton was one of only three major film studios op
 
 ## The 1923 bankruptcy and the melted negatives
 
-The studio's most dramatic chapter is also its worst. Hepworth's company went bankrupt in 1923, undone by mounting competition from bigger, better-capitalised rivals, particularly from the United States. What happened next is the detail that makes the story genuinely painful rather than simply a business failure: the receiver appointed to wind up the company melted down Hepworth's original negatives, around two thousand films built up over more than two decades of continuous production. Accounts differ on the exact reason: some say the material was sold for its silver content, others that it was reprocessed to make waterproofing resin. Whatever the reason, the loss itself is well documented and is commonly cited as accounting for around eighty per cent of all British films made between 1900 and 1929, making it one of the starkest single losses in the history of British cinema — and it happened in Walton.
+The studio's most dramatic chapter is also its worst. Hepworth's company went bankrupt in 1923, undone by mounting competition from bigger, better-capitalised rivals, particularly from the United States. What happened next is the detail that makes the story genuinely painful rather than simply a business failure: the receiver appointed to wind up the company melted down Hepworth's original negatives, around two thousand films built up over more than two decades of continuous production. Accounts differ on the exact reason: some say the material was sold for its silver content, others that it was reprocessed to make waterproofing resin. Whatever the reason, the loss itself is well documented, and some sources go further, crediting this single event with destroying as much as eighty per cent of all British films made between 1900 and 1929. That figure is hard to pin down precisely — it's also the rough scale of Britain's silent-film losses overall, from many causes, and how much of the national total traces to Hepworth's catalogue specifically isn't something the sources agree on. What isn't in dispute is that it ranks among the starkest single archival losses in the history of British cinema — and it happened in Walton.
 
 ## Nettlefold and Walton Studios
 
