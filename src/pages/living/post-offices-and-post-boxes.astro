@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import { getCollection } from 'astro:content';
+
+const businesses = await getCollection('businesses');
+const postOffices = businesses
+  .filter(b => b.data.subcategories.includes('post-office'))
+  .sort((a, b) => a.data.neighbourhood.localeCompare(b.data.neighbourhood) || a.data.name.localeCompare(b.data.name));
+---
+
+<BaseLayout
+  title="Post Offices & Post Boxes — Walton-on-Thames"
+  description="Post Office branches and postbox locations in Walton-on-Thames, Hersham and Whiteley Village, plus the Royal Mail Delivery Office."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Living", "item": "https://walton-on-thames.org/living/" },
+        { "@type": "ListItem", "position": 3, "name": "Post Offices & Post Boxes", "item": "https://walton-on-thames.org/living/post-offices-and-post-boxes/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/living/">Living</a></li>
+          <li aria-current="page">Post Offices & Post Boxes</li>
+        </ol>
+      </nav>
+      <h1>Post Offices & Post Boxes</h1>
+      <p>Post Office branches, the Royal Mail Delivery Office, and postbox locations across Walton-on-Thames, Hersham and Whiteley Village.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Post Office Branches</h2>
+      </div>
+      <p class="section-intro">Two branches — Molesey Road and Longmore Road — are Drop &amp; Collect only: prepaid parcels and mail, no counter banking, currency or passport services. The rest offer full Post Office counter services.</p>
+      <div class="card-grid card-grid-3">
+        {postOffices.map(biz => (
+          <BusinessCard
+            name={biz.data.name}
+            slug={biz.data.slug}
+            category={biz.data.category}
+            neighbourhood={biz.data.neighbourhood}
+            description={biz.data.description}
+            images={biz.data.images}
+            featured={biz.data.featured}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Royal Mail Delivery Office</h2>
+      </div>
+      <div class="info-card">
+        <p><strong>Walton On Thames Delivery Office</strong> — 73 Hersham Road, Walton-on-Thames, KT12 1LN</p>
+        <p>This is for collecting undelivered items, redelivery enquiries and drop-off of prepaid items — it is a separate facility from the Post Office counter at the same address, with its own hours.</p>
+        <p><a href="https://www.royalmail.com/services-near-you/delivery-office/walton-thames-delivery-office-kt12-1ln" target="_blank" rel="noopener noreferrer">Check current delivery office hours and arrange redelivery on Royal Mail's site ↗</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Post Boxes</h2>
+      </div>
+      <p class="section-intro">Royal Mail maintains a live postbox locator rather than a downloadable definitive register, so the locations below are compiled from Royal Mail's own locator, a local postbox survey by the Walton-on-Thames Trading Alliance, and current public mapping data — cross-checked, but not independently confirmed box by box. For anything time-sensitive, use Royal Mail's live locator or check the collection plate on the box itself.</p>
+      <p class="section-intro"><a href="https://www.royalmail.com/services-near-you/postboxes" target="_blank" rel="noopener noreferrer">Royal Mail's official postbox locator ↗</a> &nbsp;·&nbsp; <a href="https://www.wotta.co.uk/postboxes-in-walton.html" target="_blank" rel="noopener noreferrer">WOTTA's Walton postbox survey ↗</a></p>
+
+      <div class="postbox-columns">
+        <div class="postbox-block">
+          <h3>Walton-on-Thames</h3>
+          <ul class="postbox-list">
+            <li>Hersham Road — historic Victorian postbox</li>
+            <li>Walton On Thames Post Office, 73 Hersham Road, KT12 1LN</li>
+            <li>Bridge Street, near the junction with Manor Road</li>
+            <li>Manor Road and Bishops Hill, beside Walton Community Centre</li>
+            <li>High Street, near Everyman Cinema</li>
+            <li>High Street, outside McDonald's</li>
+            <li>Church Street Post Office, outside 7 Church Street, KT12 2QP</li>
+            <li>Oatlands Drive, near Ashley Close</li>
+            <li>Dudley Road</li>
+            <li>Sunnyside</li>
+            <li>Esher Avenue and Sidney Road</li>
+            <li>Cottimore Lane and Cottimore Avenue</li>
+            <li>Rydens Road</li>
+            <li>Ashley Road and Station Avenue</li>
+            <li>Station Avenue, near Walton-on-Thames railway station</li>
+            <li>Terrace Road</li>
+            <li>Shaw Drive</li>
+            <li>Holly Avenue</li>
+            <li>Rydens Avenue</li>
+            <li>Silverdale Avenue (some records list this as Silverdale Road)</li>
+            <li>Molesey Road Post Office, at or near 319 Molesey Road, KT12 3PF</li>
+            <li>Sandy Lane</li>
+            <li>Lindley Road</li>
+            <li>Rodney Road</li>
+            <li>Walton Bridge Road</li>
+            <li>Stompond Lane</li>
+            <li>Felix Lane</li>
+            <li>Lyon Road</li>
+            <li>Walton House Service Station</li>
+            <li>Halfway House Service Station</li>
+          </ul>
+        </div>
+
+        <div class="postbox-block">
+          <h3>Hersham</h3>
+          <p class="postbox-note">Many Hersham addresses use Walton-on-Thames as the postal town, so Hersham postboxes can appear listed under Walton-on-Thames in mapping and postal datasets.</p>
+          <ul class="postbox-list">
+            <li>Hersham Post Office, 9 Molesey Road, KT12 4RJ</li>
+            <li>Mayfield Road — historic Victorian postbox</li>
+            <li>Mayfield Road near Queens Road — separate Edward VIII postbox</li>
+            <li>West Grove, near the junction with Hersham Road</li>
+            <li>Assher Road</li>
+            <li>Carmalt Gardens</li>
+            <li>Homefield and Molesey Road</li>
+            <li>St Peter's Church, Burwood Road</li>
+            <li>New Berry Lane</li>
+            <li>Mole Road</li>
+            <li>Queens Road</li>
+            <li>Robinsway</li>
+            <li>Vaux Crescent</li>
+            <li>Clarence Road</li>
+            <li>Westcar Lane</li>
+            <li>Rydens Grove</li>
+            <li>Mead Road</li>
+            <li>Southdown Road</li>
+            <li>Burwood Park Road</li>
+          </ul>
+        </div>
+
+        <div class="postbox-block">
+          <h3>Whiteley Village</h3>
+          <ul class="postbox-list">
+            <li>Whiteley Village Post Office, Circle Road, KT12 4DT</li>
+            <li>Seven Hills Road, on the western side of, or immediately adjoining, Whiteley Village</li>
+          </ul>
+          <p class="postbox-note">Postboxes on East Road, Kings Drive, Camp End Road, Old Avenue and other nearby roads aren't included here, as they fall outside Whiteley Village itself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-intro {
+    color: var(--color-slate);
+    max-width: 70ch;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .section-alt {
+    background: var(--color-cream, #f7f4ee);
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-card);
+    max-width: 60ch;
+  }
+
+  .info-card p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .info-card p:last-child { margin-bottom: 0; }
+
+  .postbox-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .postbox-block {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .postbox-block h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .postbox-note {
+    font-size: 0.8rem;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .postbox-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .postbox-list li {
+    font-size: 0.85rem;
+    color: var(--color-navy);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .postbox-columns { grid-template-columns: 1fr; }
+  }
+</style>
