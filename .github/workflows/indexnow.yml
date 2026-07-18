@@ -1,0 +1,52 @@
+name: IndexNow submission
+
+# Notifies IndexNow (Bing, Yandex, Seznam, Naver, Yep — not Google, which
+# doesn't participate in the protocol) whenever the site changes, so those
+# search engines pick up new/updated pages faster than waiting on their own
+# crawl schedule. Also runs daily shortly after the existing rebuild cron,
+# to catch content changes driven purely by date (e.g. fixtures/events
+# rotating in and out) that don't involve a git push.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '10 1 * * *'   # 01:10 UTC daily, 10 min after the Cloudflare rebuild hook fires
+  workflow_dispatch:        # allows manual trigger from GitHub Actions UI
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Cloudflare Pages deploy to finish
+        if: github.event_name == 'push'
+        run: sleep 90
+
+      - name: Fetch live sitemap and submit URLs to IndexNow
+        run: |
+          set -e
+          KEY="d3c5876c6afa37f184974da2849bec30255de7ebd83770ec26aa5c7af602deaa"
+          HOST="walton-on-thames.org"
+
+          curl -sf "https://${HOST}/sitemap-0.xml" -o sitemap.xml
+
+          # Extract <loc> URLs and build a JSON array
+          URLS=$(grep -o '<loc>[^<]*</loc>' sitemap.xml | sed 's/<loc>//;s#</loc>##' | \
+            node -e "const lines=require('fs').readFileSync(0,'utf8').trim().split('\n'); process.stdout.write(JSON.stringify(lines));")
+
+          COUNT=$(echo "$URLS" | node -e "process.stdout.write(String(JSON.parse(require('fs').readFileSync(0,'utf8')).length))")
+          echo "Submitting $COUNT URLs to IndexNow"
+
+          BODY=$(node -e "
+            const urlList = JSON.parse(process.argv[1]);
+            console.log(JSON.stringify({ host: process.argv[2], key: process.argv[3], keyLocation: \`https://\${process.argv[2]}/\${process.argv[3]}.txt\`, urlList }));
+          " "$URLS" "$HOST" "$KEY")
+
+          HTTP=$(curl -s -o response.txt -w "%{http_code}" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$BODY")
+
+          echo "IndexNow response: HTTP $HTTP"
+          cat response.txt || true
+          # 200 = OK, 202 = Accepted (key not yet fully verified but queued)
+          [ "$HTTP" = "200" ] || [ "$HTTP" = "202" ] || exit 1
