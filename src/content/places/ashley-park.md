@@ -3,8 +3,8 @@ name: "Ashley Park"
 slug: "ashley-park"
 category: "park"
 neighbourhood: "walton-on-thames"
-lat: 51.3820
-lng: -0.4058
+lat: 51.3734
+lng: -0.4153
 description: "A former private estate now offering pleasant parkland walks through mature trees, close to the town centre."
 images: []
 featured: false

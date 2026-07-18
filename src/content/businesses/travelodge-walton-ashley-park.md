@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["hotel"]
 neighbourhood: "walton-on-thames"
 address: "Ashley Park Road, Walton-on-Thames, KT12 1JP"
-lat: 51.3928
-lng: -0.4080
+lat: 51.3735
+lng: -0.4154
 website: "https://www.travelodge.co.uk"
 description: "A Travelodge on the northern edge of Walton-on-Thames near Ashley Park, convenient for guests arriving by car from the A317 or M25."
 images: []

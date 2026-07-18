@@ -3,8 +3,8 @@ name: "Cowey Sale"
 slug: "cowey-sale"
 category: "riverside-walk"
 neighbourhood: "walton-on-thames"
-lat: 51.3858
-lng: -0.4147
+lat: 51.3878
+lng: -0.4276
 description: "A beautiful riverside meadow stretching along the Thames between Walton and Weybridge, popular for walking, picnics and watching the rowing clubs."
 images: []
 featured: true

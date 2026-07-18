@@ -4,9 +4,9 @@ slug: "walton-library"
 category: "services"
 subcategories: ["library", "community"]
 neighbourhood: "walton-on-thames"
-address: "The Heart Shopping Centre, Walton-on-Thames, KT12 1DF"
-lat: 51.3861
-lng: -0.4048
+address: "The Heart Shopping Centre, Walton-on-Thames, KT12 1GH"
+lat: 51.3853
+lng: -0.4202
 phone: "+44 300 200 1001"
 website: "https://www.surreycc.gov.uk/libraries"
 description: "Walton's public library, located within The Heart Shopping Centre, offering books, digital resources, children's activities, and community spaces."

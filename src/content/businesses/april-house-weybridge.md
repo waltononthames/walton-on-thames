@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["bed-and-breakfast"]
 neighbourhood: "weybridge"
 address: "6 Springfield Meadows, Weybridge, KT13 8AJ"
-lat: 51.3763
-lng: -0.4502
+lat: 51.3712
+lng: -0.4564
 website: "https://www.aprilhouseweybridge.co.uk"
 description: "A boutique guesthouse in a quiet residential street in Weybridge, offering stylish, well-appointed rooms with the personal touch of owner-run accommodation."
 images: []

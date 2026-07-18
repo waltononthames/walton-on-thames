@@ -5,8 +5,8 @@ category: "pubs-and-bars"
 subcategories: ["riverside", "dog-friendly", "food"]
 neighbourhood: "walton-on-thames"
 address: "Riverside Cottages, Manor Road, Walton-on-Thames, KT12 2PF"
-lat: 51.3868
-lng: -0.4090
+lat: 51.3901
+lng: -0.4221
 phone: "01932 223996"
 description: "A classic riverside pub with a large garden overlooking the Thames — one of the best spots in Walton for a summer afternoon pint."
 images: []

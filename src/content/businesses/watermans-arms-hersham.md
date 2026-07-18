@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["guest-house", "pub-with-rooms"]
 neighbourhood: "hersham"
 address: "1 Queens Road, Hersham, Walton-on-Thames, KT12 5LT"
-lat: 51.3712
-lng: -0.4018
+lat: 51.3659
+lng: -0.3994
 phone: "01932 254580"
 website: "https://watermansarmshersham.com/"
 description: "A pub with food, drinks and rooms close to Hersham Green, with budget-friendly accommodation bookable through OYO."

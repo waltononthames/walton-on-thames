@@ -5,8 +5,8 @@ category: "health-and-fitness"
 subcategories: ["pilates"]
 neighbourhood: "walton-on-thames"
 address: "125 Hersham Road, Walton-on-Thames, KT12 1RW"
-lat: 51.3836
-lng: -0.4076
+lat: 51.3752
+lng: -0.408
 website: "https://www.fitzenstudio.co.uk"
 description: "A specialist Reformer Pilates studio on Hersham Road — focused purely on apparatus-based Pilates for targeted, low-impact strength training and rehabilitation."
 images: []

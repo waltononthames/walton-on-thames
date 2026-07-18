@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["pub-with-rooms", "hotel"]
 neighbourhood: "walton-on-thames"
 address: "Towpath, Waterside Drive, Walton-on-Thames, KT12 2JB"
-lat: 51.3885
-lng: -0.4140
+lat: 51.4016
+lng: -0.411
 phone: "01932 784530"
 website: "https://www.weirhotel.co.uk"
 description: "A riverside hotel and pub sitting directly on the Thames towpath at Walton Bridge — one of the most atmospheric places to stay in the area, with rooms overlooking the river."

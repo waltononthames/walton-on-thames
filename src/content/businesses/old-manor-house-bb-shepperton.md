@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["bed-and-breakfast"]
 neighbourhood: "shepperton"
 address: "Squire's Bridge Road, Shepperton, TW17 0QG"
-lat: 51.3840
-lng: -0.4405
+lat: 51.4068
+lng: -0.4585
 description: "A characterful bed and breakfast in an older property on a quiet Shepperton lane, close to the River Thames and within easy reach of Walton-on-Thames."
 images: []
 featured: false

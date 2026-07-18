@@ -2,6 +2,21 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-18 — Site-wide map pin coordinate audit
+
+Owner reported a wrong map pin on `/things-to-do/ashley-park/` and flagged it as a possible site-wide pattern rather than a one-off (this is the same class of bug fixed for The Heart Shopping Centre a few days earlier, whose root cause was never traced further at the time). Treated it as systemic and audited all 60 businesses/places with `lat`/`lng` — confirmed correct.
+
+**Method:** two independent checks per flagged entry, not one — free-text address geocoding, then cross-checked against postcode-centroid geocoding, since the first method turned out to have a real failure mode of its own (confirmed: it mismatched "5 The Green, Hersham" against a similarly-named "The Green" in Whiteley Village for two businesses, which would have been *introduced* as a new error if applied blindly). Only entries where both methods agreed and diverged >300m from the stored value were treated as confirmed.
+
+**Result:** 27 of 60 entries were genuinely wrong, several by 1-2.8km — including two used to build fresh new-page-navigation this session (Hersham Dental Practice and Philip J Adams Chemist were *not* wrong, despite an initial flag — see above). Fixed:
+- 22 businesses via postcode-centroid re-geocoding (full list in the commit).
+- Walton Library — the postcode itself was wrong in the source data (KT12 1DF doesn't exist; confirmed via the library's own listing that it's inside The Heart Shopping Centre, postcode KT12 1GH), not just the coordinates.
+- 4 places with no postal address to geocode against (Ashley Park, Cowey Sale, Walton Bridge, Hersham Village Green) — verified individually via named-POI matches and, where available, the nearest real postcode for that specific green/park (not a street address, since these are open spaces).
+
+Everything built this session with the postcode-centroid method from the start (the dentist/pharmacy/GP/post office listings) came back clean, confirming that approach is reliable — the bug was entirely in older data.
+
+New reusable scripts: `scripts/audit-coordinates.mjs` (full free-text-address sweep with an optional `--fix` flag) and the two verification/apply scripts used for this pass. Kept in the repo for the next time this needs re-running, e.g. after a bulk content import.
+
 ## 2026-07-18 — Structured data extension, homepage rewrite, and SEO tooling (large multi-part task)
 
 Owner supplied a large brief (schema extension, Lighthouse audit, homepage rewrite, plus two new-page requests). The two new-page requests (an SEO landing page and a long-form history article) were held back — both depended on inputs the owner said they'd supply (slug/query/PAA questions; source notes) that weren't in the brief itself. Everything else below was completed in this pass.

@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["hotel", "inn"]
 neighbourhood: "weybridge"
 address: "25 Oatlands Chase, Weybridge, KT13 9RW"
-lat: 51.3708
-lng: -0.4358
+lat: 51.375
+lng: -0.428
 website: "https://www.innkeeperscollection.co.uk"
 description: "An Innkeeper's Collection inn in the Oatlands area of Weybridge — characterful hotel accommodation with a popular gastro-pub restaurant on site."
 images: []

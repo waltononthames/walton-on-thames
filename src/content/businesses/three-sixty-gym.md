@@ -5,8 +5,8 @@ category: "health-and-fitness"
 subcategories: ["gym", "personal-training", "martial-arts", "physiotherapy"]
 neighbourhood: "walton-on-thames"
 address: "17a Bridge Street, Walton-on-Thames, KT12 1AE"
-lat: 51.3865
-lng: -0.4118
+lat: 51.3866
+lng: -0.4207
 website: "https://www.threesixtygym.co.uk"
 description: "A well-rounded fitness facility on Bridge Street combining gym equipment, personal training, strength training, martial arts, and on-site physiotherapy."
 images: []

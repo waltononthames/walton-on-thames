@@ -5,8 +5,8 @@ category: "health-and-fitness"
 subcategories: ["gym", "fitness-classes", "personal-training"]
 neighbourhood: "walton-on-thames"
 address: "2nd Floor, Unit 52, The Heart, Walton-on-Thames, KT12 1GH"
-lat: 51.3870
-lng: -0.4123
+lat: 51.3853
+lng: -0.4202
 website: "https://www.puregym.com"
 description: "A 24/7 gym on the second floor of The Heart shopping centre — no contract, extensive cardio and free weights floor, and dozens of included fitness classes."
 images: []

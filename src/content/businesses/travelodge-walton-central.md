@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["hotel"]
 neighbourhood: "walton-on-thames"
 address: "20–32 Church Street, Walton-on-Thames, KT12 2QS"
-lat: 51.3873
-lng: -0.4124
+lat: 51.3869
+lng: -0.4187
 website: "https://www.travelodge.co.uk"
 description: "A centrally located Travelodge on Church Street, steps from Walton-on-Thames station and within easy walking distance of the River Thames."
 images: []

@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["hotel"]
 neighbourhood: "weybridge"
 address: "70 Monument Green, High Street, Weybridge, KT13 8BQ"
-lat: 51.3797
-lng: -0.4628
+lat: 51.374
+lng: -0.4562
 website: "https://www.shiphotel.co.uk"
 description: "A traditional hotel on Weybridge's picturesque Monument Green, in the heart of the town centre with the station a few minutes' walk away."
 images: []

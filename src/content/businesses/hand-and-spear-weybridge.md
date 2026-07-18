@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["pub-with-rooms", "hotel"]
 neighbourhood: "weybridge"
 address: "Old Heath Road, Weybridge, KT13 8TX"
-lat: 51.3830
-lng: -0.4640
+lat: 51.3622
+lng: -0.4592
 website: "https://www.handandspear.co.uk"
 description: "A boutique pub hotel in Weybridge combining stylish, modern rooms with a food-focused pub and restaurant that has built a strong local reputation."
 images: []

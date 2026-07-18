@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["hotel"]
 neighbourhood: "shepperton"
 address: "Church Square, Shepperton, TW17 9JZ"
-lat: 51.3942
-lng: -0.4470
+lat: 51.3878
+lng: -0.4538
 website: "https://www.warrenlodgehotel.co.uk"
 description: "A well-established hotel on Shepperton's historic Church Square, close to the River Thames and the quiet lanes of the village centre."
 images: []

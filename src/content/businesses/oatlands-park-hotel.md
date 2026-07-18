@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["hotel"]
 neighbourhood: "weybridge"
 address: "146 Oatlands Drive, Weybridge, KT13 9HB"
-lat: 51.3665
-lng: -0.4335
+lat: 51.3755
+lng: -0.4427
 website: "https://www.oatlandsparkhotel.com"
 description: "A grand Victorian hotel set in 10 acres of grounds in Weybridge — 144 rooms, a health club and spa, and a history stretching back to a former royal hunting lodge."
 images: []

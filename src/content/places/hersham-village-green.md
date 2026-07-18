@@ -3,8 +3,8 @@ name: "Hersham Village Green"
 slug: "hersham-village-green"
 category: "park"
 neighbourhood: "hersham"
-lat: 51.3714
-lng: -0.3974
+lat: 51.3662
+lng: -0.4002
 description: "The heart of Hersham village — a traditional English village green surrounded by period houses, a pond, and the local pub."
 images: []
 featured: true

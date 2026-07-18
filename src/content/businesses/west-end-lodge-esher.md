@@ -5,8 +5,8 @@ category: "accommodation"
 subcategories: ["bed-and-breakfast"]
 neighbourhood: "esher"
 address: "11 West End Lane, Esher, KT10 8LB"
-lat: 51.3740
-lng: -0.3718
+lat: 51.364
+lng: -0.3785
 website: "https://www.westendlodge.co.uk"
 description: "A well-established bed and breakfast in the West End area of Esher, offering comfortable rooms in a quiet residential lane close to Esher Common."
 images: []
