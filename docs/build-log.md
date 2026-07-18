@@ -2,6 +2,17 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-18 — SEO hygiene audit of the build output
+
+Systematic audit against 6 criteria, checked programmatically against the actual built `dist/` output rather than spot-checked. New reusable diagnostic tool: `scripts/audit-seo.mjs` (`node scripts/audit-seo.mjs <canonicals|sitemap|orphans|trailing-slash|404>`).
+
+1. **Canonicals** — all 263 pages have exactly one self-referencing canonical tag. Clean, no changes needed.
+2. **Sitemap** — coverage exactly matches built pages (only deliberate exclusion: `/contact/thank-you/`). No pagination/tag-stub pages exist in this site's architecture at all (category filtering is client-side JS, not separate routes). Added `lastmod` dates, which the sitemap previously had none of — `scripts/sitemap-lastmod.mjs` maps each URL back to its most relevant source file (content-collection markdown for content-driven routes, the `.astro` route file otherwise) and uses that file's last git commit date. Fixtures pages use the loader's own git history rather than "now", since they have no markdown file and using build time would make lastmod change on every rebuild even when nothing about that specific fixture changed.
+3. **robots.txt** — already correct (`Allow: /`, references the sitemap). No changes.
+4. **Orphan check** — new BFS reachability check from the homepage across the full internal link graph found one real orphan: `/places-to-stay/` existed, was in the sitemap, but nothing on the site linked to it. Added it to the footer's "Explore" column, next to "Getting Here". (`/contact/thank-you/` is also unreachable by design — a post-submission confirmation page, already excluded from the sitemap — not a bug.)
+5. **404 handling** — confirmed `dist/404.html` is correctly placed (Astro special-cases it to bypass the directory-format build), is `noIndex`, and live-tested returns a real HTTP 404, not a soft-200.
+6. **Trailing slash** — confirmed every internal link site-wide consistently uses trailing slashes, and live-tested that Cloudflare Pages already 308-redirects bare paths to their trailing-slash canonical automatically (default platform behaviour for directory-format builds). No explicit redirect rules needed beyond the legacy-URL-specific ones already in `_redirects`.
+
 ## 2026-07-12 — SEO remediation pass (5-part task, 4 commits)
 Structured task covering title tags, structured data, image hygiene, and entity-naming consistency. Full detail in commit messages `969d7fd`, `a623629`, `897662a`, `82b3308`; summary:
 
