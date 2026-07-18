@@ -28,5 +28,6 @@ Hersham Surgery is an NHS GP surgery on Pleasant Place in Hersham, currently acc
 
 **Address:** Pleasant Place, Hersham, Walton-on-Thames, Surrey, KT12 4HT
 **Phone:** 01932 229033
+**Accessibility:** Step-free and wheelchair access, disabled toilet, induction loop, disabled parking and cycle parking.
 
 Hours correct as of 18 July 2026 — confirm before visiting, particularly around bank holidays.
