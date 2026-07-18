@@ -6,6 +6,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   title="Council & Local Services — Walton-on-Thames"
   description="Links to Elmbridge Borough Council, Surrey County Council, libraries, NHS, bins and local services for Walton-on-Thames and Hersham residents."
 >
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Living", "item": "https://walton-on-thames.org/living/" },
+        { "@type": "ListItem", "position": 3, "name": "Council & Services", "item": "https://walton-on-thames.org/living/council-and-services/" }
+      ]
+    })} />
+  </slot>
+
   <div class="page-hero">
     <div class="container">
       <nav aria-label="Breadcrumb">
@@ -39,19 +51,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <p>Surrey County Council is responsible for roads, schools, libraries, social care, and some other strategic services.</p>
         <ul class="service-links">
           <li><a href="https://www.surreycc.gov.uk" target="_blank" rel="noopener noreferrer">Surrey County Council website ↗</a></li>
-          <li><a href="https://www.surreycc.gov.uk/libraries" target="_blank" rel="noopener noreferrer">Surrey Libraries (inc. Walton Library) ↗</a></li>
+          <li><a href="https://www.surreycc.gov.uk/libraries" target="_blank" rel="noopener noreferrer">Surrey Libraries ↗</a> (including <a href="/directory/walton-library/">Walton Library</a>)</li>
           <li><a href="https://www.surreycc.gov.uk/roads-and-transport" target="_blank" rel="noopener noreferrer">Roads & transport ↗</a></li>
-          <li><a href="https://www.surreycc.gov.uk/schools-and-learning" target="_blank" rel="noopener noreferrer">Schools & learning ↗</a></li>
+          <li><a href="/living/schools/">Schools in Walton-on-Thames & Hersham</a></li>
         </ul>
       </div>
 
       <div class="service-block">
         <h2>NHS & Health</h2>
-        <p>NHS services in the area are managed by NHS Surrey Heartlands. The nearest general hospital with A&E is St Peter's Hospital in Chertsey.</p>
+        <p>NHS services in the area are managed by NHS Surrey and Sussex Integrated Care Board (formed 1 April 2026 from the merger of NHS Surrey Heartlands and NHS Sussex). The nearest general hospital with A&E is St Peter's Hospital in Chertsey.</p>
         <ul class="service-links">
-          <li><a href="https://www.nhs.uk/service-search/find-a-gp/" target="_blank" rel="noopener noreferrer">Find a GP near you ↗</a></li>
+          <li><a href="/living/gp-surgeries/">GP surgeries in Walton-on-Thames & Hersham</a></li>
+          <li><a href="/living/pharmacies/">Pharmacies in Walton-on-Thames & Hersham</a></li>
+          <li><a href="/living/dentists/">Dentists in Walton-on-Thames & Hersham</a></li>
           <li><a href="https://www.ashfordsthetershealth.nhs.uk" target="_blank" rel="noopener noreferrer">Ashford & St Peter's NHS Trust ↗</a></li>
           <li><a href="https://111.nhs.uk" target="_blank" rel="noopener noreferrer">NHS 111 online ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="service-block">
+        <h2>Post & Deliveries</h2>
+        <p>Post Office branches, the Royal Mail Delivery Office, and postbox locations across the area.</p>
+        <ul class="service-links">
+          <li><a href="/living/post-offices-and-post-boxes/">Post Offices & Post Boxes</a></li>
         </ul>
       </div>
 

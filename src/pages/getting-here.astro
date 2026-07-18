@@ -6,6 +6,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Getting to Walton-on-Thames — Trains, Roads, Parking & Buses"
   description="How to get to Walton-on-Thames by train, car, and bus — including travel times from London, parking information, and local transport links."
 >
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Getting Here", "item": "https://walton-on-thames.org/getting-here/" }
+      ]
+    })} />
+  </slot>
+
   <div class="page-hero">
     <div class="container">
       <nav aria-label="Breadcrumb">

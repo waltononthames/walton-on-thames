@@ -31,6 +31,41 @@ const schemaType = SCHEMA_TYPE_BY_CATEGORY[biz.data.category] ?? 'LocalBusiness'
 
 const dayNames: Record<string, string> = { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' };
 const days = ['mon','tue','wed','thu','fri','sat','sun'];
+const schemaDayName: Record<string, string> = { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' };
+
+// Parses "9am–5:30pm" / "8:30am–6:30pm" style strings into 24-hour opens/closes.
+// Returns null for "Closed" or anything that doesn't match the expected pattern
+// (rather than guessing) so malformed hours are silently omitted from schema.
+function parseTimeRange(range: string): { opens: string; closes: string } | null {
+  const m = range.match(/^(\d{1,2})(?::(\d{2}))?(am|pm)\s*[–-]\s*(\d{1,2})(?::(\d{2}))?(am|pm)$/i);
+  if (!m) return null;
+  const to24 = (h: string, min: string | undefined, ap: string) => {
+    let hour = parseInt(h, 10) % 12;
+    if (ap.toLowerCase() === 'pm') hour += 12;
+    return `${String(hour).padStart(2, '0')}:${min ?? '00'}`;
+  };
+  return {
+    opens: to24(m[1], m[2], m[3]),
+    closes: to24(m[4], m[5], m[6]),
+  };
+}
+
+const openingHoursSpecification = biz.data.hours
+  ? days
+      .map((d) => {
+        const raw = biz.data.hours?.[d];
+        if (!raw) return null;
+        const parsed = parseTimeRange(raw);
+        if (!parsed) return null;
+        return {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": `https://schema.org/${schemaDayName[d]}`,
+          "opens": parsed.opens,
+          "closes": parsed.closes,
+        };
+      })
+      .filter((x) => x !== null)
+  : [];
 ---
 
 <BaseLayout
@@ -43,7 +78,7 @@ const days = ['mon','tue','wed','thu','fri','sat','sun'];
       "@type": schemaType,
       "name": biz.data.name,
       "description": biz.data.description,
-      "url": `https://walton-on-thames.org/directory/${biz.data.slug}/`,
+      ...(biz.data.website ? { "url": biz.data.website } : {}),
       "address": {
         "@type": "PostalAddress",
         "streetAddress": biz.data.address,
@@ -52,10 +87,10 @@ const days = ['mon','tue','wed','thu','fri','sat','sun'];
         "addressCountry": "GB"
       },
       ...(biz.data.phone ? { "telephone": biz.data.phone } : {}),
-      ...(biz.data.website ? { "sameAs": biz.data.website } : {}),
       ...(biz.data.lat && biz.data.lng ? {
         "geo": { "@type": "GeoCoordinates", "latitude": biz.data.lat, "longitude": biz.data.lng }
       } : {}),
+      ...(openingHoursSpecification.length > 0 ? { "openingHoursSpecification": openingHoursSpecification } : {}),
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

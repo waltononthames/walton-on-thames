@@ -75,6 +75,7 @@ const siteTitle = title.includes('Walton-on-Thames')
             "url": "https://walton-on-thames.org/",
             "name": "Walton-on-Thames.org",
             "description": "An independent community guide to Walton-on-Thames, Hersham & Whiteley Village",
+            "publisher": { "@id": "https://walton-on-thames.org/#organization" },
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://walton-on-thames.org/directory/?q={search_term_string}",
@@ -86,7 +87,17 @@ const siteTitle = title.includes('Walton-on-Thames')
             "@id": "https://walton-on-thames.org/#organization",
             "name": "Walton-on-Thames.org",
             "url": "https://walton-on-thames.org/",
-            "logo": "https://walton-on-thames.org/images/logo.png"
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://walton-on-thames.org/images/logo.png",
+              "width": 400,
+              "height": 400
+            },
+            "sameAs": [
+              "https://www.instagram.com/waltononthames_org/",
+              "https://x.com/waltononthames",
+              "https://www.facebook.com/waltononthames/"
+            ]
           }
         ]
       })} />

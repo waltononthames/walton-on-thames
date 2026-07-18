@@ -6,6 +6,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   title="Clubs & Groups in Walton-on-Thames — Sports, Societies & Community Organisations"
   description="Clubs, societies and community organisations in Walton-on-Thames, Hersham and Whiteley Village — from rowing and cricket to amateur dramatics and local societies."
 >
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Living", "item": "https://walton-on-thames.org/living/" },
+        { "@type": "ListItem", "position": 3, "name": "Clubs & Groups", "item": "https://walton-on-thames.org/living/community/" }
+      ]
+    })} />
+  </slot>
+
   <div class="page-hero">
     <div class="container">
       <nav aria-label="Breadcrumb">

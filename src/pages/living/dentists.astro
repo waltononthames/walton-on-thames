@@ -57,6 +57,20 @@ const dentists = businesses
       </div>
     </div>
   </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="info-card">
+        <h2>Related local services</h2>
+        <ul class="related-links">
+          <li><a href="/living/gp-surgeries/">GP Surgeries</a></li>
+          <li><a href="/living/pharmacies/">Pharmacies</a></li>
+          <li><a href="/living/post-offices-and-post-boxes/">Post Offices & Post Boxes</a></li>
+          <li><a href="/living/council-and-services/">Council & Services</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -65,5 +79,34 @@ const dentists = businesses
     max-width: 70ch;
     margin-bottom: 1.5rem;
     line-height: 1.6;
+  }
+
+  .section-alt {
+    background: var(--color-cream, #f7f4ee);
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-card);
+    max-width: 60ch;
+  }
+
+  .info-card h2 {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  .related-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .related-links a {
+    font-size: 0.9rem;
+    color: var(--color-navy);
   }
 </style>

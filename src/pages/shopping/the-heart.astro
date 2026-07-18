@@ -9,8 +9,20 @@ const heartBiz = businesses.filter(b => b.data.slug === 'the-heart-shopping-cent
 
 <BaseLayout
   title="The Heart Shopping Centre — Walton-on-Thames"
-  description="The Heart is Walton's main shopping destination — over 60 stores, a Vue Cinema, restaurants and regular community events in the town centre."
+  description="The Heart is Walton's main covered shopping centre — high-street shops, restaurants and cafes, plus a library and gym, in the town centre."
 >
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Shopping", "item": "https://walton-on-thames.org/shopping/" },
+        { "@type": "ListItem", "position": 3, "name": "The Heart", "item": "https://walton-on-thames.org/shopping/the-heart/" }
+      ]
+    })} />
+  </slot>
+
   <div class="page-hero">
     <div class="container">
       <nav aria-label="Breadcrumb">
@@ -21,32 +33,32 @@ const heartBiz = businesses.filter(b => b.data.slug === 'the-heart-shopping-cent
         </ol>
       </nav>
       <h1>The Heart Shopping Centre</h1>
-      <p>Walton's main shopping destination, with 60+ stores, a cinema, restaurants and regular events.</p>
+      <p>Walton's main covered shopping centre, with high-street shops, restaurants and cafes in the town centre.</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
       <div class="prose">
-        <p>The Heart Shopping Centre is the hub of Walton-on-Thames town centre, a modern covered mall offering a broad range of high-street retailers, food and drink, and entertainment.</p>
+        <p>The Heart Shopping Centre is the hub of Walton-on-Thames town centre, a modern covered mall offering a broad range of high-street retailers, food and drink.</p>
 
         <h2>What's there</h2>
         <ul>
-          <li><strong>Fashion & accessories:</strong> a mix of mid-market high-street brands</li>
-          <li><strong>Vue Cinema:</strong> multi-screen cinema with regular screenings</li>
+          <li><strong>Fashion & footwear:</strong> ladies' and menswear, plus footwear specialists</li>
+          <li><strong>Health & beauty:</strong> chemists and beauty retailers</li>
+          <li><strong>Books, technology & sportswear:</strong> alongside jewellery, accessories and general services</li>
           <li><strong>Food court & restaurants:</strong> from quick bites to sit-down dining</li>
           <li><strong>Walton Library:</strong> Surrey County Council public library within the centre</li>
-          <li><strong>Health & beauty:</strong> several salons and pharmacies</li>
-          <li><strong>Banks & services:</strong> most major high-street banks have branches nearby</li>
+          <li><strong>Gym:</strong> part of the wider complex</li>
         </ul>
 
         <h2>Events at The Heart</h2>
-        <p>The central atrium hosts regular community events including the Walton Christmas Lights Switch-On, seasonal markets, food fairs, and charity fundraisers. Check the <a href="/whats-on/">What's On</a> section for upcoming events.</p>
+        <p>The central atrium hosts community events through the year, including market stalls and seasonal activities. Check the <a href="/whats-on/">What's On</a> section for upcoming events.</p>
 
         <h2>Getting there</h2>
-        <p>The Heart is in the centre of Walton-on-Thames, a 10-minute walk from Walton-on-Thames railway station. Multi-storey parking is available within the centre. <a href="/getting-here/">Full transport information →</a></p>
+        <p>The Heart is in the centre of Walton-on-Thames, a 10-minute walk from Walton-on-Thames railway station. Parking is available within the centre. <a href="/getting-here/">Full transport information →</a></p>
 
-        <p><a href="https://www.theheartshoppingcentre.co.uk" target="_blank" rel="noopener noreferrer">Visit the official Heart Shopping Centre website ↗</a></p>
+        <p><a href="https://heartshopping.co.uk/" target="_blank" rel="noopener noreferrer">Visit the official Heart Shopping Centre website ↗</a></p>
       </div>
     </div>
   </section>

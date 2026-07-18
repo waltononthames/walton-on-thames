@@ -6,6 +6,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="About Walton-on-Thames.org | Who We Are"
   description="About Walton-on-Thames.org — an independent community guide to Walton-on-Thames, Hersham and Whiteley Village, built and maintained by a local resident."
 >
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://walton-on-thames.org/about/" }
+      ]
+    })} />
+  </slot>
+
   <div class="page-hero">
     <div class="container">
       <nav aria-label="Breadcrumb">

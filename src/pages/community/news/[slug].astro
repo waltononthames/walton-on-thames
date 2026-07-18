@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { lastmodFor } from '../../../../scripts/sitemap-lastmod.mjs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('news');
@@ -16,6 +17,9 @@ const { Content } = await render(post);
 const date = new Date(post.data.date);
 const dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 const categoryLabel = post.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+const pageURL = `https://walton-on-thames.org/community/news/${post.data.slug}/`;
+const dateModified = lastmodFor(pageURL);
+const authorIsOrg = post.data.author === 'Walton-on-Thames.org';
 ---
 
 <BaseLayout
@@ -31,9 +35,27 @@ const categoryLabel = post.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c:
       "headline": post.data.title,
       "description": post.data.description,
       "datePublished": post.data.date,
-      "author": { "@type": "Organization", "name": post.data.author, "url": "https://walton-on-thames.org/" },
-      "publisher": { "@type": "Organization", "name": "Walton-on-Thames.org", "url": "https://walton-on-thames.org/" },
+      "dateModified": dateModified,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": pageURL },
+      "author": authorIsOrg
+        ? { "@type": "Organization", "name": post.data.author, "url": "https://walton-on-thames.org/" }
+        : { "@type": "Person", "name": post.data.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Walton-on-Thames.org",
+        "url": "https://walton-on-thames.org/",
+        "logo": { "@type": "ImageObject", "url": "https://walton-on-thames.org/images/logo.png", "width": 400, "height": 400 }
+      },
       ...(post.data.image ? { "image": `https://walton-on-thames.org${post.data.image}` } : {}),
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "News", "item": "https://walton-on-thames.org/community/news/" },
+        { "@type": "ListItem", "position": 3, "name": post.data.title, "item": pageURL }
+      ]
     })} />
   </slot>
 
