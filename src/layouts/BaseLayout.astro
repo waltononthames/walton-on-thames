@@ -16,7 +16,7 @@ const {
   title,
   description,
   image = '/images/og-default.jpg',
-  canonicalURL = Astro.url.href,
+  canonicalURL = new URL(Astro.url.pathname, Astro.url.origin).href,
   type = 'website',
   noIndex = false,
 } = Astro.props;
