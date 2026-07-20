@@ -37,10 +37,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p>Walton-on-Thames.org is an independent, locally run community guide, created by a Walton resident and supported by contributions, recommendations and corrections from people across Walton-on-Thames, Hersham and the surrounding area.</p>
         <p>The site began with a simple aim: to create one well-organised and genuinely useful guide to this part of Surrey.</p>
 
-        <div class="about-author-placeholder">
-          <div class="author-photo-placeholder" aria-hidden="true">👤</div>
+        <div class="about-author">
+          <img src="/images/about/darren-profile.webp" alt="Darren, founder and editor of Walton-on-Thames.org" width="64" height="64" class="author-photo" />
           <div>
-            <p><em>Owner bio to be added here — name, connection to the area, why you built the site. This is the most important trust signal on the page; make it genuine and personal.</em></p>
+            <p>I'm Darren, the founder and editor of Walton-on-Thames.org. I live in and grew up in Walton-on-Thames and created the website to provide residents and visitors with a clear, dependable source of local information.</p>
+            <p>The site has been online since 2000 and has developed into a guide to local history, businesses, public services, community organisations, events and places to visit. Its purpose is to bring together information that is often scattered across official websites, archives, directories and local sources.</p>
+            <p>Walton-on-Thames.org is an independent website and is not affiliated with Elmbridge Borough Council or any other public authority. I welcome corrections, photographs, memories and suggestions that can help keep the site accurate, useful and representative of the community. Thank you for visiting.</p>
           </div>
         </div>
 
@@ -96,27 +98,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: start;
   }
 
-  .about-author-placeholder {
+  .about-author {
     display: flex;
     gap: 1.25rem;
     align-items: flex-start;
     padding: 1.5rem;
     background: rgba(11,36,46,0.04);
     border-radius: var(--radius-lg);
-    border: 1.5px dashed rgba(11,36,46,0.15);
     margin: 1.5rem 0;
   }
 
-  .author-photo-placeholder {
-    font-size: 3rem;
+  .author-photo {
     flex-shrink: 0;
     width: 64px;
     height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(11,36,46,0.06);
     border-radius: 50%;
+    object-fit: cover;
   }
 
   .info-card {
