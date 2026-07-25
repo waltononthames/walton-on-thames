@@ -1,0 +1,89 @@
+---
+/**
+ * Reusable "latest status" panel for recurring events/attractions where the
+ * current-week status needs to be visually separated from permanent editorial
+ * content. Intended to be reused on other event and attraction pages.
+ */
+interface Props {
+  /** One of a small set of known states — controls the accent colour and icon */
+  status: 'on' | 'off' | 'unconfirmed' | 'unavailable' | 'conflicting';
+  /** Short headline, e.g. "Not taking place this Sunday" */
+  headline: string;
+  /** Supporting sentence(s) of detail/advice */
+  detail: string;
+  /** When this panel's information was checked, e.g. "23 July 2026" */
+  checkedDate: string;
+  /** Label for the source link, e.g. "Apps Court Farm — Car Boot page" */
+  sourceLabel: string;
+  sourceUrl: string;
+}
+
+const { status, headline, detail, checkedDate, sourceLabel, sourceUrl } = Astro.props;
+
+const statusMeta: Record<Props['status'], { label: string; className: string }> = {
+  on: { label: 'Confirmed on', className: 'status-on' },
+  off: { label: 'Not taking place', className: 'status-off' },
+  unconfirmed: { label: 'Awaiting confirmation', className: 'status-unconfirmed' },
+  unavailable: { label: 'Official source unavailable', className: 'status-unavailable' },
+  conflicting: { label: 'Conflicting information', className: 'status-conflicting' },
+};
+
+const meta = statusMeta[status];
+---
+
+<div class={`status-panel ${meta.className}`} role="note" aria-label="Latest sale status">
+  <p class="status-label">{meta.label}</p>
+  <p class="status-headline">{headline}</p>
+  <p class="status-detail">{detail}</p>
+  <p class="status-checked">
+    Checked {checkedDate} against <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{sourceLabel} ↗</a>
+  </p>
+</div>
+
+<style>
+  .status-panel {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem 1.75rem;
+    border-left: 6px solid var(--color-slate-soft);
+    margin: 1.5rem 0 2rem;
+  }
+
+  .status-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.4rem;
+  }
+
+  .status-headline {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .status-detail {
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .status-checked {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+  }
+
+  .status-on { border-left-color: #2E7D32; }
+  .status-on .status-label { color: #2E7D32; }
+
+  .status-off { border-left-color: #B3261E; }
+  .status-off .status-label { color: #B3261E; }
+
+  .status-unconfirmed { border-left-color: var(--color-accent); }
+  .status-unconfirmed .status-label { color: var(--color-accent-dark); }
+
+  .status-unavailable { border-left-color: var(--color-slate-soft); }
+  .status-conflicting { border-left-color: var(--color-accent); }
+</style>

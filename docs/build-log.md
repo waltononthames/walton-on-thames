@@ -426,3 +426,27 @@ Verified: full build (265 pages, up from 264) and `npm run seo:validate` (264 pa
 
 ## Still open
 `content/neighbourhoods/*` MERGE work is now fully resolved (see above) — no longer open. The only remaining open item from the entire project is `walton-charity`'s full version, which needs Darren's own archival material to move beyond the provisional public-facts page built above. The broader blueprint spoke pages outside the history/Hersham extension remain their own separate body of work, deliberately not started per the user's explicit "pause here" answer.
+
+## 2026-07-23 — Apps Court Car Boot Sale visitor guide
+
+New standalone page (not a `places` collection entry — the schema and generic `[slug].astro` template don't support a status panel, pitch-price table, or FAQ, so it's a page-local build following the `riverside-walks.astro` precedent for one-off `/things-to-do/*` pages). Owner's brief was very long (SEO/LLM-optimisation blueprint) but the site's Content Verification Protocol overrides it — treated the brief as a structural template only and independently verified every factual claim this session.
+
+**New file:** `src/pages/things-to-do/apps-court-car-boot-sale.astro`. **New component:** `src/components/EventStatusPanel.astro` — reusable status/last-checked panel (props: status, headline, detail, checkedDate, sourceLabel, sourceUrl) intended for reuse on other recurring-event pages, since none existed before.
+
+**Sources checked this session** (all noted in the page's own "Sources and last-checked information" section too):
+- `appscourtfarm.com/carboot`, `/contact`, `/about` — live-fetched via the browser tool (WebFetch returns 403 on this domain). Confirmed current status ("not open this Sunday the 26th of July... on the following week (2nd August)"), gate times (7am–1pm), pitch prices by vehicle class, parking fee (£2), rubbish/prohibited-goods/dogs/accessibility rules, address (Hurst Road, Walton upon Thames, KT12 2EG), phone (01932 244 822) and email (community@appscourtfarm.com).
+- Victoria County History (`british-history.ac.uk/vch/surrey/vol3/pp467-475`) and Surrey Archaeological Society — manor ownership history, the 1898–99 demolition/reservoir, the All Souls' Day charity dispute, the "four or five British urns... about 1900" find, and the 1988–89 buried river-channel finding (Surrey County Archaeological Unit).
+- `bustimes.org` / Traveline data — found a "APPS" Cardinal Buses route (Hampton Court ↔ Apps Court Farm) but no scheduled journeys and it's absent from Cardinal Buses' own current route list, so it's presented on the page as unconfirmed rather than a reliable transport option.
+
+**Deliberately left unverified / flagged on the page rather than stated as fact:** Apps Court Farm's own "80 acres," "King John visited in the 1200s," and "American army used the land ahead of D-Day" claims — these are the venue's own marketing copy, not corroborated by an academic or archival source found this session, so the page attributes them explicitly to Apps Court Farm rather than asserting them as independently verified history. No lat/lng coordinates were fabricated for the sidebar map — a first draft embedded an unverified OpenStreetMap marker position and was corrected to a plain address + search link.
+
+**Structured data:** BreadcrumbList, WebPage, Place, EventSeries (with one `subEvent` Event only for 2 August 2026, the one date Apps Court Farm's own site currently confirms — no schema generated for unconfirmed future Sundays), FAQPage. All 5 blocks validated by parsing the built HTML with `JSON.parse` — clean.
+
+**Internal links added:** footer "Explore" column, and a callout card at the top of `/things-to-do/index.astro` (that page's `.info-card` class wasn't previously defined locally, so a small scoped style block was added there too).
+
+Verified: `npm run check` (pre-existing unrelated type errors on other pages were caused by a `.astro/content-assets.mjs.tmp` rename race — resolved by rerunning `astro sync`, not a real regression) and `npm run build` (266 pages, up from 265, zero `[NEEDS VERIFICATION]` markers). Page content spot-checked in the browser via `get_page_text` against the dev server.
+
+## Still open
+- Apps Court Car Boot Sale page: Cardinal Buses "APPS" route status is genuinely unclear (see above) — worth a follow-up phone check with Cardinal Buses if this page's transport section needs firming up later.
+- No images added for the new page (entrance, field, stalls) — the brief asked for original/licensed photography, which the owner would need to supply or commission; none exist in the repo for this venue.
+- The "80 acres / King John / D-Day" history claims from Apps Court Farm's own site are flagged on the page but not resolved either way — would need a proper archival/Historic England source to confirm or drop.

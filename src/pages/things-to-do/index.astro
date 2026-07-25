@@ -37,6 +37,14 @@ const sorted = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
 
   <section class="section">
     <div class="container">
+      <div class="info-card" style="margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+        <div>
+          <h2 style="font-size: 1.15rem; margin-bottom: 0.35rem;">Apps Court Car Boot Sale</h2>
+          <p style="color: var(--color-slate); margin: 0;">Times, seller prices, parking and the latest on/off status for Surrey's largest car boot sale, held on Hurst Road.</p>
+        </div>
+        <a href="/things-to-do/apps-court-car-boot-sale/" class="btn btn-primary">Read the guide</a>
+      </div>
+
       <div class="card-grid card-grid-3">
         {sorted.map(place => (
           <PlaceCard
@@ -52,3 +60,12 @@ const sorted = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+  }
+</style>
