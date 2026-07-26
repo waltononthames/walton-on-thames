@@ -1,8 +1,8 @@
 ---
 title: "Baby Brunch Club"
 slug: "baby-brunch-club-2026-07"
-start: "2026-07-15T12:00:00"
-end: "2026-07-15T16:00:00"
+start: "2026-07-29T12:00:00"
+end: "2026-07-29T16:00:00"
 venue: "29 High Street, Walton-on-Thames, KT12 1DG"
 neighbourhood: "walton-on-thames"
 category: "family"

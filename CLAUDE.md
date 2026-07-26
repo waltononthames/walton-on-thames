@@ -12,6 +12,7 @@ npm run dev      # local dev server at http://localhost:4321
 npm run build    # production build → dist/ (prebuild fails the build if any [NEEDS VERIFICATION] marker exists in src/ — see Content Verification Protocol Rule 3)
 npm run preview  # serve dist/ locally
 npm run check    # Astro type-check (run before pushing)
+npm run content:stale-events  # advisory: flags recurring events whose date has lapsed (see Content-type requirements > Events listings below)
 ```
 
 ## Architecture
@@ -144,6 +145,8 @@ When a fact cannot be verified:
 3. List all markers in a summary at the end of the session output
 4. Never resolve a marker by softening the language ("reportedly", "it is said that"). Hedged fabrication is still fabrication. Either verify it or delete it.
 
+**Never ship a QA note as prose either.** A 16 July 2026 audit caught a listing published with the sentence "Current trading status should be checked before publication" — genuine unresolved-verification content, just not wearing the marker. `scripts/check-verification-markers.mjs` now also hard-blocks the build on a narrow set of editorial-meta-commentary phrases ("should be checked before publication", "not yet verified", "TODO:", "[TBC]", etc.) in addition to the literal marker. If you catch yourself writing a sentence *about* whether the content is ready to publish, that's the marker in disguise — use the real marker instead, don't just phrase it as a caveat.
+
 ## Rule 4: Content-Type Requirements
 
 **Business and venue listings:**
@@ -164,6 +167,7 @@ When a fact cannot be verified:
 
 - Only from the automated iCal feeds or the organiser's official page
 - Never extrapolate recurring events ("the market runs every Saturday") without confirmation for the current period
+- `recurring: true` events carry one hardcoded `start`/`end` date, not a rule — once it lapses the build-time filter (correctly) drops it from "Coming Up" rather than showing anything wrong, but the listing then just goes silently invisible until a human re-dates it. Run `npm run content:stale-events` at the start of any content session to see which ones need re-checking. When you do, re-verify against the live source before bumping the date — don't just add 7 days. A term-time-only session (school library storytimes etc.) can lapse into a school holiday; check school term dates before assuming "same day next week" still holds.
 
 **Practical information (transport, parking, amenities):**
 

@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "seo:validate": "node scripts/seo-validate.mjs",
-    "seo:links": "node scripts/seo-links.mjs"
+    "seo:links": "node scripts/seo-links.mjs",
+    "content:stale-events": "node scripts/check-stale-events.mjs"
   },
   "keywords": [],
   "author": "",
