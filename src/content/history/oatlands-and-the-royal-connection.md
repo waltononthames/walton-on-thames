@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Oatlands Palace"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Oatlands Palace"
     url: "https://en.wikipedia.org/wiki/Oatlands_Palace"
-  - label: "Elmbridge Museum: Oatlands Palace"
+    accessed: "2 July 2026"
+  - author: "Elmbridge Museum"
+    year: "n.d."
+    title: "Oatlands Palace"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/oatlands-palace/"
+    accessed: "2 July 2026"
 related: ["st-marys-church", "domesday-and-origins"]
 ---
 

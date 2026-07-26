@@ -9,10 +9,16 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Jonathan King: Wikipedia"
+  - author: "Jonathan King"
+    year: "n.d."
+    title: "Wikipedia"
     url: "https://en.wikipedia.org/wiki/Jonathan_King"
-  - label: "Wikipedia: Sham 69"
+    accessed: "2 July 2026"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Sham 69"
     url: "https://en.wikipedia.org/wiki/Sham_69"
+    accessed: "2 July 2026"
 related: ["film-studios", "sham-69"]
 ---
 

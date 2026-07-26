@@ -11,14 +11,26 @@ heroAlt: "A Victorian seltzer bottle embossed 'SAVAGE & SON', held in a private 
 publishDate: 2026-07-26
 reviewedDate: 2026-07-26
 sources:
-  - label: "Kelly & Co. (1891): Kelly's Directory of Surrey, entry for Walton-on-Thames, p. 1535"
+  - author: "Kelly & Co. (1891)"
+    year: "n.d."
+    title: "Kelly's Directory of Surrey, entry for Walton-on-Thames, p. 1535"
     url: "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/167114/rec/1"
-  - label: "Surrey County Council: Brookwood Hospital, Woking, Male Case Books 1901-1921, surnames N-Z (index)"
+    accessed: "26 July 2026"
+  - author: "Surrey County Council"
+    year: "n.d."
+    title: "Brookwood Hospital, Woking, Male Case Books 1901-1921, surnames N-Z (index)"
     url: "https://www.surreycc.gov.uk/__data/assets/pdf_file/0007/452329/Brookwood-Hospital-Woking,-Male-Case-Books,-1901-1921,-surnames-N-Z-22072025_110509.pdf"
-  - label: "Science Museum Group: Rylands mineral water bottle, c. 1900"
+    accessed: "26 July 2026"
+  - author: "Science Museum Group"
+    year: "n.d."
+    title: "Rylands mineral water bottle, c. 1900"
     url: "https://collection.sciencemuseumgroup.org.uk/objects/co19120/rylands-mineral-water-bottle"
-  - label: "Surrey Advertiser (1903): Obituary notice, 15 August 1903"
+    accessed: "26 July 2026"
+  - author: "Surrey Advertiser (1903)"
+    year: "n.d."
+    title: "Obituary notice, 15 August 1903"
     url: "https://www.britishnewspaperarchive.co.uk/titles/surrey-advertiser"
+    accessed: "26 July 2026"
 related: ["the-heart-and-town-centre"]
 ---
 

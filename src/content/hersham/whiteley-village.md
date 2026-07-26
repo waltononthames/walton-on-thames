@@ -9,12 +9,21 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Whiteley Village"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Whiteley Village"
     url: "https://en.wikipedia.org/wiki/Whiteley_Village"
-  - label: "Whiteley Homes Trust"
+    accessed: "2 July 2026"
+  - author: "Whiteley Homes Trust"
+    year: "n.d."
+    title: "Whiteley Homes Trust"
     url: "https://www.thewhiteleyhomestrust.org.uk/about-us"
-  - label: "Wikipedia: William Whiteley"
+    accessed: "2 July 2026"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "William Whiteley"
     url: "https://en.wikipedia.org/wiki/William_Whiteley"
+    accessed: "2 July 2026"
 related: ["hersham-green"]
 ---
 

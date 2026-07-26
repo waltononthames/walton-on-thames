@@ -9,8 +9,11 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Hersham and Walton Motors"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Hersham and Walton Motors"
     url: "https://en.wikipedia.org/wiki/Hersham_and_Walton_Motors"
+    accessed: "2 July 2026"
 related: ["walton-bridge", "walton-in-wartime"]
 ---
 

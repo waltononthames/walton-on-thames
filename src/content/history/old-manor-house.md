@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Historic England: Old Manor House, list entry"
+  - author: "Historic England"
+    year: "n.d."
+    title: "Old Manor House, list entry"
     url: "https://historicengland.org.uk/listing/the-list/list-entry/1030163"
-  - label: "Village Matters: Charles I, The Old Manor House, and Justice John Bradshaw"
+    accessed: "2 July 2026"
+  - author: "Village Matters"
+    year: "n.d."
+    title: "Charles I, The Old Manor House, and Justice John Bradshaw"
     url: "https://www.villagematters.co.uk/walton-matters/walton-matters-articles/2018/08/charles-i-the-old-manor-house-and-justice-john-bradshaw"
+    accessed: "2 July 2026"
 related: ["st-marys-church", "domesday-and-origins"]
 ---
 

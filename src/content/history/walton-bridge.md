@@ -9,12 +9,21 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-16
 sources:
-  - label: "Wikipedia: Walton-on-Thames"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
-  - label: "Tate: Canaletto (artist page)"
+    accessed: "16 July 2026"
+  - author: "Tate"
+    year: "n.d."
+    title: "Canaletto (artist page)"
     url: "https://www.tate.org.uk/art/artists/canaletto-2302"
-  - label: "Wikipedia: A View of Walton Bridge"
+    accessed: "16 July 2026"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "A View of Walton Bridge"
     url: "https://en.wikipedia.org/wiki/A_View_of_Walton_Bridge"
+    accessed: "16 July 2026"
 related: ["cowey-stakes"]
 ---
 

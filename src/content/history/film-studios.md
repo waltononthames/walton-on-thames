@@ -9,12 +9,21 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-17
 sources:
-  - label: "Wikipedia: Walton Studios"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Walton Studios"
     url: "https://en.wikipedia.org/wiki/Walton_Studios"
-  - label: "Surrey Brass: Hepworth Film Studios Timeline"
+    accessed: "17 July 2026"
+  - author: "Surrey Brass"
+    year: "n.d."
+    title: "Hepworth Film Studios Timeline"
     url: "https://www.surreybrass.co.uk/hepworthfilm/index.php/studios/45-the-studios-a-timeline"
-  - label: "BFI: Most Wanted (lost British films)"
+    accessed: "17 July 2026"
+  - author: "BFI"
+    year: "n.d."
+    title: "Most Wanted (lost British films)"
     url: "https://www.bfi.org.uk/bfi-national-archive/inside-archive/bfi-most-wanted"
+    accessed: "17 July 2026"
 related: ["famous-residents", "walton-bridge"]
 ---
 

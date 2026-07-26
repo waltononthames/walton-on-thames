@@ -9,8 +9,11 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Walton-on-Thames"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
+    accessed: "2 July 2026"
 related: ["walton-bridge", "famous-residents", "mount-felix-memorial-banner", "mount-felix"]
 ---
 

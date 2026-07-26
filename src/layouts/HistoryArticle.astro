@@ -95,8 +95,8 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
           <div class="sources-block">
             <h2>Sources</h2>
             <ul>
-              {data.sources.map((s: { label: string; url: string }) => (
-                <li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.label} ↗</a></li>
+              {data.sources.map((s: { author: string; year: string; title: string; url: string; accessed: string }) => (
+                <li>{s.author} ({s.year}) '{s.title}'. Available at: <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url} ↗</a> (Accessed: {s.accessed}).</li>
               ))}
             </ul>
           </div>

@@ -9,12 +9,21 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Toynbee Hall: The Profumo Connection"
+  - author: "Toynbee Hall"
+    year: "n.d."
+    title: "The Profumo Connection"
     url: "https://www.toynbeehall.org.uk/the-profumo-connection/"
-  - label: "IWM: Odette Sansom GC"
+    accessed: "2 July 2026"
+  - author: "IWM"
+    year: "n.d."
+    title: "Odette Sansom GC"
     url: "https://www.iwm.org.uk/history/odette-sansom-gc"
-  - label: "Wikipedia: Frederick Wicks"
+    accessed: "2 July 2026"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Frederick Wicks"
     url: "https://en.wikipedia.org/wiki/Frederick_Wicks"
+    accessed: "2 July 2026"
 related: ["sham-69", "hersham-green"]
 ---
 

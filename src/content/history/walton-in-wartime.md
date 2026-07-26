@@ -9,10 +9,16 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Battle of Britain London Monument: F/Sgt C Sydney"
+  - author: "Battle of Britain London Monument"
+    year: "n.d."
+    title: "F/Sgt C Sydney"
     url: "https://www.bbm.org.uk/airmen/sydney.htm"
-  - label: "Wikipedia: Walton-on-Thames"
+    accessed: "2 July 2026"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
+    accessed: "2 July 2026"
 related: ["mount-felix", "walton-bridge"]
 ---
 

@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Hersham"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Hersham"
     url: "https://en.wikipedia.org/wiki/Hersham"
-  - label: "Toynbee Hall: The Profumo Connection"
+    accessed: "2 July 2026"
+  - author: "Toynbee Hall"
+    year: "n.d."
+    title: "The Profumo Connection"
     url: "https://www.toynbeehall.org.uk/the-profumo-connection/"
+    accessed: "2 July 2026"
 related: ["hersham-green", "famous-residents"]
 ---
 

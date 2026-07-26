@@ -9,8 +9,11 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Sham 69"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Sham 69"
     url: "https://en.wikipedia.org/wiki/Sham_69"
+    accessed: "2 July 2026"
 related: ["hersham-green", "film-studios"]
 ---
 

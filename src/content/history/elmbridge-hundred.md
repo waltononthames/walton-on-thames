@@ -9,8 +9,11 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "The Elmbridge Hundred: Amelebrige to Elmbridge: The Biography of a Borough"
+  - author: "The Elmbridge Hundred"
+    year: "n.d."
+    title: "Amelebrige to Elmbridge: The Biography of a Borough"
     url: "https://www.elmbridgehundred.org.uk/history/"
+    accessed: "2 July 2026"
 related: ["domesday-and-origins"]
 ---
 

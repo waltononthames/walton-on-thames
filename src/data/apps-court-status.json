@@ -1,14 +1,14 @@
 {
   "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source — the rest of this file was deliberately left untouched rather than overwritten with a guess.",
-  "status": "off",
-  "headline": "Not taking place on Sunday 26 July 2026",
-  "detail": "Apps Court Farm's own car boot page states the sale is not on this Sunday, and that it will resume the following week, Sunday 2 August 2026. The farm's events calendar shows the Barrio Fiesta festival taking place at the same site that weekend. Always check the official page or call before travelling — sales can also be postponed for weather or ground conditions at short notice.",
+  "status": "on",
+  "headline": "Confirmed on for Sunday 2 August 2026",
+  "detail": "Apps Court Farm's own car boot page still shows the notice posted for the previous week (\"not open... the 26th of July... on the following week (2nd August)\") — 26 July has now passed, so this reads as confirmation that the sale is on for the coming Sunday, 2 August 2026. No newer postponement notice has been posted. Always check the official page or call before travelling — sales can be postponed for weather or ground conditions at short notice.",
   "nextConfirmedDateISO": "2026-08-02",
   "nextConfirmedDateLabel": "2 August 2026",
-  "checkedDateISO": "2026-07-23",
-  "checkedDateLabel": "23 July 2026",
+  "checkedDateISO": "2026-07-27",
+  "checkedDateLabel": "27 July 2026",
   "sourceLabel": "Apps Court Farm — Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Manually verified at page build time, 23 July 2026."
+  "lastCheckNote": "Manual check 27 July 2026: banner text unchanged from 23 July, but the referenced date (26 July) has now passed, so it now confirms the upcoming Sunday (2 August) rather than a cancellation."
 }

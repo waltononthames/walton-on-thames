@@ -9,10 +9,16 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Walton-on-Thames"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
-  - label: "The Elmbridge Hundred: Amelebrige to Elmbridge"
+    accessed: "2 July 2026"
+  - author: "The Elmbridge Hundred"
+    year: "n.d."
+    title: "Amelebrige to Elmbridge"
     url: "https://www.elmbridgehundred.org.uk/history/"
+    accessed: "2 July 2026"
 related: ["elmbridge-hundred", "st-marys-church"]
 ---
 

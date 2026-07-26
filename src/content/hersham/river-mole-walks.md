@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-03
 sources:
-  - label: "Wikipedia: Hersham"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Hersham"
     url: "https://en.wikipedia.org/wiki/Hersham"
-  - label: "AllTrails: Molesey Heath Nature Reserve from Field Common"
+    accessed: "3 July 2026"
+  - author: "AllTrails"
+    year: "n.d."
+    title: "Molesey Heath Nature Reserve from Field Common"
     url: "https://www.alltrails.com/en-gb/poi/england/surrey/walton-on-thames--2/walton-on-thames-camping-and-caravanning-club-site"
+    accessed: "3 July 2026"
 related: ["hersham-green"]
 ---
 

@@ -9,8 +9,11 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Hersham"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Hersham"
     url: "https://en.wikipedia.org/wiki/Hersham"
+    accessed: "2 July 2026"
 related: ["sham-69"]
 ---
 

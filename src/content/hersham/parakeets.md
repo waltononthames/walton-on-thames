@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Feral parakeets in Great Britain"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Feral parakeets in Great Britain"
     url: "https://en.wikipedia.org/wiki/Feral_parakeets_in_Great_Britain"
-  - label: "UCL: Parakeet 'crime map' busts Bogart and Hendrix myths"
+    accessed: "2 July 2026"
+  - author: "UCL"
+    year: "n.d."
+    title: "Parakeet 'crime map' busts Bogart and Hendrix myths"
     url: "https://www.ucl.ac.uk/news/2019/dec/parakeet-crime-map-busts-bogart-and-hendrix-myths"
+    accessed: "2 July 2026"
 related: ["hersham-green"]
 ---
 

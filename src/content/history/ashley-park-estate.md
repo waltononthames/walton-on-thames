@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Ashley Park, Surrey"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Ashley Park, Surrey"
     url: "https://en.wikipedia.org/wiki/Ashley_Park,_Surrey"
-  - label: "Golf's Missing Links: Ashley Park Golf Club"
+    accessed: "2 July 2026"
+  - author: "Golf's Missing Links"
+    year: "n.d."
+    title: "Ashley Park Golf Club"
     url: "https://www.golfsmissinglinks.co.uk/index.php/england/south-east/surrey/800-sur-ashley-park-golf-club-walton-on-thames"
+    accessed: "2 July 2026"
 related: ["origins-of-baseball", "st-marys-church"]
 ---
 

@@ -9,12 +9,21 @@ entityType: "event"
 publishDate: 2026-07-12
 reviewedDate: 2026-07-12
 sources:
-  - label: "Museum of New Zealand Te Papa Tongarewa: Memorial banner record, GH017123"
+  - author: "Museum of New Zealand Te Papa Tongarewa"
+    year: "n.d."
+    title: "Memorial banner record, GH017123"
     url: "https://collections.tepapa.govt.nz/object/972921"
-  - label: "Te Papa's Blog: Stories from the First World War: Soldiers commemorated at Walton-on-Thames"
+    accessed: "12 July 2026"
+  - author: "Te Papa's Blog"
+    year: "n.d."
+    title: "Stories from the First World War: Soldiers commemorated at Walton-on-Thames"
     url: "https://blog.tepapa.govt.nz/2011/09/05/stories-from-the-first-world-war-soldiers-commemorated-at-walton-on-thames/"
-  - label: "Elmbridge Museum: The Mount Felix War Hospital"
+    accessed: "12 July 2026"
+  - author: "Elmbridge Museum"
+    year: "n.d."
+    title: "The Mount Felix War Hospital"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/the-mount-felix-war-hospital/"
+    accessed: "12 July 2026"
 related: ["mount-felix", "mount-felix-tapestry", "st-marys-church"]
 ---
 

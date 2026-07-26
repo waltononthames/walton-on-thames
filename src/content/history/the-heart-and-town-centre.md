@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-03
 sources:
-  - label: "Wikipedia: Walton Court, Walton-on-Thames"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Walton Court, Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton_Court,_Walton-on-Thames"
-  - label: "Historic England: Walton Court, formerly Birds Eye Offices"
+    accessed: "3 July 2026"
+  - author: "Historic England"
+    year: "n.d."
+    title: "Walton Court, formerly Birds Eye Offices"
     url: "https://historicengland.org.uk/listing/the-list/list-entry/1271706"
+    accessed: "3 July 2026"
 related: ["film-studios", "walton-in-wartime"]
 ---
 

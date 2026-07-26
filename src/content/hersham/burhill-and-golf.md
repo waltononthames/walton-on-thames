@@ -9,8 +9,11 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Burhill Golf Club: History"
+  - author: "Burhill Golf Club"
+    year: "n.d."
+    title: "History"
     url: "https://burhillgolf-club.co.uk/history/"
+    accessed: "2 July 2026"
 related: ["hersham-green"]
 ---
 

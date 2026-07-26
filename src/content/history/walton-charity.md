@@ -9,10 +9,16 @@ entityType: "institution"
 publishDate: 2026-07-03
 reviewedDate: 2026-07-03
 sources:
-  - label: "Charity Commission: Walton Charity, registered charity 1185959"
+  - author: "Charity Commission"
+    year: "n.d."
+    title: "Walton Charity, registered charity 1185959"
     url: "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5123182/full-print"
-  - label: "Walton Charity"
+    accessed: "3 July 2026"
+  - author: "Walton Charity"
+    year: "n.d."
+    title: "Walton Charity"
     url: "https://www.waltoncharity.org.uk/"
+    accessed: "3 July 2026"
 related: ["st-marys-church"]
 ---
 

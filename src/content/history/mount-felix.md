@@ -11,10 +11,16 @@ heroAlt: "Mount Felix House, Walton-on-Thames, during the First World War"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-12
 sources:
-  - label: "Wikipedia: No. 2 New Zealand General Hospital"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "No. 2 New Zealand General Hospital"
     url: "https://en.wikipedia.org/wiki/No._2_New_Zealand_General_Hospital"
-  - label: "Elmbridge Museum: The Mount Felix War Hospital"
+    accessed: "12 July 2026"
+  - author: "Elmbridge Museum"
+    year: "n.d."
+    title: "The Mount Felix War Hospital"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/the-mount-felix-war-hospital/"
+    accessed: "12 July 2026"
 related: ["walton-in-wartime", "st-marys-church", "arthur-white", "mount-felix-tapestry", "mount-felix-memorial-banner"]
 ---
 

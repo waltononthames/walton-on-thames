@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Walton-on-Thames"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
-  - label: "Elmbridge Museum"
+    accessed: "2 July 2026"
+  - author: "Elmbridge Museum"
+    year: "n.d."
+    title: "Elmbridge Museum"
     url: "https://elmbridgemuseum.org.uk/"
+    accessed: "2 July 2026"
 related: ["walton-bridge"]
 ---
 

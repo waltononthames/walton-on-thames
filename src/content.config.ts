@@ -84,7 +84,16 @@ const historySchema = z.object({
   heroAlt: z.string().optional(),
   publishDate: z.date(),
   reviewedDate: z.date(),
-  sources: z.array(z.object({ label: z.string(), url: z.string().url() })),
+  // Harvard/APA-shaped so citations can render as "Author (Year) 'Title'.
+  // Available at: URL (Accessed: date)." — year is "n.d." where no publication
+  // date is known/verifiable (never guess one). See docs/build-log.md.
+  sources: z.array(z.object({
+    author: z.string(),
+    year: z.string(),
+    title: z.string(),
+    url: z.string().url(),
+    accessed: z.string(),
+  })),
   related: z.array(z.string()),
 });
 

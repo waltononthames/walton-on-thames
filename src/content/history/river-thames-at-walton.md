@@ -9,10 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Desborough Cut"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Desborough Cut"
     url: "https://en.wikipedia.org/wiki/Desborough_Cut"
-  - label: "The Royal Family: Swan Upping"
+    accessed: "2 July 2026"
+  - author: "The Royal Family"
+    year: "n.d."
+    title: "Swan Upping"
     url: "https://www.royal.uk/swans"
+    accessed: "2 July 2026"
 related: ["walton-bridge", "cowey-stakes"]
 ---
 

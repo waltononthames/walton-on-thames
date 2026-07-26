@@ -9,10 +9,16 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia: Walton-on-Thames"
+  - author: "Wikipedia"
+    year: "n.d."
+    title: "Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
-  - label: "We Are Cult: Fear and Loathing in Walton-on-Thames: Psychomania"
+    accessed: "2 July 2026"
+  - author: "We Are Cult"
+    year: "n.d."
+    title: "Fear and Loathing in Walton-on-Thames: Psychomania"
     url: "https://wearecult.rocks/fear-and-loathing-in-walton-on-thames-psychomania"
+    accessed: "2 July 2026"
 related: ["film-studios", "walton-bridge"]
 ---
 
