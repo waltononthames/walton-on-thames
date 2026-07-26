@@ -9,14 +9,14 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Sham 69"
+  - label: "Wikipedia: Sham 69"
     url: "https://en.wikipedia.org/wiki/Sham_69"
 related: ["hersham-green", "film-studios"]
 ---
 
 Hersham's most unlikely export is a punk band whose biggest hit is named after the village itself. Sham 69, formed here in 1975, went on to reach number 6 in the UK singles chart with "Hersham Boys", and their story runs directly through the same building that once housed Walton's pioneering film studio.
 
-<!-- IMAGE: hersham-green-barley-mow.jpg — alt: "Hersham Green, where Sham 69's pre-punk roots as a covers band began" -->
+<!-- IMAGE: hersham-green-barley-mow.jpg, alt: "Hersham Green, where Sham 69's pre-punk roots as a covers band began" -->
 
 ## A band from the village
 

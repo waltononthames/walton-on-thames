@@ -1,7 +1,7 @@
 ---
 title: "Walton Charity: Eight Centuries of Local Giving"
 metaTitle: "Walton Charity: A Short Introduction"
-metaDescription: "A short, provisional introduction to Walton Charity — its registered purpose, its almshouses, and the area of Walton-on-Thames it serves."
+metaDescription: "A short, provisional introduction to Walton Charity: its registered purpose, its almshouses, and the area of Walton-on-Thames it serves."
 slug: "walton-charity"
 cluster: "walton-history"
 era: ["contemporary"]
@@ -9,16 +9,16 @@ entityType: "institution"
 publishDate: 2026-07-03
 reviewedDate: 2026-07-03
 sources:
-  - label: "Charity Commission — Walton Charity, registered charity 1185959"
+  - label: "Charity Commission: Walton Charity, registered charity 1185959"
     url: "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5123182/full-print"
   - label: "Walton Charity"
     url: "https://www.waltoncharity.org.uk/"
 related: ["st-marys-church"]
 ---
 
-This page is a short, provisional placeholder rather than the full page this subject deserves. Walton Charity has centuries of history behind it, and the site's editor, Darren Bayley, is a trustee with direct access to the charity's own archival records — the fuller version of this page should be drafted from that primary material rather than public sources alone, and will replace this note in time.
+This page is a short, provisional placeholder rather than the full page this subject deserves. Walton Charity has centuries of history behind it, and the site's editor, Darren Bayley, is a trustee with direct access to the charity's own archival records. The fuller version of this page should be drafted from that primary material rather than public sources alone, and will replace this note in time.
 
-<!-- IMAGE: walton-charity-almshouses.jpg — alt: "Walton Charity almshouses, Walton-on-Thames" -->
+<!-- IMAGE: walton-charity-almshouses.jpg, alt: "Walton Charity almshouses, Walton-on-Thames" -->
 
 ## What Walton Charity does today
 

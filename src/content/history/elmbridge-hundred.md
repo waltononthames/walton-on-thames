@@ -9,14 +9,14 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "The Elmbridge Hundred — Amelebrige to Elmbridge: The Biography of a Borough"
+  - label: "The Elmbridge Hundred: Amelebrige to Elmbridge: The Biography of a Borough"
     url: "https://www.elmbridgehundred.org.uk/history/"
 related: ["domesday-and-origins"]
 ---
 
 The name of the modern Borough of Elmbridge is not a piece of twentieth-century council branding. It is a genuinely ancient administrative name, inherited almost unchanged from an Anglo-Saxon land division that predates the Domesday Book.
 
-<!-- IMAGE: river-mole-amelebrige.jpg — alt: "The River Mole, from which the Elmbridge hundred took its Saxon name" -->
+<!-- IMAGE: river-mole-amelebrige.jpg, alt: "The River Mole, from which the Elmbridge hundred took its Saxon name" -->
 
 ## What a hundred was
 

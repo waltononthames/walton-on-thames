@@ -1,7 +1,7 @@
 ---
 title: "Walton Bridge: The Story of Six Crossings"
 metaTitle: "Walton Bridge: The Story of Six Crossings"
-metaDescription: "The history of Walton Bridge — from the 1750 timber bridge Canaletto painted, through Turner's version, to the current bridge that opened in 2013."
+metaDescription: "The history of Walton Bridge: from the 1750 timber bridge Canaletto painted, through Turner's version, to the current bridge that opened in 2013."
 slug: "walton-bridge"
 cluster: "walton-history"
 era: ["georgian", "victorian", "wartime", "modern"]
@@ -9,18 +9,18 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-16
 sources:
-  - label: "Wikipedia — Walton-on-Thames"
+  - label: "Wikipedia: Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
-  - label: "Tate — Canaletto (artist page)"
+  - label: "Tate: Canaletto (artist page)"
     url: "https://www.tate.org.uk/art/artists/canaletto-2302"
-  - label: "Wikipedia — A View of Walton Bridge"
+  - label: "Wikipedia: A View of Walton Bridge"
     url: "https://en.wikipedia.org/wiki/A_View_of_Walton_Bridge"
 related: ["cowey-stakes"]
 ---
 
 Six bridges have crossed the Thames between Walton and Shepperton since the middle of the eighteenth century, and the site has a longer memory than that: a ferry is recorded operating here from at least the early seventeenth century, before any bridge existed at all. Few river crossings in Surrey have been rebuilt so often, or painted by so many serious artists along the way.
 
-<!-- IMAGE: walton-bridge-current-2013.jpg — alt: "The current Walton Bridge, opened 2013, viewed from Cowey Sale" -->
+<!-- IMAGE: walton-bridge-current-2013.jpg, alt: "The current Walton Bridge, opened 2013, viewed from Cowey Sale" -->
 
 ## The first bridge, and Canaletto
 

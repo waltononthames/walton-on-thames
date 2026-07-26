@@ -9,18 +9,18 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-17
 sources:
-  - label: "Wikipedia — Walton Studios"
+  - label: "Wikipedia: Walton Studios"
     url: "https://en.wikipedia.org/wiki/Walton_Studios"
-  - label: "Surrey Brass — Hepworth Film Studios Timeline"
+  - label: "Surrey Brass: Hepworth Film Studios Timeline"
     url: "https://www.surreybrass.co.uk/hepworthfilm/index.php/studios/45-the-studios-a-timeline"
-  - label: "BFI — Most Wanted (lost British films)"
+  - label: "BFI: Most Wanted (lost British films)"
     url: "https://www.bfi.org.uk/bfi-national-archive/inside-archive/bfi-most-wanted"
 related: ["famous-residents", "walton-bridge"]
 ---
 
 For a town best known today for its river and its railway station, Walton-on-Thames has an outsized claim on the early history of British cinema. Between 1899 and 1961, a single site on Hurst Grove operated, under three different names, as one of the country's most important film studios, and for a period during the First World War it stood alongside only two other British studios of comparable scale. The story ends badly, in a bankruptcy that destroyed most of what the studio had made, but the studio itself shaped the earliest years of a British film industry that barely existed before it arrived.
 
-<!-- IMAGE: hepworth-playhouse-exterior.jpg — alt: "The Cecil Hepworth Playhouse, the surviving power house of the original Walton film studio" -->
+<!-- IMAGE: hepworth-playhouse-exterior.jpg, alt: "The Cecil Hepworth Playhouse, the surviving power house of the original Walton film studio" -->
 
 ## Cecil Hepworth comes to Hurst Grove, 1899
 
@@ -44,7 +44,7 @@ By 1914, Hepworth's studio at Walton was one of only three major film studios op
 
 ## The 1923 bankruptcy and the melted negatives
 
-The studio's most dramatic chapter is also its worst. Hepworth's company went bankrupt in 1923, undone by mounting competition from bigger, better-capitalised rivals, particularly from the United States. What happened next is the detail that makes the story genuinely painful rather than simply a business failure: the receiver appointed to wind up the company melted down Hepworth's original negatives, around two thousand films built up over more than two decades of continuous production. Accounts differ on the exact reason: some say the material was sold for its silver content, others that it was reprocessed to make waterproofing resin. Whatever the reason, the loss itself is well documented, and some sources go further, crediting this single event with destroying as much as eighty per cent of all British films made between 1900 and 1929. That figure is hard to pin down precisely — it's also the rough scale of Britain's silent-film losses overall, from many causes, and how much of the national total traces to Hepworth's catalogue specifically isn't something the sources agree on. What isn't in dispute is that it ranks among the starkest single archival losses in the history of British cinema — and it happened in Walton.
+The studio's most dramatic chapter is also its worst. Hepworth's company went bankrupt in 1923, undone by mounting competition from bigger, better-capitalised rivals, particularly from the United States. What happened next is the detail that makes the story genuinely painful rather than simply a business failure: the receiver appointed to wind up the company melted down Hepworth's original negatives, around two thousand films built up over more than two decades of continuous production. Accounts differ on the exact reason: some say the material was sold for its silver content, others that it was reprocessed to make waterproofing resin. Whatever the reason, the loss itself is well documented, and some sources go further, crediting this single event with destroying as much as eighty per cent of all British films made between 1900 and 1929. That figure is hard to pin down precisely: it's also the rough scale of Britain's silent-film losses overall, from many causes, and how much of the national total traces to Hepworth's catalogue specifically isn't something the sources agree on. What isn't in dispute is that it ranks among the starkest single archival losses in the history of British cinema, and it happened in Walton.
 
 ## Nettlefold and Walton Studios
 

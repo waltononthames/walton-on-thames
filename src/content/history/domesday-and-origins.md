@@ -9,16 +9,16 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Walton-on-Thames"
+  - label: "Wikipedia: Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
-  - label: "The Elmbridge Hundred — Amelebrige to Elmbridge"
+  - label: "The Elmbridge Hundred: Amelebrige to Elmbridge"
     url: "https://www.elmbridgehundred.org.uk/history/"
 related: ["elmbridge-hundred", "st-marys-church"]
 ---
 
 Walton's name is older than the town most people recognise today, and its first documentary appearance predates the Norman Conquest's own paperwork by only twenty years. The Domesday Book of 1086 is not where Walton begins, but it is the earliest point where the town's existence is written down in black and white.
 
-<!-- IMAGE: domesday-book-facsimile.jpg — alt: "Facsimile page from the Domesday Book" -->
+<!-- IMAGE: domesday-book-facsimile.jpg, alt: "Facsimile page from the Domesday Book" -->
 
 ## A Celtic name
 

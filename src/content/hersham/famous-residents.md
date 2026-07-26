@@ -9,18 +9,18 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Toynbee Hall — The Profumo Connection"
+  - label: "Toynbee Hall: The Profumo Connection"
     url: "https://www.toynbeehall.org.uk/the-profumo-connection/"
-  - label: "IWM — Odette Sansom GC"
+  - label: "IWM: Odette Sansom GC"
     url: "https://www.iwm.org.uk/history/odette-sansom-gc"
-  - label: "Wikipedia — Frederick Wicks"
+  - label: "Wikipedia: Frederick Wicks"
     url: "https://en.wikipedia.org/wiki/Frederick_Wicks"
 related: ["sham-69", "hersham-green"]
 ---
 
 Hersham's list of notable connections runs from a seventeenth-century astrologer to a wartime secret agent to a punk frontman, a genuinely wide spread for a village of its size.
 
-<!-- IMAGE: st-peters-church-hersham.jpg — alt: "St Peter's Church, Hersham, burial place of John Profumo" -->
+<!-- IMAGE: st-peters-church-hersham.jpg, alt: "St Peter's Church, Hersham, burial place of John Profumo" -->
 
 ## John Profumo
 

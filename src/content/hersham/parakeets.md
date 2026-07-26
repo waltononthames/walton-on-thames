@@ -1,7 +1,7 @@
 ---
 title: "The Hersham Parakeets: Britain's Loudest Roost"
 metaTitle: "The Hersham Parakeets: Where to See Them"
-metaDescription: "One of Britain's largest ring-necked parakeet colonies roosts near Hersham — where they came from, the myths that aren't true, and when to see them."
+metaDescription: "One of Britain's largest ring-necked parakeet colonies roosts near Hersham: where they came from, the myths that aren't true, and when to see them."
 slug: "parakeets"
 cluster: "hersham"
 era: ["contemporary"]
@@ -9,16 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Feral parakeets in Great Britain"
+  - label: "Wikipedia: Feral parakeets in Great Britain"
     url: "https://en.wikipedia.org/wiki/Feral_parakeets_in_Great_Britain"
-  - label: "UCL — Parakeet 'crime map' busts Bogart and Hendrix myths"
+  - label: "UCL: Parakeet 'crime map' busts Bogart and Hendrix myths"
     url: "https://www.ucl.ac.uk/news/2019/dec/parakeet-crime-map-busts-bogart-and-hendrix-myths"
 related: ["hersham-green"]
 ---
 
 On any evening near Hersham, you may notice a bright green streak crossing the sky, usually in numbers, usually loudly. Ring-necked parakeets are not native to Britain, but the colony that roosts near Hersham is one of the largest and longest-established in the country, and it has become one of the village's more surprising talking points.
 
-<!-- IMAGE: ring-necked-parakeets-hersham.jpg — alt: "Ring-necked parakeets in flight near Hersham, Surrey" -->
+<!-- IMAGE: ring-necked-parakeets-hersham.jpg, alt: "Ring-necked parakeets in flight near Hersham, Surrey" -->
 
 ## The colony near Esher Rugby Club
 

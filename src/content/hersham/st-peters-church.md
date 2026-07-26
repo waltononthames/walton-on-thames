@@ -1,7 +1,7 @@
 ---
 title: "St Peter's Church, Hersham"
-metaTitle: "St Peter's Church, Hersham — History"
-metaDescription: "St Peter's Church, Hersham — successor to the 1839 Holy Trinity chapel, built in 1887 by J. L. Pearson, and burial place of the Profumo family vault."
+metaTitle: "St Peter's Church, Hersham: History"
+metaDescription: "St Peter's Church, Hersham: successor to the 1839 Holy Trinity chapel, built in 1887 by J. L. Pearson, and burial place of the Profumo family vault."
 slug: "st-peters-church"
 cluster: "hersham"
 era: ["victorian"]
@@ -9,16 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Hersham"
+  - label: "Wikipedia: Hersham"
     url: "https://en.wikipedia.org/wiki/Hersham"
-  - label: "Toynbee Hall — The Profumo Connection"
+  - label: "Toynbee Hall: The Profumo Connection"
     url: "https://www.toynbeehall.org.uk/the-profumo-connection/"
 related: ["hersham-green", "famous-residents"]
 ---
 
 Hersham's parish church is younger than Walton's, in keeping with the village's own comparatively late arrival as a separate parish, but it carries a genuine piece of twentieth-century political history in its churchyard.
 
-<!-- IMAGE: st-peters-church-hersham-tower.jpg — alt: "St Peter's Church, Hersham, Surrey" -->
+<!-- IMAGE: st-peters-church-hersham-tower.jpg, alt: "St Peter's Church, Hersham, Surrey" -->
 
 ## The parish church
 

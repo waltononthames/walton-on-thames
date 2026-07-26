@@ -11,7 +11,8 @@
     "check": "astro check",
     "seo:validate": "node scripts/seo-validate.mjs",
     "seo:links": "node scripts/seo-links.mjs",
-    "content:stale-events": "node scripts/check-stale-events.mjs"
+    "content:stale-events": "node scripts/check-stale-events.mjs",
+    "content:em-dashes": "node scripts/check-em-dashes.mjs"
   },
   "keywords": [],
   "author": "",

@@ -1,7 +1,7 @@
 ---
 title: "The Walton Hop"
 metaTitle: "The Walton Hop: Walton's Legendary Disco"
-metaDescription: "The Walton Hop, held at the Playhouse from the late 1950s to 1990 — the bands and future stars who passed through, and its later, more troubled history."
+metaDescription: "The Walton Hop, held at the Playhouse from the late 1950s to 1990: the bands and future stars who passed through, and its later, more troubled history."
 slug: "walton-hop"
 cluster: "walton-history"
 era: ["1960s", "1970s", "1980s"]
@@ -9,16 +9,16 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Jonathan King — Wikipedia"
+  - label: "Jonathan King: Wikipedia"
     url: "https://en.wikipedia.org/wiki/Jonathan_King"
-  - label: "Wikipedia — Sham 69"
+  - label: "Wikipedia: Sham 69"
     url: "https://en.wikipedia.org/wiki/Sham_69"
 related: ["film-studios", "sham-69"]
 ---
 
 For over three decades, a disco held in a converted Victorian power house gave several generations of Walton teenagers their first taste of live music and, for a few, their first taste of performing. The Walton Hop's story is genuinely significant to the town's cultural history, and it is also, in its later years, tangled up with a serious criminal case that has to be reported accurately rather than skated over.
 
-<!-- IMAGE: playhouse-exterior-walton.jpg — alt: "The Playhouse, Walton-on-Thames, former home of the Walton Hop" -->
+<!-- IMAGE: playhouse-exterior-walton.jpg, alt: "The Playhouse, Walton-on-Thames, former home of the Walton Hop" -->
 
 ## The Playhouse
 

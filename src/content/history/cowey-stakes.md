@@ -1,7 +1,7 @@
 ---
 title: "Cowey Stakes: Did Julius Caesar Cross the Thames at Walton?"
 metaTitle: "Cowey Stakes: Did Caesar Cross the Thames at Walton?"
-metaDescription: "The tradition that Julius Caesar forded the Thames at Cowey Stakes, Walton — what William Camden claimed, and what the evidence actually shows."
+metaDescription: "The tradition that Julius Caesar forded the Thames at Cowey Stakes, Walton: what William Camden claimed, and what the evidence actually shows."
 slug: "cowey-stakes"
 cluster: "walton-history"
 era: ["roman", "antiquarian"]
@@ -9,7 +9,7 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Walton-on-Thames"
+  - label: "Wikipedia: Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
   - label: "Elmbridge Museum"
     url: "https://elmbridgemuseum.org.uk/"
@@ -18,7 +18,7 @@ related: ["walton-bridge"]
 
 Cowey Sale is the long riverside meadow just upstream of Walton Bridge, and it carries one of the town's oldest and most persistent stories: that Julius Caesar forded the Thames here during his second invasion of Britain in 54 BC. The tradition is old, the evidence is thin, and the honest version of the story is more interesting than the confident one.
 
-<!-- IMAGE: cowey-sale-thames-towpath.jpg — alt: "The Thames towpath at Cowey Sale, Walton-on-Thames, looking upstream" -->
+<!-- IMAGE: cowey-sale-thames-towpath.jpg, alt: "The Thames towpath at Cowey Sale, Walton-on-Thames, looking upstream" -->
 
 ## The claim
 

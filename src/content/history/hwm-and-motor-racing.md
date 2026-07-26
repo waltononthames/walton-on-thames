@@ -9,14 +9,14 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Hersham and Walton Motors"
+  - label: "Wikipedia: Hersham and Walton Motors"
     url: "https://en.wikipedia.org/wiki/Hersham_and_Walton_Motors"
 related: ["walton-bridge", "walton-in-wartime"]
 ---
 
 Not every piece of Walton's history is about the river or the church. Near Walton Bridge, a garage business founded in 1938 went on to build its own Grand Prix cars, give a teenage Stirling Moss his start in top-level motor racing, and become the longest-established Aston Martin dealership anywhere in the world. The name gives away its origins: HWM stands for Hersham and Walton Motors, tying the firm directly to both halves of this guide.
 
-<!-- IMAGE: hwm-garage-walton-bridge.jpg — alt: "The HWM premises near Walton Bridge, historic home of Hersham and Walton Motors" -->
+<!-- IMAGE: hwm-garage-walton-bridge.jpg, alt: "The HWM premises near Walton Bridge, historic home of Hersham and Walton Motors" -->
 
 ## Hersham and Walton Motors
 

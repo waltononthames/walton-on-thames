@@ -9,16 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-03
 sources:
-  - label: "Wikipedia — Walton Court, Walton-on-Thames"
+  - label: "Wikipedia: Walton Court, Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton_Court,_Walton-on-Thames"
-  - label: "Historic England — Walton Court, formerly Birds Eye Offices"
+  - label: "Historic England: Walton Court, formerly Birds Eye Offices"
     url: "https://historicengland.org.uk/listing/the-list/list-entry/1271706"
 related: ["film-studios", "walton-in-wartime"]
 ---
 
 Walton's modern town centre is largely a twenty-first-century creation, built over a 1960s development that had become tired and run down by the time it was redeveloped. A short walk away, a very different, more distinctive piece of 1960s architecture told a stranger story until its own demolition a few years ago: a corporate headquarters that once kept flamingos, penguins and alligators in its internal courtyards.
 
-<!-- IMAGE: the-heart-shopping-centre-exterior.jpg — alt: "The Heart shopping centre, Walton-on-Thames town centre" -->
+<!-- IMAGE: the-heart-shopping-centre-exterior.jpg, alt: "The Heart shopping centre, Walton-on-Thames town centre" -->
 
 ## From tired 1960s centre to The Heart
 

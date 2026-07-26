@@ -9,18 +9,18 @@ entityType: "event"
 publishDate: 2026-07-12
 reviewedDate: 2026-07-12
 sources:
-  - label: "Museum of New Zealand Te Papa Tongarewa — Memorial banner record, GH017123"
+  - label: "Museum of New Zealand Te Papa Tongarewa: Memorial banner record, GH017123"
     url: "https://collections.tepapa.govt.nz/object/972921"
-  - label: "Te Papa's Blog — Stories from the First World War: Soldiers commemorated at Walton-on-Thames"
+  - label: "Te Papa's Blog: Stories from the First World War: Soldiers commemorated at Walton-on-Thames"
     url: "https://blog.tepapa.govt.nz/2011/09/05/stories-from-the-first-world-war-soldiers-commemorated-at-walton-on-thames/"
-  - label: "Elmbridge Museum — The Mount Felix War Hospital"
+  - label: "Elmbridge Museum: The Mount Felix War Hospital"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/the-mount-felix-war-hospital/"
 related: ["mount-felix", "mount-felix-tapestry", "st-marys-church"]
 ---
 
 Among the objects connected to Walton's New Zealand hospital, one of the most personal is a small embroidered banner, worked by a recovering patient around 1919 and carried every Anzac Day from St Mary's Church to a graveside nearby for over a decade. It now lives on the other side of the world, in the national collection of the Museum of New Zealand Te Papa Tongarewa in Wellington, which holds [full catalogue images of the banner](https://collections.tepapa.govt.nz/object/972921).
 
-<!-- IMAGE: mount-felix-memorial-banner-tepapa.jpg — alt: "The Walton-on-Thames memorial banner, Museum of New Zealand Te Papa Tongarewa" -->
+<!-- IMAGE: mount-felix-memorial-banner-tepapa.jpg, alt: "The Walton-on-Thames memorial banner, Museum of New Zealand Te Papa Tongarewa" -->
 
 ## Made during recovery, not by trade
 
@@ -52,7 +52,7 @@ The banner commemorates 18 soldiers and one nurse who died while connected to th
 
 Private James Porter, one of the men named, had worked as a moulder before enlisting, sailed from Port Chalmers in October 1914, and died of wounds from Gallipoli in October 1916, one life among many that the banner reduces to a single embroidered line and that Te Papa's own research has since worked to fill back in.
 
-<!-- IMAGE: mount-felix-memorial-banner-detail.jpg — alt: "Detail of embroidered names on the Walton-on-Thames memorial banner" -->
+<!-- IMAGE: mount-felix-memorial-banner-detail.jpg, alt: "Detail of embroidered names on the Walton-on-Thames memorial banner" -->
 
 ## Anzac Day at St Mary's Church
 

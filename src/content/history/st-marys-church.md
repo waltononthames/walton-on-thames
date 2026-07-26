@@ -1,7 +1,7 @@
 ---
 title: "St Mary's Church: Walton's Saxon Parish Church"
-metaTitle: "St Mary's Church, Walton-on-Thames — History"
-metaDescription: "St Mary's Church, Church Street — Saxon origins, a Roubiliac monument, a scold's bridle mentioned by Jerome K. Jerome, and a New Zealand war memorial."
+metaTitle: "St Mary's Church, Walton-on-Thames: History"
+metaDescription: "St Mary's Church, Church Street: Saxon origins, a Roubiliac monument, a scold's bridle mentioned by Jerome K. Jerome, and a New Zealand war memorial."
 slug: "st-marys-church"
 cluster: "walton-history"
 era: ["saxon", "medieval", "georgian", "wartime"]
@@ -9,14 +9,14 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Walton-on-Thames"
+  - label: "Wikipedia: Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
 related: ["walton-bridge", "famous-residents", "mount-felix-memorial-banner", "mount-felix"]
 ---
 
 St Mary's Church, on Church Street, is Walton's oldest building and the direct physical link between the modern town and its medieval parish. It is Grade I listed, and its fabric alone tells a longer story than most local histories manage: Saxon material survives within a structure that was substantially built up in the twelfth century, with additions made across most of the centuries since. It stands a short walk from [Walton Bridge](/history/walton-bridge/) and the older riverside core of the town.
 
-<!-- IMAGE: st-marys-church-exterior.jpg — alt: "St Mary's Church, Church Street, Walton-on-Thames, exterior view of the flint tower" -->
+<!-- IMAGE: st-marys-church-exterior.jpg, alt: "St Mary's Church, Church Street, Walton-on-Thames, exterior view of the flint tower" -->
 
 ## Saxon origins and a medieval structure
 

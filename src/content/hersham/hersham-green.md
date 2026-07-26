@@ -1,7 +1,7 @@
 ---
 title: "Hersham Green: The Heart of the Village"
-metaTitle: "Hersham Green — History & Visitor Guide"
-metaDescription: "Hersham Green, Surrey — the 3.4-acre village green with its pond and the Barley Mow, the 1885 village hall, and practical visiting notes."
+metaTitle: "Hersham Green: History & Visitor Guide"
+metaDescription: "Hersham Green, Surrey: the 3.4-acre village green with its pond and the Barley Mow, the 1885 village hall, and practical visiting notes."
 slug: "hersham-green"
 cluster: "hersham"
 era: ["victorian", "contemporary"]
@@ -9,14 +9,14 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Hersham"
+  - label: "Wikipedia: Hersham"
     url: "https://en.wikipedia.org/wiki/Hersham"
 related: ["sham-69"]
 ---
 
 Hersham Green is what gives the village its identity. At around 3.4 acres, it sits at the centre of Hersham, faced by a shopping parade, a scatter of period cottages and Victorian villas, and the pond that draws ducks and the occasional heron. For a village so close to Walton-on-Thames, the green gives Hersham a genuinely rural feel that Walton's own town centre does not have.
 
-<!-- IMAGE: hersham-green-pond.jpg — alt: "Hersham Green and its pond, Surrey, with the Barley Mow pub in the background" -->
+<!-- IMAGE: hersham-green-pond.jpg, alt: "Hersham Green and its pond, Surrey, with the Barley Mow pub in the background" -->
 
 ## The green today
 

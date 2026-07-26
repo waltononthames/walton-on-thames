@@ -1,7 +1,7 @@
 ---
 title: "Monty Python and Film Locations in Walton-on-Thames"
 metaTitle: "Monty Python & Film Locations in Walton"
-metaDescription: "Why Walton-on-Thames has kept turning up on screen — from Monty Python's Flying Circus at Cowey Sale to Psychomania, Ashes to Ashes and Not Going Out."
+metaDescription: "Why Walton-on-Thames has kept turning up on screen: from Monty Python's Flying Circus at Cowey Sale to Psychomania, Ashes to Ashes and Not Going Out."
 slug: "monty-python-and-film-locations"
 cluster: "walton-history"
 era: ["1960s", "1970s", "contemporary"]
@@ -9,16 +9,16 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Walton-on-Thames"
+  - label: "Wikipedia: Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
-  - label: "We Are Cult — Fear and Loathing in Walton-on-Thames: Psychomania"
+  - label: "We Are Cult: Fear and Loathing in Walton-on-Thames: Psychomania"
     url: "https://wearecult.rocks/fear-and-loathing-in-walton-on-thames-psychomania"
 related: ["film-studios", "walton-bridge"]
 ---
 
 Walton's on-screen history did not end when the old film studio closed in 1961. The town has kept turning up in front of cameras ever since, from one of British comedy's most influential shows to a cult horror film and a run of more recent television series.
 
-<!-- IMAGE: cowey-sale-thames-path.jpg — alt: "Cowey Sale, Walton-on-Thames, where Monty Python's Flying Circus filmed on the river" -->
+<!-- IMAGE: cowey-sale-thames-path.jpg, alt: "Cowey Sale, Walton-on-Thames, where Monty Python's Flying Circus filmed on the river" -->
 
 ## Why Walton
 

@@ -12,11 +12,11 @@ heroAlt: "Portrait of Arthur White in New Zealand Expeditionary Force uniform"
 publishDate: 2026-07-11
 reviewedDate: 2026-07-11
 sources:
-  - label: "Wikipedia — No. 2 New Zealand General Hospital"
+  - label: "Wikipedia: No. 2 New Zealand General Hospital"
     url: "https://en.wikipedia.org/wiki/No._2_New_Zealand_General_Hospital"
-  - label: "Wikipedia — Grey Towers (Hornchurch NZEF depot)"
+  - label: "Wikipedia: Grey Towers (Hornchurch NZEF depot)"
     url: "https://en.wikipedia.org/wiki/Grey_Towers"
-  - label: "Remuera Heritage — RMS Remuera"
+  - label: "Remuera Heritage: RMS Remuera"
     url: "https://remueraheritage.org.nz/story/rms-remuera/"
 related: ["mount-felix", "mount-felix-tapestry"]
 ---

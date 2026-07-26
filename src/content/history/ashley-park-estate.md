@@ -1,7 +1,7 @@
 ---
 title: "The Lost Estate of Ashley Park"
 metaTitle: "Ashley Park: Walton's Lost Country Estate"
-metaDescription: "Ashley Park, Walton-on-Thames — the country house of the Sackville and Sassoon families, its 1923 sale and demolition, and the streets that replaced it."
+metaDescription: "Ashley Park, Walton-on-Thames: the country house of the Sackville and Sassoon families, its 1923 sale and demolition, and the streets that replaced it."
 slug: "ashley-park-estate"
 cluster: "walton-history"
 era: ["georgian", "victorian", "edwardian"]
@@ -9,16 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Ashley Park, Surrey"
+  - label: "Wikipedia: Ashley Park, Surrey"
     url: "https://en.wikipedia.org/wiki/Ashley_Park,_Surrey"
-  - label: "Golf's Missing Links — Ashley Park Golf Club"
+  - label: "Golf's Missing Links: Ashley Park Golf Club"
     url: "https://www.golfsmissinglinks.co.uk/index.php/england/south-east/surrey/800-sur-ashley-park-golf-club-walton-on-thames"
 related: ["origins-of-baseball", "st-marys-church"]
 ---
 
 Ashley Park no longer exists as a house, but its former grounds still shape a whole corner of Walton, in the street names of a residential neighbourhood built directly over what was once one of the town's grandest private estates.
 
-<!-- IMAGE: ashley-park-road-sign.jpg — alt: "Ashley Park Road street sign, Walton-on-Thames" -->
+<!-- IMAGE: ashley-park-road-sign.jpg, alt: "Ashley Park Road street sign, Walton-on-Thames" -->
 
 ## The mansion and its owners
 

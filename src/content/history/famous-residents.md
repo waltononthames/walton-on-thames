@@ -9,14 +9,14 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Walton-on-Thames"
+  - label: "Wikipedia: Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
 related: ["film-studios", "walton-bridge"]
 ---
 
 [Walton-on-Thames](/) has produced or hosted a genuinely varied list of notable people across three centuries, from an eighteenth-century admiral to a punk-adjacent singer-songwriter. What follows is ordered roughly by how widely each name is recognised today, starting with the person Walton is most likely to be known for.
 
-<!-- IMAGE: rodney-house-plaque.jpg — alt: "Commemorative plaque near the site of Rodney House, Julie Andrews's birthplace" -->
+<!-- IMAGE: rodney-house-plaque.jpg, alt: "Commemorative plaque near the site of Rodney House, Julie Andrews's birthplace" -->
 
 ## Julie Andrews
 

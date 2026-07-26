@@ -1,7 +1,7 @@
 ---
 title: "Whiteley Village: The Octagonal Retirement Village"
 metaTitle: "Whiteley Village: Surrey's Octagonal Almshouses"
-metaDescription: "Whiteley Village, Surrey — the retirement village built with William Whiteley's £1 million bequest, its octagonal layout, and how to visit respectfully."
+metaDescription: "Whiteley Village, Surrey: the retirement village built with William Whiteley's £1 million bequest, its octagonal layout, and how to visit respectfully."
 slug: "whiteley-village"
 cluster: "hersham"
 era: ["edwardian", "contemporary"]
@@ -9,18 +9,18 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Whiteley Village"
+  - label: "Wikipedia: Whiteley Village"
     url: "https://en.wikipedia.org/wiki/Whiteley_Village"
   - label: "Whiteley Homes Trust"
     url: "https://www.thewhiteleyhomestrust.org.uk/about-us"
-  - label: "Wikipedia — William Whiteley"
+  - label: "Wikipedia: William Whiteley"
     url: "https://en.wikipedia.org/wiki/William_Whiteley"
 related: ["hersham-green"]
 ---
 
 South of Hersham, in 225 acres of Surrey woodland, sits one of the more unusual planned settlements in England: a retirement village laid out around a series of concentric octagons, built with the fortune of a Bayswater department store owner who never lived to see it completed.
 
-<!-- IMAGE: whiteley-village-central-green.jpg — alt: "The central octagonal green at Whiteley Village, Surrey" -->
+<!-- IMAGE: whiteley-village-central-green.jpg, alt: "The central octagonal green at Whiteley Village, Surrey" -->
 
 ## William Whiteley's bequest
 

@@ -1,7 +1,7 @@
 ---
 title: "Walking the River Mole at Hersham"
 metaTitle: "River Mole Walks Near Hersham"
-metaDescription: "An orientation guide to walking the River Mole at Hersham — where the meadows are, how the Mole connects to the Thames, and what to expect underfoot."
+metaDescription: "An orientation guide to walking the River Mole at Hersham: where the meadows are, how the Mole connects to the Thames, and what to expect underfoot."
 slug: "river-mole-walks"
 cluster: "hersham"
 era: ["contemporary"]
@@ -9,16 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-03
 sources:
-  - label: "Wikipedia — Hersham"
+  - label: "Wikipedia: Hersham"
     url: "https://en.wikipedia.org/wiki/Hersham"
-  - label: "AllTrails — Molesey Heath Nature Reserve from Field Common"
+  - label: "AllTrails: Molesey Heath Nature Reserve from Field Common"
     url: "https://www.alltrails.com/en-gb/poi/england/surrey/walton-on-thames--2/walton-on-thames-camping-and-caravanning-club-site"
 related: ["hersham-green"]
 ---
 
 The River Mole runs along the edge of Hersham, and within a few minutes of the village's built-up centre the landscape turns to fields and meadow, much of it protected as Metropolitan Green Belt. It is one of Hersham's genuine advantages over its larger neighbour: a working river valley on the doorstep rather than a short drive away.
 
-<!-- IMAGE: river-mole-hersham-meadow.jpg — alt: "The River Mole beside Hersham, Surrey" -->
+<!-- IMAGE: river-mole-hersham-meadow.jpg, alt: "The River Mole beside Hersham, Surrey" -->
 
 ## The Mole at Hersham
 

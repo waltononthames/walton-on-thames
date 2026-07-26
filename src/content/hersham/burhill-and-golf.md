@@ -1,6 +1,6 @@
 ---
 title: "Burhill: The Estate That Became Two Golf Courses"
-metaTitle: "Burhill Golf Club, Hersham — History"
+metaTitle: "Burhill Golf Club, Hersham: History"
 metaDescription: "How the Burhill estate, once home to the Dowager Duchess of Wellington, became Burhill Golf Club in 1907, plus the smaller Hersham Village course nearby."
 slug: "burhill-and-golf"
 cluster: "hersham"
@@ -9,14 +9,14 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Burhill Golf Club — History"
+  - label: "Burhill Golf Club: History"
     url: "https://burhillgolf-club.co.uk/history/"
 related: ["hersham-green"]
 ---
 
 Two golf courses sit within Hersham's boundaries, and the larger of them has a genuinely aristocratic pedigree: an estate once leased to a duchess, converted into one of Surrey's most established golf clubs.
 
-<!-- IMAGE: burhill-golf-course-fairway.jpg — alt: "A fairway at Burhill Golf Club, Hersham, Surrey" -->
+<!-- IMAGE: burhill-golf-course-fairway.jpg, alt: "A fairway at Burhill Golf Club, Hersham, Surrey" -->
 
 ## The estate house
 

@@ -1,7 +1,7 @@
 ---
 title: "The Thames at Walton: Locks, Cuts and Swan Upping"
 metaTitle: "The Thames at Walton: Locks, Cuts & Swans"
-metaDescription: "The working River Thames at Walton-on-Thames — Sunbury Lock, the 1935 Desborough Cut that created Desborough Island, and the annual Swan Upping ceremony."
+metaDescription: "The working River Thames at Walton-on-Thames: Sunbury Lock, the 1935 Desborough Cut that created Desborough Island, and the annual Swan Upping ceremony."
 slug: "river-thames-at-walton"
 cluster: "walton-history"
 era: ["20th-century", "contemporary"]
@@ -9,16 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Desborough Cut"
+  - label: "Wikipedia: Desborough Cut"
     url: "https://en.wikipedia.org/wiki/Desborough_Cut"
-  - label: "The Royal Family — Swan Upping"
+  - label: "The Royal Family: Swan Upping"
     url: "https://www.royal.uk/swans"
 related: ["walton-bridge", "cowey-stakes"]
 ---
 
 The Thames at Walton has never been a passive backdrop. It has been engineered, managed and ceremonially inspected for well over a century, and three separate strands of that working history, a cut, a lock and an ancient royal ceremony, all pass directly through the town.
 
-<!-- IMAGE: desborough-island-cut.jpg — alt: "The Desborough Cut and Desborough Island near Walton-on-Thames" -->
+<!-- IMAGE: desborough-island-cut.jpg, alt: "The Desborough Cut and Desborough Island near Walton-on-Thames" -->
 
 ## The working river
 

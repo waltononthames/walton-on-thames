@@ -1,7 +1,7 @@
 ---
 title: "Walton-on-Thames at War"
 metaTitle: "Walton-on-Thames at War: WWI and WWII"
-metaDescription: "How two world wars shaped Walton-on-Thames — the New Zealand hospital at Mount Felix, a Spitfire pilot's death in 1940, and the Brooklands raids nearby."
+metaDescription: "How two world wars shaped Walton-on-Thames: the New Zealand hospital at Mount Felix, a Spitfire pilot's death in 1940, and the Brooklands raids nearby."
 slug: "walton-in-wartime"
 cluster: "walton-history"
 era: ["wartime"]
@@ -9,16 +9,16 @@ entityType: "overview"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Battle of Britain London Monument — F/Sgt C Sydney"
+  - label: "Battle of Britain London Monument: F/Sgt C Sydney"
     url: "https://www.bbm.org.uk/airmen/sydney.htm"
-  - label: "Wikipedia — Walton-on-Thames"
+  - label: "Wikipedia: Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
 related: ["mount-felix", "walton-bridge"]
 ---
 
 Walton's twentieth century was shaped by two world wars in very different ways: the first brought a hospital and a lasting international friendship, the second brought bombs, dictated by the town's proximity to one of Britain's most important aircraft works.
 
-<!-- IMAGE: station-avenue-memorial.jpg — alt: "Station Avenue, Walton-on-Thames, site of the 1940 Spitfire crash" -->
+<!-- IMAGE: station-avenue-memorial.jpg, alt: "Station Avenue, Walton-on-Thames, site of the 1940 Spitfire crash" -->
 
 ## The Great War and Mount Felix
 

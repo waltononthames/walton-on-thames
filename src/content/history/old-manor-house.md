@@ -1,7 +1,7 @@
 ---
 title: "The Old Manor House and Bradshaw's House"
 metaTitle: "The Old Manor House, Walton-on-Thames"
-metaDescription: "The Grade I listed Old Manor House, Walton-on-Thames — its 14th-century timber frame, and its local association with the regicide John Bradshaw."
+metaDescription: "The Grade I listed Old Manor House, Walton-on-Thames: its 14th-century timber frame, and its local association with the regicide John Bradshaw."
 slug: "old-manor-house"
 cluster: "walton-history"
 era: ["medieval", "17th-century"]
@@ -9,16 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Historic England — Old Manor House, list entry"
+  - label: "Historic England: Old Manor House, list entry"
     url: "https://historicengland.org.uk/listing/the-list/list-entry/1030163"
-  - label: "Village Matters — Charles I, The Old Manor House, and Justice John Bradshaw"
+  - label: "Village Matters: Charles I, The Old Manor House, and Justice John Bradshaw"
     url: "https://www.villagematters.co.uk/walton-matters/walton-matters-articles/2018/08/charles-i-the-old-manor-house-and-justice-john-bradshaw"
 related: ["st-marys-church", "domesday-and-origins"]
 ---
 
 On Manor Road, close to Walton's older core, stands a timber-framed house that predates almost everything else in the town: a genuinely medieval building with a genuinely dramatic piece of seventeenth-century local tradition attached to it.
 
-<!-- IMAGE: old-manor-house-manor-road.jpg — alt: "The Old Manor House, Manor Road, Walton-on-Thames" -->
+<!-- IMAGE: old-manor-house-manor-road.jpg, alt: "The Old Manor House, Manor Road, Walton-on-Thames" -->
 
 ## A medieval timber frame
 

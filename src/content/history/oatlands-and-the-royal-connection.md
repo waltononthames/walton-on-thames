@@ -9,16 +9,16 @@ entityType: "place"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - label: "Wikipedia — Oatlands Palace"
+  - label: "Wikipedia: Oatlands Palace"
     url: "https://en.wikipedia.org/wiki/Oatlands_Palace"
-  - label: "Elmbridge Museum — Oatlands Palace"
+  - label: "Elmbridge Museum: Oatlands Palace"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/oatlands-palace/"
 related: ["st-marys-church", "domesday-and-origins"]
 ---
 
 Walton's clearest link to Tudor royalty runs through its immediate neighbour rather than through the town itself. Oatlands Palace, Henry VIII's lost royal residence, stood just across the parish boundary in Weybridge, and Walton's own connection to it survives in a single striking brass inside St Mary's Church.
 
-<!-- IMAGE: st-marys-selwyn-brass.jpg — alt: "The John Selwyn brass, St Mary's Church, Walton-on-Thames" -->
+<!-- IMAGE: st-marys-selwyn-brass.jpg, alt: "The John Selwyn brass, St Mary's Church, Walton-on-Thames" -->
 
 ## Henry VIII's palace next door
 

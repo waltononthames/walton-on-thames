@@ -1,7 +1,7 @@
 ---
 title: "Was Baseball First Played in Walton-on-Thames?"
 metaTitle: "Was Baseball First Played in Walton-on-Thames?"
-metaDescription: "The 1749 Whitehall Evening Post report of the Prince of Wales playing 'bass-ball' at Walton — one of the oldest surviving references to baseball."
+metaDescription: "The 1749 Whitehall Evening Post report of the Prince of Wales playing 'bass-ball' at Walton: one of the oldest surviving references to baseball."
 slug: "origins-of-baseball"
 cluster: "walton-history"
 era: ["georgian"]
@@ -9,18 +9,18 @@ entityType: "event"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-03
 sources:
-  - label: "SABR — New discovery confirms baseball was played by royalty in England in 1700s"
+  - label: "SABR: New discovery confirms baseball was played by royalty in England in 1700s"
     url: "https://sabr.org/latest/new-discovery-by-sabr-member-david-block-confirms-baseball-was-played-by-royalty-in-england-in-1700s/"
-  - label: "Protoball — Prince of Wales Plays 'bass-ball': September 19 1749"
+  - label: "Protoball: Prince of Wales Plays 'bass-ball': September 19 1749"
     url: "https://protoball.org/Block:Prince_of_Wales_Plays_%22bass-ball%22:_September_19_1749"
-  - label: "insidethegames.biz — Blue Plaque to honour first recorded baseball match"
+  - label: "insidethegames.biz: Blue Plaque to honour first recorded baseball match"
     url: "https://www.insidethegames.biz/articles/1080093/blue-plaque-to-honour-first-recorded-baseball-match-270-years-after-it-was-played-at-walton-on-thames-in-england"
 related: ["ashley-park-estate"]
 ---
 
 Long before baseball became America's game, a newspaper report from a wet afternoon in Surrey put a future king on the record playing it. Walton-on-Thames holds one of the strongest documentary claims anywhere to an early game of baseball, discovered not by a historian working from local tradition, but by a researcher combing digitised newspaper archives on the other side of the Atlantic.
 
-<!-- IMAGE: ashley-park-meadow.jpg — alt: "The former grounds of Ashley Park, Walton-on-Thames, site of the 1749 baseball reference" -->
+<!-- IMAGE: ashley-park-meadow.jpg, alt: "The former grounds of Ashley Park, Walton-on-Thames, site of the 1749 baseball reference" -->
 
 ## The 1749 record
 

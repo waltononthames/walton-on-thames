@@ -2,6 +2,18 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-07-26 — Em dash cleanup across history and hersham collections
+
+Owner asked for the history section to be checked for em dashes and fixed per the site's rules. `docs/walton-history-hersham-extension.md` Section 1, Rule 2 (Register) already states this explicitly: "No em dashes anywhere; use commas, colons or full stops." Every file in both `src/content/history/` (22 files) and `src/content/hersham/` (9 files, governed by the identical rule) had violations — 125 instances total, none previously caught since no check for this existed.
+
+**Pattern:** the large majority (99 of 125) were two mechanical, unambiguous forms: source-label lines (`- label: "Publisher — Title"`) and `<!-- IMAGE: file.jpg — alt: "..." -->` comments, both fixed by script to colon and comma respectively. The remainder were `metaTitle`/`metaDescription` frontmatter (fixed to colon, matching the "Subject: elaboration" pattern already used elsewhere on the site) and two body-prose instances in `film-studios.md` and `walton-charity.md` (fixed individually by hand, to colon/comma/full stop depending on the clause relationship, per the rule's own list of approved replacements).
+
+**Verified in the actual build output**, not just the source markdown: rebuilt and confirmed zero em dashes remain inside `<article>` content on spot-checked pages. Three em dashes per page do remain in the built HTML, but all three are shared site chrome (`aria-label="Walton-on-Thames.org — Home"` in Header.astro/Footer.astro, plus an invisible `<!-- Cloudflare Web Analytics — ... -->` comment) that renders identically on every page of the entire site, not history-specific content, and isn't covered by this rule as documented — left alone and flagged to the owner rather than changed unilaterally.
+
+New advisory script `scripts/check-em-dashes.mjs` (`npm run content:em-dashes`), scoped to these two collections only, so future content additions get caught rather than silently reintroducing the same drift.
+
+Files: 22 history + 9 hersham content files, `scripts/check-em-dashes.mjs` (new), `package.json` (`content:em-dashes` script).
+
 ## 2026-07-26 — Second external accuracy audit (OpenAI): re-verified, all findings already fixed; two gaps in the safety net closed
 
 Owner supplied `factual-audit.md`, an external audit dated 16 July 2026, attributed to OpenAI, flagging: The Dining Room (Hersham) still live in food listings despite dissolution; a fabricated Vue cinema and unsupported "over 60 stores" claim on The Heart Shopping Centre; a cancelled Riverhouse Barn exhibition still shown as "Coming Up"; a past-dated Baby Brunch Club card still shown as "Coming Up"; and the same "over 60 stores" claim flagged again separately.
