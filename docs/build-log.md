@@ -467,3 +467,19 @@ Verified: `npm run check` (pre-existing unrelated type errors on other pages wer
 - Apps Court Car Boot Sale page: Cardinal Buses "APPS" route status is genuinely unclear (see above) — worth a follow-up phone check with Cardinal Buses if this page's transport section needs firming up later.
 - No images added for the new page (entrance, field, stalls) — the brief asked for original/licensed photography, which the owner would need to supply or commission; none exist in the repo for this venue.
 - The "80 acres / King John / D-Day" history claims from Apps Court Farm's own site are flagged on the page but not resolved either way — would need a proper archival/Historic England source to confirm or drop.
+
+## 2026-07-26 — Daily automated status check for Apps Court Car Boot Sale
+
+Owner asked how to keep the car boot on/off status current without a manual daily edit. Two things landed:
+
+**Refactor:** pulled the status panel's data (status, headline, detail, next confirmed date, checked date, source) out of `apps-court-car-boot-sale.astro` and into `src/data/apps-court-status.json`. The page now imports that file and derives its `EventStatusPanel` props and the `EventSeries` JSON-LD's single `subEvent` from it (still gated on a confirmed date existing and status being `on`/`off` — never generated for a guessed date). The page's own permanent content (prices, rules, history, contact info) keeps a separate static `PAGE_VERIFIED_DATE` constant so an automated status update can't silently imply the whole page was re-verified when only the status was.
+
+**Why not a build-time fetch like the FC fixtures loader:** tested a plain `curl` and WebFetch against `appscourtfarm.com/carboot` — both return a Cloudflare "Just a moment..." bot-challenge page (403/JS challenge), not the real HTML. A scripted fetch (which is what any GitHub Actions cron, including the existing `daily-rebuild.yml`, would have to use) cannot get past this. Deliberately did not attempt to script around the challenge, since that crosses into bot-detection bypass.
+
+**What was built instead:** a scheduled Claude Code task (`apps-court-carboot-status-check`, daily at 6:07am local) that uses the Browser pane tools to load the page like a normal visitor (which passes the Cloudflare challenge the same way any real browser does), reads the status banner, and — only on a confident read — updates `src/data/apps-court-status.json`, commits, and pushes to `main` (triggering the existing Cloudflare Pages auto-deploy). Owner explicitly chose "fully automatic" over a review-first alternative. Safeguard built into the task prompt: on a failed/ambiguous read, only `lastCheckSucceeded`/`lastCheckNote` are touched — the last good status, headline and dates are never overwritten with a guess or blank.
+
+Verified: `npm run check` and `npm run build` clean after the refactor (266 pages), all 5 JSON-LD blocks on the page still parse. Unrelated in-progress files in the working tree (`src/content/history/abc-motors-hersham.md`) were left uncommitted, as before.
+
+## Still open
+- The scheduled task's first live run hasn't happened yet — worth checking its first day or two of output to confirm the browser-based read and git push both work end-to-end unattended.
+- If Apps Court Farm ever changes the wording/structure of their status banner significantly, the task relies on the model reading it sensibly rather than a fixed pattern — no code to update, but worth a spot-check occasionally.

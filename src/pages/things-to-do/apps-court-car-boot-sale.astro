@@ -1,18 +1,69 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EventStatusPanel from '../../components/EventStatusPanel.astro';
+import statusData from '../../data/apps-court-status.json';
 
-// --- Time-sensitive data block -------------------------------------------
-// Everything in this block was checked against https://www.appscourtfarm.com/carboot
-// on 23 July 2026 and needs re-checking periodically. Nothing below this
-// point should be treated as permanently true — see the status panel and
-// "Sources" section on the page for how it was verified.
-const CHECKED_DATE = '23 July 2026';
-const STATUS: 'on' | 'off' | 'unconfirmed' = 'off';
-const STATUS_HEADLINE = 'Not taking place on Sunday 26 July 2026';
-const NEXT_CONFIRMED_DATE = '2 August 2026';
-const STATUS_DETAIL = `Apps Court Farm's own car boot page states the sale is not on this Sunday, and that it will resume the following week, Sunday ${NEXT_CONFIRMED_DATE}. The farm's events calendar shows the Barrio Fiesta festival taking place at the same site that weekend. Always check the official page or call before travelling — sales can also be postponed for weather or ground conditions at short notice.`;
-// --- End time-sensitive data block ---------------------------------------
+// The on/off status, next confirmed date, and "checked" date below come from
+// src/data/apps-court-status.json — a daily scheduled check reads and rewrites
+// that file (never this page) so the status stays current without a code
+// change. See docs/build-log.md for how the daily check is wired up.
+const {
+  status: STATUS,
+  headline: STATUS_HEADLINE,
+  detail: STATUS_DETAIL,
+  checkedDateLabel: STATUS_CHECKED_DATE,
+  nextConfirmedDateISO,
+  sourceLabel: STATUS_SOURCE_LABEL,
+  sourceUrl: STATUS_SOURCE_URL,
+} = statusData as {
+  status: 'on' | 'off' | 'unconfirmed' | 'unavailable' | 'conflicting';
+  headline: string;
+  detail: string;
+  checkedDateLabel: string;
+  nextConfirmedDateISO: string | null;
+  sourceLabel: string;
+  sourceUrl: string;
+};
+
+// PAGE_VERIFIED_DATE covers the page's permanent editorial content (prices,
+// rules, history, contact details) — it only changes on a full manual
+// re-check, unlike the daily-updated status data above.
+const PAGE_VERIFIED_DATE = '23 July 2026';
+
+// Only emit an Event for a specific Sunday when Apps Court Farm's own site has
+// confirmed it (nextConfirmedDateISO) and the status isn't itself in doubt —
+// never generate schema for a guessed or unconfirmed future date.
+const confirmedSubEvent = (nextConfirmedDateISO && (STATUS === 'on' || STATUS === 'off'))
+  ? [{
+      "@type": "Event",
+      "name": `Apps Court Car Boot Sale — Sunday ${new Date(nextConfirmedDateISO).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`,
+      "startDate": `${nextConfirmedDateISO}T07:00:00+01:00`,
+      "endDate": `${nextConfirmedDateISO}T13:00:00+01:00`,
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "url": STATUS_SOURCE_URL,
+      "location": {
+        "@type": "Place",
+        "name": "Apps Court Farm",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Hurst Road",
+          "addressLocality": "Walton-on-Thames",
+          "addressRegion": "Surrey",
+          "postalCode": "KT12 2EG",
+          "addressCountry": "GB"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "2",
+        "priceCurrency": "GBP",
+        "url": STATUS_SOURCE_URL,
+        "availability": "https://schema.org/InStock",
+        "validFrom": statusData.checkedDateISO
+      }
+    }]
+  : [];
 
 const pageUrl = 'https://walton-on-thames.org/things-to-do/apps-court-car-boot-sale/';
 
@@ -116,35 +167,7 @@ const faqs = [
         }
       },
       "organizer": { "@type": "Organization", "name": "Apps Court Farm", "url": "https://www.appscourtfarm.com/" },
-      "subEvent": [{
-        "@type": "Event",
-        "name": "Apps Court Car Boot Sale — Sunday 2 August 2026",
-        "startDate": "2026-08-02T07:00:00+01:00",
-        "endDate": "2026-08-02T13:00:00+01:00",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "url": "https://www.appscourtfarm.com/carboot",
-        "location": {
-          "@type": "Place",
-          "name": "Apps Court Farm",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hurst Road",
-            "addressLocality": "Walton-on-Thames",
-            "addressRegion": "Surrey",
-            "postalCode": "KT12 2EG",
-            "addressCountry": "GB"
-          }
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "2",
-          "priceCurrency": "GBP",
-          "url": "https://www.appscourtfarm.com/carboot",
-          "availability": "https://schema.org/InStock",
-          "validFrom": "2026-07-23"
-        }
-      }]
+      "subEvent": confirmedSubEvent
     })} />
 
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -185,9 +208,9 @@ const faqs = [
           status={STATUS}
           headline={STATUS_HEADLINE}
           detail={STATUS_DETAIL}
-          checkedDate={CHECKED_DATE}
-          sourceLabel="Apps Court Farm — Car Boot page"
-          sourceUrl="https://www.appscourtfarm.com/carboot"
+          checkedDate={STATUS_CHECKED_DATE}
+          sourceLabel={STATUS_SOURCE_LABEL}
+          sourceUrl={STATUS_SOURCE_URL}
         />
 
         <p class="disclaimer-note">Walton-on-Thames.org is an independent local guide and is not affiliated with, or operated by, Apps Court Farm. Every fact on this page is dated and sourced — see "Sources and last checked" near the bottom — but Apps Court Farm's own site is always the definitive word on whether a specific date is running.</p>
@@ -214,7 +237,7 @@ const faqs = [
             </tbody>
           </table>
         </div>
-        <p class="table-source">Source: Apps Court Farm, official car boot and contact pages, checked {CHECKED_DATE}.</p>
+        <p class="table-source">Source: Apps Court Farm, official car boot and contact pages, checked {PAGE_VERIFIED_DATE}.</p>
 
         <h2 id="on-this-sunday">Is Apps Court Car Boot Sale on this Sunday?</h2>
         <p>Check the status panel above first — it's updated from Apps Court Farm's own car boot page. Beyond that, Apps Court Farm's FAQ states plainly: "If the weather permits, there will be a Car Boot every Sunday from early March, through to the Autumn." That means a recurring Sunday schedule should never be treated as guaranteed. Before travelling:</p>
@@ -256,7 +279,7 @@ const faqs = [
             </tbody>
           </table>
         </div>
-        <p class="table-source">Source: Apps Court Farm, official car boot page, checked {CHECKED_DATE}. If your vehicle doesn't clearly fit one of these classes, Apps Court Farm asks that you email or call ahead of arrival to avoid confusion when fees are collected.</p>
+        <p class="table-source">Source: Apps Court Farm, official car boot page, checked {PAGE_VERIFIED_DATE}. If your vehicle doesn't clearly fit one of these classes, Apps Court Farm asks that you email or call ahead of arrival to avoid confusion when fees are collected.</p>
 
         <h2 id="booking">Do sellers need to book in advance?</h2>
         <p>No. There is no advance booking system — pitches are allocated on arrival, first come, first served. Apps Court Farm's advice to sellers is simply to arrive early for the best choice of position.</p>
@@ -303,7 +326,7 @@ const faqs = [
         <p>Apps Court Farm's address, as published on its own contact page, is <strong>Apps Court Farm, Hurst Road, Walton upon Thames, Surrey, KT12 2EG</strong>. The farm sits close to Molesey, Hampton Court, Sunbury-on-Thames and the River Thames, though it is administratively and postally part of Walton-on-Thames — use the KT12 2EG postcode for sat-nav rather than guessing at a Molesey or Hampton Court address.</p>
 
         <h2 id="public-transport">Public transport</h2>
-        <p>Apps Court Farm does not publish public transport advice on its own site. Independent bus-timetable data (bustimes.org, using Traveline National Dataset timetables) lists a stop named "Walton-on-Thames, at Apps Court Farm" on a route called "APPS," run by Cardinal Buses between East Molesey / Hampton Court Railway Station and Apps Court Farm — but no scheduled journeys were showing for it when checked on {CHECKED_DATE}, and it does not appear among the routes Cardinal Buses currently advertises on its own website. Treat this as an unconfirmed, possibly seasonal or event-only service rather than a reliable regular bus route, and check directly with <a href="https://www.cardinalbuses.co.uk/" target="_blank" rel="noopener noreferrer">Cardinal Buses ↗</a> or a live journey planner before relying on it. A taxi from Walton-on-Thames or Hampton Court railway station is the more dependable option if you don't have a car, especially if you're selling and carrying stock.</p>
+        <p>Apps Court Farm does not publish public transport advice on its own site. Independent bus-timetable data (bustimes.org, using Traveline National Dataset timetables) lists a stop named "Walton-on-Thames, at Apps Court Farm" on a route called "APPS," run by Cardinal Buses between East Molesey / Hampton Court Railway Station and Apps Court Farm — but no scheduled journeys were showing for it when checked on {PAGE_VERIFIED_DATE}, and it does not appear among the routes Cardinal Buses currently advertises on its own website. Treat this as an unconfirmed, possibly seasonal or event-only service rather than a reliable regular bus route, and check directly with <a href="https://www.cardinalbuses.co.uk/" target="_blank" rel="noopener noreferrer">Cardinal Buses ↗</a> or a live journey planner before relying on it. A taxi from Walton-on-Thames or Hampton Court railway station is the more dependable option if you don't have a car, especially if you're selling and carrying stock.</p>
 
         <h2 id="cycling-walking">Cycling and walking considerations</h2>
         <p>Hurst Road runs alongside the Thames and connects towards Molesey and Hampton Court, but Apps Court Farm does not publish cycle parking or pedestrian access information, and we have not been able to verify a specific, safe walking or cycling route from the town centre in this session. If you're walking or cycling, plan your route with a mapping app rather than assuming a riverside path runs directly to the farm gate.</p>
@@ -362,14 +385,14 @@ const faqs = [
 
         <div class="sources-block">
           <h2>Sources and last-checked information</h2>
-          <p class="table-source" style="margin-bottom: 1rem;">This page was compiled and fact-checked on {CHECKED_DATE}. Time-sensitive details — the current on/off status, prices, and opening times — can change without notice; always confirm directly with Apps Court Farm before travelling.</p>
+          <p class="table-source" style="margin-bottom: 1rem;">This page's prices, rules, contact details and history were compiled and fact-checked on {PAGE_VERIFIED_DATE}. The on/off status panel above is checked separately, automatically, once a day — see its own "Checked [date]" line for how current that specific detail is. Always confirm directly with Apps Court Farm before travelling.</p>
           <ul>
-            <li><a href="https://www.appscourtfarm.com/carboot" target="_blank" rel="noopener noreferrer">Apps Court Farm — "Car Boot" page ↗</a> — status, times, prices, rules and FAQ, checked {CHECKED_DATE}</li>
-            <li><a href="https://www.appscourtfarm.com/contact" target="_blank" rel="noopener noreferrer">Apps Court Farm — "Contact" page ↗</a> — phone and email, checked {CHECKED_DATE}</li>
-            <li><a href="https://www.appscourtfarm.com/about" target="_blank" rel="noopener noreferrer">Apps Court Farm — "About" page ↗</a> — venue's own history and acreage claims, checked {CHECKED_DATE}</li>
+            <li><a href="https://www.appscourtfarm.com/carboot" target="_blank" rel="noopener noreferrer">Apps Court Farm — "Car Boot" page ↗</a> — times, prices, rules and FAQ, checked {PAGE_VERIFIED_DATE}; on/off status checked daily (see status panel)</li>
+            <li><a href="https://www.appscourtfarm.com/contact" target="_blank" rel="noopener noreferrer">Apps Court Farm — "Contact" page ↗</a> — phone and email, checked {PAGE_VERIFIED_DATE}</li>
+            <li><a href="https://www.appscourtfarm.com/about" target="_blank" rel="noopener noreferrer">Apps Court Farm — "About" page ↗</a> — venue's own history and acreage claims, checked {PAGE_VERIFIED_DATE}</li>
             <li><a href="https://www.british-history.ac.uk/vch/surrey/vol3/pp467-475" target="_blank" rel="noopener noreferrer">Victoria County History — "Parishes: Walton on Thames" ↗</a> — manor history, ownership succession, 1898–99 demolition, and the 1900 urn find</li>
             <li><a href="https://www.surreyarchaeology.org.uk/content/apps-court-farm-walton-on-thames-0" target="_blank" rel="noopener noreferrer">Surrey Archaeological Society — "Apps Court Farm, Walton on Thames" ↗</a> — 1988–89 buried river channel finding</li>
-            <li><a href="https://bustimes.org/services/apps-hampton-court-station-apps-court-farm" target="_blank" rel="noopener noreferrer">bustimes.org — "APPS" service, Cardinal Buses ↗</a> — bus route data (Traveline National Dataset), checked {CHECKED_DATE}, no scheduled journeys found</li>
+            <li><a href="https://bustimes.org/services/apps-hampton-court-station-apps-court-farm" target="_blank" rel="noopener noreferrer">bustimes.org — "APPS" service, Cardinal Buses ↗</a> — bus route data (Traveline National Dataset), checked {PAGE_VERIFIED_DATE}, no scheduled journeys found</li>
           </ul>
         </div>
 
