@@ -247,7 +247,7 @@ Sydney is buried in St Mary Cray Cemetery, Orpington, Plot E, Division 3, Grave 
 
 <figure>
   <img src="/images/history/charles-sydney-original-memorial-walton-court.webp" alt="The original 2000 memorial plaque to Flight Sergeant Charles Sydney beside Walton Court, Station Avenue" loading="lazy" />
-  <figcaption>The original memorial to Flight Sergeant Charles Sydney beside Walton Court on Station Avenue, unveiled by Elmbridge Borough Council on 27 September 2000. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The original memorial to Flight Sergeant Charles Sydney beside Walton Court on Station Avenue, unveiled by Elmbridge Borough Council on 27 September 2000. Photograph by Darren Bayley.</figcaption>
 </figure>
 
 For decades there was little at Station Avenue to tell passers-by that a Battle of Britain pilot had died there. In 2000, Elmbridge Borough Council and Surrey County Council arranged for a memorial plaque to be installed at Walton Court, close to the believed crash location; Jean Howard, whose eyewitness testimony now provides some of the most important evidence about the crash site, was present at the opening ceremony. A memorial bench, carrying a Winston Churchill inscription, was installed on 30 June 2012 to provide a place for reflection. A service was held on 27 September 2015, the 75th anniversary of Sydney's death, and his great-nephew Tony Sydney was among those associated with the commemorations.
@@ -262,19 +262,19 @@ The artwork should be distinguished from the replacement Charles Sydney memorial
 
 <figure>
   <img src="/images/history/charles-sydney-new-memorial-walton-court-gardens.webp" alt="The replacement memorial to Flight Sergeant Charles Sydney at Walton Court Gardens, with the original 2000 plaque flanked by two new interpretive panels" loading="lazy" />
-  <figcaption>The replacement memorial at Walton Court Gardens: the original 2000 plaque, relocated, flanked by two new interpretive panels with further detail on Sydney's life and the crash. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The replacement memorial at Walton Court Gardens: the original 2000 plaque, relocated, flanked by two new interpretive panels with further detail on Sydney's life and the crash. Photograph by Darren Bayley.</figcaption>
 </figure>
 
 <figure>
   <img src="/images/history/charles-sydney-memorial-propeller-walton-court-gardens.webp" alt="A propeller blade memorial sculpture at Walton Court Gardens, with a wooden poppy cross at its base" loading="lazy" />
-  <figcaption>A propeller blade forms part of the memorial setting at Walton Court Gardens, alongside salvaged stone columns from the site's earlier buildings. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>A propeller blade forms part of the memorial setting at Walton Court Gardens, alongside salvaged stone columns from the site's earlier buildings. Photograph by Darren Bayley.</figcaption>
 </figure>
 
 The redevelopment's street naming carries the memory further still: one of the new roads on the site is called Spitfire Chase.
 
 <figure>
   <img src="/images/history/spitfire-chase-street-sign-walton-court-gardens.webp" alt="Street sign for Spitfire Chase, a road within the Walton Court Gardens redevelopment" loading="lazy" />
-  <figcaption>Spitfire Chase, a street within the Walton Court Gardens development, named for the aircraft that came down nearby in 1940. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>Spitfire Chase, a street within the Walton Court Gardens development, named for the aircraft that came down nearby in 1940. Photograph by Darren Bayley.</figcaption>
 </figure>
 
 ## Why this story matters to Walton-on-Thames
