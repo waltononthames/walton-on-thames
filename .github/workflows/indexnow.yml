@@ -11,6 +11,13 @@ name: IndexNow submission
 # "SiteVerificationNotCompleted" — IndexNow needs time to independently crawl
 # and confirm the key file before it will accept submissions. This clears up
 # on its own; no action needed beyond letting it retry on the next run.
+#
+# Builds the site locally to get the URL list rather than fetching the live
+# sitemap over HTTPS: Cloudflare returns 403 to that fetch from GitHub-hosted
+# runner IPs (confirmed via run #33's log — bot/datacenter IP mitigation on
+# the zone), even though the same request works from an ordinary browser or
+# home connection. Building locally sidesteps it entirely, since the URL list
+# from a fresh build is identical to the live sitemap's.
 
 on:
   push:
@@ -29,9 +36,11 @@ jobs:
         with:
           node-version: 20
 
-      - name: Wait for Cloudflare Pages deploy to finish
-        if: github.event_name == 'push'
-        run: sleep 90
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npx astro build
 
       - name: Submit sitemap URLs to IndexNow
         run: node scripts/submit-indexnow.mjs
