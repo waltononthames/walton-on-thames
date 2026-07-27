@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Search"
+  description="Search Walton-on-Thames.org for places, businesses, events and local history."
+  noIndex={true}
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Search", "item": "https://walton-on-thames.org/search/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Search</li>
+        </ol>
+      </nav>
+      <h1>Search</h1>
+    </div>
+  </div>
+
+  <div class="container search-page">
+    <p class="search-intro">Search the whole site — places, businesses, events, news and local history.</p>
+    <div id="search"></div>
+    <p id="search-unavailable" class="search-unavailable" hidden>
+      Search isn't available in this preview. It's built from the live site and only works once deployed.
+    </p>
+  </div>
+</BaseLayout>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script is:inline src="/pagefind/pagefind-ui.js" onerror="document.getElementById('search-unavailable').hidden = false"></script>
+<script is:inline>
+  (function () {
+    if (typeof PagefindUI === 'undefined') return;
+    var params = new URLSearchParams(window.location.search);
+    new PagefindUI({
+      element: '#search',
+      showSubResults: true,
+      excerptLength: 20,
+    });
+    var initialQuery = params.get('q');
+    if (initialQuery) {
+      // Pagefind mounts its input asynchronously, so wait for it before setting a value.
+      var tries = 0;
+      var fill = setInterval(function () {
+        var input = document.querySelector('#search input.pagefind-ui__search-input');
+        tries++;
+        if (input) {
+          input.value = initialQuery;
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+          clearInterval(fill);
+        } else if (tries > 40) {
+          clearInterval(fill);
+        }
+      }, 50);
+    }
+  })();
+</script>
+
+<style>
+  .search-page {
+    padding: 2rem 0 5rem;
+    max-width: 720px;
+  }
+
+  .search-intro {
+    color: var(--color-slate);
+    margin-bottom: 2rem;
+  }
+
+  .search-unavailable {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(184, 134, 46, 0.08);
+    border: 1px solid rgba(184, 134, 46, 0.25);
+    border-radius: var(--radius-md);
+    color: var(--color-slate);
+    font-size: 0.9rem;
+  }
+
+  :global(#search) {
+    --pagefind-ui-primary: var(--color-navy);
+    --pagefind-ui-text: var(--color-navy);
+    --pagefind-ui-background: var(--color-white);
+    --pagefind-ui-border: rgba(11, 36, 46, 0.15);
+    --pagefind-ui-tag: var(--color-accent);
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-font: var(--font-body);
+  }
+</style>

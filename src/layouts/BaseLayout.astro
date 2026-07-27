@@ -78,7 +78,7 @@ const siteTitle = title.includes('Walton-on-Thames')
             "publisher": { "@id": "https://walton-on-thames.org/#organization" },
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://walton-on-thames.org/directory/?q={search_term_string}",
+              "target": "https://walton-on-thames.org/search/?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           },
@@ -109,7 +109,7 @@ const siteTitle = title.includes('Walton-on-Thames')
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header />
-    <main id="main-content" tabindex="-1">
+    <main id="main-content" tabindex="-1" data-pagefind-body={!noIndex}>
       <slot />
     </main>
     <Footer />

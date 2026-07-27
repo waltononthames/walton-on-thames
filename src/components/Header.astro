@@ -40,6 +40,13 @@ const currentPath = Astro.url.pathname;
       </ul>
     </nav>
 
+    <a href="/search/" class="search-link" aria-label="Search the site" aria-current={currentPath.startsWith('/search/') ? 'page' : undefined}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </a>
+
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -48,6 +55,11 @@ const currentPath = Astro.url.pathname;
   <div id="mobile-menu" class="mobile-menu">
     <nav aria-label="Mobile navigation">
       <ul class="mobile-nav-list" role="list">
+        <li>
+          <a href="/search/" class:list={['mobile-nav-link', { 'mobile-nav-link--active': currentPath.startsWith('/search/') }]}>
+            Search
+          </a>
+        </li>
         {navItems.map((item) => (
           <li>
             <a
@@ -188,6 +200,25 @@ const currentPath = Astro.url.pathname;
 
   .nav-link:hover,
   .nav-link--active {
+    color: var(--color-white);
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* Search icon */
+  .search-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    color: rgba(255,255,255,0.8);
+    transition: color 0.15s, background-color 0.15s;
+  }
+
+  .search-link:hover,
+  .search-link[aria-current="page"] {
     color: var(--color-white);
     background: rgba(255,255,255,0.1);
   }
