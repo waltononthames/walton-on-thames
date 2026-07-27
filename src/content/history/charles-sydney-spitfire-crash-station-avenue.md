@@ -6,6 +6,8 @@ slug: "charles-sydney-spitfire-crash-station-avenue"
 cluster: "walton-history"
 era: ["wartime"]
 entityType: "event"
+heroImage: "/images/history/charles-sydney-spitfire-r6767-illustration.webp"
+heroAlt: "Illustration of Supermarine Spitfire R6767 in No. 92 Squadron markings, code letters QJ-N"
 publishDate: 2026-07-27
 reviewedDate: 2026-07-27
 sources:
@@ -109,6 +111,11 @@ related: ["walton-in-wartime", "mount-felix"]
 
 At about 9.20am on Friday 27 September 1940, the Battle of Britain came down into a residential garden in Walton-on-Thames. Supermarine Spitfire Mk Ia R6767 of No. 92 Squadron RAF crashed at the western end of Station Avenue, close to the railway. Its pilot, 25-year-old Flight Sergeant Charles Sydney, was killed.
 
+<figure>
+  <img src="/images/history/charles-sydney-spitfire-r6767-illustration.webp" alt="Illustration of Supermarine Spitfire R6767 in No. 92 Squadron markings, code letters QJ-N" loading="eager" />
+  <figcaption>Spitfire Mk Ia R6767, in No. 92 Squadron markings with the code letters QJ-N, as flown by Flight Sergeant Charles Sydney when it crashed in Station Avenue on 27 September 1940. Illustration supplied to Walton-on-Thames.org.</figcaption>
+</figure>
+
 <!-- IMAGE: flight-sergeant-charles-sydney-92-squadron-1940.jpg, alt: "Flight Sergeant Charles Sydney of No. 92 Squadron RAF, who was killed when his Spitfire crashed in Station Avenue, Walton-on-Thames, on 27 September 1940." Copyright note: an Elmbridge Museum photograph of Sydney exists; reproduction rights should be established before use. -->
 
 Sydney was not an inexperienced wartime recruit. He had joined the RAF as a teenager in 1931, become a pilot before the war, served as a flying instructor, and returned to operational fighter flying during the Battle of Britain. Twelve days before his death he had been credited with probably destroying a Messerschmitt Bf 109.
@@ -181,6 +188,11 @@ The exact date he joined No. 92 Squadron differs slightly between modern sources
 
 ## No. 92 Squadron arrives at Biggin Hill
 
+<figure>
+  <img src="/images/history/charles-sydney-92-squadron-badge.webp" alt="Badge of No. 92 Squadron RAF, bearing its motto Aut Pugna Aut Morere" loading="lazy" />
+  <figcaption>The badge of No. 92 Squadron RAF, Sydney's squadron from September 1940, carrying the motto Aut Pugna Aut Morere, Latin for "Either fight or die." Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
+
 No. 92 Squadron's Operations Record Book identifies 8 September 1940 as the date its A and B Flights moved to RAF Biggin Hill, one of Fighter Command's most important sector stations and already a repeated Luftwaffe target. The squadron entered a period of relentless operational flying almost immediately, and Sydney arrived at essentially the same moment. The squadron was equipped with Spitfires and carried the code letters QJ; its surviving Operations Record Book is held by The National Archives in AIR 27/743, described by the Archives as a daily record of unit activity that can include both the Form 540 summary narrative and more detailed material on individual operations.
 
 ## Battle of Britain Day, 15 September 1940
@@ -233,6 +245,11 @@ Sydney is buried in St Mary Cray Cemetery, Orpington, Plot E, Division 3, Grave 
 
 ## Remembering Charles Sydney in Walton-on-Thames
 
+<figure>
+  <img src="/images/history/charles-sydney-original-memorial-walton-court.webp" alt="The original 2000 memorial plaque to Flight Sergeant Charles Sydney beside Walton Court, Station Avenue" loading="lazy" />
+  <figcaption>The original memorial to Flight Sergeant Charles Sydney beside Walton Court on Station Avenue, unveiled by Elmbridge Borough Council on 27 September 2000. Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
+
 For decades there was little at Station Avenue to tell passers-by that a Battle of Britain pilot had died there. In 2000, Elmbridge Borough Council and Surrey County Council arranged for a memorial plaque to be installed at Walton Court, close to the believed crash location; Jean Howard, whose eyewitness testimony now provides some of the most important evidence about the crash site, was present at the opening ceremony. A memorial bench, carrying a Winston Churchill inscription, was installed on 30 June 2012 to provide a place for reflection. A service was held on 27 September 2015, the 75th anniversary of Sydney's death, and his great-nephew Tony Sydney was among those associated with the commemorations.
 
 When the Walton Court site was due for redevelopment, a final service at the old memorial location was held on 30 September 2018. Jean Howard attended with members of her family around the time of her 100th birthday, a survival into the twenty-first century that created an extraordinary direct link between present-day Walton and the morning of 27 September 1940.
@@ -242,6 +259,23 @@ When the Walton Court site was due for redevelopment, a final service at the old
 The former Walton Court site has since been redeveloped as Walton Court Gardens. In May 2024, Elmbridge Borough Council announced the installation of a new public artwork by sculptor Stuart Melrose, titled *Welcome Home*. The piece combines two strands of the site's history: its form incorporates the outline of a Spitfire in memory of the wartime connection, and a penguin referencing the live penguins once kept at the Birds Eye headquarters.
 
 The artwork should be distinguished from the replacement Charles Sydney memorial itself. Crest Nicholson recorded a commemorative service held on Saturday 6 July 2024 following completion of the replacement memorial, attended by the Mayor of Elmbridge, RAF Air Cadets, local residents, and members of Sydney's family and friends. The redeveloped site now preserves both the broader artistic interpretation of its history and a direct memorial to the pilot whose life ended at Station Avenue.
+
+<figure>
+  <img src="/images/history/charles-sydney-new-memorial-walton-court-gardens.webp" alt="The replacement memorial to Flight Sergeant Charles Sydney at Walton Court Gardens, with the original 2000 plaque flanked by two new interpretive panels" loading="lazy" />
+  <figcaption>The replacement memorial at Walton Court Gardens: the original 2000 plaque, relocated, flanked by two new interpretive panels with further detail on Sydney's life and the crash. Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
+
+<figure>
+  <img src="/images/history/charles-sydney-memorial-propeller-walton-court-gardens.webp" alt="A propeller blade memorial sculpture at Walton Court Gardens, with a wooden poppy cross at its base" loading="lazy" />
+  <figcaption>A propeller blade forms part of the memorial setting at Walton Court Gardens, alongside salvaged stone columns from the site's earlier buildings. Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
+
+The redevelopment's street naming carries the memory further still: one of the new roads on the site is called Spitfire Chase.
+
+<figure>
+  <img src="/images/history/spitfire-chase-street-sign-walton-court-gardens.webp" alt="Street sign for Spitfire Chase, a road within the Walton Court Gardens redevelopment" loading="lazy" />
+  <figcaption>Spitfire Chase, a street within the Walton Court Gardens development, named for the aircraft that came down nearby in 1940. Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
 
 ## Why this story matters to Walton-on-Thames
 
