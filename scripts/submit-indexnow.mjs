@@ -8,6 +8,8 @@ const SITEMAP_URL = `https://${HOST}/sitemap-0.xml`;
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 
 async function main() {
+  console.log(`Node ${process.version}, fetch available: ${typeof fetch === 'function'}`);
+
   const sitemapRes = await fetch(SITEMAP_URL);
   if (!sitemapRes.ok) {
     throw new Error(`Failed to fetch sitemap: HTTP ${sitemapRes.status}`);
@@ -40,6 +42,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(err.message);
+  console.error(err.stack || err.message);
   process.exit(1);
 });
