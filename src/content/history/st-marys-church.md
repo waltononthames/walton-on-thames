@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["saxon", "medieval", "georgian", "wartime"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-07-26
 sources:
   - author: "Wikipedia"
     year: "n.d."
@@ -35,7 +35,7 @@ Inside, the north aisle holds one of the church's genuine artistic treasures: a 
 
 ## The Selwyn brass and the scold's bridle
 
-The church also holds a 1587 brass commemorating John Selwyn, keeper of the royal park at Oatlands, shown with his wife and eleven children, a striking piece of Elizabethan portraiture in metal. Alongside it, the church preserves a copy of a scold's bridle presented to the parish in the seventeenth century, an iron device once used to publicly humiliate women accused of scolding or gossiping. The bridle is grim social history rather than a curiosity, and it is well known partly because Jerome K. Jerome mentioned it in *Three Men in a Boat*, giving Walton's bridle a level of literary fame that most parish artefacts never get.
+The church also holds a 1587 brass commemorating John Selwyn, keeper of the royal park at Oatlands, shown with his wife and eleven children, a striking piece of Elizabethan portraiture in metal. Alongside it, the church displays a reproduction of a scold's bridle presented to the parish in the seventeenth century, an iron device once used to publicly humiliate women accused of scolding or gossiping. The bridle is grim social history rather than a curiosity, and it is well known partly because Jerome K. Jerome mentioned it in *Three Men in a Boat*, giving Walton's bridle a level of literary fame that most parish artefacts never get.
 
 ## Jerome Kern's wedding
 
@@ -47,4 +47,4 @@ St Mary's carries one more layer, this one from the twentieth century. During th
 
 ## Visiting
 
-St Mary's stands at the top of Church Street, close to the older, quieter part of Walton around Bridge Street and the approach to the river, and is normally open to visitors outside service times. It rewards more than a passing look: the tower, the Roubiliac monument, the Selwyn brass and the scold's bridle are all within a few steps of each other, a genuinely compact walk through nine centuries of the town's history.
+St Mary's stands at the top of Church Street, close to Bridge Street and the approach to the river, and is normally open to visitors outside service times. It rewards more than a passing look: the tower, the Roubiliac monument, the Selwyn brass and the scold's bridle are all within a few steps of each other, a genuinely compact walk through nine centuries of the town's history.
