@@ -56,11 +56,15 @@ The word "& Son" points to a family business, though the surviving sources exami
 
 "Mineral water" was a broad term in Victorian trade: it covered naturally mineralised water, artificially carbonated water, and flavoured fizzy drinks alike, made and bottled locally for households, hotels, pubs and shops in an age before national distribution networks existed.
 
-Two surviving examples, photographed here from a private Walton-on-Thames collection, show what the firm actually produced. One is a clear glass bottle with rounded, torpedo-like ends, embossed "SAVAGE & SON" on one side and "WALTON-ON-THAMES" on the other, of a type long used for carbonated seltzer water. The other is a smaller, dark green bottle, squarer in shape, with "J.V. SAVAGE & SON, WALTON ON THAMES" wrapped around its body in raised lettering.
+Three surviving examples, photographed here from a private Walton-on-Thames collection, show what the firm actually produced. One is a clear glass bottle with rounded, torpedo-like ends, embossed "SAVAGE & SON" on one side and "WALTON-ON-THAMES" on the other, of a type long used for carbonated seltzer water. A second is a smaller, dark green bottle, squarer in shape, with "J.V. SAVAGE & SON, WALTON ON THAMES" wrapped around its body in raised lettering. The third is different again: a salt-glazed stoneware bottle in the cylindrical, bulbous-necked style long used for ginger beer and other pressurised drinks, with "SAVAGE & SON" embossed around the shoulder and "WALTON ON THAMES" around the base.
 
 <img src="/images/history/savage-son-seltzer-bottle-walton-on-thames-1.webp" alt="The reverse of the clear Savage & Son bottle, embossed 'WALTON-ON-THAMES'" loading="lazy" />
 
 <img src="/images/history/savage-son-green-bottle-full.webp" alt="A dark green Savage & Son bottle, embossed 'J. V. Savage & Son, Walton on Thames'" loading="lazy" />
+
+<img src="/images/history/savage-son-ginger-beer-bottle-walton-on-thames-1.webp" alt="A salt-glazed stoneware Savage & Son bottle, of the type used for ginger beer" loading="lazy" />
+
+That range matters. It confirms the "mineral water" trade named in Kelly's directory covered more than one type of drink and more than one type of bottle, glass for seltzer water and stoneware for ginger beer among them, exactly the broad product range the term implied in Victorian trade.
 
 Both bottles were valuable business assets in their own right, not just packaging. Embossing the maker's name identified their owner, advertised the firm, and encouraged their return for reuse, a routine part of the Victorian bottling trade. More than a century on, that same lettering is what allows a bottle like these to be reconnected with the business, and the town, it came from.
 
@@ -84,9 +88,9 @@ The surviving record of Savage's last years is a sober one. Surrey County Counci
 
 This is the largest gap in the story. The firm is documented on the High Street through the 1890s, and its proprietor's 1903 obituary looks back on his time running it, but nothing found so far establishes a full chain of ownership after that point, or fixes the date production actually stopped. A notice of sale, partnership dissolution, bankruptcy or transfer to a successor, if one survives, would help close that gap and might also help fix the works' exact position on the High Street. Until then, any claim about who continued the business, or exactly where it stood, should be treated with caution.
 
-## Two surviving bottles
+## Three surviving bottles
 
-The bottles shown on this page belong to a private Walton-on-Thames collection, and between them they capture most of what a collector or local historian would want to record: the full embossed wording, the glass colour and shape, and the base and neck detail that can sometimes help date a piece more precisely.
+The bottles shown on this page belong to a private Walton-on-Thames collection, and between them they capture most of what a collector or local historian would want to record: the full embossed wording, the material, colour and shape, and the base and neck detail that can sometimes help date a piece more precisely.
 
 <img src="/images/history/savage-son-green-bottle-embossing-close.webp" alt="Close view of the embossed lettering on the green Savage & Son bottle" loading="lazy" />
 
@@ -94,10 +98,22 @@ The bottles shown on this page belong to a private Walton-on-Thames collection, 
 
 <img src="/images/history/savage-son-green-bottle-neck.webp" alt="The neck and closure of the green Savage & Son bottle" loading="lazy" />
 
+The stoneware bottle carries its own distinct set of detail. The embossed lettering wraps around both the shoulder and the base rather than sitting on one face, as the flat, wide surface of a cylindrical stoneware bottle suits a curved band of text better than a straight line.
+
+<img src="/images/history/savage-son-ginger-beer-bottle-walton-on-thames-2.webp" alt="Close view of the shoulder of the stoneware Savage & Son bottle, embossed 'SAVAGE & SON'" loading="lazy" />
+
+<img src="/images/history/savage-son-ginger-beer-bottle-walton-on-thames-3.webp" alt="The neck and shoulder of the stoneware Savage & Son bottle" loading="lazy" />
+
+<img src="/images/history/savage-son-ginger-beer-bottle-walton-on-thames-base.webp" alt="The base of the stoneware Savage & Son bottle, embossed 'SAVAGE & SON, WALTON ON THAMES'" loading="lazy" />
+
+The base also carries a separate, small oval maker's stamp, the mark of the pottery that produced the bottle rather than of Savage & Son itself, a routine feature of commercial stoneware bottles of the period. It's too worn on this example to read with confidence, so it isn't identified here.
+
+<img src="/images/history/savage-son-ginger-beer-bottle-walton-on-thames-4.webp" alt="A worn oval maker's stamp on the base of the stoneware Savage & Son bottle" loading="lazy" />
+
 Bottles bearing the J. V. Savage & Son name do occasionally surface in bottle-collecting circles and online sales. Their real value lies not in any advertised sale price, which varies widely and proves little on its own, but in their direct, tangible connection to a documented Walton-on-Thames manufacturer whose own paper trail is otherwise thin.
 
 ## Why the Walton Mineral Water Works matters
 
 Walton's history tends to get told through its river, its great houses, its churches and its film studios. A business like J. V. Savage & Son shows another side of the same town: an everyday manufacturer, making a consumable product in specialised bottles for a local market, operating from the heart of the [High Street](/history/the-heart-and-town-centre/) rather than its riverside or its grand estates.
 
-It is also a good illustration of how this kind of local history gets pieced together at all. No single source tells the whole story. A line in a trade directory places the firm. A hospital record and a newspaper notice mark the proprietor's final years. And the bottles themselves, plain glass objects that have simply survived, carry the firm's own name into the present in a way no written record quite matches.
+It is also a good illustration of how this kind of local history gets pieced together at all. No single source tells the whole story. A line in a trade directory places the firm. A hospital record and a newspaper notice mark the proprietor's final years. And the bottles themselves, plain glass and stoneware objects that have simply survived, carry the firm's own name into the present in a way no written record quite matches.
