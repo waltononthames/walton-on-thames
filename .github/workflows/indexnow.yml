@@ -19,11 +19,13 @@ name: IndexNow submission
 # home connection. Building locally sidesteps it entirely, since the URL list
 # from a fresh build is identical to the live sitemap's.
 #
-# Installs with --omit=dev: devDependencies include @pagefind/windows-x64,
-# which declares itself Windows-only (os: win32) and is a required (not
-# optional) dependency in this repo's package.json, so a full `npm ci` on
-# the Linux runner fails immediately with EBADPLATFORM (confirmed via run
-# #34's log). `astro build` only needs the regular dependencies.
+# Note: @pagefind/windows-x64 previously sat in plain devDependencies
+# (rather than optionalDependencies like every other per-platform native
+# binary in this lockfile), so a Linux `npm ci` here always failed with
+# EBADPLATFORM regardless of --omit=dev (npm validates platform
+# compatibility for every lockfile entry before applying omit filters;
+# only optionalDependencies degrade gracefully on a mismatch). Fixed at
+# the source in package.json/package-lock.json — see that commit.
 
 on:
   push:
@@ -43,7 +45,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci --omit=dev
+        run: npm ci
 
       - name: Build site
         run: npx astro build
