@@ -18,6 +18,12 @@ name: IndexNow submission
 # the zone), even though the same request works from an ordinary browser or
 # home connection. Building locally sidesteps it entirely, since the URL list
 # from a fresh build is identical to the live sitemap's.
+#
+# Installs with --omit=dev: devDependencies include @pagefind/windows-x64,
+# which declares itself Windows-only (os: win32) and is a required (not
+# optional) dependency in this repo's package.json, so a full `npm ci` on
+# the Linux runner fails immediately with EBADPLATFORM (confirmed via run
+# #34's log). `astro build` only needs the regular dependencies.
 
 on:
   push:
@@ -37,7 +43,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --omit=dev
 
       - name: Build site
         run: npx astro build
