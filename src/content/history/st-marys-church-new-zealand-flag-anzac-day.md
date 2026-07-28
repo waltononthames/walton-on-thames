@@ -6,6 +6,8 @@ slug: "st-marys-church-new-zealand-flag-anzac-day"
 cluster: "walton-history"
 era: ["wartime", "contemporary"]
 entityType: "event"
+heroImage: "/images/history/st-marys-church-walton-on-thames-new-zealand-flag.webp"
+heroAlt: "The New Zealand flag flying above St Mary's Church, Walton-on-Thames, framed by spring blossom"
 publishDate: 2026-07-28
 reviewedDate: 2026-07-28
 sources:
@@ -51,7 +53,10 @@ Visitors to Walton-on-Thames in April may notice something unusual flying above 
 
 For anyone unfamiliar with Walton's history, the sight of the New Zealand flag above a medieval Surrey parish church might seem surprising. But it represents a connection stretching back more than a century, to the First World War, when thousands of wounded New Zealand soldiers were brought to Walton-on-Thames for treatment. Some never returned home. Their story explains not only the flag at St Mary's, but also why New Zealand servicemen are buried in the churchyard, why an Anzac service is still held in Walton, and why one of the town's principal roads is called New Zealand Avenue.
 
-<!-- IMAGE: st-marys-church-walton-on-thames-new-zealand-flag.jpg, alt: "The New Zealand flag flying at St Mary's Church, Walton-on-Thames, for the annual Anzac commemoration" -->
+<figure>
+  <img src="/images/history/st-marys-church-walton-on-thames-new-zealand-flag.webp" alt="The New Zealand flag flying above St Mary's Church, Walton-on-Thames, framed by spring blossom" loading="eager" />
+  <figcaption>The New Zealand flag flying above St Mary's Church tower, Walton-on-Thames, in April. Photograph by Darren Bayley.</figcaption>
+</figure>
 
 ## The answer in brief
 
@@ -102,6 +107,11 @@ More than a century after the First World War, St Mary's continues to hold an an
 The connection remains recognised officially by New Zealand. The New Zealand Ministry of Foreign Affairs and Trade's official programme of Anzac Day events across the United Kingdom for 2026 lists a service at St Mary's Church, Church Street, Walton-on-Thames, on Sunday 26 April 2026 at 6.30pm, alongside major commemorations in London and services at some two dozen other locations around the country. The Commonwealth War Graves Commission separately lists an annual Anzac Day service at the New Zealand memorial in St Mary's Churchyard. The remembrance survives, in other words, not as local folklore but as a continuing relationship between Walton-on-Thames and New Zealand, marked officially on both sides. As with any listed event date, it's worth checking St Mary's or the New Zealand High Commission directly closer to the time.
 
 ## So why does St Mary's fly the New Zealand flag?
+
+<figure>
+  <img src="/images/history/st-marys-new-zealand-flag-pole-close.webp" alt="Close view of the New Zealand flag flying from St Mary's Church tower, Walton-on-Thames" loading="lazy" />
+  <figcaption>The New Zealand flag, with its Union Jack canton and Southern Cross stars, flying from St Mary's tower. Photograph by Darren Bayley.</figcaption>
+</figure>
 
 The flag is a simple expression of a much larger story. It remembers the thousands of New Zealanders who came to Walton during the First World War, the doctors, nurses, volunteers and local people who cared for them, and, above all, those who died here and whose resting place became a Surrey churchyard rather than their homeland on the other side of the world.
 
