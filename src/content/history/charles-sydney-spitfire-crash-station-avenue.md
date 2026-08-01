@@ -9,7 +9,7 @@ entityType: "event"
 heroImage: "/images/history/charles-sydney-spitfire-r6767-illustration.webp"
 heroAlt: "Illustration of Supermarine Spitfire R6767 in No. 92 Squadron markings, code letters QJ-N"
 publishDate: 2026-07-27
-reviewedDate: 2026-07-27
+reviewedDate: 2026-08-01
 sources:
   - author: "Bartlett, R."
     year: "2016"
@@ -116,7 +116,10 @@ At about 9.20am on Friday 27 September 1940, the Battle of Britain came down int
   <figcaption>Spitfire Mk Ia R6767, in No. 92 Squadron markings with the code letters QJ-N, as flown by Flight Sergeant Charles Sydney when it crashed in Station Avenue on 27 September 1940. Illustration supplied to Walton-on-Thames.org.</figcaption>
 </figure>
 
-<!-- IMAGE: flight-sergeant-charles-sydney-92-squadron-1940.jpg, alt: "Flight Sergeant Charles Sydney of No. 92 Squadron RAF, who was killed when his Spitfire crashed in Station Avenue, Walton-on-Thames, on 27 September 1940." Copyright note: an Elmbridge Museum photograph of Sydney exists; reproduction rights should be established before use. -->
+<figure>
+  <img src="/images/history/charles-sydney-portrait-92-squadron.webp" alt="Flight Sergeant Charles Sydney of No. 92 Squadron RAF, who was killed when his Spitfire crashed in Station Avenue, Walton-on-Thames, on 27 September 1940" loading="lazy" />
+  <figcaption>Photograph of F/Sgt. Charles Sydney courtesy of <a href="https://www.bbm.org.uk/airmen/sydney.htm" target="_blank" rel="noopener noreferrer">Battle of Britain Monument</a>.</figcaption>
+</figure>
 
 Sydney was not an inexperienced wartime recruit. He had joined the RAF as a teenager in 1931, become a pilot before the war, served as a flying instructor, and returned to operational fighter flying during the Battle of Britain. Twelve days before his death he had been credited with probably destroying a Messerschmitt Bf 109.
 
