@@ -89,10 +89,12 @@ Check `docs/site-audit.md` before creating any page; never create a new page whe
 Log completed pages and open VERIFY items in `docs/build-log.md`.
 
 **Before touching any page, classify it against `docs/historical-content-strategy.md`** — it governs which editorial standard applies:
-- **Historical/heritage content** (local history, historic buildings/streets/estates, past residents and businesses, wartime/church/transport history, biographies, archaeology) — apply the full Content Verification Protocol below in this file: research dossier, source register, Harvard/APA `sources:` block, fact-vs-interpretation discipline.
-- **Current/practical content** (business listings, opening hours, event calendars, transport/parking info, directory pages) — prioritise current accuracy against official sources and clear user journeys; do not dress this up with academic citations it doesn't need.
-- **Hybrid pages** (e.g. a historic venue's page that also lists its current opening hours) — apply both standards, one per content block. A building's opening date needs a historical source; today's opening hours just need to link to the venue's own site.
+- **Historical/heritage content** (local history, historic buildings/streets/estates, past residents and businesses, wartime/church/transport history, biographies, archaeology) — governed in full by `docs/research-and-editorial-standards.md` (v1.0, adopted 1 August 2026). That document supersedes the Content Verification Protocol below for this content class — it's far more detailed (source-type-specific rules, evidence states, citation house style, a pre-publication checklist, and an Appendix C written directly for automated agents). Read Appendix C and Section 20 before publishing any history/heritage page. The Content Verification Protocol below remains a useful quick-reference summary, but where the two differ, the Standards document wins.
+- **Current/practical content** (business listings, opening hours, event calendars, transport/parking info, directory pages) — prioritise current accuracy against official sources and clear user journeys; do not dress this up with academic citations it doesn't need. Governed by the Content Verification Protocol below until a dedicated Current Information Standards document exists.
+- **Hybrid pages** (e.g. a historic venue's page that also lists its current opening hours) — apply both standards, one per content block. A building's opening date needs a historical source per the Standards document; today's opening hours just need to link to the venue's own site.
 - If genuinely unsure which class a page falls into, treat it as historical/heritage — the stricter standard is always safe to over-apply, never the reverse.
+
+Both documents are operational standards governed by *Our Charter* (published at `/charter/`, `src/pages/charter.astro` — there's no separate docs/ copy, that page is the source of truth). Neither may be read as overriding it; if they ever conflict, the Charter wins and the lower document needs amending.
 
 # Content Verification Protocol
 
