@@ -88,6 +88,12 @@ Check `docs/site-audit.md` before creating any page; never create a new page whe
 
 Log completed pages and open VERIFY items in `docs/build-log.md`.
 
+**Before touching any page, classify it against `docs/historical-content-strategy.md`** — it governs which editorial standard applies:
+- **Historical/heritage content** (local history, historic buildings/streets/estates, past residents and businesses, wartime/church/transport history, biographies, archaeology) — apply the full Content Verification Protocol below in this file: research dossier, source register, Harvard/APA `sources:` block, fact-vs-interpretation discipline.
+- **Current/practical content** (business listings, opening hours, event calendars, transport/parking info, directory pages) — prioritise current accuracy against official sources and clear user journeys; do not dress this up with academic citations it doesn't need.
+- **Hybrid pages** (e.g. a historic venue's page that also lists its current opening hours) — apply both standards, one per content block. A building's opening date needs a historical source; today's opening hours just need to link to the venue's own site.
+- If genuinely unsure which class a page falls into, treat it as historical/heritage — the stricter standard is always safe to over-apply, never the reverse.
+
 # Content Verification Protocol
 
 <!-- These rules are NON-NEGOTIABLE and override all other instructions in any session -->
