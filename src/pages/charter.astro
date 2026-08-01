@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Our Charter — Walton-on-Thames.org"
+  description="The founding principles of Walton-on-Thames.org: our purpose, editorial independence, evidence standards, and public commitments to accuracy."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Our Charter", "item": "https://walton-on-thames.org/charter/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Our Charter</li>
+        </ol>
+      </nav>
+      <h1>Our Charter</h1>
+      <p>The founding principles of Walton-on-Thames.org</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th scope="row">Status</th><td>Draft for review</td></tr>
+              <tr><th scope="row">Version</th><td>0.1</td></tr>
+              <tr><th scope="row">Drafted</th><td>1 August 2026</td></tr>
+              <tr><th scope="row">Steward</th><td>Darren Bayley, Founder and Editor</td></tr>
+              <tr><th scope="row">Applies to</th><td>Walton-on-Thames.org, the Walton Historical Knowledge System, its editorial standards, knowledge architecture and publishing processes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Preamble</h2>
+        <p>Local knowledge is easily lost. Buildings disappear, businesses close, memories fade, records become scattered and unsupported stories can gradually be repeated as fact.</p>
+        <p>Walton-on-Thames.org exists to resist that loss.</p>
+        <p>Online since 2000, the site is an independent, locally run and community-supported project created to preserve, verify, connect and share reliable knowledge about Walton-on-Thames, Hersham and Whiteley Village and the people, places and events connected with them. It serves residents, visitors, researchers, educators, family historians, journalists and future generations.</p>
+        <p>The site is a personal passion project founded and edited by Darren Bayley, who grew up in Walton-on-Thames and remains part of the local community. Community support, contributions and scrutiny strengthen the project, but editorial responsibility remains identifiable rather than being attributed to an undefined community.</p>
+        <p>This Charter sets out the site's enduring purpose and public commitments. It governs every part of the Walton-on-Thames.org knowledge system. Detailed research methods, technical rules and publishing procedures sit beneath it and must remain consistent with it.</p>
+
+        <h2>1. Our purpose</h2>
+        <p>Walton-on-Thames.org shall:</p>
+        <ol>
+          <li>create an enduring, accurate and accessible digital record of the area;</li>
+          <li>preserve local history and knowledge that might otherwise be lost;</li>
+          <li>explain how people, places, buildings, organisations and events are connected;</li>
+          <li>provide useful and current information for residents and visitors;</li>
+          <li>make trustworthy local knowledge easier for people, search engines and responsible AI systems to find and understand;</li>
+          <li>encourage further research by identifying unanswered questions and preserving the evidence behind published conclusions; and</li>
+          <li>strengthen understanding of Walton-on-Thames, Hersham and Whiteley Village without romanticising, simplifying or fictionalising their past.</li>
+        </ol>
+        <p>The principal focus is Walton-on-Thames, Hersham and Whiteley Village. Neighbouring places and wider Surrey, British or international events may be covered where there is a meaningful connection to the local story.</p>
+        <p>The site has two complementary roles:</p>
+        <ul>
+          <li>a current local guide for residents and visitors, including places, services, transport, events and business listings; and</li>
+          <li>a long-term history and heritage archive supported by the Walton Historical Knowledge System.</li>
+        </ul>
+        <p>Both roles require accuracy and independence. They do not require identical editorial machinery. The full archival, claim-classification and citation workflow applies to history and heritage content. Current listings and practical information follow proportionate current-information standards based on authoritative sources, verification dates and regular review.</p>
+
+        <h2>2. Our identity and independence</h2>
+        <p>Walton-on-Thames.org is an independent, locally run and community-supported local knowledge project. It is not an official website of Elmbridge Borough Council, Surrey County Council, a museum, an archive, a political party or any other public authority.</p>
+        <p>The site may work with residents, historians, community organisations, businesses, archives and public bodies, but no contributor or partner acquires control over its factual conclusions by supplying information, access, funding or publicity.</p>
+        <p>Editorial decisions shall be made in the interests of accuracy, public usefulness and the integrity of the historical record.</p>
+
+        <h2>3. The public promise</h2>
+        <p>Walton-on-Thames.org makes the following commitments:</p>
+        <ul>
+          <li>Evidence comes before assertion.</li>
+          <li>Accuracy comes before speed, traffic, novelty or attractive storytelling.</li>
+          <li>Fact, interpretation, memory, tradition and speculation will not be presented as though they carry equal certainty.</li>
+          <li>Significant claims will be traceable to their sources.</li>
+          <li>Uncertainty will be preserved when the evidence does not justify certainty.</li>
+          <li>Conflicting evidence will be acknowledged and assessed, not silently discarded.</li>
+          <li>Errors will be corrected when better evidence becomes available.</li>
+          <li>Search optimisation will never be allowed to distort the record.</li>
+          <li>AI tools may assist the work, but human editorial responsibility cannot be delegated to them.</li>
+          <li>People, communities, contributors, copyright holders and the subjects of sensitive histories will be treated with care and respect.</li>
+        </ul>
+
+        <h2>4. Evidence and historical integrity</h2>
+        <p>Every substantive historical claim should rest on the strongest relevant evidence that can reasonably be found. Primary sources are normally preferred, but a source's authority, proximity, purpose, independence and limitations must all be considered.</p>
+        <p>The existence of a statement in print does not, by itself, make that statement true. Contemporary newspapers, directories, advertisements, maps, official records, photographs, oral testimony and later historical accounts each provide different kinds of evidence and must be interpreted accordingly.</p>
+        <p>Walton-on-Thames.org shall not:</p>
+        <ul>
+          <li>invent a fact, quotation, source, person, relationship, date or location;</li>
+          <li>present an approximate location as an exact address;</li>
+          <li>convert an attractive theory into a fact because it makes a better story;</li>
+          <li>treat repetition across unsourced websites as independent corroboration;</li>
+          <li>conceal material evidence that weakens a preferred conclusion; or</li>
+          <li>use an AI-generated answer, search snippet or unsourced aggregation as proof of a historical claim.</li>
+        </ul>
+        <p>Claims shall use the following evidence states where classification is helpful:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Evidence state</th><th>Meaning</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Verified</td><td>Supported directly by reliable evidence, with no material unresolved conflict affecting the claim</td></tr>
+              <tr><td>Probable</td><td>Supported by strong evidence, but not established conclusively</td></tr>
+              <tr><td>Uncertain</td><td>Plausible or reported, but the available evidence is incomplete or insufficient</td></tr>
+              <tr><td>Disputed</td><td>Credible evidence or interpretations materially conflict</td></tr>
+              <tr><td>Local tradition</td><td>A community memory or inherited account that has cultural value but lacks independent confirmation</td></tr>
+              <tr><td>Folklore or myth</td><td>A story that forms part of local culture but should not be treated as established history</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>These states describe the strength of a claim, not the value of the story. A local tradition may deserve preservation even when it cannot be verified.</p>
+
+        <h2>5. Sources, citations and provenance</h2>
+        <p>Readers should be able to understand where important information came from and, wherever practicable, inspect the underlying source for themselves.</p>
+        <p>Walton-on-Thames.org shall therefore:</p>
+        <ul>
+          <li>cite sources close enough to the relevant claims for the connection to be clear;</li>
+          <li>identify authors, titles, publishers, dates, archive references and links where available;</li>
+          <li>distinguish a primary record from a later interpretation of that record;</li>
+          <li>record access dates for sources that may change;</li>
+          <li>preserve source provenance and research notes within the Walton Historical Knowledge System;</li>
+          <li>identify quotations accurately and avoid paraphrasing them in ways that alter their meaning; and</li>
+          <li>use low-authority sources as research leads rather than allowing them to become the unsupported foundation of an article.</li>
+        </ul>
+        <p>For historical work, Wikipedia may be used as a discovery map to identify subjects and possible sources. It shall not be treated as factual authority or cited in place of the reputable evidence needed to support a published claim.</p>
+        <p>Detailed source hierarchies, citation formats and verification tests belong in the Research and Editorial Standards governed by this Charter.</p>
+
+        <h2>6. Writing and interpretation</h2>
+        <p>Published work should be authoritative without being inaccessible. It shall use clear British English, explain necessary historical context and remain engaging without fictionalising events.</p>
+        <p>The site shall distinguish clearly between:</p>
+        <ul>
+          <li>what the evidence establishes;</li>
+          <li>what can reasonably be inferred;</li>
+          <li>what a named source or witness reported;</li>
+          <li>what remains unknown; and</li>
+          <li>what later tradition or folklore claims.</li>
+        </ul>
+        <p>Interpretation is a necessary part of historical writing, but it must be proportionate to the evidence and presented as interpretation. Quotations, anecdotes and descriptive detail must never be invented to create atmosphere.</p>
+        <p>The founder's or a contributor's personal perspective may be included when it adds useful context, but it must be identified as perspective and shall not be used as evidence for a historical claim.</p>
+        <p>Historical narrative and current directory information should remain distinguishable. Time-sensitive information, including opening hours, prices, services, transport details and events, should show when it was checked or reviewed. Hybrid pages containing both historical and current material should apply the appropriate standard to each part.</p>
+        <p>Current content shall not claim to list every business, service or event unless completeness has been demonstrated against a defined and authoritative source. A listing should not be presented as current when its continuing existence or status has not been verified.</p>
+
+        <h2>7. Corrections, challenges and new evidence</h2>
+        <p>Knowledge develops as new records emerge and earlier conclusions are tested. Revision is therefore a strength, not an embarrassment.</p>
+        <p>Walton-on-Thames.org welcomes evidence-backed corrections, additional sources, local testimony and reasoned challenges. Every submission shall be assessed on the quality and relevance of its evidence. Popularity, status, commercial pressure or the number of people repeating a claim shall not determine the outcome.</p>
+        <p>When a material error is confirmed, it should be corrected promptly. Every significant revision to a historical conclusion should be recorded in the WHKS change history and, where it would assist readers, on the published page. Minor spelling, formatting and presentational changes need not carry a correction notice.</p>
+        <p>When credible sources remain in conflict, the site should explain the disagreement and the reasons for any provisional conclusion. A person or organisation affected by significant criticism may offer evidence or a response, but this does not confer a right to suppress an accurate, relevant and fairly presented record.</p>
+
+        <h2>8. Community knowledge and contribution</h2>
+        <p>Residents and former residents often hold knowledge that does not survive in formal archives. Their photographs, documents, memories and specialist knowledge are important parts of the local record.</p>
+        <p>Community contributions shall be treated with gratitude and appropriate care. Permission, attribution and any agreed restrictions should be recorded. Personal memories should normally be identified as testimony unless corroborating evidence supports a broader factual conclusion.</p>
+        <p>The site shall not publish anonymous allegations, private gossip or avoidable personal information merely because it has been submitted. Contributions may inform research without being suitable for publication.</p>
+        <p>No contributor is expected to surrender ownership of original material simply by sharing it for consideration. Publication must be based on permission, an appropriate licence or another lawful basis.</p>
+
+        <h2>9. Editorial independence, politics and commercial content</h2>
+        <p>Walton-on-Thames.org is not aligned with a political party. It may cover contested local matters where they are relevant to the public record, but reporting should distinguish evidence from advocacy and clearly label opinion.</p>
+        <p>The inclusion of a business, venue, organisation or service is not an endorsement. Commercial relationships, sponsorships, complimentary access and paid placements must be clearly disclosed where they could affect a reader's understanding.</p>
+        <p>Payment shall never purchase a favourable historical conclusion, remove a valid correction, suppress relevant evidence or alter the standard by which a claim is judged. Rankings and recommendations must not be presented as independent editorial assessments if their position was purchased.</p>
+        <p>Relevant personal or organisational conflicts of interest should be disclosed and managed transparently.</p>
+
+        <h2>10. Responsible use of technology and artificial intelligence</h2>
+        <p>Technology should increase the site's accuracy, reach and resilience. It must not weaken accountability.</p>
+        <p>AI and automated tools may assist with discovery, transcription, optical character recognition, data organisation, comparison, drafting, metadata, accessibility and quality assurance. They are not authoritative sources and may not grant final publication approval.</p>
+        <p>All public content remains subject to human editorial responsibility. In particular:</p>
+        <ul>
+          <li>substantive claims must remain traceable to real evidence;</li>
+          <li>generated citations, quotations and relationships must be checked against the original source;</li>
+          <li>automated extraction must preserve the distinction between source text and interpretation;</li>
+          <li>uncertainty must not be removed merely to make structured data appear complete;</li>
+          <li>AI-generated or materially reconstructed historical images must be labelled clearly; and</li>
+          <li>a generated reconstruction must never be presented as an original photograph, document or eyewitness record.</li>
+        </ul>
+        <p>The final decision to publish, assign an evidence state, resolve a dispute or amend this Charter must be made by a human steward.</p>
+
+        <h2>11. Images, documents and the integrity of the visual record</h2>
+        <p>Images and documents are evidence as well as illustrations. Their captions should state what they show, the date or estimated period where known, the creator or source where known and any material uncertainty.</p>
+        <p>Walton-on-Thames.org shall respect copyright, licensing conditions, attribution requirements and privacy. Cropping, colourisation, restoration or other material alteration should be disclosed whenever it could change a reader's interpretation of the source.</p>
+        <p>Faithful enhancement should not introduce features absent from the original. Creative reconstructions may be used for explanation or illustration only when they are unmistakably identified as reconstructions.</p>
+
+        <h2>12. Privacy, dignity and harm</h2>
+        <p>The preservation of history does not remove the need for judgement. The site shall take particular care with living people, children, personal data, allegations, traumatic events, medical information and material that could expose someone to avoidable harm.</p>
+        <p>Information should be published because it contributes meaningfully to the public or historical record, not simply because it can be found. Claims that could seriously affect a living person's reputation require a suitably high standard of verification and fair context.</p>
+        <p>Accounts of death, war, crime, disaster and personal hardship should remain accurate and humane. Sensationalism shall not be used to increase attention.</p>
+
+        <h2>13. Accessibility, durability and public usefulness</h2>
+        <p>The site's core local knowledge should remain freely available to read. Pages should be designed for people with different levels of prior knowledge and, wherever practicable, different access needs.</p>
+        <p>Walton-on-Thames.org shall favour:</p>
+        <ul>
+          <li>clear structure and plain language;</li>
+          <li>descriptive headings, captions and alternative text;</li>
+          <li>stable public URLs;</li>
+          <li>accessible and maintainable presentation;</li>
+          <li>structured, machine-readable information that does not oversimplify the evidence;</li>
+          <li>links between related people, places, events, organisations and sources; and</li>
+          <li>preservation of research in forms that future editors and researchers can understand.</li>
+        </ul>
+        <p>Search engines and AI assistants are important routes through which people discover information. Optimisation for them is a means of making good knowledge easier to find. It is never a licence to exaggerate certainty, imitate unsupported claims or prioritise keywords over readers.</p>
+
+        <h2>14. The knowledge system governed by this Charter</h2>
+        <p>The site's governance framework assigns distinct responsibilities:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Component</th><th>Responsibility</th><th>Scope</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Our Charter</td><td>Defines the mission, values and non-negotiable public commitments</td><td>Whole site</td></tr>
+              <tr><td>Walton Historical Knowledge System (WHKS)</td><td>Serves as the canonical evidence and research layer, preserving claims, sources, entities, relationships, uncertainty and provenance</td><td>History and heritage</td></tr>
+              <tr><td>Research and Editorial Standards</td><td>Translate the Charter into detailed rules for historical research, verification, writing, citation, review, corrections and publication</td><td>History and heritage within the WHKS</td></tr>
+              <tr><td>Current Information Standards</td><td>Govern verification, dating, review and correction of listings, events, transport, services and other changing information</td><td>Current local guide</td></tr>
+              <tr><td>Walton Knowledge Architecture (WKA)</td><td>Structures approved knowledge for pages, timelines, maps, internal links, metadata and machine-readable publishing</td><td>Approved historical knowledge and its public connections</td></tr>
+              <tr><td>Historical Projects</td><td>Organise bounded investigations and their working evidence without treating draft conclusions as established fact</td><td>Work conducted within the WHKS</td></tr>
+              <tr><td>Publishing Pipeline</td><td>Moves work through research, review, fact-checking, human approval, publication and continuing correction</td><td>History and heritage publication</td></tr>
+              <tr><td>Walton-on-Thames.org</td><td>Presents approved knowledge and verified current information to readers</td><td>Public website</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>For history and heritage, the governing hierarchy is: Our Charter; the WHKS; the Research and Editorial Standards and WKA; Historical Projects; the Publishing Pipeline; and Walton-on-Thames.org. Current guide content remains governed directly by this Charter and the separate Current Information Standards.</p>
+        <p>No component or lower-level standard may override the Charter. A technical convenience, publication deadline, search opportunity or attractive narrative cannot justify a breach of it.</p>
+        <p>The WHKS is not a second public website. It is the evidence and research foundation for the site's history and heritage work. The WKA is the publishing layer that turns approved WHKS knowledge into consistent pages and structured connections within the existing Walton-on-Thames.org site.</p>
+        <p>The normal historical workflow is research dossier, evidence log, editorial draft, fact-checking and quality review, human approval, publication, and continuing correction. Draft material does not become part of the approved public record merely because it exists within a project workspace.</p>
+
+        <h2>15. Stewardship and accountability</h2>
+        <p>Darren Bayley, as Founder and Editor, is the initial steward of this Charter and retains final human editorial responsibility for Walton-on-Thames.org. Research, writing, technical work and review may be delegated, but accountability for what the site publishes cannot be delegated to a tool or concealed behind a process.</p>
+        <p>Future editors or custodians should inherit the evidence, provenance, corrections and unresolved questions needed to continue the work responsibly. They should preserve the independence and public-interest purpose of the project.</p>
+        <p>The site does not claim that its record is ever complete. It promises instead to be honest about what is known, how it is known and what still requires investigation.</p>
+
+        <h2>16. Amendment and versioning</h2>
+        <p>This Charter may evolve as the project develops, but changes must be deliberate, dated and versioned. Material amendments should include a short explanation of what changed and why. Earlier adopted versions should be retained as part of the project's record.</p>
+        <p>Operational standards may be refined more frequently, provided they remain consistent with this Charter. The Charter must not be weakened silently to accommodate a particular article, contributor, commercial relationship, technology or dispute.</p>
+        <p>Version 0.1 is a draft. It does not become the adopted founding Charter until approved by the Founder and Editor.</p>
+
+        <h2>Our pledge</h2>
+        <p>Walton-on-Thames.org will say what is known, show how it is known, distinguish what is not known and correct the record when better evidence appears.</p>
+        <p>It will preserve local knowledge without freezing it, tell compelling stories without inventing them and pursue visibility without sacrificing trust.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

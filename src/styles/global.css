@@ -355,6 +355,44 @@ img {
   font-style: italic;
 }
 
+.prose .table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.5rem;
+  border: 1px solid rgba(11,36,46,0.1);
+  border-radius: var(--radius-md);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid rgba(11,36,46,0.08);
+  vertical-align: top;
+}
+
+.prose thead th {
+  background: rgba(11,36,46,0.04);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.prose tbody th[scope="row"] {
+  font-weight: 600;
+  white-space: nowrap;
+  background: rgba(11,36,46,0.02);
+}
+
+.prose tr:last-child td,
+.prose tr:last-child th {
+  border-bottom: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .section { padding: 2.5rem 0; }
