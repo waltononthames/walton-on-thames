@@ -148,7 +148,12 @@ Their precise formal blazon matters less to the local story than their colours, 
 
 ## Apps Court and the Agmondesham family
 
-Apps Court, historically recorded in variant forms including Apse or Ebso, was another important Walton estate. The Victoria County History confirms that "in 1546 John Agmondesham died seised of the manor, which he had settled on his wife, who survived him" (Page, 1911). The Agmondesham arms are recorded as Argent, on a chevron Azure between three boars' heads Sable, five cinquefoils Or: a silver shield with a blue chevron between three black boars' heads, carrying five gold five-petalled flowers (Boumphrey, 1981a). These arms have a direct, documentable Apps Court connection, making them among the strongest family arms associated with Walton-on-Thames.
+Apps Court, historically recorded in variant forms including Apse or Ebso, was another important Walton estate. The Victoria County History confirms that "in 1546 John Agmondesham died seised of the manor, which he had settled on his wife, who survived him," and blazons his arms as Argent a chevron Azure between three boars' heads Sable, three cinquefoils Or on the chevron (Page, 1911): a silver shield with a blue chevron between three black boars' heads, the chevron itself charged with three gold five-petalled flowers. These arms have a direct, documentable Apps Court connection, making them among the strongest family arms associated with Walton-on-Thames. A separate Agmondesham line, seated at Randalls in Leatherhead, East Horsley and Barnes and extinct by 1588, is recorded with the same charges but five cinquefoils rather than three, on a brass at Ewell to a daughter of a John Agmondesham (Boumphrey, 1981a); whether that's the same family's arms recorded with a transcription variant, or a genuinely different differenced coat, isn't established by the sources checked here.
+
+<figure>
+  <img src="/images/history/agmondesham-family-coat-of-arms.webp" alt="Agmondesham coat of arms with three black boars' heads surrounding a blue chevron charged with three gold cinquefoils on a silver shield" loading="lazy" />
+  <figcaption>AI-generated illustration of the arms of the Agmondesham family of Apps Court, blazoned by the Victoria County History as Argent a chevron Azure between three boars' heads Sable, three cinquefoils Or on the chevron. Not a reproduction of any historical artwork.</figcaption>
+</figure>
 
 The 1946 civic explanation also referred to the historic joining of the manors of Walton, Walton Leigh and Apps Court under Tudor rule; the two Tudor roses in the council arms were intended in part to evoke that consolidation (Civic Heraldry of England and Wales, n.d.).
 
