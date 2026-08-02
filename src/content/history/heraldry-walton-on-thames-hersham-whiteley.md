@@ -123,6 +123,11 @@ The best-known de Bohun arms were blazoned Azure, a bend Argent cotised Or betwe
 
 The family's most famous badge was a swan, sometimes shown crowned or collared and chained, and its use as a de Bohun dynastic badge is well documented (Vincent, 2015). For Walton, the badge has exceptional significance. When Walton and Weybridge Urban District Council received arms in 1946, the crest used a swan's head wearing a Saxon crown, and the contemporary explanation explicitly connected the swan both with the Thames and with the de Bohun family who had held Walton Manor until 1373 (Civic Heraldry of England and Wales, n.d.). The swan was not merely a generic riverside bird: it was a carefully chosen bridge between medieval manorial history and modern civic identity, arguably the most distinctively Waltonian emblem within the former civic arms.
 
+<figure>
+  <img src="/images/history/bohun-swan-heraldic-badge.webp" alt="White heraldic Bohun swan with red beak and feet, wearing a gold coronet and golden chain" loading="lazy" />
+  <figcaption>AI-generated illustration of the Bohun swan: a swan proper, gorged with a coronet and chained Or, the badge long associated with the de Bohun family. Not a reproduction of any historical artwork.</figcaption>
+</figure>
+
 ## Walton Leigh and the Mortimer inheritance
 
 Walton-on-Thames contained more than one manor, and Walton Leigh followed a different line of descent from Walton Manor itself. Its overlordship passed through the Clare inheritance to the Mortimers, Earls of March: by 1422 "the manor was said to be held of Edmund Earl of March, who was grandson of Edmund Mortimer, Earl of March, lord of Clare in right of his wife Philippa" (Page, 1911). Through the Mortimer and Yorkist inheritance, Walton Leigh became connected with the dynastic line that produced Edward IV.
