@@ -170,7 +170,7 @@ This was not an arbitrary collection of attractive symbols: it was a compressed 
 
 <figure>
   <img src="/images/history/walton-and-weybridge-urban-district-council-arms-1946.webp" alt="Coat of arms of Walton and Weybridge Urban District Council, featuring two Tudor roses, blue and silver river waves, a red eagle, and a crowned swan crest holding an oak sprig" loading="lazy" />
-  <figcaption>The arms of the former Walton and Weybridge Urban District Council, with the motto "Dum Defluat Amnis", meaning "Till the river ceases to flow". Original artwork by the site editor.</figcaption>
+  <figcaption>AI-generated illustration of the arms of the former Walton and Weybridge Urban District Council, with the motto "Dum Defluat Amnis", meaning "Till the river ceases to flow". Not a reproduction of any historical artwork.</figcaption>
 </figure>
 
 ## The arms of Elmbridge Borough Council
@@ -183,7 +183,7 @@ The clearest inheritances from Walton and Weybridge are therefore the gold Saxon
 
 <figure>
   <img src="/images/history/elmbridge-borough-council-coat-of-arms.webp" alt="Coat of arms of the Borough of Elmbridge, showing an elm tree above a two-arched bridge and river, supported by two silver eagles with red wings, beneath a griffin crest" loading="lazy" />
-  <figcaption>The arms of the Borough of Elmbridge, granted on 10 August 1976. The motto "Dum Defluant Amnes" means "Till the rivers cease to flow". Recreated by the site editor from the official heraldic blazon.</figcaption>
+  <figcaption>AI-generated illustration of the arms of the Borough of Elmbridge, granted on 10 August 1976. The motto "Dum Defluant Amnes" means "Till the rivers cease to flow". Not a reproduction of any historical artwork.</figcaption>
 </figure>
 
 ## Surrey heraldry: two designs, not one
