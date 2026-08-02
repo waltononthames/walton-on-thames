@@ -168,7 +168,10 @@ Above the shield, the crest showed a swan's head wearing a gold Saxon crown and 
 
 This was not an arbitrary collection of attractive symbols: it was a compressed historical argument about place, connecting Surrey and the Warenne earls, Walton Leigh and the Mortimers, Walton Manor and the de Bohuns, the Thames, Tudor royal history, the Cowey Stakes tradition, Walton's bridges, Brooklands and aviation, and the ancient Hundred of Elmbridge. Since no separate coat of arms for Walton itself has been located, the 1946 arms remain the clearest formal expression of Walton's historic civic identity.
 
-<!-- IMAGE: walton-and-weybridge-urban-district-council-arms-1946.jpg, alt: "Historic coat of arms granted to Walton and Weybridge Urban District Council in 1946" -->
+<figure>
+  <img src="/images/history/walton-and-weybridge-urban-district-council-arms-1946.webp" alt="Coat of arms of Walton and Weybridge Urban District Council, featuring two Tudor roses, blue and silver river waves, a red eagle, and a crowned swan crest holding an oak sprig" loading="lazy" />
+  <figcaption>The arms of the former Walton and Weybridge Urban District Council, with the motto "Dum Defluat Amnis", meaning "Till the river ceases to flow". Original artwork by the site editor.</figcaption>
+</figure>
 
 ## The arms of Elmbridge Borough Council
 
