@@ -192,6 +192,11 @@ Walton-on-Thames, Hersham and Whiteley Village are all in Surrey, and two differ
 
 The Surrey flag is a different thing again: alternating gold and blue checks, derived from the arms of the de Warenne family, Earls of Surrey, and known as the Warenne Checks. The Flag Institute describes it as the community flag of the historic county, with medieval evidence for the design including its appearance at the Siege of Caerlaverock in 1300 (Flag Institute, n.d.). Gold and blue passed from this older county tradition into local civic heraldry, including both the 1946 Walton and Weybridge arms and the 1976 Elmbridge arms.
 
+<figure>
+  <img src="/images/history/de-warenne-earls-of-surrey-chequy-arms.webp" alt="Gold and blue chequered heraldic shield representing the arms of the de Warenne Earls of Surrey" loading="lazy" />
+  <figcaption>AI-generated illustration of the chequered gold and blue arms traditionally associated with the de Warenne family, medieval Earls of Surrey: blazoned Chequy Or and Azure. Not a reproduction of any historical artwork.</figcaption>
+</figure>
+
 | Design | What it represents |
 |---|---|
 | Keys, woolpack and oak sprig | Surrey County Council as a corporate authority (granted 1974) |
