@@ -137,7 +137,14 @@ The family's most famous badge was a swan, sometimes shown crowned or collared a
 
 Walton-on-Thames contained more than one manor, and Walton Leigh followed a different line of descent from Walton Manor itself. Its overlordship passed through the Clare inheritance to the Mortimers, Earls of March: by 1422 "the manor was said to be held of Edmund Earl of March, who was grandson of Edmund Mortimer, Earl of March, lord of Clare in right of his wife Philippa" (Page, 1911). Through the Mortimer and Yorkist inheritance, Walton Leigh became connected with the dynastic line that produced Edward IV.
 
-The Mortimer arms used an elaborate arrangement of alternating gold and blue bands. Their precise formal blazon matters less to the local story than their colours, which were deliberately reused in the 1946 Walton and Weybridge arms: the published explanation stated that gold and blue referred both to Surrey's Warenne tradition and to the Mortimers who inherited Walton Leigh (Civic Heraldry of England and Wales, n.d.). It's an unusually sophisticated piece of civic design, a single colour scheme carrying two levels of meaning at once: the county identity of Surrey, and the local manorial history of Walton Leigh.
+The Victoria County History illustrates the Mortimer arms alongside its account of Walton Leigh, blazoned barry Or and Azure, a chief Or with two pales between two gyrons Azure, and an inescutcheon Argent over all (Page, 1911): a shield of alternating gold and blue horizontal bands, with a gold upper section divided by two blue vertical stripes between blue corner triangles, and a plain silver shield placed over the centre of the whole design.
+
+<figure>
+  <img src="/images/history/mortimer-arms-barry-or-azure-inescutcheon.webp" alt="Mortimer coat of arms with gold and blue horizontal bars, a gold chief patterned with blue pales and corner gyrons, and a central silver inescutcheon" loading="lazy" />
+  <figcaption>AI-generated illustration of the Mortimer arms, blazoned by the Victoria County History as barry Or and Azure, a chief Or with two pales between two gyrons Azure, and an inescutcheon Argent over all. Not a reproduction of any historical artwork.</figcaption>
+</figure>
+
+Their precise formal blazon matters less to the local story than their colours, which were deliberately reused in the 1946 Walton and Weybridge arms: the published explanation stated that gold and blue referred both to Surrey's Warenne tradition and to the Mortimers who inherited Walton Leigh (Civic Heraldry of England and Wales, n.d.). It's an unusually sophisticated piece of civic design, a single colour scheme carrying two levels of meaning at once: the county identity of Surrey, and the local manorial history of Walton Leigh.
 
 ## Apps Court and the Agmondesham family
 
