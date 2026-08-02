@@ -84,15 +84,19 @@ const historySchema = z.object({
   heroAlt: z.string().optional(),
   publishDate: z.date(),
   reviewedDate: z.date(),
-  // Harvard/APA-shaped so citations can render as "Author (Year) 'Title'.
+  // Harvard/APA-shaped. Web sources render as "Author (Year) 'Title'.
   // Available at: URL (Accessed: date)." — year is "n.d." where no publication
   // date is known/verifiable (never guess one). See docs/build-log.md.
+  // Print-only sources (no online record — e.g. an out-of-print local-history
+  // booklet) omit url/accessed and render as "Author (Year) Title. Publisher."
+  // instead — do not invent a URL to satisfy validation.
   sources: z.array(z.object({
     author: z.string(),
     year: z.string(),
     title: z.string(),
-    url: z.string().url(),
-    accessed: z.string(),
+    publisher: z.string().optional(),
+    url: z.string().url().optional(),
+    accessed: z.string().optional(),
   })),
   related: z.array(z.string()),
 });

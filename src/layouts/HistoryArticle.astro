@@ -95,8 +95,12 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
           <div class="sources-block">
             <h2>Sources</h2>
             <ul>
-              {data.sources.map((s: { author: string; year: string; title: string; url: string; accessed: string }) => (
-                <li>{s.author} ({s.year}) '{s.title}'. Available at: <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url} ↗</a> (Accessed: {s.accessed}).</li>
+              {data.sources.map((s: { author: string; year: string; title: string; publisher?: string; url?: string; accessed?: string }) => (
+                s.url ? (
+                  <li>{s.author} ({s.year}) '{s.title}'. Available at: <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url} ↗</a> (Accessed: {s.accessed}).</li>
+                ) : (
+                  <li>{s.author} ({s.year}) <em>{s.title}</em>.{s.publisher ? ` ${s.publisher}.` : ''}</li>
+                )
               ))}
             </ul>
           </div>
@@ -204,4 +208,34 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
   @media (max-width: 900px) {
     .article-layout { grid-template-columns: 1fr; }
   }
+
+  :global(.prose .pull-quote) {
+    margin: 2rem 0;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    border-left: 3px solid var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    line-height: 1.4;
+    color: var(--color-navy);
+    font-style: italic;
+  }
+
+  :global(.prose .callout) {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border-top: 3px solid var(--color-accent);
+  }
+
+  :global(.prose .callout h3),
+  :global(.prose .callout strong:first-child) {
+    display: block;
+    font-family: var(--font-heading);
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.prose .callout p:last-child) { margin-bottom: 0; }
 </style>
