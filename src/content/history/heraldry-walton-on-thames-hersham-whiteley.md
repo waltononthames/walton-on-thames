@@ -84,6 +84,11 @@ sources:
     title: "Accessions 2020 (Thomas Spong grant of arms, 1824)"
     url: "https://www.surreycc.gov.uk/__data/assets/pdf_file/0014/272012/Surrey-History-Centre-accessions-2020.pdf"
     accessed: "2 August 2026"
+  - author: "Walton & Hersham FC"
+    year: "n.d."
+    title: "Club History (1945 amalgamation of Walton FC and Hersham FC)"
+    url: "https://waltonhershamfc.com/club/history/"
+    accessed: "2 August 2026"
   - author: "College of Arms"
     year: "n.d."
     title: "Granting of Arms"
@@ -277,6 +282,8 @@ The Royal Arms and the Cross of St George on Walton-on-Thames War Memorial, in t
 Heraldry can look like a decorative survival from an elite past. In Walton, Hersham and Whiteley Village it does something more useful: it reveals how successive communities understood their place. The de Bohun swan ties Walton to a family central to medieval English politics. Mortimer colours connect Walton Leigh with the Yorkist inheritance. The Agmondesham boars' heads recall a Tudor manor at Apps Court. Villiers scallops and Fletcher arrowheads evoke Ashley Park. Frederick doves belong to the landscape of Burwood and Hersham. The 1946 arms transformed these fragments into a civic narrative: the Thames as the central wave, bridges crossing it, roses recalling Tudor history, a red eagle carrying Roman tradition and aviation, and above them all, the Bohun swan wearing the crown of the ancient Hundred. Elmbridge then reworked that inheritance, so that Walton's crown, roses, colour and eagle survive within a new borough achievement built around an elm tree and a two-arched bridge.
 
 The public heraldry adds other layers again. The Royal Arms and St George cross turn local wartime loss into national commemoration. City of London shields beside the river recall centuries of taxation and jurisdiction. Trinity House and Thames Conservancy emblems record the governance of navigation. And Whiteley's unidentified shields are a reminder that some genuinely open questions are sitting in plain sight, waiting for someone to photograph and research them properly.
+
+The swan's local resonance hasn't stopped at 1946, either. Walton & Hersham Football Club, formed in 1945 from the amalgamation of Walton FC and Hersham FC, plays today as "The Swans," with a swan on its own club badge (Walton & Hersham FC, n.d.). Whether that choice was ever a deliberate nod to the Bohun tradition or arose independently, as a natural emblem for a riverside club, isn't something the club's own published history explains. Either way, it's a reminder that the swan has kept resurfacing as a way for this town to picture itself, from a medieval earl's badge to a modern football shirt.
 
 ## Frequently asked questions
 
