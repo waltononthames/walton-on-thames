@@ -181,7 +181,10 @@ The Elmbridge shield is blue, with a broad gold triangular form rising from the 
 
 The clearest inheritances from Walton and Weybridge are therefore the gold Saxon crown, the red wings of the eagle supporters, the Tudor roses, the blue-and-gold colour tradition, the river imagery, and the adapted Latin motto. Elmbridge's arms can be read as the current continuation of Walton's municipal heraldic tradition, even though they legally belong to Elmbridge Borough Council rather than to Walton itself.
 
-<!-- IMAGE: elmbridge-borough-council-coat-of-arms.jpg, alt: "Elmbridge Borough Council coat of arms with elm tree, bridge, eagles and Saxon crown" -->
+<figure>
+  <img src="/images/history/elmbridge-borough-council-coat-of-arms.webp" alt="Coat of arms of the Borough of Elmbridge, showing an elm tree above a two-arched bridge and river, supported by two silver eagles with red wings, beneath a griffin crest" loading="lazy" />
+  <figcaption>The arms of the Borough of Elmbridge, granted on 10 August 1976. The motto "Dum Defluant Amnes" means "Till the rivers cease to flow". Recreated by the site editor from the official heraldic blazon.</figcaption>
+</figure>
 
 ## Surrey heraldry: two designs, not one
 
