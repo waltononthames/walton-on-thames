@@ -5,10 +5,10 @@
   "detail": "Apps Court Farm's own car boot page now carries a direct banner confirming the sale is on this Sunday, 2 August 2026, with no postponement notice in place. Always check the official page or call before travelling — sales can be postponed for weather or ground conditions at short notice.",
   "nextConfirmedDateISO": "2026-08-02",
   "nextConfirmedDateLabel": "2 August 2026",
-  "checkedDateISO": "2026-07-29",
-  "checkedDateLabel": "29 July 2026",
+  "checkedDateISO": "2026-08-02",
+  "checkedDateLabel": "2 August 2026",
   "sourceLabel": "Apps Court Farm — Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Automated daily check, matched previous status. Banner now explicitly reads \"THE CAR BOOT IS OPEN THIS SUNDAY\" rather than the prior week's inferred wording."
+  "lastCheckNote": "Automated daily check, matched previous status. Banner still reads \"THE CAR BOOT IS OPEN THIS SUNDAY\" (2 August 2026)."
 }
