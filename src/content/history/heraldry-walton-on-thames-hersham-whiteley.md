@@ -96,7 +96,10 @@ No single, simple story explains the heraldry of Walton-on-Thames, Hersham and W
 
 The most important conclusion is also the simplest: no separate, formally granted coat of arms for the town of Walton-on-Thames, the village of Hersham, or Whiteley Village has been located in the sources examined for this article. The closest historic civic arms for Walton were those granted in 1946 to Walton and Weybridge Urban District Council, and several of their most distinctively Waltonian elements were deliberately preserved when the arms of Elmbridge Borough Council were granted in 1976.
 
-<!-- IMAGE: walton-on-thames-war-memorial-royal-arms.jpg, alt: "Painted and gilded Royal Arms carved above Walton-on-Thames War Memorial" -->
+<figure>
+  <img src="/images/history/walton-on-thames-war-memorial-front-view-2026.webp" alt="Front view of the Walton-on-Thames War Memorial with bronze name panels, stepped stone base and royal coat of arms, in a landscaped town-centre setting" loading="eager" />
+  <figcaption>The Walton-on-Thames War Memorial viewed from the front, photographed 2 August 2026. Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
 
 ## What counts as a coat of arms?
 
@@ -205,6 +208,11 @@ The Surrey flag is a different thing again: alternating gold and blue checks, de
 ## Walton-on-Thames War Memorial: royal and national heraldry
 
 Walton's most prominent public heraldic display stands above the war memorial in the Memorial Garden at the junction of the High Street, Ashley Road and New Zealand Avenue. It was unveiled by Lord Beatty on 8 July 1921, originally dedicated to 132 local servicemen who died in the First World War, with a general dedication for the Second World War added later; Historic England lists it at Grade II (Historic England, 2016). Its carved, painted and gilded summit carries two principal shields: on the front, the Royal Arms of the United Kingdom within the Garter, showing the three lions of England, the lion of Scotland and the harp of Ireland, surrounded by the Garter motto Honi soit qui mal y pense ("Shame on him who thinks evil of it"); and to the rear, a shield displaying the Cross of St George (blazoned simply Argent, a cross Gules), representing England, not Walton-on-Thames (Historic England, 2016). The achievement is a compressed representation: unlike the full national arms, it doesn't include the usual lion and unicorn supporters.
+
+<figure>
+  <img src="/images/history/walton-on-thames-war-memorial-royal-coat-of-arms-detail-2026.webp" alt="Close-up of the weathered royal coat of arms above the Walton-on-Thames War Memorial, with a crowned helmet, garter and draped stone flags" loading="lazy" />
+  <figcaption>The weathered royal coat of arms crowning the Walton-on-Thames War Memorial, photographed 2 August 2026. Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
 
 <!-- IMAGE: walton-on-thames-war-memorial-st-george-cross.jpg, alt: "White shield bearing the red Cross of St George on the rear of Walton-on-Thames War Memorial" -->
 
