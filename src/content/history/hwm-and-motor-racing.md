@@ -6,8 +6,10 @@ slug: "hwm-and-motor-racing"
 cluster: "walton-history"
 era: ["postwar", "1950s"]
 entityType: "institution"
+heroImage: "/images/history/hwm-single-seater-walton-on-thames.webp"
+heroAlt: "A preserved green HWM single-seater racing car on display at HWM's Bridge Street premises, Walton-on-Thames"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-08-02
 sources:
   - author: "Wikipedia"
     year: "n.d."
@@ -18,6 +20,11 @@ related: ["walton-bridge", "walton-in-wartime"]
 ---
 
 Not every piece of Walton's history is about the river or the church. Near Walton Bridge, a garage business founded in 1938 went on to build its own Grand Prix cars, give a teenage Stirling Moss his start in top-level motor racing, and become the longest-established Aston Martin dealership anywhere in the world. The name gives away its origins: HWM stands for Hersham and Walton Motors, tying the firm directly to both halves of this guide.
+
+<figure>
+  <img src="/images/history/hwm-single-seater-walton-on-thames.webp" alt="A preserved green HWM single-seater racing car on display at HWM's Bridge Street premises, Walton-on-Thames" loading="eager" />
+  <figcaption>A preserved HWM single-seater on display at HWM's Bridge Street premises, Walton-on-Thames, alongside an information panel on the marque's early-1950s racing history. Photograph by Darren Bayley, 2 August 2026.</figcaption>
+</figure>
 
 <!-- IMAGE: hwm-garage-walton-bridge.jpg, alt: "The HWM premises near Walton Bridge, historic home of Hersham and Walton Motors" -->
 
