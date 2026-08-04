@@ -1,14 +1,14 @@
 {
   "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source — the rest of this file was deliberately left untouched rather than overwritten with a guess.",
   "status": "on",
-  "headline": "Confirmed on for Sunday 2 August 2026",
-  "detail": "Apps Court Farm's own car boot page now carries a direct banner confirming the sale is on this Sunday, 2 August 2026, with no postponement notice in place. Always check the official page or call before travelling — sales can be postponed for weather or ground conditions at short notice.",
-  "nextConfirmedDateISO": "2026-08-02",
-  "nextConfirmedDateLabel": "2 August 2026",
-  "checkedDateISO": "2026-08-02",
-  "checkedDateLabel": "2 August 2026",
+  "headline": "Confirmed on for Sunday 9 August 2026",
+  "detail": "Apps Court Farm's own car boot page carries a banner reading \"THE CAR BOOT IS OPEN THIS SUNDAY\", with no postponement notice in place. Always check the official page or call before travelling — sales can be postponed for weather or ground conditions at short notice.",
+  "nextConfirmedDateISO": "2026-08-09",
+  "nextConfirmedDateLabel": "9 August 2026",
+  "checkedDateISO": "2026-08-04",
+  "checkedDateLabel": "4 August 2026",
   "sourceLabel": "Apps Court Farm — Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Automated daily check, matched previous status. Banner still reads \"THE CAR BOOT IS OPEN THIS SUNDAY\" (2 August 2026)."
+  "lastCheckNote": "Automated daily check, matched previous status (on). Banner reads \"THE CAR BOOT IS OPEN THIS SUNDAY\" with no date printed on the page; rolled forward to the coming Sunday, 9 August 2026, since the previous confirmed date (2 August) has now passed."
 }
