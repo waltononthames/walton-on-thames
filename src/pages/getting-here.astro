@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Getting to Walton-on-Thames — Trains, Roads, Parking & Buses"
-  description="How to get to Walton-on-Thames by train, car, and bus — including travel times from London, parking information, and local transport links."
+  title="Getting to Walton-on-Thames, Hersham & Whiteley Village"
+  description="How to get to Walton-on-Thames, Hersham and Whiteley Village by train, car and bus — travel times from London, parking, and local transport links for each area."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -26,17 +26,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </ol>
       </nav>
       <h1>Getting Here</h1>
-      <p>Walton-on-Thames is well-connected by rail and road — 32 minutes from London Waterloo and 2 miles from the M25.</p>
+      <p>Walton-on-Thames, Hersham and Whiteley Village sit close together in Surrey, well-connected by rail and road — Walton is 32 minutes from London Waterloo and 2 miles from the M25.</p>
     </div>
   </div>
 
-  <section class="section">
+  <nav class="area-jump" aria-label="Jump to area">
+    <div class="container area-jump-inner">
+      <span class="area-jump-label">Jump to:</span>
+      <a href="#walton-on-thames">Walton-on-Thames</a>
+      <a href="#hersham">Hersham</a>
+      <a href="#whiteley-village">Whiteley Village</a>
+    </div>
+  </nav>
+
+  <section class="section" id="walton-on-thames">
     <div class="container">
+      <h2 class="area-heading">Getting to Walton-on-Thames</h2>
       <div class="transport-grid">
 
         <div class="transport-card">
           <div class="transport-icon">🚂</div>
-          <h2>By Train</h2>
+          <h3>By Train</h3>
           <p><strong>Walton-on-Thames station</strong> is served by South Western Railway on the London Waterloo to Weybridge/Woking line.</p>
           <ul>
             <li><strong>London Waterloo:</strong> approx. 32 minutes</li>
@@ -45,26 +55,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li><strong>Weybridge:</strong> 5 minutes</li>
           </ul>
           <p>The station is approximately a 20 to 25 minute walk from the town centre and The Heart shopping centre, via Ashley Park Road and Ashley Road.</p>
-          <p><strong>Hersham station</strong> is also on the same line and useful for the village.</p>
           <p class="transport-note">Train times and fares: <a href="https://www.nationalrail.co.uk" target="_blank" rel="noopener noreferrer">National Rail ↗</a></p>
         </div>
 
         <div class="transport-card">
           <div class="transport-icon">🚗</div>
-          <h2>By Car</h2>
+          <h3>By Car</h3>
           <p>Walton-on-Thames is easily reached by road from the M25 and surrounding Surrey towns.</p>
           <ul>
             <li><strong>M25 Junction 11</strong> (Chertsey): 2 miles via A317</li>
             <li><strong>M25 Junction 12</strong> (M3 interchange): 5 miles</li>
             <li><strong>Central London (A316):</strong> approximately 18 miles</li>
             <li><strong>Guildford (A3):</strong> approximately 16 miles</li>
-            <li><strong>Heathrow Airport:</strong> approximately 12 miles</li>
           </ul>
         </div>
 
         <div class="transport-card">
           <div class="transport-icon">🅿️</div>
-          <h2>Parking</h2>
+          <h3>Parking</h3>
           <p>There is a good range of car parks in and around Walton town centre. Most are managed by Elmbridge Borough Council and Surrey County Council.</p>
           <ul>
             <li><strong>The Heart multi-storey</strong> — central, covered, pay & display</li>
@@ -76,15 +84,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div class="transport-card">
           <div class="transport-icon">🚌</div>
-          <h2>By Bus</h2>
+          <h3>By Bus</h3>
           <p>Bus routes connect Walton-on-Thames with nearby towns and villages, including current routes such as 458, 459, 461, 555 and 564, serving destinations including Staines, Shepperton, Hersham, Esher, Kingston upon Thames and Weybridge. Routes and timetables change, so always check before travelling.</p>
-          <p>Bus routes are operated by various operators. For current timetables and journey planning, use <a href="https://www.surreycc.gov.uk/roads-and-transport/buses-and-other-transport/bus-timetables/staines-chertsey-and-walton" target="_blank" rel="noopener noreferrer">Surrey County Council's Walton timetables ↗</a> or <a href="https://www.traveline.info" target="_blank" rel="noopener noreferrer">Traveline ↗</a>.</p>
-          <p class="transport-note">Note: bus frequency varies significantly by route and time of day. For regular commuting, the train is generally more reliable.</p>
+          <p class="transport-note">For current timetables and journey planning, use <a href="https://www.surreycc.gov.uk/roads-and-transport/buses-and-other-transport/bus-timetables/staines-chertsey-and-walton" target="_blank" rel="noopener noreferrer">Surrey County Council's Walton timetables ↗</a> or <a href="https://www.traveline.info" target="_blank" rel="noopener noreferrer">Traveline ↗</a>.</p>
         </div>
 
         <div class="transport-card">
           <div class="transport-icon">🚲</div>
-          <h2>By Bike</h2>
+          <h3>By Bike</h3>
           <p>Walton is part of the wider Surrey cycling network and is accessible by bike from several directions.</p>
           <ul>
             <li>The <strong>Thames Path</strong> can be cycled on shared-use sections</li>
@@ -94,9 +101,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p class="transport-note">Cycle parking is available at the train station and at various points in the town centre.</p>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="hersham">
+    <div class="container">
+      <h2 class="area-heading">Getting to Hersham</h2>
+      <div class="transport-grid">
+
         <div class="transport-card">
+          <div class="transport-icon">🚂</div>
+          <h3>By Train</h3>
+          <p><strong>Hersham station</strong> sits on the South Western Main Line, with at least two trains an hour to London Waterloo. <a href="#walton-on-thames">Walton-on-Thames station</a> also serves the west of the village.</p>
+        </div>
+
+        <div class="transport-card">
+          <div class="transport-icon">🚗</div>
+          <h3>By Car &amp; Bus</h3>
+          <p>The A3 passes nearby, and the M25 is minutes away. Hersham is about a mile south of Walton-on-Thames town centre, easily reached on foot via Queen's Road or by bus.</p>
+          <p class="transport-note">For current bus timetables, use <a href="https://www.traveline.info" target="_blank" rel="noopener noreferrer">Traveline ↗</a>.</p>
+        </div>
+
+        <div class="transport-card">
+          <div class="transport-icon">🅿️</div>
+          <h3>Parking</h3>
+          <p>There is no dedicated car park at Hersham Green itself; nearby on-street parking is limited, so arriving on foot, by bus or by train is usually the simplest option for the village centre.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="whiteley-village">
+    <div class="container">
+      <h2 class="area-heading">Getting to Whiteley Village</h2>
+      <div class="transport-grid">
+
+        <div class="transport-card transport-card-wide">
+          <div class="transport-icon">🚌</div>
+          <h3>By Bus, Car or Taxi</h3>
+          <p>Whiteley Village is a private residential community south of Hersham with no railway station of its own. Bus route <strong>459</strong> (Staines – Walton-on-Thames – Hersham – Whiteley Village) stops at "Stores, Whiteley Village," the practical public-transport option; otherwise a car, taxi or bicycle from Walton-on-Thames or Hersham station is the way to get there.</p>
+          <p class="transport-note">There are no visitor facilities on site. Read more about visiting respectfully in our <a href="/hersham/whiteley-village/">guide to Whiteley Village</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="area-heading">From the Airports</h2>
+      <div class="transport-grid">
+
+        <div class="transport-card transport-card-wide">
           <div class="transport-icon">✈️</div>
-          <h2>From the Airports</h2>
+          <h3>Heathrow, Gatwick &amp; London City</h3>
+          <p>Journey times below are to Walton-on-Thames; Hersham and Whiteley Village are a few minutes further by road.</p>
           <ul>
             <li><strong>Heathrow:</strong> ~12 miles / 30 min by car; or train via Feltham</li>
             <li><strong>Gatwick:</strong> ~24 miles / 45 min by car; or train via Clapham Junction</li>
@@ -111,6 +172,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  .area-jump {
+    background: var(--color-white);
+    border-bottom: 1px solid rgba(11,36,46,0.08);
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 10;
+  }
+
+  .area-jump-inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+
+  .area-jump-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-right: 0.25rem;
+  }
+
+  .area-jump a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(11,36,46,0.12);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .area-jump a:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .section-alt {
+    background: rgba(11,36,46,0.03);
+  }
+
+  .area-heading {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    scroll-margin-top: calc(var(--nav-height) + 4.5rem);
+  }
+
+  #walton-on-thames, #hersham, #whiteley-village {
+    scroll-margin-top: calc(var(--nav-height) + 3.5rem);
+  }
+
   .transport-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -124,12 +241,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     box-shadow: var(--shadow-card);
   }
 
+  .transport-card-wide {
+    grid-column: 1 / -1;
+  }
+
   .transport-icon {
     font-size: 2rem;
     margin-bottom: 0.75rem;
   }
 
-  .transport-card h2 {
+  .transport-card h3 {
     font-size: 1.35rem;
     margin-bottom: 0.75rem;
   }
@@ -174,5 +295,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 768px) {
     .transport-grid { grid-template-columns: 1fr; }
+    .transport-card-wide { grid-column: auto; }
   }
 </style>

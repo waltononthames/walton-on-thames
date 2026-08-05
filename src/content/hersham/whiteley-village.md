@@ -7,8 +7,13 @@ cluster: "hersham"
 era: ["edwardian", "contemporary"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-08-05
 sources:
+  - author: "Whitebus"
+    year: "n.d."
+    title: "459 bus service (Staines - Walton-on-Thames - Hersham - Whiteley Village)"
+    url: "https://www.whitebus.co.uk/bus-services/459/"
+    accessed: "5 August 2026"
   - author: "Wikipedia"
     year: "n.d."
     title: "Whiteley Village"
@@ -45,7 +50,7 @@ Whiteley Village remains exactly what it was built to be: a retirement community
 
 ## Visiting and respecting a private community
 
-Whiteley Village is not a museum, and it is worth remembering that before visiting. It is a genuinely private residential community, home to real residents who chose to live there for its quiet, and the grounds should be treated accordingly: stay on the roads and paths, keep noise to a minimum, and be mindful that this is somebody's home rather than a heritage attraction with an admission desk. There are no visitor facilities on site, and no public bus route reaches the village; a car, taxi or bicycle from Walton or [Hersham](/hersham/) is the practical way to get there.
+Whiteley Village is not a museum, and it is worth remembering that before visiting. It is a genuinely private residential community, home to real residents who chose to live there for its quiet, and the grounds should be treated accordingly: stay on the roads and paths, keep noise to a minimum, and be mindful that this is somebody's home rather than a heritage attraction with an admission desk. There are no visitor facilities on site. Bus route 459 (Staines – Walton-on-Thames – Hersham – Whiteley Village) stops at "Stores, Whiteley Village"; otherwise a car, taxi or bicycle from Walton or [Hersham](/hersham/) is the practical way to get there.
 
 ## The village today
 
