@@ -37,3 +37,7 @@
 /neighbourhoods/hersham/ /hersham/ 301
 /neighbourhoods/whiteley-village/ /hersham/whiteley-village/ 301
 /neighbourhoods/ / 301
+
+# Legacy encoded Elmbridge Xcel URL (factual audit, 5 August 2026) — was 404ing, no rule existed
+/elmbridge-xcel%2Fsports-hub /directory/elmbridge-xcel/ 301
+/elmbridge-xcel/sports-hub /directory/elmbridge-xcel/ 301
