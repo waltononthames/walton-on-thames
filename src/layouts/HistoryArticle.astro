@@ -72,8 +72,14 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
     )}
   </slot>
 
-  <div class="page-hero">
-    <div class="container">
+  <div class:list={['page-hero', { 'has-hero-image': !!data.heroImage }]}>
+    {data.heroImage && (
+      <div class="hero-image-wrap">
+        <img src={data.heroImage} alt={data.heroAlt || ''} />
+        <div class="hero-image-overlay"></div>
+      </div>
+    )}
+    <div class="container hero-content">
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
@@ -131,6 +137,43 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
     color: rgba(255,255,255,0.75);
     font-size: 0.9rem;
     margin-top: 0.5rem;
+  }
+
+  .page-hero.has-hero-image {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 420px;
+    padding: 3rem 0 2.5rem;
+    overflow: hidden;
+  }
+
+  .hero-image-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11,36,46,0.25) 0%, rgba(11,36,46,0.55) 55%, rgba(11,36,46,0.92) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 600px) {
+    .page-hero.has-hero-image { min-height: 320px; }
   }
 
   .article-layout {

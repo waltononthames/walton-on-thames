@@ -94,14 +94,15 @@ sources:
     url: "https://www.british-history.ac.uk/vch/middx/vol5/pp149-154"
     accessed: "2 August 2026"
 related: ["ashley-park-estate", "film-studios"]
-# heroImage / heroAlt intentionally omitted: awaiting a supplied image from the site owner.
+heroImage: "/images/history/sidney-road-sign-walton-on-thames.jpg"
+heroAlt: "The Sidney Road street sign, Walton-on-Thames, mounted on a brick wall"
 ---
 
 Sidney Road looks like nothing more than a Victorian residential street. It is, in fact, a nineteenth-century carriage way wearing tarmac.
 
-The modern road runs between Terrace Road and Hersham Road, following an earlier private carriage way that extended from Terrace Road towards Rydens Road. Its northern section crossed the parkland of Walton Lodge and served as the estate approach. In 1867–68, that part of the route was laid down as a regular thoroughfare and became known as Sidney Road (Stonebanks, 1982, p. 13). The route survived even as the mansion, farmhouse, parkland and neighbouring Cottimore estate disappeared around it.
+The modern road runs between Terrace Road and Rydens Road, following an earlier private carriage way that extended from Terrace Road towards Rydens Road. Its northern section crossed the parkland of Walton Lodge and served as the estate approach. In 1867–68, that part of the route was laid down as a regular thoroughfare and became known as Sidney Road (Stonebanks, 1982, p. 13). The route survived even as the mansion, farmhouse, parkland and neighbouring Cottimore estate disappeared around it.
 
-The clearest sign of what was lost came seventy years later. In 1935, when Cottimore House, the estate's last surviving mansion, was pulled down, the marble fireplace surrounds from its main reception rooms were broken up and cast as rubble to fill potholes in Cottimore Lane, and the oak panelling of the main staircase was burned as firewood. Walton, as Stonebanks put it, lost one of its most attractive domestic buildings (Stonebanks, 1982, p. 18). What follows is the fuller story: how a private drive through parkland became a public road, why it carries the name of a City of London tea merchant whose principal home was Bowes Manor in Southgate, and what, against the odds, still survives of the estate it once served.
+In 1935, when Cottimore House, the estate's last surviving mansion, was pulled down, the marble fireplace surrounds from its main reception rooms were broken up and cast as rubble to fill potholes in Cottimore Lane, and the oak panelling of the main staircase was burned as firewood. Walton, as Stonebanks put it, lost one of its most attractive domestic buildings (Stonebanks, 1982, p. 18). What follows is the fuller story: how a private drive through parkland became a public road, why it carries the name of a City of London tea merchant whose principal home was Bowes Manor in Southgate, and what, against the odds, still survives of the estate it once served.
 
 <div class="callout">
 <strong>Sidney Road: key facts</strong>
@@ -359,7 +360,7 @@ Roads, in the end, are survivors. Houses, mansions and even lakes can disappear 
 
 ## Open questions
 
-Not everything about Sidney Road's history is settled, and it is worth being honest about the gaps rather than papering over them. The present course and condition of the former Cottimore and Walton Lodge drainage streams have not been confirmed against modern drainage or flood-risk mapping; the account given above is Stonebanks' observation as at 1982. No original 1867–68 road-naming or highway-adoption record has yet been located, so the precise administrative process behind the "regular thoroughfare" of that year remains undocumented. The original census returns behind the 1891 and 1901 Ballard-family transcriptions have not yet been inspected directly. Dr Drabble's gift of the Cottage Hospital site is recorded by Hughes but not yet confirmed against the original conveyance, and no complete chronology of the hospital's later extensions has been assembled. The exact modern location of Coombs-Moss, Cecil Hepworth's Sidney Road home, has not been established, nor has the current architectural condition or heritage status of Cottimore Lodge. Stonebanks' suggestion that surviving bluebells descend from Walton Lodge park is his own plausible observation, not verified plant-lineage evidence. Each of these would repay further work in parish, highway and Land Registry records, and through a house-by-house survey of the 1913 directory names against modern addresses.
+Not everything about Sidney Road's history is settled, and it is worth being honest about the gaps. The account given above is Stonebanks' observation as at 1982. No original 1867–68 road-naming or highway-adoption record has been located, so the precise administrative process behind the "regular thoroughfare" of that year remains undocumented. The original census returns behind the 1891 and 1901 Ballard-family transcriptions have not been inspected. Dr Drabble's gift of the Cottage Hospital site is recorded by Hughes but not yet confirmed. The exact modern location of Coombs-Moss, Cecil Hepworth's Sidney Road home, has not been established. Stonebanks' suggestion that surviving bluebells descend from Walton Lodge park is his own plausible observation, but not verified.
 
 ## Frequently asked questions
 
