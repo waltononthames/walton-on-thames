@@ -1,8 +1,8 @@
 ---
 title: "Thursday Quiz Night"
 slug: "thursday-quiz-night-2026-07"
-start: "2026-07-30T19:45:00"
-end: "2026-07-30T22:00:00"
+start: "2026-08-13T19:45:00"
+end: "2026-08-13T22:00:00"
 venue: "29 High Street, Walton-on-Thames, KT12 1DG"
 neighbourhood: "walton-on-thames"
 category: "community"

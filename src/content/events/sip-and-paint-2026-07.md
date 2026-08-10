@@ -1,8 +1,8 @@
 ---
 title: "Sip & Paint"
 slug: "sip-and-paint-2026-07"
-start: "2026-07-30T18:30:00"
-end: "2026-07-30T20:30:00"
+start: "2026-08-13T18:30:00"
+end: "2026-08-13T20:30:00"
 venue: "42 The Heart Shopping Mall, Walton-on-Thames, KT12 1GH"
 neighbourhood: "walton-on-thames"
 category: "arts"
