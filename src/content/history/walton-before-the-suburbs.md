@@ -71,7 +71,7 @@ An aerial photograph, probably taken during the 1920s, captures a Walton-on-Tham
 
 <figure>
   <img src="/images/history/walton-on-thames-from-the-air-estimated-circa-1920.webp" alt="Vintage aerial photograph captioned 'Walton-on-Thames from the Air', showing Walton Bridge crossing the Thames surrounded by open fields, probably taken during the 1920s" loading="eager" />
-  <figcaption>"Walton-on-Thames from the Air": the vintage photograph this article is about, captioned by its original publisher and estimated to date from around the 1920s. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>"Walton-on-Thames from the Air": the vintage photograph this article is about, captioned by its original publisher and estimated to date from around the 1920s.</figcaption>
 </figure>
 
 Walton Bridge is the first thing a modern resident is likely to recognise. The Thames curves through the foreground and the bridge crosses it towards Walton, but almost everything surrounding the crossing feels different. Roads are narrow, buildings are scattered, and large areas that a modern resident expects to see occupied by houses remain open land. The photograph's exact date hasn't been established, but this is Walton during a remarkable transitional period: the old rural landscape had not disappeared, yet the forces that would transform it were already at work.
@@ -84,7 +84,7 @@ Beyond the bridge, the landscape opens out towards the Walton side and the count
 
 <figure>
   <img src="/images/history/walton-aerial-photograph-annotated-key.webp" alt="The same aerial photograph with a numbered key identifying Walton Bridge, its approach arches, the River Thames, Walton-on-Thames on the east bank, Shepperton on the west bank, and the direction of Apps Court" loading="lazy" />
-  <figcaption>The same photograph with an evidence-led key to what it shows. The original photograph is unchanged; only the annotation is new. Supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The same photograph with an evidence-led key to what it shows. The original photograph is unchanged; only the annotation is new.</figcaption>
 </figure>
 
 ## A riverside town, not yet a suburb
