@@ -103,7 +103,7 @@ The most important conclusion is also the simplest: no separate, formally grante
 
 <figure>
   <img src="/images/history/walton-on-thames-war-memorial-front-view-2026.webp" alt="Front view of the Walton-on-Thames War Memorial with bronze name panels, stepped stone base and royal coat of arms, in a landscaped town-centre setting" loading="eager" />
-  <figcaption>The Walton-on-Thames War Memorial viewed from the front, photographed 2 August 2026. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The Walton-on-Thames War Memorial viewed from the front, photographed 2 August 2026.</figcaption>
 </figure>
 
 ## What counts as a coat of arms?
@@ -233,17 +233,17 @@ Walton's most prominent public heraldic display stands above the war memorial in
 
 <figure>
   <img src="/images/history/walton-on-thames-war-memorial-royal-coat-of-arms-detail-2026.webp" alt="Close-up of the weathered royal coat of arms above the Walton-on-Thames War Memorial, with a crowned helmet, garter and draped stone flags" loading="lazy" />
-  <figcaption>The weathered royal coat of arms crowning the Walton-on-Thames War Memorial, photographed 2 August 2026. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The weathered royal coat of arms crowning the Walton-on-Thames War Memorial, photographed 2 August 2026.</figcaption>
 </figure>
 
 <figure>
   <img src="/images/history/walton-on-thames-war-memorial-rear-view-2026.webp" alt="Rear three-quarter view of the Walton-on-Thames War Memorial with bronze panels, stepped base and a crowned St George's Cross emblem" loading="lazy" />
-  <figcaption>The rear of the Walton-on-Thames War Memorial, with its bronze panels and crowned St George's Cross emblem, photographed 2 August 2026. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The rear of the Walton-on-Thames War Memorial, with its bronze panels and crowned St George's Cross emblem, photographed 2 August 2026.</figcaption>
 </figure>
 
 <figure>
   <img src="/images/history/walton-on-thames-war-memorial-st-georges-cross-detail-2026.webp" alt="Close-up of the crowned St George's Cross shield and draped stone flags on the rear of the Walton-on-Thames War Memorial" loading="lazy" />
-  <figcaption>The crowned St George's Cross on the rear of the Walton-on-Thames War Memorial, photographed 2 August 2026. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The crowned St George's Cross on the rear of the Walton-on-Thames War Memorial, photographed 2 August 2026.</figcaption>
 </figure>
 
 ## The City of London and Trinity House on Walton's riverside
