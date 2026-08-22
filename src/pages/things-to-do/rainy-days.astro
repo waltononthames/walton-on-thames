@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ThingsToDoFilterPage from '../../layouts/ThingsToDoFilterPage.astro';
+
+const attractions = (await getCollection('attractions'))
+  .filter((a) => a.data.categories.includes('rainy-days'))
+  .sort((a, b) => b.data.sortWeight - a.data.sortWeight);
+---
+
+<ThingsToDoFilterPage
+  title="Rainy Day Activities in Walton-on-Thames | Walton-on-Thames.org"
+  description="Wet-weather things to do in Walton-on-Thames and Hersham: cinema, climbing, theatre and leisure centres, plus indoor attractions a short drive away."
+  h1="Rainy Day Things to Do in Walton-on-Thames"
+  breadcrumbLabel="Rainy Days"
+  path="/things-to-do/rainy-days/"
+  attractions={attractions}
+>
+  <Fragment slot="intro">
+    <p>Walton-on-Thames has enough indoor options that a wet day doesn't have to mean staying in. Riverhouse Barn and Cecil Hepworth Playhouse both run year-round programmes of theatre, music and family shows, Everyman Walton's sofa-seat cinema is a straightforward fallback, and Rock Up and Elmbridge Xcel give more active options with climbing, soft play and swimming all under one roof.</p>
+    <p>A short drive out, Brooklands Museum and the London Bus Museum are almost entirely indoors, Mercedes-Benz World's displays stay dry whatever the weather, and Jump In Esher, Chertsey Museum and the World Rugby Museum all make reasonable wet-weather options. A few of these, particularly Brooklands and Bocketts Farm, include outdoor areas as part of the visit, so it's worth packing something waterproof even when the main draw is indoors.</p>
+  </Fragment>
+  <Fragment slot="closing">
+    <p>Back to the full <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub for the complete list, or see <a href="/things-to-do/heritage-and-culture/">heritage and culture</a> and <a href="/things-to-do/families/">family things to do</a> for more indoor-friendly ideas.</p>
+  </Fragment>
+</ThingsToDoFilterPage>

@@ -1,0 +1,29 @@
+{
+  "name": "Learn to row with Walton Rowing Club",
+  "slug": "learn-to-row-walton-rowing-club",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Walton Rowing Club has a long association with this stretch of the Thames and runs learn-to-row opportunities for adults and younger rowers — a course or club activity rather than a turn-up attraction, but a distinctive way to become active on the river.",
+  "reasonToVisit": "Learn to row on the Thames with a long-established local club",
+  "planningDetail": "A club activity, not a drop-in attraction — enquire about current courses and availability",
+  "categories": [
+    "sport-and-active",
+    "on-the-water"
+  ],
+  "bestFor": [
+    "Learning a new sport",
+    "teenagers",
+    "adults",
+    "longer-term participation"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "bookingNote": "Enquire about current courses, eligibility and availability",
+  "officialUrl": "https://www.waltonrowingclub.co.uk/join-the-club/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 58
+}

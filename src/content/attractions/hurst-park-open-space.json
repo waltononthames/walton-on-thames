@@ -1,0 +1,28 @@
+{
+  "name": "Hurst Park Open Space, West Molesey",
+  "slug": "hurst-park-open-space",
+  "area": "West Molesey",
+  "locationBand": "neighbouring",
+  "summary": "Hurst Park provides broad riverside space for walking, cycling and informal recreation beside the Thames — a good part of a route towards Hampton Court or a simple free outing with plenty of sky and river views.",
+  "reasonToVisit": "Broad free riverside space, good for a walk towards Hampton Court",
+  "planningDetail": "Works well combined with a longer riverside walk",
+  "categories": [
+    "free",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "Walking",
+    "cycling",
+    "picnics",
+    "free outdoor time"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/hurst-park-open-space",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 56
+}

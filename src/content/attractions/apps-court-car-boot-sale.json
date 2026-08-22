@@ -1,0 +1,27 @@
+{
+  "name": "Apps Court Car Boot Sale",
+  "slug": "apps-court-car-boot-sale",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Apps Court is a well-known local destination for browsing second-hand goods, collectibles and household finds. It is as much about the hunt as the purchase, with the mix changing each time it runs.",
+  "reasonToVisit": "A local browsing tradition for second-hand goods and collectibles",
+  "planningDetail": "Seasonal and weather dependent — confirm the sale is running before travelling",
+  "categories": [
+    "free",
+    "seasonal"
+  ],
+  "bestFor": [
+    "Bargain hunting",
+    "vintage finds",
+    "an informal weekend browse"
+  ],
+  "setting": "outdoor",
+  "costBand": "variable",
+  "seasonality": "selected-dates",
+  "checkBeforeTravelling": true,
+  "internalUrl": "/things-to-do/apps-court-car-boot-sale/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 60
+}

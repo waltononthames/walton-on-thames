@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ThingsToDoFilterPage from '../../layouts/ThingsToDoFilterPage.astro';
+
+const attractions = (await getCollection('attractions'))
+  .filter((a) => a.data.categories.includes('parks-and-walks'))
+  .sort((a, b) => b.data.sortWeight - a.data.sortWeight);
+---
+
+<ThingsToDoFilterPage
+  title="Walks in Walton-on-Thames | Walton-on-Thames.org"
+  description="Walks and parks in Walton-on-Thames and Hersham: the Thames Path at Cowey Sale, local recreation grounds, and gardens and open spaces nearby."
+  h1="Parks and Walks in Walton-on-Thames and Hersham"
+  breadcrumbLabel="Parks & Walks"
+  path="/things-to-do/parks-and-walks/"
+  attractions={attractions}
+>
+  <Fragment slot="intro">
+    <p>The Thames Path is the obvious place to start: a flat, well-used stretch links Cowey Sale to Walton Wharf in under 20 minutes at an ordinary pace, taking in Walton Bridge along the way. The one obstacle is the steep blue footbridge at Walton Marina, which can be difficult for wheelchairs or heavier buggies. Follow the Walton Trail for a longer, self-guided route through the town's streets and landmarks, or head to Coronation and Elmgrove recreation grounds for more everyday green space closer to the centre.</p>
+    <p>A little further afield, Bushy Park offers more than 1,000 acres of Royal Park walking, and Painshill and Claremont Landscape Garden both combine a proper walk with 18th-century garden design. Sunbury Walled Garden and Hurst Park Open Space add two more free options along the river, and for a longer outing, Runnymede and Ankerwycke pair a countryside walk with genuine history.</p>
+  </Fragment>
+  <Fragment slot="closing">
+    <p>Back to the full <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub, or see <a href="/things-to-do/free/">free things to do</a> for more no-cost options and <a href="/things-to-do/on-the-water/">on the water</a> for getting onto the Thames rather than just walking beside it.</p>
+  </Fragment>
+</ThingsToDoFilterPage>

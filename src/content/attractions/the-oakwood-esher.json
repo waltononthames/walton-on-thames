@@ -1,0 +1,28 @@
+{
+  "name": "The Oakwood, Esher",
+  "slug": "the-oakwood-esher",
+  "area": "Esher",
+  "locationBand": "neighbouring",
+  "summary": "Learn to ski or practise existing skills on one of Surrey's few dry ski slopes. The Oakwood offers private coaching, group lessons, a junior ski club, recreational skiing and seasonal ski camps, plus high ropes, Ringo rides and laser tag.",
+  "reasonToVisit": "A dry ski slope with lessons, high ropes and laser tag on one site",
+  "planningDetail": "Book the appropriate lesson or session and check age, ability and clothing requirements",
+  "categories": [
+    "sport-and-active"
+  ],
+  "bestFor": [
+    "First-time skiers",
+    "experienced recreational skiers",
+    "active children",
+    "groups"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "address": "More Lane, Esher, KT10 8AN",
+  "officialUrl": "https://theoakwood.com/collections/ski-lessons-esher",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 46
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Strawberry Hill House, Twickenham",
+  "slug": "strawberry-hill-house",
+  "area": "Twickenham",
+  "locationBand": "bigger-day-out",
+  "summary": "Horace Walpole's extraordinary Gothic Revival house is full of theatrical interiors, historic collections and literary associations. Its garden and changing programme make it a strong choice for visitors who have already seen Hampton Court.",
+  "reasonToVisit": "A Gothic Revival house with theatrical interiors, an alternative to Hampton Court",
+  "planningDetail": "Check house opening dates, tours and events before travelling",
+  "categories": [
+    "heritage-and-culture"
+  ],
+  "bestFor": [
+    "Architecture",
+    "interiors",
+    "literature",
+    "heritage"
+  ],
+  "setting": "mixed",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.strawberryhillhouse.org.uk/",
+  "schemaType": "LandmarksOrHistoricalBuildings",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 33
+}

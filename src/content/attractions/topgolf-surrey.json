@@ -1,0 +1,29 @@
+{
+  "name": "Topgolf Surrey, Addlestone",
+  "slug": "topgolf-surrey",
+  "area": "Addlestone",
+  "locationBand": "neighbouring",
+  "summary": "Hit microchipped golf balls from covered bays and score through interactive games. Topgolf is designed to work for complete beginners as well as regular golfers, with food and drink available on site.",
+  "reasonToVisit": "Interactive golf games from covered bays, suited to beginners and regulars alike",
+  "planningDetail": "Bay reservations are useful at popular times",
+  "categories": [
+    "families",
+    "sport-and-active",
+    "rainy-days"
+  ],
+  "bestFor": [
+    "Groups",
+    "families with older children",
+    "evenings",
+    "mixed weather"
+  ],
+  "setting": "mixed",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://topgolf.com/uk/surrey/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 43
+}

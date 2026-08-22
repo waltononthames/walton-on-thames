@@ -1,0 +1,186 @@
+---
+// Phase 6 detail guide #3, brief section 5.4 and section 11.
+// Research: sunburyferry.co.uk fetched directly, including its own
+// /ferries history page (Tier 1 source, the operator's own account, no
+// second-source corroboration needed per the Content Verification
+// Protocol). No prices stated in the copy, per this section's policy.
+// Walking time from Walton-on-Thames station to the Walton-side landing
+// (downstream of Sunbury Lock) is not independently verified — flagged
+// to Darren rather than guessed.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Sunbury Ferry: Walton to Lower Sunbury | Walton-on-Thames.org"
+  description="A local guide to the Sunbury Ferry between Walton-on-Thames and Lower Sunbury: landing points, what you can bring, its history, and nearby walks."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Sunbury Ferry', item: `${SITE}/things-to-do/sunbury-ferry/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      name: 'Sunbury Ferry',
+      description: 'A community passenger ferry linking Walton-on-Thames, downstream of Sunbury Lock, with Lower Sunbury.',
+      url: `${SITE}/things-to-do/sunbury-ferry/`,
+      sameAs: 'https://www.sunburyferry.co.uk/',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Sunbury Ferry</li>
+        </ol>
+      </nav>
+      <h1>Sunbury Ferry: Walton to Lower Sunbury</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>The Sunbury Ferry is a small passenger crossing linking the Walton riverbank, just downstream of Sunbury Lock, with a public footpath opposite the Riverside Arts building in Lower Sunbury. It runs on demand rather than to a fixed timetable within its operating hours, so there's no need to book: turn up at either landing point and the ferry comes to you.</p>
+
+        <h2>What you can bring</h2>
+        <p>The boat carries up to eight passengers and two crew. Bicycles, dogs and pushchairs can all travel, space and conditions allowing, and the operator's site states the current boat is an electric-powered pontoon-style vessel designed with future wheelchair accessibility in mind, though it's worth checking directly if step-free boarding is essential for your visit. Payment is by card only.</p>
+
+        <h2>A working river crossing with real history</h2>
+        <p>A Sunbury ferry is recorded here since at least 1604, when the Thames was a working highway and the narrow alleys still visible in the village led down to wharves used by barges (Sunbury Ferry, n.d.). An 1860 cast iron tax post, one of 280 once placed around London, still stands at the jetty. The crossing has been a family trade at times too: census records show ferrymen operating from 72 Thames Street for most of the 19th and early 20th centuries, first Thomas Fulker between 1841 and 1851, then Edwin Clark from 1861 to 1911, who started out as a fisherman and ended up a boat builder. A second service, Wilson's ferry, ran from Church Wharf from 1907. By the early 1930s the crossing used two boats side by side, a wherry carrying five or six people and a punt that could take eighteen passengers and two bicycles at once, run by a ferryman named Johnson whose son Bert worked the oars at weekends (Sunbury Ferry, n.d.). The Second World War reached the crossing directly: a bomb fell on the landing stage's concrete steps in 1940, damaging the Ferry House itself, and a chain ferry installed around 1941 kept the crossing going until it stopped running in the 1960s (Sunbury Ferry, n.d.). Today's service is a modern revival of that same crossing rather than a new idea.</p>
+
+        <h2>Getting there and parking</h2>
+        <p>On the Walton side, the operator lists The Weir Hotel car park, for patrons, or street parking, both roughly five minutes from the landing point. I haven't independently verified the walking time from Walton-on-Thames station to the landing itself, so allow a bit of extra time if you're arriving on foot and check the operator's own directions before you set off. On the Sunbury side, the operator lists parking near Indian Zest restaurant, the Avenue shopping parade or Orchard Meadow car park, and The Walled Garden, all within a few minutes' walk of the crossing.</p>
+
+        <h2>What to combine it with</h2>
+        <p>The ferry is seasonal and weather-dependent, so it works best as part of a longer riverside walk rather than the sole reason for a trip. Its real value is turning what would otherwise be an out-and-back walk into a proper circular route: walk out along one bank, cross by ferry, and come back along the other, rather than retracing your own steps. Combine it with the <a href="/things-to-do/riverside-walks/">Thames Path</a> on the Walton side, or continue on to <a href="https://www.spelthorne.gov.uk/page/1436/walled-garden" target="_blank" rel="noopener">Sunbury Walled Garden</a> once you're across, both within easy walking distance of the crossing.</p>
+
+        <h2>Booking</h2>
+        <p>The ferry runs Easter to October, with shorter hours in October, and stops when weather or river conditions make crossing unsafe. There's no need to book, but check the current season and operating hours directly through <a href="https://www.sunburyferry.co.uk/" target="_blank" rel="noopener">Sunbury Ferry's own website<span class="sr-only"> (opens in a new tab)</span></a> before travelling.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Sunbury Ferry (n.d.) 'Home'. Available at: <a href="https://www.sunburyferry.co.uk/" target="_blank" rel="noopener noreferrer">https://www.sunburyferry.co.uk/</a> (Accessed: 22 August 2026).</li>
+            <li>Sunbury Ferry (n.d.) 'History of the Ferries'. Available at: <a href="https://sunburyferry.co.uk/ferries" target="_blank" rel="noopener noreferrer">https://sunburyferry.co.uk/ferries</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/riverside-walks/">Thames Path riverside walk</a></li>
+            <li><a href="/things-to-do/cowey-sale/">Cowey Sale</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

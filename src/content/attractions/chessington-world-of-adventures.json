@@ -1,0 +1,27 @@
+{
+  "name": "Chessington World of Adventures",
+  "slug": "chessington-world-of-adventures",
+  "area": "Chessington",
+  "locationBand": "bigger-day-out",
+  "summary": "Chessington combines a theme park, zoo and SEA LIFE centre in one large resort. The mix of animals, family rides and rollercoasters gives it broader age appeal than a rides-only day out.",
+  "reasonToVisit": "A theme park, zoo and SEA LIFE centre combined, with broad family age appeal",
+  "planningDetail": "Check opening calendars, height restrictions and any separately booked experiences",
+  "categories": [
+    "families"
+  ],
+  "bestFor": [
+    "Families",
+    "animals",
+    "rides",
+    "full-day visits"
+  ],
+  "setting": "mixed",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.chessington.com/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 37
+}

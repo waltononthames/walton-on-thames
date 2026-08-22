@@ -1,0 +1,28 @@
+{
+  "name": "Everyman Walton",
+  "slug": "everyman-walton",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Walton's town-centre cinema has two screens with sofas and armchairs, plus food and drink delivered to your seat. Alongside new releases, the programme regularly includes event cinema and sessions for babies, toddlers and older audiences.",
+  "reasonToVisit": "A sofa-seat cinema in the town centre with food and drink delivered to you",
+  "planningDetail": "Check listings for event cinema and dedicated baby, toddler and senior screenings",
+  "categories": [
+    "rainy-days",
+    "families"
+  ],
+  "bestFor": [
+    "Rainy days",
+    "date nights",
+    "family cinema",
+    "event screenings"
+  ],
+  "setting": "indoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.everymancinema.com/venues-list/x0710-everyman-walton/",
+  "schemaType": "MovieTheater",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 78
+}

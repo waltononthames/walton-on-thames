@@ -1,0 +1,27 @@
+{
+  "name": "Kempton Park Racecourse and Sunbury Antiques Market",
+  "slug": "kempton-park-racecourse-and-antiques-market",
+  "area": "Kempton Park",
+  "locationBand": "neighbouring",
+  "summary": "Kempton Park stages horse racing and other events through the year. The racecourse is also home to the long-running Sunbury Antiques Market, where traders sell furniture, collectibles, art and decorative pieces on selected dates.",
+  "reasonToVisit": "Horse racing and a long-running antiques market on the same site",
+  "planningDetail": "Consult the separate racing fixture and antiques market calendars before visiting",
+  "categories": [
+    "seasonal"
+  ],
+  "bestFor": [
+    "Racing",
+    "antiques",
+    "events",
+    "browsing"
+  ],
+  "setting": "mixed",
+  "costBand": "variable",
+  "seasonality": "selected-dates",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.thejockeyclub.co.uk/kempton/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 45
+}

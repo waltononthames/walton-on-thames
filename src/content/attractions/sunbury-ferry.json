@@ -1,0 +1,29 @@
+{
+  "name": "Sunbury Ferry",
+  "slug": "sunbury-ferry",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "This community passenger ferry links Lower Sunbury with the Walton side of the Thames, just downstream of Sunbury Lock. It is a charming experience in its own right and a useful way to create a circular walk. Bicycles, dogs and pushchairs can be carried when conditions allow.",
+  "reasonToVisit": "A small passenger ferry crossing that turns a riverside walk into a circular route",
+  "planningDetail": "Weekends and Bank Holidays in season. Weather and river dependent, check before setting out",
+  "categories": [
+    "on-the-water",
+    "seasonal"
+  ],
+  "bestFor": [
+    "Walkers",
+    "cyclists",
+    "families",
+    "a small Thames adventure"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.sunburyferry.co.uk/",
+  "internalUrl": "/things-to-do/sunbury-ferry/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 75
+}

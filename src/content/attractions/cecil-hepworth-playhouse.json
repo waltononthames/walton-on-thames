@@ -1,0 +1,28 @@
+{
+  "name": "Cecil Hepworth Playhouse",
+  "slug": "cecil-hepworth-playhouse",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Named after the pioneering filmmaker who worked in Walton, this community theatre hosts plays, musicals, live music, dance and children's activities, with a varied programme worth checking even without a particular production in mind.",
+  "reasonToVisit": "Community theatre named for Walton's pioneering filmmaker, with a varied programme",
+  "planningDetail": "Check the current programme for plays, musicals, live music and children's activities",
+  "categories": [
+    "heritage-and-culture",
+    "rainy-days"
+  ],
+  "bestFor": [
+    "Theatre",
+    "local productions",
+    "live music",
+    "community events"
+  ],
+  "setting": "indoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.cecilhepworthplayhouse.co.uk/",
+  "schemaType": "PerformingArtsTheater",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 74
+}

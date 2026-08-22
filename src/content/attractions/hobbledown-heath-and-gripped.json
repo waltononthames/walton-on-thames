@@ -1,0 +1,27 @@
+{
+  "name": "Hobbledown Heath and Gripped, Hounslow",
+  "slug": "hobbledown-heath-and-gripped",
+  "area": "Hounslow",
+  "locationBand": "bigger-day-out",
+  "summary": "Hobbledown Heath combines imaginative outdoor play, an indoor play barn and animal encounters. The adjoining Gripped attraction adds aerial adventure activities for older or more confident visitors, making the site adaptable across ages.",
+  "reasonToVisit": "Outdoor play, animal encounters and an indoor play barn, with aerial adventure next door",
+  "planningDetail": "Hobbledown and Gripped are distinct ticketed experiences — confirm what your booking includes",
+  "categories": [
+    "families"
+  ],
+  "bestFor": [
+    "Families",
+    "play",
+    "animals",
+    "active older children"
+  ],
+  "setting": "mixed",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.hobbledown.com/hounslow/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 36
+}

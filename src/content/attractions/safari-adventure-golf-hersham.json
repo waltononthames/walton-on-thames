@@ -1,0 +1,30 @@
+{
+  "name": "Safari Adventure Golf, Hersham",
+  "slug": "safari-adventure-golf-hersham",
+  "area": "Hersham",
+  "locationBand": "local",
+  "summary": "Play an outdoor 18-hole adventure-golf course at Hersham Golf Club, each hole part of a journey through the wildlife and landscapes of South America, Africa and Asia with interactive animal features. Works for a quick family activity or a friendly group competition.",
+  "reasonToVisit": "An 18-hole safari-themed adventure golf course, good for families or groups",
+  "planningDetail": "Check current opening times, prices, availability and weather conditions",
+  "categories": [
+    "families",
+    "sport-and-active"
+  ],
+  "bestFor": [
+    "Families",
+    "couples",
+    "children's parties",
+    "small groups",
+    "team activities"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "address": "Assher Road, Hersham, Walton-on-Thames, KT12 4RA",
+  "officialUrl": "https://safariadventuregolf.com/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 81
+}

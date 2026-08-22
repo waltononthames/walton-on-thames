@@ -1,0 +1,124 @@
+---
+// Shared shell for the 7 category filter pages (brief section 5.3):
+// breadcrumb, H1, an intro slot (each page's own 120-200 word unique
+// prose), a curated card grid, an optional short FAQ (free/families
+// only), and a closing slot linking back to the hub and related filters.
+// Deliberately NOT used by the hub, Hersham or annual-events pages — each
+// of those has its own structure the brief specifies separately.
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import AttractionCard from '../components/AttractionCard.astro';
+import { attractionCardProps } from '../utils/attractionCardProps';
+
+interface Props {
+  title: string;
+  description: string;
+  h1: string;
+  breadcrumbLabel: string;
+  path: string; // e.g. '/things-to-do/free/'
+  attractions: CollectionEntry<'attractions'>[];
+  faqs?: { q: string; a: string }[];
+}
+
+const { title, description, h1, breadcrumbLabel, path, attractions, faqs } = Astro.props;
+const SITE = 'https://walton-on-thames.org';
+
+const itemListElements = attractions.map((a, i) => ({
+  '@type': 'ListItem',
+  position: i + 1,
+  name: a.data.name,
+  item: a.data.internalUrl ? `${SITE}${a.data.internalUrl}` : (a.data.officialUrl ?? `${SITE}${path}#${a.data.slug}`),
+}));
+---
+
+<BaseLayout title={title} description={description}>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: breadcrumbLabel, item: `${SITE}${path}` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: itemListElements,
+    })} />
+    {faqs && faqs.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      })} />
+    )}
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">{breadcrumbLabel}</li>
+        </ol>
+      </nav>
+      <h1>{h1}</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container prose intro-prose">
+      <slot name="intro" />
+    </div>
+  </section>
+
+  <section class="section band-section">
+    <div class="container">
+      <div class="card-grid card-grid-3">
+        {attractions.map((a) => (
+          <div id={a.data.slug}>
+            <AttractionCard {...attractionCardProps(a.data)} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {faqs && faqs.length > 0 && (
+    <section class="section">
+      <div class="container prose">
+        <h2>Frequently asked questions</h2>
+        {faqs.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container prose closing-prose">
+      <slot name="closing" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-prose,
+  .closing-prose {
+    max-width: 70ch;
+  }
+
+  .band-section {
+    background: var(--color-white);
+  }
+</style>

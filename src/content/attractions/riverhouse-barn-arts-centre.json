@@ -1,0 +1,30 @@
+{
+  "name": "Riverhouse Barn Arts Centre",
+  "slug": "riverhouse-barn-arts-centre",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "One of Walton's strongest cultural assets, with theatre, chamber music, jazz, comedy, cabaret, exhibitions, workshops and children's shows in an intimate riverside setting. The café, gallery and garden can all be visited without a ticketed event.",
+  "reasonToVisit": "A riverside arts venue with a varied programme, café, gallery and garden",
+  "planningDetail": "Wheelchair accessible with a lift to the gallery; try Drewitts Court car park (8 to 10 minutes' walk) when the small on-site car park is full",
+  "categories": [
+    "heritage-and-culture",
+    "rainy-days"
+  ],
+  "bestFor": [
+    "Live performance",
+    "exhibitions",
+    "café visits",
+    "families and evenings out"
+  ],
+  "setting": "mixed",
+  "costBand": "variable",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "bookingNote": "Browse the programme and book popular performances in advance",
+  "internalUrl": "/things-to-do/riverhouse-barn/",
+  "officialUrl": "https://www.riverhousebarn.co.uk/",
+  "schemaType": "PerformingArtsTheater",
+  "lastVerified": "2026-08-22",
+  "featured": true,
+  "sortWeight": 95
+}

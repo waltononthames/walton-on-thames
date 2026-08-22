@@ -1,0 +1,73 @@
+---
+// The Things to Do hub's signature element (brief section 6.1/6.2): makes
+// an attraction's geography legible at a glance so Hampton Court or Thorpe
+// Park never read as "in Walton". Three-tier treatment by locationBand, not
+// colour alone — each tier has its own icon and wording, not just a tint.
+// No drive times: the brief's own example ("Weybridge · 15 min drive") is
+// illustrative, not sourced data, and journey times aren't part of the
+// migrated dataset — inventing one would violate the Content Verification
+// Protocol's ban on unstated distances/statistics.
+interface Props {
+  area: string;
+  locationBand: 'local' | 'neighbouring' | 'bigger-day-out';
+}
+
+const { area, locationBand } = Astro.props;
+
+const config = {
+  local: { label: area, srPrefix: 'In', className: 'band-local' },
+  neighbouring: { label: `Nearby · ${area}`, srPrefix: '', className: 'band-neighbouring' },
+  'bigger-day-out': { label: `Bigger day out · ${area}`, srPrefix: '', className: 'band-bigger-day-out' },
+}[locationBand];
+---
+
+<span class:list={['band', config.className]}>
+  {locationBand === 'local' && (
+    <svg class="band-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="currentColor" /></svg>
+  )}
+  {locationBand === 'neighbouring' && (
+    <svg class="band-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 1.5c-2.6 0-4.6 2-4.6 4.5C3.4 9.5 8 14.5 8 14.5S12.6 9.5 12.6 6c0-2.5-2-4.5-4.6-4.5Z"/><circle cx="8" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>
+  )}
+  {locationBand === 'bigger-day-out' && (
+    <svg class="band-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 8h11"/><path d="M9 4.5 13 8l-4 3.5"/></svg>
+  )}
+  <span class="sr-only">{config.srPrefix ? `${config.srPrefix} ` : ''}</span>{config.label}
+</span>
+
+<style>
+  .band {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .band-icon {
+    flex-shrink: 0;
+  }
+
+  /* Local: home turf. Solid accent fill. */
+  .band-local {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  /* Neighbouring: a short trip. Outlined, navy. */
+  .band-neighbouring {
+    background: rgba(11, 36, 46, 0.06);
+    color: var(--color-navy);
+    border: 1px solid rgba(11, 36, 46, 0.18);
+  }
+
+  /* Bigger day out: further afield. Outlined, slate, more muted. */
+  .band-bigger-day-out {
+    background: rgba(80, 101, 113, 0.08);
+    color: var(--color-slate);
+    border: 1px solid rgba(80, 101, 113, 0.25);
+  }
+</style>

@@ -1,0 +1,26 @@
+{
+  "name": "World Rugby Museum and stadium tour, Twickenham",
+  "slug": "world-rugby-museum-and-stadium-tour",
+  "area": "Twickenham",
+  "locationBand": "bigger-day-out",
+  "summary": "Explore rugby history in the World Rugby Museum and go behind the scenes on a guided tour of the national stadium. Tour routes can include the changing room, players' tunnel and pitchside areas, subject to stadium operations.",
+  "reasonToVisit": "Rugby history and a behind-the-scenes tour of the national stadium",
+  "planningDetail": "Tours are timed and can change around matches or events",
+  "categories": [
+    "heritage-and-culture"
+  ],
+  "bestFor": [
+    "Rugby supporters",
+    "sporting history",
+    "families with older children"
+  ],
+  "setting": "indoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://allianzstadiumtwickenham.com/museum-and-tours",
+  "schemaType": "Museum",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 32
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Watch Esher Rugby in Hersham",
+  "slug": "watch-esher-rugby-in-hersham",
+  "area": "Hersham",
+  "locationBand": "local",
+  "summary": "Despite its name, Esher Rugby plays at Molesey Road in Hersham. Watch the men's first XV or explore a wider club programme that includes senior, youth, minis, veterans, touch and walking rugby teams.",
+  "reasonToVisit": "Home rugby fixtures on Molesey Road, despite the club's Esher name",
+  "planningDetail": "Check the current fixture list, kick-off details and ticket arrangements",
+  "categories": [
+    "sport-and-active",
+    "families"
+  ],
+  "bestFor": [
+    "Rugby supporters",
+    "families",
+    "local matchday atmosphere"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "address": "Molesey Road, Hersham, KT12 3PF",
+  "officialUrl": "https://www.esherrugby.com/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 65
+}

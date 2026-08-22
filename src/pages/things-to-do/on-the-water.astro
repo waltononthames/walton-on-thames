@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ThingsToDoFilterPage from '../../layouts/ThingsToDoFilterPage.astro';
+
+const attractions = (await getCollection('attractions'))
+  .filter((a) => a.data.categories.includes('on-the-water'))
+  .sort((a, b) => b.data.sortWeight - a.data.sortWeight);
+---
+
+<ThingsToDoFilterPage
+  title="Boat Trips & Boat Hire in Walton-on-Thames | Walton-on-Thames.org"
+  description="Boat hire and boat trips in Walton-on-Thames: the Shepperton Cruise, Walton Boat Hire, river ferries and paddle sports on the Thames."
+  h1="Boat Trips and Things to Do on the Water in Walton-on-Thames"
+  breadcrumbLabel="On the Water"
+  path="/things-to-do/on-the-water/"
+  attractions={attractions}
+>
+  <Fragment slot="intro">
+    <p>The Thames is the reason Walton looks the way it does, and it's still the easiest way to spend an afternoon here. For a boat trip without hiring anything yourself, JGF Passenger Boats runs the Shepperton Cruise, a crewed 45-minute circular trip from Cowey Sale beside Walton Bridge. If you'd rather be at the controls, Walton Boat Hire advertises self-drive day boats from Walton Marina, and Walton Rowing Club runs learn-to-row courses for adults and younger rowers who want to get properly active on the water.</p>
+    <p>Two small passenger ferries add a different way to cross the river: the Sunbury Ferry links Lower Sunbury with the Walton side of the Thames, and the Shepperton to Weybridge Ferry carries pedestrians and bicycles a little further downstream. For paddling, Hampton Court Paddle Sports hires kayaks, canoes and paddleboards near Hampton Court, and Queen Mary Sailing Club and Shepperton Open Water Swim offer more structured watersports for confident swimmers and sailors.</p>
+  </Fragment>
+  <Fragment slot="closing">
+    <p>Return to the full <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub, or see <a href="/things-to-do/free/">free things to do</a> for a no-booking riverside walk and <a href="/things-to-do/parks-and-walks/">parks and walks</a> for more of the Thames Path on foot.</p>
+  </Fragment>
+</ThingsToDoFilterPage>

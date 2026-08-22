@@ -16,7 +16,7 @@ The meadow has been common land for centuries, and the name "Sale" derives from 
 
 ## Getting there
 
-Cowey Sale is a short walk west from Walton town centre. Head down Manor Road or Bridge Street towards the Thames and you'll reach the riverbank. There is parking at Manor Road car park nearby.
+Cowey Sale is a short walk west from Walton town centre, down towards the Thames. The closest car park is Walton Lane car park, on the riverbank by Walton Bridge.
 
 ## What to expect
 

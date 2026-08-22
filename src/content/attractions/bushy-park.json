@@ -1,0 +1,30 @@
+{
+  "name": "Bushy Park, Hampton",
+  "slug": "bushy-park",
+  "area": "Hampton",
+  "locationBand": "neighbouring",
+  "summary": "One of London's Royal Parks, Bushy Park offers more than 1,000 acres of grassland, woodland, ponds and waterways. Look for the Diana Fountain, walk among ancient trees and observe the park's deer from a respectful distance.",
+  "reasonToVisit": "Over 1,000 acres of Royal Park with ancient trees and roaming deer, free to enter",
+  "planningDetail": "Keep well away from deer, particularly during rutting and birthing seasons",
+  "categories": [
+    "free",
+    "parks-and-walks",
+    "families"
+  ],
+  "bestFor": [
+    "Free days out",
+    "walking",
+    "cycling",
+    "wildlife",
+    "picnics"
+  ],
+  "setting": "outdoor",
+  "costBand": "free-entry-paid-activities",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.royalparks.org.uk/visit/parks/bushy-park",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": true,
+  "sortWeight": 93
+}

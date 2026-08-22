@@ -1,0 +1,30 @@
+{
+  "name": "Walton Boat Hire",
+  "slug": "walton-boat-hire",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Walton Boat Hire advertises a small fleet of six-seat self-drive motor day boats from Walton Marina. The operator states that no licence is required, with instructions, a safety briefing and lifejackets provided before departure. Dogs are welcome.",
+  "reasonToVisit": "Self-drive day boats from Walton Marina, no licence required",
+  "planningDetail": "Usually Easter to October. Booking is by enquiry — confirm boats are running before building a visit around it",
+  "categories": [
+    "on-the-water",
+    "seasonal"
+  ],
+  "bestFor": [
+    "Families",
+    "couples",
+    "small groups",
+    "special occasions"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "bookingNote": "Booking is handled by enquiry with the operator",
+  "officialUrl": "https://waltonboathire.com/",
+  "internalUrl": "/things-to-do/walton-boat-hire/",
+  "schemaType": "LocalBusiness",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 80
+}

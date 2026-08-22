@@ -1,0 +1,28 @@
+{
+  "name": "Runnymede and Ankerwycke",
+  "slug": "runnymede-and-ankerwycke",
+  "area": "Egham",
+  "locationBand": "bigger-day-out",
+  "summary": "Walk through the landscape associated with Magna Carta and explore memorials including Writ in Water, then cross to Ankerwycke for the ancient yew and priory ruins. The nearby Commonwealth Air Forces Memorial adds another historic stop and far-reaching views.",
+  "reasonToVisit": "Magna Carta landscape, memorials and an ancient yew, with free countryside access",
+  "planningDetail": "Countryside access is free; parking may charge",
+  "categories": [
+    "heritage-and-culture",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "History",
+    "countryside walks",
+    "memorials",
+    "photography"
+  ],
+  "setting": "outdoor",
+  "costBand": "free-entry-paid-activities",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.nationaltrust.org.uk/visit/surrey/runnymede-and-ankerwycke",
+  "schemaType": "LandmarksOrHistoricalBuildings",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 34
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Shepperton Cruise from Cowey Sale",
+  "slug": "shepperton-cruise-from-cowey-sale",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "JGF Passenger Boats runs a crewed 45-minute circular cruise from Cowey Sale beside Walton Bridge, following the Desborough Channel, passing D'Oyly Carte Island and returning along the older winding course of the Thames.",
+  "reasonToVisit": "A relaxed 45-minute crewed river cruise departing right beside Walton Bridge",
+  "planningDetail": "Usually mid-March to late October. Book ahead or buy on arrival, subject to capacity; check the current timetable",
+  "categories": [
+    "on-the-water",
+    "seasonal"
+  ],
+  "bestFor": [
+    "Families",
+    "visitors",
+    "older passengers",
+    "a relaxed introduction to the Thames"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.jgfboats.com/shepperton-cruise/",
+  "internalUrl": "/things-to-do/shepperton-cruise/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": true,
+  "sortWeight": 96
+}

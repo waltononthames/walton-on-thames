@@ -1,0 +1,78 @@
+---
+// Card anatomy point 5 (brief section 6.2): "Free entry", "Check before
+// travelling", "Seasonal" labels, applied only when true — never invented.
+// Each is a text badge with its own icon, so meaning never rests on colour
+// alone (WCAG 1.4.1).
+interface Props {
+  costBand: 'free' | 'free-entry-paid-activities' | 'paid' | 'variable';
+  checkBeforeTravelling: boolean;
+  seasonality: 'year-round' | 'seasonal' | 'selected-dates';
+}
+
+const { costBand, checkBeforeTravelling, seasonality } = Astro.props;
+
+const showFreeEntry = costBand === 'free' || costBand === 'free-entry-paid-activities';
+const showSeasonal = seasonality === 'seasonal' || seasonality === 'selected-dates';
+const hasBadges = showFreeEntry || checkBeforeTravelling || showSeasonal;
+---
+
+{hasBadges && (
+  <ul class="attraction-badges" role="list">
+    {showFreeEntry && (
+      <li class="attraction-badge attraction-badge--free">
+        <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 6.5 12 13 4.5"/></svg>
+        Free entry
+      </li>
+    )}
+    {checkBeforeTravelling && (
+      <li class="attraction-badge attraction-badge--check">
+        <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2.2 1.3"/></svg>
+        Check before travelling
+      </li>
+    )}
+    {showSeasonal && (
+      <li class="attraction-badge attraction-badge--seasonal">
+        <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5v2M8 12.5v2M2.8 8h2M11.2 8h2M4.6 4.6l1.4 1.4M10 10l1.4 1.4M11.4 4.6 10 6M6 10 4.6 11.4"/></svg>
+        Seasonal
+      </li>
+    )}
+  </ul>
+)}
+
+<style>
+  .attraction-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+  }
+
+  .attraction-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+  }
+
+  .attraction-badge--free {
+    background: rgba(46, 125, 74, 0.1);
+    color: #1F6B3F;
+    border-color: rgba(46, 125, 74, 0.25);
+  }
+
+  .attraction-badge--check {
+    background: rgba(184, 134, 46, 0.12);
+    color: var(--color-accent-dark);
+    border-color: rgba(184, 134, 46, 0.3);
+  }
+
+  .attraction-badge--seasonal {
+    background: rgba(80, 101, 113, 0.1);
+    color: var(--color-slate);
+    border-color: rgba(80, 101, 113, 0.25);
+  }
+</style>

@@ -1,0 +1,28 @@
+{
+  "name": "Garsons Pick Your Own, Esher",
+  "slug": "garsons-pick-your-own",
+  "area": "Esher",
+  "locationBand": "neighbouring",
+  "summary": "Pick fruit, vegetables and flowers from Garsons' large farm during the growing season. The available crops change constantly, which is part of the appeal, but also makes checking the day's crop list essential.",
+  "reasonToVisit": "Pick your own fruit, vegetables and flowers straight from the farm",
+  "planningDetail": "Usually late May to October. An advance farm pass is normally required and does not include produce picked",
+  "categories": [
+    "families",
+    "seasonal"
+  ],
+  "bestFor": [
+    "Families",
+    "seasonal food",
+    "outdoor activity"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "bookingNote": "An advance farm pass is normally required",
+  "officialUrl": "https://www.garsons.co.uk/pyo-farm",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 52
+}

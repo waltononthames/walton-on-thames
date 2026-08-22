@@ -1,0 +1,29 @@
+{
+  "name": "Rock Up Walton",
+  "slug": "rock-up-walton",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Rock Up brings indoor climbing and soft play to The Heart. The colourful climbing walls offer challenges for different confidence levels, while the soft-play area gives younger children their own space.",
+  "reasonToVisit": "Indoor climbing and soft play together at The Heart shopping centre",
+  "planningDetail": "Booking strongly advised; age and supervision rules vary by activity",
+  "categories": [
+    "rainy-days",
+    "families",
+    "sport-and-active"
+  ],
+  "bestFor": [
+    "Active children",
+    "birthday outings",
+    "wet-weather days"
+  ],
+  "setting": "indoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "bookingNote": "Booking strongly advised",
+  "officialUrl": "https://www.rock-up.co.uk/locations/walton-on-thames",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 76
+}

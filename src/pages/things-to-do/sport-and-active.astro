@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ThingsToDoFilterPage from '../../layouts/ThingsToDoFilterPage.astro';
+
+const attractions = (await getCollection('attractions'))
+  .filter((a) => a.data.categories.includes('sport-and-active'))
+  .sort((a, b) => b.data.sortWeight - a.data.sortWeight);
+---
+
+<ThingsToDoFilterPage
+  title="Sport & Active Things to Do | Walton-on-Thames.org"
+  description="Sport and active things to do in Walton-on-Thames and Hersham: leisure centres, climbing, football and rugby, golf, and watersports on the Thames."
+  h1="Sport and Active Things to Do in Walton-on-Thames and Hersham"
+  breadcrumbLabel="Sport & Active"
+  path="/things-to-do/sport-and-active/"
+  attractions={attractions}
+>
+  <Fragment slot="intro">
+    <p>Between Walton and Hersham there's a genuine cluster of sport on offer. Elmbridge Xcel Leisure Complex covers swimming, climbing and fitness under one roof, Rock Up adds indoor climbing at The Heart, and the two Hersham recreation grounds carry pitches for football, cricket, tennis and bowls alongside their play areas. For spectator sport, Walton and Hersham FC play at the Elmbridge Xcel Sports Hub and Esher Rugby's home fixtures are on Molesey Road in Hersham, despite the club's name.</p>
+    <p>Golf has deep roots locally too: Safari Adventure Golf gives Hersham a themed adventure course, and Hersham Golf Club and Burhill Golf Club both have established courses within the village bounds. On the water, Walton Rowing Club runs learn-to-row courses, and further out, Hampton Court Paddle Sports, Shepperton Open Water Swim, Daytona's go-karting and The Oakwood's dry ski slope all add more active options within easy reach.</p>
+  </Fragment>
+  <Fragment slot="closing">
+    <p>Back to the full <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub, or see <a href="/things-to-do/families/">family things to do</a> and <a href="/things-to-do/rainy-days/">rainy-day things to do</a> for more ways to stay active with children or indoors.</p>
+  </Fragment>
+</ThingsToDoFilterPage>

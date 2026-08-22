@@ -1,0 +1,28 @@
+{
+  "name": "Jump In Esher",
+  "slug": "jump-in-esher",
+  "area": "Esher",
+  "locationBand": "neighbouring",
+  "summary": "Jump In is a large indoor activity park with trampolines, Clip 'n Climb and soft play among its sessions, with dedicated quieter or supported sessions available at particular times.",
+  "reasonToVisit": "Indoor trampolining, Clip 'n Climb and soft play in one venue",
+  "planningDetail": "Choose the correct activity and age band when booking",
+  "categories": [
+    "rainy-days",
+    "families",
+    "sport-and-active"
+  ],
+  "bestFor": [
+    "Energetic children",
+    "wet weather",
+    "birthday outings"
+  ],
+  "setting": "indoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://gojumpin.com/adventure-trampoline-park-esher/activities/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 51
+}

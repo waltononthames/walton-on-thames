@@ -1,0 +1,193 @@
+---
+// Phase 6 detail guide #2, brief section 5.4 and section 11.
+// Research: waltonboathire.com fetched directly (location, hours, fleet,
+// licence policy, dogs, café), corroborated by a second search result.
+// No prices or hours stated in the copy, per this section's established
+// policy (section 4.3 / QA checklist) — the operator's own site is linked
+// instead. Walton Marina shares the KT12 1QW postcode with Walton Lane
+// car park (verified for the Shepperton Cruise guide), so it sits in the
+// same riverside stretch by Walton Bridge, but I have not independently
+// confirmed a walking time from the station to the marina specifically —
+// flagged to Darren rather than assumed identical to the cruise jetty's.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Walton Boat Hire: Self-Drive Day Boats | Walton-on-Thames.org"
+  description="A local guide to Walton Boat Hire's self-drive day boats from Walton Marina: no licence needed, what's included, parking, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Walton Boat Hire', item: `${SITE}/things-to-do/walton-boat-hire/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: 'Walton Boat Hire',
+      description: 'Self-drive day boat hire from Walton Marina, no licence required.',
+      url: `${SITE}/things-to-do/walton-boat-hire/`,
+      address: { '@type': 'PostalAddress', streetAddress: 'Walton Marina, Walton Bridge Road', addressLocality: 'Walton-on-Thames', postalCode: 'KT12 1QW', addressCountry: 'GB' },
+      sameAs: 'https://waltonboathire.com/',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Walton Boat Hire</li>
+        </ol>
+      </nav>
+      <h1>Walton Boat Hire: Self-Drive Day Boats</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Walton Boat Hire runs a fleet of six-seat, self-drive motor day boats from Walton Marina, on the Thames at Walton Bridge. No boating licence is required: the operator states that every hire starts with instructions and a safety briefing before you're handed the controls, and life jackets are provided for both adults and children.</p>
+
+        <h2>The boats</h2>
+        <p>The fleet is made up of Banks Marin, Henley and Sports Fisher "Admiral Class" motor boats, each seating up to six people. Dogs are welcome aboard, which is unusual enough among the area's boating options to be worth mentioning if you're planning a trip around the family dog rather than despite it. The Boathouse café at the marina serves food and drink, including alcoholic drinks, so there's somewhere to wait or warm up either side of your booking.</p>
+
+        <h2>The marina and its Boathouse</h2>
+        <p>Walton Marina sits on the site of a Boathouse that has stood there for more than a hundred years, now home to the marina's café as well as its permanent berths. It's worth building a few minutes either side of your booking to look around: it's a working marina rather than a purpose-built visitor attraction, so the atmosphere is closer to a boatyard than a marketed experience, which is part of the appeal if you'd rather see real moorings than a tourist set-piece.</p>
+
+        <h2>Getting there and parking</h2>
+        <p>Walton Marina is on Walton Bridge Road, Walton-on-Thames, KT12 1QW, immediately by Walton Bridge and in the same stretch of riverbank as Walton Lane car park. If you're driving, that's the car park to use; it's free, and Elmbridge Borough Council's own listing confirms it has toilets, including a disabled-accessible facility. I haven't independently confirmed the exact walking time from Walton-on-Thames station to the marina itself, so if you're arriving by train it's worth checking the operator directly or allowing a similar walk to the one from the station into the town centre and on to the riverside.</p>
+        <p>The operator's site doesn't publish accessibility information for boarding, so if mobility is a factor for your group, it's worth calling ahead rather than assuming.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Because you're bringing the boat back to the same spot, a day out here pairs naturally with time at <a href="/things-to-do/cowey-sale/">Cowey Sale</a> and <a href="/things-to-do/walton-bridge/">Walton Bridge</a> either side of your booking, both a short walk from the marina, and Cowey Sale has a café of its own if the Boathouse is busy. If you'd rather stay on the water without driving yourself, the <a href="/things-to-do/shepperton-cruise/">Shepperton Cruise</a> departs from the same general stretch of river and needs no experience at all, which makes it a reasonable alternative for anyone in your group who'd rather not take the wheel. Six seats per boat suits a family outing or a small group of friends more naturally than a couple wanting something more intimate, so it's worth thinking about who's actually coming before you book.</p>
+
+        <h2>Booking</h2>
+        <p>Boats run seasonally, usually Easter to October, and booking is handled by enquiry rather than an instant online checkout, so it's worth contacting the operator to confirm availability before you build a day around it. Book or check current availability directly through <a href="https://waltonboathire.com/" target="_blank" rel="noopener">Walton Boat Hire's own website<span class="sr-only"> (opens in a new tab)</span></a>, or call the operator directly on 01932 550980 if you'd rather speak to someone before committing to a date.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Walton Boat Hire (n.d.) 'Walton Boat Hire'. Available at: <a href="https://waltonboathire.com/" target="_blank" rel="noopener noreferrer">https://waltonboathire.com/</a> (Accessed: 22 August 2026).</li>
+            <li>Walton Boat Hire (n.d.) 'The Boats'. Available at: <a href="https://waltonboathire.com/pages/boat-hire" target="_blank" rel="noopener noreferrer">https://waltonboathire.com/pages/boat-hire</a> (Accessed: 22 August 2026).</li>
+            <li>Elmbridge Borough Council (n.d.) 'Walton Lane Open Space and Car Park'. Available at: <a href="https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/walton-lane-open-space" target="_blank" rel="noopener noreferrer">https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/walton-lane-open-space</a> (Accessed: 22 August 2026).</li>
+            <li>Tingdene Marinas (n.d.) 'Walton on Thames Marina'. Available at: <a href="https://tingdeneboating.com/inland-marinas-uk/walton/" target="_blank" rel="noopener noreferrer">https://tingdeneboating.com/inland-marinas-uk/walton/</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/cowey-sale/">Cowey Sale</a></li>
+            <li><a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+            <li><a href="/things-to-do/shepperton-cruise/">Shepperton Cruise</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

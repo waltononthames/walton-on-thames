@@ -1,0 +1,29 @@
+{
+  "name": "Sandown Park Racecourse, Esher",
+  "slug": "sandown-park-racecourse",
+  "area": "Esher",
+  "locationBand": "neighbouring",
+  "summary": "Watch both Flat and Jump racing at one of Surrey's leading racecourses. Major fixtures include the Coral-Eclipse and the Betfair Tingle Creek Festival, with family racedays and live music at selected meetings, plus exhibitions, fairs and other public events.",
+  "reasonToVisit": "Major Flat and Jump racing fixtures, plus exhibitions and shows through the year",
+  "planningDetail": "Choose a specific raceday or public event and check tickets, timings and admission conditions",
+  "categories": [
+    "seasonal"
+  ],
+  "bestFor": [
+    "Horse racing",
+    "live entertainment",
+    "exhibitions",
+    "hospitality",
+    "seasonal events"
+  ],
+  "setting": "mixed",
+  "costBand": "paid",
+  "seasonality": "selected-dates",
+  "checkBeforeTravelling": true,
+  "address": "Portsmouth Road, Esher, KT10 9AJ",
+  "officialUrl": "https://www.thejockeyclub.co.uk/sandown/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 53
+}

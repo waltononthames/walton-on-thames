@@ -1,0 +1,29 @@
+{
+  "name": "Sunbury Walled Garden and Sunbury Gallery",
+  "slug": "sunbury-walled-garden-and-gallery",
+  "area": "Sunbury",
+  "locationBand": "neighbouring",
+  "summary": "The restored 18th-century Walled Garden is a peaceful free place for a stroll. Within it, Sunbury Gallery has a café, changing exhibitions and the remarkable Millennium Embroidery, depicting the local community in thousands of stitches.",
+  "reasonToVisit": "A free 18th-century walled garden with a gallery and café inside it",
+  "planningDetail": "Garden and gallery entry is free; purchases and special events may charge",
+  "categories": [
+    "free",
+    "heritage-and-culture",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "Gardens",
+    "art",
+    "local history",
+    "a gentle afternoon"
+  ],
+  "setting": "mixed",
+  "costBand": "free-entry-paid-activities",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.spelthorne.gov.uk/page/1436/walled-garden",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 59
+}

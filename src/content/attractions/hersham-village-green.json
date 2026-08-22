@@ -1,0 +1,27 @@
+{
+  "name": "Hersham Village Green",
+  "slug": "hersham-village-green",
+  "area": "Hersham",
+  "locationBand": "local",
+  "summary": "Hersham's village green is a relaxed local space rather than a formal attraction. Combine it with a village walk, a nearby meal or one of the community events that take place in Hersham during the year.",
+  "reasonToVisit": "The relaxed heart of Hersham village, good for a gentle stop or a community event",
+  "planningDetail": "Best combined with a village walk or a nearby meal",
+  "categories": [
+    "free",
+    "families"
+  ],
+  "bestFor": [
+    "A gentle local stop",
+    "families",
+    "community events"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "internalUrl": "/things-to-do/hersham-village-green/",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 79
+}

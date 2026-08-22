@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import ThingsToDoFilterPage from '../../layouts/ThingsToDoFilterPage.astro';
+
+const attractions = (await getCollection('attractions'))
+  .filter((a) => a.data.categories.includes('free'))
+  .sort((a, b) => b.data.sortWeight - a.data.sortWeight);
+
+const faqs = [
+  {
+    q: 'What is completely free to do in Walton-on-Thames?',
+    a: 'The Thames Path, Cowey Sale, Walton Bridge, Walton Wharf and the Walton Trail cost nothing to visit, and the town\'s recreation grounds, including Elmgrove and the Hersham grounds, have free general access. St Mary\'s Church and Elmbridge Museum\'s displays are also free, though donations are welcome at the church.',
+  },
+  {
+    q: 'Are any nearby attractions free to enter?',
+    a: 'Bushy Park is free to enter, and Mercedes-Benz World\'s general displays and simulators are free, though driving experiences and parking may charge. Sunbury Walled Garden and Sunbury Gallery are also free, and Chertsey Museum has no admission charge.',
+  },
+];
+---
+
+<ThingsToDoFilterPage
+  title="Free Things to Do in Walton-on-Thames | Walton-on-Thames.org"
+  description="Free things to do in Walton-on-Thames and Hersham, from the Thames Path and Cowey Sale to free museums, recreation grounds and Bushy Park nearby."
+  h1="Free Things to Do in Walton-on-Thames and Hersham"
+  breadcrumbLabel="Free"
+  path="/things-to-do/free/"
+  attractions={attractions}
+  faqs={faqs}
+>
+  <Fragment slot="intro">
+    <p>Walton-on-Thames doesn't need a ticket to fill a good day out. The river itself is the main free attraction: the Thames Path links Cowey Sale to Walton Wharf in an easy, flat walk, and Walton Bridge is worth the trip for the view alone. From there, Walton and Hersham's recreation grounds add free play areas, sports pitches and open space within a few minutes of the town centre, and the Walton Trail turns an ordinary walk into a self-guided route past the town's landmarks.</p>
+    <p>A short drive out, Bushy Park offers more than 1,000 acres of Royal Park at no cost, Mercedes-Benz World's general displays don't charge for entry, and Sunbury Walled Garden and Chertsey Museum are both free to visit. None of this means a completely cost-free day: parking, food and optional activities can still add up, so check each listing's planning notes before setting out.</p>
+  </Fragment>
+  <Fragment slot="closing">
+    <p>For the full picture, including paid attractions and events, see the main <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub. If you're planning around the weather or the children, the <a href="/things-to-do/parks-and-walks/">parks and walks</a> and <a href="/things-to-do/families/">family things to do</a> pages cover much of the same ground from a different angle.</p>
+  </Fragment>
+</ThingsToDoFilterPage>

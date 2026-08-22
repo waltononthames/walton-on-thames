@@ -1,0 +1,145 @@
+---
+// Card anatomy per brief section 6.2, in order: photo (optional — the
+// imageless variant is required, section 7, since most records have no
+// photography yet), location band + area, name (H3, linking to the
+// internal guide where one exists, else the official site, else plain
+// text), reasonToVisit, planningDetail, badges, unobtrusive lastVerified.
+//
+// Deliberately NOT a whole-card <a> like the site's other card components
+// (BusinessCard, PlaceCard) — the brief specifies the heading itself as
+// the link target, and some cards carry no link at all (see Walton Wharf,
+// which has neither an internal guide nor an official site).
+import { Picture } from 'astro:assets';
+import LocationBandIndicator from './LocationBandIndicator.astro';
+import AttractionBadges from './AttractionBadges.astro';
+
+interface Props {
+  name: string;
+  area: string;
+  locationBand: 'local' | 'neighbouring' | 'bigger-day-out';
+  reasonToVisit: string;
+  planningDetail: string;
+  costBand: 'free' | 'free-entry-paid-activities' | 'paid' | 'variable';
+  checkBeforeTravelling: boolean;
+  seasonality: 'year-round' | 'seasonal' | 'selected-dates';
+  internalUrl?: string;
+  officialUrl?: string;
+  lastVerified: string;
+  image?: {
+    src: ImageMetadata;
+    alt: string;
+    caption?: string;
+    credit: string;
+  };
+  headingLevel?: 'h3' | 'h2';
+}
+
+const {
+  name, area, locationBand, reasonToVisit, planningDetail,
+  costBand, checkBeforeTravelling, seasonality,
+  internalUrl, officialUrl, lastVerified, image,
+  headingLevel = 'h3',
+} = Astro.props;
+
+const href = internalUrl ?? officialUrl;
+const isExternal = !internalUrl && !!officialUrl;
+const Heading = headingLevel;
+
+const verifiedLabel = new Date(lastVerified + 'T00:00:00').toLocaleDateString('en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric',
+});
+---
+
+<article class:list={['card', 'attraction-card', { 'attraction-card--no-image': !image }]}>
+  {image && (
+    <Picture
+      src={image.src}
+      alt={image.alt}
+      widths={[400, 600, 800]}
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      formats={['avif', 'webp']}
+      fallbackFormat="jpg"
+      width={600}
+      height={400}
+      class="card-image attraction-card-image"
+      loading="lazy"
+    />
+  )}
+  <div class="card-body">
+    <LocationBandIndicator area={area} locationBand={locationBand} />
+
+    <Heading class="card-title attraction-card-title">
+      {href
+        ? (
+          <a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener' : undefined}>
+            {name}
+            {isExternal && (
+              <>
+                <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h6v6M12.5 3.5 4 12"/></svg>
+                <span class="sr-only"> (opens the official site in a new tab)</span>
+              </>
+            )}
+          </a>
+        )
+        : name}
+    </Heading>
+
+    <p class="attraction-reason">{reasonToVisit}</p>
+    <p class="attraction-planning">{planningDetail}</p>
+
+    <AttractionBadges costBand={costBand} checkBeforeTravelling={checkBeforeTravelling} seasonality={seasonality} />
+
+    <p class="attraction-verified">Checked {verifiedLabel}</p>
+  </div>
+</article>
+
+<style>
+  .attraction-card-image {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  .attraction-card--no-image .card-body {
+    padding-top: 1.5rem;
+  }
+
+  .attraction-card-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+
+  .attraction-card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .attraction-card-title a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .external-icon {
+    flex-shrink: 0;
+    color: var(--color-slate);
+  }
+
+  .attraction-reason {
+    font-size: 0.9rem;
+    color: var(--color-navy);
+    font-weight: 500;
+  }
+
+  .attraction-planning {
+    font-size: 0.825rem;
+    color: var(--color-slate);
+  }
+
+  .attraction-verified {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--color-slate-soft);
+  }
+</style>

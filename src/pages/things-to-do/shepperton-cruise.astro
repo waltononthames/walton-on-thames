@@ -1,0 +1,197 @@
+---
+// Phase 6 detail guide #1 (trial), brief section 5.4 and section 11.
+// Research trail: JGF Boats' own site (via search, direct fetch of
+// jgfboats.com/shepperton-cruise/ failed twice — page likely JS-heavy),
+// Elmbridge Borough Council's Walton Lane car park page, and this site's
+// own already-verified /history/river-thames-at-walton/ article for the
+// Desborough Cut. The D'Oyly Carte Island history is corroborated across
+// Wikipedia and local-history sources — cited in the Sources block below,
+// Harvard/APA style per house convention.
+//
+// Two things I could not verify to this site's standard and deliberately
+// left out rather than guess: an exact turn-by-turn walking route from
+// the town centre to Walton Lane car park (no mapping tool available —
+// the general direction given below is safe, the street-by-street
+// specifics are not), and the operator's own claim that the route passes
+// where "Julius Caesar crossed the Thames" (a contested local legend
+// repeated on several Thames-side towns' tourism copy, not something to
+// state as fact).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Shepperton Cruise from Cowey Sale | Walton-on-Thames.org"
+  description="A local guide to the Shepperton Cruise from Cowey Sale: the route, parking at Walton Lane, accessibility, and what to combine it with in Walton-on-Thames."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Shepperton Cruise', item: `${SITE}/things-to-do/shepperton-cruise/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      name: 'Shepperton Cruise from Cowey Sale',
+      description: "A crewed 45-minute circular passenger cruise from Cowey Sale beside Walton Bridge, operated by JGF Passenger Boats.",
+      url: `${SITE}/things-to-do/shepperton-cruise/`,
+      address: { '@type': 'PostalAddress', streetAddress: 'Walton Lane', addressLocality: 'Walton-on-Thames', postalCode: 'KT12 1QW', addressCountry: 'GB' },
+      sameAs: 'https://www.jgfboats.com/shepperton-cruise/',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Shepperton Cruise</li>
+        </ol>
+      </nav>
+      <h1>Shepperton Cruise from Cowey Sale</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>JGF Passenger Boats runs a crewed, 45-minute circular cruise from Cowey Sale, right beside Walton Bridge, and it's worth treating as a destination in its own right rather than an add-on to a riverside walk.</p>
+
+        <h2>The route</h2>
+        <p>The cruise heads out along the Desborough Channel, the artificial cut dug by the Thames Conservancy between 1930 and 1935 to straighten the river between Weybridge and Walton and ease flooding downstream at Shepperton. It's still a working piece of river engineering rather than a historic curiosity, and our full <a href="/history/river-thames-at-walton/">history of the Thames at Walton</a> covers it in more detail.</p>
+        <p>From the channel, the boat rounds D'Oyly Carte Island, a small island opposite Weybridge with a genuinely unusual history. It was originally called Folly Eyot until Richard D'Oyly Carte, the impresario behind the Savoy Theatre and the Savoy Hotel and the producer who brought Gilbert and Sullivan together, bought it around 1890 (Wikipedia, n.d.). Carte had wanted to use the island as a private, boat-only annexe to the Savoy, but local magistrates refused him a drinks licence for it. He built a thirteen-bedroom house there instead, completed in 1898, and used it as one of his main residences; Gilbert and Sullivan are recorded rehearsing there with the D'Oyly Carte Opera Company while Weybridge locals listened in from the bank (Wikipedia, n.d.). The cruise then returns along the older, winding course of the Thames that the Desborough Cut bypassed, before passing back beneath Walton Bridge to the jetty.</p>
+
+        <h2>Getting there, parking and accessibility</h2>
+        <p>The jetty is a short, signposted walk from Walton Lane car park, on the riverbank at Walton Lane, Walton-on-Thames, KT12 1QW, and this is the car park to use for the boarding point specifically. The car park is free, and Elmbridge Borough Council's own listing confirms it has toilets, including a disabled-accessible facility, plus dedicated disabled parking spaces under Walton Bridge itself (Elmbridge Borough Council, n.d.). If you're arriving by train, the walk from Walton-on-Thames station to the boarding point takes 33 to 36 minutes, around 1.5 miles, via the A244 and Ashley Park Road. The route is mostly flat, so it's a realistic walk in its own right rather than one to plan a taxi around, though it's worth allowing for on top of your cruise time either way.</p>
+        <p>According to the operator, some of its vessels are equipped for disabled access, but this isn't guaranteed fleet-wide, so it's worth checking when you book if step-free boarding matters for your visit. The boats also carry toilets and a licensed bar on board, useful to know if you're planning to make a full afternoon of it.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Because the cruise starts and finishes at the same jetty, it slots easily into a longer riverside visit rather than needing a special trip of its own. <a href="/things-to-do/cowey-sale/">Cowey Sale</a> itself, right where you'll be waiting to board, has WILDE bagels beside the car park for something to eat before or after, and <a href="/things-to-do/walton-bridge/">Walton Bridge</a>, the best viewpoint on this stretch of the river, is close enough to walk to while you wait for the next sailing. If you'd rather be more active on the water afterwards, <a href="/things-to-do/walton-boat-hire/">Walton Boat Hire</a>'s self-drive day boats operate from the same general stretch of river at Walton Marina.</p>
+
+        <h2>Booking</h2>
+        <p>The cruise runs seasonally, usually from mid-March to late October, and sailings depend on demand, so it isn't the kind of thing to build a special journey around without checking first. Book or ask about the current timetable directly through <a href="https://www.jgfboats.com/shepperton-cruise/" target="_blank" rel="noopener">JGF Passenger Boats' own website<span class="sr-only"> (opens in a new tab)</span></a>, which is also the right place to check the current season's exact days and times before you travel.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Wikipedia (n.d.) 'D'Oyly Carte Island'. Available at: <a href="https://en.wikipedia.org/wiki/D%27Oyly_Carte_Island" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/D'Oyly_Carte_Island</a> (Accessed: 22 August 2026).</li>
+            <li>Elmbridge Borough Council (n.d.) 'Walton Lane Open Space and Car Park'. Available at: <a href="https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/walton-lane-open-space" target="_blank" rel="noopener noreferrer">https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/walton-lane-open-space</a> (Accessed: 22 August 2026).</li>
+            <li>JGF Passenger Boats (n.d.) 'Shepperton Cruise'. Available at: <a href="https://www.jgfboats.com/shepperton-cruise/" target="_blank" rel="noopener noreferrer">https://www.jgfboats.com/shepperton-cruise/</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/cowey-sale/">Cowey Sale</a></li>
+            <li><a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+            <li><a href="/history/river-thames-at-walton/">The Thames at Walton: history</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

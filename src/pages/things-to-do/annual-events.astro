@@ -1,0 +1,122 @@
+---
+// Distinct from the 7 category filter pages (brief section 3: "Static
+// filter page (events calendar view)") — lists the annual-events
+// collection, not filtered attractions. Event JSON-LD is emitted per
+// event only when confirmed with a future date (section 8); none
+// currently qualify, so none is emitted yet — this will activate itself
+// automatically once a record's dateStatus/nextStartDate are confirmed.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnualEventCard from '../../components/AnnualEventCard.astro';
+
+const SITE = 'https://walton-on-thames.org';
+
+const EVENT_ORDER = [
+  'walton-and-weybridge-regatta', 'walton-duckathon', 'make-music-day-in-walton',
+  'walton-fayre', 'walton-heritage-festival', 'walton-festival-of-light',
+  'hampton-court-palace-festival', 'sunbury-amateur-regatta', 'hampton-court-palace-food-festival',
+  'brooklands-classic-gatherings', 'rhs-wisley-flower-show-and-glow', 'kempton-park-christmas-festival',
+];
+const annualEventsRaw = await getCollection('annual-events');
+const annualEvents = EVENT_ORDER
+  .map((slug) => annualEventsRaw.find((e) => e.data.slug === slug))
+  .filter((e): e is typeof annualEventsRaw[number] => Boolean(e));
+
+const itemListElements = annualEvents.map((e, i) => ({
+  '@type': 'ListItem',
+  position: i + 1,
+  name: e.data.name,
+  item: e.data.eventUrl,
+}));
+
+const eventSchemas = annualEvents
+  .filter((e) => e.data.dateStatus === 'confirmed' && e.data.nextStartDate && new Date(e.data.nextStartDate) >= new Date())
+  .map((e) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: e.data.name,
+    startDate: e.data.nextStartDate,
+    ...(e.data.nextEndDate ? { endDate: e.data.nextEndDate } : {}),
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: { '@type': 'Place', name: e.data.eventLocation },
+    organizer: { '@type': 'Organization', url: e.data.eventUrl },
+    url: e.data.eventUrl,
+  }));
+---
+
+<BaseLayout
+  title="Annual Events in Walton-on-Thames | Walton-on-Thames.org"
+  description="The annual calendar of regattas, festivals and community events in Walton-on-Thames and Hersham, from the Walton and Weybridge Regatta to the Festival of Light."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Annual Events', item: `${SITE}/things-to-do/annual-events/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: itemListElements,
+    })} />
+    {eventSchemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Annual Events</li>
+        </ol>
+      </nav>
+      <h1>Annual Events in Walton-on-Thames and Hersham</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container prose intro-prose">
+      <p>Walton and the surrounding Thames towns keep a full calendar of regattas, festivals and community celebrations running through the year, from the Walton and Weybridge Regatta's rowing races in early June to the Festival of Light's town-centre Christmas entertainment in late November. Most are long-running local traditions rather than one-off bookings, so the broad time of year is a reliable guide even when the exact dates move from year to year.</p>
+      <p>Each entry below shows the usual time of year alongside the next confirmed date where one has been announced. Where a date hasn't yet been confirmed for the coming year, the listing says so plainly rather than showing a stale or guessed date, and links straight through to the organiser's own page for the details that matter on the day: exact timings, road closures, ticketing and any weather-dependent changes.</p>
+    </div>
+  </section>
+
+  <section class="section band-section">
+    <div class="container">
+      <ul class="event-list" role="list">
+        {annualEvents.map((e) => <AnnualEventCard {...e.data} />)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose closing-prose">
+      <p>This page covers the evergreen annual calendar. For one-off performances, workshops, markets and other community activities, check the site's live <a href="/whats-on/">What's On</a> coverage, or head back to the full <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-prose,
+  .closing-prose {
+    max-width: 70ch;
+  }
+
+  .band-section {
+    background: var(--color-white);
+  }
+
+  .event-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

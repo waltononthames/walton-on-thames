@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import ThingsToDoFilterPage from '../../layouts/ThingsToDoFilterPage.astro';
+
+const attractions = (await getCollection('attractions'))
+  .filter((a) => a.data.categories.includes('families'))
+  .sort((a, b) => b.data.sortWeight - a.data.sortWeight);
+
+const faqs = [
+  {
+    q: 'What is there to do with kids in Walton-on-Thames?',
+    a: 'Cowey Sale is the easiest local option, with a riverside walk, picnic space and the Shepperton Cruise jetty opposite the car park. Rock Up brings indoor climbing and soft play to The Heart, Elmbridge Xcel has family swim sessions, and Safari Adventure Golf in Hersham gives younger children a themed adventure-golf course.',
+  },
+  {
+    q: 'What family attractions are nearby if we want a bigger day out?',
+    a: 'Hampton Court Palace, Brooklands Museum and Mercedes-Benz World are all within easy reach and work well for a full day, while Bushy Park and Painshill suit families who want space to run around alongside the history. For a longer day out, Thorpe Park, Chessington, Bocketts Farm and Hobbledown Heath are all close by.',
+  },
+];
+---
+
+<ThingsToDoFilterPage
+  title="Family Things to Do in Walton-on-Thames | Walton-on-Thames.org"
+  description="Family days out in Walton-on-Thames and Hersham: adventure golf, splash pads and riverside walks, plus family favourites nearby like Hampton Court and Brooklands."
+  h1="Family Things to Do in Walton-on-Thames and Hersham"
+  breadcrumbLabel="Families"
+  path="/things-to-do/families/"
+  attractions={attractions}
+  faqs={faqs}
+>
+  <Fragment slot="intro">
+    <p>Walton and Hersham work well for a family day that doesn't need much planning. Cowey Sale is the natural starting point, with parking, toilets and a passenger-boat jetty all in one place, and Hersham's recreation grounds add play areas and a seasonal splash pad within a short drive. For an indoor option, Rock Up's climbing and soft play, and Elmbridge Xcel's pools and family sessions, both sit in the town centre.</p>
+    <p>Once you're ready to travel a little further, the area around Walton is unusually well stocked with family attractions: Hampton Court Palace, Brooklands Museum, Mercedes-Benz World and Painshill are all within about half an hour, and Thorpe Park, Chessington, Bocketts Farm and Hobbledown Heath extend the list for a longer day out. The cards below are ordered roughly from the easiest local options to the bigger days out, so start at the top for something quick and scroll down for a full day.</p>
+  </Fragment>
+  <Fragment slot="closing">
+    <p>See the full <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub for everything else, or check the <a href="/things-to-do/rainy-days/">rainy-day</a> and <a href="/things-to-do/free/">free things to do</a> pages if the weather or the budget is the deciding factor.</p>
+  </Fragment>
+</ThingsToDoFilterPage>

@@ -1,0 +1,28 @@
+{
+  "name": "Explore Elmbridge Museum's local history",
+  "slug": "elmbridge-museum-local-history",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Elmbridge Museum does not occupy one public museum building. Instead, it shares the borough's history through online exhibitions, a searchable collection and changing displays at the Civic Centre and local libraries, useful for researching Walton and Hersham before a heritage walk.",
+  "reasonToVisit": "Free online exhibitions and rotating local-history displays for the whole borough",
+  "planningDetail": "No single museum building — check the website for current displays at the Civic Centre and libraries",
+  "categories": [
+    "free",
+    "heritage-and-culture"
+  ],
+  "bestFor": [
+    "Local history",
+    "schools",
+    "online discovery",
+    "research"
+  ],
+  "setting": "mixed",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://elmbridgemuseum.org.uk/",
+  "schemaType": "Museum",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 63
+}

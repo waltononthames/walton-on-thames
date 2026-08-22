@@ -1,0 +1,27 @@
+{
+  "name": "Queen Mary Sailing Club, Ashford",
+  "slug": "queen-mary-sailing-club",
+  "area": "Ashford",
+  "locationBand": "neighbouring",
+  "summary": "Queen Mary Reservoir is a major local centre for sailing, windsurfing, paddleboarding, kayaking and canoeing. The club offers courses and organised sessions rather than unrestricted access to the water.",
+  "reasonToVisit": "A major reservoir sailing and watersports centre with organised courses",
+  "planningDetail": "Check membership, course, age and booking requirements for your chosen activity",
+  "categories": [
+    "on-the-water",
+    "sport-and-active"
+  ],
+  "bestFor": [
+    "Learning watersports",
+    "experienced sailors",
+    "active families"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.queenmary.org.uk/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 41
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Hampton Pool",
+  "slug": "hampton-pool",
+  "area": "Hampton",
+  "locationBand": "neighbouring",
+  "summary": "Swim outdoors at this much-loved heated lido in Hampton. Lane swimming, family sessions and special events make it attractive in more than just midsummer.",
+  "reasonToVisit": "A heated outdoor lido open beyond just midsummer",
+  "planningDetail": "Check the session timetable and book where required",
+  "categories": [
+    "sport-and-active",
+    "families"
+  ],
+  "bestFor": [
+    "Outdoor swimming",
+    "families",
+    "fitness"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://hamptonpool.co.uk/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 66
+}

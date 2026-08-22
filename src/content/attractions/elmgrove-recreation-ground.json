@@ -1,0 +1,31 @@
+{
+  "name": "Elmgrove Recreation Ground",
+  "slug": "elmgrove-recreation-ground",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Elmgrove provides traditional and natural play, green space and outdoor sport close to central Walton, with council-listed facilities for football, bowls and four tennis courts, plus basketball at the neighbouring youth centre.",
+  "reasonToVisit": "Central Walton green space with play, football, bowls and tennis",
+  "planningDetail": "Council-run facilities; check current availability for bookable courts",
+  "categories": [
+    "free",
+    "families",
+    "sport-and-active",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "Play",
+    "tennis",
+    "local exercise",
+    "low-cost family time"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "internalUrl": "/things-to-do/elmgrove-recreation-ground/",
+  "officialUrl": "https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/elmgrove-recreation",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 62
+}

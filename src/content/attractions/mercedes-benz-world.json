@@ -1,0 +1,28 @@
+{
+  "name": "Mercedes-Benz World, Weybridge",
+  "slug": "mercedes-benz-world",
+  "area": "Weybridge",
+  "locationBand": "neighbouring",
+  "summary": "Next to Brooklands Museum, Mercedes-Benz World has three floors of cars and displays, driving simulators, family activities and bookable driving experiences. General entry and parking are free.",
+  "reasonToVisit": "Free entry to three floors of cars, simulators and family activities",
+  "planningDetail": "General admission and parking are free; driving experiences must be booked and charge",
+  "categories": [
+    "families",
+    "rainy-days"
+  ],
+  "bestFor": [
+    "Cars",
+    "families",
+    "simulators",
+    "driving experiences"
+  ],
+  "setting": "mixed",
+  "costBand": "free-entry-paid-activities",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.mercedes-benzworld.co.uk/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": true,
+  "sortWeight": 91
+}

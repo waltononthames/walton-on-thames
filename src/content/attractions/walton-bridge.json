@@ -1,0 +1,28 @@
+{
+  "name": "Walton Bridge",
+  "slug": "walton-bridge",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Walton Bridge is both a local landmark and one of the best viewpoints on this stretch of the Thames. Combine it with Cowey Sale, the riverside path and a ferry or boat trip for a simple Walton itinerary.",
+  "reasonToVisit": "One of the best river viewpoints on this stretch of the Thames",
+  "planningDetail": "Pairs naturally with Cowey Sale and a ferry or boat trip for a short itinerary",
+  "categories": [
+    "free",
+    "heritage-and-culture",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "Local history",
+    "views",
+    "walking and cycling routes"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "internalUrl": "/things-to-do/walton-bridge/",
+  "schemaType": "LandmarksOrHistoricalBuildings",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 85
+}

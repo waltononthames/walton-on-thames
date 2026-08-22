@@ -1,0 +1,29 @@
+{
+  "name": "Follow the Walton Trail",
+  "slug": "follow-the-walton-trail",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "The Walton Trail turns local streets and landmarks into four self-guided routes, including the river and a family-friendly postbox trail, making it an easy way to notice details even long-term residents may have missed.",
+  "reasonToVisit": "Four self-guided routes through Walton's streets and landmarks, free to follow any time",
+  "planningDetail": "Choose from four routes, including a family-friendly postbox trail",
+  "categories": [
+    "free",
+    "families",
+    "heritage-and-culture",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "Self-guided exploring",
+    "local history",
+    "families"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://lovewalton.co.uk/walton-trail/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 72
+}

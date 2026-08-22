@@ -1,0 +1,28 @@
+{
+  "name": "Hampton Court Palace, East Molesey",
+  "slug": "hampton-court-palace",
+  "area": "East Molesey",
+  "locationBand": "neighbouring",
+  "summary": "Explore the Tudor palace associated with Henry VIII, including the Great Hall and historic kitchens, then continue into the formal gardens and family-friendly Magic Garden. Hampton Court comfortably fills most of a day.",
+  "reasonToVisit": "A full day of Tudor history, gardens and family-friendly attractions",
+  "planningDetail": "Book ahead for busy dates and check which spaces or events are included",
+  "categories": [
+    "heritage-and-culture",
+    "families"
+  ],
+  "bestFor": [
+    "History",
+    "gardens",
+    "families",
+    "first-time visitors to the area"
+  ],
+  "setting": "mixed",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.hrp.org.uk/hampton-court-palace/",
+  "schemaType": "LandmarksOrHistoricalBuildings",
+  "lastVerified": "2026-08-22",
+  "featured": true,
+  "sortWeight": 94
+}

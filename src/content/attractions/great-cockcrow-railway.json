@@ -1,0 +1,28 @@
+{
+  "name": "Great Cockcrow Railway, Chertsey",
+  "slug": "great-cockcrow-railway",
+  "area": "Chertsey",
+  "locationBand": "neighbouring",
+  "summary": "Ride behind miniature steam and diesel locomotives around an extensive outdoor railway, run by enthusiasts and open on selected dates in the main season, subject to weather and operational conditions.",
+  "reasonToVisit": "A miniature steam and diesel railway run by enthusiasts, open on selected dates",
+  "planningDetail": "Selected Sundays, usually May to October — check age rules and the day's service before travelling",
+  "categories": [
+    "families",
+    "seasonal",
+    "heritage-and-culture"
+  ],
+  "bestFor": [
+    "Families",
+    "train enthusiasts",
+    "a distinctive local outing"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "selected-dates",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://cockcrow.co.uk/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 42
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Watch Walton and Hersham FC",
+  "slug": "watch-walton-and-hersham-fc",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Support the Swans at the Elmbridge Xcel Sports Hub for a friendly, inclusive taste of local football. The main stand seats around 500, including wheelchair viewing positions, with a catering unit, two bars and a club shop on matchdays.",
+  "reasonToVisit": "A friendly, sociable home fixture for Walton and Hersham FC",
+  "planningDetail": "Enter from Waterside Drive; the stadium car park fills quickly, so arrive early or use the main Xcel car park",
+  "categories": [
+    "sport-and-active",
+    "families"
+  ],
+  "bestFor": [
+    "Football supporters",
+    "families",
+    "local atmosphere"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "internalUrl": "/things-to-do/walton-and-hersham-fc/",
+  "officialUrl": "https://waltonhershamfc.com/fixtures/first-team/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 71
+}

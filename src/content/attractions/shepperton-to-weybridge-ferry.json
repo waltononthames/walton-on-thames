@@ -1,0 +1,28 @@
+{
+  "name": "Shepperton to Weybridge Ferry",
+  "slug": "shepperton-to-weybridge-ferry",
+  "area": "Shepperton",
+  "locationBand": "neighbouring",
+  "summary": "The Nauticalia Ferry carries pedestrians and bicycles across the Thames between Shepperton and Weybridge. A ferry has served this crossing for centuries, and today's small boat is both a useful Thames Path connection and a pleasingly old-fashioned experience.",
+  "reasonToVisit": "A centuries-old pedestrian and cycle ferry crossing between Shepperton and Weybridge",
+  "planningDetail": "Daily in the main season with a reduced winter service; operates only when weather and river conditions permit",
+  "categories": [
+    "on-the-water",
+    "heritage-and-culture"
+  ],
+  "bestFor": [
+    "Walkers",
+    "cyclists",
+    "local history",
+    "circular routes"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.theferrypoint.com/pedestrian-ferry-to-weybridge/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 61
+}

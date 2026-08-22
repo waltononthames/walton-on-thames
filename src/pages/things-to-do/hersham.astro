@@ -1,0 +1,314 @@
+---
+// Hersham's own ranking page, targeting "things to do in hersham" (brief
+// section 5.2). Duplication controls, brief section 2 — all five followed
+// deliberately, noted inline where relevant:
+//  1. Introduction below is purpose-written for Hersham, not adapted from
+//     the hub's intro, and draws only on facts already verified and
+//     published on /hersham/index.astro (village green, golf clubs,
+//     parish history) rather than inventing anything new.
+//  2. Only area:'Hersham' records get full cards, plus one named
+//     exception: Watch Walton and Hersham FC is area:'Walton-on-Thames'
+//     in the data (its ground is genuinely over the boundary in Walton —
+//     see Elmbridge Xcel Leisure Complex, same site), but the brief's own
+//     section 2 names it as an intended Hersham-page card "where
+//     appropriate" given the club's dual identity. Everything else from
+//     Walton appears only in the compact link list at the foot.
+//  3. Own FAQ, different questions from the hub's.
+//  4. Own title/description/H1/self-referencing canonical (BaseLayout
+//     defaults canonical to the current path — no override needed).
+//  5. Card `summary`/reasonToVisit/planningDetail text is shared with the
+//     hub (from the same attractions collection); every other word on
+//     this page is unique to it.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AttractionCard from '../../components/AttractionCard.astro';
+import { attractionCardProps as cardProps } from '../../utils/attractionCardProps';
+
+const SITE = 'https://walton-on-thames.org';
+
+const attractions = await getCollection('attractions');
+const bySlug = (slug: string) => attractions.find((a) => a.data.slug === slug)!.data;
+
+const villageGreen = bySlug('hersham-village-green');
+const sportCards = ['watch-esher-rugby-in-hersham', 'watch-walton-and-hersham-fc', 'golf-in-hersham-and-walton'].map(bySlug);
+const familyCards = ['safari-adventure-golf-hersham', 'hersham-recreation-ground', 'coronation-recreation-ground-hersham'].map(bySlug);
+const allShown = [villageGreen, ...sportCards, ...familyCards];
+
+const nearbyWalton = [
+  { name: 'Cowey Sale', href: '/things-to-do/cowey-sale/' },
+  { name: 'Walton Bridge', href: '/things-to-do/walton-bridge/' },
+  { name: 'The Thames Path riverside walk', href: '/things-to-do/riverside-walks/' },
+  { name: 'Riverhouse Barn Arts Centre', href: '/things-to-do/riverhouse-barn/' },
+  { name: 'the Shepperton Cruise from Cowey Sale', href: 'https://www.jgfboats.com/shepperton-cruise/' },
+  { name: 'Everyman Walton cinema', href: 'https://www.everymancinema.com/venues-list/x0710-everyman-walton/' },
+  { name: 'Elmbridge Xcel Leisure Complex', href: '/things-to-do/elmbridge-xcel-leisure-centre/' },
+  { name: "St Mary's Church", href: 'https://waltonparish.org.uk/tour/' },
+  { name: 'the Walton Trail', href: 'https://lovewalton.co.uk/walton-trail/' },
+];
+
+const faqs = [
+  {
+    q: 'What is there to do in Hersham with children?',
+    a: 'Safari Adventure Golf brings an 18-hole safari-themed adventure golf course to Hersham Golf Club, good for a quick family activity or a small group. Hersham Recreation Ground has a play area and a seasonal splash pad, and Coronation Recreation Ground adds another play area alongside its café and sports pitches. All three work well for a half-day out without booking anything in advance, other than checking the splash pad is running.',
+  },
+  {
+    q: 'Does Hersham have a park with a splash pad?',
+    a: 'Yes. Hersham Recreation Ground has a seasonal splash pad alongside its play area and multi-use games space. The splash pad only runs in season, so check its current status before promising it to children, particularly outside the summer months.',
+  },
+  {
+    q: 'Where can I watch sport in Hersham?',
+    a: 'Esher Rugby Club plays its home fixtures on Molesey Road in Hersham, despite the club\'s name. Walton and Hersham FC\'s ground lies just over the boundary in Walton, at the Elmbridge Xcel Sports Hub off Waterside Drive, close enough that most Hersham residents treat it as a home fixture. For golf, Hersham Golf Club and Burhill Golf Club both have courses within the village bounds.',
+  },
+  {
+    q: 'Is Hersham Village Green worth visiting?',
+    a: 'Yes, particularly if you want a sense of the village rather than a specific attraction. The green hosts regular community events through the year and is faced by Hersham\'s shops, pub and pond, making it a natural place to start or finish a visit alongside a walk or a meal nearby.',
+  },
+  {
+    q: 'How far is it from Hersham to the Walton riverside?',
+    a: 'Hersham is contiguous with Walton-on-Thames and shares its post town, so the Thames at Cowey Sale and Walton Bridge is a short walk or drive from the village green. See the "A short distance away in Walton-on-Thames" section below for the closest riverside and town-centre attractions.',
+  },
+];
+
+const itemListElements = allShown.map((a, i) => ({
+  '@type': 'ListItem',
+  position: i + 1,
+  name: a.name,
+  item: a.internalUrl ? `${SITE}${a.internalUrl}` : (a.officialUrl ?? `${SITE}/things-to-do/hersham/#${a.slug}`),
+}));
+
+const reviewedDateStr = new Date('2026-08-22T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title="Things to Do in Hersham, Surrey | Walton-on-Thames.org"
+  description="Things to do in Hersham: the village green, Coronation and Hersham recreation grounds, Safari Adventure Golf, and local sport on Molesey Road."
+  image="/images/hersham-green-village-sign-hero.webp"
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Hersham', item: `${SITE}/things-to-do/hersham/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: itemListElements,
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })} />
+  </slot>
+
+  <div class="hersham-hero">
+    <div class="hersham-hero-bg" aria-hidden="true">
+      <img
+        src="/images/hersham-green-village-sign-hero.webp"
+        alt="The Hersham Village sign on Hersham Green"
+        fetchpriority="high"
+        width="2048"
+        height="768"
+      />
+      <div class="hersham-hero-overlay"></div>
+    </div>
+    <div class="container hersham-hero-content">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Hersham</li>
+        </ol>
+      </nav>
+      <h1>Things to Do in Hersham</h1>
+      <p class="byline">By Darren Bayley · Last reviewed {reviewedDateStr}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container prose intro-prose">
+      <p>Hersham sits immediately south of Walton-on-Thames, close enough that the two share a post town, but it has kept its own identity around Hersham Green: a proper village green faced by shops, a pub and a pond, and the natural place to start any visit. From the green, Hersham's things to do are mostly about green space and community sport rather than riverside sightseeing.</p>
+      <p>Coronation Recreation Ground and Hersham Recreation Ground give the village its everyday parks, with play areas, sport pitches and a seasonal splash pad. Molesey Road is Hersham's sporting corridor, home to Esher Rugby Club, and Walton and Hersham FC's ground lies just over the boundary in Walton at the Elmbridge Xcel Sports Hub. Golf has deep roots here too, with Hersham Golf Club and Burhill's championship courses both within the village bounds. For something more active with children, Safari Adventure Golf's safari-themed course adds a distinctly family option.</p>
+      <p>This guide covers Hersham's own attractions in full, then signposts the short walk or drive into Walton-on-Thames for the riverside walks, boat trips and arts venues covered on the main <a href="/things-to-do/">things to do in Walton-on-Thames</a> hub.</p>
+    </div>
+  </section>
+
+  <section class="section band-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Hersham Village Green</h2>
+        <p>The heart of the village and the best place to get a feel for Hersham before heading further afield.</p>
+      </div>
+      <div class="prose village-green-copy">
+        <p>Hersham Village Green is a proper village green rather than a formal attraction, and that is exactly its appeal: somewhere to sit, meet, or let children run around without needing a plan. The green is faced by the village's shops, a pub and a pond, and it hosts regular community events through the year, from seasonal markets to one-off gatherings, so what's actually happening on the green can change from one visit to the next.</p>
+        <p>It works well as a starting or finishing point rather than a destination in its own right: pair it with a coffee from the parade, a stop at the pub, or a short walk before heading on to one of the recreation grounds, Molesey Road for sport, or the short hop into Walton for the riverside. If you are trying to get a sense of Hersham as a place, rather than ticking off a specific attraction, the green is where to start.</p>
+      </div>
+      <div class="card-grid card-grid-3 single-card-row">
+        <div id={villageGreen.slug}>
+          <AttractionCard {...cardProps(villageGreen)} headingLevel="h3" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-section band-section--alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sport in Hersham</h2>
+        <p>Molesey Road and the Elmbridge Xcel Sports Hub give Hersham a proper matchday atmosphere, with golf close behind. Esher Rugby plays its home fixtures on Molesey Road despite the club's name, and Walton and Hersham FC's ground is close enough over the Walton boundary that most Hersham residents treat it as their own. Hersham Golf Club and Burhill add two more established local clubs.</p>
+      </div>
+      <div class="card-grid card-grid-3">
+        {sportCards.map((a) => (
+          <div id={a.slug}>
+            <AttractionCard {...cardProps(a)} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Families in Hersham</h2>
+        <p>A run of low-key, easy-to-reach options for a half-day out with children, none of which need a car park battle or a booked ticket to get started. Safari Adventure Golf is the one worth planning around; the two recreation grounds are better as a spontaneous stop.</p>
+      </div>
+      <div class="card-grid card-grid-3">
+        {familyCards.map((a) => (
+          <div id={a.slug}>
+            <AttractionCard {...cardProps(a)} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>Frequently asked questions</h2>
+      {faqs.map((f) => (
+        <>
+          <h3>{f.q}</h3>
+          <p>{f.a}</p>
+        </>
+      ))}
+    </div>
+  </section>
+
+  <section class="section band-section band-section--alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>A short distance away in Walton-on-Thames</h2>
+        <p>Hersham Green is a short walk or drive from the Thames riverside and Walton town centre. These are the closest Walton attractions, covered in full on the main <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub.</p>
+      </div>
+      <ul class="nearby-list">
+        {nearbyWalton.map((n) => (
+          <li><a href={n.href} target={n.href.startsWith('http') ? '_blank' : undefined} rel={n.href.startsWith('http') ? 'noopener' : undefined}>{n.name}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <p class="editorial-note">This guide is compiled and checked by a Walton resident against operators' own official websites, not copied from other guides. Last reviewed {reviewedDateStr}.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hersham-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--color-white);
+    min-height: 320px;
+  }
+
+  .hersham-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hersham-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+  }
+
+  .hersham-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(1, 32, 44, 0.55) 0%, rgba(1, 32, 44, 0.72) 60%, rgba(1, 32, 44, 0.88) 100%);
+  }
+
+  .hersham-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 2.5rem 0;
+  }
+
+  .hersham-hero-content h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+  }
+
+  .intro-prose {
+    max-width: 70ch;
+  }
+
+  .village-green-copy {
+    max-width: 70ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .band-section {
+    background: var(--color-white);
+  }
+
+  .band-section--alt {
+    background: var(--color-cream);
+  }
+
+  .single-card-row {
+    max-width: 380px;
+  }
+
+  .nearby-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    max-width: 70ch;
+  }
+
+  .nearby-list a {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .editorial-note {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+    font-size: 0.85rem;
+    color: var(--color-slate);
+  }
+</style>

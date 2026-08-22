@@ -1,0 +1,29 @@
+{
+  "name": "RHS Garden Wisley",
+  "slug": "rhs-garden-wisley",
+  "area": "Woking",
+  "locationBand": "bigger-day-out",
+  "summary": "One of the world's best-known gardens, Wisley offers a full day of horticulture across extensive formal and informal spaces. Highlights include the Glasshouse, RHS Hilltop, seasonal borders and a busy calendar of family and gardening events.",
+  "reasonToVisit": "One of the world's best-known gardens, easily filling a full day out",
+  "planningDetail": "Advance booking can be worthwhile for major events and peak days",
+  "categories": [
+    "heritage-and-culture",
+    "parks-and-walks",
+    "families"
+  ],
+  "bestFor": [
+    "Garden lovers",
+    "photography",
+    "families",
+    "repeat seasonal visits"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.rhs.org.uk/gardens/wisley",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 39
+}

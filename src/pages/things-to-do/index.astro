@@ -1,26 +1,127 @@
 ---
+// Things to Do hub — the flagship page targeting "things to do in
+// walton-on-thames". Built per the Things to Do hub brief v2 (22 Aug 2026),
+// section 5.1: page copy, section order, "Eight excellent places to
+// start", curated lists, itineraries and FAQ are the approved editorial
+// draft's own text (16/22 Aug 2026), not rewritten. The three location-band
+// sections and the annual-events section are generated from the
+// attractions/annual-events content collections built in Phase 1.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PlaceCard from '../../components/PlaceCard.astro';
+import AttractionCard from '../../components/AttractionCard.astro';
+import AnnualEventCard from '../../components/AnnualEventCard.astro';
+import ThingsToDoFilterLinks from '../../components/ThingsToDoFilterLinks.astro';
+import ThingsToDoStickyNav from '../../components/ThingsToDoStickyNav.astro';
 import { getCollection } from 'astro:content';
+import { attractionCardProps as cardProps } from '../../utils/attractionCardProps';
 
-const places = await getCollection('places');
-const sorted = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
+const SITE = 'https://walton-on-thames.org';
+
+const attractions = await getCollection('attractions');
+const byBand = (band: 'local' | 'neighbouring' | 'bigger-day-out') =>
+  attractions.filter((a) => a.data.locationBand === band).sort((a, b) => b.data.sortWeight - a.data.sortWeight);
+
+const local = byBand('local');
+const neighbouring = byBand('neighbouring');
+const biggerDayOut = byBand('bigger-day-out');
+const allShown = [...local, ...neighbouring, ...biggerDayOut];
+
+// Calendar-ish narrative order, matching how the editorial draft presents
+// them — the annual-events schema has no ordering field of its own.
+const EVENT_ORDER = [
+  'walton-and-weybridge-regatta', 'walton-duckathon', 'make-music-day-in-walton',
+  'walton-fayre', 'walton-heritage-festival', 'walton-festival-of-light',
+  'hampton-court-palace-festival', 'sunbury-amateur-regatta', 'hampton-court-palace-food-festival',
+  'brooklands-classic-gatherings', 'rhs-wisley-flower-show-and-glow', 'kempton-park-christmas-festival',
+];
+const annualEventsRaw = await getCollection('annual-events');
+const annualEvents = EVENT_ORDER
+  .map((slug) => annualEventsRaw.find((e) => e.data.slug === slug))
+  .filter((e): e is typeof annualEventsRaw[number] => Boolean(e));
+
+const faqs = [
+  {
+    q: 'What are the best things to do in Walton-on-Thames?',
+    a: 'The best distinctly Walton experiences are walking beside the Thames at Cowey Sale, seeing Walton Bridge, hiring a boat from Walton Marina, following the Walton Trail and attending a performance at Riverhouse Barn or Cecil Hepworth Playhouse.',
+  },
+  {
+    q: 'What can families do in Walton-on-Thames and Hersham?',
+    a: 'Safari Adventure Golf, Rock Up, Elmbridge Xcel, local playgrounds, Everyman Walton and the Thames riverside are among the easiest family options in Walton and Hersham. Nearby family favourites include Hampton Court Palace, Brooklands Museum, Mercedes-Benz World, Painshill, Bocketts Farm, Chessington and Hobbledown Heath.',
+  },
+  {
+    q: 'What can I do for free?',
+    a: 'Walk the Thames Path, explore Cowey Sale and Walton Bridge, follow the Walton Trail or visit a local park. Nearby, Bushy Park, Sunbury Walled Garden, Mercedes-Benz World’s general displays and Chertsey Museum can all be visited without a standard admission charge, although parking and optional activities may cost extra.',
+  },
+  {
+    q: 'Can I hire a boat in Walton-on-Thames?',
+    a: 'Walton Boat Hire currently advertises six-seat self-drive motor day boats from Walton Marina, normally from Easter to October. Bookings are requested by enquiry and then confirmed by the operator. Its website states that no licence is required, with instructions and a safety briefing provided before departure.',
+  },
+  {
+    q: 'Are there passenger cruises from Walton-on-Thames?',
+    a: 'Yes. JGF Passenger Boats operates the seasonal Shepperton Cruise from Cowey Sale beside Walton Bridge. This is a crewed 45-minute circular trip through the Desborough Channel, around D’Oyly Carte Island and back along the older course of the Thames. Check the official timetable because sailing days and times vary through the season.',
+  },
+  {
+    q: 'Which major attractions are closest to Walton-on-Thames?',
+    a: 'Hampton Court Palace, Brooklands Museum, Mercedes-Benz World, Painshill and Bushy Park are among the strongest major attractions close to Walton. Thorpe Park, Chessington, RHS Wisley and Bocketts Farm are suitable for a longer day out.',
+  },
+  {
+    q: 'Are the Thames ferries open all year?',
+    a: 'Sunbury Ferry is seasonal, while the Shepperton to Weybridge ferry generally has a fuller main-season service and a reduced winter service. Both can stop when weather or river conditions are unsuitable, so always check the operator’s website before travelling.',
+  },
+  {
+    q: 'When is the Walton and Weybridge Regatta?',
+    a: 'The regatta is normally held in early June, but its exact dates and duration are confirmed separately each year. Check the official Walton and Weybridge Regatta website for the next dates, race information and event notices.',
+  },
+];
+
+const stickySections = [
+  { id: 'eight-excellent-places-to-start', label: 'Where to start' },
+  { id: 'things-to-do-in-walton-on-thames-and-hersham', label: 'Walton & Hersham' },
+  { id: 'things-to-do-along-the-thames-and-in-neighbouring-towns', label: 'Nearby towns' },
+  { id: 'bigger-days-out-near-walton-on-thames', label: 'Bigger days out' },
+  { id: 'annual-and-seasonal-events', label: 'Events' },
+  { id: 'frequently-asked-questions', label: 'FAQ' },
+];
+
+const itemListElements = allShown.map((a, i) => ({
+  '@type': 'ListItem',
+  position: i + 1,
+  name: a.data.name,
+  item: a.data.internalUrl ? `${SITE}${a.data.internalUrl}` : (a.data.officialUrl ?? `${SITE}/things-to-do/#${a.data.slug}`),
+}));
+
+const reviewedDateStr = new Date('2026-08-22T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
 <BaseLayout
-  title="Things to Do in Walton-on-Thames | Parks & Landmarks"
-  description="Discover the best things to do in Walton-on-Thames, Hersham and Whiteley Village — riverside walks, heritage sites, parks and local attractions."
+  title="Things to Do in Walton-on-Thames | Walton-on-Thames.org"
+  description="Discover the best things to do in Walton-on-Thames and Hersham, from Thames walks, boats and local theatre to Hampton Court, Brooklands and family days out nearby."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Things to Do", "item": "https://walton-on-thames.org/things-to-do/" }
-      ]
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: itemListElements,
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
     })} />
   </slot>
+
+  <ThingsToDoStickyNav sections={stickySections} />
 
   <div class="page-hero">
     <div class="container">
@@ -30,42 +131,204 @@ const sorted = places.sort((a, b) => a.data.name.localeCompare(b.data.name));
           <li aria-current="page">Things to Do</li>
         </ol>
       </nav>
-      <h1>Things to Do</h1>
-      <p>Riverside walks, heritage villages, parks and green spaces — there's more to explore than you might think.</p>
+      <h1>Things to Do in Walton-on-Thames, Hersham and Nearby</h1>
+      <p class="byline">By Darren Bayley · Last reviewed {reviewedDateStr}</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
-      <div class="info-card" style="margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
-        <div>
-          <h2 style="font-size: 1.15rem; margin-bottom: 0.35rem;">Apps Court Car Boot Sale</h2>
-          <p style="color: var(--color-slate); margin: 0;">Times, seller prices, parking and the latest on/off status for Surrey's largest car boot sale, held on Hurst Road.</p>
-        </div>
-        <a href="/things-to-do/apps-court-car-boot-sale/" class="btn btn-primary">Read the guide</a>
+      <div class="prose intro-prose">
+        <p>Walton-on-Thames is a particularly good base for riverside walks, boating, local arts and easy family days out. Stay close to home for the Thames Path, independent theatre, cinema, parks and sport, or travel a little further for Hampton Court Palace, Brooklands Museum, Painshill and some of Surrey's biggest attractions.</p>
+        <p>This guide starts with places in Walton-on-Thames and Hersham, then moves out through neighbouring towns. Opening days, river services, outdoor activities and seasonal attractions can change, so follow the official link before making a special journey.</p>
+        <p>Looking specifically for ideas in the village? Visit the dedicated <a href="/things-to-do/hersham/">Things to do in Hersham</a> guide for Hersham parks, family activities and local sport.</p>
       </div>
 
+      <div style="margin: 2rem 0 3rem;">
+        <ThingsToDoFilterLinks />
+      </div>
+
+      <h2 id="eight-excellent-places-to-start">Eight excellent places to start</h2>
+      <ol class="eight-places">
+        <li><strong><a href="/things-to-do/riverside-walks/">The Thames Path</a></strong> and <strong><a href="/things-to-do/cowey-sale/">Cowey Sale</a></strong> for an easy local riverside walk, a picnic and views of Walton Bridge.</li>
+        <li><strong><a href="https://www.jgfboats.com/shepperton-cruise/" target="_blank" rel="noopener">The Shepperton Cruise from Cowey Sale</a></strong> for a short crewed passenger-boat trip from Walton Bridge.</li>
+        <li><strong><a href="/things-to-do/riverhouse-barn/">Riverhouse Barn Arts Centre</a></strong> for theatre, music, comedy, exhibitions and family performances.</li>
+        <li><strong><a href="https://www.hrp.org.uk/hampton-court-palace/" target="_blank" rel="noopener">Hampton Court Palace</a></strong> for Tudor history, gardens and a full day out.</li>
+        <li><strong><a href="https://www.brooklandsmuseum.com/" target="_blank" rel="noopener">Brooklands Museum</a></strong> for pioneering motorsport, aviation and Concorde.</li>
+        <li><strong><a href="https://www.mercedes-benzworld.co.uk/" target="_blank" rel="noopener">Mercedes-Benz World</a></strong> for free displays, simulators and bookable driving experiences.</li>
+        <li><strong><a href="https://www.painshill.co.uk/" target="_blank" rel="noopener">Painshill</a></strong> for a beautiful landscape garden, lake, follies and the Crystal Grotto.</li>
+        <li><strong><a href="https://www.royalparks.org.uk/visit/parks/bushy-park" target="_blank" rel="noopener">Bushy Park</a></strong> for a free open-air day among ancient trees, waterways and roaming deer.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section band-section" id="things-to-do-in-walton-on-thames-and-hersham">
+    <div class="container">
+      <div class="section-header">
+        <h2>Things to do in Walton-on-Thames and Hersham</h2>
+        <p>The river, local arts venues, parks and community sport that make Walton and Hersham worth exploring on their own doorstep.</p>
+      </div>
       <div class="card-grid card-grid-3">
-        {sorted.map(place => (
-          <PlaceCard
-            name={place.data.name}
-            slug={place.data.slug}
-            category={place.data.category}
-            neighbourhood={place.data.neighbourhood}
-            description={place.data.description}
-            images={place.data.images}
-          />
+        {local.map((a) => (
+          <div id={a.data.slug}>
+            <AttractionCard {...cardProps(a.data)} />
+          </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section band-section band-section--alt" id="things-to-do-along-the-thames-and-in-neighbouring-towns">
+    <div class="container">
+      <div class="section-header">
+        <h2>Things to do along the Thames and in neighbouring towns</h2>
+        <p>A short drive or ferry ride from Walton: Hampton Court, Brooklands, Sunbury, Weybridge, Esher and the rest of the riverside towns nearby.</p>
+      </div>
+      <div class="card-grid card-grid-3">
+        {neighbouring.map((a) => (
+          <div id={a.data.slug}>
+            <AttractionCard {...cardProps(a.data)} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-section" id="bigger-days-out-near-walton-on-thames">
+    <div class="container">
+      <div class="section-header">
+        <h2>Bigger days out near Walton-on-Thames</h2>
+        <p>Worth the longer drive for a full day out: theme parks, National Trust gardens and major museums within easy reach of Walton.</p>
+      </div>
+      <div class="card-grid card-grid-3">
+        {biggerDayOut.map((a) => (
+          <div id={a.data.slug}>
+            <AttractionCard {...cardProps(a.data)} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-section band-section--alt" id="annual-and-seasonal-events">
+    <div class="container">
+      <div class="section-header">
+        <h2>Annual and seasonal events</h2>
+        <p>Walton and the surrounding Thames towns have a strong calendar of regattas, community celebrations, festivals and winter events. The broad time of year is reasonably predictable, but exact dates, locations and programmes change. Treat the timings below as planning guidance and always follow the organiser's link for the next confirmed event.</p>
+      </div>
+      <ul class="event-list" role="list">
+        {annualEvents.map((e) => <AnnualEventCard {...e.data} />)}
+      </ul>
+      <p class="events-see-more">
+        See the full calendar on <a href="/things-to-do/annual-events/">annual and seasonal events</a>, or for one-off performances, workshops, markets and community activities, check the site's live <a href="/whats-on/">What's On</a> coverage rather than relying on this evergreen page for every date.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2 id="free-things-to-do">Free things to do</h2>
+      <p>For a good day out without an admission charge, start with:</p>
+      <ul>
+        <li>the <a href="/things-to-do/riverside-walks/">Thames Path</a>, <a href="/things-to-do/cowey-sale/">Cowey Sale</a> and <a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+        <li>the <a href="https://lovewalton.co.uk/walton-trail/" target="_blank" rel="noopener">Walton Trail</a> and <a href="https://waltonparish.org.uk/tour/" target="_blank" rel="noopener">St Mary's self-guided church tour</a></li>
+        <li>Coronation, Elmgrove and Hersham recreation grounds</li>
+        <li><a href="/things-to-do/hersham-village-green/">Hersham Village Green</a></li>
+        <li><a href="https://elmbridgemuseum.org.uk/" target="_blank" rel="noopener">Elmbridge Museum</a>'s online exhibitions and free local displays</li>
+        <li>Bushy Park and Hurst Park Open Space</li>
+        <li>Sunbury Walled Garden and Sunbury Gallery</li>
+        <li>Mercedes-Benz World's general displays</li>
+        <li>Chertsey Museum</li>
+        <li>Runnymede and Ankerwycke, allowing for parking costs</li>
+      </ul>
+      <p>Some venues welcome donations, and transport, parking, food or special activities may still cost money.</p>
+
+      <h2 id="things-to-do-with-children">Things to do with children</h2>
+      <p>For younger children, consider Safari Adventure Golf, Hersham Recreation Ground and its seasonal splash pad, Rock Up's soft play, Hobbledown Heath, Bocketts Farm, Great Cockcrow Railway, the London Bus Museum and the Hampton and Kempton Waterworks Railway. Older children and teenagers may prefer Rock Up climbing, Jump In, skiing at The Oakwood, go-kart racing at Daytona, Topgolf, Thorpe Park, Chessington, paddlesports or a Brooklands and Mercedes-Benz World day.</p>
+      <p>Hampton Court Palace, Painshill, Claremont and Bushy Park work particularly well when a family wants history or scenery without expecting children to stay indoors all day.</p>
+
+      <h2 id="rainy-day-things-to-do">Rainy-day things to do</h2>
+      <p>Good wet-weather options include Everyman Walton, Rock Up, Elmbridge Xcel, Riverhouse Barn and Cecil Hepworth Playhouse. Nearby, choose Brooklands Museum and the London Bus Museum, Mercedes-Benz World, Jump In Esher, Chertsey Museum or the World Rugby Museum. Brooklands and Bocketts both include outdoor areas, so waterproof clothing may still be useful.</p>
+
+      <h2 id="things-to-do-on-and-beside-the-water">Things to do on and beside the water</h2>
+      <p>The crewed <a href="https://www.jgfboats.com/shepperton-cruise/" target="_blank" rel="noopener">Shepperton Cruise</a> provides a short circular passenger-boat trip from Cowey Sale. Pre-booked day-boat hire at Walton Marina is another way to get afloat when the operator confirms availability. Sunbury Ferry and the Shepperton to Weybridge Ferry turn a walk into a small adventure, while Hampton Court Paddle Sports, Queen Mary Sailing Club and Shepperton Open Water Swim offer more active experiences. For a no-booking alternative, follow the Thames Path through Cowey Sale and beneath Walton Bridge.</p>
+      <p>Always check river, lake and weather conditions. Only enter open water through an organised venue or with the appropriate skills, equipment and local knowledge.</p>
+
+      <h2 id="suggested-one-day-itineraries">Suggested one-day itineraries</h2>
+
+      <h3>A relaxed Walton day</h3>
+      <p>Begin with coffee in the town centre, follow the Walton Trail towards the river, walk through Cowey Sale and stop at Walton Bridge. In season, take the 45-minute Shepperton Cruise from Cowey Sale. Alternatively, if Walton Boat Hire confirms availability, add a pre-booked self-drive trip. Finish with a performance at Riverhouse Barn or a film at Everyman.</p>
+
+      <h3>A transport and engineering day</h3>
+      <p>Spend the morning exploring Brooklands Museum and the London Bus Museum, adding the timed Concorde Experience if it appeals. Walk or drive next door to Mercedes-Benz World for free displays and a simulator or pre-booked driving experience.</p>
+
+      <h3>A palace, park and river day</h3>
+      <p>Visit Hampton Court Palace early, then walk beside the Thames or continue into Bushy Park. In suitable weather, replace part of the walk with a paddle-sports booking near Hampton Court.</p>
+
+      <h3>A free or low-cost family day</h3>
+      <p>Choose a local recreation ground in the morning, bring a picnic to Cowey Sale and take a Thames walk. If the Sunbury Ferry is running, cross the river and explore Sunbury Walled Garden and its free gallery.</p>
+
+      <h2 id="frequently-asked-questions">Frequently asked questions</h2>
+      {faqs.map((f) => (
+        <>
+          <h3>{f.q}</h3>
+          <p>{f.a}</p>
+        </>
+      ))}
+
+      <p class="editorial-note">This guide is compiled and checked by a Walton resident against operators' own official websites, not copied from other guides. Last reviewed {reviewedDateStr}.</p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .info-card {
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .intro-prose {
+    max-width: 70ch;
+  }
+
+  .eight-places {
+    max-width: 70ch;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .eight-places li {
+    line-height: 1.65;
+  }
+
+  .band-section {
     background: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-card);
+  }
+
+  .band-section--alt {
+    background: var(--color-cream);
+  }
+
+  .event-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .events-see-more {
+    margin-top: 2rem;
+    max-width: 70ch;
+  }
+
+  .editorial-note {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+    font-size: 0.85rem;
+    color: var(--color-slate);
   }
 </style>

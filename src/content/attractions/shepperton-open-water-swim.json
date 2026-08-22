@@ -1,0 +1,28 @@
+{
+  "name": "Shepperton Open Water Swim",
+  "slug": "shepperton-open-water-swim",
+  "area": "Shepperton",
+  "locationBand": "neighbouring",
+  "summary": "Ferris Meadow Lake is a dedicated natural open-water swimming venue in Shepperton. Sessions must be booked, and new swimmers complete an induction and swim test before using the lake.",
+  "reasonToVisit": "A dedicated open-water swimming lake with induction sessions for new swimmers",
+  "planningDetail": "Adult-focused venue with specific coaching requirements for under-18s — read all safety and booking information first",
+  "categories": [
+    "on-the-water",
+    "sport-and-active",
+    "seasonal"
+  ],
+  "bestFor": [
+    "Confident swimmers",
+    "open-water training",
+    "fitness"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://sheppertonopenwaterswim.co.uk/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 50
+}

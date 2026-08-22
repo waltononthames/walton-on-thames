@@ -1,0 +1,29 @@
+{
+  "name": "Claremont Landscape Garden, Esher",
+  "slug": "claremont-landscape-garden",
+  "area": "Esher",
+  "locationBand": "neighbouring",
+  "summary": "This National Trust garden is an important surviving 18th-century landscape, arranged around a lake and amphitheatre, combining history and scenery with family play areas so adults can enjoy the garden while children stay active.",
+  "reasonToVisit": "An 18th-century National Trust landscape garden with a lake, amphitheatre and play areas",
+  "planningDetail": "National Trust membership or admission applies; check current opening times",
+  "categories": [
+    "heritage-and-culture",
+    "parks-and-walks",
+    "families"
+  ],
+  "bestFor": [
+    "Families",
+    "gardens",
+    "walks",
+    "National Trust members"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.nationaltrust.org.uk/visit/surrey/claremont-landscape-garden",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 67
+}

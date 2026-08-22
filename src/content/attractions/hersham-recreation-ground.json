@@ -1,0 +1,31 @@
+{
+  "name": "Hersham Recreation Ground",
+  "slug": "hersham-recreation-ground",
+  "area": "Hersham",
+  "locationBand": "local",
+  "summary": "One of the most useful family green spaces in Hersham, with a play area, multi-use games space and a seasonal splash pad — a good choice when children need somewhere active without planning a full day out.",
+  "reasonToVisit": "A Hersham park with play, games space and a seasonal splash pad",
+  "planningDetail": "The splash pad is seasonal — check its current status before promising it to children",
+  "categories": [
+    "free",
+    "families",
+    "sport-and-active",
+    "seasonal"
+  ],
+  "bestFor": [
+    "Children",
+    "outdoor play",
+    "summer water play",
+    "casual sport"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "internalUrl": "/things-to-do/hersham-recreation-ground/",
+  "officialUrl": "https://www.elmbridge.gov.uk/leisure-and-culture/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory-3",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 84
+}

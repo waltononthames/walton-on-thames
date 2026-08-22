@@ -1,0 +1,30 @@
+{
+  "name": "Daytona Sandown Park, Esher",
+  "slug": "daytona-sandown-park",
+  "area": "Esher",
+  "locationBand": "neighbouring",
+  "summary": "Race go-karts on Daytona's outdoor circuit within the Sandown Park complex: a 900-metre Grand Prix circuit with eight corners and two high-speed straights, plus two shorter circuits for younger drivers, and sessions from beginner practice to championships.",
+  "reasonToVisit": "Outdoor go-karting on a full Grand Prix-style circuit, with shorter circuits for younger drivers",
+  "planningDetail": "Advance booking recommended; minimum ages and kart types vary by session",
+  "categories": [
+    "sport-and-active"
+  ],
+  "bestFor": [
+    "Motorsport fans",
+    "older children and teenagers",
+    "adult groups",
+    "birthday parties",
+    "team events"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "address": "More Lane, Esher, KT10 8AN",
+  "bookingNote": "Advance booking recommended",
+  "officialUrl": "https://daytona.co.uk/locations/sandown-park/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 49
+}

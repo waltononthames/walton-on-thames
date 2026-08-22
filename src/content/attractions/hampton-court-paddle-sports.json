@@ -1,0 +1,28 @@
+{
+  "name": "Hampton Court Paddle Sports, West Molesey",
+  "slug": "hampton-court-paddle-sports",
+  "area": "West Molesey",
+  "locationBand": "neighbouring",
+  "summary": "Hire a kayak, canoe or stand-up paddleboard, take a lesson or join a guided experience on the Thames near Hampton Court — a memorable way to see a familiar stretch of river from a different angle.",
+  "reasonToVisit": "Kayak, canoe and paddleboard hire and lessons on the Thames near Hampton Court",
+  "planningDetail": "Check age, ability, supervision and weather requirements before booking",
+  "categories": [
+    "on-the-water",
+    "sport-and-active"
+  ],
+  "bestFor": [
+    "Active couples",
+    "groups",
+    "older children",
+    "beginners with instruction"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.hamptoncourtpaddlesports.com/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 57
+}

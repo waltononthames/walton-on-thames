@@ -1,0 +1,28 @@
+{
+  "name": "London Bus Museum at Brooklands, Weybridge",
+  "slug": "london-bus-museum-brooklands",
+  "area": "Weybridge",
+  "locationBand": "neighbouring",
+  "summary": "The London Bus Museum preserves the world's largest collection of working historic London buses, tracing almost two centuries of public transport through horse buses, early motor buses, classic double-deckers, uniforms and other artefacts, in its own building at Brooklands.",
+  "reasonToVisit": "The world's largest collection of working historic London buses",
+  "planningDetail": "One ticket covers both museums; heritage bus rides usually run weekends and Surrey school holidays, subject to availability",
+  "categories": [
+    "heritage-and-culture",
+    "families"
+  ],
+  "bestFor": [
+    "Families",
+    "transport enthusiasts",
+    "social history",
+    "a Brooklands day out"
+  ],
+  "setting": "mixed",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.londonbusmuseum.com/",
+  "schemaType": "Museum",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 64
+}

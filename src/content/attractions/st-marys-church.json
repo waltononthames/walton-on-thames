@@ -1,0 +1,27 @@
+{
+  "name": "St Mary's Church",
+  "slug": "st-marys-church",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Walton's Grade I listed parish church has medieval origins and layers of local history. Use the church's self-guided tour to explore its architecture, memorials and stories when the building is open. This is an active place of worship.",
+  "reasonToVisit": "A Grade I listed medieval parish church with a self-guided history tour",
+  "planningDetail": "An active place of worship — check access and service times before visiting",
+  "categories": [
+    "free",
+    "heritage-and-culture"
+  ],
+  "bestFor": [
+    "Architecture",
+    "heritage",
+    "quiet visits"
+  ],
+  "setting": "indoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://waltonparish.org.uk/tour/",
+  "schemaType": "Church",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 68
+}

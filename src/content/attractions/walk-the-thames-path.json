@@ -1,0 +1,28 @@
+{
+  "name": "Walk the Thames Path",
+  "slug": "walk-the-thames-path",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "The river is Walton's defining attraction. This local stretch of the Thames Path runs between Cowey Sale and Walton Wharf on Manor Road, taking under 20 minutes at an unhurried pace along a single, flat towpath, with a steep footbridge at Walton Marina.",
+  "reasonToVisit": "A flat, easy riverside walk linking Cowey Sale and Walton Wharf",
+  "planningDetail": "The blue footbridge at Walton Marina is steep and may be hard for wheelchairs or heavy buggies",
+  "categories": [
+    "free",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "Walks",
+    "running",
+    "photography",
+    "inexpensive days out"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "internalUrl": "/things-to-do/riverside-walks/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": true,
+  "sortWeight": 98
+}

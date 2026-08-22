@@ -1,0 +1,26 @@
+{
+  "name": "Walton Wharf and its ducks and swans",
+  "slug": "walton-wharf-ducks-and-swans",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "Walton Wharf on Manor Road, beside The Swan and The Anglers, is a familiar place to watch ducks, swans and other river wildlife year-round, reached via a gentle slope from Manor Road. It has no railings at the water's edge and no public benches or toilets.",
+  "reasonToVisit": "A well-loved riverside stop for watching swans and ducks beside two pubs",
+  "planningDetail": "No railings at the water's edge and no public toilets — keep children close to the water",
+  "categories": [
+    "free",
+    "families"
+  ],
+  "bestFor": [
+    "Families",
+    "wildlife watching",
+    "a short riverside stop"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 70
+}

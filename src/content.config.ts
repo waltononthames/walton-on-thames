@@ -111,6 +111,92 @@ const hersham = defineCollection({
   schema: historySchema,
 });
 
+// Things to Do hub. One YAML/JSON file per attraction; area is the actual
+// place (may be outside Walton/Hersham — see locationBand), which the card
+// component uses to prevent e.g. Hampton Court reading as "in Walton".
+const attractions = defineCollection({
+  loader: glob({ pattern: '**/*.{yaml,yml,json}', base: './src/content/attractions' }),
+  // Uses the content-layer `image()` helper (unlike the site's other
+  // collections, which reference plain /images/ paths) so photography under
+  // src/assets/things-to-do/ gets AVIF/WebP + responsive srcset via Astro's
+  // <Image> component, per the brief's performance budget (section 6.5/7).
+  schema: ({ image }) => z.object({
+    name: z.string(),
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    area: z.enum([
+      'Walton-on-Thames', 'Hersham', 'Sunbury', 'Shepperton', 'Weybridge',
+      'East Molesey', 'West Molesey', 'Esher', 'Cobham', 'Hampton',
+      'Kempton Park', 'Addlestone', 'Chertsey', 'Ashford', 'Fetcham',
+      'Twickenham', 'Hounslow', 'Egham', 'Woking', 'Chessington',
+    ]),
+    locationBand: z.enum(['local', 'neighbouring', 'bigger-day-out']),
+    summary: z.string().min(140).max(420),
+    reasonToVisit: z.string().max(120),
+    planningDetail: z.string().max(160),
+    categories: z.array(z.enum([
+      'free', 'families', 'rainy-days', 'on-the-water',
+      'heritage-and-culture', 'parks-and-walks', 'sport-and-active', 'seasonal',
+    ])).min(1),
+    bestFor: z.array(z.string()).max(6),
+    setting: z.enum(['indoor', 'outdoor', 'mixed']),
+    costBand: z.enum(['free', 'free-entry-paid-activities', 'paid', 'variable']),
+    seasonality: z.enum(['year-round', 'seasonal', 'selected-dates']),
+    checkBeforeTravelling: z.boolean().default(false),
+    bookingNote: z.string().optional(),
+    // Optional, not required as the brief specifies: a handful of records
+    // (open spaces, wharves, an informal car boot sale) genuinely have no
+    // operator website — internalUrl is used instead for those.
+    officialUrl: z.string().url().optional(),
+    internalUrl: z.string().optional(),
+    address: z.string().optional(),
+    geo: z.object({ lat: z.number(), lng: z.number() }).optional(),
+    image: z.object({
+      src: image(),
+      alt: z.string().min(20),
+      caption: z.string().optional(),
+      credit: z.string().default('Walton-on-Thames.org'),
+    }).optional(),
+    schemaType: z.enum([
+      'TouristAttraction', 'Museum', 'Park', 'PerformingArtsTheater',
+      'MovieTheater', 'SportsActivityLocation', 'LandmarksOrHistoricalBuildings',
+      'Church', 'LocalBusiness',
+    ]).default('TouristAttraction'),
+    lastVerified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    featured: z.boolean().default(false),
+    sortWeight: z.number().int().min(0).max(100).default(50),
+  }),
+});
+
+// Annual recurring events shown on the Things to Do hub's events section and
+// /things-to-do/annual-events/. Distinct from the one-off `events` collection
+// above — see the date-label logic in the date status enum below, which
+// drives which build-time label a record renders instead of a hand-set string.
+const annualEvents = defineCollection({
+  loader: glob({ pattern: '**/*.{yaml,yml,json}', base: './src/content/annual-events' }),
+  schema: ({ image }) => z.object({
+    name: z.string(),
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    summary: z.string().min(120).max(420),
+    usualTiming: z.string(),
+    nextStartDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    nextEndDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    dateStatus: z.enum([
+      'confirmed', 'provisional', 'to_be_announced', 'cancelled', 'completed',
+    ]),
+    dateSourceUrl: z.string().url(),
+    eventLocation: z.string(),
+    eventUrl: z.string().url(),
+    area: z.string(),
+    image: z.object({
+      src: image(),
+      alt: z.string().min(20),
+      caption: z.string().optional(),
+      credit: z.string().default('Walton-on-Thames.org'),
+    }).optional(),
+    lastVerified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  }),
+});
+
 // Walton & Hersham FC first-team fixtures, fetched live from the club's official
 // ECAL calendar feed at every build. Home and away fixtures both included.
 const fixtures = defineCollection({
@@ -131,4 +217,7 @@ const fixtures = defineCollection({
   }),
 });
 
-export const collections = { businesses, events, places, news, history, hersham, fixtures };
+export const collections = {
+  businesses, events, places, news, history, hersham, fixtures,
+  attractions, 'annual-events': annualEvents,
+};

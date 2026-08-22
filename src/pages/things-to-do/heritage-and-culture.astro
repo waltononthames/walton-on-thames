@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ThingsToDoFilterPage from '../../layouts/ThingsToDoFilterPage.astro';
+
+const attractions = (await getCollection('attractions'))
+  .filter((a) => a.data.categories.includes('heritage-and-culture'))
+  .sort((a, b) => b.data.sortWeight - a.data.sortWeight);
+---
+
+<ThingsToDoFilterPage
+  title="Heritage & Culture in Walton-on-Thames | Walton-on-Thames.org"
+  description="History, arts and heritage in Walton-on-Thames and Hersham: Riverhouse Barn, Walton Bridge, St Mary's Church and nearby museums and historic houses."
+  h1="Heritage and Culture in Walton-on-Thames and Hersham"
+  breadcrumbLabel="Heritage & Culture"
+  path="/things-to-do/heritage-and-culture/"
+  attractions={attractions}
+>
+  <Fragment slot="intro">
+    <p>Walton's cultural life centres on Riverhouse Barn Arts Centre, whose riverside programme of theatre, music and exhibitions is one of the town's strongest assets, alongside Cecil Hepworth Playhouse, named for the pioneering filmmaker who worked in Walton. For history rather than performance, Walton Bridge, the self-guided Walton Trail and St Mary's Grade I listed parish church all cover different layers of the town's story, and Elmbridge Museum fills in the wider borough picture through online exhibitions and rotating local displays.</p>
+    <p>Further out, the area's heritage gets considerably grander: Hampton Court Palace and Brooklands Museum are both essential visits in their own right, Painshill and Claremont Landscape Garden cover 18th-century garden design, and smaller sites like Kempton Steam Museum, Cobham Mill and Chertsey Museum reward a closer look. For a longer day out, Strawberry Hill House and the World Rugby Museum at Twickenham extend the list considerably.</p>
+  </Fragment>
+  <Fragment slot="closing">
+    <p>See the full <a href="/things-to-do/">Things to Do in Walton-on-Thames</a> hub for everything else nearby, or <a href="/things-to-do/parks-and-walks/">parks and walks</a> and <a href="/things-to-do/free/">free things to do</a> for more ways to spend an afternoon without a ticket.</p>
+  </Fragment>
+</ThingsToDoFilterPage>

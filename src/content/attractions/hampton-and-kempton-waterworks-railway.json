@@ -1,0 +1,28 @@
+{
+  "name": "Hampton and Kempton Waterworks Railway",
+  "slug": "hampton-and-kempton-waterworks-railway",
+  "area": "Kempton Park",
+  "locationBand": "neighbouring",
+  "summary": "This narrow-gauge heritage railway runs beside the Kempton waterworks and is a manageable outing for younger railway enthusiasts. Operating days are seasonal, typically concentrated on Sundays and special events.",
+  "reasonToVisit": "A narrow-gauge heritage railway ride, manageable for younger children",
+  "planningDetail": "Usually spring to autumn, mostly Sundays and special events — check the current calendar",
+  "categories": [
+    "families",
+    "seasonal",
+    "heritage-and-culture"
+  ],
+  "bestFor": [
+    "Young families",
+    "railway enthusiasts",
+    "pairing with local heritage"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://hamptonkemptonrailway.org.uk/plan-your-visit/bookings/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 47
+}

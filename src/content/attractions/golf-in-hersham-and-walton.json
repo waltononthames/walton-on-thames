@@ -1,0 +1,26 @@
+{
+  "name": "Play golf in Hersham and Walton",
+  "slug": "golf-in-hersham-and-walton",
+  "area": "Hersham",
+  "locationBand": "local",
+  "summary": "Hersham Golf Club welcomes visitors to its 18-hole course, while Burhill Golf Club has two championship courses in attractive parkland. Both are best treated as planned sporting outings, with tee times, dress expectations and visitor rates checked in advance.",
+  "reasonToVisit": "Two established golf clubs within easy reach, one an 18-hole course and one championship parkland",
+  "planningDetail": "Check tee-time availability, dress code and visitor rates before travelling",
+  "categories": [
+    "sport-and-active"
+  ],
+  "bestFor": [
+    "Golfers",
+    "corporate groups",
+    "a half-day outdoors"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://hershamgolfclub.com/",
+  "schemaType": "SportsActivityLocation",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 55
+}

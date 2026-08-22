@@ -1,0 +1,26 @@
+{
+  "name": "Kempton Steam Museum, Kempton Park",
+  "slug": "kempton-steam-museum",
+  "area": "Kempton Park",
+  "locationBand": "neighbouring",
+  "summary": "See one of the world's largest working triple-expansion steam engines in the historic waterworks at Kempton. Selected steaming weekends bring the machinery dramatically to life, with additional static opening dates during the year.",
+  "reasonToVisit": "One of the world's largest working triple-expansion steam engines, in a historic waterworks",
+  "planningDetail": "A date-led attraction — choose a steaming or static opening day before travelling",
+  "categories": [
+    "heritage-and-culture"
+  ],
+  "bestFor": [
+    "Engineering",
+    "industrial heritage",
+    "families with curious older children"
+  ],
+  "setting": "indoor",
+  "costBand": "paid",
+  "seasonality": "selected-dates",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://kemptonsteam.org/",
+  "schemaType": "Museum",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 48
+}

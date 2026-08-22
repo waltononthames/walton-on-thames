@@ -1,0 +1,30 @@
+{
+  "name": "Cowey Sale",
+  "slug": "cowey-sale",
+  "area": "Walton-on-Thames",
+  "locationBand": "local",
+  "summary": "This popular riverside open space is one of the easiest places in Walton to reach the Thames, with the Walton Lane car park, public toilets and WILDE bagels beside it, and the Shepperton Cruise jetty directly opposite the parking area.",
+  "reasonToVisit": "Easy riverside access with parking, toilets and a passenger-boat jetty on the doorstep",
+  "planningDetail": "Use the Walton Lane car park for the most convenient arrival point",
+  "categories": [
+    "free",
+    "families",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "Families",
+    "picnics",
+    "short walks",
+    "river views",
+    "passenger cruises"
+  ],
+  "setting": "outdoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "internalUrl": "/things-to-do/cowey-sale/",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": true,
+  "sortWeight": 97
+}

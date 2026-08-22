@@ -1,0 +1,62 @@
+---
+// Shared by the hub's events section and /things-to-do/annual-events/ so
+// the two don't drift. Renders the build-time date label from section 4.2
+// rather than a hand-set string — see src/utils/annualEventDateLabel.ts.
+import { getAnnualEventDateLabel } from '../utils/annualEventDateLabel';
+
+interface Props {
+  name: string;
+  summary: string;
+  eventUrl: string;
+  dateStatus: 'confirmed' | 'provisional' | 'to_be_announced' | 'cancelled' | 'completed';
+  nextStartDate?: string;
+  nextEndDate?: string;
+  usualTiming: string;
+}
+
+const { name, summary, eventUrl, dateStatus, nextStartDate, nextEndDate, usualTiming } = Astro.props;
+const dateLabel = getAnnualEventDateLabel({ dateStatus, nextStartDate, nextEndDate, usualTiming });
+---
+
+<li class="event-list-item">
+  <h3><a href={eventUrl} target="_blank" rel="noopener">{name}</a></h3>
+  <p class="event-date-label">{dateLabel}</p>
+  <p>{summary}</p>
+</li>
+
+<style>
+  .event-list-item {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.25rem;
+  }
+
+  .event-list-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .event-list-item h3 a {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .event-list-item h3 a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+  }
+
+  .event-date-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .event-list-item p:last-child {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    margin-bottom: 0;
+  }
+</style>

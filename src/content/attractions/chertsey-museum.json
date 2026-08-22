@@ -1,0 +1,28 @@
+{
+  "name": "Chertsey Museum",
+  "slug": "chertsey-museum",
+  "area": "Chertsey",
+  "locationBand": "neighbouring",
+  "summary": "This free local museum explores the history and archaeology of Chertsey and the surrounding borough. Its collections and temporary exhibitions make it a useful smaller-scale alternative to the area's major paid attractions.",
+  "reasonToVisit": "A free local museum of Chertsey history and archaeology",
+  "planningDetail": "Check current opening days before travelling",
+  "categories": [
+    "free",
+    "heritage-and-culture",
+    "rainy-days"
+  ],
+  "bestFor": [
+    "Local history",
+    "rainy days",
+    "a shorter visit"
+  ],
+  "setting": "indoor",
+  "costBand": "free",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://chertseymuseum.org.uk/visit.html",
+  "schemaType": "Museum",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 40
+}

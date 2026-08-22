@@ -1,0 +1,30 @@
+{
+  "name": "Painshill, Cobham",
+  "slug": "painshill",
+  "area": "Cobham",
+  "locationBand": "neighbouring",
+  "summary": "Painshill is an 18th-century landscape garden designed as a sequence of views and surprises. Walk around the lake to discover follies, bridges, dramatic viewpoints and the extraordinary Crystal Grotto.",
+  "reasonToVisit": "A landscape garden of follies, a lake and the extraordinary Crystal Grotto",
+  "planningDetail": "Check grotto access, events and weather-related notices before visiting",
+  "categories": [
+    "heritage-and-culture",
+    "parks-and-walks",
+    "families"
+  ],
+  "bestFor": [
+    "Gardens",
+    "walks",
+    "photography",
+    "families",
+    "picnics"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "officialUrl": "https://www.painshill.co.uk/",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": true,
+  "sortWeight": 90
+}

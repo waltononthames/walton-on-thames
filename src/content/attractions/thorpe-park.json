@@ -1,0 +1,26 @@
+{
+  "name": "Thorpe Park",
+  "slug": "thorpe-park",
+  "area": "Chertsey",
+  "locationBand": "bigger-day-out",
+  "summary": "Thorpe Park is the nearest major theme park, with more than 25 rides and attractions and a strong emphasis on rollercoasters and thrills, best suited to visitors tall enough and keen enough for the headline rides, though gentler options exist too.",
+  "reasonToVisit": "The nearest major theme park, with 25-plus rides and a strong rollercoaster line-up",
+  "planningDetail": "Check ride height restrictions, operating dates and ticket options",
+  "categories": [
+    "families"
+  ],
+  "bestFor": [
+    "Teenagers",
+    "thrill seekers",
+    "full-day family trips"
+  ],
+  "setting": "outdoor",
+  "costBand": "paid",
+  "seasonality": "seasonal",
+  "checkBeforeTravelling": true,
+  "officialUrl": "https://www.thorpepark.com/",
+  "schemaType": "TouristAttraction",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 38
+}

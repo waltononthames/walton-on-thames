@@ -1,0 +1,31 @@
+{
+  "name": "Coronation Recreation Ground",
+  "slug": "coronation-recreation-ground-hersham",
+  "area": "Hersham",
+  "locationBand": "local",
+  "summary": "This Hersham park combines a children's play area, outdoor sport (bowls, cricket, football, tennis, netball) and a measured one-mile route. Coffee in the Park serves the car park, and the Elmbridge Community Eco Hub adds community and environmental initiatives on site.",
+  "reasonToVisit": "A large Hersham park with play, sport, a café and an environmental community hub",
+  "planningDetail": "Free car park off Molesey Road opposite Molesey Close; principal routes are practical for wheelchairs and buggies",
+  "categories": [
+    "free",
+    "families",
+    "sport-and-active",
+    "parks-and-walks"
+  ],
+  "bestFor": [
+    "Families",
+    "casual sport",
+    "exercise",
+    "free outdoor time"
+  ],
+  "setting": "outdoor",
+  "costBand": "free-entry-paid-activities",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": false,
+  "internalUrl": "/things-to-do/coronation-recreation-ground-hersham/",
+  "officialUrl": "https://www.elmbridge.gov.uk/leisure-and-culture/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory-5",
+  "schemaType": "Park",
+  "lastVerified": "2026-08-22",
+  "featured": false,
+  "sortWeight": 82
+}
