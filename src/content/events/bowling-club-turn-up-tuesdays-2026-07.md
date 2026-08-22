@@ -1,8 +1,8 @@
 ---
 title: "Walton-on-Thames Bowling Club: Turn up Tuesdays"
 slug: "bowling-club-turn-up-tuesdays-2026-07"
-start: "2026-08-11T17:00:00"
-end: "2026-08-11T20:00:00"
+start: "2026-08-25T17:00:00"
+end: "2026-08-25T20:00:00"
 venue: "Walton-on-Thames Bowling Club, Elm Grove Recreation Ground, Hersham Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "sport"

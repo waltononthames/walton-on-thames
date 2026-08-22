@@ -1,8 +1,8 @@
 ---
 title: "Saturday Night Project"
 slug: "saturday-night-project-xcel-2026-08"
-start: "2026-08-15T18:00:00"
-end: "2026-08-15T20:00:00"
+start: "2026-08-29T18:00:00"
+end: "2026-08-29T20:00:00"
 venue: "Elmbridge Xcel Leisure Complex, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "family"
