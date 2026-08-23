@@ -1,4 +1,5 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EventStatusPanel from '../../components/EventStatusPanel.astro';
 import statusData from '../../data/apps-court-status.json';
@@ -64,6 +65,18 @@ const confirmedSubEvent = (nextConfirmedDateISO && (STATUS === 'on' || STATUS ==
       }
     }]
   : [];
+
+// Coordinates for the sidebar map embed come from the attraction record's
+// `geo` field rather than being repeated here, so the content layer stays the
+// single source of truth. The values there are the OpenStreetMap node for
+// Apps Court Farm (OSM node 12431192590).
+const attraction = await getEntry('attractions', 'apps-court-car-boot-sale');
+if (!attraction?.data.geo) {
+  throw new Error(
+    'apps-court-car-boot-sale.json is missing `geo` — the map embed needs it.'
+  );
+}
+const { lat: VENUE_LAT, lng: VENUE_LNG } = attraction.data.geo;
 
 const pageUrl = 'https://walton-on-thames.org/things-to-do/apps-court-car-boot-sale/';
 
@@ -403,14 +416,24 @@ const faqs = [
         <div class="info-card">
           <h2>Find it on the map</h2>
           <p style="font-size: 0.9rem; color: var(--color-slate); margin-bottom: 1rem;">Address: Apps Court Farm, Hurst Road, Walton-on-Thames, Surrey, KT12 2EG.</p>
+          <div class="map-embed">
+            <iframe
+              title="Map showing Apps Court Farm, Hurst Road, Walton-on-Thames"
+              src={`https://www.openstreetmap.org/export/embed.html?bbox=${VENUE_LNG - 0.01},${VENUE_LAT - 0.007},${VENUE_LNG + 0.01},${VENUE_LAT + 0.007}&layer=mapnik&marker=${VENUE_LAT},${VENUE_LNG}`}
+              loading="lazy"
+              width="100%"
+              height="300"
+              style="border: none; border-radius: 8px;"
+            ></iframe>
+          </div>
           <a
-            href="https://www.openstreetmap.org/search?query=Apps%20Court%20Farm%2C%20KT12%202EG"
+            href={`https://www.openstreetmap.org/?mlat=${VENUE_LAT}&mlon=${VENUE_LNG}#map=16/${VENUE_LAT}/${VENUE_LNG}`}
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-outline"
-            style="width: 100%; justify-content: center;"
+            style="margin-top: 1rem; width: 100%; justify-content: center;"
           >
-            Search on OpenStreetMap
+            Open in OpenStreetMap
           </a>
         </div>
 

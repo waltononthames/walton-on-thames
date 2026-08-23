@@ -20,6 +20,10 @@
   "seasonality": "selected-dates",
   "checkBeforeTravelling": true,
   "internalUrl": "/things-to-do/apps-court-car-boot-sale/",
+  "geo": {
+    "lat": 51.40128,
+    "lng": -0.4007045
+  },
   "schemaType": "TouristAttraction",
   "lastVerified": "2026-08-22",
   "featured": false,
