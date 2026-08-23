@@ -11,7 +11,7 @@ const categories = [...new Set(businesses.map(b => b.data.category))].sort();
 
 <BaseLayout
   title="Walton-on-Thames Directory | Local Businesses"
-  description="A comprehensive directory of businesses, services and attractions in Walton-on-Thames, Hersham and Whiteley Village."
+  description="A free, independent directory of businesses, services and attractions in Walton-on-Thames, Hersham and Whiteley Village. No business is charged to appear."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -32,8 +32,8 @@ const categories = [...new Set(businesses.map(b => b.data.category))].sort();
           <li aria-current="page">Directory</li>
         </ol>
       </nav>
-      <h1>Business Directory</h1>
-      <p>A growing directory of businesses, services and places across Walton-on-Thames, Hersham and Whiteley Village.</p>
+      <h1>Walton-on-Thames Business Directory</h1>
+      <p>A growing directory of businesses, services and places across Walton-on-Thames, Hersham and Whiteley Village. Independent, not for profit, and free for every business and organisation to appear in.</p>
     </div>
   </div>
 
@@ -91,8 +91,8 @@ const categories = [...new Set(businesses.map(b => b.data.category))].sort();
       </div>
 
       <div class="directory-cta">
-        <p>Is your business missing from the directory?</p>
-        <a href="/advertise-your-business/" class="btn btn-primary">Add your listing</a>
+        <p>Is your business missing from the directory? Listing is completely free, and always will be.</p>
+        <a href="/advertise-your-business/" class="btn btn-primary">Add your free listing</a>
       </div>
     </div>
   </section>

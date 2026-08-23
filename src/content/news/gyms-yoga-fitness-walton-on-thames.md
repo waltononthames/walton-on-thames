@@ -152,4 +152,4 @@ The breadth of the local scene means there's no need to compromise. Whether you 
 
 Browse the full [Health & Fitness directory](/directory/?category=health-and-fitness) to explore all listings, check websites, and find the right session for you.
 
-**Are you a local fitness professional or studio?** [Add your listing to the directory →](/advertise-your-business/)
+**Are you a local fitness professional or studio?** [Add your free listing to the directory →](/advertise-your-business/)

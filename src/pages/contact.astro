@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Contact — Walton-on-Thames.org"
-  description="Get in touch with Walton-on-Thames.org — suggest an edit to a listing, submit an event, share a story, or ask about advertising your business."
+  description="Get in touch with Walton-on-Thames.org to suggest an edit to a listing, submit a free event listing, share a story, or add your free business listing."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -26,7 +26,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </ol>
       </nav>
       <h1>Get in Touch</h1>
-      <p>Suggest a listing edit, submit an event, share a local story, or ask about advertising your business.</p>
+      <p>Suggest a listing edit, submit a local event, share a story, or add your business to the directory. Listings and event submissions are free.</p>
     </div>
   </div>
 
@@ -60,9 +60,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <select id="subject" name="subject">
               <option value="general">General enquiry</option>
               <option value="listing-edit">Suggest a listing edit</option>
-              <option value="event-submission">Submit an event</option>
+              <option value="event-submission">Submit an event (free)</option>
               <option value="news-tip">Share a local story</option>
-              <option value="advertising">Advertising / list my business</option>
+              <option value="listing">List my business (free)</option>
+              <option value="enhanced-listing">Enhanced Listing application</option>
               <option value="other">Other</option>
             </select>
           </div>
@@ -83,7 +84,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li>🔧 Suggesting a correction to a listing</li>
             <li>📅 Submitting a local event</li>
             <li>📰 Sharing a news tip or story idea</li>
-            <li>🏪 Adding or claiming a business listing</li>
+            <li>🏪 Adding or claiming a free business listing</li>
             <li>📸 Sharing local photography</li>
             <li>💬 General questions or feedback</li>
           </ul>
@@ -94,14 +95,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="info-card">
           <h2>Add your business</h2>
-          <p>Looking to list or promote your business?</p>
+          <p>Adding your business or organisation to the directory is completely free, and always will be.</p>
           <a href="/advertise-your-business/" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:0.75rem;">
-            List your business →
+            List your business free →
           </a>
         </div>
       </aside>
     </div>
   </section>
+
+  <script is:inline>
+    // Several calls to action across the site link here with a ?subject= value
+    // (for example /contact/?subject=enhanced-listing). Preselect the matching
+    // option so the visitor does not have to find it themselves. Runs inline,
+    // immediately after the form has been parsed.
+    (function () {
+      var requested = new URLSearchParams(window.location.search).get('subject');
+      if (!requested) return;
+
+      var select = document.getElementById('subject');
+      if (!select) return;
+
+      var wanted = requested.trim().toLowerCase();
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value.toLowerCase() === wanted) {
+          select.selectedIndex = i;
+          return;
+        }
+      }
+
+      // Listing pages link through as "Listing edit: <business name>".
+      if (wanted.indexOf('listing edit:') === 0) {
+        select.value = 'listing-edit';
+        var message = document.getElementById('message');
+        if (message && !message.value) {
+          message.value = requested.trim() + '\n\n';
+        }
+      }
+    })();
+  </script>
 </BaseLayout>
 
 <style>

@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// The three supplied colour variants of the "Featured on Walton-on-Thames.org"
+// badge. `preview` is a proportionally resized WebP for on-page display; `file`
+// is the unmodified full-size PNG offered for download. The badge wording is
+// fixed artwork and is deliberately not renamed alongside the Enhanced Listing
+// tier. See the note in the "How to qualify" section below.
+const badges = [
+  {
+    id: 'transparent-bg',
+    label: 'Transparent background',
+    note: 'Full colour artwork on a transparent background. Works on any background colour.',
+    file: '/images/badges/featured-on-walton-on-thames-org-transparent-bg.png',
+    preview: '/images/badges/featured-on-walton-on-thames-org-transparent-bg-preview.webp',
+    width: 560,
+    height: 560,
+  },
+  {
+    id: 'blue',
+    label: 'Navy background',
+    note: 'Cream artwork on a solid navy background. Best on light or white pages.',
+    file: '/images/badges/featured-on-walton-on-thames-org-blue.png',
+    preview: '/images/badges/featured-on-walton-on-thames-org-blue-preview.webp',
+    width: 560,
+    height: 560,
+  },
+  {
+    id: 'mono',
+    label: 'Black and white',
+    note: 'Single colour artwork on a transparent background, for monochrome designs.',
+    file: '/images/badges/featured-on-walton-on-thames-org-mono.png',
+    preview: '/images/badges/featured-on-walton-on-thames-org-mono-preview.webp',
+    width: 560,
+    height: 553,
+  },
+];
+
+const exampleSnippet = `<a href="https://walton-on-thames.org/directory/your-listing/">
+  <img src="featured-on-walton-on-thames-org.png"
+       alt="Featured on Walton-on-Thames.org"
+       width="180" height="180">
+</a>`;
+---
+
+<BaseLayout
+  title="How to Submit an Enhanced Listing"
+  description="Enhanced Listings on Walton-on-Thames.org are completely free and always will be. Add the Featured on Walton-on-Thames.org badge to your site to qualify."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Directory", "item": "https://walton-on-thames.org/directory/" },
+        { "@type": "ListItem", "position": 3, "name": "Enhanced Listing", "item": "https://walton-on-thames.org/directory/enhanced-listing/" }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/directory/">Directory</a></li>
+          <li aria-current="page">Enhanced Listing</li>
+        </ol>
+      </nav>
+      <h1>How to submit an Enhanced Listing</h1>
+      <p>An Enhanced Listing gives you more control over how your business or organisation is presented on Walton-on-Thames.org.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container enhanced-layout">
+      <div class="prose">
+        <p>An Enhanced Listing gives you more control over how your business or organisation is presented on Walton-on-Thames.org. You can add a custom description, your own photographs, embedded videos and links to your reviews or booking page.</p>
+
+        <p class="free-banner"><strong>Enhanced Listings are completely free and always will be.</strong></p>
+
+        <h2>What is included</h2>
+        <ul class="tick-list">
+          <li>✓ Everything in Standard</li>
+          <li>✓ Custom description</li>
+          <li>✓ Your own photographs</li>
+          <li>✓ Embedded videos or links to your own videos</li>
+          <li>✓ Links to your reviews or booking page</li>
+        </ul>
+        <p>An Enhanced Listing does not receive preferential category ranking simply because it is enhanced. The distinction is the additional content available within the listing, not paid or preferential placement.</p>
+
+        <h2>How to qualify</h2>
+        <p>To qualify for an Enhanced Listing, you must add the "Featured on Walton-on-Thames.org" badge to your own website and link it directly to your business or organisation's listing on Walton-on-Thames.org.</p>
+        <p>That is it. It is super easy and, best of all, it is totally free and always will be.</p>
+
+        <h3>Choose a badge</h3>
+        <p>Three colour variants are available. Please use the artwork as supplied, without cropping, recolouring or otherwise altering it.</p>
+      </div>
+
+      <div class="badge-grid" role="list">
+        {badges.map(badge => (
+          <div class="badge-card" role="listitem">
+            <img
+              src={badge.preview}
+              alt="Featured on Walton-on-Thames.org"
+              width={badge.width}
+              height={badge.height}
+              loading="lazy"
+              decoding="async"
+              class="badge-image"
+            />
+            <h3 class="badge-label">{badge.label}</h3>
+            <p class="badge-note">{badge.note}</p>
+            <a href={badge.file} download class="btn btn-outline badge-download">
+              Download PNG
+              <span class="sr-only"> of the {badge.label.toLowerCase()} Featured on Walton-on-Thames.org badge</span>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="prose">
+        <h3>Link the badge to your own listing</h3>
+        <p>The badge must link to your individual directory listing on Walton-on-Thames.org, not simply to the Walton-on-Thames.org homepage. Your listing URL is the address of your own page in the directory, and it looks like <code>https://walton-on-thames.org/directory/your-business-name/</code>. You can find it by opening your listing from the <a href="/directory/">directory</a> and copying the address from your browser.</p>
+
+        <h4>Example</h4>
+        <div class="code-block">
+          <pre><code>{exampleSnippet}</code></pre>
+        </div>
+        <p>Save the badge image to your own website rather than linking to the copy hosted here, and keep the alternative text as "Featured on Walton-on-Thames.org".</p>
+
+        <h2>Standard Listings and events do not need the badge</h2>
+        <p>The badge is only relevant to Enhanced Listings. A Standard Listing in the directory is free and requires nothing in return, and submitting a local event is free and requires nothing in return. You are welcome to use the badge either way, but it is never a condition of appearing on the site.</p>
+
+        <h2>Apply for an Enhanced Listing</h2>
+        <p>When your badge is live on your website, send us the details below using the contact form and choose <strong>Enhanced Listing application</strong> as the subject. Every application is manually reviewed, as all submissions to this site are.</p>
+        <ul>
+          <li>Your business or organisation name</li>
+          <li>The URL of your existing Walton-on-Thames.org listing</li>
+          <li>The page on your website where you have added the badge</li>
+          <li>Your custom description</li>
+          <li>Your photographs</li>
+          <li>Links to any videos, reviews or booking pages you want included</li>
+        </ul>
+        <p>If your business is not in the directory yet, <a href="/advertise-your-business/">request a free Standard Listing</a> first.</p>
+      </div>
+
+      <div class="enhanced-cta">
+        <p>Ready to apply? Enhanced Listings are free, and always will be.</p>
+        <a href="/contact/?subject=enhanced-listing" class="btn btn-primary">Apply for an Enhanced Listing</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .enhanced-layout {
+    max-width: 780px;
+  }
+
+  .free-banner {
+    background: rgba(184,134,46,0.10);
+    border: 1px solid rgba(184,134,46,0.35);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.375rem;
+    margin: 1.5rem 0 2rem;
+    color: var(--color-navy);
+  }
+
+  .tick-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0 2.5rem;
+  }
+
+  .badge-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .badge-image {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 1rem;
+  }
+
+  .badge-label {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .badge-note {
+    font-size: 0.8125rem;
+    color: var(--color-slate);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  .badge-download {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .code-block {
+    overflow-x: auto;
+    background: var(--color-navy-ink);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: #E6EDF0;
+    white-space: pre;
+  }
+
+  .enhanced-layout :global(code) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.875em;
+    background: rgba(11,36,46,0.06);
+    border-radius: var(--radius-sm);
+    padding: 0.1em 0.35em;
+    word-break: break-all;
+  }
+
+  .code-block :global(code) {
+    background: none;
+    padding: 0;
+    word-break: normal;
+  }
+
+  .enhanced-layout h4 {
+    font-size: 1.05rem;
+    margin: 1.25rem 0 0.5rem;
+  }
+
+  .enhanced-cta {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .enhanced-cta p {
+    color: var(--color-slate);
+  }
+</style>

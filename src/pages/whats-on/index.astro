@@ -125,7 +125,7 @@ function eventSchema(item: UpcomingItem) {
           <li aria-current="page">What's On</li>
         </ol>
       </nav>
-      <h1>What's On</h1>
+      <h1>What's On in Walton-on-Thames</h1>
       <p>Events, festivals, markets and community activities across Walton-on-Thames, Hersham and Whiteley Village.</p>
     </div>
   </div>
@@ -156,9 +156,12 @@ function eventSchema(item: UpcomingItem) {
         <p class="empty-state">No upcoming events right now — check back soon or <a href="/community/news/">read the local news</a>.</p>
       )}
 
-      <div class="submit-event">
-        <p>Know of an event that should be listed here?</p>
-        <a href="/contact/?subject=Event+submission" class="btn btn-primary">Submit an event</a>
+      <div class="submit-event" id="submit-event">
+        <div class="submit-event-copy">
+          <h2>List your local event for free</h2>
+          <p>Businesses, community groups and event organisers can submit relevant events to Walton-on-Thames.org at absolutely no cost. Every event is reviewed before publication.</p>
+        </div>
+        <a href="/contact/?subject=event-submission" class="btn btn-primary">Submit an event</a>
       </div>
     </div>
   </section>
@@ -182,6 +185,13 @@ function eventSchema(item: UpcomingItem) {
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
+  }
+
+  .submit-event-copy { flex: 1 1 340px; }
+
+  .submit-event h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
   }
 
   .submit-event p { color: var(--color-slate); }

@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="List Your Business — Walton-on-Thames.org Directory"
-  description="Add or claim your business listing in the Walton-on-Thames.org directory — free to get started, with optional featured listing upgrades."
+  title="List Your Business Free in the Walton-on-Thames.org Directory"
+  description="Add your business or organisation to the Walton-on-Thames.org directory free of charge. Standard and Enhanced Listings are both free, and always will be."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -25,46 +25,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <li aria-current="page">List Your Business</li>
         </ol>
       </nav>
-      <h1>List Your Business</h1>
-      <p>Get your business in front of people actively looking for local services and places in Walton-on-Thames, Hersham and Whiteley Village.</p>
+      <h1>List Your Business for Free</h1>
+      <p>Get your business or organisation in front of people actively looking for local services and places in Walton-on-Thames, Hersham and Whiteley Village.</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container advert-layout">
       <div>
+        <p class="free-banner">
+          <strong>There is no charge to appear in this directory.</strong>
+          Walton-on-Thames.org is independent and not for profit, created for the benefit of the local community.
+          Standard and Enhanced Listings are both free, and Enhanced Listings will always be free.
+          Every submission is manually reviewed before it is published.
+        </p>
+
         <div class="tier-grid">
-          <div class="tier-card tier-free">
+          <div class="tier-card">
             <div class="tier-badge">Free</div>
             <h2>Standard Listing</h2>
             <ul class="tier-features">
               <li>✓ Listed in the directory</li>
-              <li>✓ Business name, address & contact details</li>
-              <li>✓ Description & category</li>
+              <li>✓ Business name, address &amp; contact details</li>
+              <li>✓ Description &amp; category</li>
               <li>✓ Link to your website</li>
               <li>✓ Neighbourhood tag</li>
               <li>✓ OpenStreetMap embed</li>
             </ul>
-            <p class="tier-note">Free forever — we believe a useful local directory should be accessible to all local businesses.</p>
-            <a href="/contact/?subject=advertising" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:1rem;">
+            <p class="tier-note">Free forever. A useful local directory should be open to every local business and organisation.</p>
+            <a href="/contact/?subject=listing" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:1rem;">
               Request a free listing
             </a>
           </div>
 
-          <div class="tier-card tier-featured">
-            <div class="tier-badge tier-badge-accent">Featured</div>
-            <h2>Featured Listing</h2>
+          <div class="tier-card tier-enhanced">
+            <div class="tier-badge tier-badge-accent">Free</div>
+            <h2>Enhanced Listing</h2>
             <ul class="tier-features">
               <li>✓ Everything in Standard</li>
-              <li>✓ Featured badge on your listing</li>
-              <li>✓ Appears at the top of your category</li>
-              <li>✓ "Featured" rotation on the homepage</li>
-              <li>✓ Up to 5 photos</li>
-              <li>✓ Extended description</li>
+              <li>✓ Custom description</li>
+              <li>✓ Your own photographs</li>
+              <li>✓ Embedded videos or links to your own videos</li>
+              <li>✓ Links to your reviews or booking page</li>
             </ul>
-            <p class="tier-note">Pricing to be announced — contact us for early-adopter rates.</p>
-            <a href="/contact/?subject=advertising" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:1rem;">
-              Get in touch
+            <p class="tier-note">Also free, and always will be. An Enhanced Listing does not receive preferential category ranking simply because it is enhanced. The difference is the additional content available within the listing, not paid or preferential placement.</p>
+            <a href="/directory/enhanced-listing/" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:1rem;">
+              Learn how to submit an Enhanced Listing
             </a>
           </div>
         </div>
@@ -72,24 +78,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="prose" style="margin-top: 3rem;">
           <h2>How to get listed</h2>
           <ol>
-            <li>Use the contact form to send us your business name, address, category, phone number, website URL, and a short description (1–3 sentences).</li>
-            <li>We'll review and add the listing within a few days.</li>
-            <li>You'll be notified when it's live and can request edits at any time.</li>
+            <li>Use the contact form to send us your business name, address, category, phone number, website URL, and a short description (1 to 3 sentences).</li>
+            <li>We will review and add the listing within a few days.</li>
+            <li>You will be notified when it is live and can request edits at any time.</li>
           </ol>
+          <p>There is nothing to pay at any stage, and no upgrade to buy.</p>
 
           <h2>Already listed?</h2>
           <p>If your business is already in the directory but has incorrect or outdated information, use the "Suggest an edit" link on your listing page, or <a href="/contact/?subject=listing-edit">contact us directly</a>.</p>
+
+          <h2 id="list-your-event">List your local event for free</h2>
+          <p>Businesses, community groups and event organisers can submit relevant events to Walton-on-Thames.org at absolutely no cost. Every event is reviewed before publication.</p>
+          <p>You do not need a directory listing, an Enhanced Listing, a reciprocal badge or any form of payment in order to submit an event.</p>
+          <p><a href="/whats-on/#submit-event">Submit a local event</a> or <a href="/whats-on/">see what is already on</a>.</p>
         </div>
       </div>
 
       <aside class="advert-sidebar">
         <div class="info-card">
           <h2>About the directory</h2>
-          <p>Walton-on-Thames.org is an independent local guide with a growing audience of residents and visitors actively searching for local services and places. We focus on quality over quantity — every listing is manually reviewed.</p>
+          <p>Walton-on-Thames.org is an independent, not-for-profit local guide created for the benefit of the local community. Businesses and organisations can appear in the directory completely free of charge, and local events can also be submitted at absolutely no cost. Every submission is manually reviewed to help keep the directory useful, accurate and trustworthy for residents and visitors.</p>
         </div>
         <div class="info-card">
           <h2>Our commitment</h2>
-          <p>We never accept payment to influence the editorial content of this site. Featured listings are promoted within the directory UI, but our news coverage, reviews and guides are independent.</p>
+          <p>We never charge for a listing and we never accept payment to influence the editorial content of this site. Enhanced Listings carry more information, not better placement, and our news coverage, guides and recommendations remain independent.</p>
         </div>
       </aside>
     </div>
@@ -104,10 +116,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: start;
   }
 
+  .free-banner {
+    background: rgba(184,134,46,0.10);
+    border: 1px solid rgba(184,134,46,0.35);
+    border-radius: var(--radius-lg);
+    padding: 1.125rem 1.375rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  .free-banner strong {
+    display: block;
+    color: var(--color-navy);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
   .tier-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    align-items: start;
   }
 
   .tier-card {
@@ -118,7 +149,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: relative;
   }
 
-  .tier-featured {
+  .tier-enhanced {
     border: 2px solid var(--color-accent);
   }
 
@@ -156,6 +187,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .tier-features li {
     font-size: 0.875rem;
     color: var(--color-slate);
+  }
+
+  /* The Enhanced Listing call to action is a long label and the shared .btn
+     rule is white-space: nowrap, which would otherwise force the card wider
+     than a narrow viewport. Scoped to the tier cards so the global button
+     behaviour is unchanged. */
+  .tier-card .btn {
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Grid children default to min-width: auto, so long content can push a
+     1fr track past the viewport. */
+  .advert-layout > *,
+  .tier-grid,
+  .tier-card {
+    min-width: 0;
   }
 
   .tier-note {
