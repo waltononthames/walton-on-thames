@@ -2,25 +2,63 @@
 // sitemap serialize() hook. Prefers the git commit date of the most relevant
 // source file: the content-collection markdown file for content-driven
 // routes, or the .astro route file itself for everything else (including
-// fixtures, which have no markdown file — using the route/loader's own git
+// fixtures, which have no markdown file - using the route/loader's own git
 // history avoids a spuriously-changing "now" on every build).
+//
+// Where the date comes from, in order:
+//   1. `git log -1 -- <file>`, but only when the clone has full history.
+//   2. src/data/lastmod.json, the manifest written by scripts/generate-lastmod.mjs.
+//   3. HEAD's own commit date.
+//   4. Build time.
+//
+// Steps 2 and 3 exist because Cloudflare Pages clones at depth 1. With one
+// commit in the repository `git log -1 -- <file>` returns HEAD for every
+// file, so step 1 silently stamps the entire sitemap with the deploy
+// timestamp. Step 4 is last because it changes on every rebuild, including
+// the nightly one, which is exactly the signal lastmod must not send.
 import { execSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+
+const HAS_FULL_HISTORY = (() => {
+  try {
+    return execSync('git rev-parse --is-shallow-repository', { encoding: 'utf8' }).trim() === 'false';
+  } catch {
+    return false; // not a git repo, or no git binary
+  }
+})();
+
+const MANIFEST = (() => {
+  try {
+    return JSON.parse(readFileSync('src/data/lastmod.json', 'utf8'));
+  } catch {
+    return {};
+  }
+})();
+
+const HEAD_DATE = (() => {
+  try {
+    return execSync('git log -1 --format=%cI', { encoding: 'utf8' }).trim() || null;
+  } catch {
+    return null;
+  }
+})();
+
+const BUILD_DATE = new Date().toISOString();
 
 const gitDateCache = new Map();
 
 function gitLastModified(relPath) {
   if (gitDateCache.has(relPath)) return gitDateCache.get(relPath);
   let iso = null;
-  if (existsSync(relPath)) {
+  if (HAS_FULL_HISTORY && existsSync(relPath)) {
     try {
       const out = execSync(`git log -1 --format=%cI -- "${relPath}"`, { encoding: 'utf8' }).trim();
       if (out) iso = out;
     } catch {
-      // git not available or file not tracked — fall through to null
+      // fall through to the manifest
     }
   }
-  if (!iso) iso = new Date().toISOString();
+  if (!iso) iso = MANIFEST[relPath] || HEAD_DATE || BUILD_DATE;
   gitDateCache.set(relPath, iso);
   return iso;
 }
@@ -115,6 +153,6 @@ export function resolveSourceFile(urlPath) {
 export function lastmodFor(fullUrl) {
   const urlPath = fullUrl.replace(/^https?:\/\/[^/]+/, '');
   const file = resolveSourceFile(urlPath);
-  if (!file) return new Date().toISOString();
+  if (!file) return HEAD_DATE || BUILD_DATE;
   return gitLastModified(file);
 }

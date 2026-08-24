@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/check-verification-markers.mjs && node scripts/check-annual-events-dates.mjs",
+    "prebuild": "node scripts/generate-lastmod.mjs && node scripts/check-verification-markers.mjs && node scripts/check-annual-events-dates.mjs",
     "build": "astro build",
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
@@ -13,7 +13,8 @@
     "seo:validate": "node scripts/seo-validate.mjs",
     "seo:links": "node scripts/seo-links.mjs",
     "content:stale-events": "node scripts/check-stale-events.mjs",
-    "content:em-dashes": "node scripts/check-em-dashes.mjs"
+    "content:em-dashes": "node scripts/check-em-dashes.mjs",
+    "seo:lastmod": "node scripts/generate-lastmod.mjs"
   },
   "keywords": [],
   "author": "",
