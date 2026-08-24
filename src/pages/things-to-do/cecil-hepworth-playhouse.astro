@@ -1,0 +1,183 @@
+---
+// Phase 6 detail guide #7, brief section 5.4 and section 11.
+// Research: cecilhepworthplayhouse.co.uk fetched directly for current
+// practical facts (charity status, programme, booking); the building's
+// origin story comes from surreybrass.co.uk, already used as a Tier-2
+// source in this site's own /history/film-studios/ article, corroborated
+// by Essential Surrey and WOTTA. No parking/accessibility info is
+// published on the operator's own site, flagged rather than guessed.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Cecil Hepworth Playhouse: A Local Guide | Walton-on-Thames.org"
+  description="A local guide to Cecil Hepworth Playhouse: its origin as Hepworth Studios' powerhouse, the current programme, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Cecil Hepworth Playhouse', item: `${SITE}/things-to-do/cecil-hepworth-playhouse/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'PerformingArtsTheater',
+      name: 'Cecil Hepworth Playhouse',
+      description: 'A community theatre in Walton-on-Thames, converted from the former powerhouse of Cecil Hepworth\'s film studio.',
+      url: `${SITE}/things-to-do/cecil-hepworth-playhouse/`,
+      sameAs: 'https://www.cecilhepworthplayhouse.co.uk/',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Cecil Hepworth Playhouse</li>
+        </ol>
+      </nav>
+      <h1>Cecil Hepworth Playhouse: A Local Guide</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Cecil Hepworth Playhouse is a registered charity theatre near Walton Bridge, off Hepworth Way, hosting plays, musicals, pantomime and concerts under the banner "Theatre for the Community." It's worth visiting even without a specific show in mind if you're interested in Walton's film history, because the building itself is a genuine, still-standing surviving piece of it, not just a venue named after a local figure.</p>
+
+        <h2>A powerhouse turned theatre</h2>
+        <p>The building started life in 1920 as the powerhouse for Cecil Hepworth's film studio, housing two 800-kilowatt diesel generators that Hepworth had acquired from a captured German U-boat to supply electricity and lighting to the studio next door. When the studio's fortunes changed, the powerhouse was converted into a theatre by builder T.J. Smith for architect G.B. Carvill, fitted out with electric lighting supervised by Hepworth himself, central heating, a stage and dressing rooms, and seating for more than 250 people. Dame Ellen Terry, then described as "the greatest living actress," laid the building's commemorative foundation stone in 1925, and Lady Richardson formally opened it on 18 December 1925, in front of what a contemporary account called "a large and distinguished assembly." Hepworth later bequeathed the building to local dramatic societies, and Carvill's own stated aim for the venue, to give people somewhere to "join together and obtain reasonable enjoyment" rather than a purely commercial theatre, still describes how it operates today as a registered charity a century on. It's an unusually direct survival for a British film studio: most of Hepworth's actual studio buildings are long gone, but the powerhouse that once lit them is still standing, still in public use, and still doing broadly the job Carvill designed it for.</p>
+
+        <h2>The current venue and programme</h2>
+        <p>The theatre now seats up to 160 for professional and community productions, considerably fewer than its original 1925 capacity, reflecting changes to the building and modern seating standards over the past century. A bar and café operate around events. The programme mixes drama, family pantomime, musical workshops and concerts, recent examples including a Shakespeare revue, pantomime productions of Robin Hood and Shrek the Musical, and workshops for children aged 5 to 12, so it's worth checking listings even if you don't think of it as primarily a children's venue. Booking is handled through TicketSource, linked from the venue's own site, and some events are run directly by their producers rather than the venue itself, so contact details can vary by show.</p>
+
+        <h2>Getting there and accessibility</h2>
+        <p>The venue doesn't publish parking or accessibility information on its own site, so if either is essential for your visit, it's worth contacting them directly before booking rather than assuming. The town-centre car parks, including Walton Lane, are within walking distance, and the venue sits close enough to Walton Bridge that arriving on foot is a realistic option if you're already in the town centre.</p>
+
+        <h2>What to combine it with</h2>
+        <p>If the studio history interests you, pair a visit with our full <a href="/history/film-studios/">history of Hepworth Studios</a> and the <a href="/things-to-do/walton-trail/">Walton Trail</a>, whose town-centre routes cover the same film pioneers this building is a physical remnant of; seeing the actual generating shed after reading about the studio adds something the trail notes alone don't. <a href="/things-to-do/walton-bridge/">Walton Bridge</a> is close enough to combine with an evening show, and if you're looking for a second night out rather than a one-off, <a href="/things-to-do/riverhouse-barn/">Riverhouse Barn</a> covers similar ground with a different, more varied programme a short walk along the river.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Cecil Hepworth Playhouse (n.d.) 'Home'. Available at: <a href="https://www.cecilhepworthplayhouse.co.uk/" target="_blank" rel="noopener noreferrer">https://www.cecilhepworthplayhouse.co.uk/</a> (Accessed: 22 August 2026).</li>
+            <li>Surrey Brass (n.d.) 'The Playhouse (aka The Generating Shed)'. Available at: <a href="https://www.surreybrass.co.uk/hepworthfilm/index.php/studios/49-the-playhouse-aka-the-generating-shed" target="_blank" rel="noopener noreferrer">https://www.surreybrass.co.uk/hepworthfilm/index.php/studios/49-the-playhouse-aka-the-generating-shed</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+            <li><a href="/things-to-do/walton-trail/">The Walton Trail</a></li>
+            <li><a href="/history/film-studios/">Full history of Hepworth Studios</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

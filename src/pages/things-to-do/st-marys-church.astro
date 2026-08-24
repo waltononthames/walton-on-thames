@@ -1,0 +1,193 @@
+---
+// Phase 6 detail guide #5, brief section 5.4 and section 11.
+// Research: waltonparish.org.uk/tour/ (history content only, no
+// practical visitor info), achurchnearyou.com's official Church of
+// England facilities and find-us listings for this parish (accessibility
+// features, directions, general access pattern). No specific opening
+// hours stated in the copy, per this section's policy — phrased as
+// "usually open on weekday mornings" with a link to the parish's own
+// site for current times, matching how hours are handled elsewhere in
+// this build. Local history draws on this site's own, already-sourced
+// /history/st-marys-church/ article rather than re-researching from
+// scratch.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="St Mary's Church: A Self-Guided Visit | Walton-on-Thames.org"
+  description="A local guide to visiting St Mary's Church, Walton-on-Thames: the self-guided tour, accessibility, directions, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: "St Mary's Church", item: `${SITE}/things-to-do/st-marys-church/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Church',
+      name: "St Mary's Church",
+      description: "Walton-on-Thames's Grade I listed parish church, with a self-guided tour of its Saxon origins, Roubiliac monument and other memorials.",
+      url: `${SITE}/things-to-do/st-marys-church/`,
+      address: { '@type': 'PostalAddress', streetAddress: 'Church Street', addressLocality: 'Walton-on-Thames', postalCode: 'KT12 2QS', addressCountry: 'GB' },
+      sameAs: 'https://waltonparish.org.uk/tour/',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">St Mary's Church</li>
+        </ol>
+      </nav>
+      <h1>St Mary's Church: A Self-Guided Visit</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>St Mary's is Walton's oldest building and its only Grade I listed one, on Church Street a minute's walk from the High Street. The parish's own self-guided tour walks you through the building's history point by point, and it's worth following rather than just looking around, because the church's most interesting features aren't obvious without context.</p>
+
+        <h2>What the tour covers</h2>
+        <p>The church incorporates Saxon material within a structure that dates in its main form to the twelfth century, and the tour takes in its square flint tower with a ring of eight bells, the oldest cast in 1606. Inside, the highlight is a 1755 rococo monument to Viscount Shannon by Louis-François Roubiliac, one of Georgian Britain's most sought-after sculptors, alongside a 1587 brass to John Selwyn and the church's well-known scold's bridle, an iron device once used to publicly humiliate women accused of scolding, and famous enough locally to get a mention in Jerome K. Jerome's <em>Three Men in a Boat</em>. Our full <a href="/history/st-marys-church/">history of St Mary's Church</a> goes into all of this in more depth than the tour notes themselves.</p>
+
+        <h2>Two more stories worth knowing before you go</h2>
+        <p>Two details in particular are easy to miss on a first visit and aren't obvious from the building alone. The American composer Jerome Kern, later famous for <em>Show Boat</em> and "Ol' Man River", met his future wife Eva Leale while she was working behind the bar at the Swan Inn during a Thames boat trip in 1909, and the couple married at St Mary's on 25 October 1910, a small, specific story that sits oddly well alongside the church's Georgian sculpture and Saxon wall. Separately, the church carries a genuine First World War connection: the nearby Mount Felix military hospital treated around 27,000 New Zealand soldiers during the war, and those who died there are buried in the churchyard and cemetery close by. A memorial banner embroidered by a recovering patient was installed at the church in 1920, replaced by a permanent brass memorial tablet in 1932, and the connection is still marked with an annual remembrance service, so the church remains a live link between Walton and New Zealand rather than only a historical footnote. Our <a href="/history/st-marys-church/">full history of St Mary's</a> covers both stories, and the wider Mount Felix hospital, in more depth.</p>
+
+        <h2>Accessibility and access</h2>
+        <p>According to the church's own facilities listing, St Mary's has step-free access via a ramp, an accessible toilet, a hearing loop and large-print materials, and assistance dogs are welcome. As a working parish church it's usually open to visitors on weekday mornings and into the early afternoon, but this can vary around services and events, so check the parish's own site for current opening times before making a special trip, particularly at weekends.</p>
+
+        <h2>Getting there and parking</h2>
+        <p>The church is about a 25-minute walk from Walton-on-Thames station, or a five-minute drive, and sits right in the town centre. There's no dedicated church car park, but the town-centre car parks, including Walton Lane and The Heart multi-storey, are all within a few minutes' walk.</p>
+
+        <h2>What to combine it with</h2>
+        <p>St Mary's sits close enough to the river that it pairs naturally with a walk down to <a href="/things-to-do/walton-bridge/">Walton Bridge</a> or <a href="/things-to-do/cowey-sale/">Cowey Sale</a>, and Route 1 or 2 of the <a href="/things-to-do/walton-trail/">Walton Trail</a> passes close by if you'd rather turn the church into part of a longer town-centre walk than a stop on its own.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Walton Parish (n.d.) 'St Mary's Self-Guided Tour'. Available at: <a href="https://waltonparish.org.uk/tour/" target="_blank" rel="noopener noreferrer">https://waltonparish.org.uk/tour/</a> (Accessed: 22 August 2026).</li>
+            <li>A Church Near You (n.d.) 'St Mary's Church, Walton on Thames: Facilities'. Available at: <a href="https://www.achurchnearyou.com/church/8235/facilities/" target="_blank" rel="noopener noreferrer">https://www.achurchnearyou.com/church/8235/facilities/</a> (Accessed: 22 August 2026).</li>
+            <li>A Church Near You (n.d.) 'St Mary's Church, Walton on Thames: Find Us'. Available at: <a href="https://www.achurchnearyou.com/church/8235/find-us/" target="_blank" rel="noopener noreferrer">https://www.achurchnearyou.com/church/8235/find-us/</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+            <li><a href="/things-to-do/cowey-sale/">Cowey Sale</a></li>
+            <li><a href="/things-to-do/walton-trail/">The Walton Trail</a></li>
+            <li><a href="/history/st-marys-church/">Full history of St Mary's</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

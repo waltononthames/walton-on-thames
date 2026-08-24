@@ -22,6 +22,7 @@
   "seasonality": "year-round",
   "checkBeforeTravelling": false,
   "officialUrl": "https://lovewalton.co.uk/walton-trail/",
+  "internalUrl": "/things-to-do/walton-trail/",
   "schemaType": "TouristAttraction",
   "lastVerified": "2026-08-22",
   "featured": false,

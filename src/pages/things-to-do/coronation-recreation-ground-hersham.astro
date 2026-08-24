@@ -1,0 +1,184 @@
+---
+// Phase 6 detail guide #8, brief section 5.4 and section 11.
+// Research: Elmbridge Borough Council's own park listing fetched
+// directly for facilities/parking. No verified source found for why the
+// ground is named "Coronation" or when — one search result speculated it
+// might relate to a 1953 coronation garden, but that turned out to be an
+// unrelated park in Romford, so the name's origin is left unaddressed
+// rather than guessed.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Coronation Recreation Ground: A Local Guide | Walton-on-Thames.org"
+  description="A local guide to Coronation Recreation Ground, Hersham: facilities, parking, the Elmbridge Community Eco Hub, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Coronation Recreation Ground', item: `${SITE}/things-to-do/coronation-recreation-ground-hersham/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Park',
+      name: 'Coronation Recreation Ground',
+      description: 'A Hersham park with play areas, sports pitches, a café and the Elmbridge Community Eco Hub.',
+      url: `${SITE}/things-to-do/coronation-recreation-ground-hersham/`,
+      address: { '@type': 'PostalAddress', streetAddress: 'Molesey Road', addressLocality: 'Hersham', addressCountry: 'GB' },
+      sameAs: 'https://www.elmbridge.gov.uk/leisure-and-culture/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory-5',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Coronation Recreation Ground</li>
+        </ol>
+      </nav>
+      <h1>Coronation Recreation Ground: A Local Guide</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Coronation Recreation Ground, on Molesey Road in Hersham, is one of the most complete parks in the area: a children's play area, outdoor sport for several different games, and a café and community hub on site, all within one green space rather than spread across separate visits. It works equally well as a quick stop for younger children on the play equipment or a longer visit built around a booked pitch or court.</p>
+
+        <h2>Facilities</h2>
+        <p>Elmbridge Borough Council's own listing confirms bowling greens, two cricket squares, three senior football pitches, junior and mini football pitches, four outdoor tennis courts, a netball court, calisthenics equipment and a measured one-mile fitness route, on top of the children's play area. That's an unusually wide spread of sport for a single park: cricket and bowls tend to suit an older crowd, the football pitches cover everything from mini-soccer to full-size senior matches, and the tennis courts and netball court add options that don't need a club membership to use casually. Football, cricket and tennis pitches can all be booked in advance through the council's own sports facility booking system rather than turning up and hoping a pitch is free, which matters most at weekends when demand is highest.</p>
+
+        <h2>Coffee in the Park and the Eco Hub</h2>
+        <p><a href="https://www.instagram.com/coffee.itp/" target="_blank" rel="noopener">Coffee in the Park</a> is visible from the car park and serves coffee, cakes, hot food and gelato, taking both cash and card, with uncovered patio seating, so it's worth checking the forecast if you're planning to sit and eat rather than take away. It's a genuine local café rather than a kiosk, which makes the park a more realistic place to spend an hour than a typical recreation ground with nothing but a play area.</p>
+        <p>The <a href="https://elmbridgeecohub.org.uk/" target="_blank" rel="noopener">Elmbridge Community Eco Hub</a> gives the park a further reason to visit beyond sport and play: a community fridge, a Library of Things, a refill point, recycling facilities and a community garden, run as a genuine local resource rather than a token green gesture. Both the café and the Eco Hub are worth checking directly for current opening and activities before a special visit, since a community-run hub in particular can have more variable hours than a commercial café would.</p>
+
+        <h2>Getting there, parking and accessibility</h2>
+        <p>The main car park is reached from a small entrance road off Molesey Road, opposite Molesey Close, and the council's own listing confirms parking is available around the clock. It's free, which is unusual enough for a park this well equipped that it's worth mentioning explicitly rather than assuming a charge. The park's principal routes are practical for wheelchairs, mobility scooters and buggies, based on a recent local visit, though individual sports facilities may have their own access considerations worth checking with the council if that matters for your visit. Being on Molesey Road also means it's a straightforward stop if you're already travelling between Hersham and Walton, rather than somewhere you'd need to go out of your way to reach.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Coronation Recreation Ground works well paired with <a href="/things-to-do/hersham-village-green/">Hersham Village Green</a> for a longer village walk, or with <a href="/things-to-do/safari-adventure-golf/">Safari Adventure Golf</a> if you're building a longer family day out around Hersham rather than a single stop. Because the park combines play, sport, food and the Eco Hub in one site, it also works as a self-contained half-day out on its own, particularly useful if you're travelling with a mixed-age group who won't all want to do the same thing at the same time, since one adult can supervise the play area while another books a court or watches a match.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Elmbridge Borough Council (n.d.) 'Coronation Recreation Ground'. Available at: <a href="https://www.elmbridge.gov.uk/leisure-and-culture/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory-5" target="_blank" rel="noopener noreferrer">https://www.elmbridge.gov.uk/leisure-and-culture/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory-5</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/hersham-village-green/">Hersham Village Green</a></li>
+            <li><a href="/things-to-do/safari-adventure-golf/">Safari Adventure Golf</a></li>
+            <li><a href="/things-to-do/hersham/">Things to do in Hersham</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

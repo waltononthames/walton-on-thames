@@ -1,0 +1,185 @@
+---
+// Phase 6 detail guide #9, brief section 5.4 and section 11.
+// Research: Elmbridge Borough Council's own listing fetched directly for
+// facilities/access; the Walton Casuals FC history is corroborated
+// directly against Wikipedia's article on the club. The "9.1 acres"
+// figure found via a park-review aggregator was not corroborated by the
+// council's own page, so it's omitted rather than stated as fact.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Elmgrove Recreation Ground: A Local Guide | Walton-on-Thames.org"
+  description="A local guide to Elmgrove Recreation Ground, Walton-on-Thames: facilities, its football history, parking, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Elmgrove Recreation Ground', item: `${SITE}/things-to-do/elmgrove-recreation-ground/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Park',
+      name: 'Elmgrove Recreation Ground',
+      description: 'A central Walton-on-Thames park with play areas, bowls, football and tennis, close to the town centre.',
+      url: `${SITE}/things-to-do/elmgrove-recreation-ground/`,
+      address: { '@type': 'PostalAddress', streetAddress: 'Highfield Road', addressLocality: 'Walton-on-Thames', postalCode: 'KT12 2RQ', addressCountry: 'GB' },
+      sameAs: 'https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/elmgrove-recreation',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Elmgrove Recreation Ground</li>
+        </ol>
+      </nav>
+      <h1>Elmgrove Recreation Ground: A Local Guide</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Elmgrove Recreation Ground, on Highfield Road, is one of the closest proper green spaces to central Walton, combining traditional and natural play with outdoor sport rather than being a single-purpose park for one activity alone.</p>
+
+        <h2>Facilities</h2>
+        <p>Elmbridge Borough Council's own listing confirms a football pitch, bowls, four tennis courts and both traditional and natural play areas. Basketball isn't on site but is available at the neighbouring Walton Youth Centre on Elm Grove, so it's worth knowing the two facilities sit next to each other rather than turning up expecting a basketball court inside the park itself. Football and tennis can both be booked in advance through the council's sports facility booking system.</p>
+
+        <h2>A former home of Walton Casuals FC</h2>
+        <p>The park has a real football history behind it. Walton Casuals FC, whose roots trace back to a Sunday team formed by ex-servicemen just after the Second World War, became an official Saturday club in 1948 and took up a pitch at Elm Grove Recreation Ground that year, playing in the Surrey Intermediate (Central) League. The club had a genuinely successful run from this ground, winning promotion to the league's Premier Division in 1952-53 and finishing runners-up three times, in 1954-55, 1956-57 and 1964-65, a solid record for a club playing out of an ordinary council recreation ground rather than a dedicated football venue. When the league they played in disbanded in 1965, the club moved on, eventually settling at what became Waterside Stadium in 1969, but for seventeen years this ordinary recreation ground was a proper football club's home. Walton Casuals FC itself no longer exists, the club was dissolved in 2022 after decades playing elsewhere in the area, which makes this quiet recreation ground the surviving physical link to a club that outlasted its own final home ground.</p>
+
+        <h2>Getting there and access</h2>
+        <p>The ground is open for access on foot 24 hours a day. The council's page doesn't list a dedicated car park or specific accessibility features, so if either is essential for your visit, it's worth checking with the council directly rather than assuming. Its central location off Highfield Road means it's realistic to reach on foot from most of central Walton without needing to drive at all, which makes it a genuinely useful park for anyone staying in the town centre without a car rather than one that assumes you've driven in.</p>
+
+        <h2>Who it suits</h2>
+        <p>Elmgrove isn't trying to be a destination park in the way Coronation Recreation Ground or Bushy Park are: it's a smaller, more everyday green space that works best as a regular local amenity rather than somewhere to plan a special day around. Bowls and tennis suit an older or more sport-focused visit, while the play areas and open grass work for younger children and casual games. It's the kind of park a local resident would use weekly rather than a visitor would specifically travel to see, which is exactly the gap it fills well.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Elmgrove works well as a quick stop on a longer walk around central Walton rather than a destination to plan a whole visit around, and pairs naturally with <a href="/things-to-do/walton-trail/">the Walton Trail's</a> town-centre routes if you're already exploring on foot. If you want a bigger green space with considerably more facilities in one visit, <a href="/things-to-do/coronation-recreation-ground-hersham/">Coronation Recreation Ground</a> in Hersham is a short drive away and offers a café and a wider range of sport in a single stop.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Elmbridge Borough Council (n.d.) 'Elmgrove Recreation Ground'. Available at: <a href="https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/elmgrove-recreation" target="_blank" rel="noopener noreferrer">https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/elmgrove-recreation</a> (Accessed: 22 August 2026).</li>
+            <li>Wikipedia (n.d.) 'Walton Casuals F.C.'. Available at: <a href="https://en.wikipedia.org/wiki/Walton_Casuals_F.C." target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Walton_Casuals_F.C.</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/walton-trail/">The Walton Trail</a></li>
+            <li><a href="/things-to-do/">Things to do in Walton-on-Thames</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

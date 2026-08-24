@@ -1,0 +1,185 @@
+---
+// Phase 6 detail guide #15 (final), brief section 5.4 and section 11.
+// Research: safariadventuregolf.com fetched directly for practical
+// facts; opening date (1 August 2015) confirmed via Golf Business News'
+// contemporary coverage. No prices stated in the copy, per this
+// section's policy — the operator's site displays them clearly if
+// needed.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Safari Adventure Golf, Hersham: A Local Guide | Walton-on-Thames.org"
+  description="A local guide to Safari Adventure Golf in Hersham: the course, opening, getting there, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Safari Adventure Golf', item: `${SITE}/things-to-do/safari-adventure-golf/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SportsActivityLocation',
+      name: 'Safari Adventure Golf',
+      description: 'An 18-hole safari-themed adventure golf course at Hersham Golf Club.',
+      url: `${SITE}/things-to-do/safari-adventure-golf/`,
+      address: { '@type': 'PostalAddress', streetAddress: 'Assher Road', addressLocality: 'Hersham', postalCode: 'KT12 4RA', addressCountry: 'GB' },
+      sameAs: 'https://safariadventuregolf.com/',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Safari Adventure Golf</li>
+        </ol>
+      </nav>
+      <h1>Safari Adventure Golf, Hersham: A Local Guide</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Safari Adventure Golf is an 18-hole outdoor adventure golf course at Hersham Golf Club, each hole themed around the wildlife and landscapes of South America, Africa or Asia, with interactive animal features built into the course rather than added as decoration around a standard layout.</p>
+
+        <h2>Added to diversify an existing golf club</h2>
+        <p>The course opened on 1 August 2015, built by Hersham Golf Club specifically to diversify what had been a traditional golf-only site and make it more family-friendly. At the time, the club's own leadership described it as a way to introduce children to golf while giving parents an active outing to do together, rather than a separate business bolted onto the golf club for its own sake, a genuine attempt to widen the club's appeal beyond its existing membership rather than a marketing exercise. That framing still describes how the course works today: it sits alongside Hersham Golf Club's traditional course rather than replacing any part of it, adding a second, entirely separate offering to an established local club rather than converting it into something new.</p>
+
+        <h2>Who it suits</h2>
+        <p>The format works for a quick family visit, a couple looking for something low-key and active, or a small group turning a round into a casual competition. Family packages are available directly through the operator if you're visiting as a group rather than individually, and the site states a discount on a same-day second round on weekdays outside bank holidays, worth knowing if you're likely to want to play twice in one visit. Parties, club outings and team events can also be arranged through the venue, so it's a reasonable option for a birthday or a work outing rather than only a casual family visit.</p>
+        <p>Because each hole is themed rather than a plain obstacle, it works reasonably well for visitors who wouldn't normally choose golf at all: the theatrical elements do more of the work than a standard crazy golf course, which tends to suit families with a wide age range better than a course built purely around difficulty.</p>
+
+        <h2>Getting there and booking</h2>
+        <p>The course is at Assher Road, Hersham, Walton-on-Thames, KT12 4RA. It's open year-round, so unlike several of the area's other outdoor attractions, it isn't a seasonal booking, though it's still worth checking current opening times and weather conditions before travelling, since it's played outdoors rather than under cover. The operator's site doesn't publish specific parking or accessibility information, so if either matters for your visit, it's worth contacting them directly or checking the current opening times online before you travel. Booking is available online or by phone, and walk-ins are generally possible too, though booking ahead avoids a wasted trip if the course is busy, particularly at weekends or during school holidays when demand for family activities in the area is highest.</p>
+        <p>Being outdoors and weather-exposed is worth planning around a little more carefully than an indoor activity would need: a genuinely wet day can make the course considerably less enjoyable even if it stays technically open, so it's worth checking the forecast alongside opening times rather than assuming the two are the same question.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Safari Adventure Golf pairs naturally with <a href="/things-to-do/hersham-village-green/">Hersham Village Green</a> or <a href="/things-to-do/coronation-recreation-ground-hersham/">Coronation Recreation Ground</a> either side of your round, both close enough to add a second, lower-cost activity to the same visit rather than driving elsewhere to fill the rest of the day.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Safari Adventure Golf (n.d.) 'Home'. Available at: <a href="https://safariadventuregolf.com/" target="_blank" rel="noopener noreferrer">https://safariadventuregolf.com/</a> (Accessed: 22 August 2026).</li>
+            <li>Golf Business News (n.d.) 'Fun-Filled Safari Adventure Golf Opens at Hersham Golf Club'. Available at: <a href="https://golfbusinessnews.com/news/courses/fun-filled-safari-adventure-golf-opens-at-hersham-golf-club/" target="_blank" rel="noopener noreferrer">https://golfbusinessnews.com/news/courses/fun-filled-safari-adventure-golf-opens-at-hersham-golf-club/</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/hersham-village-green/">Hersham Village Green</a></li>
+            <li><a href="/things-to-do/coronation-recreation-ground-hersham/">Coronation Recreation Ground</a></li>
+            <li><a href="/things-to-do/hersham/">Things to do in Hersham</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

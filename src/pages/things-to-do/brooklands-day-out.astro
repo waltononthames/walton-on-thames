@@ -1,0 +1,176 @@
+---
+// Phase 6 detail guide #13 ("Brooklands, London Bus Museum and
+// Mercedes-Benz World day"), brief section 5.4 and section 11.
+// Research: Brooklands Museum's own site returned HTTP 403 to direct
+// fetches; practical detail comes from search-indexed content of the
+// operator's own pages. No specific driving time from Walton to
+// Weybridge is stated — I have no mapping tool to verify one, so the
+// guide describes it as a short drive to a neighbouring town rather than
+// inventing a figure.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="A Brooklands Day Out: Museum, Buses & Mercedes-Benz | Walton-on-Thames.org"
+  description="A local guide to combining Brooklands Museum, the London Bus Museum and Mercedes-Benz World into one day out from Walton-on-Thames."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'A Brooklands Day Out', item: `${SITE}/things-to-do/brooklands-day-out/` },
+      ],
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">A Brooklands Day Out</li>
+        </ol>
+      </nav>
+      <h1>A Brooklands Day Out: Museum, Buses and Mercedes-Benz World</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Three of the strongest attractions near Walton sit close enough together in Weybridge to genuinely combine into a single day, rather than three separate trips: <a href="https://www.brooklandsmuseum.com/" target="_blank" rel="noopener">Brooklands Museum</a>, the London Bus Museum inside it, and <a href="https://www.mercedes-benzworld.co.uk/" target="_blank" rel="noopener">Mercedes-Benz World</a> a short walk away. All three sit on or beside the historic Brooklands motor circuit, a 1907 racing track partly preserved within a modern 155-acre site, so the setting itself is part of the history even before you go into a single building or read a single exhibit.</p>
+
+        <h2>Brooklands Museum and the London Bus Museum</h2>
+        <p>A single ticket covers both museums, so there's no separate admission to plan for once you're inside: Brooklands' own admission includes free entry to the London Bus Museum, which sits within the same complex. Between them, the two museums cover the Aircraft Factory and Flight Shed, the Motoring Village, the Stratosphere Chamber, the racetrack itself, an aircraft park, and the world's largest collection of working historic London buses. Realistically, this pairing alone is enough to fill most of a day if you want to see everything rather than skim it, and buying tickets online in advance rather than on arrival typically gets the best available price, so it's worth booking ahead rather than deciding on the day.</p>
+
+        <h2>Mercedes-Benz World</h2>
+        <p>Mercedes-Benz World is a separate attraction next door rather than part of the same site, about a 5 to 10 minute walk from the Brooklands entrance. General admission and parking are free, so it works well as a lower-commitment add-on: worth doing even if you've already spent most of your budget and energy on Brooklands, since there's no extra entry fee to weigh up. Simulators and general displays are included; bookable driving experiences are a separate, paid extra, worth deciding on and booking in advance rather than turning up and hoping a slot is free. It's a useful attraction to have in reserve if children have had enough of museum cabinets for one day but aren't ready to go home yet, since the format is considerably more hands-on than either of the two museums.</p>
+
+        <h2>Getting there and parking</h2>
+        <p>Weybridge is one of Walton's closest neighbouring towns, a short drive away rather than a long day-trip. Brooklands has its own free museum car park, postcode KT13 0SL for satnav, right at the main entrance, with overflow parking available at busier events. If you're travelling by train rather than driving, Weybridge station connects to both sites: the 436 bus stops near Mercedes-Benz World, from where it's a 5 to 10 minute walk to the Brooklands entrance, or you can walk the whole way down Brooklands Road to the Campbell Gate entrance, or use the newer shared walking and cycling path to reach the main visitor entrance directly.</p>
+
+        <h2>Planning the day</h2>
+        <p>Because Brooklands and the London Bus Museum share a ticket and Mercedes-Benz World is free to enter, the only real planning decision is order and pacing rather than budget. Doing Brooklands first, while energy is highest, and finishing at Mercedes-Benz World, where the free entry means there's no pressure to see everything, is a reasonably natural way to structure the day, but there's no wrong order given both sites are within easy walking distance of each other once you've parked or arrived. Whichever order you choose, it's worth allowing more time than you think you'll need, since both the museum collection and Mercedes-Benz World's simulators tend to take longer to get through properly than a first glance suggests.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Brooklands Museum (n.d.) 'Tickets & Admission Prices'. Available at: <a href="https://www.brooklandsmuseum.com/visit/tickets-prices/" target="_blank" rel="noopener noreferrer">https://www.brooklandsmuseum.com/visit/tickets-prices/</a> (Accessed: 22 August 2026).</li>
+            <li>Brooklands Museum (n.d.) 'Getting Here'. Available at: <a href="https://www.brooklandsmuseum.com/visit/getting-here/" target="_blank" rel="noopener noreferrer">https://www.brooklandsmuseum.com/visit/getting-here/</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="https://www.brooklandsmuseum.com/" target="_blank" rel="noopener">Brooklands Museum</a></li>
+            <li><a href="https://www.londonbusmuseum.com/" target="_blank" rel="noopener">London Bus Museum</a></li>
+            <li><a href="https://www.mercedes-benzworld.co.uk/" target="_blank" rel="noopener">Mercedes-Benz World</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,182 @@
+---
+// Phase 6 detail guide #4, brief section 5.4 and section 11.
+// Research: lovewalton.co.uk/walton-trail/ fetched directly for the four
+// routes and access details; WoTTA's own Postbox Trail PDF (via search)
+// gave the specific distance and start point for that route. No exact
+// distance/duration is published for Routes 1-3, so none is stated here.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="The Walton Trail: Self-Guided Walking Routes | Walton-on-Thames.org"
+  description="A local guide to the Walton Trail's four self-guided routes: the town centre trails, the Thames river route, and the Postbox Trail, with maps and starting points."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Walton Trail', item: `${SITE}/things-to-do/walton-trail/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      name: 'The Walton Trail',
+      description: 'Four self-guided walking and cycling routes through Walton-on-Thames, covering local history, the Thames riverside and a postbox trail.',
+      url: `${SITE}/things-to-do/walton-trail/`,
+      sameAs: 'https://lovewalton.co.uk/walton-trail/',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Walton Trail</li>
+        </ol>
+      </nav>
+      <h1>The Walton Trail: Self-Guided Walking Routes</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>The Walton Trail is four self-guided routes covering 25 numbered locations across the town, walkable or cyclable, free, and available whenever you want to go rather than at set times. It was originally created by WoTTA, the town's traders' association, and is now maintained and updated by Walton BID.</p>
+
+        <h2>The four routes</h2>
+        <p>Routes 1 and 2 cover the town centre, taking in the people, places and events that shaped Walton-on-Thames: naval heroes, royal connections, and the town's early film pioneers among them. Route 3 follows the Thames, with a riverside theme covering wharves, bridges and the ancient crossing points that gave the town its name. Route 4 is the Postbox Trail, a distinct 3-mile route on foot or by bike that starts outside the Everyman Cinema on the High Street and takes in postboxes bearing the cyphers of different monarchs, including examples from Queen Victoria's and King George V's reigns, tracing over a century of postal and royal history through the town's street furniture (WoTTA, n.d.; Love Walton, n.d.).</p>
+        <p>Each of the 25 stops has an audio description as well as a written one, so the trail works equally well as a passive listen-and-walk or a stop-and-read route. No distance or duration is published for Routes 1 to 3, so budget your own time rather than expecting a fixed walk length.</p>
+
+        <h2>Maps and access</h2>
+        <p>Downloadable PDF maps are available for all four routes directly from Love Walton's website, along with the digital guides that carry the extra background for each stop. Because the routes are self-guided and start from different points in the town, it's worth downloading the specific route map before you set off rather than trying to navigate from memory. All four are free, need no booking, and can be walked in either direction or in sections, so there's no wrong way to start.</p>
+
+        <h2>The film pioneers behind the town-centre routes</h2>
+        <p>The "film pioneers" the town-centre routes gesture at are a genuinely significant piece of history rather than a passing mention. Between 1899 and 1961, a single site on Hurst Grove operated, under three different names, as one of the most important film studios in the country, run for most of that period by Cecil Hepworth. During the First World War it stood alongside only two other British studios of comparable scale, and its output included the first film version of Alice in Wonderland. The story doesn't end well, a bankruptcy destroyed most of what the studio had made, but the studio itself shaped the earliest years of a British film industry that barely existed before it arrived. Our full <a href="/history/film-studios/">history of Hepworth Studios</a> covers the whole arc in detail, and is worth reading before or after Routes 1 and 2 rather than relying on the trail's own shorter version.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Routes 1 and 2 pass close to <a href="/history/film-studios/">the site of Cecil Hepworth's film studio</a>, so pairing the town-centre trail with our fuller history of Walton's film heritage adds context the trail itself only gestures at. Route 3 runs close enough to <a href="/things-to-do/cowey-sale/">Cowey Sale</a> and <a href="/things-to-do/walton-bridge/">Walton Bridge</a> that it's easy to fold the river route into a longer riverside visit, and the Postbox Trail's start outside the Everyman Cinema means it slots neatly before or after a film there. None of the four routes need much planning beyond picking one and downloading its map, which makes the trail a good option when you have an hour to fill and don't want to commit to a specific attraction in advance.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Love Walton (n.d.) 'Walton Trail'. Available at: <a href="https://lovewalton.co.uk/walton-trail/" target="_blank" rel="noopener noreferrer">https://lovewalton.co.uk/walton-trail/</a> (Accessed: 22 August 2026).</li>
+            <li>WoTTA (n.d.) 'Walton Postbox Trail'. Available at: <a href="https://www.wotta.co.uk/uploads/6/2/1/7/62178021/walton_postbox_trail.pdf" target="_blank" rel="noopener noreferrer">https://www.wotta.co.uk/uploads/6/2/1/7/62178021/walton_postbox_trail.pdf</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/cowey-sale/">Cowey Sale</a></li>
+            <li><a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+            <li><a href="/history/film-studios/">Hepworth Studios: film heritage</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

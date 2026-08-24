@@ -1,0 +1,183 @@
+---
+// Phase 6 detail guide #14 ("local spectator sport"), brief section 5.4
+// and section 11. Covers both Walton and Hersham FC and Esher Rugby,
+// Hersham's two main spectator sports. Research: Follow Away's ground
+// guide and the clubs' own ticket pages for practical detail; no
+// matchday ticket prices stated in the copy, per this section's policy.
+// This is also the guide that resolves the internalUrl already set on
+// the watch-walton-and-hersham-fc attraction record in Phase 1.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Watch Local Sport: Walton & Hersham FC and Esher Rugby | Walton-on-Thames.org"
+  description="A local guide to watching Walton and Hersham FC and Esher Rugby: grounds, tickets, matchday facilities, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Watch Local Sport', item: `${SITE}/things-to-do/walton-and-hersham-fc/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SportsActivityLocation',
+      name: 'Walton and Hersham FC and Esher Rugby matchday guide',
+      description: 'A guide to watching Walton and Hersham FC at the Elmbridge Xcel Sports Hub and Esher Rugby on Molesey Road.',
+      url: `${SITE}/things-to-do/walton-and-hersham-fc/`,
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Watch Local Sport</li>
+        </ol>
+      </nav>
+      <h1>Watch Local Sport: Walton and Hersham FC and Esher Rugby</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Between them, Walton and Hersham FC and Esher Rugby give the area two proper spectator sport options, both with a friendly, sociable matchday atmosphere rather than the scale or expense of top-flight sport. Neither needs the kind of advance planning or budget a Premier League ticket does, which makes either one a realistic spur-of-the-moment outing rather than something to book months ahead.</p>
+
+        <h2>Walton and Hersham FC</h2>
+        <p>The Swans play at the Elmbridge Xcel Sports Hub on Waterside Drive, Walton-on-Thames, entered from Waterside Drive with the stadium car park filling quickly on matchdays. The main stand provides covered seating for around 500 spectators, including dedicated wheelchair viewing positions, with other areas standing and uncovered. Matchday facilities normally include a catering unit, two bars, toilets at both ends of the stand and an accessible toilet downstairs in the main stand, and there's a club shop for replica kit and merchandise. Tickets are available online in advance or at the gate for ordinary fixtures, and if the main stadium car park is full, the main Elmbridge Xcel car park is a practical alternative, subject to current signage on the day. The ground shares its site with the wider Elmbridge Xcel Sports Hub and Leisure Complex, so it's a genuinely multi-purpose venue rather than one built solely for matchdays, which is part of why parking can fill up with other activity on site as well as football supporters.</p>
+
+        <h2>Esher Rugby</h2>
+        <p>Despite the club's name, Esher Rugby's home ground is on Molesey Road in Hersham, at 369 Molesey Road, KT12 3PF. The club was founded in 1923 and currently plays in National League 2 East, and Molesey Road Stadium has a capacity of 3,500, with around 1,200 seated. Beyond the men's first XV, the club runs a wider programme including senior, youth, minis, veterans, touch and walking rugby, so a home matchday is only one way the ground gets used through the week, and the club's community reach extends well beyond a single first-team fixture on a Saturday. Tickets and matchday hospitality can be booked through the club's own site, and it's worth checking the current fixture list and kick-off time before travelling, particularly for evening matches in winter.</p>
+
+        <h2>Planning a visit</h2>
+        <p>Both clubs publish their fixture lists online rather than on a fixed weekly schedule, so check the current calendar before building a visit around either one. Because the two grounds are close to each other in Hersham, it's realistic to check both clubs' fixtures for the same weekend if you want the best chance of a home match at one or the other, and worth doing before you commit to a specific Saturday, since a home fixture at one club doesn't guarantee anything at the other on the same date.</p>
+        <p>Neither club is a large enough operation to need the kind of advance planning a Premier League or top rugby fixture would, but arriving in reasonable time still matters, particularly for parking. Both grounds tend to get busiest in the thirty minutes or so before kick-off, so arriving with some margin rather than right on time makes for a considerably less stressful start to the afternoon, especially if you're bringing children or need step-free access.</p>
+
+        <h2>What to combine it with</h2>
+        <p>A matchday at either ground pairs naturally with <a href="/things-to-do/hersham-village-green/">Hersham Village Green</a> or <a href="/things-to-do/coronation-recreation-ground-hersham/">Coronation Recreation Ground</a> beforehand, both close enough for a walk or a coffee before kick-off rather than sitting in a car park waiting.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Walton & Hersham Football Club (n.d.) 'Match Day Tickets'. Available at: <a href="https://waltonhershamfc.com/matchday/" target="_blank" rel="noopener noreferrer">https://waltonhershamfc.com/matchday/</a> (Accessed: 22 August 2026).</li>
+            <li>Esher Rugby (n.d.) 'Match Centre'. Available at: <a href="https://www.esherrugby.com/tickets" target="_blank" rel="noopener noreferrer">https://www.esherrugby.com/tickets</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/hersham-village-green/">Hersham Village Green</a></li>
+            <li><a href="/things-to-do/coronation-recreation-ground-hersham/">Coronation Recreation Ground</a></li>
+            <li><a href="/things-to-do/hersham/">Things to do in Hersham</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -21,6 +21,7 @@
   "seasonality": "year-round",
   "checkBeforeTravelling": false,
   "officialUrl": "https://www.cecilhepworthplayhouse.co.uk/",
+  "internalUrl": "/things-to-do/cecil-hepworth-playhouse/",
   "schemaType": "PerformingArtsTheater",
   "lastVerified": "2026-08-22",
   "featured": false,

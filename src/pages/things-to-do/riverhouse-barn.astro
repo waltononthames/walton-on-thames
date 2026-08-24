@@ -1,0 +1,189 @@
+---
+// Phase 6 detail guide #6, brief section 5.4 and section 11.
+// Research: riverhousebarn.co.uk returned HTTP 403 to direct fetches
+// (likely bot protection), so practical detail comes from search-indexed
+// content of the operator's own site plus Euan's Guide, a disability
+// access review site, for accessibility specifics. Parking detail
+// (small car park, Drewitts Court alternative) is carried over from the
+// approved editorial draft, this build's source of record.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Riverhouse Barn Arts Centre: A Local Guide | Walton-on-Thames.org"
+  description="A local guide to Riverhouse Barn Arts Centre: its history as an 18th-century barn, the current programme, accessibility, parking, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Riverhouse Barn', item: `${SITE}/things-to-do/riverhouse-barn/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'PerformingArtsTheater',
+      name: 'Riverhouse Barn Arts Centre',
+      description: 'A riverside arts centre in Walton-on-Thames, in a converted 18th-century barn, hosting theatre, music, comedy and exhibitions.',
+      url: `${SITE}/things-to-do/riverhouse-barn/`,
+      sameAs: 'https://www.riverhousebarn.co.uk/',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Riverhouse Barn</li>
+        </ol>
+      </nav>
+      <h1>Riverhouse Barn Arts Centre: A Local Guide</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Riverhouse Barn is a converted 18th-century barn on the riverside, and one of Walton's strongest cultural assets: a year-round programme of theatre, chamber music, jazz, comedy, cabaret and exhibitions, run as a not-for-profit rather than a commercial venue. You don't need a ticket to use it either; the café, gallery and garden are all open to visit on their own.</p>
+
+        <h2>From storage barn to arts centre</h2>
+        <p>The building started life as an ordinary 18th-century barn on the banks of the Thames, and by the mid-1980s had fallen into poor repair, used by Elmbridge Borough Council mainly as a store for parks maintenance equipment. In 1985, a group of local residents recognised its potential and set up what became the Walton-on-Thames Community Arts Trust to acquire and convert it, with the council leasing the building to the Trust on a peppercorn rent. It opened as Riverhouse Barn Arts Centre in 1989 and has run as a not-for-profit community arts centre ever since, still wholly owned by the Trust rather than a commercial operator.</p>
+
+        <h2>The programme</h2>
+        <p>The programme runs across drama, chamber music, traditional and modern jazz, cabaret, comedy and children's shows, alongside a changing calendar of art exhibitions in the first-floor gallery. Beyond the ticketed events, the centre also runs arts and crafts classes for all ages, so it's worth checking the current listings even if you're not looking for a one-off show, particularly if you're after a regular class rather than a single visit. The mix of genres means the audience varies considerably by night, family-friendly one evening and a serious jazz crowd the next, so it's worth reading the specific listing rather than assuming what kind of evening you're booking.</p>
+
+        <h2>Accessibility</h2>
+        <p>The ground floor, including the theatre, café, learning studio and toilets, is step-free, and the first-floor gallery is reached by a platform lift rather than stairs. A hearing loop is fitted for visitors with hearing aids, and the venue says it will do its best to accommodate wheelchair access or dietary needs flagged when you book.</p>
+
+        <h2>Getting there and parking</h2>
+        <p>The venue has its own car park, but it's small and fills up quickly around performances, so it's worth having a backup plan on a busy evening. Drewitts Court car park, reached from Bridge Street and Hepworth Way, is a practical alternative, around an 8 to 10 minute walk away.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Because Riverhouse Barn sits right on the river, it's an easy stop either side of a walk to <a href="/things-to-do/cowey-sale/">Cowey Sale</a> or <a href="/things-to-do/walton-bridge/">Walton Bridge</a>, both close enough to fill the time before an evening performance without needing to drive anywhere else. If you're making a full evening of it, <a href="/things-to-do/st-marys-church/">St Mary's Church</a> and the surrounding town centre are both a short walk away for a meal or a drink before a show, and the café on site means you don't necessarily need to leave the building at all if you'd rather not.</p>
+
+        <h2>Booking</h2>
+        <p>Popular performances can sell out, so it's worth browsing the current programme and booking ahead rather than turning up on the night for anything you specifically want to see. Because the venue runs as a not-for-profit community trust rather than a large commercial operator, the programme can also change at fairly short notice, so it's worth checking your booking closer to the date if you've planned it well in advance. Check the current programme and book directly through <a href="https://www.riverhousebarn.co.uk/" target="_blank" rel="noopener">Riverhouse Barn's own website<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Riverhouse Barn Arts Centre (n.d.) 'History'. Available at: <a href="http://riverhousebarn.co.uk/about/history/" target="_blank" rel="noopener noreferrer">http://riverhousebarn.co.uk/about/history/</a> (Accessed: 22 August 2026).</li>
+            <li>Euan's Guide (n.d.) 'Riverhouse Arts Centre: Access Information'. Available at: <a href="https://www.euansguide.com/venues/riverhouse-arts-centre-walton-on-thames-1464/information" target="_blank" rel="noopener noreferrer">https://www.euansguide.com/venues/riverhouse-arts-centre-walton-on-thames-1464/information</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/cowey-sale/">Cowey Sale</a></li>
+            <li><a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+            <li><a href="/things-to-do/st-marys-church/">St Mary's Church</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

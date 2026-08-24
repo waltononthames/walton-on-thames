@@ -20,6 +20,7 @@
   "seasonality": "year-round",
   "checkBeforeTravelling": true,
   "officialUrl": "https://waltonparish.org.uk/tour/",
+  "internalUrl": "/things-to-do/st-marys-church/",
   "schemaType": "Church",
   "lastVerified": "2026-08-22",
   "featured": false,

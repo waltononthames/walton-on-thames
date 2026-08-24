@@ -1,0 +1,180 @@
+---
+// Phase 6 detail guide #11, brief section 5.4 and section 11.
+// Research: sources gave wildly different distances for this walk (5 to
+// 11.1 miles) depending on route variation. walkthethames.co.uk's own
+// cumulative Thames Path mileage table gives Walton at mile 142.7 and
+// Hampton Court at mile 147.5, meaning the direct National Trail
+// distance is 4.8 miles — used as the confident figure here, with longer
+// alternative routes (via Bushy Park, Kingston) mentioned but not stated
+// with a specific distance I can't verify precisely.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Walking from Walton to Hampton Court Palace | Walton-on-Thames.org"
+  description="A local guide to walking the Thames Path from Walton Bridge to Hampton Court Palace: distance, what you pass, and how to get back."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Walton to Hampton Court Walk', item: `${SITE}/things-to-do/walton-to-hampton-court-walk/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      name: 'Walton to Hampton Court Thames Path Walk',
+      description: 'A riverside walk along the Thames Path from Walton Bridge to Hampton Court Palace.',
+      url: `${SITE}/things-to-do/walton-to-hampton-court-walk/`,
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Walton to Hampton Court Walk</li>
+        </ol>
+      </nav>
+      <h1>Walking from Walton to Hampton Court Palace</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Following the Thames Path directly from Walton Bridge to Hampton Court Palace is a 4.8-mile walk, based on the National Trail's own cumulative mileage markers, which put Walton at mile 142.7 and Hampton Court at mile 147.5 of the full trail. That makes it a realistic half-day walk in one direction at an easy, unhurried pace, or a full day if you're planning to walk back rather than take the train, and it's worth knowing that other published routes covering the same broad journey run considerably longer, up to 11 miles, because they loop through Bushy Park, Hampton Village or Kingston rather than following the riverbank directly. If you see a route online claiming double this distance, it's very likely one of those longer variations rather than a different measurement of the same direct path, so it's worth checking which version a given route description is actually describing before you commit to it and plan your day around it.</p>
+
+        <h2>What you pass</h2>
+        <p>The direct route follows the river past Sunbury Lock, just over a mile and a half in, one of the standard chain of locks that keep this stretch of the Thames navigable, and a natural first landmark to aim for if you want to break the walk into stages. From there the path continues past Hurst Park Open Space, a broad stretch of riverside common land in West Molesey, useful as a second waypoint and a place to sit if you need a break before the final stretch. The route also passes close to Molesey Lock further along, another working piece of river infrastructure rather than a tourist feature, before the built-up edges of Hampton start to appear and the path delivers you to Hampton Court Palace itself.</p>
+        <p>The whole route is flat and follows a well-used towpath, so it doesn't need specialist walking gear, just comfortable shoes and, depending on the season, a look at the forecast, since riverside paths can flood after heavy rain. Because it follows the river the entire way, it's difficult to get genuinely lost, even without a detailed map, though a phone with GPS is still worth having for the specific junctions where the path briefly moves away from the water's edge and back again.</p>
+
+        <h2>Getting back</h2>
+        <p>Hampton Court has its own railway station with services back towards Waterloo, which is the simplest way to return if you'd rather not walk the same route twice, and a genuinely sensible option if energy or daylight is running low. If you do want to make a full day of it, walking back gives you a second look at the river from the opposite direction, which can feel like a different walk entirely depending on the light and the tide. A third option is to treat the walk as one-way and take a taxi or bus back if trains don't line up well with when you finish, particularly outside peak times.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Starting from <a href="/things-to-do/walton-bridge/">Walton Bridge</a> and <a href="/things-to-do/cowey-sale/">Cowey Sale</a> means you can begin with a coffee before setting off. <a href="https://www.elmbridge.gov.uk/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory/hurst-park-open-space" target="_blank" rel="noopener">Hurst Park Open Space</a> is worth a pause partway along, and <a href="https://www.hrp.org.uk/hampton-court-palace/" target="_blank" rel="noopener">Hampton Court Palace</a> itself is substantial enough to fill the rest of the day once you arrive, so it's worth timing your start to leave a proper visit at the other end rather than treating the walk as the whole outing. Starting reasonably early is the simplest way to protect that time, particularly if you also want the option of walking back rather than relying on a specific train.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Walk the Thames (n.d.) 'Thames Path Distances'. Available at: <a href="https://walkthethames.co.uk/thames-path-distances/" target="_blank" rel="noopener noreferrer">https://walkthethames.co.uk/thames-path-distances/</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+            <li><a href="/things-to-do/cowey-sale/">Cowey Sale</a></li>
+            <li><a href="https://www.hrp.org.uk/hampton-court-palace/" target="_blank" rel="noopener">Hampton Court Palace</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

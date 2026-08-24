@@ -1,0 +1,183 @@
+---
+// Phase 6 detail guide #10, brief section 5.4 and section 11.
+// Research: Elmbridge Borough Council's own listing fetched directly.
+// The splash pad's exact seasonal dates (23 May to 2 September) and
+// daily hours are this year's figures and would go stale in future
+// years if hard-coded into evergreen copy, so the copy says "runs in
+// summer, check current dates" instead, consistent with how every other
+// guide in this build handles seasonal specifics.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="Hersham Recreation Ground: A Local Guide | Walton-on-Thames.org"
+  description="A local guide to Hersham Recreation Ground: the play area, splash pad, Multi Use Games Area, and what to combine it with."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Hersham Recreation Ground', item: `${SITE}/things-to-do/hersham-recreation-ground/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Park',
+      name: 'Hersham Recreation Ground',
+      description: 'A Hersham park with a play area, seasonal splash pad and a Multi Use Games Area.',
+      url: `${SITE}/things-to-do/hersham-recreation-ground/`,
+      address: { '@type': 'PostalAddress', streetAddress: 'Pratts Lane', addressLocality: 'Hersham', postalCode: 'KT12 4RR', addressCountry: 'GB' },
+      sameAs: 'https://www.elmbridge.gov.uk/leisure-and-culture/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory-3',
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Hersham Recreation Ground</li>
+        </ol>
+      </nav>
+      <h1>Hersham Recreation Ground: A Local Guide</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Hersham Recreation Ground, off Pratts Lane, is one of the most useful family green spaces in the village, and the reason most families end up here rather than one of Hersham's other parks is the splash pad, one of only a handful in the borough. It's the kind of park that solves a specific problem well, somewhere active to take children on a warm afternoon without booking anything or spending money, rather than trying to be everything to everyone.</p>
+
+        <h2>Facilities</h2>
+        <p>Elmbridge Borough Council's own listing confirms a children's play area, a teen swing, a play wall and a Multi Use Games Area that covers basketball, five-a-side football, netball and tennis on the same surface, alongside the splash pad itself. That range means the park suits a wide age spread on the same visit, toddlers on the play equipment, teenagers on the games area, rather than being aimed at one age group. The play wall and teen swing in particular are a step up from a standard toddler play area, and worth knowing about if you've got older children who've outgrown the usual slide-and-swing set-up but still want somewhere to burn off energy outdoors. The Multi Use Games Area's mix of sports also means a single visit can cover different children's interests without splitting the group across two separate venues, which matters more here than at a single-sport park.</p>
+
+        <h2>The splash pad</h2>
+        <p>The splash pad is free to use and runs during the summer season only, typically from late May to early September, with daytime hours that vary slightly between weekdays and Sundays. Because it's genuinely seasonal rather than available whenever the weather is warm, it's worth checking the council's current dates before promising a visit to children, particularly right at the start or end of the season when a warm day can arrive before the pad itself has switched on for the year, or a cool spell can arrive before it closes. As with any splash pad, it's an unsupervised water feature rather than a staffed pool, so the usual common sense applies: keep younger children within reach and bring a change of clothes and a towel, since there's nowhere on site to dry off or get changed comfortably afterwards.</p>
+
+        <h2>Getting there and access</h2>
+        <p>The ground is open for access on foot 24 hours a day. The council's listing doesn't specify a dedicated car park or accessibility features for this site, so if either matters for your visit, it's worth checking directly with the council rather than assuming. Being in the heart of the village rather than on its edge, it's realistic to reach on foot from most of Hersham without needing to drive, which is worth knowing if parking near a busy splash pad on a hot day is a concern, since a genuinely popular free attraction on a warm weekend can draw more visitors than a small residential street can comfortably absorb.</p>
+
+        <h2>What to combine it with</h2>
+        <p>Hersham Recreation Ground pairs naturally with <a href="/things-to-do/hersham-village-green/">Hersham Village Green</a> for a longer walk around the village, or with <a href="/things-to-do/coronation-recreation-ground-hersham/">Coronation Recreation Ground</a> a short walk away if the splash pad turns out to be closed and you want a reliable backup with more all-weather facilities and a café on site. If you're building a full day around Hersham rather than a single stop, <a href="/things-to-do/safari-adventure-golf/">Safari Adventure Golf</a> is close enough to add a second, less water-dependent activity either side of a splash pad visit, useful if the weather turns or children have had enough of the water for one afternoon.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Elmbridge Borough Council (n.d.) 'Hersham Recreation Ground'. Available at: <a href="https://www.elmbridge.gov.uk/leisure-and-culture/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory-3" target="_blank" rel="noopener noreferrer">https://www.elmbridge.gov.uk/leisure-and-culture/leisure-and-culture/green-spaces/parks-play-areas-and-green-spaces-directory-3</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/hersham-village-green/">Hersham Village Green</a></li>
+            <li><a href="/things-to-do/coronation-recreation-ground-hersham/">Coronation Recreation Ground</a></li>
+            <li><a href="/things-to-do/hersham/">Things to do in Hersham</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,181 @@
+---
+// Phase 6 detail guide #12 ("ferry walk"), brief section 5.4 and section
+// 11. Research: sunburyferry.co.uk's own "Walton on Thames" route page,
+// fetched directly, gives distance and landmarks for the Walton-side
+// approach. No verified return route exists beyond retracing the same
+// path or continuing into Sunbury, so no specific alternative route is
+// invented — kept honestly general per this build's established pattern.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+---
+
+<BaseLayout
+  title="The Sunbury Ferry Walk from Walton | Walton-on-Thames.org"
+  description="A local guide to walking from Walton to the Sunbury Ferry: the route, what you pass, and how to turn it into a longer riverside outing."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+        { '@type': 'ListItem', position: 3, name: 'Sunbury Ferry Walk', item: `${SITE}/things-to-do/sunbury-ferry-walk/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      name: 'The Sunbury Ferry Walk',
+      description: 'A riverside walk from Walton Bridge to the Sunbury Ferry crossing, with the option to continue into Lower Sunbury.',
+      url: `${SITE}/things-to-do/sunbury-ferry-walk/`,
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/things-to-do/">Things to Do</a></li>
+          <li aria-current="page">Sunbury Ferry Walk</li>
+        </ol>
+      </nav>
+      <h1>The Sunbury Ferry Walk from Walton</h1>
+      <p class="byline">By Darren Bayley · Last reviewed 22 August 2026</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container article-layout">
+      <article class="prose">
+        <p>Walking from Walton Bridge downstream to the <a href="/things-to-do/sunbury-ferry/">Sunbury Ferry</a> is a two-mile stroll along the Thames Path towpath, according to the ferry's own route guide, flat and mostly paved or firm underfoot, with one field along the way that can get waterlogged after heavy rain. It's a straightforward walk to describe precisely because the whole thing follows the river with the water always on one side of you.</p>
+
+        <h2>What you pass</h2>
+        <p>Heading downstream from Walton Bridge, the route passes Sunbury Lock, one of the standard chain of locks that keep this stretch of the Thames navigable, with its lockkeeper's house and weir, a genuine working piece of river infrastructure rather than a preserved curiosity. It also passes the Weir Hotel, a riverside pub the ferry's own site describes as established around 1830, and continues near <a href="https://www.placesleisure.org/centres/elmbridge-xcel-leisure-complex/" target="_blank" rel="noopener">Elmbridge Xcel Leisure Complex</a> and the Elmbridge Xcel Sports Hub before reaching the ferry crossing point itself, just downstream of the lock. None of these need a detour to see, they're all directly on or immediately beside the towpath, so the walk naturally takes them in without adding extra distance.</p>
+        <p>Because the whole route runs along one continuous towpath with the river always on one side, it's a good option for anyone who wants a proper walk without route-finding decisions to make along the way. That also makes it a reasonable choice for a first riverside walk if you're new to the area, since getting lost would require actively leaving the path rather than missing a turning.</p>
+
+        <h2>Making it a longer outing</h2>
+        <p>The simplest version of this walk is there-and-back: walk to the ferry, cross to Lower Sunbury, and either explore the village before recrossing or turn straight around. For a longer version, <a href="/things-to-do/sunbury-ferry/">once you're across</a>, Sunbury's <a href="https://www.spelthorne.gov.uk/page/1436/walled-garden" target="_blank" rel="noopener">Walled Garden and Sunbury Gallery</a> are within easy walking distance of the Sunbury-side landing, giving you a genuine destination on the far bank rather than just a crossing to look at. I haven't verified an alternative return route back to Walton that avoids retracing the outbound path, so the honest version of this walk is a there-and-back with a detour into Sunbury in the middle, not a true loop. That's still a reasonable four miles round trip once you add the crossing and a look around Sunbury, enough for a proper afternoon out without needing to plan much beyond checking the ferry is running.</p>
+
+        <h2>Before you set off</h2>
+        <p>The ferry itself is seasonal and weather-dependent, so it's worth checking it's running on the day rather than walking two miles to find it isn't, particularly since there's no quick alternative crossing nearby if you arrive to find it suspended. Because the whole route hugs the riverbank, it's easy to follow without a detailed map, but a phone with GPS is still useful insurance, particularly if you're continuing into Sunbury on the far side where the path briefly leaves the water's edge. It's also worth bringing cash or a card for the crossing itself and checking the current fare and payment method on the operator's site, since these details can change between seasons.</p>
+
+        <h2>What to combine it with</h2>
+        <p><a href="/things-to-do/walton-bridge/">Walton Bridge</a> and <a href="/things-to-do/cowey-sale/">Cowey Sale</a> make an obvious starting point, both right at the beginning of the route with parking and somewhere to get a coffee before you set off. If you'd rather turn the outward leg into the main event and get the ferry back rather than walking both ways, the crossing works equally well in either direction, so there's no wrong way round to plan it.</p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <ul>
+            <li>Sunbury Ferry (n.d.) 'Walton on Thames'. Available at: <a href="https://sunburyferry.co.uk/walton-on-thames" target="_blank" rel="noopener noreferrer">https://sunburyferry.co.uk/walton-on-thames</a> (Accessed: 22 August 2026).</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="history-sidebar">
+        <div class="info-card">
+          <h2>Nearby</h2>
+          <ul>
+            <li><a href="/things-to-do/sunbury-ferry/">Sunbury Ferry</a></li>
+            <li><a href="/things-to-do/walton-bridge/">Walton Bridge</a></li>
+            <li><a href="/things-to-do/cowey-sale/">Cowey Sale</a></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <a href="/things-to-do/" class="btn btn-outline hub-back-link">← Things to do in Walton-on-Thames</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .byline {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sources-block {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .sources-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .sources-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sources-block li {
+    font-size: 0.875rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.875rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-card a {
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+    display: block;
+  }
+
+  .info-card a:hover {
+    color: var(--color-accent);
+  }
+
+  .hub-back-link {
+    width: 100%;
+    justify-content: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
