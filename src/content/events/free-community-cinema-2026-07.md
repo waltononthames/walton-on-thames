@@ -1,8 +1,8 @@
 ---
 title: "Free Community Cinema"
 slug: "free-community-cinema-2026-07"
-start: "2026-08-24T19:00:00"
-end: "2026-08-24T22:00:00"
+start: "2026-08-31T19:00:00"
+end: "2026-08-31T22:00:00"
 venue: "29 High Street, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "community"
