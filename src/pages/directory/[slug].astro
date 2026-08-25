@@ -15,6 +15,7 @@ export async function getStaticPaths() {
 const { biz } = Astro.props;
 const { Content } = await render(biz);
 
+
 const categoryLabel = biz.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
 const neighbourhoodLabel = formatPlaceName(biz.data.neighbourhood);
 
@@ -69,7 +70,7 @@ const openingHoursSpecification = biz.data.hours
 ---
 
 <BaseLayout
-  title={`${biz.data.name} — ${categoryLabel} in ${neighbourhoodLabel}`}
+  title={`${biz.data.name}: ${categoryLabel} in ${neighbourhoodLabel}`}
   description={biz.data.description}
 >
   <slot name="structured-data">

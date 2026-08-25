@@ -21,9 +21,15 @@ const {
   noIndex = false,
 } = Astro.props;
 
-const siteTitle = title.includes('Walton-on-Thames')
-  ? title
-  : `${title} | Walton-on-Thames.org`;
+// Google shows roughly 60 characters of a title. Appending the brand to a
+// title that is already at or past that limit spends the tag's remaining
+// budget on the one part of it nobody searches for, so the suffix is only
+// added when it will actually be displayed.
+const BRAND_SUFFIX = ' | Walton-on-Thames.org';
+const siteTitle =
+  title.includes('Walton-on-Thames') || title.length + BRAND_SUFFIX.length > 60
+    ? title
+    : title + BRAND_SUFFIX;
 ---
 
 <!doctype html>
