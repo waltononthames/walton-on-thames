@@ -48,8 +48,12 @@ for (const line of log.split('\n')) {
 }
 
 // Only keep paths that still exist, so deleted files don't bloat the manifest.
+// The manifest excludes itself: it backs no sitemap URL, and recording its own
+// commit date would leave it permanently dirty after every build, since writing
+// it changes the very entry the next run recalculates.
 const manifest = {};
 for (const path of [...dates.keys()].sort()) {
+  if (path === OUT) continue;
   if (existsSync(path)) manifest[path] = dates.get(path);
 }
 

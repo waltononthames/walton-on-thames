@@ -343,7 +343,6 @@
   "src/content/places/hersham-village-green.md": "2026-07-18T15:34:33+01:00",
   "src/content/places/walton-bridge.md": "2026-07-18T15:34:33+01:00",
   "src/data/apps-court-status.json": "2026-08-24T00:16:38+01:00",
-  "src/data/lastmod.json": "2026-08-25T00:58:38+01:00",
   "src/layouts/BaseLayout.astro": "2026-08-26T00:47:53+01:00",
   "src/layouts/HistoryArticle.astro": "2026-08-05T20:02:34+01:00",
   "src/layouts/ThingsToDoFilterPage.astro": "2026-08-22T21:47:51+01:00",
