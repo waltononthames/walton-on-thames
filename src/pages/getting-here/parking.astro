@@ -1,0 +1,174 @@
+---
+// Dedicated guide for the "parking in Walton-on-Thames" query, which the
+// site previously ceded to aggregators: the material existed only as one
+// card inside /getting-here/, which ranks for travel queries rather than
+// parking ones. Every fact here already appeared on that page - this adds
+// structure and query match, not new claims. Charges and space counts are
+// deliberately absent: they change often, and the council's own page is the
+// only source worth sending people to for them.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+
+const reviewedDateStr = new Date('2026-08-25T00:00:00').toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const faqs = [
+  {
+    q: 'Is there free parking in Walton-on-Thames?',
+    a: 'Yes. Walton Lane car park, on the riverbank at Cowey Sale, is free. It is the closest car park to Cowey Sale and the Shepperton Cruise jetty.',
+  },
+  {
+    q: 'Where should I park for the shops?',
+    a: 'The Heart multi-storey is the central option for the shopping centre and the High Street. It is covered and operates on a pay and display basis.',
+  },
+  {
+    q: 'Where should I park for the river?',
+    a: 'Walton Lane car park sits on the riverbank itself. Manor Road car park is an alternative, roughly an eight minute walk of about 0.3 miles to Walton Wharf via Manor Road.',
+  },
+  {
+    q: 'Can I park on the street in Walton-on-Thames?',
+    a: 'There is limited-duration on-street parking on the High Street and Church Street. Many streets around the town centre are residents-only, so read the signs before leaving your car.',
+  },
+  {
+    q: 'Who runs the car parks in Walton-on-Thames?',
+    a: 'Most are managed by Elmbridge Borough Council or Surrey County Council. Current charges and availability are published on the Elmbridge Borough Council website.',
+  },
+];
+
+const carParks = [
+  {
+    name: 'The Heart multi-storey',
+    best: 'The shopping centre, the High Street and the cinema',
+    detail:
+      'The central town-centre option, covered and pay and display. It is the most convenient car park for The Heart itself and for the shops and restaurants around it.',
+  },
+  {
+    name: 'Walton Lane car park',
+    best: 'Cowey Sale, the Thames Path and the Shepperton Cruise',
+    detail:
+      'Free, and directly on the riverbank at Cowey Sale. This is the closest car park to the Shepperton Cruise jetty and the easiest place to start a walk along the river.',
+  },
+  {
+    name: 'Manor Road car park',
+    best: 'Walton Wharf and the eastern end of the town centre',
+    detail:
+      'Roughly an eight minute walk of about 0.3 miles to Walton Wharf via Manor Road. A useful alternative when the riverside car park is busy.',
+  },
+  {
+    name: 'High Street and Church Street',
+    best: 'Short stops',
+    detail:
+      'On-street bays with limited duration. Worth checking signs carefully, as restrictions differ from one stretch to the next.',
+  },
+];
+---
+
+<BaseLayout
+  title="Parking in Walton-on-Thames: Car Parks and On-Street Bays"
+  description="Where to park in Walton-on-Thames: The Heart multi-storey, free riverside parking at Walton Lane and Cowey Sale, Manor Road, and on-street bays in the town centre."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Getting Here', item: `${SITE}/getting-here/` },
+        { '@type': 'ListItem', position: 3, name: 'Parking', item: `${SITE}/getting-here/parking/` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/getting-here/">Getting Here</a></li>
+          <li aria-current="page">Parking</li>
+        </ol>
+      </nav>
+      <h1>Parking in Walton-on-Thames</h1>
+      <p class="byline">By Darren Bayley · Last reviewed {reviewedDateStr}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose" style="margin-bottom: 3rem; max-width: 70ch;">
+        <p>
+          There is a good range of car parks in and around Walton town centre, most of them managed by
+          Elmbridge Borough Council or Surrey County Council. Which one suits you depends less on price
+          than on where you are actually headed: the riverside and the shopping centre are a walk apart,
+          and the nearest car park to one is not the nearest to the other.
+        </p>
+        <p>
+          Charges and availability change, so check the Elmbridge Borough Council website for current
+          rates before you travel. What follows is where each car park puts you.
+        </p>
+
+        <h2>Car parks in and around the town centre</h2>
+      </div>
+
+      <div class="prose" style="max-width: 70ch;">
+        {carParks.map((cp) => (
+          <div style="margin-bottom: 2rem;">
+            <h3>{cp.name}</h3>
+            <p><strong>Best for:</strong> {cp.best}</p>
+            <p>{cp.detail}</p>
+          </div>
+        ))}
+
+        <h2>Parking at the station</h2>
+        <p>
+          Walton-on-Thames railway station is roughly a 20 to 25 minute walk from the town centre, and has
+          its own parking arrangements. Our
+          <a href="/walton-on-thames-railway-station/">full station guide</a> covers platforms, tickets,
+          parking and accessibility.
+        </p>
+
+        <h2>On-street parking and residents' bays</h2>
+        <p>
+          The High Street and Church Street have limited-duration on-street bays, which suit a short stop
+          rather than a day out. Many of the streets around the town centre are residents-only. The
+          restrictions are signed, and they vary from street to street, so it is worth reading the sign
+          nearest your space rather than assuming the rules carry over from the road you drove in on.
+        </p>
+
+        <h2>Where to park for the river</h2>
+        <p>
+          For <a href="/things-to-do/cowey-sale/">Cowey Sale</a>, the
+          <a href="/things-to-do/riverside-walks/">Thames Path</a> and the
+          <a href="/things-to-do/shepperton-cruise/">Shepperton Cruise</a>, Walton Lane car park is both
+          the closest and the free option. Manor Road is the fallback when it fills up on a summer weekend.
+        </p>
+
+        <h2>Common questions</h2>
+        {faqs.map((f) => (
+          <div style="margin-bottom: 1.5rem;">
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+
+        <p class="editorial-note">
+          Compiled and checked by a Walton resident against the council's own published information rather
+          than copied from other guides. Last reviewed {reviewedDateStr}.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
