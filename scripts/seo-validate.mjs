@@ -135,7 +135,10 @@ for (const file of files) {
   }
 
   // Directory business listings: LocalBusiness-family schema.
-  if (/^\/directory\/[^/]+\/$/.test(urlPath)) {
+  // /directory/enhanced-listing/ sits under the same path but explains how to
+  // submit a listing, so it has no business of its own to describe.
+  const NON_LISTING_DIRECTORY_PAGES = new Set(['/directory/enhanced-listing/']);
+  if (/^\/directory\/[^/]+\/$/.test(urlPath) && !NON_LISTING_DIRECTORY_PAGES.has(urlPath)) {
     const localBusinessTypes = [
       'LocalBusiness', 'Restaurant', 'FastFoodRestaurant', 'CafeOrCoffeeShop',
       'BarOrPub', 'LodgingBusiness', 'SportsActivityLocation', 'Store',

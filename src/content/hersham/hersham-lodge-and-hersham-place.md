@@ -77,7 +77,7 @@ By the later nineteenth century the house was certainly substantial. Berkeley's 
 
 ## ABC arrives at Hersham Lodge
 
-In August 1918, while the First World War was still being fought, Walton Motors Ltd acquired Hersham Lodge on Molesey Road. Walton Motors had been formed in 1917 as a subsidiary associated with ABC's work on government aero-engine contracts (see our [full history of ABC Motors in Hersham](/hersham/abc-motors-hersham/)). Historian D. A. Hales, whose reconstruction draws on surviving ABC company minutes, records that the seven-acre Hersham Lodge property offered something the existing works couldn't easily provide: room for substantial expansion.
+In August 1918, while the First World War was still being fought, Walton Motors Ltd acquired Hersham Lodge on Molesey Road. Walton Motors had been formed in 1917 as a subsidiary associated with ABC's work on government aero-engine contracts (see our [full history of ABC Motors in Hersham](/history/abc-motors-hersham/)). Historian D. A. Hales, whose reconstruction draws on surviving ABC company minutes, records that the seven-acre Hersham Lodge property offered something the existing works couldn't easily provide: room for substantial expansion.
 
 This distinction between the two sites matters. ABC already had works in Hersham; Hersham Lodge wasn't simply another name for the company's original factory. The Lodge estate became a newer expansion on the opposite side of the company's existing industrial operation, and confusing the two obscures an important part of Hersham's industrial geography.
 

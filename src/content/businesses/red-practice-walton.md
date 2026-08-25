@@ -17,7 +17,7 @@ hours:
   fri: "8:30am–6:30pm"
   sat: "Closed"
   sun: "Closed"
-description: "NHS GP surgery at Walton Health Centre, currently accepting new patients."
+description: "The Red Practice is one of three NHS GP surgeries sharing Walton Health Centre on Rodney Road, Walton-on-Thames, and is currently accepting new patients."
 images: []
 featured: false
 verified_date: "2026-07-18"

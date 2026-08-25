@@ -43,6 +43,8 @@ Schemas are in `src/content.config.ts`. Route pages live in `src/pages/` with `[
 
 **Builds need network access:** the fixtures loader fetches a remote ICS feed during `astro build`/`astro sync`. If the fetch fails it logs an error and keeps previously synced entries (a cold build with no cache will simply have zero fixtures — it will not fail the build).
 
+**Sitemap lastmod is committed, not derived:** Cloudflare clones at depth 1, so `git log -1 -- <file>` returns HEAD for every file and would stamp the whole sitemap with the deploy time. `scripts/generate-lastmod.mjs` runs in prebuild, writes `src/data/lastmod.json` from full history, and no-ops on a shallow clone. **Commit that file when it changes** or production dates will lag behind the content.
+
 **Edge cache gotcha:** a Cloudflare dashboard-level Cache Rule (not in this repo — `public/_headers` only covers `/assets/*` and `/images/*`) caches HTML at the edge for up to 7 days. A successful deploy can therefore appear "not live" for days. If a verified deploy isn't showing, the fix is a manual "Purge Everything" in the Cloudflare dashboard, not a code change.
 
 **Redirects:** legacy URL migrations (old GoDaddy-era paths, `/visit/*`, `/community/*`, retired pages) live in `public/_redirects`. `functions/_middleware.js` 301s the `walton-on-thames.pages.dev` host to the canonical domain.
