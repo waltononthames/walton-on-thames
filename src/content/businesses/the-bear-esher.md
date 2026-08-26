@@ -8,7 +8,7 @@ address: "71 High Street, Esher, KT10 9RQ"
 lat: 51.3694
 lng: -0.3628
 website: "https://www.bearesher.co.uk"
-description: "A boutique pub hotel on Esher High Street — well-appointed rooms with strong design character above a popular bar and kitchen, close to Sandown Park Racecourse."
+description: "A boutique pub hotel on Esher High Street: well-appointed rooms with strong design character above a popular bar and kitchen, close to Sandown Park Racecourse."
 images: []
 featured: false
 verified_date: "2026-06-26"

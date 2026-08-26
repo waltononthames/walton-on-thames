@@ -8,7 +8,7 @@ address: "43 The Heart, Walton-on-Thames, KT12 1GH"
 lat: 51.3853
 lng: -0.4202
 website: "https://www.theoriginpilates.com"
-description: "A centrally located boutique studio in The Heart offering Reformer Pilates, mat Pilates, yoga, and barre — one of the most popular wellness destinations in Walton-on-Thames."
+description: "A boutique studio in The Heart offering Reformer Pilates, mat Pilates, yoga and barre, one of the most popular wellness destinations in Walton-on-Thames."
 images: []
 featured: true
 verified_date: "2026-06-27"

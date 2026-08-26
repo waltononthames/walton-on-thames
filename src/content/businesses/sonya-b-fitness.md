@@ -6,7 +6,7 @@ subcategories: ["fitness-classes", "bootcamp", "boxing-fitness"]
 neighbourhood: "hersham"
 address: "The Guide Hut, Faulkners Road, Hersham, KT12 5JB"
 website: "https://www.sonyabfitness.co.uk"
-description: "High-energy group fitness classes in Hersham — circuits, HIIT, and boxing fitness sessions run by a passionate instructor with a devoted local following."
+description: "High-energy group fitness classes in Hersham: circuits, HIIT, and boxing fitness sessions run by a passionate instructor with a devoted local following."
 images: []
 featured: false
 verified_date: "2026-06-27"

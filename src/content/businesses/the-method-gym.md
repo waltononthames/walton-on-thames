@@ -8,7 +8,7 @@ address: "57–59 High Street, Walton-on-Thames, KT12 1DJ"
 lat: 51.3844
 lng: -0.4175
 website: "https://www.themethodgym.co.uk"
-description: "A functional fitness gym on the High Street specialising in HIIT, strength training, and Hyrox — known for its strong community atmosphere and expert coaching."
+description: "A functional fitness gym on the High Street specialising in HIIT, strength training, and Hyrox, known for its strong community atmosphere and expert coaching."
 images: []
 featured: true
 verified_date: "2026-06-27"

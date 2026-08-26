@@ -4,7 +4,7 @@ slug: "welcome-to-walton-on-thames-org"
 date: "2026-06-26"
 author: "Walton-on-Thames.org"
 category: "community"
-description: "Introducing walton-on-thames.org — an independent community guide to Walton-on-Thames, Hersham and Whiteley Village."
+description: "Introducing walton-on-thames.org: an independent community guide to Walton-on-Thames, Hersham and Whiteley Village."
 featured: true
 ---
 

@@ -9,11 +9,14 @@
 //   ORR Table 1415, time series 1997/98 to 2024/25 — https://dataportal.orr.gov.uk/media/1908/table-1415-time-series-of-passenger-entries-and-exits-and-interchanges-by-station.ods
 //   Opening date, distance and early history — kentrail.uk/hersham.htm, citing The Railway Magazine
 //     (November 1936) and G. T. Moody, "Southern Electric, 1909-1979"; corroborated by Wikipedia.
+//   Platforms, calling patterns, journey times and frequency — National Rail live departures and
+//     service details for Hersham, read 26 August 2026 covering the 09:19 to 11:21 departures in
+//     both directions: https://www.nationalrail.co.uk/live-trains/departures/hersham/
+//     Every Waterloo service observed ran 33 minutes with the same seven calling points; there was
+//     no faster option, which is expected given the fast lines through Hersham have no platforms.
 //
-// Deliberately NOT stated on this page, because they could not be verified in the session that
-// wrote it: specific journey times to Waterloo or Woking, platform-by-direction allocation, and
-// service frequency. The page links the live journey planner for these instead, in the same way
-// the Walton-on-Thames station page declines to hard-code first and last train times.
+// First and last train times are still deliberately not stated, in line with the
+// Walton-on-Thames station page.
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const faqs = [
@@ -21,6 +24,11 @@ const faqs = [
   { q: 'Does the station have a boarding ramp?', a: 'Yes. A ramp is available to bridge the gap between the platform and the train. That is not the same as step-free access to the station, since you still have to reach the platform by the stairs first.' },
   { q: 'What is the nearest step-free alternative?', a: 'Walton-on-Thames station, which is category B1 and has lifts plus separate ramped entrances to both operational platforms. Contact South Western Railway before travelling if you need an accessible route or assistance.' },
   { q: 'Is there anyone at the station to help?', a: 'Only part of the time. South Western Railway lists Hersham as part-time staffed, and says assistance with boarding and leaving trains is normally provided by the guard on the train rather than by station staff.' },
+  { q: 'Which platform is for London Waterloo?', a: 'Platform 1. Trains leave roughly at 19 and 49 minutes past each hour and call at Esher, Surbiton, Wimbledon, Earlsfield, Clapham Junction and Vauxhall before Waterloo.' },
+  { q: 'Which platform is for Walton-on-Thames, Weybridge and Woking?', a: 'Platform 2. Trains leave roughly at 21 and 51 minutes past each hour, reaching Walton-on-Thames in 3 minutes and Woking in 17 to 18 minutes.' },
+  { q: 'How long is the train from Hersham to London Waterloo?', a: '33 minutes. There is no faster option, because the two fast lines through the middle of the station have no platforms, so every London train from Hersham is a stopping service calling at seven stations.' },
+  { q: 'How often do trains run from Hersham?', a: 'Two an hour in each direction through the day. Evenings, Sundays and engineering work can differ, so check the live departures for the day you are travelling.' },
+  { q: 'Can I get to Guildford or Portsmouth directly from Hersham?', a: 'Not usually. Trains from Platform 2 terminate at Woking, which is the interchange for Guildford, Basingstoke, Portsmouth and Southampton.' },
   { q: 'Is Hersham station in Zone 6?', a: 'No. Hersham is outside the London fare zones.' },
   { q: 'Can I use Oyster at Hersham?', a: 'No. Oyster is not accepted at Hersham.' },
   { q: 'Can I use contactless pay as you go?', a: 'No. South Western Railway lists Hersham as not supporting contactless card validation. You can still pay for a ticket with a contactless bank card at the machine or ticket office, which is a different thing from tapping in and out.' },
@@ -39,7 +47,7 @@ const faqs = [
 
 <BaseLayout
   title="Hersham Station: Access, Tickets, Buses & Parking"
-  description="A local guide to Hersham railway station: step-free access, ticket office hours, buses, parking, cycle storage and history, checked against National Rail and SWR."
+  description="A local guide to Hersham station: trains to Waterloo, platforms, step-free access, tickets, buses, parking and history, checked against National Rail."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -85,7 +93,7 @@ const faqs = [
         </ol>
       </nav>
       <h1>Hersham Railway Station: Local Guide</h1>
-      <p>Access, tickets, buses, parking and history for Hersham station, checked directly against National Rail, South Western Railway, Elmbridge Borough Council and the Office of Rail and Road.</p>
+      <p>Trains, platforms, access, tickets, buses, parking and history for Hersham station, checked directly against National Rail, South Western Railway, Elmbridge Borough Council and the Office of Rail and Road.</p>
     </div>
   </div>
 
@@ -131,7 +139,12 @@ const faqs = [
               <tr><th scope="row">Operator</th><td>South Western Railway</td></tr>
               <tr><th scope="row">Line</th><td>South West Main Line</td></tr>
               <tr><th scope="row">Platforms</th><td>2, both on the outer local lines</td></tr>
+              <tr><th scope="row">Platform 1</th><td>Towards Esher, Surbiton and London Waterloo</td></tr>
+              <tr><th scope="row">Platform 2</th><td>Towards Walton-on-Thames, Weybridge and Woking</td></tr>
               <tr><th scope="row">Distance from Waterloo</th><td>15 miles 73 chains, a little under 16 miles</td></tr>
+              <tr><th scope="row">Journey to London Waterloo</th><td>33 minutes, calling at seven stations</td></tr>
+              <tr><th scope="row">Journey to Woking</th><td>17 to 18 minutes, calling at five stations</td></tr>
+              <tr><th scope="row">Typical frequency</th><td>2 trains an hour each way</td></tr>
               <tr><th scope="row">Step-free access</th><td>No. Step-free category C</td></tr>
               <tr><th scope="row">Staffing</th><td>Part time</td></tr>
               <tr><th scope="row">Ticket office and machine</th><td>Yes, office part time; machine outside with a video help link</td></tr>
@@ -151,9 +164,49 @@ const faqs = [
         <h2 id="trains">Trains from Hersham</h2>
         <p>Hersham is served by South Western Railway stopping trains on the South West Main Line, between London Waterloo and Woking. It has two platforms, both alongside the outer local lines; the two fast lines through the middle of the station have no platforms, so non-stopping trains pass straight through.</p>
 
-        <p>We have deliberately not printed journey times, platform numbers by direction or a train frequency on this page. Those are exactly the details that shift with timetable changes and engineering work, and we would rather send you to the live source than have you rely on a number here that has quietly gone out of date. Use the <a href="https://www.southwesternrailway.com/plan-my-journey" target="_blank" rel="noopener noreferrer">South Western Railway journey planner ↗</a> or the <a href="https://www.nationalrail.co.uk/" target="_blank" rel="noopener noreferrer">National Rail journey planner ↗</a> for your actual journey, and check the departure screens at the station before boarding.</p>
+        <p>The pattern is simple and easy to remember: two trains an hour in each direction, all day, all stopping services. There is no fast train from Hersham and there cannot be one, because the fast lines run through the middle of the station without platforms. Every Waterloo service takes the same 33 minutes.</p>
 
-        <p>One useful pointer from the Office of Rail and Road's data: London Waterloo is comfortably the main destination for journeys from Hersham, accounting for 363,658 of them in 2024/25, roughly half of everything the station handles.</p>
+        <h3>To London Waterloo, from Platform 1</h3>
+        <p>London trains leave from <strong>Platform 1</strong>, roughly at 19 and 49 minutes past each hour, and take <strong>33 minutes</strong> to Waterloo, calling at seven stations on the way. Most start back at Woking.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Journey times from Hersham, Platform 1</caption>
+            <thead><tr><th>Calling at</th><th>Time from Hersham</th></tr></thead>
+            <tbody>
+              <tr><td>Esher</td><td>3 minutes</td></tr>
+              <tr><td>Surbiton</td><td>8 minutes</td></tr>
+              <tr><td>Wimbledon</td><td>16 minutes</td></tr>
+              <tr><td>Earlsfield</td><td>19 minutes</td></tr>
+              <tr><td>Clapham Junction</td><td>23 minutes</td></tr>
+              <tr><td>Vauxhall</td><td>28 minutes</td></tr>
+              <tr><td>London Waterloo</td><td>33 minutes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Three of those are worth knowing as interchanges. Clapham Junction opens up Victoria, Gatwick Airport and south London; Vauxhall connects with the Victoria line; Wimbledon connects with the District line and London Trams.</p>
+
+        <h3>Towards Woking, from Platform 2</h3>
+        <p>Country-bound trains leave from <strong>Platform 2</strong>, roughly at 21 and 51 minutes past each hour, reaching Woking in <strong>17 to 18 minutes</strong> after five stops. Every service we watched terminated at Woking, so journeys further west, to Guildford, Basingstoke, Portsmouth or Southampton, mean changing there.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Journey times from Hersham, Platform 2</caption>
+            <thead><tr><th>Calling at</th><th>Time from Hersham</th></tr></thead>
+            <tbody>
+              <tr><td>Walton-on-Thames</td><td>3 minutes</td></tr>
+              <tr><td>Weybridge</td><td>6 minutes</td></tr>
+              <tr><td>Byfleet &amp; New Haw</td><td>9 minutes</td></tr>
+              <tr><td>West Byfleet</td><td>12 minutes</td></tr>
+              <tr><td>Woking</td><td>17 minutes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Those times and platforms were read off National Rail's live departures on a Wednesday morning in August 2026, and the pattern held across every service on the board. Evenings, Sundays and engineering work can all change it, and platform allocation can be altered on the day, so check the screens at the station and use the <a href="https://www.southwesternrailway.com/plan-my-journey" target="_blank" rel="noopener noreferrer">South Western Railway journey planner ↗</a> or the <a href="https://www.nationalrail.co.uk/" target="_blank" rel="noopener noreferrer">National Rail journey planner ↗</a> for the train you actually want. We have not printed first and last train times, which change too often to be useful here.</p>
+
+        <p>One pointer from the Office of Rail and Road's data that matches the timetable: London Waterloo is comfortably the main destination for journeys from Hersham, accounting for 363,658 of them in 2024/25, roughly half of everything the station handles.</p>
 
         <h3>Live departures and disruption</h3>
         <ul>

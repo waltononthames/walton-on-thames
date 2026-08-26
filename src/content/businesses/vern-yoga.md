@@ -6,7 +6,7 @@ subcategories: ["yoga", "dance-fitness"]
 neighbourhood: "hersham"
 address: "Centre for the Community, 7 Queens Road, Hersham, KT12 5LU"
 website: "https://www.vernyoga.com"
-description: "Yoga and Zumba Gold dance fitness classes at the Hersham Centre for the Community — welcoming, accessible sessions for adults of all ages and abilities."
+description: "Yoga and Zumba Gold dance fitness classes at the Hersham Centre for the Community: welcoming, accessible sessions for adults of all ages and abilities."
 images: []
 featured: false
 verified_date: "2026-06-27"

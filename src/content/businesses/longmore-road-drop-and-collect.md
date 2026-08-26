@@ -16,7 +16,7 @@ hours:
   fri: "7am–8pm"
   sat: "7am–8pm"
   sun: "8am–7pm"
-description: "Drop & Collect prepaid-only Post Office branch on Longmore Road in Hersham — no counter postal or banking services."
+description: "Drop & Collect prepaid-only Post Office branch on Longmore Road in Hersham: no counter postal or banking services."
 images: []
 featured: false
 verified_date: "2026-07-18"

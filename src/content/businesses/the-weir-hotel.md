@@ -9,7 +9,7 @@ lat: 51.4016
 lng: -0.411
 phone: "01932 784530"
 website: "https://www.weirhotel.co.uk"
-description: "A riverside hotel and pub sitting directly on the Thames towpath at Walton Bridge — one of the most atmospheric places to stay in the area, with rooms overlooking the river."
+description: "A riverside hotel and pub on the Thames towpath at Walton Bridge, one of the most atmospheric places to stay in the area, with rooms overlooking the river."
 images: []
 featured: true
 verified_date: "2026-07-08"

@@ -8,7 +8,7 @@ neighbourhood: "walton-on-thames"
 category: "market"
 recurring: true
 price: "Free entry"
-description: "A monthly farmers' market on New Zealand Avenue, outside The Heart Shopping Centre, with local produce, artisan bread, cheese, meat, vegetables and more from Surrey growers."
+description: "A monthly farmers' market on New Zealand Avenue, outside The Heart, with local produce, artisan bread, cheese, meat and vegetables from Surrey growers."
 source_url: "https://www.surreymarkets.co.uk/walton-on-thames-market/"
 ---
 

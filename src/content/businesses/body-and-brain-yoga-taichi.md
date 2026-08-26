@@ -8,7 +8,7 @@ address: "37 Bridge Street, Walton-on-Thames, KT12 1AE"
 lat: 51.3866
 lng: -0.4207
 website: "https://www.bodynbrain.co.uk"
-description: "A holistic centre on Bridge Street combining yoga, Tai Chi, and mindful movement — part of the international Body & Brain network offering Korean-rooted mind-body practices."
+description: "A holistic centre on Bridge Street combining yoga, Tai Chi and mindful movement, part of the international Body & Brain network of Korean-rooted practices."
 images: []
 featured: false
 verified_date: "2026-06-27"

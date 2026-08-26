@@ -8,7 +8,7 @@ address: "Sandown Park Racecourse, Portsmouth Road, Esher, KT10 9AJ"
 lat: 51.3737
 lng: -0.3628
 website: "https://www.sandown.co.uk"
-description: "Lodge accommodation within the Sandown Park Racecourse estate in Esher — a distinctive place to stay on race days and major events at one of Surrey's premier venues."
+description: "Lodge accommodation within the Sandown Park Racecourse estate in Esher, a distinctive place to stay on race days at one of Surrey's premier venues."
 images: []
 featured: false
 verified_date: "2026-06-26"

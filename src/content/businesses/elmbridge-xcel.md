@@ -8,7 +8,7 @@ address: "Waterside Drive, Walton-on-Thames, KT12 2JG"
 lat: 51.3987
 lng: -0.4128
 website: "https://www.placesleisure.org"
-description: "Walton's flagship community leisure complex — a full-size gym, 25-metre swimming pool, fitness studios, climbing wall, and a comprehensive class timetable for all ages and abilities."
+description: "Walton's flagship community leisure complex: a full-size gym, 25-metre pool, fitness studios, climbing wall, and a class timetable for all ages and abilities."
 images: []
 featured: true
 verified_date: "2026-06-27"

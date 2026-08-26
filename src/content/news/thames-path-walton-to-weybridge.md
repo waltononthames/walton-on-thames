@@ -4,7 +4,7 @@ slug: "thames-path-walton-to-weybridge"
 date: "2026-06-26"
 author: "Walton-on-Thames.org"
 category: "travel"
-description: "A detailed guide to walking the Thames Path from Walton Bridge to Weybridge — one of Surrey's finest riverside walks, taking in Cowey Sale, D'Oyly Carte Island, and the River Wey confluence."
+description: "A guide to walking the Thames Path from Walton Bridge to Weybridge, one of Surrey's finest riverside walks, taking in Cowey Sale and the River Wey confluence."
 featured: true
 ---
 

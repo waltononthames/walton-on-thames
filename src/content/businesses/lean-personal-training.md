@@ -6,7 +6,7 @@ subcategories: ["personal-training", "bootcamp", "corporate-fitness"]
 neighbourhood: "walton-on-thames"
 address: "Ashley Road, Walton-on-Thames, KT12 1HL"
 website: "https://www.leanpersonaltraining.co.uk"
-description: "Personal training, outdoor bootcamps, and corporate fitness programmes based near Ashley Road — training designed to get you moving in the fresh air."
+description: "Personal training, outdoor bootcamps, and corporate fitness programmes based near Ashley Road, training designed to get you moving in the fresh air."
 images: []
 featured: false
 verified_date: "2026-06-27"

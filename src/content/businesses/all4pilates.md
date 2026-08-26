@@ -6,7 +6,7 @@ subcategories: ["pilates"]
 neighbourhood: "hersham"
 address: "Hersham Baptist Church, Arch Road, Hersham, KT12 4QR"
 website: "https://www.all4pilates.com"
-description: "Mat Pilates classes held across multiple community venues in Hersham and Walton-on-Thames — accessible, welcoming sessions for all levels."
+description: "Mat Pilates classes held across multiple community venues in Hersham and Walton-on-Thames: accessible, welcoming sessions for all levels."
 images: []
 featured: false
 verified_date: "2026-06-27"

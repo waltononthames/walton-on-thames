@@ -8,7 +8,7 @@ address: "82 High Street, Esher, KT10 9QS"
 lat: 51.3696
 lng: -0.3631
 website: "https://www.thealbertarmsesher.co.uk"
-description: "A traditional pub with B&B accommodation on Esher High Street — a friendly, locally-loved option combining good food and drink with comfortable rooms."
+description: "A traditional pub with B&B accommodation on Esher High Street: a friendly, locally-loved option combining good food and drink with comfortable rooms."
 images: []
 featured: false
 verified_date: "2026-06-26"

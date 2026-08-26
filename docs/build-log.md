@@ -569,3 +569,22 @@ Verified: `npm run check` shows no errors in the new file (only the same `astro(
 - **Toilets need a look on the ground.** SWR states plainly that there are none, and the page follows SWR. National Rail's facilities list is ambiguous when read automatically, so this is worth eyeballing at the same time as the seating.
 - **No photographs.** `OneDrive/Pictures/Walton Station` holds ten images, all of Walton-on-Thames. A Hersham shoot should prioritise the stair-only entrances, since the accessibility limitation is the page's most important fact and is currently carried entirely by text.
 - **Tap2Go is not claimed.** The draft said Tap2Go works at Hersham; SWR's station page does not mention it, so the page says nothing about it rather than asserting it.
+
+## 2026-08-26: Journey times and platforms added to /hersham-railway-station/
+
+Closes the biggest gap left by this morning's build. The page shipped without journey times, platform allocation or frequency because the overnight session could not verify them: National Rail returned no services within two hours, and Real Time Trains sits behind a bot check. Re-checked at 09:30 on Wednesday 26 August 2026, with trains running.
+
+**Verified from National Rail live departures and service details**, covering the 09:19 to 11:21 departures in both directions. Platform 1 is the London direction, Platform 2 the Woking direction, both confirmed on the board rather than inferred. Waterloo trains leave at roughly 19 and 49 minutes past and take 33 minutes, calling at Esher 3, Surbiton 8, Wimbledon 16, Earlsfield 19, Clapham Junction 23, Vauxhall 28. Woking trains leave at roughly 21 and 51 minutes past and take 17 to 18 minutes, calling at Walton-on-Thames 3, Weybridge 6, Byfleet &amp; New Haw 9, West Byfleet 12. Two trains an hour each way. Every observed Woking service terminated at Woking.
+
+**The draft's "fastest journeys around 26 minutes" is not supported and has not been published.** Every Waterloo service on the board ran 33 minutes with an identical seven-stop calling pattern. That is structural rather than a quirk of the morning: the two fast lines through Hersham have no platforms, so a fast train physically cannot call here. The page now says so, which turns an absence into an explanation.
+
+**Also updated.** `/getting-here/` and `/hersham/` both carried "at least two trains an hour to London Waterloo", which was vague where it can now be exact; both now give the frequency and the 33 minute journey. The `/getting-here/` Hersham card gains a step-free warning and a link to the station guide, which it lacked.
+
+First and last train times are still not stated, consistent with the Walton page.
+
+Verified: `npm run check` no errors in the changed files, `npm run build` clean, `npm run seo:validate` passed, `npm run seo:links` zero broken internal links. No em dashes in the new copy.
+
+## Still open
+- **Seating and toilets still need a site visit.** Unchanged from this morning: SWR lists a seating area, National Rail lists seating and sheltered waiting as unavailable, and the toilet position is worth eyeballing at the same time.
+- **Still no photographs of Hersham.** The stair-only entrance remains the most important fact on the page and is carried entirely by text.
+- **The pattern was sampled on one weekday morning.** It held across every service on the board, and the copy says as much rather than implying a timetable-wide guarantee, but evening and Sunday patterns have not been checked.

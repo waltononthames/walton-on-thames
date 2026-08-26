@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Getting to Walton-on-Thames, Hersham & Whiteley Village"
-  description="How to get to Walton-on-Thames, Hersham and Whiteley Village by train, car and bus — travel times from London, parking, and local transport links for each area."
+  description="How to get to Walton-on-Thames, Hersham and Whiteley Village by train, car and bus: travel times from London, parking, and local transport links for each area."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -113,7 +113,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="transport-card">
           <div class="transport-icon">🚂</div>
           <h3>By Train</h3>
-          <p><strong>Hersham station</strong> sits on the South Western Main Line, with at least two trains an hour to London Waterloo. <a href="#walton-on-thames">Walton-on-Thames station</a> also serves the west of the village.</p>
+          <p><strong>Hersham station</strong> sits on the South Western Main Line, with two trains an hour to London Waterloo taking 33 minutes, and two an hour the other way to Woking in 17 minutes. All are stopping services; there is no fast train from Hersham. <a href="#walton-on-thames">Walton-on-Thames station</a> also serves the west of the village.</p>
+          <p class="transport-note">Hersham has no step-free access to either platform. See our <a href="/hersham-railway-station/">full Hersham station guide</a> for platforms, tickets, buses and parking.</p>
         </div>
 
         <div class="transport-card">

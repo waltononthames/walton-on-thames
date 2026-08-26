@@ -6,7 +6,7 @@ subcategories: ["yoga"]
 neighbourhood: "walton-on-thames"
 address: "St Andrew's Church, Hersham Road, Walton-on-Thames, KT12 1LG"
 website: "https://www.kayalinyoga.com"
-description: "Yoga classes held at St Andrew's Church on Hersham Road — a peaceful and accessible community venue for regular yoga practice."
+description: "Yoga classes held at St Andrew's Church on Hersham Road, a peaceful and accessible community venue for regular yoga practice."
 images: []
 featured: false
 verified_date: "2026-06-27"

@@ -6,7 +6,7 @@ subcategories: ["personal-training", "nutrition", "online-coaching"]
 neighbourhood: "walton-on-thames"
 address: "41 Russell Road, Walton-on-Thames, KT12 2LA"
 website: "https://www.dottiefitness.com"
-description: "Highly personalised personal training, online coaching, and nutrition advice based in Walton-on-Thames — focused on sustainable results for real life."
+description: "Highly personalised personal training, online coaching, and nutrition advice based in Walton-on-Thames, focused on sustainable results for real life."
 images: []
 featured: false
 verified_date: "2026-06-27"

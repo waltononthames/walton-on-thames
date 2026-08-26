@@ -5,7 +5,7 @@ category: "leisure"
 neighbourhood: "walton-on-thames"
 lat: 51.3987
 lng: -0.4128
-description: "Walton-on-Thames's flagship public leisure centre on Waterside Drive: two swimming pools, a large gym, a 12.5m climbing wall, fitness studios, a health suite, soft play and an eight-court sports hall, run by Places Leisure for Elmbridge Borough Council."
+description: "Walton-on-Thames's flagship leisure centre on Waterside Drive: two pools, a large gym, a 12.5m climbing wall, studios, soft play and an eight-court sports hall."
 images: []
 featured: true
 ---

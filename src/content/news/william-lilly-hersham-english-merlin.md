@@ -4,7 +4,7 @@ slug: "william-lilly-hersham-english-merlin"
 date: "2026-06-26"
 author: "Walton-on-Thames.org"
 category: "history"
-description: "William Lilly (1602–1681) — astrologer to Cromwell, apparent prophet of the Great Fire of London, and the most significant astrologer in English history — spent his final years on a quiet estate in Hersham, where he practised medicine until his death."
+description: "William Lilly, astrologer to Cromwell and apparent prophet of the Great Fire of London, spent his last years on a Hersham estate, practising medicine there."
 featured: true
 ---
 

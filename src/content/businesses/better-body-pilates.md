@@ -6,7 +6,7 @@ subcategories: ["pilates"]
 neighbourhood: "hersham"
 address: "All Saints Church Hall, Hersham, KT12 5LU"
 website: "https://www.betterbodytraining.com"
-description: "Mat Pilates classes in Hersham church halls — friendly, accessible group sessions focused on core strength, posture, and flexible movement."
+description: "Mat Pilates classes in Hersham church halls: friendly, accessible group sessions focused on core strength, posture, and flexible movement."
 images: []
 featured: false
 verified_date: "2026-06-27"

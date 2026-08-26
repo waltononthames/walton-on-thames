@@ -4,7 +4,7 @@ slug: "gyms-yoga-fitness-walton-on-thames"
 date: "2026-06-27"
 author: "Walton-on-Thames.org"
 category: "lifestyle"
-description: "A comprehensive guide to every gym, yoga studio, Pilates class, personal trainer and fitness venue in Walton-on-Thames and Hersham — from the Elmbridge Xcel to boutique reformer studios."
+description: "A guide to the gyms, yoga studios, Pilates classes and personal trainers in Walton-on-Thames and Hersham, from the Elmbridge Xcel to boutique reformer studios."
 featured: true
 ---
 

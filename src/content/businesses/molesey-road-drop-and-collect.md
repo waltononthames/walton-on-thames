@@ -16,7 +16,7 @@ hours:
   fri: "7am–10pm"
   sat: "7am–10pm"
   sun: "7am–10pm"
-description: "Drop & Collect prepaid-only Post Office branch on Molesey Road, inside a convenience store — no counter postal or banking services."
+description: "Drop & Collect prepaid-only Post Office branch on Molesey Road, inside a convenience store: no counter postal or banking services."
 images: []
 featured: false
 verified_date: "2026-07-18"

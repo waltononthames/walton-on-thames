@@ -6,7 +6,7 @@ subcategories: ["pilates", "personal-training"]
 neighbourhood: "walton-on-thames"
 address: "York Gardens, Walton-on-Thames"
 website: "https://www.emilyannpilates.com"
-description: "Private 1:1 Reformer Pilates sessions in Walton-on-Thames — specialist individual instruction for those who want tailored, focused apparatus-based Pilates."
+description: "Private 1:1 Reformer Pilates sessions in Walton-on-Thames: specialist individual instruction for those who want tailored, focused apparatus-based Pilates."
 images: []
 featured: false
 verified_date: "2026-06-27"

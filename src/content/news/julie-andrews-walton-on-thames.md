@@ -4,7 +4,7 @@ slug: "julie-andrews-walton-on-thames"
 date: "2026-06-26"
 author: "Walton-on-Thames.org"
 category: "history"
-description: "Dame Julie Andrews — Mary Poppins, Maria von Trapp, and one of the most beloved performers of the 20th century — was born in Walton-on-Thames in 1935. Here's the story of her connection to the town."
+description: "Dame Julie Andrews, who played Mary Poppins and Maria von Trapp, was born in Walton-on-Thames in 1935. The story of her connection to the town."
 featured: true
 ---
 

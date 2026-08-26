@@ -8,7 +8,7 @@ address: "Felix Lane, Shepperton, TW17 8NP"
 lat: 51.3918
 lng: -0.4245
 website: "https://www.ihg.com"
-description: "A full-service Holiday Inn in Shepperton with a leisure club, swimming pool, restaurant and conference facilities — the largest hotel in the immediate area."
+description: "A full-service Holiday Inn in Shepperton with a leisure club, swimming pool, restaurant and conference facilities, the largest hotel in the immediate area."
 images: []
 featured: false
 verified_date: "2026-06-26"

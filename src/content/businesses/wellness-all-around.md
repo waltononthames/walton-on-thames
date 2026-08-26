@@ -6,7 +6,7 @@ subcategories: ["yoga", "wellness", "coaching"]
 neighbourhood: "walton-on-thames"
 address: "22 Esher Avenue, Walton-on-Thames, KT12 2TA"
 website: "https://www.wellnessallaround.co.uk"
-description: "Hatha yoga classes, wellbeing coaching, and health consultations based in Walton-on-Thames — classes held at St Andrew's United Reformed Church Hall on Hersham Road."
+description: "Hatha yoga classes, wellbeing coaching and health consultations in Walton-on-Thames, held at St Andrew's United Reformed Church Hall on Hersham Road."
 images: []
 featured: false
 verified_date: "2026-06-27"

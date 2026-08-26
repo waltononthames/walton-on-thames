@@ -5,7 +5,7 @@ category: "health-and-fitness"
 subcategories: ["personal-training", "fitness-classes"]
 neighbourhood: "walton-on-thames"
 address: "Cambridge Road, Walton-on-Thames, KT12 2DR"
-description: "Personal training and small group fitness sessions based on Cambridge Road — flexible training with an emphasis on motivation, accountability, and results."
+description: "Personal training and small group fitness sessions based on Cambridge Road: flexible training with an emphasis on motivation, accountability, and results."
 images: []
 featured: false
 verified_date: "2026-06-27"

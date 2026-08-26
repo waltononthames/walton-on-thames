@@ -5,7 +5,7 @@ category: "landmark"
 neighbourhood: "walton-on-thames"
 lat: 51.3874
 lng: -0.4315
-description: "The current Walton Bridge, opened in 2013, is a graceful cable-stayed structure crossing the Thames — and the site of the famous painted bridge that inspired Canaletto."
+description: "The current Walton Bridge, opened in 2013, is a cable-stayed structure crossing the Thames, on the site of the earlier bridge that Canaletto painted."
 images: []
 featured: false
 ---

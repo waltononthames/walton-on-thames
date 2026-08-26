@@ -6,7 +6,7 @@ subcategories: ["yoga"]
 neighbourhood: "hersham"
 address: "Esher Rugby Club, 369 Molesey Road, Hersham, KT12 3PF"
 website: "https://www.yogaelephant.co.uk"
-description: "Slow, mindful yoga classes including chair yoga and gentle movement, held at Esher Rugby Club in Hersham — accessible for all ages and mobility levels."
+description: "Slow, mindful yoga classes including chair yoga and gentle movement, held at Esher Rugby Club in Hersham, accessible for all ages and mobility levels."
 images: []
 featured: false
 verified_date: "2026-06-27"

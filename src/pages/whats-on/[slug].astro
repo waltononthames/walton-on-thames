@@ -45,7 +45,7 @@ const categoryLabel = kind === 'event'
 const image = kind === 'event' ? Astro.props.event.data.image : undefined;
 const description = kind === 'event'
   ? Astro.props.event.data.description
-  : `${Astro.props.fixture.data.competition} fixture — Walton & Hersham ${Astro.props.fixture.data.homeAway === 'home' ? 'at home' : 'away'} to ${Astro.props.fixture.data.homeAway === 'home' ? Astro.props.fixture.data.awayTeam : Astro.props.fixture.data.homeTeam}.`;
+  : `${Astro.props.fixture.data.competition} fixture: Walton & Hersham ${Astro.props.fixture.data.homeAway === 'home' ? 'at home' : 'away'} to ${Astro.props.fixture.data.homeAway === 'home' ? Astro.props.fixture.data.awayTeam : Astro.props.fixture.data.homeTeam}.`;
 
 const isAwayFixture = kind === 'fixture' && Astro.props.fixture.data.homeAway === 'away';
 

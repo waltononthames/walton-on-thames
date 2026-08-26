@@ -6,7 +6,7 @@ subcategories: ["dance-fitness", "fitness-classes"]
 neighbourhood: "walton-on-thames"
 address: "Three Rivers Academy, Hersham Road, Walton-on-Thames, KT12 5EJ"
 website: "https://www.clubdancefit.co.uk"
-description: "High-energy dance fitness classes for all abilities — cardio-based sessions that combine dance with a proper workout, held at Three Rivers Academy."
+description: "High-energy dance fitness classes for all abilities: cardio-based sessions that combine dance with a proper workout, held at Three Rivers Academy."
 images: []
 featured: false
 verified_date: "2026-06-27"

@@ -6,7 +6,7 @@ subcategories: ["yoga"]
 neighbourhood: "hersham"
 address: "Hersham, KT12 4JH"
 website: "https://www.zoneinyoga.co.uk"
-description: "Seasonal flow and Ashtanga yoga classes in the Hersham and Walton-on-Thames area — both in-person and online options available."
+description: "Seasonal flow and Ashtanga yoga classes in the Hersham and Walton-on-Thames area, both in-person and online options available."
 images: []
 featured: false
 verified_date: "2026-06-27"

@@ -6,7 +6,7 @@ subcategories: ["yoga"]
 neighbourhood: "hersham"
 address: "13 Queens Road, Hersham, KT12 5LU"
 website: "https://www.friendsofyoga.co.uk"
-description: "Gentle yoga classes in Hersham specialising in Hatha, Yin, and restorative yoga — deeply relaxing, accessible sessions for those who want to slow down and restore."
+description: "Gentle yoga classes in Hersham specialising in Hatha, Yin and restorative yoga: relaxing, accessible sessions for those who want to slow down."
 images: []
 featured: false
 verified_date: "2026-06-27"

@@ -9,7 +9,7 @@ lat: 51.3798
 lng: -0.3964
 phone: "01932 220449"
 website: "https://www.waltonparkdental.co.uk/"
-description: "Private dental practice on Walton Park offering restorative and cosmetic dentistry, implants, Invisalign and Denplan membership, with NHS care for registered patients' children."
+description: "Private dental practice on Walton Park offering restorative and cosmetic dentistry, implants, Invisalign and Denplan membership, plus NHS care for children."
 images: []
 featured: false
 verified_date: "2026-07-18"
