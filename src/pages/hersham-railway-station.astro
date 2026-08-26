@@ -1,0 +1,427 @@
+---
+// Sources verified 26 August 2026 (Content Verification Protocol Rule 5):
+//   National Rail station page — https://www.nationalrail.co.uk/stations/hersham/
+//   South Western Railway station page — https://www.southwesternrailway.com/travelling-with-us/at-the-station/hersham
+//   National Rail onward travel poster, Hersham (HER), V16.0, data correct November 2025 —
+//     https://assets.nationalrail.co.uk/e8xgegruud3g/2zK0FSRBKc4QXzGFzxXmQ/6dd5cd5e5926b8bf395c1073e6e2d192/Hersham__HER_.pdf
+//   Elmbridge Borough Council, Walton Park car park — https://www.elmbridge.gov.uk/parking-and-roads/car-parks/find-car-park/walton-park-car-park
+//   ORR Table 1410, entries and exits by station, 2024/25 — https://dataportal.orr.gov.uk/media/1909/table-1410-passenger-entries-and-exits-and-interchanges-by-station.csv
+//   ORR Table 1415, time series 1997/98 to 2024/25 — https://dataportal.orr.gov.uk/media/1908/table-1415-time-series-of-passenger-entries-and-exits-and-interchanges-by-station.ods
+//   Opening date, distance and early history — kentrail.uk/hersham.htm, citing The Railway Magazine
+//     (November 1936) and G. T. Moody, "Southern Electric, 1909-1979"; corroborated by Wikipedia.
+//
+// Deliberately NOT stated on this page, because they could not be verified in the session that
+// wrote it: specific journey times to Waterloo or Woking, platform-by-direction allocation, and
+// service frequency. The page links the live journey planner for these instead, in the same way
+// the Walton-on-Thames station page declines to hard-code first and last train times.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqs = [
+  { q: 'Is Hersham station step-free?', a: 'No. Hersham is a step-free category C station, which means there is no step-free access to any part of it. Both platforms sit above street level and are reached by stairs, and there are no lifts.' },
+  { q: 'Does the station have a boarding ramp?', a: 'Yes. A ramp is available to bridge the gap between the platform and the train. That is not the same as step-free access to the station, since you still have to reach the platform by the stairs first.' },
+  { q: 'What is the nearest step-free alternative?', a: 'Walton-on-Thames station, which is category B1 and has lifts plus separate ramped entrances to both operational platforms. Contact South Western Railway before travelling if you need an accessible route or assistance.' },
+  { q: 'Is there anyone at the station to help?', a: 'Only part of the time. South Western Railway lists Hersham as part-time staffed, and says assistance with boarding and leaving trains is normally provided by the guard on the train rather than by station staff.' },
+  { q: 'Is Hersham station in Zone 6?', a: 'No. Hersham is outside the London fare zones.' },
+  { q: 'Can I use Oyster at Hersham?', a: 'No. Oyster is not accepted at Hersham.' },
+  { q: 'Can I use contactless pay as you go?', a: 'No. South Western Railway lists Hersham as not supporting contactless card validation. You can still pay for a ticket with a contactless bank card at the machine or ticket office, which is a different thing from tapping in and out.' },
+  { q: 'Can I use an SWR Touch Smartcard at Hersham?', a: 'Yes. South Western Railway lists Hersham as a station where smartcards can be issued, and tickets can be loaded onto them at either the ticket machine or the ticket office.' },
+  { q: 'When is the ticket office open?', a: 'Monday to Friday 06:50 to 12:00, Saturday 06:50 to 13:40, and Sunday 08:10 to 15:40, as published in August 2026. The ticket machine outside is available when the office is closed.' },
+  { q: 'Does Hersham station have parking?', a: 'Not its own. South Western Railway lists no car parking at the station. Elmbridge Borough Council runs the Walton Park car park nearby, which has its own charges and restrictions.' },
+  { q: 'Does Hersham station have toilets?', a: 'No. South Western Railway lists no toilets at Hersham.' },
+  { q: 'Is there cycle parking?', a: 'Yes, four spaces in unsheltered racks, with CCTV covering the area.' },
+  { q: 'How far is the station from Hersham village centre?', a: "National Rail's onward travel poster says it is a 15 to 20 minute walk from the station to Hersham village centre, and the same to the Field Common estate." },
+  { q: 'Which buses stop at the station?', a: 'Routes 564 and 514. The 564 runs an hourly daytime service Monday to Saturday. The 514 runs a very limited daytime service of only one or two buses a day, with no evening or Sunday service.' },
+  { q: 'Does Hersham station have a taxi rank?', a: "No. The onward travel poster states plainly that Hersham has no taxi rank or cab office and that advance booking is essential; it lists local operators' numbers." },
+  { q: 'How busy is Hersham station?', a: 'The Office of Rail and Road estimated 722,278 entries and exits in 2024/25, ranking it 694th of all stations in Great Britain.' },
+  { q: 'When did Hersham station open?', a: 'On 28 September 1936, built by the Southern Railway in response to local housing development. It is far younger than the railway it stands on, which opened in 1838.' },
+];
+---
+
+<BaseLayout
+  title="Hersham Station: Access, Tickets, Buses & Parking"
+  description="A local guide to Hersham railway station: step-free access, ticket office hours, buses, parking, cycle storage and history, checked against National Rail and SWR."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TrainStation",
+      "name": "Hersham railway station",
+      "description": "South Western Railway station on the South West Main Line, serving Hersham, Walton Park and Field Common, Surrey.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Molesey Road",
+        "addressLocality": "Hersham",
+        "addressRegion": "Surrey",
+        "postalCode": "KT12 4SQ",
+        "addressCountry": "GB"
+      },
+      "url": "https://walton-on-thames.org/hersham-railway-station/"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Hersham Railway Station", "item": "https://walton-on-thames.org/hersham-railway-station/" }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": { "@type": "Answer", "text": item.a },
+      })),
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Hersham Railway Station</li>
+        </ol>
+      </nav>
+      <h1>Hersham Railway Station: Local Guide</h1>
+      <p>Access, tickets, buses, parking and history for Hersham station, checked directly against National Rail, South Western Railway, Elmbridge Borough Council and the Office of Rail and Road.</p>
+    </div>
+  </div>
+
+  <nav class="area-jump" aria-label="Jump to section">
+    <div class="container area-jump-inner">
+      <span class="area-jump-label">Jump to:</span>
+      <a href="#trains">Trains</a>
+      <a href="#tickets">Tickets</a>
+      <a href="#accessibility">Accessibility</a>
+      <a href="#parking">Parking</a>
+      <a href="#buses">Buses</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#history">History</a>
+      <a href="#busy">How busy</a>
+      <a href="#faqs">FAQs</a>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <article class="prose">
+        <p>Hersham railway station serves Hersham, Walton Park and the Field Common area of Surrey. It sits on the South West Main Line, roughly 15 miles 73 chains from London Waterloo, which is a little under 16 miles. South Western Railway manages the station and runs its trains, and the station code is <strong>HER</strong>.</p>
+
+        <p>It is a small, plain station, and the single most important thing to know about it is that you cannot reach either platform without using stairs.</p>
+
+        <blockquote class="alert">
+          <p><strong>There is no step-free access at Hersham.</strong> National Rail and South Western Railway both classify it as a <strong>step-free category C</strong> station, meaning no step-free access to any part of it. Both platforms are above street level and reached by stairs, and there are no lifts. If you cannot use stairs, see <a href="#accessibility">Accessibility</a> below before you travel.</p>
+        </blockquote>
+
+        <p><a href="https://www.nationalrail.co.uk/live-trains/departures/hersham/" target="_blank" rel="noopener noreferrer">Check live departures from Hersham ↗</a></p>
+
+        <blockquote>
+          <p><strong>Checked against National Rail, South Western Railway, Elmbridge Borough Council and ORR:</strong> August 2026. Ticket office hours, bus times and car park charges all change; each section links the official source so you can confirm before you travel.</p>
+        </blockquote>
+
+        <h2>Hersham station at a glance</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th scope="row">Official name</th><td>Hersham</td></tr>
+              <tr><th scope="row">Station code</th><td>HER</td></tr>
+              <tr><th scope="row">Address</th><td>Hersham station, Molesey Road, Hersham, Surrey KT12 4SQ</td></tr>
+              <tr><th scope="row">Operator</th><td>South Western Railway</td></tr>
+              <tr><th scope="row">Line</th><td>South West Main Line</td></tr>
+              <tr><th scope="row">Platforms</th><td>2, both on the outer local lines</td></tr>
+              <tr><th scope="row">Distance from Waterloo</th><td>15 miles 73 chains, a little under 16 miles</td></tr>
+              <tr><th scope="row">Step-free access</th><td>No. Step-free category C</td></tr>
+              <tr><th scope="row">Staffing</th><td>Part time</td></tr>
+              <tr><th scope="row">Ticket office and machine</th><td>Yes, office part time; machine outside with a video help link</td></tr>
+              <tr><th scope="row">Oyster</th><td>Not accepted</td></tr>
+              <tr><th scope="row">Contactless pay as you go</th><td>Not accepted for tap-in and tap-out travel</td></tr>
+              <tr><th scope="row">SWR Touch Smartcard</th><td>Issued and loaded at the station</td></tr>
+              <tr><th scope="row">Car park</th><td>None at the station; council car park nearby</td></tr>
+              <tr><th scope="row">Cycle storage</th><td>4 unsheltered spaces, CCTV covered</td></tr>
+              <tr><th scope="row">Toilets</th><td>No</td></tr>
+              <tr><th scope="row">Taxi rank</th><td>No, advance booking essential</td></tr>
+              <tr><th scope="row">Walk to Hersham village centre</th><td>15 to 20 minutes</td></tr>
+              <tr><th scope="row">Annual entries and exits</th><td>722,278 in 2024/25</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="trains">Trains from Hersham</h2>
+        <p>Hersham is served by South Western Railway stopping trains on the South West Main Line, between London Waterloo and Woking. It has two platforms, both alongside the outer local lines; the two fast lines through the middle of the station have no platforms, so non-stopping trains pass straight through.</p>
+
+        <p>We have deliberately not printed journey times, platform numbers by direction or a train frequency on this page. Those are exactly the details that shift with timetable changes and engineering work, and we would rather send you to the live source than have you rely on a number here that has quietly gone out of date. Use the <a href="https://www.southwesternrailway.com/plan-my-journey" target="_blank" rel="noopener noreferrer">South Western Railway journey planner ↗</a> or the <a href="https://www.nationalrail.co.uk/" target="_blank" rel="noopener noreferrer">National Rail journey planner ↗</a> for your actual journey, and check the departure screens at the station before boarding.</p>
+
+        <p>One useful pointer from the Office of Rail and Road's data: London Waterloo is comfortably the main destination for journeys from Hersham, accounting for 363,658 of them in 2024/25, roughly half of everything the station handles.</p>
+
+        <h3>Live departures and disruption</h3>
+        <ul>
+          <li><a href="https://www.nationalrail.co.uk/live-trains/departures/hersham/" target="_blank" rel="noopener noreferrer">Live departures from Hersham ↗</a></li>
+          <li><a href="https://www.southwesternrailway.com/plan-my-journey" target="_blank" rel="noopener noreferrer">South Western Railway service updates ↗</a></li>
+          <li><a href="https://www.nationalrail.co.uk/status-and-disruptions/" target="_blank" rel="noopener noreferrer">National Rail planned engineering work ↗</a></li>
+        </ul>
+        <p>Hersham has no station forecourt, so during planned closures rail replacement buses use marked stops on the road rather than a dedicated bay. The onward travel poster marks the rail replacement stop separately from the ordinary bus stops.</p>
+
+        <h2 id="tickets">Tickets, Oyster, contactless and smartcards</h2>
+        <p>There is a part-time ticket office and a self-service ticket machine outside the station, near the ticket office and the Platform 2 entrance. The machine has a video help link, so you can speak to someone when the office is shut.</p>
+
+        <h3>Ticket office hours</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Day</th><th>Hours</th></tr></thead>
+            <tbody>
+              <tr><td>Monday to Friday</td><td>06:50 to 12:00</td></tr>
+              <tr><td>Saturday</td><td>06:50 to 13:40</td></tr>
+              <tr><td>Sunday</td><td>08:10 to 15:40</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Those were the published hours in August 2026, and they can change with staff availability or on public holidays. Check <a href="https://www.southwesternrailway.com/travelling-with-us/at-the-station/hersham" target="_blank" rel="noopener noreferrer">SWR's Hersham station page ↗</a> for current times.</p>
+
+        <h3>Oyster and contactless</h3>
+        <p>Hersham is outside the London fare zones, and neither Oyster nor ordinary contactless tap-in, tap-out travel works here. South Western Railway lists the station as not supporting contactless card validation. You can still pay for a ticket with a contactless bank card at the machine or the office, which is a different thing entirely from tapping at a validator.</p>
+
+        <h3>SWR Touch Smartcard</h3>
+        <p>Hersham does issue SWR Touch Smartcards, and tickets can be loaded onto them at either the machine or the ticket office. There are no ticket gates at the station, but you still need a valid ticket before you travel. See <a href="https://www.southwesternrailway.com/train-tickets/smart-ticketing/touch-smartcard" target="_blank" rel="noopener noreferrer">SWR's Touch Smartcard page ↗</a> for what can be loaded onto one.</p>
+
+        <h2 id="accessibility">Accessibility</h2>
+        <p>Hersham is a <strong>step-free category C</strong> station. In National Rail's own words, there is no step-free access to platforms. Both platforms sit above street level on the railway embankment and are reached by stairs, and the station has no lifts.</p>
+
+        <p>What the station does not have:</p>
+        <ul>
+          <li>Any step-free route to either platform</li>
+          <li>Lifts</li>
+          <li>An accessible toilet, or any toilet at all</li>
+          <li>A station wheelchair</li>
+          <li>Full-time staff on hand to help you onto a platform</li>
+        </ul>
+
+        <p>What it does have:</p>
+        <ul>
+          <li>A ticket machine with a video help link</li>
+          <li>A ramp for boarding the train from the platform</li>
+          <li>Help points and departure information on the platforms</li>
+        </ul>
+
+        <p>The boarding ramp is worth being clear about, because it is easy to misread as step-free access. It bridges the gap between the platform and the train. It does nothing about the stairs between the street and the platform, which you have to manage first.</p>
+
+        <h3>Passenger assistance</h3>
+        <p>South Western Railway lists Hersham as part-time staffed and says assistance is normally provided by the guard on the train rather than by staff at the station. Assistance can be arranged in advance through Passenger Assist, and SWR's published assistance number is <strong>0800 528 2100</strong>. See <a href="https://www.southwesternrailway.com/travelling-with-us/assisted-travel" target="_blank" rel="noopener noreferrer">Passenger Assist information ↗</a>.</p>
+
+        <p>If you cannot use stairs, talk to South Western Railway before you travel rather than turning up. <a href="/walton-on-thames-railway-station/">Walton-on-Thames station</a>, the next station towards London, is category B1 with lifts and separate ramped entrances to both operational platforms, and is the nearest genuinely step-free alternative.</p>
+
+        <h2 id="parking">Parking</h2>
+        <p>There is no station car park at Hersham. South Western Railway lists car parking as not available, and there are no accessible bays belonging to the station.</p>
+
+        <h3>Walton Park car park</h3>
+        <p>The nearest public option is Elmbridge Borough Council's Walton Park car park, which is a separate council facility with its own hours and charges rather than railway parking. In August 2026 the council listed <strong>147 spaces including three accessible bays</strong>, with charges applying Monday to Saturday 08:00 to 22:00 and Sunday 10:00 to 17:00, and no charge on bank and public holidays. Payment is by cash, contactless or RingGo, and Blue Badge holders displaying a valid badge park free.</p>
+
+        <p>Worth saying plainly: those three accessible bays get you into the car park, not onto a platform. The stairs are still the only way up.</p>
+
+        <p>For current tariffs and restrictions, see the <a href="https://www.elmbridge.gov.uk/parking-and-roads/car-parks/find-car-park/walton-park-car-park" target="_blank" rel="noopener noreferrer">council's Walton Park car park page ↗</a>. On-street parking near the station is restricted in places, so read the signs rather than assuming. If you need a large dedicated station car park, <a href="/walton-on-thames-railway-station/">Walton-on-Thames station</a> has one.</p>
+
+        <h2>Drop-off, pick-up and taxis</h2>
+        <p>Hersham has no station forecourt, so there is no dedicated set-down area and no accessible drop-off point. Drivers need to use a lawful stopping place on the road and keep clear of the bus stops and station entrances.</p>
+        <p>There is no taxi rank and no cab office. National Rail's onward travel poster says advance booking is essential and lists local operators' numbers, without endorsing any of them.</p>
+
+        <h2 id="buses">Buses</h2>
+        <p>Two bus routes serve the station, from stops A and B on the road outside. Route <strong>564</strong> is the one most people will find useful; route <strong>514</strong> runs so rarely that it is not worth planning around. This table follows National Rail's onward travel poster for Hersham, which was correct at November 2025.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Destination</th><th>Routes</th><th>Stop</th></tr></thead>
+            <tbody>
+              <tr><td>Walton Hospital</td><td>564</td><td>A</td></tr>
+              <tr><td>Walton-on-Thames town centre</td><td>564</td><td>A</td></tr>
+              <tr><td>Walton-on-Thames, Xcel Leisure Complex</td><td>564</td><td>A</td></tr>
+              <tr><td>Field Common estate</td><td>514, 564</td><td>A</td></tr>
+              <tr><td>Hersham village</td><td>514, 564</td><td>B</td></tr>
+              <tr><td>East Molesey</td><td>514</td><td>A</td></tr>
+              <tr><td>West Molesey</td><td>514</td><td>A</td></tr>
+              <tr><td>Thames Ditton</td><td>514</td><td>A</td></tr>
+              <tr><td>Surbiton</td><td>514</td><td>A</td></tr>
+              <tr><td>Kingston upon Thames</td><td>514</td><td>A</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>The poster states that route 564 operates an hourly daytime service Monday to Saturday, and that route 514 operates a very limited daytime service of one or two buses a day, with no evening or Sunday service on either. Surbiton is also reachable by direct train from Hersham, which will usually beat the 514.</p>
+
+        <p><a href="https://assets.nationalrail.co.uk/e8xgegruud3g/2zK0FSRBKc4QXzGFzxXmQ/6dd5cd5e5926b8bf395c1073e6e2d192/Hersham__HER_.pdf" target="_blank" rel="noopener noreferrer">View the current National Rail onward travel poster for Hersham ↗</a>, which also carries the local area map and the stop letters. For live bus times, check the displays at the stops or contact Traveline.</p>
+
+        <h2>Walking to Hersham village centre</h2>
+        <p>The station is not in the village. National Rail's onward travel poster puts it at a <strong>15 to 20 minute walk</strong> to Hersham village centre, and the same again to the Field Common estate, with walking routes marked on the poster's map.</p>
+        <p>This is the thing that catches people out about Hersham station: the name suggests the village, but the station sits out towards Walton Park, closer to the boundary between Hersham and Walton-on-Thames. Depending on exactly where you are starting from, <a href="/walton-on-thames-railway-station/">Walton-on-Thames station</a> may suit you better, and it has step-free access and a car park.</p>
+
+        <h2>Cycling</h2>
+        <p>There are four cycle storage spaces at Hersham, in unsheltered racks, with CCTV covering the area. That is a genuinely small provision, so do not count on a free space at peak times. South Western Railway restricts full-size bicycles on some peak services; see the <a href="https://www.southwesternrailway.com/travelling-with-us/travelling-with-a-bike" target="_blank" rel="noopener noreferrer">SWR bicycle policy ↗</a>.</p>
+
+        <h2 id="facilities">Facilities</h2>
+        <h3>Ticketing and information</h3>
+        <p>Part-time ticket office, a ticket machine outside with a video help link, smartcard issue and loading, help points and departure information on the platforms, and CCTV. There are no ticket gates.</p>
+
+        <h3>Waiting and refreshments</h3>
+        <p>There is no waiting room at Hersham, and no shop, cafe or cash machine. Seating is the one thing the official sources disagree about: South Western Railway lists a seating area at the station, while National Rail's summary lists both seating and a sheltered waiting area as unavailable. Until that is settled on the ground, plan for an open platform and dress for the weather.</p>
+
+        <h3>Toilets</h3>
+        <p>None. South Western Railway lists no toilets at Hersham, accessible or otherwise, and no baby-changing facilities.</p>
+
+        <h3>Luggage and lost property</h3>
+        <p>There is no left-luggage facility and no lost property office at the station; SWR handles lost property centrally.</p>
+
+        <h2 id="history">History</h2>
+        <p>Hersham station is much younger than the railway it stands on. Trains had been running through here since the London and Southampton Railway opened its first stretch, Nine Elms to Woking Common, on 21 May 1838, the same line and the same opening that gave Walton-on-Thames its station. Hersham waited almost another century for one of its own.</p>
+
+        <p>The station opened on <strong>28 September 1936</strong>, built by the Southern Railway. According to <em>The Railway Magazine</em> of November 1936, it opened with cheap day tickets to London on offer, and it was built for the same reason as Berrylands and Byfleet &amp; New Haw on the same stretch of line: new housing. Interwar suburban development around Hersham and Walton Park had produced enough potential passengers to justify a station, and the railway followed the houses rather than the other way round.</p>
+
+        <p>It was built cheaply and quickly, in timber. The two platforms were around 550 feet long, each with a timber booking office at the western end reached by an enclosed staircase, and canopies of about 125 feet with timber valances. Both platforms served the local lines only, with the fast lines running through the middle of the station unplatformed, which is why the station still has the shape it does today, and why the two sides have never been connected to each other other than at street level.</p>
+
+        <p>Electrification followed almost immediately. A trial electric service ran from 1 November 1936, and full public electric services began on 4 July 1937, part of the Southern Railway's wider electrification of the route towards Woking, Guildford and Portsmouth.</p>
+
+        <p>The name has caused local confusion ever since. Walton-on-Thames station was called <em>Walton for Hersham</em> from 1913 and only became Walton-on-Thames in 1935, the year before Hersham got its own station; the two stations sit close to the modern boundary between the two places, and which one is genuinely yours depends on your street rather than your address.</p>
+
+        <h2 id="busy">How busy is Hersham station?</h2>
+        <p>The Office of Rail and Road estimated <strong>722,278 passenger entries and exits in 2024/25</strong>, which ranked Hersham 694th out of every station in Great Britain. That figure counts journeys starting or ending here, not individual people.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Year</th><th>Estimated entries and exits</th></tr></thead>
+            <tbody>
+              <tr><td>2018/19</td><td>857,684</td></tr>
+              <tr><td>2019/20</td><td>809,486</td></tr>
+              <tr><td>2020/21</td><td>179,794</td></tr>
+              <tr><td>2021/22</td><td>446,966</td></tr>
+              <tr><td>2022/23</td><td>594,014</td></tr>
+              <tr><td>2023/24</td><td>666,076</td></tr>
+              <tr><td>2024/25</td><td>722,278</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Two things stand out in that run of numbers. The first is how completely the pandemic emptied the station: 2020/21 was under 180,000, around a fifth of the previous year. The second is that the recovery, though steady, is not finished. The 2018/19 figure of 857,684 is the highest in ORR's series, which runs back to 1997/98, and 2024/25 is still roughly 16 per cent below it. Commuting from Hersham has come back, but not all the way.</p>
+
+        <h2 id="faqs">Frequently asked questions</h2>
+        <div class="faq-list">
+          {faqs.map(item => (
+            <details class="faq-item">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <h2>Useful official links</h2>
+        <ul>
+          <li><a href="https://www.nationalrail.co.uk/stations/hersham/" target="_blank" rel="noopener noreferrer">National Rail station information ↗</a></li>
+          <li><a href="https://www.southwesternrailway.com/travelling-with-us/at-the-station/hersham" target="_blank" rel="noopener noreferrer">South Western Railway station information ↗</a></li>
+          <li><a href="https://www.southwesternrailway.com/plan-my-journey/timetables" target="_blank" rel="noopener noreferrer">South Western Railway timetables ↗</a></li>
+          <li><a href="https://dataportal.orr.gov.uk/statistics/usage/estimates-of-station-usage" target="_blank" rel="noopener noreferrer">Office of Rail and Road station usage data ↗</a></li>
+          <li><a href="https://www.elmbridge.gov.uk/parking-and-roads/car-parks/find-car-park/walton-park-car-park" target="_blank" rel="noopener noreferrer">Elmbridge Borough Council, Walton Park car park ↗</a></li>
+        </ul>
+
+        <p>This guide covers the station. For Hersham itself, see the <a href="/hersham/">Hersham hub</a>; for the other station serving the area, <a href="/walton-on-thames-railway-station/">Walton-on-Thames railway station</a>; and for getting to the area generally, <a href="/getting-here/">Getting Here</a>.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .area-jump {
+    background: var(--color-white);
+    border-bottom: 1px solid rgba(11,36,46,0.08);
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 10;
+  }
+
+  .area-jump-inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding: 0.875rem 1.5rem;
+    overflow-x: auto;
+  }
+
+  .area-jump-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-right: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .area-jump a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(11,36,46,0.12);
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .area-jump a:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    background: rgba(11,36,46,0.04);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+  }
+
+  blockquote p {
+    margin-bottom: 0 !important;
+    font-size: 0.9rem;
+  }
+
+  /* The access warning is the most important thing on the page, so it gets
+     more weight than the standard source-note blockquote below it. */
+  blockquote.alert {
+    background: rgba(176, 58, 30, 0.07);
+    border-left-color: #b03a1e;
+  }
+
+  blockquote.alert p {
+    font-size: 1rem;
+  }
+
+  h2[id], h3 {
+    scroll-margin-top: calc(var(--nav-height) + 4rem);
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .faq-item {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1rem 1.25rem;
+  }
+
+  .faq-item summary {
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--color-navy);
+  }
+
+  .faq-item p {
+    margin: 0.75rem 0 0;
+    color: var(--color-slate);
+  }
+</style>

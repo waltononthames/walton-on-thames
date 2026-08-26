@@ -542,3 +542,30 @@ Verified: `npm run check` shows no errors in this file (the 200 repo-wide errors
 ## Still open
 - Two supplied photographs are unused (`walton-on-thames-station-sign-platform-2.jpeg`, `walton-on-thames-station-platform-2-footbridge-view.jpeg`). They are near-duplicates, not rejects; if a second station page ever needs art, they are the obvious source.
 - The two footbridge photographs are now 20 and 32 months old and show the structure before opening. A current shot of the finished bridge and lifts in service would let the Accessibility figure show the facility as it actually is today.
+
+## 2026-08-26: New page, /hersham-railway-station/
+
+Hersham had no station page. Darren supplied a research draft; this entry records what was published from it, and what was not.
+
+**Placement.** `src/pages/hersham-railway-station.astro`, mirroring `walton-on-thames-railway-station.astro` rather than sitting under `/hersham/`, so the two station guides are siblings at the same level. `docs/site-audit.md` carries no ADAPT or MERGE entry for a Hersham station page, so this is a genuine new page rather than a rebuild.
+
+**What the sources actually supported.** Verified this session against Tier 1 sources: step-free category C with no step-free access anywhere on the station, ticket office hours, part-time staffing with assistance from the guard rather than station staff, no car park, no toilets, four unsheltered cycle spaces with CCTV, smartcard issue and loading, no Oyster and no contactless validation, and the full postal address (National Rail and South Western Railway station pages). Walton Park car park detail, 147 spaces including three accessible bays, charging hours, free Blue Badge parking and no bank holiday charge, came from Elmbridge Borough Council. The bus table, stop letters, frequencies, the 15 to 20 minute walk to the village centre and the absence of a taxi rank came from the National Rail onward travel poster (V16.0, data correct November 2025), read directly rather than taken from the draft.
+
+**The draft's bus table was wrong in two places** and the poster corrected it: Field Common estate is served by 514 *and* 564, not 514 alone, and Hersham Village is served by 514 *and* 564 from stop B, not 564 alone.
+
+**Usage figures went back to source.** The draft's ORR numbers were right but traceable only to Wikipedia, which the Content Verification Protocol rules out as a sole source. Pulled ORR Table 1410 and Table 1415 directly: 722,278 entries and exits in 2024/25 confirmed, plus three things the draft did not have. Hersham ranks 694th nationally; London Waterloo accounts for 363,658 of its journeys, roughly half; and the 2018/19 figure of 857,684 is the highest in the series back to 1997/98, leaving 2024/25 still about 16 per cent below pre-pandemic use. The page now leads the section on that recovery gap rather than on a bare total.
+
+**History is Tier 2, sourced and attributed in the copy.** Opening on 28 September 1936 rests on *The Railway Magazine*, November 1936, and G. T. Moody's *Southern Electric, 1909-1979*, via kentrail.uk, corroborated by Wikipedia; the same source gives 15 miles 73 chains from Waterloo, the timber 550-foot platforms, and electrification (trial 1 November 1936, full public service 4 July 1937). Exploring Surrey's Past returns 403 and could not be used.
+
+**Deliberately omitted: journey times, platform-by-direction allocation and service frequency.** The draft carried all three. None could be verified in this session, because the work ran overnight and National Rail returned no services within two hours; Real Time Trains is behind a bot check. Rather than hedge unverified numbers into the copy, the page says plainly that it does not print them and sends readers to the live journey planner, the same stance the Walton page takes on first and last trains. This is the single biggest gap and the first thing to fix.
+
+**Internal links.** `/hersham/` had the sentence "Hersham station sits on the South Western Main Line" with no link on it; it now links here, and the "Walton-on-Thames station" link in the same sentence was pointing at `/getting-here/` rather than the station guide, which is fixed. `/getting-here/` gains a Hersham station link alongside the Walton one. Both new links carry the no-step-free-access caveat, because sending an unwarned reader to this station is the main way this page could do harm.
+
+Verified: `npm run check` shows no errors in the new file (only the same `astro(4000)` JSON-LD warnings the Walton station page produces; the 200 repo-wide errors are pre-existing and untouched), `npm run build` clean, `npm run seo:validate` all checks passed across 378 pages, `npm run seo:links` reports zero links to non-existent pages, page present in `dist/sitemap-0.xml`, and TrainStation, BreadcrumbList and FAQPage JSON-LD all render. No em dashes in the published copy.
+
+## Still open
+- **Journey times, platform allocation and frequency are absent.** Verify against National Rail or Real Time Trains during running hours and add them. Until then the page is noticeably thinner than the Walton one on the question most readers arrive with.
+- **Seating is genuinely disputed between official sources.** SWR lists a seating area; National Rail lists both seating and a sheltered waiting area as unavailable. The page says so openly rather than picking a side. A site visit settles it.
+- **Toilets need a look on the ground.** SWR states plainly that there are none, and the page follows SWR. National Rail's facilities list is ambiguous when read automatically, so this is worth eyeballing at the same time as the seating.
+- **No photographs.** `OneDrive/Pictures/Walton Station` holds ten images, all of Walton-on-Thames. A Hersham shoot should prioritise the stair-only entrances, since the accessibility limitation is the page's most important fact and is currently carried entirely by text.
+- **Tap2Go is not claimed.** The draft said Tap2Go works at Hersham; SWR's station page does not mention it, so the page says nothing about it rather than asserting it.
