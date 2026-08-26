@@ -1,4 +1,5 @@
-// Advisory (non-blocking) check for em dashes in anything a reader sees.
+// Blocking check for em dashes. Runs in prebuild, so a build fails rather
+// than shipping one.
 //
 // The register rule in docs/walton-history-hersham-extension.md Section 1,
 // Rule 2 ("No em dashes anywhere; use commas, colons or full stops") was
@@ -28,7 +29,11 @@ const ROOTS = ['src', 'scripts', '.github', 'public/_redirects', 'CLAUDE.md'];
 // Two em dashes are code rather than prose: this file's own matcher, and a
 // migration regex that parses source labels containing the character.
 // Rewriting either would break the tool that depends on it.
-const PROTECTED = [/const EM = /, /label\.match\(/];
+const PROTECTED = [
+  /const EM = /,                 // this file's own matcher
+  /label\.match\(/,              // migrate-sources-to-harvard parses labels containing one
+  /\.replace\(\/[^)]*\u2014/,  // fixtures-loader normalises them out of the ICS feed
+];
 
 // Nothing is skipped by context any more: comments, provenance fields and
 // developer notes were cleaned along with everything else, so a dash
@@ -70,7 +75,10 @@ for (const root of ROOTS) {
 }
 
 if (hits > 0) {
-  console.log(`\ncheck-em-dashes: ${hits} em dash(es) found. Replace with a comma, a colon or a full stop. A colon usually suits a clause or a list; a comma suits a short aside; paired dashes wrapping an aside often want brackets or a rewrite.`);
+  console.error(`
+check-em-dashes: ${hits} em dash(es) found. Replace with a comma, a colon or a full stop. A colon usually suits a clause or a list, a comma suits a short aside, and paired dashes wrapping an aside usually want brackets or a rewrite.`);
+  console.error('This runs in prebuild, so the build fails rather than shipping one.');
+  process.exit(1);
 } else {
-  console.log('check-em-dashes: none anywhere in src, scripts, .github, _redirects or CLAUDE.md.');
+  console.log('check-em-dashes: none in src, scripts, .github, _redirects or CLAUDE.md.');
 }

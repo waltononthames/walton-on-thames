@@ -12,7 +12,15 @@ function unescapeIcsText(value: string): string {
     .replace(/\\n/g, '\n')
     .replace(/\\,/g, ',')
     .replace(/\\;/g, ';')
-    .replace(/\\\\/g, '\\');
+    .replace(/\\\\/g, '\\')
+    // Every string from the feed passes through here, so this is the one
+    // place to normalise em dashes out of text nobody here writes. The
+    // build check guards authored files only; without this, a team or
+    // competition name carrying an em dash would either reach the page or,
+    // if that check covered the built output, let the club's calendar break
+    // our nightly deploy.
+    .replace(/\s+—\s+/g, ', ')
+    .replace(/—/g, '-');
 }
 
 // RFC 5545 line folding: continuation lines start with a space or tab.
