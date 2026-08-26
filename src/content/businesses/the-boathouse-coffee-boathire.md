@@ -14,7 +14,7 @@ verified_date: "2026-07-08"
 source: "Restaurant directory spreadsheet (owner-supplied)"
 ---
 
-Modern-rustic coffee shop with lovely views of the River Thames, serving specialist coffee, hot and cold food as well as fabulous handmade cakes and treats. Dog friendly too!
+Modern-rustic coffee shop with views of the River Thames, serving specialist coffee, hot and cold food and handmade cakes. Dog friendly.
 
 **Address:** The Boathouse Coffee, Walton Marina, Walton Bridge Road, Walton-on-Thames KT12 1QW  
 **Phone:** 01932 550980

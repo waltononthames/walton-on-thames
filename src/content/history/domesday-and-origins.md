@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["saxon", "medieval"]
 entityType: "overview"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-08-26
 sources:
   - author: "Wikipedia"
     year: "n.d."
@@ -22,7 +22,7 @@ sources:
 related: ["elmbridge-hundred", "st-marys-church"]
 ---
 
-Walton's name is older than the town most people recognise today, and its first documentary appearance predates the Norman Conquest's own paperwork by only twenty years. The Domesday Book of 1086 is not where Walton begins, but it is the earliest point where the town's existence is written down in black and white.
+Walton's name is older than the town most people recognise today. Its first surviving documentary appearance comes in the Domesday Book, the survey undertaken in 1086, around twenty years after the Norman Conquest. Domesday is not where Walton begins, but it is the earliest point where the town's existence is written down in black and white.
 
 <!-- IMAGE: domesday-book-facsimile.jpg, alt: "Facsimile page from the Domesday Book" -->
 

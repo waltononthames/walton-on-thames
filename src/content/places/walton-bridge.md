@@ -5,14 +5,14 @@ category: "landmark"
 neighbourhood: "walton-on-thames"
 lat: 51.3874
 lng: -0.4315
-description: "The current Walton Bridge, opened in 2013, is a cable-stayed structure crossing the Thames, on the site of the earlier bridge that Canaletto painted."
+description: "The current Walton Bridge, opened in 2013, is a single-span tied-arch structure crossing the Thames, on the site of the earlier bridge that Canaletto painted."
 images: []
 featured: false
 ---
 
-The Thames crossing at Walton has a long and storied history. The current Walton Bridge opened in 2013, replacing a 1950s concrete structure. It's a modern cable-stayed bridge with a distinctive sweeping silhouette, and offers fine views upstream and downstream.
+The Thames crossing at Walton has a long and storied history. The current Walton Bridge opened in 2013, replacing a 1950s concrete structure. It's a single-span tied-arch bridge, its steel arches springing from the deck in a distinctive sweeping silhouette, and offers fine views upstream and downstream.
 
-The site is historically famous for the old wooden bridge painted by Canaletto in 1754 — one of only two paintings the Venetian master made of English scenes. The original painting now hangs in the Yale Center for British Art.
+The site is historically famous for the old wooden bridge painted by Canaletto in 1754, during the decade the Venetian master spent working in England. That painting, *A View of Walton Bridge*, was made for Thomas Hollis and hangs at Dulwich Picture Gallery. Canaletto returned to the same subject in 1755 for Samuel Dicker, the MP who had the bridge built, and that second version is now at the Yale Center for British Art.
 
 ## Historic significance
 

@@ -27,7 +27,7 @@ It is, above all, a walk that rewards attention. The Thames doesn't hurry here. 
 
 ## Getting to the start
 
-The walk begins at **Walton Bridge** on the south bank of the Thames. From Walton-on-Thames railway station, it's a 12-minute walk west along Bridge Street and Manor Road to reach the bridge. There is parking at Manor Road car park, a short walk from the riverbank.
+The walk begins at **Walton Bridge** on the south bank of the Thames. Walton-on-Thames railway station is not close to the river: allow approximately 20 to 25 minutes on foot to reach the town centre, mainly via Ashley Park Road and Ashley Road, with the bridge and the riverside a further walk beyond the centre along Bridge Street and Manor Road. There is parking at Manor Road car park, a short walk from the riverbank.
 
 ## The route
 
@@ -37,7 +37,7 @@ Leave from the south side of Walton Bridge and turn immediately right (west) ont
 
 Cowey Sale is Walton's great open space: ancient common land (the name comes from the Old English for willow), flat and wide, with benches along the bank and uninterrupted views across the river to the Middlesex shore. On a summer weekend this is a busy, happy place — dog walkers, families, joggers, people simply sitting watching the water. On a winter morning it can feel entirely solitary.
 
-If the tide is right and the light is good, look north from the meadow to the cable-stay tower of the current Walton Bridge — and then find a viewpoint roughly where Canaletto stood in 1754 to paint his extraordinary wooden predecessor.
+If the tide is right and the light is good, look north from the meadow to the steel arch of the current Walton Bridge — and then find a viewpoint roughly where Canaletto stood in 1754 to paint his extraordinary wooden predecessor.
 
 ### The rowing club and Desborough Island
 
@@ -61,7 +61,7 @@ From here it's a short walk into Weybridge town centre.
 
 ## The return
 
-The simplest return is to **retrace your steps** along the south bank — the views are different in reverse, particularly the approach to Walton Bridge with the cable-stay tower framing the scene.
+The simplest return is to **retrace your steps** along the south bank — the views are different in reverse, particularly the approach to Walton Bridge with its steel arch framing the scene.
 
 Alternatively, **take the train**: Weybridge station is a 10-minute walk from the riverside, and the train to Walton-on-Thames takes 5 minutes.
 

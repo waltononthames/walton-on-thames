@@ -7,13 +7,18 @@ cluster: "hersham"
 era: ["contemporary"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-08-26
 sources:
   - author: "Wikipedia"
     year: "n.d."
     title: "Feral parakeets in Great Britain"
     url: "https://en.wikipedia.org/wiki/Feral_parakeets_in_Great_Britain"
     accessed: "2 July 2026"
+  - author: "The Guardian"
+    year: "2006"
+    title: "Esher, home of the parakeet"
+    url: "https://www.theguardian.com/theguardian/2006/jan/25/features11.g2"
+    accessed: "26 August 2026"
   - author: "UCL"
     year: "n.d."
     title: "Parakeet 'crime map' busts Bogart and Hendrix myths"
@@ -28,7 +33,7 @@ On any evening near Hersham, you may notice a bright green streak crossing the s
 
 ## The colony near Esher Rugby Club
 
-The main local roost sits near Esher Rugby Club, on the edge of Hersham, where the colony was estimated at around 7,000 birds by 2004. Numbers of that scale make it one of the largest single parakeet roosts recorded anywhere in Britain, and the birds' habit of gathering in the same trees every evening, in noisy, fast-moving flocks, makes the roost hard to miss once you know where to look.
+The best-documented local roost is near Esher Rugby Club, on the edge of Hersham, where contemporary reporting in the mid-2000s put the colony at around 7,000 birds. Numbers of that scale made it one of the largest single parakeet roosts recorded anywhere in Britain, and the birds' habit of gathering in the same trees every evening, in noisy, fast-moving flocks, makes a roost on that scale hard to miss once you know where to look. No comparable published count has been made since, and parakeet roosts do shift over time, so the present size of the Hersham gathering is not something the record establishes.
 
 ## Where ring-necked parakeets came from
 
@@ -38,7 +43,7 @@ The one theory researchers consider genuinely plausible, though still only part 
 
 ## When and where to see the evening roost
 
-The most reliable way to see the colony is at dusk, when birds return to roost from feeding grounds across the wider area, converging on the trees near Esher Rugby Club in fast, noisy flocks that are hard to mistake for anything else in the British countryside. Numbers and exact roosting behaviour shift with the seasons, so an evening visit in late afternoon or early evening, rather than during the day, gives the best chance of seeing the birds in real numbers.
+The most reliable time to see the birds is at dusk, when they return to roost from feeding grounds across the wider area, converging in fast, noisy flocks that are hard to mistake for anything else in the British countryside. Numbers and exact roosting behaviour shift with the seasons, and roost sites can move between years, so it is worth confirming recent local sightings with a Surrey birdwatching group before making a special journey.
 
 ## The wider south east spread
 

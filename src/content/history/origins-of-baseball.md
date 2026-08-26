@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["georgian"]
 entityType: "event"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-03
+reviewedDate: 2026-08-26
 sources:
   - author: "SABR"
     year: "n.d."
@@ -51,7 +51,7 @@ It is worth placing the Walton reference in its proper company rather than overs
 
 ## The blue plaque
 
-On 7 July 2019, almost exactly two hundred and seventy years to the day after the match itself, a blue heritage plaque was unveiled at Walton Cricket Club in Ashley Park, on or near the site of the 1749 game. It reads: "The Prince of Wales played in the world's first recorded game of baseball on 12th September 1749 here in Ashley Park." The unveiling was jointly organised by BaseballSoftballUK, Walton Cricket Club, the Walton-on-Thames Trading Alliance and the British Plaque Trust's chairman, Mike Read, giving the story a genuine, visitable landmark rather than leaving it as a piece of archive trivia. The plaque is visible from the road at the cricket ground on match days and beyond.
+On 7 July 2019, in the two hundred and seventieth anniversary year of the match, a blue heritage plaque was unveiled at Walton Cricket Club in Ashley Park, on or near the site of the 1749 game. It reads: "The Prince of Wales played in the world's first recorded game of baseball on 12th September 1749 here in Ashley Park." The unveiling was jointly organised by BaseballSoftballUK, Walton Cricket Club, the Walton-on-Thames Trading Alliance and the British Plaque Trust's chairman, Mike Read, giving the story a genuine, visitable landmark rather than leaving it as a piece of archive trivia. The plaque is visible from the road at the cricket ground on match days and beyond.
 
 ## Why it matters
 
