@@ -23,8 +23,8 @@ verified_date: "2026-07-18"
 source: "Post Office official branch finder (postoffice.co.uk/branch-finder/4423518)"
 ---
 
-Longmore Road Drop + Collect handles prepaid parcels and mail collection/drop-off only — it does not offer normal Post Office counter services. Use Hersham Post Office on Molesey Road for full counter services.
+Longmore Road Drop + Collect handles prepaid parcels and mail collection/drop-off only: it does not offer normal Post Office counter services. Use Hersham Post Office on Molesey Road for full counter services.
 
 **Address:** 20-22 Longmore Road, Hersham, Walton-on-Thames, KT12 4NZ
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

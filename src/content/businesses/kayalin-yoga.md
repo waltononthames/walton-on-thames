@@ -13,7 +13,7 @@ verified_date: "2026-06-27"
 source: "Kayalin Yoga website and address records"
 ---
 
-Kayalin Yoga runs regular classes from St Andrew's Church on Hersham Road — a calm, community-oriented setting that suits those who prefer yoga in a quieter, less commercial environment than a dedicated studio.
+Kayalin Yoga runs regular classes from St Andrew's Church on Hersham Road: a calm, community-oriented setting that suits those who prefer yoga in a quieter, less commercial environment than a dedicated studio.
 
 The church hall on Hersham Road is a practical and welcoming venue, easily reached from both Walton town centre and the Hersham area. Classes cover a range of yoga styles suitable for mixed ability levels.
 

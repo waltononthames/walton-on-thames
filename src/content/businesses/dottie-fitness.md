@@ -13,8 +13,8 @@ verified_date: "2026-06-27"
 source: "Dottie Fitness website and address records"
 ---
 
-Dottie Fitness offers the kind of personal training that takes your actual life into account — fitting sessions and nutrition around work, family, and the realities of a busy schedule rather than expecting you to restructure your week around a gym programme.
+Dottie Fitness offers the kind of personal training that takes your actual life into account: fitting sessions and nutrition around work, family, and the realities of a busy schedule rather than expecting you to restructure your week around a gym programme.
 
-The 1:1 personal training is highly personalised, with online coaching available for those who can't always commit to in-person sessions. Nutrition advice is integrated into the coaching — not as a rigid diet plan, but as practical guidance that works alongside real meals and real life.
+The 1:1 personal training is highly personalised, with online coaching available for those who can't always commit to in-person sessions. Nutrition advice is integrated into the coaching: not as a rigid diet plan, but as practical guidance that works alongside real meals and real life.
 
 **Services:** 1:1 personal training (in-person), online coaching packages, and nutrition consultation. Check the website for current availability.

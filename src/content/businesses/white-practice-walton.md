@@ -30,4 +30,4 @@ The White Practice is an NHS GP surgery based at Walton Health Centre on Rodney 
 **Phone:** 01932 558008
 **Accessibility:** Step-free and wheelchair access, disabled toilet, induction loop, Braille and signing service, disabled parking.
 
-Hours correct as of 18 July 2026 — confirm before visiting, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before visiting, particularly around bank holidays.

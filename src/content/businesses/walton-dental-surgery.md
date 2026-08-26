@@ -21,4 +21,4 @@ Walton Dental Surgery offers general dentistry, orthodontics (Invisalign, Six Mo
 **Address:** 71A Hersham Road, Walton-on-Thames, Surrey, KT12 1LL
 **Phone:** 01932 225748
 
-An NHS profile exists for this practice, but its own website does not state current NHS availability — confirm directly with the practice.
+An NHS profile exists for this practice, but its own website does not state current NHS availability, confirm directly with the practice.

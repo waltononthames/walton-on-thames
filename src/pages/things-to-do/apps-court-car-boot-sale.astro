@@ -37,7 +37,7 @@ const PAGE_VERIFIED_DATE = '23 July 2026';
 const confirmedSubEvent = (nextConfirmedDateISO && (STATUS === 'on' || STATUS === 'off'))
   ? [{
       "@type": "Event",
-      "name": `Apps Court Car Boot Sale — Sunday ${new Date(nextConfirmedDateISO).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`,
+      "name": `Apps Court Car Boot Sale: Sunday ${new Date(nextConfirmedDateISO).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`,
       "startDate": `${nextConfirmedDateISO}T07:00:00+01:00`,
       "endDate": `${nextConfirmedDateISO}T13:00:00+01:00`,
       "eventStatus": "https://schema.org/EventScheduled",
@@ -73,7 +73,7 @@ const confirmedSubEvent = (nextConfirmedDateISO && (STATUS === 'on' || STATUS ==
 const attraction = await getEntry('attractions', 'apps-court-car-boot-sale');
 if (!attraction?.data.geo) {
   throw new Error(
-    'apps-court-car-boot-sale.json is missing `geo` — the map embed needs it.'
+    'apps-court-car-boot-sale.json is missing `geo`, the map embed needs it.'
   );
 }
 const { lat: VENUE_LAT, lng: VENUE_LNG } = attraction.data.geo;
@@ -95,14 +95,14 @@ const pitchPrices = [
 const faqs = [
   { q: 'What time does Apps Court Car Boot Sale open?', a: 'The gates open at 7am for both sellers and buyers, according to Apps Court Farm’s official car boot page.' },
   { q: 'What time does it finish?', a: 'The car boot sale is closed from 1pm. Apps Court asks sellers leaving early to drive carefully and consider buyers still on site.' },
-  { q: 'Is Apps Court Car Boot Sale on this Sunday?', a: 'Check the status panel at the top of this page — it reflects what Apps Court Farm\'s own website stated when last checked. The sale runs most Sundays from early March to the autumn, plus some Bank Holiday Mondays, but is weather-dependent and can be postponed at short notice.' },
+  { q: 'Is Apps Court Car Boot Sale on this Sunday?', a: 'Check the status panel at the top of this page: it reflects what Apps Court Farm\'s own website stated when last checked. The sale runs most Sundays from early March to the autumn, plus some Bank Holiday Mondays, but is weather-dependent and can be postponed at short notice.' },
   { q: 'Do sellers need to book a pitch in advance?', a: 'No. Apps Court allocates pitches on a first-come, first-served basis. There is no advance booking system.' },
   { q: 'How much is a standard seller pitch?', a: 'A standard car or walk-in pitch costs £15. See the full pitch price table on this page for vans, trailers and motorhomes.' },
   { q: 'How much is parking for buyers?', a: 'Buyer parking costs £2 per vehicle, including motorbikes. It is collected as you leave, not on arrival.' },
-  { q: 'Is there an admission charge for buyers?', a: "Apps Court Farm's published information does not mention a separate walk-in admission charge for buyers — only the £2 vehicle parking charge." },
+  { q: 'Is there an admission charge for buyers?', a: "Apps Court Farm's published information does not mention a separate walk-in admission charge for buyers, only the £2 vehicle parking charge." },
   { q: 'Can I bring my dog?', a: 'Yes. Dogs are welcome but must be kept on a secure lead at all times, and owners must clear up after them. Dogs must not be left in cars.' },
   { q: 'Are there toilets on site?', a: 'Yes, Apps Court Farm provides free toilets, including accessible toilet facilities.' },
-  { q: 'Is Apps Court Car Boot Sale wheelchair accessible?', a: 'Apps Court Farm states the farm is accessible for wheelchairs, with accessible toilets on site, but warns the ground may be uneven in places — this is outdoor farmland, not a paved car park.' },
+  { q: 'Is Apps Court Car Boot Sale wheelchair accessible?', a: 'Apps Court Farm states the farm is accessible for wheelchairs, with accessible toilets on site, but warns the ground may be uneven in places: this is outdoor farmland, not a paved car park.' },
   { q: 'Can sellers leave unsold goods or rubbish behind?', a: 'No. Apps Court operates a strict no-rubbish policy and charges a penalty for tipping. Sellers must take everything away with them.' },
   { q: 'What can I not sell at Apps Court?', a: 'Alcohol, tobacco or other products needing a licence, weapons, dangerous objects, and illegal, copied or stolen goods are all banned. Hot food and drink cannot be sold by sellers either, since the farm has its own on-site catering.' },
   { q: 'What is the postcode for Apps Court Farm?', a: 'Apps Court Farm\'s address is Hurst Road, Walton upon Thames, Surrey, KT12 2EG, per the farm\'s own contact page.' },
@@ -208,7 +208,7 @@ const faqs = [
         <span class="badge">Walton-on-Thames</span>
       </div>
       <h1>Apps Court Car Boot Sale, Walton-on-Thames</h1>
-      <p>A practical, independently verified guide to Apps Court Car Boot Sale at Apps Court Farm on Hurst Road — opening times, seller pitch prices, buyer parking, facilities and rules, checked against official sources.</p>
+      <p>A practical, independently verified guide to Apps Court Car Boot Sale at Apps Court Farm on Hurst Road: opening times, seller pitch prices, buyer parking, facilities and rules, checked against official sources.</p>
     </div>
   </div>
 
@@ -226,7 +226,7 @@ const faqs = [
           sourceUrl={STATUS_SOURCE_URL}
         />
 
-        <p class="disclaimer-note">Walton-on-Thames.org is an independent local guide and is not affiliated with, or operated by, Apps Court Farm. Every fact on this page is dated and sourced — see "Sources and last checked" near the bottom — but Apps Court Farm's own site is always the definitive word on whether a specific date is running.</p>
+        <p class="disclaimer-note">Walton-on-Thames.org is an independent local guide and is not affiliated with, or operated by, Apps Court Farm. Every fact on this page is dated and sourced (see "Sources and last checked" near the bottom), but Apps Court Farm's own site is always the definitive word on whether a specific date is running.</p>
 
         <h2 id="key-info">Apps Court Car Boot Sale at a glance</h2>
         <div class="table-wrap">
@@ -238,10 +238,10 @@ const faqs = [
               <tr><th scope="row">Usual season</th><td>Early March to the autumn, plus selected Spring, Summer and early Winter Bank Holiday Mondays</td></tr>
               <tr><th scope="row">Gates open</th><td>7am for sellers and buyers</td></tr>
               <tr><th scope="row">Closing time</th><td>Closed from 1pm</td></tr>
-              <tr><th scope="row">Buyer parking</th><td>£2 per vehicle, including motorbikes — collected on the way out</td></tr>
+              <tr><th scope="row">Buyer parking</th><td>£2 per vehicle, including motorbikes, collected on the way out</td></tr>
               <tr><th scope="row">Buyer admission on foot</th><td>No separate charge stated by Apps Court Farm</td></tr>
               <tr><th scope="row">Standard seller pitch</th><td>£15 (car or walk-in)</td></tr>
-              <tr><th scope="row">Advance booking</th><td>Not available — pitches are first come, first served</td></tr>
+              <tr><th scope="row">Advance booking</th><td>Not available: pitches are first come, first served</td></tr>
               <tr><th scope="row">Toilets</th><td>Free, including accessible toilets</td></tr>
               <tr><th scope="row">Food and drink</th><td>On-site concessionary catering; sellers may not sell hot food or drink</td></tr>
               <tr><th scope="row">Dogs</th><td>Welcome on a secure lead</td></tr>
@@ -253,23 +253,23 @@ const faqs = [
         <p class="table-source">Source: Apps Court Farm, official car boot and contact pages, checked {PAGE_VERIFIED_DATE}.</p>
 
         <h2 id="on-this-sunday">Is Apps Court Car Boot Sale on this Sunday?</h2>
-        <p>Check the status panel above first — it's updated from Apps Court Farm's own car boot page. Beyond that, Apps Court Farm's FAQ states plainly: "If the weather permits, there will be a Car Boot every Sunday from early March, through to the Autumn." That means a recurring Sunday schedule should never be treated as guaranteed. Before travelling:</p>
+        <p>Check the status panel above first: it's updated from Apps Court Farm's own car boot page. Beyond that, Apps Court Farm's FAQ states plainly: "If the weather permits, there will be a Car Boot every Sunday from early March, through to the Autumn." That means a recurring Sunday schedule should never be treated as guaranteed. Before travelling:</p>
         <ol>
-          <li>Check the banner at the top of <a href="https://www.appscourtfarm.com/carboot" target="_blank" rel="noopener noreferrer">Apps Court Farm's official car boot page ↗</a> — this is where postponements are posted.</li>
+          <li>Check the banner at the top of <a href="https://www.appscourtfarm.com/carboot" target="_blank" rel="noopener noreferrer">Apps Court Farm's official car boot page ↗</a>: this is where postponements are posted.</li>
           <li>Call <a href="tel:01932244822">01932 244 822</a> and listen to the recorded message, which confirms whether the event is taking place.</li>
           <li>Check Apps Court Farm's social media for late notices.</li>
-          <li>Don't rely on directory or listings sites (including this one) as your final check — go to the source.</li>
+          <li>Don't rely on directory or listings sites (including this one) as your final check: go to the source.</li>
         </ol>
 
         <h2 id="dates-season">Usual dates and seasonal operation</h2>
         <p>Apps Court Farm's own FAQ describes the car boot sale as running "every Sunday from early March, through to the Autumn," plus, per the farm's general car boot page, "all Spring, Summer, and early Winter Bank Holiday Mondays (weather dependent)." Apps Court does not publish a fixed calendar of exact start and end dates for the season, so treat "early March" and "the autumn" as approximate, not fixed, dates, and check the site for the current position at either end of the season.</p>
-        <p>Apps Court Farm also hosts large ticketed festivals and events on the same land — its own "About" page lists events such as Boogietown and the Barrio Fiesta, each said to draw over 10,000 attendees on their day. On weekends when a major event occupies the farm, the car boot sale is liable to be suspended — the status panel above reflects Apps Court Farm's own current notice.</p>
+        <p>Apps Court Farm also hosts large ticketed festivals and events on the same land: its own "About" page lists events such as Boogietown and the Barrio Fiesta, each said to draw over 10,000 attendees on their day. On weekends when a major event occupies the farm, the car boot sale is liable to be suspended: the status panel above reflects Apps Court Farm's own current notice.</p>
 
         <h2 id="opening-times">Opening and closing times</h2>
-        <p>Gates open at <strong>7am for both sellers and buyers</strong>, according to Apps Court Farm. The car boot sale is "closed from 1pm" — Apps Court asks sellers who leave earlier to drive carefully and be considerate of buyers still browsing.</p>
+        <p>Gates open at <strong>7am for both sellers and buyers</strong>, according to Apps Court Farm. The car boot sale is "closed from 1pm", Apps Court asks sellers who leave earlier to drive carefully and be considerate of buyers still browsing.</p>
 
         <h2 id="buyers">Buyer information</h2>
-        <p>Apps Court Farm's own description of the sale is that it offers "a wide range of quality bric-a-brac, collectibles, and bargains." What's actually on sale changes every week, since it depends entirely on which sellers turn up — Apps Court Farm does not publish a stock list or preview.</p>
+        <p>Apps Court Farm's own description of the sale is that it offers "a wide range of quality bric-a-brac, collectibles, and bargains." What's actually on sale changes every week, since it depends entirely on which sellers turn up, Apps Court Farm does not publish a stock list or preview.</p>
         <p>The farm's published FAQ does not mention any separate walk-in admission charge for buyers arriving on foot; the only fee stated for buyers is the £2 vehicle parking charge below.</p>
 
         <h2 id="parking">Parking charges and arrival advice</h2>
@@ -277,7 +277,7 @@ const faqs = [
 
         <h2 id="sellers">Selling at Apps Court Car Boot Sale</h2>
         <p>Sellers do not need to book. Apps Court Farm allocates pitches on a first-come, first-served basis: turn up from 7am and staff will direct you to a space. The pitch fee is collected after you've set up, so Apps Court Farm asks sellers to have the correct fee ready to speed things along. A full pitch fee applies if you set up to sell "at any time or any length of time," even briefly.</p>
-        <p>Both cars and vans are permitted, as are cars or vans towing a trailer — but every trailer must be accompanied by a vehicle that also pays a full pitch fee.</p>
+        <p>Both cars and vans are permitted, as are cars or vans towing a trailer, but every trailer must be accompanied by a vehicle that also pays a full pitch fee.</p>
 
         <h2 id="pitch-prices">Seller pitch prices by vehicle type</h2>
         <div class="table-wrap">
@@ -295,16 +295,16 @@ const faqs = [
         <p class="table-source">Source: Apps Court Farm, official car boot page, checked {PAGE_VERIFIED_DATE}. If your vehicle doesn't clearly fit one of these classes, Apps Court Farm asks that you email or call ahead of arrival to avoid confusion when fees are collected.</p>
 
         <h2 id="booking">Do sellers need to book in advance?</h2>
-        <p>No. There is no advance booking system — pitches are allocated on arrival, first come, first served. Apps Court Farm's advice to sellers is simply to arrive early for the best choice of position.</p>
+        <p>No. There is no advance booking system: pitches are allocated on arrival, first come, first served. Apps Court Farm's advice to sellers is simply to arrive early for the best choice of position.</p>
 
         <h2 id="pitch-allocation">How pitches are allocated</h2>
         <p>Staff direct each seller to a space as they arrive; there's no seller map or reserved pitch numbers published. This means position on any given Sunday is essentially down to arrival time.</p>
 
         <h2 id="what-to-bring">What sellers need to bring</h2>
         <ul>
-          <li>Your own table(s) or a groundsheet — Apps Court Farm does not provide any selling equipment</li>
+          <li>Your own table(s) or a groundsheet, Apps Court Farm does not provide any selling equipment</li>
           <li>The correct pitch fee, ready to hand over once you've set up</li>
-          <li>A way to take payment from buyers (cash is the safe assumption — see "Payment methods" below)</li>
+          <li>A way to take payment from buyers (cash is the safe assumption: see "Payment methods" below)</li>
           <li>Everything you'll need to take unsold stock and rubbish away again (see "Rubbish and unsold-item rules")</li>
         </ul>
 
@@ -324,59 +324,59 @@ const faqs = [
         <p>Free toilets are provided, including accessible toilet facilities, per Apps Court Farm.</p>
 
         <h2 id="accessibility">Accessibility</h2>
-        <p>Apps Court Farm states that the farm is accessible for wheelchairs and that accessible toilets and accessible parking are provided. It also cautions that "the ground may be uneven in places" — this is working farmland used for a car boot sale, not a paved or level surface, so wheelchair and mobility-aid users may want to check current ground conditions with the farm directly before a first visit, particularly after wet weather.</p>
+        <p>Apps Court Farm states that the farm is accessible for wheelchairs and that accessible toilets and accessible parking are provided. It also cautions that "the ground may be uneven in places": this is working farmland used for a car boot sale, not a paved or level surface, so wheelchair and mobility-aid users may want to check current ground conditions with the farm directly before a first visit, particularly after wet weather.</p>
 
         <h2 id="dogs">Dogs</h2>
         <p>Dogs are welcome but must be kept on a secure lead at all times. Apps Court Farm asks owners to clear up after their pets, and states dogs must not be left in cars.</p>
 
         <h2 id="payment">Payment methods and cash advice</h2>
-        <p>Apps Court Farm's published information doesn't specify what payment methods individual sellers accept — as at any car boot sale, this is down to each stallholder. Bring cash in a range of denominations as the reliable option; do not assume mobile signal or card readers will be available across an outdoor farm site.</p>
+        <p>Apps Court Farm's published information doesn't specify what payment methods individual sellers accept: as at any car boot sale, this is down to each stallholder. Bring cash in a range of denominations as the reliable option; do not assume mobile signal or card readers will be available across an outdoor farm site.</p>
 
         <h2 id="weather">Weather and cancellation policy</h2>
-        <p>Apps Court Farm states it will post any weather-related postponement "in the same place," on the car boot page, "in good time so that you do not have a wasted journey," and also promotes checking via phone or social media. There is no separate published weather threshold (e.g. a rainfall or wind figure) that triggers cancellation — it is at the farm's discretion.</p>
+        <p>Apps Court Farm states it will post any weather-related postponement "in the same place," on the car boot page, "in good time so that you do not have a wasted journey," and also promotes checking via phone or social media. There is no separate published weather threshold (e.g. a rainfall or wind figure) that triggers cancellation: it is at the farm's discretion.</p>
 
         <h2 id="directions">Directions and postcode</h2>
-        <p>Apps Court Farm's address, as published on its own contact page, is <strong>Apps Court Farm, Hurst Road, Walton upon Thames, Surrey, KT12 2EG</strong>. The farm sits close to Molesey, Hampton Court, Sunbury-on-Thames and the River Thames, though it is administratively and postally part of Walton-on-Thames — use the KT12 2EG postcode for sat-nav rather than guessing at a Molesey or Hampton Court address.</p>
+        <p>Apps Court Farm's address, as published on its own contact page, is <strong>Apps Court Farm, Hurst Road, Walton upon Thames, Surrey, KT12 2EG</strong>. The farm sits close to Molesey, Hampton Court, Sunbury-on-Thames and the River Thames, though it is administratively and postally part of Walton-on-Thames: use the KT12 2EG postcode for sat-nav rather than guessing at a Molesey or Hampton Court address.</p>
 
         <h2 id="public-transport">Public transport</h2>
-        <p>Apps Court Farm does not publish public transport advice on its own site. Independent bus-timetable data (bustimes.org, using Traveline National Dataset timetables) lists a stop named "Walton-on-Thames, at Apps Court Farm" on a route called "APPS," run by Cardinal Buses between East Molesey / Hampton Court Railway Station and Apps Court Farm — but no scheduled journeys were showing for it when checked on {PAGE_VERIFIED_DATE}, and it does not appear among the routes Cardinal Buses currently advertises on its own website. Treat this as an unconfirmed, possibly seasonal or event-only service rather than a reliable regular bus route, and check directly with <a href="https://www.cardinalbuses.co.uk/" target="_blank" rel="noopener noreferrer">Cardinal Buses ↗</a> or a live journey planner before relying on it. A taxi from Walton-on-Thames or Hampton Court railway station is the more dependable option if you don't have a car, especially if you're selling and carrying stock.</p>
+        <p>Apps Court Farm does not publish public transport advice on its own site. Independent bus-timetable data (bustimes.org, using Traveline National Dataset timetables) lists a stop named "Walton-on-Thames, at Apps Court Farm" on a route called "APPS," run by Cardinal Buses between East Molesey / Hampton Court Railway Station and Apps Court Farm: but no scheduled journeys were showing for it when checked on {PAGE_VERIFIED_DATE}, and it does not appear among the routes Cardinal Buses currently advertises on its own website. Treat this as an unconfirmed, possibly seasonal or event-only service rather than a reliable regular bus route, and check directly with <a href="https://www.cardinalbuses.co.uk/" target="_blank" rel="noopener noreferrer">Cardinal Buses ↗</a> or a live journey planner before relying on it. A taxi from Walton-on-Thames or Hampton Court railway station is the more dependable option if you don't have a car, especially if you're selling and carrying stock.</p>
 
         <h2 id="cycling-walking">Cycling and walking considerations</h2>
         <p>Hurst Road runs alongside the Thames and connects towards Molesey and Hampton Court, but Apps Court Farm does not publish cycle parking or pedestrian access information, and we have not been able to verify a specific, safe walking or cycling route from the town centre in this session. If you're walking or cycling, plan your route with a mapping app rather than assuming a riverside path runs directly to the farm gate.</p>
 
         <h2 id="traffic">Local traffic considerations</h2>
-        <p>Apps Court Farm's own literature is built around a single-file exit — it collects the £2 parking fee as vehicles leave "to prevent traffic jams" — which is itself a strong hint that the exit can back up, particularly around the site's busiest morning hours and on any Sunday when a major festival is also using the farm. Allow extra time, especially for the first hour after gates open and around closing time. We have not found a published traffic or highways advisory specific to car-boot Sundays, so this is general practical caution rather than an official warning.</p>
+        <p>Apps Court Farm's own literature is built around a single-file exit (it collects the £2 parking fee as vehicles leave "to prevent traffic jams"), which is itself a strong hint that the exit can back up, particularly around the site's busiest morning hours and on any Sunday when a major festival is also using the farm. Allow extra time, especially for the first hour after gates open and around closing time. We have not found a published traffic or highways advisory specific to car-boot Sundays, so this is general practical caution rather than an official warning.</p>
 
         <h2 id="buyer-tips">Tips for buyers</h2>
         <ul>
           <li>Arrive close to 7am for the widest choice, or later if you'd rather browse a quieter, thinner selection and are comfortable negotiating.</li>
           <li>Bring cash in small denominations, and bags for what you buy.</li>
-          <li>The ground is farmland, not tarmac — wear suitable footwear, especially after rain.</li>
+          <li>The ground is farmland, not tarmac: wear suitable footwear, especially after rain.</li>
           <li>Have the £2 parking fee ready for when you leave.</li>
-          <li>Private second-hand sales don't carry the same consumer protections as a shop — see "Safety and consumer advice" below.</li>
+          <li>Private second-hand sales don't carry the same consumer protections as a shop: see "Safety and consumer advice" below.</li>
         </ul>
 
         <h2 id="seller-tips">Tips for sellers</h2>
         <ul>
-          <li>Bring the exact pitch fee for your vehicle type to speed up setup — see the pitch price table above.</li>
+          <li>Bring the exact pitch fee for your vehicle type to speed up setup: see the pitch price table above.</li>
           <li>If you're not sure which vehicle category you fall into, email or call Apps Court Farm before you travel.</li>
-          <li>Bring your own tables, rails or a groundsheet — none are provided.</li>
+          <li>Bring your own tables, rails or a groundsheet: none are provided.</li>
           <li>Plan for a full clear-up: nothing can be left behind, and tipping is penalised.</li>
-          <li>Drive slowly if you leave before 1pm — buyers will still be walking around the site.</li>
+          <li>Drive slowly if you leave before 1pm: buyers will still be walking around the site.</li>
         </ul>
 
         <h2 id="safety">Safety and consumer advice</h2>
-        <p>Buying and selling at a car boot sale is a private transaction between individuals, not a retail purchase — the consumer protections that apply to shop purchases (such as statutory return rights) generally do not apply in the same way. Inspect goods, especially electrical or mechanical items, before you buy. Apps Court Farm notes that police may attend, and that anyone found selling banned goods (see "Prohibited goods" above) risks removal or further action.</p>
+        <p>Buying and selling at a car boot sale is a private transaction between individuals, not a retail purchase, the consumer protections that apply to shop purchases (such as statutory return rights) generally do not apply in the same way. Inspect goods, especially electrical or mechanical items, before you buy. Apps Court Farm notes that police may attend, and that anyone found selling banned goods (see "Prohibited goods" above) risks removal or further action.</p>
 
         <h2 id="history">A brief history of Apps Court Farm</h2>
-        <p>The manor of Apps Court has a documented history stretching back to the Domesday Book. According to the Victoria County History's account of Walton-on-Thames, Richard de Tonbridge held six hides of land at "Ebsa" (Apps), delivered to him by Abbot Wulfwold of Chertsey Abbey as an augmentation of Walton. Ownership passed through a long succession of families over the following centuries — including the D'Abernon, Croyser, Brocas, Agmondesham and Leigh families (the Leighs were created baronets under James I) — before descending to the Earls of Chichester and Dukes of Montagu, and later a series of 18th- and 19th-century private owners.</p>
+        <p>The manor of Apps Court has a documented history stretching back to the Domesday Book. According to the Victoria County History's account of Walton-on-Thames, Richard de Tonbridge held six hides of land at "Ebsa" (Apps), delivered to him by Abbot Wulfwold of Chertsey Abbey as an augmentation of Walton. Ownership passed through a long succession of families over the following centuries, including the D'Abernon, Croyser, Brocas, Agmondesham and Leigh families (the Leighs were created baronets under James I), before descending to the Earls of Chichester and Dukes of Montagu, and later a series of 18th- and 19th-century private owners.</p>
         <p>The manor house was sold in 1898–99 and demolished by the Southwark and Vauxhall Water Company, which excavated the estate for a reservoir. A centuries-old local custom required the estate to distribute bread, ale and a pig to the poor every All Souls' Day; the Water Company contested this obligation until 1903, when the Charity Commissioners set up a trust to fund it instead.</p>
-        <p>Archaeologically, the Victoria County History records that "four or five British urns were found about 1900 in excavations on the Apps Court estate." Later, in 1988–89, observation during gravel extraction by Surrey County Council and Redland identified a buried former river channel roughly 30 metres wide, running parallel to the Thames — evidence of how the floodplain here has shifted over time, recorded by the Surrey County Archaeological Unit.</p>
+        <p>Archaeologically, the Victoria County History records that "four or five British urns were found about 1900 in excavations on the Apps Court estate." Later, in 1988–89, observation during gravel extraction by Surrey County Council and Redland identified a buried former river channel roughly 30 metres wide, running parallel to the Thames: evidence of how the floodplain here has shifted over time, recorded by the Surrey County Archaeological Unit.</p>
         <p>Apps Court Farm's own "About" page adds further claims about the site's history that we have not been able to independently verify against an academic or archival source: that the estate covers "more than 80 acres of undulating grassland," that King John visited the manor in the 1200s, and that the American army used the land as a base ahead of D-Day during the Second World War. These are presented by Apps Court Farm as fact on its own site, but we're flagging them here as the venue's own account rather than independently confirmed history.</p>
-        <p>Today the farm — now largely known locally for its car boot sales — also hosts a fishery, vehicle and container storage, and large outdoor festivals including Boogietown and the Barrio Fiesta.</p>
+        <p>Today the farm, now largely known locally for its car boot sales, also hosts a fishery, vehicle and container storage, and large outdoor festivals including Boogietown and the Barrio Fiesta.</p>
 
         <h2 id="local-context">Local geographic context</h2>
-        <p>Apps Court Farm sits on Hurst Road, close to the River Thames, within reach of Molesey, Hampton Court and Sunbury-on-Thames as well as Walton-on-Thames town centre. It's an outdoor, working farm site rather than a purpose-built event venue — expect grass underfoot, farm-scale access roads, and facilities that are seasonal rather than permanent.</p>
+        <p>Apps Court Farm sits on Hurst Road, close to the River Thames, within reach of Molesey, Hampton Court and Sunbury-on-Thames as well as Walton-on-Thames town centre. It's an outdoor, working farm site rather than a purpose-built event venue: expect grass underfoot, farm-scale access roads, and facilities that are seasonal rather than permanent.</p>
 
         <h2 id="contact">Contact information</h2>
         <ul>
@@ -398,14 +398,14 @@ const faqs = [
 
         <div class="sources-block">
           <h2>Sources and last-checked information</h2>
-          <p class="table-source" style="margin-bottom: 1rem;">This page's prices, rules, contact details and history were compiled and fact-checked on {PAGE_VERIFIED_DATE}. The on/off status panel above is checked separately, automatically, once a day — see its own "Checked [date]" line for how current that specific detail is. Always confirm directly with Apps Court Farm before travelling.</p>
+          <p class="table-source" style="margin-bottom: 1rem;">This page's prices, rules, contact details and history were compiled and fact-checked on {PAGE_VERIFIED_DATE}. The on/off status panel above is checked separately, automatically, once a day: see its own "Checked [date]" line for how current that specific detail is. Always confirm directly with Apps Court Farm before travelling.</p>
           <ul>
-            <li>Apps Court Farm (n.d.) 'Car Boot'. Available at: <a href="https://www.appscourtfarm.com/carboot" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/carboot ↗</a> (Accessed: {PAGE_VERIFIED_DATE}) — times, prices, rules, FAQ; on/off status re-checked daily (see status panel).</li>
-            <li>Apps Court Farm (n.d.) 'Contact'. Available at: <a href="https://www.appscourtfarm.com/contact" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/contact ↗</a> (Accessed: {PAGE_VERIFIED_DATE}) — phone and email.</li>
-            <li>Apps Court Farm (n.d.) 'About'. Available at: <a href="https://www.appscourtfarm.com/about" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/about ↗</a> (Accessed: {PAGE_VERIFIED_DATE}) — venue's own history and acreage claims.</li>
-            <li>Malden, H.E. (ed.) (1911) 'Parishes: Walton on Thames', in <em>A History of the County of Surrey, Volume 3</em>. Victoria County History. Available at: <a href="https://www.british-history.ac.uk/vch/surrey/vol3/pp467-475" target="_blank" rel="noopener noreferrer">https://www.british-history.ac.uk/vch/surrey/vol3/pp467-475 ↗</a> (Accessed: {PAGE_VERIFIED_DATE}) — manor history, ownership succession, 1898–99 demolition, and the 1900 urn find.</li>
-            <li>Surrey Archaeological Society (n.d.) 'Apps Court Farm, Walton on Thames'. Available at: <a href="https://www.surreyarchaeology.org.uk/content/apps-court-farm-walton-on-thames-0" target="_blank" rel="noopener noreferrer">https://www.surreyarchaeology.org.uk/content/apps-court-farm-walton-on-thames-0 ↗</a> (Accessed: {PAGE_VERIFIED_DATE}) — 1988–89 buried river channel finding.</li>
-            <li>bustimes.org (n.d.) 'APPS: Hampton Court – Apps Court Farm, Cardinal Buses'. Available at: <a href="https://bustimes.org/services/apps-hampton-court-station-apps-court-farm" target="_blank" rel="noopener noreferrer">https://bustimes.org/services/apps-hampton-court-station-apps-court-farm ↗</a> (Accessed: {PAGE_VERIFIED_DATE}) — bus route data (Traveline National Dataset); no scheduled journeys found.</li>
+            <li>Apps Court Farm (n.d.) 'Car Boot'. Available at: <a href="https://www.appscourtfarm.com/carboot" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/carboot ↗</a> (Accessed: {PAGE_VERIFIED_DATE}): times, prices, rules, FAQ; on/off status re-checked daily (see status panel).</li>
+            <li>Apps Court Farm (n.d.) 'Contact'. Available at: <a href="https://www.appscourtfarm.com/contact" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/contact ↗</a> (Accessed: {PAGE_VERIFIED_DATE}), phone and email.</li>
+            <li>Apps Court Farm (n.d.) 'About'. Available at: <a href="https://www.appscourtfarm.com/about" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/about ↗</a> (Accessed: {PAGE_VERIFIED_DATE}), venue's own history and acreage claims.</li>
+            <li>Malden, H.E. (ed.) (1911) 'Parishes: Walton on Thames', in <em>A History of the County of Surrey, Volume 3</em>. Victoria County History. Available at: <a href="https://www.british-history.ac.uk/vch/surrey/vol3/pp467-475" target="_blank" rel="noopener noreferrer">https://www.british-history.ac.uk/vch/surrey/vol3/pp467-475 ↗</a> (Accessed: {PAGE_VERIFIED_DATE}): manor history, ownership succession, 1898–99 demolition, and the 1900 urn find.</li>
+            <li>Surrey Archaeological Society (n.d.) 'Apps Court Farm, Walton on Thames'. Available at: <a href="https://www.surreyarchaeology.org.uk/content/apps-court-farm-walton-on-thames-0" target="_blank" rel="noopener noreferrer">https://www.surreyarchaeology.org.uk/content/apps-court-farm-walton-on-thames-0 ↗</a> (Accessed: {PAGE_VERIFIED_DATE}), 1988–89 buried river channel finding.</li>
+            <li>bustimes.org (n.d.) 'APPS: Hampton Court – Apps Court Farm, Cardinal Buses'. Available at: <a href="https://bustimes.org/services/apps-hampton-court-station-apps-court-farm" target="_blank" rel="noopener noreferrer">https://bustimes.org/services/apps-hampton-court-station-apps-court-farm ↗</a> (Accessed: {PAGE_VERIFIED_DATE}), bus route data (Traveline National Dataset); no scheduled journeys found.</li>
           </ul>
         </div>
 

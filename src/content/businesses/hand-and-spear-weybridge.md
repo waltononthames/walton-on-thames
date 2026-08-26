@@ -17,6 +17,6 @@ source: "Operator website and address records"
 
 The Hand & Spear is a step up from a typical pub-with-rooms. Both the accommodation and the food are taken seriously here: rooms are individually designed with a boutique feel, and the kitchen sends out the kind of food that draws diners from across the area.
 
-Located on Old Heath Road in Weybridge, it's a relaxed and characterful place to stay — well-suited to visitors who want somewhere with personality rather than the anonymity of a chain hotel.
+Located on Old Heath Road in Weybridge, it's a relaxed and characterful place to stay, well-suited to visitors who want somewhere with personality rather than the anonymity of a chain hotel.
 
 **Distance from Walton-on-Thames:** Approximately 2.5 miles. Weybridge station is nearby with regular services to London Waterloo.

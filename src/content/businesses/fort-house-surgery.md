@@ -29,4 +29,4 @@ Fort House Surgery is an NHS GP surgery based at Walton Community Hospital on Ro
 **Address:** Rodney Road, Walton-on-Thames, Surrey, KT12 3LD
 **Phone:** 01932 253055
 
-Hours correct as of 18 July 2026 — confirm before visiting, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before visiting, particularly around bank holidays.

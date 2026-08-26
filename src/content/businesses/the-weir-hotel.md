@@ -16,7 +16,7 @@ verified_date: "2026-07-08"
 source: "Operator website and restaurant directory spreadsheet (owner-supplied)"
 ---
 
-The Weir Hotel occupies one of the finest positions on the River Thames in the Walton area. Sitting directly on the towpath beside Walton Bridge, it combines hotel accommodation with a popular riverside pub and restaurant — which means your stay can begin and end with a drink on the water's edge.
+The Weir Hotel occupies one of the finest positions on the River Thames in the Walton area. Sitting directly on the towpath beside Walton Bridge, it combines hotel accommodation with a popular riverside pub and restaurant, which means your stay can begin and end with a drink on the water's edge.
 
 Guest rooms are comfortable and well-appointed; several have direct river views, making this a genuinely memorable place to wake up. The hotel is a popular choice for couples and for visitors attending festivals and events at Apps Court Farm, which is a short walk along the towpath.
 

@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Operator website and address records"
 ---
 
-The Ship Hotel occupies a fine position on Monument Green — one of Weybridge's most attractive town centre spaces, framed by a distinctive stone column monument. A thoroughly traditional hotel with a long local history, it offers comfortable, straightforward accommodation in a very walkable location.
+The Ship Hotel occupies a fine position on Monument Green: one of Weybridge's most attractive town centre spaces, framed by a distinctive stone column monument. A thoroughly traditional hotel with a long local history, it offers comfortable, straightforward accommodation in a very walkable location.
 
 Weybridge station is a few minutes on foot, making this a practical choice for visitors arriving by train from London Waterloo. The town's pubs, independent restaurants, and shops are all within easy reach.
 

@@ -7,7 +7,7 @@ export async function GET(context: APIContext) {
   const sorted = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
   return rss({
-    title: 'Walton-on-Thames.org — Local News & Stories',
+    title: 'Walton-on-Thames.org: Local News & Stories',
     description: 'Community news, local history, and stories from Walton-on-Thames, Hersham and Whiteley Village.',
     site: context.site!,
     items: sorted.map(post => ({

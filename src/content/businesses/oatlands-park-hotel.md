@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Operator website and historical records"
 ---
 
-Oatlands Park Hotel is the most distinguished hotel in the immediate area — a sweeping Victorian property set in 10 acres of mature grounds in Weybridge. The site has deep royal connections: Oatlands Palace, a favourite residence of Henry VIII, once stood here before being demolished in the 17th century.
+Oatlands Park Hotel is the most distinguished hotel in the immediate area, a sweeping Victorian property set in 10 acres of mature grounds in Weybridge. The site has deep royal connections: Oatlands Palace, a favourite residence of Henry VIII, once stood here before being demolished in the 17th century.
 
 Today the hotel offers 144 bedrooms ranging from classic rooms to suites, a health club with indoor pool, a spa, and extensive conference and events facilities. The grounds are genuinely beautiful and make for a peaceful base from which to explore Walton-on-Thames, Weybridge, and the wider Surrey area.
 

@@ -27,4 +27,4 @@ The main Walton-on-Thames Post Office offers full postal services, banking, fore
 
 **Address:** 73 Hersham Road, Walton-on-Thames, KT12 1LN
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays. The Royal Mail Delivery Office for undelivered items and redelivery is a separate facility at the same address.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays. The Royal Mail Delivery Office for undelivered items and redelivery is a separate facility at the same address.

@@ -29,4 +29,4 @@ Boots on the High Street offers NHS prescription dispensing and pharmacy service
 **Address:** 15-19 High Street, Walton-on-Thames, Surrey, KT12 1DG
 **Phone:** 01932 220973
 
-The hours above are the pharmacy counter's NHS-registered hours, correct as of 18 July 2026 — the wider Boots shop floor may open longer for general retail. Confirm before a special journey, particularly around bank holidays.
+The hours above are the pharmacy counter's NHS-registered hours, correct as of 18 July 2026, the wider Boots shop floor may open longer for general retail. Confirm before a special journey, particularly around bank holidays.

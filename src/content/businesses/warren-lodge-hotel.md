@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Operator website and address records"
 ---
 
-Warren Lodge Hotel sits in one of the most pleasant parts of Shepperton — Church Square, a quiet enclave of Georgian and older buildings near the river that feels entirely removed from the main road. The hotel has been a fixture of the village for many years and has a traditional, well-kept character.
+Warren Lodge Hotel sits in one of the most pleasant parts of Shepperton: Church Square, a quiet enclave of Georgian and older buildings near the river that feels entirely removed from the main road. The hotel has been a fixture of the village for many years and has a traditional, well-kept character.
 
 Shepperton's riverside walks and village pubs are within easy walking distance, and the Thames towpath is close by for those wanting to explore on foot.
 

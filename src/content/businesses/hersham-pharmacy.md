@@ -29,4 +29,4 @@ Hersham Pharmacy is a community pharmacy in the Hersham Centre, offering NHS pre
 **Address:** 20 Hersham Centre, Hersham, Walton-on-Thames, Surrey, KT12 4HL
 **Phone:** 01932 228667
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

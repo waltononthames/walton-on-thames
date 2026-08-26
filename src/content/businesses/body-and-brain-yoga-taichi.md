@@ -15,7 +15,7 @@ verified_date: "2026-06-27"
 source: "Body & Brain website and address records"
 ---
 
-Body & Brain Yoga Taichi on Bridge Street is part of an international network of centres offering practices rooted in Korean Sundo tradition — combining yoga, Tai Chi, and meditative movement with a focus on the connection between physical health and mental clarity.
+Body & Brain Yoga Taichi on Bridge Street is part of an international network of centres offering practices rooted in Korean Sundo tradition: combining yoga, Tai Chi, and meditative movement with a focus on the connection between physical health and mental clarity.
 
 The Bridge Street centre offers a distinct alternative to conventional gym-based fitness or Western yoga styles. The practice emphasises energy circulation and mindful movement, and has a following among those looking for something more contemplative than a typical fitness class and more physical than traditional meditation.
 

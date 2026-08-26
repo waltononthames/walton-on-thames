@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Sandown Park website and address records"
 ---
 
-Sandown Park Lodge offers a genuinely unusual option: accommodation right within the grounds of Sandown Park Racecourse. Available primarily on race days and during major events, it's suited to visitors who want to be at the heart of the action — or who simply want something more memorable than a standard hotel room.
+Sandown Park Lodge offers a genuinely unusual option: accommodation right within the grounds of Sandown Park Racecourse. Available primarily on race days and during major events, it's suited to visitors who want to be at the heart of the action, or who simply want something more memorable than a standard hotel room.
 
 Sandown Park is one of the most popular racecourses in southern England, hosting prestigious flat and jumps fixtures throughout the year. The Eclipse Stakes in July is one of the most celebrated events on the British flat racing calendar, and the Tingle Creek Chase in December attracts the best jump horses in the country.
 

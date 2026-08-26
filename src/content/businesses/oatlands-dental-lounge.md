@@ -21,4 +21,4 @@ Oatlands Dental Lounge offers general dentistry, cosmetic dentistry, dental impl
 **Address:** Napier House, 62-64 Bridge Street, Walton-on-Thames, Surrey, KT12 1AP
 **Phone:** 01932 858686
 
-The practice's own website and property records use postcode KT12 1AP; an older Care Quality Commission record has been reported to show KT12 1AT — this listing uses the practice's current, self-reported address.
+The practice's own website and property records use postcode KT12 1AP; an older Care Quality Commission record has been reported to show KT12 1AT: this listing uses the practice's current, self-reported address.

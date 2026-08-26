@@ -27,4 +27,4 @@ Church Street Post Office offers postal services, banking, passport document cer
 
 **Address:** 7 Church Street, Walton-on-Thames, KT12 2QP
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

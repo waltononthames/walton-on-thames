@@ -10,13 +10,13 @@ featured: true
 
 Whether you're looking to kickstart a new fitness routine, find a restorative yoga practice by the river, or prepare for your next Hyrox competition, KT12 has a genuinely impressive range of health and fitness options. From a full-scale leisure complex on the Thames to intimate one-to-one Pilates studios, there's more available locally than most residents realise.
 
-This guide covers every gym, studio, personal trainer, and fitness class provider in Walton-on-Thames and Hersham — so you can find the right fit without the legwork.
+This guide covers every gym, studio, personal trainer, and fitness class provider in Walton-on-Thames and Hersham, so you can find the right fit without the legwork.
 
 ---
 
 ## Major Gyms & Leisure Centres
 
-If you want everything under one roof — weights, cardio, classes, pool — the area has several facilities that deliver.
+If you want everything under one roof (weights, cardio, classes, pool), the area has several facilities that deliver.
 
 ### [Elmbridge Xcel Leisure Complex](/directory/elmbridge-xcel/)
 
@@ -28,15 +28,15 @@ On the second floor of The Heart shopping centre, PureGym's 24/7 model and no-co
 
 ### [The Method Gym](/directory/the-method-gym/)
 
-Tucked on the High Street and known for building one of the most devoted communities in local fitness. The Method specialises in functional fitness — HIIT, strength training, and notably Hyrox, the functional fitness race format that has gained enormous traction across the UK. If you want structured coaching and a group of people who take their training seriously, this is the place.
+Tucked on the High Street and known for building one of the most devoted communities in local fitness. The Method specialises in functional fitness: HIIT, strength training, and notably Hyrox, the functional fitness race format that has gained enormous traction across the UK. If you want structured coaching and a group of people who take their training seriously, this is the place.
 
 ### [Three Sixty Gym](/directory/three-sixty-gym/)
 
-Bridge Street's all-rounder: standard gym floor, personal training, strength coaching, martial arts, and on-site physiotherapy. The combination of training and in-house therapy means you can lift, train, and get treated without leaving the building — particularly valuable for anyone managing an injury alongside their fitness.
+Bridge Street's all-rounder: standard gym floor, personal training, strength coaching, martial arts, and on-site physiotherapy. The combination of training and in-house therapy means you can lift, train, and get treated without leaving the building, particularly valuable for anyone managing an injury alongside their fitness.
 
 ### [Inferno Fitness](/directory/inferno-fitness/) *(Hersham)*
 
-At The Ember Centre on Lyon Road in Hersham, Inferno Fitness combines gym access and small group training with yoga, Pilates, and sports therapy. The tight-knit community feel and the breadth of provision — training and treatment under one roof — have made it the go-to facility in Hersham.
+At The Ember Centre on Lyon Road in Hersham, Inferno Fitness combines gym access and small group training with yoga, Pilates, and sports therapy. The tight-knit community feel and the breadth of provision, training and treatment under one roof, have made it the go-to facility in Hersham.
 
 ---
 
@@ -46,7 +46,7 @@ The local Pilates scene has expanded considerably in recent years, from Reformer
 
 ### [Origin Pilates](/directory/origin-pilates/)
 
-Inside The Heart, Origin Pilates is arguably the most polished studio offering in Walton-on-Thames: Reformer Pilates, mat classes, yoga, and barre in a central, purpose-built space. The Reformer machines are the headline — excellent for building core strength and supporting rehabilitation — and the barre classes have built their own loyal following. Book ahead: popular slots fill quickly.
+Inside The Heart, Origin Pilates is arguably the most polished studio offering in Walton-on-Thames: Reformer Pilates, mat classes, yoga, and barre in a central, purpose-built space. The Reformer machines are the headline, excellent for building core strength and supporting rehabilitation, and the barre classes have built their own loyal following. Book ahead: popular slots fill quickly.
 
 ### [Fitzen Pilates](/directory/fitzen-pilates/)
 
@@ -54,15 +54,15 @@ A specialist Reformer Pilates studio on Hersham Road, focused purely on apparatu
 
 ### [Emily Ann Pilates](/directory/emily-ann-pilates/)
 
-Private, one-to-one Reformer Pilates in York Gardens — the most personalised option in the area. A 1:1 session means the programme is built entirely around you: your goals, injury history, and current level. Ideal for rehabilitation, beginners building proper foundations, or experienced practitioners working at an advanced level.
+Private, one-to-one Reformer Pilates in York Gardens, the most personalised option in the area. A 1:1 session means the programme is built entirely around you: your goals, injury history, and current level. Ideal for rehabilitation, beginners building proper foundations, or experienced practitioners working at an advanced level.
 
 ### [imPULSE on PILATES](/directory/impulse-on-pilates/)
 
-A dedicated Pilates studio on Terrace Road in the residential south of Walton. *Note: website details were unconfirmed at time of writing — verify current contact information before booking.*
+A dedicated Pilates studio on Terrace Road in the residential south of Walton. *Note: website details were unconfirmed at time of writing: verify current contact information before booking.*
 
 ### [All4Pilates](/directory/all4pilates/) *(Hersham)*
 
-Community mat Pilates across multiple Hersham venues — Hersham Baptist Church, the Hersham Day Centre, and additional Walton locations. Accessible, welcoming, and a genuine entry point for those coming to Pilates for the first time.
+Community mat Pilates across multiple Hersham venues: Hersham Baptist Church, the Hersham Day Centre, and additional Walton locations. Accessible, welcoming, and a genuine entry point for those coming to Pilates for the first time.
 
 ### [Better Body Pilates](/directory/better-body-pilates/) *(Hersham)*
 
@@ -76,15 +76,15 @@ From dynamic Ashtanga practice to deeply restorative Yin sessions, the area's yo
 
 ### [Body Soul Yoga](/directory/body-soul-yoga/)
 
-Based in Berkeley Gardens, Body Soul Yoga takes a structured, unhurried approach: comprehensive courses rather than just drop-in classes, workshops, and private sessions. A good choice for those who want to understand yoga properly — building real knowledge of the practice — rather than simply attending sessions.
+Based in Berkeley Gardens, Body Soul Yoga takes a structured, unhurried approach: comprehensive courses rather than just drop-in classes, workshops, and private sessions. A good choice for those who want to understand yoga properly, building real knowledge of the practice, rather than simply attending sessions.
 
 ### [Kayalin Yoga](/directory/kayalin-yoga/)
 
-Regular yoga classes held at St Andrew's Church on Hersham Road — a calm, community setting that suits those who prefer something quieter than a commercial studio. Accessible from both Walton town centre and the Hersham area.
+Regular yoga classes held at St Andrew's Church on Hersham Road: a calm, community setting that suits those who prefer something quieter than a commercial studio. Accessible from both Walton town centre and the Hersham area.
 
 ### [Wellness All Around](/directory/wellness-all-around/)
 
-Hatha yoga alongside health and wellbeing coaching — a combination that sets this apart from a straightforward yoga class. Classes at St Andrew's United Reformed Church Hall on Hersham Road, with coaching available that covers lifestyle, stress management, and overall health.
+Hatha yoga alongside health and wellbeing coaching, a combination that sets this apart from a straightforward yoga class. Classes at St Andrew's United Reformed Church Hall on Hersham Road, with coaching available that covers lifestyle, stress management, and overall health.
 
 ### [Body & Brain Yoga Taichi](/directory/body-and-brain-yoga-taichi/)
 
@@ -92,7 +92,7 @@ A distinctive offering on Bridge Street: part of the international Body & Brain 
 
 ### [Zone In Yoga](/directory/zone-in-yoga/) *(Hersham)*
 
-Seasonal flow and Ashtanga yoga across the Hersham and Walton area, with both in-person and online class options. The seasonal flow approach — adapting the practice to the rhythm of the year — is a refreshing alternative to a fixed timetable.
+Seasonal flow and Ashtanga yoga across the Hersham and Walton area, with both in-person and online class options. The seasonal flow approach, adapting the practice to the rhythm of the year, is a refreshing alternative to a fixed timetable.
 
 ### [Yoga Elephant](/directory/yoga-elephant/) *(Hersham)*
 
@@ -104,7 +104,7 @@ Denise Hazel's Hatha, Yin, and restorative yoga classes in Hersham are among the
 
 ### [VernYoga](/directory/vern-yoga/) *(Hersham)*
 
-Yoga and Zumba Gold at the Hersham Centre for the Community on Queens Road. The Zumba Gold sessions — lower impact and fully accessible — are a popular option for older adults and those returning to fitness.
+Yoga and Zumba Gold at the Hersham Centre for the Community on Queens Road. The Zumba Gold sessions, lower impact and fully accessible, are a popular option for older adults and those returning to fitness.
 
 ---
 
@@ -112,7 +112,7 @@ Yoga and Zumba Gold at the Hersham Centre for the Community on Queens Road. The 
 
 Walton has one significant natural advantage for outdoor training: the River Thames and the miles of flat towpath that run alongside it.
 
-**Riverside Running:** The Thames Path through Walton and Hersham is one of the finest flat running routes in Surrey — scenic, well-maintained, and stretching in both directions to Sunbury Lock and beyond. Worth lacing up for alone.
+**Riverside Running:** The Thames Path through Walton and Hersham is one of the finest flat running routes in Surrey: scenic, well-maintained, and stretching in both directions to Sunbury Lock and beyond. Worth lacing up for alone.
 
 ### [Lean Personal Training](/directory/lean-personal-training/)
 
@@ -124,7 +124,7 @@ High-energy circuits, HIIT, and boxing fitness classes at The Guide Hut in Hersh
 
 ### [Club DanceFit](/directory/club-dancefit/)
 
-Dance-based cardio fitness at Three Rivers Academy on Hersham Road — the most fun you can have while actually working out. No dance experience required, all levels welcome, and the energy of a good class here is hard to match.
+Dance-based cardio fitness at Three Rivers Academy on Hersham Road, the most fun you can have while actually working out. No dance experience required, all levels welcome, and the energy of a good class here is hard to match.
 
 ---
 
@@ -134,11 +134,11 @@ For accountability, tailored programming, and expert coaching, the area has a st
 
 ### [NuLiFit](/directory/nulifit/)
 
-Personal training, group fitness, and nutrition planning on Thames Street — taking the view that training and diet need to work together to produce lasting results. 1:1 sessions alongside a nutritional approach that suits real life rather than demanding a complete lifestyle overhaul.
+Personal training, group fitness, and nutrition planning on Thames Street, taking the view that training and diet need to work together to produce lasting results. 1:1 sessions alongside a nutritional approach that suits real life rather than demanding a complete lifestyle overhaul.
 
 ### [Dottie Fitness](/directory/dottie-fitness/)
 
-Highly personalised 1:1 training on Russell Road, with online coaching available for those who can't always commit to in-person sessions. The philosophy is sustainability over short-term results — training and nutrition guidance that fits around work and family rather than requiring a restructured life.
+Highly personalised 1:1 training on Russell Road, with online coaching available for those who can't always commit to in-person sessions. The philosophy is sustainability over short-term results, training and nutrition guidance that fits around work and family rather than requiring a restructured life.
 
 ### [Sam B Fit](/directory/sam-b-fit/)
 

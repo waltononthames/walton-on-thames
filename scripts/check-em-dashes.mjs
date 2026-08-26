@@ -1,75 +1,63 @@
-// Advisory (non-blocking) check for em dashes, in two scopes.
+// Advisory (non-blocking) check for em dashes in anything a reader sees.
 //
-// 1. Body prose in the history/hersham collections, per
-//    docs/walton-history-hersham-extension.md Section 1, Rule 2 (Register):
-//    "No em dashes anywhere; use commas, colons or full stops." That rule is
-//    documented for these two collections only, and is deliberately not
-//    claimed as a site-wide requirement for body prose.
+// The register rule in docs/walton-history-hersham-extension.md Section 1,
+// Rule 2 ("No em dashes anywhere; use commas, colons or full stops") was
+// originally scoped to the history and hersham collections, on the grounds
+// that it was not stated as a site-wide requirement. That scope was widened
+// deliberately: the rule now covers all user-facing content and metadata.
 //
-// 2. Page metadata sitewide - every <title> and meta description the site
-//    emits. These were cleared during the SEO pass (an em dash in a tag is a
-//    character spent on punctuation Google may render inconsistently, in the
-//    ~60 and ~155 characters that matter most), so the check keeps them clear.
-//    Body prose outside history/hersham is deliberately not checked.
+// What is checked: body prose in every collection, page copy and JSX text in
+// src/pages, src/components and src/layouts, every <title> and meta
+// description, and the JSON content files behind the attraction cards.
 //
-// Run manually or before a content-review session: `npm run content:em-dashes`.
-import { readdirSync, readFileSync } from 'node:fs';
+// What is not: JS/TS comments, JSDoc, the `source:` provenance field and the
+// `$schema` note, none of which reach a reader. Log messages in src/loaders
+// are developer output and are left alone too.
+//
+// Run with `npm run content:em-dashes`.
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const EM = '—';
-const COLLECTION_DIRS = ['src/content/history', 'src/content/hersham'];
+const ROOTS = ['src/content', 'src/pages', 'src/components', 'src/layouts', 'src/data'];
 
-const METADATA_PATTERNS = [
-  /\bdescription="([^"]{20,})"/,
-  /\bdescription:\s*"([^"]{20,})"/,
-  /\bmetaDescription:\s*"([^"]{20,})"/,
-  /\bdescription=\{`([^`]{20,})`\}/,
-  /\btitle="([^"]{10,})"/,
-  /\bmetaTitle:\s*"([^"]{10,})"/,
+const SKIP_LINE = [
+  /^\s*(\/\/|\*\s|\/\*|\*\/)/, // JS/TS comment or JSDoc continuation
+  /^\s*<!--/,                  // HTML comment
+  /^\s*source:/,               // provenance, never rendered
+  /^\s*"\$schema"/,            // developer note in JSON
 ];
 
 function walk(dir, out = []) {
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    const path = join(dir, entry.name);
-    if (entry.isDirectory()) walk(path, out);
-    else if (/\.(astro|md|ts)$/.test(entry.name)) out.push(path);
+  let entries;
+  try {
+    entries = readdirSync(dir, { withFileTypes: true });
+  } catch {
+    return out;
+  }
+  for (const e of entries) {
+    const p = join(dir, e.name);
+    if (e.isDirectory()) walk(p, out);
+    else if (/\.(astro|md|ts|js|mjs|json)$/.test(e.name)) out.push(p);
   }
   return out;
 }
 
-let bodyHits = 0;
-for (const dir of COLLECTION_DIRS) {
-  for (const name of readdirSync(dir)) {
-    if (!name.endsWith('.md')) continue;
-    const path = join(dir, name);
-    readFileSync(path, 'utf8').split('\n').forEach((line, i) => {
-      if (line.includes(EM)) {
-        console.log(`${path}:${i + 1}  ${line.trim().slice(0, 120)}`);
-        bodyHits++;
-      }
+let hits = 0;
+for (const root of ROOTS) {
+  for (const file of walk(root)) {
+    const lines = readFileSync(file, 'utf8').replace(/\r\n/g, '\n').split('\n');
+    lines.forEach((line, i) => {
+      if (!line.includes(EM)) return;
+      if (SKIP_LINE.some((re) => re.test(line))) return;
+      console.log(`${file}:${i + 1}  ${line.trim().slice(0, 130)}`);
+      hits += line.split(EM).length - 1;
     });
   }
 }
 
-let metaHits = 0;
-for (const path of walk('src')) {
-  readFileSync(path, 'utf8').replace(/\r\n/g, '\n').split('\n').forEach((line, i) => {
-    for (const pattern of METADATA_PATTERNS) {
-      const m = pattern.exec(line);
-      if (!m) continue;
-      if (m[1].includes(EM)) {
-        console.log(`${path}:${i + 1}  [metadata]  ${m[1].slice(0, 120)}`);
-        metaHits++;
-      }
-      break;
-    }
-  });
-}
-
-if (bodyHits + metaHits > 0) {
-  if (bodyHits) console.log(`\n${bodyHits} em dash(es) in history/hersham body prose - replace with commas, colons or full stops per the Register rule.`);
-  if (metaHits) console.log(`\n${metaHits} em dash(es) in page metadata - replace with commas or colons.`);
-  process.exitCode = 0; // advisory
+if (hits > 0) {
+  console.log(`\ncheck-em-dashes: ${hits} em dash(es) in user-facing content. Replace with a comma, a colon or a full stop. A colon usually suits a clause or a list; a comma suits a short aside; paired dashes wrapping an aside often want brackets or a rewrite.`);
 } else {
-  console.log('check-em-dashes: none in history/hersham prose, none in page metadata.');
+  console.log('check-em-dashes: none in user-facing content or metadata.');
 }

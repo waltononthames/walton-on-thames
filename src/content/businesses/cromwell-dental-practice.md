@@ -21,4 +21,4 @@ Cromwell Dental Practice offers general and preventative dentistry, children's d
 **Address:** 1 Cromwell Road, Walton-on-Thames, Surrey, KT12 3NL
 **Phone:** 01932 269199
 
-NHS treatment is advertised, but current availability for new NHS patients can change — confirm directly with the practice.
+NHS treatment is advertised, but current availability for new NHS patients can change, confirm directly with the practice.

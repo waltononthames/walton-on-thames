@@ -30,4 +30,4 @@ The Red Practice Walton is an NHS GP surgery based at Walton Health Centre on Ro
 **Phone:** 01932 504410
 **Accessibility:** Step-free and wheelchair access, disabled toilet, induction loop, disabled parking and cycle parking.
 
-Hours correct as of 18 July 2026 — confirm before visiting, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before visiting, particularly around bank holidays.

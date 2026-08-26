@@ -21,4 +21,4 @@ Ashley Dental is a general dental practice on Ashley Road offering preventative 
 **Address:** 19 Ashley Road, Walton-on-Thames, Surrey, KT12 1JB
 **Phone:** 01932 220111
 
-NHS and private status is not stated clearly on the practice's own site — confirm current availability directly with the practice before registering.
+NHS and private status is not stated clearly on the practice's own site, confirm current availability directly with the practice before registering.

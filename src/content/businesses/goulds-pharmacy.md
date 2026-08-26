@@ -29,4 +29,4 @@ Gould's Pharmacy is an independent community pharmacy on Terrace Road, offering 
 **Address:** 48 Terrace Road, Walton-on-Thames, Surrey, KT12 2SA
 **Phone:** 01932 223505
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

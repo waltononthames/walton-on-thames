@@ -40,7 +40,7 @@ const fixtureItems: UpcomingItem[] = fixtures.map(f => ({
   venue: f.data.venue,
   category: 'sport',
   price: 'See club for ticket prices',
-  description: `${f.data.competition} fixture${f.data.matchWeek ? ` (match week ${f.data.matchWeek})` : ''} — Walton & Hersham ${f.data.homeAway === 'home' ? 'at home' : 'away'}.`,
+  description: `${f.data.competition} fixture${f.data.matchWeek ? ` (match week ${f.data.matchWeek})` : ''}, Walton & Hersham ${f.data.homeAway === 'home' ? 'at home' : 'away'}.`,
   isAwayFixture: f.data.homeAway === 'away',
 }));
 
@@ -153,7 +153,7 @@ function eventSchema(item: UpcomingItem) {
           </div>
         </>
       ) : (
-        <p class="empty-state">No upcoming events right now — check back soon or <a href="/community/news/">read the local news</a>.</p>
+        <p class="empty-state">No upcoming events right now: check back soon or <a href="/community/news/">read the local news</a>.</p>
       )}
 
       <div class="submit-event" id="submit-event">

@@ -13,7 +13,7 @@ verified_date: "2026-06-27"
 source: "Yoga Gently / Friends of Yoga website and address records"
 ---
 
-Yoga Gently, taught by Denise Hazel, brings some of the most restorative practices available locally to a quiet Queens Road venue in Hersham. The focus is on Hatha, Yin, and restorative yoga — styles that prioritise stillness, long holds, and genuine relaxation over physical intensity.
+Yoga Gently, taught by Denise Hazel, brings some of the most restorative practices available locally to a quiet Queens Road venue in Hersham. The focus is on Hatha, Yin, and restorative yoga: styles that prioritise stillness, long holds, and genuine relaxation over physical intensity.
 
 Yin yoga in particular has a devoted following: postures held for three to five minutes allow deep release in the connective tissue, and the practice works well as a counterbalance to more demanding exercise. Restorative yoga goes further still, using props to fully support the body and allow complete surrender.
 

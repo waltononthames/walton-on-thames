@@ -29,4 +29,4 @@ Philip J Adams Chemist is an independent community pharmacy on Hersham Green, of
 **Address:** 4 Hersham Green, Hersham, Walton-on-Thames, Surrey, KT12 4HW
 **Phone:** 01932 221262
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays. This pharmacy is closed at weekends.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays. This pharmacy is closed at weekends.

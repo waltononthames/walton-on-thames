@@ -21,4 +21,4 @@ Ashley Medical Practice is an NHS GP surgery on Crutchfield Lane, currently acce
 **Address:** 1A Crutchfield Lane, Walton-on-Thames, Surrey, KT12 2QY
 **Phone:** 01932 252425
 
-Opening hours vary by day and weren't consistently confirmed across sources for this listing — check the practice's own website before visiting.
+Opening hours vary by day and weren't consistently confirmed across sources for this listing: check the practice's own website before visiting.

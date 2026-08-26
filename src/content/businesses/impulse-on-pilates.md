@@ -14,4 +14,4 @@ source: "Local listings — verify website before booking"
 
 imPULSE on PILATES operates from a dedicated studio space on Terrace Road, offering Pilates classes in a focused setting. The Terrace Road location is in the residential southern part of Walton-on-Thames, providing a quieter alternative to the town centre studios.
 
-**Good to know:** Website details were unconfirmed at time of listing — please verify current contact information and class schedules via direct search before booking. We'll update this listing as details are confirmed.
+**Good to know:** Website details were unconfirmed at time of listing: please verify current contact information and class schedules via direct search before booking. We'll update this listing as details are confirmed.

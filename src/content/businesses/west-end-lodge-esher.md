@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Operator website and address records"
 ---
 
-West End Lodge is a longstanding B&B in the residential West End area of Esher — a peaceful setting away from the high street, with Esher Common close by for morning walks. Owner-run with a warm, personal approach, it has a loyal following of returning guests.
+West End Lodge is a longstanding B&B in the residential West End area of Esher: a peaceful setting away from the high street, with Esher Common close by for morning walks. Owner-run with a warm, personal approach, it has a loyal following of returning guests.
 
 The Common offers heathland walks and open space; Esher's shops, cafés, and restaurants are a short drive or a 20-minute walk. Sandown Park Racecourse is close by for guests visiting on race days.
 

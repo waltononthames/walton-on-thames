@@ -7,7 +7,7 @@ venue: "42 The Heart Shopping Mall, Walton-on-Thames, KT12 1GH"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: true
-price: "Ticketed — see venue"
+price: "Ticketed: see venue"
 description: "A weekly guided painting class with a drink in hand, held in The Heart shopping mall."
 source_url: "https://lovewalton.co.uk/whats-on/"
 ---

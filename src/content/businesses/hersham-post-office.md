@@ -27,4 +27,4 @@ Hersham Post Office offers postal services, banking, bill payments, vehicle tax 
 
 **Address:** 9 Molesey Road, Hersham, Walton-on-Thames, KT12 4RJ
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

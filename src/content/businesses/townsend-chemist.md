@@ -29,4 +29,4 @@ Townsend Chemist is an independent community pharmacy on Ambleside Avenue, offer
 **Address:** 7 Ambleside Avenue, Walton-on-Thames, Surrey, KT12 3LJ
 **Phone:** 01932 231682
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

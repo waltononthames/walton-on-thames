@@ -14,7 +14,7 @@ verified_date: "2026-06-26"
 source: "Lodging listing and address records"
 ---
 
-The Old Manor House B&B offers accommodation in a characterful property on Squire's Bridge Road — a quiet lane in the Shepperton area set close to the River Ash. This is independent, owner-run accommodation with a personal feel quite different from chain hotels.
+The Old Manor House B&B offers accommodation in a characterful property on Squire's Bridge Road, a quiet lane in the Shepperton area set close to the River Ash. This is independent, owner-run accommodation with a personal feel quite different from chain hotels.
 
 The location is well-placed for the Thames towpath, Walton-on-Thames town centre, and Shepperton village. Squire's Bridge crosses the River Ash nearby, in a pleasant stretch of the Surrey countryside.
 

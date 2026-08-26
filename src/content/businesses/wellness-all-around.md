@@ -13,7 +13,7 @@ verified_date: "2026-06-27"
 source: "Wellness All Around website and address records"
 ---
 
-Wellness All Around integrates yoga teaching with health and wellbeing coaching — a broader approach than a yoga studio alone, covering physical practice alongside guidance on lifestyle, stress management, and overall health.
+Wellness All Around integrates yoga teaching with health and wellbeing coaching: a broader approach than a yoga studio alone, covering physical practice alongside guidance on lifestyle, stress management, and overall health.
 
 Hatha yoga classes are held at St Andrew's United Reformed Church Hall on Hersham Road, in a peaceful and accessible community setting. The additional wellbeing coaching element sets this apart: it suits those looking for support across multiple aspects of their health, not just a single fitness class.
 

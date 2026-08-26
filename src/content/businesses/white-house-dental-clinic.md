@@ -21,4 +21,4 @@ The White House Dental Clinic advertises both NHS and private treatment, alongsi
 **Address:** 18 Terrace Road, Walton-on-Thames, Surrey, KT12 2SB
 **Phone:** 01932 260044
 
-NHS treatment is advertised, but availability for new NHS patients can change — confirm directly with the practice.
+NHS treatment is advertised, but availability for new NHS patients can change, confirm directly with the practice.

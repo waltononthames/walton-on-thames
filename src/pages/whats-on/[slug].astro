@@ -64,7 +64,7 @@ const isFreeEvent = /^free/i.test(price);
 
 <BaseLayout
   title={`${title}: ${titleDateStr}`}
-  description={description ?? `${title} — ${venue}`}
+  description={description ?? `${title}, ${venue}`}
   image={image}
 >
   <slot name="structured-data">
@@ -162,7 +162,7 @@ const isFreeEvent = /^free/i.test(price);
             {kind === 'event' && Astro.props.event.data.recurring && (
               <>
                 <dt>Recurring</dt>
-                <dd>Yes — check for latest dates</dd>
+                <dd>Yes: check for latest dates</dd>
               </>
             )}
           </dl>

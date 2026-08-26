@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Operator website and address records"
 ---
 
-The Oatlands Chaser is part of Innkeeper's Collection — a group of inn-hotels that aim to combine the warmth of a proper pub with well-equipped, comfortable overnight accommodation. The Oatlands area of Weybridge is a quiet, well-heeled neighbourhood close to the historic Oatlands Park estate.
+The Oatlands Chaser is part of Innkeeper's Collection: a group of inn-hotels that aim to combine the warmth of a proper pub with well-equipped, comfortable overnight accommodation. The Oatlands area of Weybridge is a quiet, well-heeled neighbourhood close to the historic Oatlands Park estate.
 
 Rooms are individually styled and include breakfast options depending on your booking. The on-site pub restaurant is a draw in itself, with a menu that goes beyond standard pub fare and a good local reputation.
 

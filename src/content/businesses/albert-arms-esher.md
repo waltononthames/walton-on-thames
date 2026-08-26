@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Operator website and address records"
 ---
 
-The Albert Arms sits on Esher High Street close to The Bear, giving the street an unusually strong offering of pub accommodation for a Surrey town of this size. Where The Bear leans boutique, The Albert Arms has more of a traditional local character — which many guests find more appealing.
+The Albert Arms sits on Esher High Street close to The Bear, giving the street an unusually strong offering of pub accommodation for a Surrey town of this size. Where The Bear leans boutique, The Albert Arms has more of a traditional local character, which many guests find more appealing.
 
 The rooms are comfortable and good value for a Surrey high street location. The pub itself is well-run with a menu of British classics and an unpretentious, genuinely welcoming atmosphere.
 

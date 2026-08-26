@@ -29,4 +29,4 @@ Brightlife Chemist is a community pharmacy inside The Heart Shopping Centre, off
 **Address:** Unit 41, The Heart Shopping Centre, Walton-on-Thames, Surrey, KT12 1GH
 **Phone:** 01932 231572
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

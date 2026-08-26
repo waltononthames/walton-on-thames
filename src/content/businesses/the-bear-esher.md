@@ -15,8 +15,8 @@ verified_date: "2026-06-26"
 source: "Operator website and address records"
 ---
 
-The Bear Esher is one of the most well-regarded pub hotels in Surrey. The rooms lean genuinely boutique — bold wallpapers, roll-top baths, carefully chosen furniture — and the pub downstairs pulls a loyal local crowd who appreciate a well-run kitchen and good drinks.
+The Bear Esher is one of the most well-regarded pub hotels in Surrey. The rooms lean genuinely boutique (bold wallpapers, roll-top baths, carefully chosen furniture), and the pub downstairs pulls a loyal local crowd who appreciate a well-run kitchen and good drinks.
 
-Esher High Street is an attractive one, with independent shops, restaurants, and a cinema, and Sandown Park Racecourse is a short walk away. The Common — a large area of heathland and woodland — is nearby for morning walks.
+Esher High Street is an attractive one, with independent shops, restaurants, and a cinema, and Sandown Park Racecourse is a short walk away. The Common, a large area of heathland and woodland, is nearby for morning walks.
 
 **Distance from Walton-on-Thames:** Approximately 3 miles. Esher station (South Western Railway) is a few minutes' walk from the high street, connecting to London Waterloo in around 25 minutes.

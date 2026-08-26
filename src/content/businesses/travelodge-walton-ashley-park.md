@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Operator website and address records"
 ---
 
-This Travelodge sits on Ashley Park Road on the north side of Walton-on-Thames, close to the residential Ashley Park area. It's a practical choice for guests arriving by car — the A317 and M25 are both easily accessible — and offers the reliable, budget-friendly formula that Travelodge delivers consistently.
+This Travelodge sits on Ashley Park Road on the north side of Walton-on-Thames, close to the residential Ashley Park area. It's a practical choice for guests arriving by car (the A317 and M25 are both easily accessible), and offers the reliable, budget-friendly formula that Travelodge delivers consistently.
 
 Walton-on-Thames town centre and the railway station are a short drive or around 15–20 minutes on foot. The Thames towpath is within easy reach for those wanting to stretch their legs.
 

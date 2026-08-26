@@ -23,8 +23,8 @@ verified_date: "2026-07-18"
 source: "Post Office official branch finder (postoffice.co.uk/branch-finder/2633523)"
 ---
 
-Molesey Road Drop + Collect handles prepaid parcels and mail collection/drop-off only — it does not offer normal Post Office counter services such as banking, currency or passport services. Use the full-service Walton-on-Thames or Church Street branches for those.
+Molesey Road Drop + Collect handles prepaid parcels and mail collection/drop-off only: it does not offer normal Post Office counter services such as banking, currency or passport services. Use the full-service Walton-on-Thames or Church Street branches for those.
 
 **Address:** 319 Molesey Road, Walton-on-Thames, KT12 3PF
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

@@ -29,4 +29,4 @@ Cherrys Halfway Pharmacy is an independent community pharmacy on Hersham Road, o
 **Address:** 87 Hersham Road, Walton-on-Thames, Surrey, KT12 1RJ
 **Phone:** 01932 220072
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays.

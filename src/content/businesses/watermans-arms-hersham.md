@@ -18,7 +18,7 @@ source: "Operator website and restaurant directory spreadsheet (owner-supplied)"
 
 The Watermans Arms is a traditional Hersham pub on Queens Road, serving food and drink alongside straightforward, good-value accommodation, within easy walking distance of Hersham village green, the Barley Mow, and Hersham railway station.
 
-This is a practical base for visitors who want to be in the heart of Hersham village rather than Walton town centre — useful for exploring the quieter, greener parts of the borough on foot.
+This is a practical base for visitors who want to be in the heart of Hersham village rather than Walton town centre: useful for exploring the quieter, greener parts of the borough on foot.
 
 **Getting around:** Hersham railway station is a 10-minute walk, with South Western Railway services to London Waterloo and connecting buses to Walton-on-Thames. Bookings are made through the OYO website or app.
 

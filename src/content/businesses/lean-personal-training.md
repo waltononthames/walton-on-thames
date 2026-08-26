@@ -13,7 +13,7 @@ verified_date: "2026-06-27"
 source: "Lean Personal Training website and address records"
 ---
 
-Lean Personal Training specialises in outdoor and group fitness alongside one-to-one personal training — making the most of Walton's parks and open spaces as a training venue. The outdoor bootcamp format suits people who find indoor gym training monotonous, or who want the energy of a group session with the scenic backdrop of Surrey's green spaces.
+Lean Personal Training specialises in outdoor and group fitness alongside one-to-one personal training, making the most of Walton's parks and open spaces as a training venue. The outdoor bootcamp format suits people who find indoor gym training monotonous, or who want the energy of a group session with the scenic backdrop of Surrey's green spaces.
 
 The corporate training offer is a useful option for local businesses looking to add a fitness element to team wellbeing programmes, with sessions that can be tailored for mixed ability groups.
 

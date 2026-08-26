@@ -17,6 +17,6 @@ source: "Restaurant directory spreadsheet (owner-supplied) and address records"
 
 The Anglers is arguably Walton's most well-loved pub, and with good reason. Positioned right on the riverbank, its large garden offers uninterrupted views of the Thames and is one of Surrey's prime spots for an outdoor drink on a warm day.
 
-Inside, it's a traditional pub with low beams, a wood-burning fire in winter, and a menu that covers classic pub food done well. The riverside terrace gets very busy on summer weekends — arrive early.
+Inside, it's a traditional pub with low beams, a wood-burning fire in winter, and a menu that covers classic pub food done well. The riverside terrace gets very busy on summer weekends, arrive early.
 
 Dog-friendly throughout the garden, with a warm welcome for four-legged visitors.

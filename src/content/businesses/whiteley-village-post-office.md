@@ -27,4 +27,4 @@ Whiteley Village Post Office offers postal services, everyday banking, Drop & Go
 
 **Address:** Circle Road, Whiteley Village, Hersham, Walton-on-Thames, KT12 4DT
 
-Hours correct as of 18 July 2026 — confirm before a special journey, particularly around bank holidays. Note the limited weekday hours compared with the town-centre branches.
+Hours correct as of 18 July 2026: confirm before a special journey, particularly around bank holidays. Note the limited weekday hours compared with the town-centre branches.

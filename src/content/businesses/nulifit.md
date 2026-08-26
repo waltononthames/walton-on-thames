@@ -13,7 +13,7 @@ verified_date: "2026-06-27"
 source: "NuLiFit website and address records"
 ---
 
-NuLiFit takes the view that fitness is inseparable from nutrition — and its offering reflects that. Based on Thames Street, the studio provides personal training and small group fitness sessions alongside dedicated nutrition planning, treating body composition goals as the product of both training and diet rather than one or the other.
+NuLiFit takes the view that fitness is inseparable from nutrition, and its offering reflects that. Based on Thames Street, the studio provides personal training and small group fitness sessions alongside dedicated nutrition planning, treating body composition goals as the product of both training and diet rather than one or the other.
 
 The holistic approach suits those who've hit a plateau with gym-only training, or who want structured accountability across both exercise and eating habits. Personal training sessions are available on an individual or small group basis.
 
