@@ -20,6 +20,7 @@ const faqs = [
 <BaseLayout
   title="Walton-on-Thames Station: Trains, Parking & Access"
   description="A complete local guide to Walton-on-Thames railway station: platforms, Waterloo trains, journey times, parking, accessibility, buses and history."
+  image="/images/station/walton-on-thames-station-from-footbridge-night-hero.webp"
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -56,8 +57,18 @@ const faqs = [
     })} />
   </slot>
 
-  <div class="page-hero">
-    <div class="container">
+  <div class="station-hero">
+    <div class="station-hero-bg" aria-hidden="true">
+      <img
+        src="/images/station/walton-on-thames-station-from-footbridge-night-hero.webp"
+        alt="Walton-on-Thames railway station at night seen from the footbridge, with Platform 1 lit on the left, the central fast lines and disused platforms in the middle, and Platform 2 on the right"
+        fetchpriority="high"
+        width="2048"
+        height="1152"
+      />
+      <div class="station-hero-overlay"></div>
+    </div>
+    <div class="container station-hero-content">
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
@@ -90,6 +101,11 @@ const faqs = [
         <p>Walton-on-Thames railway station serves Walton-on-Thames and north Hersham in Surrey. Platform 1 is used by trains towards London Waterloo. Platform 2 is used by trains towards Weybridge, Woking and destinations farther west and south-west, including selected services to Guildford, Basingstoke and Portsmouth Harbour.</p>
 
         <p>The station is on the South West Main Line, approximately 17.1 miles by rail from London Waterloo. South Western Railway manages the station and operates its passenger services. The station code is <strong>WAL</strong>. The station has four platforms in total; Platforms 1 and 2 are operational, while the other two, beside the central fast lines, are out of use, gated and inaccessible.</p>
+
+        <figure>
+          <img src="/images/station/walton-on-thames-station-sign.webp" alt="The National Rail double arrow totem sign reading Walton-on-Thames, mounted on a post in front of the station's brick boundary wall" loading="lazy" width="1200" height="900" />
+          <figcaption>The National Rail totem at Walton-on-Thames station. Photograph by Darren Bayley, 25 August 2026.</figcaption>
+        </figure>
 
         <p><a href="https://www.nationalrail.co.uk/live-trains/departures/walton-on-thames/" target="_blank" rel="noopener noreferrer">Check live departures from Walton-on-Thames ↗</a></p>
 
@@ -140,10 +156,20 @@ const faqs = [
             </tbody>
           </table>
         </div>
+        <figure>
+          <img src="/images/station/walton-on-thames-station-platform-2-and-platform-1.webp" alt="Platform 2 at Walton-on-Thames station, with its canopy, seating and blue number 2 sign on the right, and the long canopied building on the Platform 1 side across the tracks" loading="lazy" width="1400" height="788" />
+          <figcaption>Platform 2 and, across the tracks, the buildings on the Platform 1 side. Photograph by Darren Bayley, 23 March 2024.</figcaption>
+        </figure>
+
         <p>Platform allocations and calling patterns can change during disruption or engineering work.</p>
 
         <h2 id="trains">Trains from Walton-on-Thames</h2>
         <p>Walton-on-Thames has frequent South Western Railway services towards London and the wider south-west network. The exact timetable changes between weekday peaks, off-peak periods, evenings, Sundays and periods of engineering work.</p>
+
+        <figure>
+          <img src="/images/station/walton-on-thames-station-platform-2.webp" alt="A red South Western Railway train standing at Platform 2 at Walton-on-Thames with its doors open at sunset, as passengers walk away along the platform towards the footbridge" loading="lazy" width="1400" height="1050" />
+          <figcaption>A South Western Railway service at Platform 2, with the low sun behind the footbridge. Photograph by Darren Bayley, 17 March 2026.</figcaption>
+        </figure>
 
         <h3>To London Waterloo, Platform 1</h3>
         <p>Direct services run throughout the day. The fastest trains usually take about 22 to 25 minutes; services making more stops commonly take around 30 to 35 minutes, depending on the service, calling at some or all of Surbiton, Wimbledon, Clapham Junction and Vauxhall before Waterloo. Clapham Junction connects onward to Victoria, Gatwick Airport and south London; Vauxhall connects with the Victoria line; Wimbledon connects with the District line and London Trams.</p>
@@ -192,6 +218,11 @@ const faqs = [
         <p>The <strong>Mayfield Road entrance</strong> gives direct access to Platform 2 from the Hersham and Burwood Park side, via a longer ramp of around 1:20, and serves as an alternative step-free route to Platform 2 if the lift or footbridge is out of action. The road route between the two entrances is longer than crossing via the footbridge.</p>
         <p>A modern footbridge connects the platforms, with lifts and new stairs added as part of a £6 million Access for All project completed in August 2024 (see <a href="#history">History</a>). The older subway is not the station's accessible route.</p>
 
+        <figure>
+          <img src="/images/station/walton-on-thames-station-underpass.webp" alt="The older pedestrian subway at Walton-on-Thames station: a long, low, white-painted tunnel with a curved ceiling and strip lighting, ending in a flight of steps" loading="lazy" width="1000" height="1333" />
+          <figcaption>The older subway under the tracks, which ends in a flight of steps and is not the station's step-free route. Photograph by Darren Bayley, 24 August 2026.</figcaption>
+        </figure>
+
         <h2 id="accessibility">Accessibility</h2>
         <p>Walton-on-Thames is officially classified as a <strong>Category B1 step-free station</strong>: both operational platforms have step-free access, though the route depends on which entrance you use and whether the lifts are working.</p>
         <ul>
@@ -203,6 +234,11 @@ const faqs = [
           <li>An accessible drop-off point</li>
           <li>An accessible toilet in the Platform 1 booking hall (RADAR/National Key, normally available only while the ticket office is open)</li>
         </ul>
+        <figure>
+          <img src="/images/station/walton-on-thames-station-footbridge-from-platform-2.webp" alt="The arched steel footbridge at Walton-on-Thames station spanning the four tracks, with a lift tower at each end and a platform running below it" loading="lazy" width="1400" height="788" />
+          <figcaption>The Access for All footbridge and its two lift towers, seen from Platform 2 in March 2024, five months before the scheme was formally opened. Photograph by Darren Bayley, 23 March 2024.</figcaption>
+        </figure>
+
         <p>South Western Railway's own station page lists a Changing Places toilet as <strong>not</strong> available at Walton-on-Thames.</p>
         <p>If a lift is out of service, Platform 1 remains reachable from Station Avenue and Platform 2 from Mayfield Road; reaching the opposite platform then means a road journey around the railway rather than crossing the footbridge.</p>
 
@@ -276,8 +312,18 @@ const faqs = [
 
         <p>As traffic grew, the line through Walton developed into today's four-track railway; Platforms 1 and 2 use the outer lines, while the two former central platforms, beside the fast lines, are out of use, gated and inaccessible, with non-stopping trains passing through the centre of the station at up to 90mph. Full electric services on the extensions towards Woking, Guildford and Portsmouth began in July 1937, part of the wider Southern Railway electrification of the route in the 1930s. The railway helped establish Walton as a commuter town, with residential development spreading around Ashley Park, the Halfway area and the station approaches as regular travel to London became practical.</p>
 
+        <figure>
+          <img src="/images/station/walton-on-thames-station-platform-1-viewed-from-platform-2.webp" alt="Platform 1 at Walton-on-Thames seen from Platform 2 across the tracks, its long canopied building set behind the brick face of a disused centre platform carrying a red Do not alight here sign" loading="lazy" width="1400" height="1050" />
+          <figcaption>Platform 1 seen from Platform 2, with the gated, out-of-use centre platform in front of it. Photograph by Darren Bayley, 25 August 2026.</figcaption>
+        </figure>
+
         <h3>The 2024 Access for All project</h3>
         <p>A £6 million Access for All scheme began in September 2022 and was formally opened on 30 August 2024, delivering a new footbridge, two lifts, new staircases, a widened Platform 1 and upgraded CCTV, giving passengers a step-free route between the platforms for the first time. See <a href="https://www.networkrailmediacentre.co.uk/news/where-theres-a-walton-theres-a-way-new-lifts-and-bridge-make-walton-on-thames-station-accessible" target="_blank" rel="noopener noreferrer">Network Rail's project announcement ↗</a>.</p>
+
+        <figure>
+          <img src="/images/station/walton-on-thames-station-platform-2-footbridge.webp" alt="The new arched steel footbridge at Walton-on-Thames station, with a lift shaft and a new staircase with yellow handrails still enclosed by contractors' fencing" loading="lazy" width="1400" height="1050" />
+          <figcaption>The new footbridge and staircase during the Access for All works, with contractors' fencing still in place. Photograph by Darren Bayley, 23 December 2023.</figcaption>
+        </figure>
 
         <h3>The March 2024 derailment</h3>
         <p>At around 05:40 on 4 March 2024, the 04:54 South Western Railway service from Basingstoke to London Waterloo, travelling at around 85mph, struck a section of redundant rail that had been left too close to the running line on the approach to Walton-on-Thames after engineering work. The leading wheelset derailed, though the train remained upright and came to a stand around 500 metres beyond the point of impact; around 100 passengers were on board, and no injuries were reported. The Rail Accident Investigation Branch found that checks carried out before the railway was handed back for normal running hadn't identified the hazard, and published its final report, 04/2025, in February 2025. See the <a href="https://assets.publishing.service.gov.uk/media/67b309ce421271d7e45f57e6/R042025_250217_Walton-on-Thames.pdf" target="_blank" rel="noopener noreferrer">RAIB report ↗</a>.</p>
@@ -320,6 +366,63 @@ const faqs = [
 </BaseLayout>
 
 <style>
+  .station-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--color-white);
+    min-height: 340px;
+  }
+
+  .station-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .station-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 62%;
+  }
+
+  .station-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(1, 32, 44, 0.45) 0%, rgba(1, 32, 44, 0.62) 60%, rgba(1, 32, 44, 0.82) 100%);
+  }
+
+  .station-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 0;
+  }
+
+  .station-hero-content h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-white);
+    margin-bottom: 0.75rem;
+  }
+
+  .station-hero-content p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.1rem;
+    max-width: 56ch;
+  }
+
+  /* Breadcrumbs default to slate, which is unreadable over the photograph */
+  .station-hero-content .breadcrumbs,
+  .station-hero-content .breadcrumbs a,
+  .station-hero-content .breadcrumbs li + li::before {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .station-hero-content .breadcrumbs a:hover {
+    color: var(--color-white);
+  }
+
   .area-jump {
     background: var(--color-white);
     border-bottom: 1px solid rgba(11,36,46,0.08);
