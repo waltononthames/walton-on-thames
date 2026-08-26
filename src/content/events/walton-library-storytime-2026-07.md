@@ -1,8 +1,8 @@
 ---
 title: "Storytime at Walton Library"
 slug: "walton-library-storytime-2026-07"
-start: "2026-08-26T16:00:00"
-end: "2026-08-26T16:30:00"
+start: "2026-09-02T16:00:00"
+end: "2026-09-02T16:30:00"
 venue: "Walton Library, 54 The Heart, Walton-on-Thames, KT12 1GH"
 neighbourhood: "walton-on-thames"
 category: "family"
