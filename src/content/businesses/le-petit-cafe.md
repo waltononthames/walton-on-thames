@@ -10,7 +10,7 @@ description: "Independent cafe serving breakfasts, lunches, cakes and hot drinks
 images: []
 featured: false
 verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied) — no verified official website found, address/phone only"
+source: "Restaurant directory spreadsheet (owner-supplied): no verified official website found, address/phone only"
 ---
 
 Independent cafe serving breakfasts, lunches, cakes and hot drinks close to the High Street.

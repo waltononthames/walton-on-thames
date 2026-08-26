@@ -85,11 +85,11 @@ const historySchema = z.object({
   publishDate: z.date(),
   reviewedDate: z.date(),
   // Harvard/APA-shaped. Web sources render as "Author (Year) 'Title'.
-  // Available at: URL (Accessed: date)." — year is "n.d." where no publication
+  // Available at: URL (Accessed: date).", year is "n.d." where no publication
   // date is known/verifiable (never guess one). See docs/build-log.md.
-  // Print-only sources (no online record — e.g. an out-of-print local-history
+  // Print-only sources (no online record, e.g. an out-of-print local-history
   // booklet) omit url/accessed and render as "Author (Year) Title. Publisher."
-  // instead — do not invent a URL to satisfy validation.
+  // instead: do not invent a URL to satisfy validation.
   sources: z.array(z.object({
     author: z.string(),
     year: z.string(),
@@ -112,7 +112,7 @@ const hersham = defineCollection({
 });
 
 // Things to Do hub. One YAML/JSON file per attraction; area is the actual
-// place (may be outside Walton/Hersham — see locationBand), which the card
+// place (may be outside Walton/Hersham: see locationBand), which the card
 // component uses to prevent e.g. Hampton Court reading as "in Walton".
 const attractions = defineCollection({
   loader: glob({ pattern: '**/*.{yaml,yml,json}', base: './src/content/attractions' }),
@@ -145,7 +145,7 @@ const attractions = defineCollection({
     bookingNote: z.string().optional(),
     // Optional, not required as the brief specifies: a handful of records
     // (open spaces, wharves, an informal car boot sale) genuinely have no
-    // operator website — internalUrl is used instead for those.
+    // operator website, internalUrl is used instead for those.
     officialUrl: z.string().url().optional(),
     internalUrl: z.string().optional(),
     address: z.string().optional(),
@@ -169,7 +169,7 @@ const attractions = defineCollection({
 
 // Annual recurring events shown on the Things to Do hub's events section and
 // /things-to-do/annual-events/. Distinct from the one-off `events` collection
-// above — see the date-label logic in the date status enum below, which
+// above: see the date-label logic in the date status enum below, which
 // drives which build-time label a record renders instead of a hand-set string.
 const annualEvents = defineCollection({
   loader: glob({ pattern: '**/*.{yaml,yml,json}', base: './src/content/annual-events' }),

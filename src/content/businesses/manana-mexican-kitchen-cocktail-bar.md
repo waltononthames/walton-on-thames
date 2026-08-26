@@ -10,7 +10,7 @@ description: "Small, lively Bridge Street restaurant and cocktail bar with a Mex
 images: []
 featured: false
 verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied) — no verified official website found, address/phone only"
+source: "Restaurant directory spreadsheet (owner-supplied): no verified official website found, address/phone only"
 ---
 
 Small, lively Bridge Street restaurant and cocktail bar with a Mexico-led menu and Spanish influences.

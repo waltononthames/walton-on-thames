@@ -10,7 +10,7 @@ description: "Quick-service fried chicken restaurant on the High Street, offerin
 images: []
 featured: false
 verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied) — no verified official website found, address/phone only"
+source: "Restaurant directory spreadsheet (owner-supplied): no verified official website found, address/phone only"
 ---
 
 Quick-service fried chicken restaurant on the High Street, offering dine-in and takeaway-style service.

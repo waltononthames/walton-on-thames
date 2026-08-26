@@ -1,8 +1,8 @@
 // Submits every URL in the sitemap to IndexNow's bulk endpoint (shared by
-// Bing, Yandex, Seznam, Naver and Yep — Google does not participate).
+// Bing, Yandex, Seznam, Naver and Yep, Google does not participate).
 // Run via `node scripts/submit-indexnow.mjs`. Requires Node 18+ (built-in fetch).
 //
-// Reads the sitemap from a local build (dist/sitemap-0.xml) when present —
+// Reads the sitemap from a local build (dist/sitemap-0.xml) when present, 
 // Cloudflare 403s a live fetch of the sitemap from GitHub Actions runner IPs,
 // so CI builds the site first and this reads that output directly. Falls
 // back to fetching the live URL for ad-hoc manual runs without a local build.
@@ -34,7 +34,7 @@ async function main() {
 
   const urlList = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   if (urlList.length === 0) {
-    throw new Error('No URLs found in sitemap — aborting rather than submitting an empty list.');
+    throw new Error('No URLs found in sitemap, aborting rather than submitting an empty list.');
   }
   console.log(`Found ${urlList.length} URLs in sitemap.`);
 

@@ -1,12 +1,12 @@
 // Parses the built HTML and fails (exit 1) if required structured-data
 // fields are missing for each page type. Run with `npm run seo:validate`
-// (build first — this reads from dist/, it doesn't build).
+// (build first: this reads from dist/, it doesn't build).
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const DIST = 'dist';
 if (!existsSync(DIST)) {
-  console.error('dist/ not found — run `npm run build` first.');
+  console.error('dist/ not found: run `npm run build` first.');
   process.exit(1);
 }
 
@@ -29,7 +29,7 @@ function getJsonLdBlocks(html) {
     try {
       blocks.push(JSON.parse(m[1]));
     } catch {
-      // malformed JSON-LD is itself a failure — represented by an empty object
+      // malformed JSON-LD is itself a failure, represented by an empty object
       blocks.push({ __malformed: true });
     }
   }
@@ -59,7 +59,7 @@ function hasPath(obj, path) {
 const failures = [];
 
 function fail(urlPath, msg) {
-  failures.push(`${urlPath} — ${msg}`);
+  failures.push(`${urlPath}, ${msg}`);
 }
 
 const files = walkHtml(DIST);

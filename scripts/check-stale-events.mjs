@@ -4,13 +4,13 @@
 // Brunch Club" displayed under "Coming Up" a day after its dated occurrence
 // had passed. The build-time date filter (src/pages/index.astro,
 // src/pages/whats-on/index.astro) was already correct and did remove it on
-// the next scheduled rebuild — but a `recurring: true` event only carries a
+// the next scheduled rebuild, but a `recurring: true` event only carries a
 // single hardcoded `start` date, so once that date lapses the event simply
 // vanishes from the site instead of showing its next real occurrence. The
 // protocol deliberately forbids auto-generating future occurrences without
 // re-confirming them against the organiser's own listing (Rule 4), so this
 // can only be fixed by a human/AI editor periodically re-dating or retiring
-// the listing — this script exists to surface that work, not to do it.
+// the listing: this script exists to surface that work, not to do it.
 //
 // Run manually or before a content-review session: `npm run content:stale-events`.
 // Does not fail the build; recurring events that go stale are already
@@ -54,7 +54,7 @@ for (const name of readdirSync(EVENTS_DIR)) {
 }
 
 if (stale.length > 0) {
-  console.log(`\ncheck-stale-events: ${stale.length} recurring event(s) with a lapsed date — will drop off "Coming Up" (if not already gone) and stop advertising a listing that likely still runs:\n`);
+  console.log(`\ncheck-stale-events: ${stale.length} recurring event(s) with a lapsed date, will drop off "Coming Up" (if not already gone) and stop advertising a listing that likely still runs:\n`);
   for (const s of stale) {
     console.log(`  src/content/events/${s.name}  "${s.title}"  start=${s.start}  (${s.ageDays} days stale)`);
   }

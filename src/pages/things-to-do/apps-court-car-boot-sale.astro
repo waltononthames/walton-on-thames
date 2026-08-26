@@ -5,7 +5,7 @@ import EventStatusPanel from '../../components/EventStatusPanel.astro';
 import statusData from '../../data/apps-court-status.json';
 
 // The on/off status, next confirmed date, and "checked" date below come from
-// src/data/apps-court-status.json — a daily scheduled check reads and rewrites
+// src/data/apps-court-status.json, a daily scheduled check reads and rewrites
 // that file (never this page) so the status stays current without a code
 // change. See docs/build-log.md for how the daily check is wired up.
 const {
@@ -27,12 +27,12 @@ const {
 };
 
 // PAGE_VERIFIED_DATE covers the page's permanent editorial content (prices,
-// rules, history, contact details) — it only changes on a full manual
+// rules, history, contact details): it only changes on a full manual
 // re-check, unlike the daily-updated status data above.
 const PAGE_VERIFIED_DATE = '23 July 2026';
 
 // Only emit an Event for a specific Sunday when Apps Court Farm's own site has
-// confirmed it (nextConfirmedDateISO) and the status isn't itself in doubt —
+// confirmed it (nextConfirmedDateISO) and the status isn't itself in doubt, 
 // never generate schema for a guessed or unconfirmed future date.
 const confirmedSubEvent = (nextConfirmedDateISO && (STATUS === 'on' || STATUS === 'off'))
   ? [{

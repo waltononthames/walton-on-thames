@@ -10,7 +10,7 @@ description: "High Street fast-food restaurant for burgers, fries, breakfast ite
 images: []
 featured: false
 verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied) — no verified official website found, address/phone only"
+source: "Restaurant directory spreadsheet (owner-supplied): no verified official website found, address/phone only"
 ---
 
 High Street fast-food restaurant for burgers, fries, breakfast items and quick-service meals.

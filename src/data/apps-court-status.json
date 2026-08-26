@@ -1,5 +1,5 @@
 {
-  "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source — the rest of this file was deliberately left untouched rather than overwritten with a guess.",
+  "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source: the rest of this file was deliberately left untouched rather than overwritten with a guess.",
   "status": "on",
   "headline": "Confirmed on for Sunday 30 August 2026",
   "detail": "Apps Court Farm's own car boot page carries a banner reading \"THE CAR BOOT IS OPEN THIS SUNDAY\", with no postponement notice in place. Always check the official page or call before travelling: sales can be postponed for weather or ground conditions at short notice.",

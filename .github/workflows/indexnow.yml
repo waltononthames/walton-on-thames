@@ -1,6 +1,6 @@
 name: IndexNow submission
 
-# Notifies IndexNow (Bing, Yandex, Seznam, Naver, Yep — not Google, which
+# Notifies IndexNow (Bing, Yandex, Seznam, Naver, Yep: not Google, which
 # doesn't participate in the protocol) whenever the site changes, so those
 # search engines pick up new/updated pages faster than waiting on their own
 # crawl schedule. Also runs daily shortly after the existing rebuild cron,
@@ -8,13 +8,13 @@ name: IndexNow submission
 # rotating in and out) that don't involve a git push.
 #
 # Note: the very first run(s) after adding a new IndexNow key can fail with
-# "SiteVerificationNotCompleted" — IndexNow needs time to independently crawl
+# "SiteVerificationNotCompleted", IndexNow needs time to independently crawl
 # and confirm the key file before it will accept submissions. This clears up
 # on its own; no action needed beyond letting it retry on the next run.
 #
 # Builds the site locally to get the URL list rather than fetching the live
 # sitemap over HTTPS: Cloudflare returns 403 to that fetch from GitHub-hosted
-# runner IPs (confirmed via run #33's log — bot/datacenter IP mitigation on
+# runner IPs (confirmed via run #33's log, bot/datacenter IP mitigation on
 # the zone), even though the same request works from an ordinary browser or
 # home connection. Building locally sidesteps it entirely, since the URL list
 # from a fresh build is identical to the live sitemap's.
@@ -25,7 +25,7 @@ name: IndexNow submission
 # EBADPLATFORM regardless of --omit=dev (npm validates platform
 # compatibility for every lockfile entry before applying omit filters;
 # only optionalDependencies degrade gracefully on a mismatch). Fixed at
-# the source in package.json/package-lock.json — see that commit.
+# the source in package.json/package-lock.json: see that commit.
 
 on:
   push:

@@ -1,5 +1,5 @@
 // Maps internal links across the built site. Run with `npm run seo:links`
-// (build first — this reads from dist/, it doesn't build). Reports:
+// (build first: this reads from dist/, it doesn't build). Reports:
 //   1. Pages with fewer than 3 internal inbound links
 //   2. Anchor text distribution for a set of priority pages
 //   3. Any internal links pointing at a URL with no matching built page (a 404)
@@ -10,7 +10,7 @@ const SITE = 'https://walton-on-thames.org';
 const DIST = 'dist';
 
 // Same "priority pages" list used for the Lighthouse audit round, since no
-// separate roadmap/priority list exists in the repo — see build-log.md.
+// separate roadmap/priority list exists in the repo: see build-log.md.
 const PRIORITY_PAGES = [
   '/',
   '/things-to-do/',
@@ -22,7 +22,7 @@ const PRIORITY_PAGES = [
 ];
 
 if (!existsSync(DIST)) {
-  console.error('dist/ not found — run `npm run build` first.');
+  console.error('dist/ not found: run `npm run build` first.');
   process.exit(1);
 }
 
@@ -91,7 +91,7 @@ for (const p of PRIORITY_PAGES) {
   const links = inbound.get(p) ?? [];
   const counts = new Map();
   for (const l of links) counts.set(l.anchor, (counts.get(l.anchor) ?? 0) + 1);
-  console.log(`\n${p} — ${links.length} inbound link(s)`);
+  console.log(`\n${p}, ${links.length} inbound link(s)`);
   [...counts.entries()].sort((a, b) => b[1] - a[1]).forEach(([anchor, n]) => console.log(`   "${anchor}" x${n}`));
 }
 

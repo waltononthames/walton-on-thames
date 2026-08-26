@@ -5,12 +5,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build and dev commands
 
 ```bash
-# PATH required on Windows/nvm-windows — prefix every Bash session:
+# PATH required on Windows/nvm-windows, prefix every Bash session:
 export PATH="/c/nvm4w/nodejs:$PATH"
 
 npm run dev      # local dev server at http://localhost:4321
-npm run build    # production build → dist/ (prebuild fails the build if any [NEEDS VERIFICATION] marker exists in src/ — see Content Verification Protocol Rule 3; postbuild runs Pagefind to index dist/ for site search)
-npm run preview  # serve dist/ locally — required to test search; astro dev has no Pagefind index, /search/ shows a graceful "not available in preview" message instead
+npm run build    # production build → dist/ (prebuild fails the build if any [NEEDS VERIFICATION] marker exists in src/: see Content Verification Protocol Rule 3; postbuild runs Pagefind to index dist/ for site search)
+npm run preview  # serve dist/ locally: required to test search; astro dev has no Pagefind index, /search/ shows a graceful "not available in preview" message instead
 npm run check    # Astro type-check (run before pushing)
 npm run content:stale-events  # advisory: flags recurring events whose date has lapsed (see Content-type requirements > Events listings below)
 ```
@@ -20,12 +20,12 @@ npm run content:stale-events  # advisory: flags recurring events whose date has 
 Astro v7 static site generator. All pages are pre-rendered at build time (`output: 'static'`). No server-side rendering.
 
 **Content Collections (v2)** in `src/content/` (all glob-loaded markdown except `fixtures`):
-- `businesses` — local business listings; `neighbourhood` is a free string (not enum) to support Weybridge/Shepperton/Esher
-- `events` — one-off and recurring local events; past events are filtered out by the listing pages at build time (see Key constraints), not by the schema
-- `places` — points of interest used on neighbourhood and visit pages
-- `news` — editorial articles
-- `history` / `hersham` — long-form local history articles; stricter schema than the rest: required `sources:` array (label + URL), `metaTitle` max 60 chars, `metaDescription` max 155, `publishDate`/`reviewedDate` as dates
-- `fixtures` — Walton & Hersham FC fixtures, no markdown files: a custom loader (`src/loaders/fixtures-loader.ts`) fetches the club's official ECAL ICS feed live at build time and converts UTC kickoffs to Europe/London wall-clock time
+- `businesses`, local business listings; `neighbourhood` is a free string (not enum) to support Weybridge/Shepperton/Esher
+- `events`: one-off and recurring local events; past events are filtered out by the listing pages at build time (see Key constraints), not by the schema
+- `places`, points of interest used on neighbourhood and visit pages
+- `news`, editorial articles
+- `history` / `hersham`: long-form local history articles; stricter schema than the rest: required `sources:` array (label + URL), `metaTitle` max 60 chars, `metaDescription` max 155, `publishDate`/`reviewedDate` as dates
+- `fixtures`: Walton & Hersham FC fixtures, no markdown files: a custom loader (`src/loaders/fixtures-loader.ts`) fetches the club's official ECAL ICS feed live at build time and converts UTC kickoffs to Europe/London wall-clock time
 
 (The former `neighbourhoods` collection was retired; its content was folded into the homepage, `/hersham/` and `/living/`.)
 
@@ -33,25 +33,25 @@ Schemas are in `src/content.config.ts`. Route pages live in `src/pages/` with `[
 
 **Layouts and components:** `src/layouts/BaseLayout.astro` wraps every page. Key components: `Header.astro`, `Footer.astro`, `BusinessCard.astro`, `PlaceCard.astro`, `EventCard.astro`.
 
-**Styles:** `src/styles/global.css` has brand tokens (CSS variables), shared utilities and card/grid classes. Component-scoped styles go inside each `.astro` file's `<style>` block. Vite/Astro compiles `max-width: 900px` to `width<=900px` (modern CSS) — requires Safari 16.4+.
+**Styles:** `src/styles/global.css` has brand tokens (CSS variables), shared utilities and card/grid classes. Component-scoped styles go inside each `.astro` file's `<style>` block. Vite/Astro compiles `max-width: 900px` to `width<=900px` (modern CSS), requires Safari 16.4+.
 
 ## Deployment
 
-**Cloudflare Pages** auto-deploys on push to `main`. Build command: `npm run build`. Output directory: `dist`. No `wrangler.toml` — that file caused Cloudflare to run `npx wrangler deploy` (Workers mode) and fail. Do not recreate it.
+**Cloudflare Pages** auto-deploys on push to `main`. Build command: `npm run build`. Output directory: `dist`. No `wrangler.toml`: that file caused Cloudflare to run `npx wrangler deploy` (Workers mode) and fail. Do not recreate it.
 
 **Daily rebuild:** `.github/workflows/daily-rebuild.yml` calls a Cloudflare deploy hook at 01:00 UTC so past events are filtered from the live site and the FC fixtures feed is re-fetched. The `CF_DEPLOY_HOOK` secret must be set in GitHub repository settings.
 
-**Builds need network access:** the fixtures loader fetches a remote ICS feed during `astro build`/`astro sync`. If the fetch fails it logs an error and keeps previously synced entries (a cold build with no cache will simply have zero fixtures — it will not fail the build).
+**Builds need network access:** the fixtures loader fetches a remote ICS feed during `astro build`/`astro sync`. If the fetch fails it logs an error and keeps previously synced entries (a cold build with no cache will simply have zero fixtures: it will not fail the build).
 
 **Sitemap lastmod is committed, not derived:** Cloudflare clones at depth 1, so `git log -1 -- <file>` returns HEAD for every file and would stamp the whole sitemap with the deploy time. `scripts/generate-lastmod.mjs` runs in prebuild, writes `src/data/lastmod.json` from full history, and no-ops on a shallow clone. **Commit that file when it changes** or production dates will lag behind the content.
 
-**Edge cache gotcha:** a Cloudflare dashboard-level Cache Rule (not in this repo — `public/_headers` only covers `/assets/*` and `/images/*`) caches HTML at the edge for up to 7 days. A successful deploy can therefore appear "not live" for days. If a verified deploy isn't showing, the fix is a manual "Purge Everything" in the Cloudflare dashboard, not a code change.
+**Edge cache gotcha:** a Cloudflare dashboard-level Cache Rule (not in this repo, `public/_headers` only covers `/assets/*` and `/images/*`) caches HTML at the edge for up to 7 days. A successful deploy can therefore appear "not live" for days. If a verified deploy isn't showing, the fix is a manual "Purge Everything" in the Cloudflare dashboard, not a code change.
 
 **Redirects:** legacy URL migrations (old GoDaddy-era paths, `/visit/*`, `/community/*`, retired pages) live in `public/_redirects`. `functions/_middleware.js` 301s the `walton-on-thames.pages.dev` host to the canonical domain.
 
 ## Key constraints
 
-**Mobile menu (Header.astro):** Uses `touchend` as the primary event and `click` as fallback (with a `tapped` dedup flag). `click` events are unreliable inside `position: fixed` elements on iOS Safari. The hamburger must be at least 44×44px and the script uses `is:inline` to avoid Astro module bundling. Do not switch back to a `hidden` attribute or `display:none` — visibility is toggled via `.is-open` class.
+**Mobile menu (Header.astro):** Uses `touchend` as the primary event and `click` as fallback (with a `tapped` dedup flag). `click` events are unreliable inside `position: fixed` elements on iOS Safari. The hamburger must be at least 44×44px and the script uses `is:inline` to avoid Astro module bundling. Do not switch back to a `hidden` attribute or `display:none`, visibility is toggled via `.is-open` class.
 
 **Astro CSS scoping:** Component `<style>` blocks are scoped with `[data-astro-cid-xxx]` attributes at build time. Use `:global()` only when you need to target markdown-rendered content (e.g., inside `.prose`).
 
@@ -59,20 +59,20 @@ Schemas are in `src/content.config.ts`. Route pages live in `src/pages/` with `[
 
 **`is:inline` scripts:** Required for any script that must run before hydration or that interacts with the DOM immediately. Without it, Astro may defer/bundle the script and it will miss the `DOMContentLoaded` window.
 
-**`getStaticPaths()` isolation:** Astro extracts `getStaticPaths()` into its own module chunk at build time. It cannot reference top-level frontmatter variables declared outside it, even in the same file — you get `X is not defined` at build time despite valid-looking JS. Declare anything it needs inside the function (duplicating a declaration at top level for the render body if both need it).
+**`getStaticPaths()` isolation:** Astro extracts `getStaticPaths()` into its own module chunk at build time. It cannot reference top-level frontmatter variables declared outside it, even in the same file: you get `X is not defined` at build time despite valid-looking JS. Declare anything it needs inside the function (duplicating a declaration at top level for the render body if both need it).
 
-**Title suffix:** `BaseLayout.astro` silently appends `" | Walton-on-Thames.org"` to any `title` prop that doesn't already contain that literal phrase. Rendered titles are therefore ~23 chars longer than the prop unless the phrase is worked into the title — check the built output, not the source, when judging title length.
+**Title suffix:** `BaseLayout.astro` appends `" | Walton-on-Thames.org"` to a `title` prop only when two things hold: the title does not already contain "Walton-on-Thames", and the result still fits inside 60 characters. Past that, Google truncates, and the brand would only displace words people search for. A long title is therefore emitted exactly as written, while a short one gains 23 characters: check the built output, not the source, when judging title length.
 
 ## Adding content
 
-All content files are Markdown with YAML frontmatter. Match the schema in `src/content.config.ts` exactly — extra fields are ignored; missing required fields cause a build error.
+All content files are Markdown with YAML frontmatter. Match the schema in `src/content.config.ts` exactly, extra fields are ignored; missing required fields cause a build error.
 
-- **New business:** `src/content/businesses/<slug>.md` — required: `name`, `slug`, `category`, `neighbourhood`, `description`
-- **New event:** `src/content/events/<slug>.md` — required: `title`, `slug`, `start`, `neighbourhood`, `category`, `venue`; optional `end`
-- **New place:** `src/content/places/<slug>.md` — required: `name`, `slug`, `category`, `neighbourhood`, `description`
-- **New article:** `src/content/news/<slug>.md` — required: `title`, `slug`, `date`, `category`, `description`
-- **New history/Hersham article:** `src/content/history/<slug>.md` or `src/content/hersham/<slug>.md` — required: `title`, `metaTitle` (≤60), `metaDescription` (≤155), `slug`, `cluster`, `entityType`, `publishDate`, `reviewedDate`, `sources` (array of label+URL, required by the Content Verification Protocol below), `related`
-- **FC fixtures:** never add manually — they come from the live feed via `src/loaders/fixtures-loader.ts`
+- **New business:** `src/content/businesses/<slug>.md`: required: `name`, `slug`, `category`, `neighbourhood`, `description`
+- **New event:** `src/content/events/<slug>.md`: required: `title`, `slug`, `start`, `neighbourhood`, `category`, `venue`; optional `end`
+- **New place:** `src/content/places/<slug>.md`: required: `name`, `slug`, `category`, `neighbourhood`, `description`
+- **New article:** `src/content/news/<slug>.md`: required: `title`, `slug`, `date`, `category`, `description`
+- **New history/Hersham article:** `src/content/history/<slug>.md` or `src/content/hersham/<slug>.md`: required: `title`, `metaTitle` (≤60), `metaDescription` (≤155), `slug`, `cluster`, `entityType`, `publishDate`, `reviewedDate`, `sources` (array of label+URL, required by the Content Verification Protocol below), `related`
+- **FC fixtures:** never add manually: they come from the live feed via `src/loaders/fixtures-loader.ts`
 
 ## SEO and structured data
 
@@ -80,7 +80,7 @@ All content files are Markdown with YAML frontmatter. Match the schema in `src/c
 
 ## Site search
 
-Client-side search via [Pagefind](https://pagefind.app/) — no backend, indexes `dist/` after every build (`postbuild` script). `BaseLayout.astro`'s `<main>` carries `data-pagefind-body={!noIndex}`, so a page is searchable exactly when it's indexable (the same `noIndex` prop already used for `<meta name="robots">`) — no separate exclude list to maintain. `/search/` (`src/pages/search.astro`) mounts Pagefind's Default UI and reads an initial `?q=` param, which is what the homepage's JSON-LD `SearchAction` and the header search icon both link to. Pagefind's assets only exist after a real build — `astro dev` doesn't have them, so the search page shows a plain "not available in preview" fallback there; use `npm run preview` (or the `walton-preview` launch config, port 4322) to test search for real.
+Client-side search via [Pagefind](https://pagefind.app/): no backend, indexes `dist/` after every build (`postbuild` script). `BaseLayout.astro`'s `<main>` carries `data-pagefind-body={!noIndex}`, so a page is searchable exactly when it's indexable (the same `noIndex` prop already used for `<meta name="robots">`), no separate exclude list to maintain. `/search/` (`src/pages/search.astro`) mounts Pagefind's Default UI and reads an initial `?q=` param, which is what the homepage's JSON-LD `SearchAction` and the header search icon both link to. Pagefind's assets only exist after a real build: `astro dev` doesn't have them, so the search page shows a plain "not available in preview" fallback there; use `npm run preview` (or the `walton-preview` launch config, port 4322) to test search for real.
 
 ## Content strategy documents
 
@@ -90,13 +90,13 @@ Check `docs/site-audit.md` before creating any page; never create a new page whe
 
 Log completed pages and open VERIFY items in `docs/build-log.md`.
 
-**Before touching any page, classify it against `docs/historical-content-strategy.md`** — it governs which editorial standard applies:
-- **Historical/heritage content** (local history, historic buildings/streets/estates, past residents and businesses, wartime/church/transport history, biographies, archaeology) — governed in full by `docs/research-and-editorial-standards.md` (v1.0, adopted 1 August 2026). That document supersedes the Content Verification Protocol below for this content class — it's far more detailed (source-type-specific rules, evidence states, citation house style, a pre-publication checklist, and an Appendix C written directly for automated agents). Read Appendix C and Section 20 before publishing any history/heritage page. The Content Verification Protocol below remains a useful quick-reference summary, but where the two differ, the Standards document wins.
-- **Current/practical content** (business listings, opening hours, event calendars, transport/parking info, directory pages) — prioritise current accuracy against official sources and clear user journeys; do not dress this up with academic citations it doesn't need. Governed by the Content Verification Protocol below until a dedicated Current Information Standards document exists.
-- **Hybrid pages** (e.g. a historic venue's page that also lists its current opening hours) — apply both standards, one per content block. A building's opening date needs a historical source per the Standards document; today's opening hours just need to link to the venue's own site.
-- If genuinely unsure which class a page falls into, treat it as historical/heritage — the stricter standard is always safe to over-apply, never the reverse.
+**Before touching any page, classify it against `docs/historical-content-strategy.md`**: it governs which editorial standard applies:
+- **Historical/heritage content** (local history, historic buildings/streets/estates, past residents and businesses, wartime/church/transport history, biographies, archaeology): governed in full by `docs/research-and-editorial-standards.md` (v1.0, adopted 1 August 2026). That document supersedes the Content Verification Protocol below for this content class: it's far more detailed (source-type-specific rules, evidence states, citation house style, a pre-publication checklist, and an Appendix C written directly for automated agents). Read Appendix C and Section 20 before publishing any history/heritage page. The Content Verification Protocol below remains a useful quick-reference summary, but where the two differ, the Standards document wins.
+- **Current/practical content** (business listings, opening hours, event calendars, transport/parking info, directory pages), prioritise current accuracy against official sources and clear user journeys; do not dress this up with academic citations it doesn't need. Governed by the Content Verification Protocol below until a dedicated Current Information Standards document exists.
+- **Hybrid pages** (e.g. a historic venue's page that also lists its current opening hours): apply both standards, one per content block. A building's opening date needs a historical source per the Standards document; today's opening hours just need to link to the venue's own site.
+- If genuinely unsure which class a page falls into, treat it as historical/heritage: the stricter standard is always safe to over-apply, never the reverse.
 
-Both documents are operational standards governed by *Our Charter* (published at `/charter/`, `src/pages/charter.astro` — there's no separate docs/ copy, that page is the source of truth). Neither may be read as overriding it; if they ever conflict, the Charter wins and the lower document needs amending.
+Both documents are operational standards governed by *Our Charter* (published at `/charter/`, `src/pages/charter.astro`: there's no separate docs/ copy, that page is the source of truth). Neither may be read as overriding it; if they ever conflict, the Charter wins and the lower document needs amending.
 
 # Content Verification Protocol
 
@@ -159,7 +159,7 @@ When a fact cannot be verified:
 3. List all markers in a summary at the end of the session output
 4. Never resolve a marker by softening the language ("reportedly", "it is said that"). Hedged fabrication is still fabrication. Either verify it or delete it.
 
-**Never ship a QA note as prose either.** A 16 July 2026 audit caught a listing published with the sentence "Current trading status should be checked before publication" — genuine unresolved-verification content, just not wearing the marker. `scripts/check-verification-markers.mjs` now also hard-blocks the build on a narrow set of editorial-meta-commentary phrases ("should be checked before publication", "not yet verified", "TODO:", "[TBC]", etc.) in addition to the literal marker. If you catch yourself writing a sentence *about* whether the content is ready to publish, that's the marker in disguise — use the real marker instead, don't just phrase it as a caveat.
+**Never ship a QA note as prose either.** A 16 July 2026 audit caught a listing published with the sentence "Current trading status should be checked before publication": genuine unresolved-verification content, just not wearing the marker. `scripts/check-verification-markers.mjs` now also hard-blocks the build on a narrow set of editorial-meta-commentary phrases ("should be checked before publication", "not yet verified", "TODO:", "[TBC]", etc.) in addition to the literal marker. If you catch yourself writing a sentence *about* whether the content is ready to publish, that's the marker in disguise: use the real marker instead, don't just phrase it as a caveat.
 
 ## Rule 4: Content-Type Requirements
 
@@ -181,7 +181,7 @@ When a fact cannot be verified:
 
 - Only from the automated iCal feeds or the organiser's official page
 - Never extrapolate recurring events ("the market runs every Saturday") without confirmation for the current period
-- `recurring: true` events carry one hardcoded `start`/`end` date, not a rule — once it lapses the build-time filter (correctly) drops it from "Coming Up" rather than showing anything wrong, but the listing then just goes silently invisible until a human re-dates it. Run `npm run content:stale-events` at the start of any content session to see which ones need re-checking. When you do, re-verify against the live source before bumping the date — don't just add 7 days. A term-time-only session (school library storytimes etc.) can lapse into a school holiday; check school term dates before assuming "same day next week" still holds.
+- `recurring: true` events carry one hardcoded `start`/`end` date, not a rule: once it lapses the build-time filter (correctly) drops it from "Coming Up" rather than showing anything wrong, but the listing then just goes silently invisible until a human re-dates it. Run `npm run content:stale-events` at the start of any content session to see which ones need re-checking. When you do, re-verify against the live source before bumping the date: don't just add 7 days. A term-time-only session (school library storytimes etc.) can lapse into a school holiday; check school term dates before assuming "same day next week" still holds.
 
 **Practical information (transport, parking, amenities):**
 

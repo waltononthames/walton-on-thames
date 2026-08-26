@@ -3,7 +3,7 @@
 //
 // Why this exists: sitemap lastmod was resolved by shelling out to
 // `git log -1 -- <file>` at build time. That is correct locally but wrong in
-// production, because Cloudflare Pages clones at depth 1 — with only one
+// production, because Cloudflare Pages clones at depth 1, with only one
 // commit in the repository, every file's "last commit" is HEAD. The live
 // sitemap was therefore stamping 341 of 347 URLs with the identical deploy
 // timestamp, telling Google the whole site changes on every push. Pages
@@ -29,7 +29,7 @@ try {
 }
 
 if (shallow) {
-  console.log('generate-lastmod: shallow clone or no git history — keeping the committed manifest.');
+  console.log('generate-lastmod: shallow clone or no git history, keeping the committed manifest.');
   process.exit(0);
 }
 
@@ -65,5 +65,5 @@ if (json === previous) {
 } else {
   writeFileSync(OUT, json);
   console.log(`generate-lastmod: wrote ${Object.keys(manifest).length} entries to ${OUT}.`);
-  console.log('generate-lastmod: manifest changed — COMMIT IT, or production sitemap dates will lag.');
+  console.log('generate-lastmod: manifest changed: COMMIT IT, or production sitemap dates will lag.');
 }

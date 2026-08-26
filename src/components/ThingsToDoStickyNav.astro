@@ -60,7 +60,7 @@ const { sections } = Astro.props;
         bar.classList.toggle('is-visible', barVisible);
         backToTop.classList.toggle('is-visible', backToTopVisible);
 
-        // Keep invisible (opacity:0) elements out of the tab order — without
+        // Keep invisible (opacity:0) elements out of the tab order, without
         // this, a keyboard user tabbing early lands on links they can't see.
         bar.toggleAttribute('inert', !barVisible);
         backToTop.toggleAttribute('inert', !backToTopVisible);

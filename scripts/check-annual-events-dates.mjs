@@ -50,7 +50,7 @@ for (const name of files) {
 }
 
 if (stale.length > 0) {
-  console.log(`\ncheck-annual-events-dates: ${stale.length} confirmed annual event(s) with a lapsed nextStartDate — will render as "Next date to be announced" until re-dated:\n`);
+  console.log(`\ncheck-annual-events-dates: ${stale.length} confirmed annual event(s) with a lapsed nextStartDate, will render as "Next date to be announced" until re-dated:\n`);
   for (const s of stale) {
     console.log(`  src/content/annual-events/${s.name}  "${s.title}"  nextStartDate=${s.nextStartDate}`);
   }

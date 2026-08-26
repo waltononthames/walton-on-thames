@@ -5,7 +5,7 @@
  * content. Intended to be reused on other event and attraction pages.
  */
 interface Props {
-  /** One of a small set of known states — controls the accent colour and icon */
+  /** One of a small set of known states, controls the accent colour and icon */
   status: 'on' | 'off' | 'unconfirmed' | 'unavailable' | 'conflicting';
   /** Short headline, e.g. "Not taking place this Sunday" */
   headline: string;
@@ -13,7 +13,7 @@ interface Props {
   detail: string;
   /** When this panel's information was checked, e.g. "23 July 2026" */
   checkedDate: string;
-  /** Label for the source link, e.g. "Apps Court Farm — Car Boot page" */
+  /** Label for the source link, e.g. "Apps Court Farm, Car Boot page" */
   sourceLabel: string;
   sourceUrl: string;
 }

@@ -10,7 +10,7 @@ description: "Bangladeshi and Indian restaurant/takeaway on Molesey Road."
 images: []
 featured: false
 verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied) — no verified official website found, address/phone only"
+source: "Restaurant directory spreadsheet (owner-supplied): no verified official website found, address/phone only"
 ---
 
 Bangladeshi and Indian restaurant/takeaway on Molesey Road.

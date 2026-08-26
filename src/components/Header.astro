@@ -247,13 +247,13 @@ const currentPath = Astro.url.pathname;
     transition: transform 0.2s;
   }
 
-  /* Hamburger — prevent iOS tap delay and highlight flash */
+  /* Hamburger, prevent iOS tap delay and highlight flash */
   .nav-toggle {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Mobile menu — hidden by CSS, shown by .is-open class */
+  /* Mobile menu: hidden by CSS, shown by .is-open class */
   .mobile-menu {
     display: none;
     background: var(--color-navy-ink);
@@ -288,7 +288,7 @@ const currentPath = Astro.url.pathname;
   }
 
   @media (max-width: 1200px) {
-    /* Switch to fixed on mobile — position:sticky has a known iOS Safari
+    /* Switch to fixed on mobile, position:sticky has a known iOS Safari
        bug where click events are not delivered to children after scrolling.
        Threshold matches --max-width so the 9-item desktop nav only ever
        renders at its full container width, never in a squeezed viewport. */

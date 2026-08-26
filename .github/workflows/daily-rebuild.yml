@@ -28,5 +28,5 @@ jobs:
             exit 0
           fi
           HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$DEPLOY_HOOK")
-          echo "Cloudflare Pages deploy triggered — HTTP $HTTP"
+          echo "Cloudflare Pages deploy triggered, HTTP $HTTP"
           [ "$HTTP" = "200" ] || exit 1

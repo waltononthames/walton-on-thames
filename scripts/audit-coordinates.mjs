@@ -57,7 +57,7 @@ async function collectEntries(dir) {
 
 const businesses = await collectEntries('src/content/businesses');
 const places = await collectEntries('src/content/places').catch?.(() => []) ?? [];
-// places.md doesn't have `address`, uses name+neighbourhood instead — handle separately.
+// places.md doesn't have `address`, uses name+neighbourhood instead, handle separately.
 const placesRaw = readdirSync('src/content/places').filter((f) => f.endsWith('.md'));
 const placeEntries = [];
 for (const file of placesRaw) {

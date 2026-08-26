@@ -32,12 +32,12 @@
 /community/news/birth-of-baseball-walton-on-thames/ /history/origins-of-baseball/ 301
 /community/news/birds-eye-walton-court-history/ /history/the-heart-and-town-centre/ 301
 
-# /neighbourhoods/ retired per Decision 2 — content folded into homepage/hersham/living
+# /neighbourhoods/ retired per Decision 2, content folded into homepage/hersham/living
 /neighbourhoods/walton-on-thames/ / 301
 /neighbourhoods/hersham/ /hersham/ 301
 /neighbourhoods/whiteley-village/ /hersham/whiteley-village/ 301
 /neighbourhoods/ / 301
 
-# Legacy encoded Elmbridge Xcel URL (factual audit, 5 August 2026) — was 404ing, no rule existed
+# Legacy encoded Elmbridge Xcel URL (factual audit, 5 August 2026): was 404ing, no rule existed
 /elmbridge-xcel%2Fsports-hub /directory/elmbridge-xcel/ 301
 /elmbridge-xcel/sports-hub /directory/elmbridge-xcel/ 301

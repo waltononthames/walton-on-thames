@@ -61,7 +61,7 @@ async function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 for (const entry of flagged) {
   const stored = currentCoords(entry.path);
   if (!entry.postcode) {
-    console.log(`${entry.name}: NO POSTCODE (named place, not addressed) — needs manual check, stored ${stored.lat},${stored.lng}`);
+    console.log(`${entry.name}: NO POSTCODE (named place, not addressed): needs manual check, stored ${stored.lat},${stored.lng}`);
     continue;
   }
   const geo = await geocodePostcode(entry.postcode);

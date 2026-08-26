@@ -6,12 +6,12 @@
 // It also catches a second, looser failure mode found by the 16 July 2026
 // external audit: The Heart Shopping Centre's "The Dining Room" listing had
 // shipped with the sentence "Current trading status should be checked before
-// publication" — genuine unresolved-verification content, but phrased as
+// publication": genuine unresolved-verification content, but phrased as
 // free prose rather than the [NEEDS VERIFICATION] marker, so the original
 // version of this script didn't catch it. PUBLICATION_STATUS_PHRASES below
 // catches editorial/QA notes-to-self that should never reach committed
 // content, regardless of exact wording. Keep this list narrow (meta-commentary
-// about the draft's own readiness) — it must never fire on legitimate
+// about the draft's own readiness): it must never fire on legitimate
 // historical hedging ("no verified register survives to confirm this") or
 // reader-facing advice ("verify details with the organiser before attending"),
 // both of which are required elsewhere in the protocol.
@@ -61,7 +61,7 @@ function walk(dir) {
 walk(SCAN_DIR);
 
 if (findings.length > 0) {
-  console.error(`\nBUILD BLOCKED — ${findings.length} unresolved verification marker(s) or publication-status note(s) found (Content Verification Protocol, Rule 3):\n`);
+  console.error(`\nBUILD BLOCKED: ${findings.length} unresolved verification marker(s) or publication-status note(s) found (Content Verification Protocol, Rule 3):\n`);
   for (const f of findings) console.error(`  ${f}`);
   console.error('\nVerify each claim against a Tier 1/2 source and resolve the marker, or delete the claim. Do not soften the wording.\n');
   process.exit(1);

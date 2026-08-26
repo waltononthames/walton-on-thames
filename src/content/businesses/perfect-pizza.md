@@ -10,7 +10,7 @@ description: "Pizza takeaway on Hersham Road, mainly suited to collection and de
 images: []
 featured: false
 verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied) — no verified official website found, address/phone only"
+source: "Restaurant directory spreadsheet (owner-supplied): no verified official website found, address/phone only"
 ---
 
 Pizza takeaway on Hersham Road, mainly suited to collection and delivery rather than formal dining.

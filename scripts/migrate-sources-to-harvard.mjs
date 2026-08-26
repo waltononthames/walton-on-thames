@@ -4,8 +4,8 @@
 // updated historySchema. Does not invent facts: author/title are split out of
 // the existing label text (already-verified strings), year defaults to "n.d."
 // unless the label itself already states one (e.g. "Wetton (1959) '...'"),
-// and accessed reuses the article's own reviewedDate — a real, already-recorded
-// fact — rather than a fabricated date. Run with `node scripts/migrate-sources-to-harvard.mjs [--fix]`.
+// and accessed reuses the article's own reviewedDate: a real, already-recorded
+// fact, rather than a fabricated date. Run with `node scripts/migrate-sources-to-harvard.mjs [--fix]`.
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -26,13 +26,13 @@ function splitLabel(label) {
     const [, author, year, title] = m;
     return { author: author.trim(), year, title: title.trim() };
   }
-  // Case 2: "Publisher: Title" or "Publisher — Title"
+  // Case 2: "Publisher: Title" or "Publisher, Title"
   m = label.match(/^([^:—]+)[:—]\s*(.+)$/);
   if (m) {
     const [, author, title] = m;
     return { author: author.trim(), year: 'n.d.', title: title.trim() };
   }
-  // Case 3: no separator — treat the whole label as both author and title
+  // Case 3: no separator, treat the whole label as both author and title
   return { author: label.trim(), year: 'n.d.', title: label.trim() };
 }
 

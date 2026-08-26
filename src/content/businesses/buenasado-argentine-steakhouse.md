@@ -10,7 +10,7 @@ description: "Argentinian-style steakhouse centred on grilled meats, parrilla co
 images: []
 featured: false
 verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied) — no verified official website found, address/phone only"
+source: "Restaurant directory spreadsheet (owner-supplied): no verified official website found, address/phone only"
 ---
 
 Argentinian-style steakhouse centred on grilled meats, parrilla cooking and a full-service dining room in The Heart.

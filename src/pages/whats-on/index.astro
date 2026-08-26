@@ -13,7 +13,7 @@ interface UpcomingItem {
   price: string;
   image?: string;
   description?: string;
-  /** Away fixtures are not in Walton — their venue string (which includes the town) is used as the address instead of the local PostalAddress */
+  /** Away fixtures are not in Walton: their venue string (which includes the town) is used as the address instead of the local PostalAddress */
   isAwayFixture?: boolean;
 }
 
@@ -45,7 +45,7 @@ const fixtureItems: UpcomingItem[] = fixtures.map(f => ({
 }));
 
 // Filter to items whose end date (or start date if no end) is today or in the future.
-// "Today" is midnight at build time — Cloudflare Pages rebuilds nightly so past events
+// "Today" is midnight at build time, Cloudflare Pages rebuilds nightly so past events
 // (and played fixtures) drop off the site the morning after they finish.
 const today = new Date();
 today.setHours(0, 0, 0, 0);

@@ -122,12 +122,12 @@ export function fixturesLoader(options: FixturesLoaderOptions): Loader {
       try {
         const res = await fetch(options.url);
         if (!res.ok) {
-          logger.error(`fixtures-loader: HTTP ${res.status} fetching ${options.url} — keeping existing entries`);
+          logger.error(`fixtures-loader: HTTP ${res.status} fetching ${options.url}, keeping existing entries`);
           return;
         }
         raw = await res.text();
       } catch (err) {
-        logger.error(`fixtures-loader: failed to fetch ${options.url} — ${(err as Error).message} — keeping existing entries`);
+        logger.error(`fixtures-loader: failed to fetch ${options.url}: ${(err as Error).message}, keeping existing entries`);
         return;
       }
 
