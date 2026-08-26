@@ -1,13 +1,18 @@
 ---
 import { formatPlaceName } from '../utils/format';
 
+// This card is shared by two collections whose image shapes differ:
+// `businesses` carries objects with their own alt text, `places` still
+// carries bare path strings. Accept either rather than forcing one to change.
+type CardImage = string | { src: string; alt?: string };
+
 interface Props {
   name: string;
   slug: string;
   category: string;
   neighbourhood: string;
   description: string;
-  images?: string[];
+  images?: CardImage[];
   featured?: boolean;
 }
 
@@ -15,12 +20,17 @@ const { name, slug, category, neighbourhood, description, images = [], featured 
 
 const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 const neighbourhoodLabel = formatPlaceName(neighbourhood);
-const thumbUrl = images[0] ?? null;
+
+const firstImage = images[0];
+const thumbUrl = typeof firstImage === 'string' ? firstImage : firstImage?.src ?? null;
+// Prefer the image's own alt text where the richer shape supplies it; the
+// business name alone is a weak description of a photograph.
+const thumbAlt = typeof firstImage === 'string' ? name : firstImage?.alt ?? name;
 ---
 
 <a href={`/directory/${slug}/`} class="card business-card">
   {thumbUrl
-    ? <img class="card-image" src={thumbUrl} alt={name} loading="lazy" />
+    ? <img class="card-image" src={thumbUrl} alt={thumbAlt} loading="lazy" />
     : <div class="card-image-placeholder" aria-hidden="true">🏪</div>
   }
   <div class="card-body">

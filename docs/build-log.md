@@ -588,3 +588,30 @@ Verified: `npm run check` no errors in the changed files, `npm run build` clean,
 - **Seating and toilets still need a site visit.** Unchanged from this morning: SWR lists a seating area, National Rail lists seating and sheltered waiting as unavailable, and the toilet position is worth eyeballing at the same time.
 - **Still no photographs of Hersham.** The stair-only entrance remains the most important fact on the page and is carried entirely by text.
 - **The pattern was sampled on one weekday morning.** It held across every service on the board, and the copy says as much rather than implying a timetable-wide guarantee, but evening and Sunday patterns have not been checked.
+
+## 2026-08-27: Khyber Pass listing photographs, and image support across the directory
+
+Khyber Pass supplied ten photographs and replacement copy for `/directory/khyber-pass/`. Nine are now on the page. The tenth, `P1195619.RW2`, was withdrawn from the source folder mid-session.
+
+**The directory had no image support at all.** `images` existed on the `businesses` schema but `directory/[slug].astro` contained no image markup and every listing had `images: []`, so nothing had ever exercised it. `BusinessCard.astro` was the exception: it already rendered `images[0]` as a card thumbnail, falling back to a 🏪 placeholder.
+
+**Schema.** `images` changed from `string[]` to objects carrying `src` and `alt`, plus an optional `caption`, because a bare path array cannot hold alt text and these are photographs, not decoration. Added `image_credit`, rendered once beneath the gallery. Only the `businesses` collection changed; `places` still carries `string[]`.
+
+**That change broke the card thumbnails, and it would have shipped.** `BusinessCard` does `images[0]` and passes the result straight to `src`. With objects that renders `src="[object Object]"` — a broken image, not the placeholder. The component is used on ten pages and is fed `businesses` images from six of them and `places` images from two, so the two shapes now coexist by design. The fix normalises both (`typeof first === 'string' ? first : first?.src`) rather than forcing `places` to migrate, and takes the opportunity to use the image's own alt text instead of the business name, which was a weak description of a photograph. Caught only because Darren asked whether the directory thumbnail would update.
+
+**RAW files.** Two of the supplied images were Panasonic `.RW2` at ~32 MB, including the shopfront and the sign. sharp cannot decode RW2 and no converter is installed. Both carry a full-resolution 6000x4000 JPEG as an embedded preview, extracted by scanning for the JPEG SOI/EOI markers and taking the largest stream, so nothing needed installing and no quality was lost. Worth remembering for future owner-supplied RAWs.
+
+**Header image.** The sign was nominated first, then rejected on sight. The reason was legible once candidates were rendered with the actual overlay composited: the sign and the shopfront both carry large lettering of their own, so the H1 lands on a second wordmark. The dishes photograph fails differently, its white background flattening to grey under the navy gradient. The wider dining room shot won because its left third is dark and uncluttered, which is exactly where the heading, badges and breadcrumbs sit. Its 16:9 crop is the hero and the OG image; the uncropped duplicate was dropped from the gallery so the same frame does not appear twice.
+
+**Copy and facts.** The owner's copy claims "Recognised as Contemporary Indian Restaurant of the Year by the Southern Curry Awards", while the certificate in the awards photograph reads FINALIST. Both are true and the claim stands: Surrey Live reports the restaurant was named Contemporary Indian Restaurant of the Year at that ceremony, held 4 May, and the certificate dates it to 2026. Citation recorded in the listing's `source` field. The closing social-media line ("📍 Walton-on-Thames | Award-Winning Indian Dining | ...") was dropped as out of register; the location and category already render as hero badges.
+
+**Dead link fixed.** `website` pointed at `khyberpasswalton.co.uk/terms`. That domain does not resolve at all, so the listing had a dead outbound link. Corrected to `https://www.khyberpassinwalton.co.uk/`, confirmed with the owner.
+
+**Type fix, beyond scope but caused by touching the file.** `Astro.props` in `directory/[slug].astro` inferred as `never`, so every `biz.data.*` reference reported ts(2339) and the seven references this work added made it worse. A `Props` type plus a `ListingImage` annotation took that file from 46 errors to 1 (the remaining one is pre-existing, inside `getStaticPaths`), and the repo from 200 to 155.
+
+Verified: `npm run build` clean, `npm run seo:validate` passes on all 378 pages, nine images ship to `dist/`, no `[object Object]` anywhere in the output, 128 directory cards render as 1 photograph and 127 placeholders, and the thumbnail also appears on `/food-and-drink/` and `/food-and-drink/restaurants/`. No horizontal overflow at 375px or 1280px. Listings without images emit byte-identical markup to before.
+
+## Still open
+- Only Khyber Pass has photographs. Every other listing is one frontmatter block away from the same treatment, with no template work needed.
+- The gallery crops to a uniform 4:3 with `object-fit: cover`, which keeps the grid level across mixed portrait and landscape sources but crops the two vertical kitchen shots hard. A lightbox, or per-image natural ratios, would recover them if photograph-heavy listings become common.
+- `award` is not expressed in the `Restaurant` JSON-LD. Now that an award is verified and sourced, an optional `awards` field on the schema would make it eligible for rich results.

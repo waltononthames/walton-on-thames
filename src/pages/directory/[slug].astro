@@ -2,7 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { formatPlaceName } from '../../utils/format';
+
+// Without this, Astro.props infers as `never` and every biz.data.* reference
+// below reports ts(2339). Typing the props clears all of them.
+type Props = { biz: CollectionEntry<'businesses'> };
+
+type ListingImage = { src: string; alt: string; caption?: string };
 
 export async function getStaticPaths() {
   const businesses = await getCollection('businesses');
@@ -14,6 +21,10 @@ export async function getStaticPaths() {
 
 const { biz } = Astro.props;
 const { Content } = await render(biz);
+
+// First image is the hero, the rest form the gallery. Listings with no
+// images keep the plain navy .page-hero and render no gallery at all.
+const [heroImage, ...galleryImages] = biz.data.images;
 
 
 const categoryLabel = biz.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
@@ -72,6 +83,7 @@ const openingHoursSpecification = biz.data.hours
 <BaseLayout
   title={`${biz.data.name}: ${categoryLabel} in ${neighbourhoodLabel}`}
   description={biz.data.description}
+  image={heroImage?.src}
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -88,6 +100,9 @@ const openingHoursSpecification = biz.data.hours
         "addressCountry": "GB"
       },
       ...(biz.data.phone ? { "telephone": biz.data.phone } : {}),
+      ...(biz.data.images.length > 0
+        ? { "image": biz.data.images.map((img: ListingImage) => new URL(img.src, Astro.site).href) }
+        : {}),
       ...(biz.data.lat && biz.data.lng ? {
         "geo": { "@type": "GeoCoordinates", "latitude": biz.data.lat, "longitude": biz.data.lng }
       } : {}),
@@ -104,8 +119,20 @@ const openingHoursSpecification = biz.data.hours
     })} />
   </slot>
 
-  <div class="page-hero">
-    <div class="container">
+  <div class:list={['page-hero', heroImage && 'biz-hero']}>
+    {heroImage && (
+      <div class="biz-hero-bg" aria-hidden="true">
+        <img
+          src={heroImage.src}
+          alt={heroImage.alt}
+          fetchpriority="high"
+          width="2048"
+          height="1152"
+        />
+        <div class="biz-hero-overlay"></div>
+      </div>
+    )}
+    <div class="container biz-hero-content">
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
@@ -127,6 +154,23 @@ const openingHoursSpecification = biz.data.hours
     <div class="container content-layout">
       <article class="prose">
         <Content />
+
+        {galleryImages.length > 0 && (
+          <>
+            <h2>Photographs</h2>
+            <div class="biz-gallery">
+              {galleryImages.map((img: ListingImage) => (
+                <figure class="biz-gallery-item">
+                  <img src={img.src} alt={img.alt} loading="lazy" />
+                  {img.caption && <figcaption>{img.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+            {biz.data.image_credit && (
+              <p class="biz-image-credit">{biz.data.image_credit}</p>
+            )}
+          </>
+        )}
       </article>
 
       <aside class="biz-sidebar">
@@ -191,6 +235,87 @@ const openingHoursSpecification = biz.data.hours
 </BaseLayout>
 
 <style>
+  /* Photo hero, used only when the listing supplies images. Without them the
+     shared .page-hero navy band renders exactly as before. */
+  .biz-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+  }
+
+  .biz-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .biz-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+  }
+
+  .biz-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(1, 32, 44, 0.5) 0%, rgba(1, 32, 44, 0.66) 60%, rgba(1, 32, 44, 0.85) 100%);
+  }
+
+  .biz-hero .biz-hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Breadcrumbs default to slate, which is unreadable over a photograph. */
+  .biz-hero .breadcrumbs,
+  .biz-hero .breadcrumbs a,
+  .biz-hero .breadcrumbs li + li::before {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .biz-hero .breadcrumbs a:hover { color: var(--color-white); }
+
+  .biz-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+  }
+
+  .biz-gallery-item {
+    margin: 0;
+  }
+
+  /* Fixed ratio keeps the grid tidy across mixed portrait and landscape
+     source photographs, and reserves space before the lazy load resolves. */
+  .biz-gallery-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .biz-gallery-item figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-slate);
+    font-style: italic;
+  }
+
+  .biz-image-credit {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--color-slate-soft);
+  }
+
   .hero-meta {
     display: flex;
     gap: 0.5rem;

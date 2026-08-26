@@ -17,7 +17,16 @@ const businesses = defineCollection({
     website: z.string().url().optional(),
     hours: z.record(z.string()).optional(),
     description: z.string(),
-    images: z.array(z.string()).default([]),
+    // Listing photographs. The first entry is used as the page hero and as
+    // the Open Graph image; the rest render as a gallery. Objects rather than
+    // bare paths so that every image carries its own alt text.
+    images: z.array(z.object({
+      src: z.string(),
+      alt: z.string(),
+      caption: z.string().optional(),
+    })).default([]),
+    // Shown once beneath the gallery, e.g. "Photographs supplied by X".
+    image_credit: z.string().optional(),
     featured: z.boolean().default(false),
     verified_date: z.string().optional(),
     source: z.string().optional(),
