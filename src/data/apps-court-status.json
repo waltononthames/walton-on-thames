@@ -1,14 +1,14 @@
 {
   "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source: the rest of this file was deliberately left untouched rather than overwritten with a guess.",
   "status": "on",
-  "headline": "Confirmed on for Sunday 30 August 2026",
-  "detail": "Apps Court Farm's own car boot page carries a banner reading \"THE CAR BOOT IS OPEN THIS SUNDAY\", with no postponement notice in place. Always check the official page or call before travelling: sales can be postponed for weather or ground conditions at short notice.",
+  "headline": "Confirmed on for Sunday 30 and Bank Holiday Monday 31 August 2026",
+  "detail": "Apps Court Farm's own car boot page now carries a banner reading \"THE CAR BOOT IS OPEN THIS SUNDAY & MONDAY\", confirming both Sunday 30 and Monday 31 August, with no postponement notice in place. The farm states its car boot sales run every Sunday and on \"all Spring, Summer, and early Winter Bank Holiday Mondays (weather dependent)\". Always check the official page or call before travelling: sales can be postponed for weather or ground conditions at short notice.",
   "nextConfirmedDateISO": "2026-08-30",
   "nextConfirmedDateLabel": "30 August 2026",
-  "checkedDateISO": "2026-08-24",
-  "checkedDateLabel": "24 August 2026",
+  "checkedDateISO": "2026-08-29",
+  "checkedDateLabel": "29 August 2026",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Automated daily check, matched previous status (on). Banner reads \"THE CAR BOOT IS OPEN THIS SUNDAY\" with no date printed on the page and no postponement notice; rolled forward to the next coming Sunday (30 August 2026) since the previous confirmed date (23 August) has now passed."
+  "lastCheckNote": "Automated check, matched previous status (on). Banner changed from \"THE CAR BOOT IS OPEN THIS SUNDAY\" to \"THE CAR BOOT IS OPEN THIS SUNDAY & MONDAY\", adding Bank Holiday Monday 31 August. No postponement notice. nextConfirmedDateISO stays 2026-08-30 as the next confirmed date; the added Monday is carried in the headline and detail because this file holds a single confirmed date."
 }
