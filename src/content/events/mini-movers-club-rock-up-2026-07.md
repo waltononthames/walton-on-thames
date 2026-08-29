@@ -1,8 +1,8 @@
 ---
 title: "Mini Movers Club at Rock Up Walton"
 slug: "mini-movers-club-rock-up-2026-07"
-start: "2026-08-27T09:00:00"
-end: "2026-08-27T12:00:00"
+start: "2026-09-03T09:00:00"
+end: "2026-09-03T12:00:00"
 venue: "Rock Up, Unit 48 The Heart Shopping Centre, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "family"

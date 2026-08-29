@@ -1,8 +1,8 @@
 ---
 title: "Move and Movies: Girls Night"
 slug: "move-and-movies-girls-night-2026-07"
-start: "2026-08-27T18:00:00"
-end: "2026-08-27T19:30:00"
+start: "2026-09-03T18:00:00"
+end: "2026-09-03T19:30:00"
 venue: "Elmbridge Xcel Leisure Complex, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "family"
