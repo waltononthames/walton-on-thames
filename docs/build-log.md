@@ -636,3 +636,31 @@ Verified: `npm run build` clean, 375 pages, all eight images 200 in the dev prev
 - **The club badge montage has no image.** Walton AC and Walton & Hersham FC logos need permission; the slot is an HTML comment in the body, and that comment ships in the page source.
 - **The Rydens School badge is to be supplied.** The section currently carries no illustration of the swan-and-eagle badge it describes.
 - **Walton Business Group's logo rests on its Facebook page.** Darren confirms it first-hand and the company was dissolved in 2023, but no independent record of the logo has been located.
+
+## 2026-08-31: Hersham hub rebuilt to compete for the head term
+
+Darren's goal: rank first for "hersham", "hersham village" and "hersham surrey", and make the hub and the content leading from it more comprehensive than the Grokipedia article on Hersham.
+
+**Search Console baseline, recorded before deploying (query contains "hersham", last 3 months to 31 August 2026):** 1,760 impressions, 8 clicks, 0.5% CTR, average position 18.6. The reading is that demand and visibility already exist and position is the constraint: 18.6 is page two, where a 0.5% click rate is unremarkable rather than a presentation failure. Note the filter is a *contains* match, so it pools "hersham station", "hersham library" and similar alongside the head term; the head term alone is likely worse than 18.6. Re-measure against this in four to six weeks. Extension Section 6 predicts the Hersham head term moves faster than the Walton one, and this is the figure that tests it.
+
+**Diagnosis.** The hub was a faithful build of extension 4.1 and not neglected: 967 words, the six specified H2s in order. The gap was structural. It carried no dynamic content, linked to twelve of the site's twenty Hersham pages, and sat on a corpus of roughly 23,800 words across those pages, four and a half times the 5,302-word Grokipedia article. Surfacing, not depth.
+
+**What the competitive check found.** Grokipedia's article is AI-generated and self-described as "fact-checked by Grok 7 months ago", which makes it Tier 3 under Rule 1 and never usable as a source; its 89 references are a useful map to primary sources and nothing more. The real rival is hershamvillage.co.uk, which holds an exact-match domain for "hersham village" and publishes actively on local planning. Its events calendar reads "Coming Soon", which is the gap this work takes.
+
+**Rejected approach, recorded because it nearly shipped.** The first plan was to make the hub work like the site homepage, with card grids of attractions, businesses and history articles. Darren asked whether that would sit coherently against the homepage, and checking the docs showed it would not: the full card treatment belongs to the spokes under the five duplication controls documented at the top of `things-to-do/hersham.astro`, so a homepage-style hub would have cannibalised `/things-to-do/hersham/`, `/hersham/food-and-drink/` and `/hersham/history/`. The hub routes; the spokes hold the cards. Extension 4.1 now says so explicitly.
+
+**Built:** a grouped link grid covering all eighteen Hersham destinations, which surfaced two pages the hub had never linked (Hersham Lodge and Hersham Place, and the ABC Motors article); a Hersham-only upcoming events block, the one genuinely fresh element and a view nothing else on the site offers since `/whats-on/` is unfiltered; FAQPage JSON-LD and the visible FAQ markup now generated from a single array; and an enriched `Place` entity with `alternateName`, `geo`, `containedInPlace`, `image` and `sameAs` to Wikipedia and Wikidata Q5744439.
+
+**One bug caught mid-build.** A fifth FAQ was added to the data while the visible markup still held four hardcoded questions, which would have published FAQPage schema containing a question absent from the page. Both now render from the same array, which is the only reliable guard.
+
+**Factual correction.** The page claimed "around 12,400 people live here, according to the 2011 census". ONS Census 2021 built-up area data for Hersham (E63005239) gives 12,630 in 2021 and 11,260 in 2011, so the figure was wrong on both the number and the year. Extension 4.1 carried "around 12,600" and has been corrected too.
+
+**Internal linking audited, no action needed.** Extension Section 5 requires every Hersham page to link back to the hub. All eighteen do, with a contextual link on top of breadcrumb and nav on the feature articles.
+
+Verified: build clean, `seo:validate` passes on 374 pages, all nineteen grid links return 200, FAQ count matches between markup and schema, no horizontal overflow at 375px or 1280px.
+
+## Still open
+- **`/hersham/development-and-planning/`** is the next spoke and the highest-value one: Berkeley's Technology Park scheme, Shaping Hersham, Hersham Park, Green Belt constraints, and the April 2027 unitary reorganisation. It is the ground the exact-match-domain rival is strongest on. No spec section exists for it, so extension 4.11 must be written before the page, and every figure needs Elmbridge and Surrey County Council sources rather than the Grokipedia summary. The Charter already settles the editorial stance: contested local matters may be covered, but evidence must be distinguished from advocacy and opinion clearly labelled.
+- **`/hersham/living/`** second: schools with Ofsted ratings, GP and pharmacy, buses 515 and 715, council services. Much of it exists but is Walton-scoped.
+- Live planning statuses go stale silently, the same failure mode `check-stale-events.mjs` exists to catch. Date-stamp every status line and put the page on a review cadence.
+- The hub's `Place` entity could add `containsPlace` for Burwood Park and Whiteley Village.
