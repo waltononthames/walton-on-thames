@@ -166,10 +166,14 @@ const openingHoursSpecification = biz.data.hours
                 </figure>
               ))}
             </div>
-            {biz.data.image_credit && (
-              <p class="biz-image-credit">{biz.data.image_credit}</p>
-            )}
           </>
+        )}
+
+        {/* Outside the gallery block on purpose: a listing with a single
+            photograph has a hero but no gallery, and its credit still has
+            to appear somewhere. */}
+        {biz.data.image_credit && biz.data.images.length > 0 && (
+          <p class="biz-image-credit">{biz.data.image_credit}</p>
         )}
       </article>
 
