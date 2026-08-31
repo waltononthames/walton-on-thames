@@ -360,7 +360,12 @@ The swan did not make the journey. Its use as the crest of a functioning local a
 
 ## Rydens School: a civic echo
 
-The swan also entered the visual life of local education. Rydens School traces its beginnings to 1954. A surviving school newsletter shows that its later badge prominently combined a white swan with a red eagle (Rydens School, 2010; Surrey Live, 2013).
+The swan also entered the visual life of local education. Rydens School traces its beginnings to 1954. A surviving school newsletter shows that its later badge prominently combined a swan with a red eagle (Rydens School, 2010; Surrey Live, 2013).
+
+<figure>
+  <img src="/images/history/rydens-school-badge.webp" alt="Embroidered blazer badge: a shield with a red eagle above, a chequered field strewn with small black crosses, a gold swan on water below a chevron, and a scroll reading DO UT DES" loading="lazy" />
+  <figcaption>An embroidered Rydens School blazer badge. The gold swan swims on water beneath the chevron, the red eagle sits above, and the scroll carries the motto DO UT DES. The badge is undated and it is not known how it relates to the version shown in the 2010 newsletter. Photographed by Walton-on-Thames.org on 31 August 2026.</figcaption>
+</figure>
 
 The pairing is significant. Both birds appeared in the 1946 arms of Walton and Weybridge: the crowned swan's head as the crest and the red eagle on the shield (Civic Heraldry of England and Wales, n.d.b). The close resemblance makes it plausible that Rydens adapted elements of the council achievement. No school record located for this article, however, states who designed the badge, when it was adopted or what it was intended to represent. The badge therefore establishes the use of the two birds by the school, not that it had used them since opening in 1954 or that the council arms were their documented source.
 
@@ -380,10 +385,15 @@ Walton & Hersham Football Club carries the bird in its visual identity and is kn
 
 Walton Athletic Club, founded in 1942, tells a similar story. Its present badge combines the club's name and foundation date with a white swan (Walton Athletic Club, n.d.).
 
-<!-- IMAGE SLOT 4: a two-part montage of the current Walton Athletic Club and Walton & Hersham FC swan devices.
-     Caption: The swan in modern Walton: the current identities of both Walton Athletic Club and Walton & Hersham FC use the bird. The dates on which either organisation first adopted it have not yet been established.
-     Alt: Two modern Walton-associated club badges, each incorporating a stylised swan.
-     Rights: permission is required before reproducing club logos, and an AI-generated substitute is not appropriate here because these are live marks in current use. If permission is unavailable, leave the slot empty and rely on the text and the Sources links. -->
+<figure>
+  <img src="/images/history/walton-and-hersham-fc-badge.webp" alt="Walton & Hersham Football Club badge on a pink shirt: a shield bearing the club name, a swan beside a second bird perched on a football, wavy lines of water below, and the date 1945" loading="lazy" />
+  <figcaption>The Walton & Hersham FC badge, carrying the swan beside a second bird perched on a football, above the waves of the Thames and the club's 1945 foundation date. Photographed by Walton-on-Thames.org on 31 August 2026.</figcaption>
+</figure>
+
+<!-- IMAGE SLOT: the Walton Athletic Club swan device is still outstanding.
+     Caption: Walton Athletic Club's badge combines the club's name and 1942 foundation date with a white swan.
+     Alt: Walton Athletic Club badge incorporating a stylised white swan.
+     Rights: permission is required before reproducing the club's logo, and an AI-generated substitute is not appropriate because this is a live mark in current use. -->
 
 Neither foundation date should be read as a date of adoption. Walton AC's founding in 1942 does not establish that its swan predates the 1946 civic grant, and no source located for this article records when either club first took up the bird, who designed it, or what reason was given at the time. Club minutes, early letterheads, programmes, photographs or kit may eventually settle it.
 
