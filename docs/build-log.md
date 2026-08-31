@@ -615,3 +615,24 @@ Verified: `npm run build` clean, `npm run seo:validate` passes on all 378 pages,
 - Only Khyber Pass has photographs. Every other listing is one frontmatter block away from the same treatment, with no template work needed.
 - The gallery crops to a uniform 4:3 with `object-fit: cover`, which keeps the grid level across mixed portrait and landscape sources but crops the two vertical kitchen shots hard. A lightbox, or per-image natural ratios, would recover them if photograph-heavy listings become common.
 - `award` is not expressed in the `Restaurant` JSON-LD. Now that an award is verified and sourced, an optional `awards` field on the schema would make it eligible for rich results.
+
+## 2026-08-31: The Swan of Walton, and fuller bibliographic detail in the sources block
+
+`/history/swan-symbol-walton-on-thames/` published from Darren's drafted text: the recurrence of the swan in Walton from Humphrey de Bohun's counter-seal of 1301, through an 1864 regatta trophy and the 1946 Walton and Weybridge arms, to Rydens School, HWM, the two clubs and Walton Business Group. The central claim is recurrence, not continuity, and the evidence table exists to keep it that way.
+
+**The sources schema could not carry the article's references.** The draft cited DNB entries with editors and volume numbers, journal articles with issues and page ranges, books with places of publication, and news items dated to the day. `sources` held only author, year, title, publisher, url and accessed, and Zod strips unknown keys silently, so the build would have passed while dropping every one of those fields from the rendered list. Added `container`, `journal`, `editor`, `volume`, `issue`, `pages`, `place`, `date` and a `work` boolean, all optional, and moved Harvard assembly out of the template into `sourceParts()` in `HistoryArticle.astro`.
+
+**The italic/quoted decision is the awkward part.** Harvard italicises a standalone work and quotes a part of a larger one, and no combination of the existing fields distinguishes Fox-Davies's *Heraldic Badges* on archive.org from a council web page that happened to record a publisher. Hence the explicit `work` flag. The fallback, `!url && !container && !journal`, reproduces the old print-only behaviour exactly, which is why no existing article needed the flag added.
+
+**Backward compatibility was verified, not assumed.** `sidney-road.md` turned out to hold nine sources carrying both a url and a publisher, plus one carrying neither, so the imprint is suppressed unless the entry is standalone or sits in a container. Six existing articles' sources blocks were diffed byte-for-byte before and after: all identical. One latent bug fixed on the way, a publisher ending in a stop ("Smith, Elder & Co.") rendering a doubled full stop.
+
+**The trophy photographs beat the auction catalogue.** Invaluable describes "a swan above crossed oars". The supplied photographs show the swan inside a roundel lettered WALTON ON THAMES REGATTA with the oars crossed behind it, and, more usefully, an inscription reading LOCAL GIGS above and the winning crew below: E. R. Kennedy and F. A. Stringer, with A. Payne as cox. That moves the object from "silver of the right period" to a prize actually competed for and awarded. It still carries no year, so the caveat against tying it to the 1864 regatta stands, and the hallmark still dates only the silver.
+
+**Images.** Six supplied files converted to webp (the Barons' Letter plate 4.0 MB to 83 KB). Attribution sits in the figcaption, following the precedent set by the Mount Felix photographs. The originals stay in `public/images/history/Swan/` but are deliberately untracked, so they neither reach the remote nor deploy; that folder also holds a file explicitly named do-not-use, which is exactly the sort of thing that should not become a public URL.
+
+Verified: `npm run build` clean, 375 pages, all eight images 200 in the dev preview with no console errors, 35 sources rendering with volumes, editors and page ranges intact.
+
+## Still open
+- **The club badge montage has no image.** Walton AC and Walton & Hersham FC logos need permission; the slot is an HTML comment in the body, and that comment ships in the page source.
+- **The Rydens School badge is to be supplied.** The section currently carries no illustration of the swan-and-eagle badge it describes.
+- **Walton Business Group's logo rests on its Facebook page.** Darren confirms it first-hand and the company was dissolved in 2023, but no independent record of the logo has been located.

@@ -94,7 +94,7 @@ sources:
     title: "Granting of Arms"
     url: "https://www.college-of-arms.gov.uk/services/granting-arms"
     accessed: "2 August 2026"
-related: ["st-marys-church", "walton-bridge", "ashley-park-estate", "elmbridge-hundred", "whiteley-village"]
+related: ["swan-symbol-walton-on-thames", "st-marys-church", "walton-bridge", "ashley-park-estate", "elmbridge-hundred", "whiteley-village"]
 ---
 
 No single, simple story explains the heraldry of Walton-on-Thames, Hersham and Whiteley Village. A swan wearing a Saxon crown. Tudor roses above the Thames. The Royal Arms rising over a war memorial. Gold doves associated with an estate in Hersham. Decorative shields over a church porch at Whiteley Village. These symbols were accumulated across nine centuries, by medieval lords of manors, by local authorities, and by institutions with a stake in the river. Some survive on monuments and boundary markers; a few remain unidentified and deserve further investigation.

@@ -99,11 +99,37 @@ const historySchema = z.object({
   // Print-only sources (no online record, e.g. an out-of-print local-history
   // booklet) omit url/accessed and render as "Author (Year) Title. Publisher."
   // instead: do not invent a URL to satisfy validation.
+  //
+  // The optional fields below carry fuller bibliographic detail for journal
+  // articles, chapters in edited works and dated web items. They are additive:
+  // an entry using only the six original fields renders exactly as it always
+  // has. See HistoryArticle.astro for the assembly order.
+  //   container  parent work of a chapter/entry, e.g. "Dictionary of National Biography"
+  //   journal    periodical title; renders the volume(issue), pp. form
+  //   editor     editor of the container, rendered "in Lee, S. (ed.)"
+  //   volume     volume number, "vol. 45" inside a container, bare inside a journal
+  //   issue      issue number, rendered as "(2)" against the volume
+  //   pages      page range, rendered "pp. 141-164"
+  //   place      place of publication, rendered "London: John Lane"
+  //   date       day/month of a dated item, e.g. "30 August" (the year is separate)
+  //   work       true for a standalone work (a book, an archival document) so the
+  //              title is italicised rather than quoted. Without a url, an entry
+  //              is treated as standalone anyway, which is why print-only sources
+  //              never needed this flag.
   sources: z.array(z.object({
     author: z.string(),
     year: z.string(),
     title: z.string(),
+    container: z.string().optional(),
+    journal: z.string().optional(),
+    editor: z.string().optional(),
+    volume: z.string().optional(),
+    issue: z.string().optional(),
+    pages: z.string().optional(),
     publisher: z.string().optional(),
+    place: z.string().optional(),
+    date: z.string().optional(),
+    work: z.boolean().optional(),
     url: z.string().url().optional(),
     accessed: z.string().optional(),
   })),

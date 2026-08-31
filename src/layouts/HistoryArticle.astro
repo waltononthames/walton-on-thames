@@ -23,6 +23,35 @@ const relatedEntries = data.related
   .filter((e): e is typeof allEntries[number] => Boolean(e));
 
 const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+type SourceEntry = (CollectionEntry<'history'>)['data']['sources'][number];
+
+// Harvard entries are assembled here rather than in the template so the
+// branching stays readable. The rules are documented alongside the schema in
+// src/content.config.ts; the two must stay in step.
+function sourceParts(s: SourceEntry) {
+  // A standalone work (a book, an archival document) takes an italic title; a
+  // chapter, article or web page takes quotation marks. An entry with no url
+  // and no parent work has always meant something print-only, so that case
+  // stays italic without needing the flag set explicitly.
+  const standalone = s.work === true || (!s.url && !s.container && !s.journal);
+  // An imprint belongs to a work or to the container it sits in. Web pages
+  // that merely happened to record a publisher keep dropping it, as before.
+  // Publishers such as "Smith, Elder & Co." already end in a stop, so adding
+  // another would double it.
+  const imprintText = s.place ? `${s.place}: ${s.publisher}` : `${s.publisher}`;
+  const imprint = (standalone || s.container || s.journal) && s.publisher
+    ? ` ${imprintText}${imprintText.endsWith('.') ? '' : '.'}`
+    : '';
+  const journalTail = `${s.volume ? `, ${s.volume}` : ''}${s.issue ? `(${s.issue})` : ''}${s.pages ? `, pp. ${s.pages}` : ''}`;
+  const containerTail = `${s.volume ? `, vol. ${s.volume}` : ''}${s.pages ? `, pp. ${s.pages}` : ''}`;
+  // "in" introduces a chapter of an identified book; a bare parent work, such
+  // as an online database, reads better without it.
+  const containerLead = (s.editor || s.volume) ? ', in ' : ', ';
+  const looseTail = `${s.volume ? `, ${s.volume}` : ''}${s.issue ? `(${s.issue})` : ''}`;
+  const dateTail = s.date ? `, ${s.date}` : '';
+  return { standalone, imprint, journalTail, containerTail, containerLead, looseTail, dateTail };
+}
 ---
 
 <BaseLayout
@@ -101,13 +130,12 @@ const reviewedDateStr = data.reviewedDate.toLocaleDateString('en-GB', { day: 'nu
           <div class="sources-block">
             <h2>Sources</h2>
             <ul>
-              {data.sources.map((s: { author: string; year: string; title: string; publisher?: string; url?: string; accessed?: string }) => (
-                s.url ? (
-                  <li>{s.author} ({s.year}) '{s.title}'. Available at: <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url} ↗</a> (Accessed: {s.accessed}).</li>
-                ) : (
-                  <li>{s.author} ({s.year}) <em>{s.title}</em>.{s.publisher ? ` ${s.publisher}.` : ''}</li>
-                )
-              ))}
+              {data.sources.map((s: SourceEntry) => {
+                const p = sourceParts(s);
+                return (
+                  <li>{s.author} ({s.year}) {p.standalone ? <em>{s.title}</em> : <>'{s.title}'</>}{s.journal ? <>, <em>{s.journal}</em>{p.journalTail}</> : s.container ? <>{p.containerLead}{s.editor ? `${s.editor} (ed.) ` : ''}<em>{s.container}</em>{p.containerTail}</> : p.looseTail}{p.dateTail}.{p.imprint}{s.url ? <> Available at: <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url} ↗</a> (Accessed: {s.accessed}).</> : ''}</li>
+                );
+              })}
             </ul>
           </div>
         )}
