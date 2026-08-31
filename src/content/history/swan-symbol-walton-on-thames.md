@@ -372,7 +372,7 @@ The bird at the centre of the earliest HWM badge was a heathcock, an old name fo
 
 A white swan appeared on a later form of the HWM badge, replacing the black grouse (Taylor, 2019, p. 129). The evidence consulted has not established precisely when the change was made or why. HWM's location at Walton, close to the Thames, makes a connection with the town and river plausible, but this remains an interpretation rather than a documented explanation.
 
-HWM therefore cannot be used as evidence that the swan was the company's original emblem. Its changing badge tells a subtler story: the business began with a bird representing its founder's family and later adopted one increasingly associated with the place it called home.
+HWM's changing badge tells a subtler story: the business began with a bird representing its founder's family and later adopted one increasingly associated with the place it called home.
 
 ## The Swans of Walton
 
@@ -407,9 +407,9 @@ The surviving evidence offers several different levels of certainty:
 
 ## The bird that could carry every Walton story
 
-Why did the swan endure when so many other local symbols did not? Part of the answer is simplicity. Walton's history offers lions, eagles, roses, oak sprigs, bridges, crowns and waves, and few of them are as instantly recognisable as a swan.
+Why did the swan endure when so many other local symbols did not? Part of the answer is simplicity. Walton's history offers eagles, roses, oak sprigs, bridges, crowns and waves, and few of them are as instantly recognisable as the swan.
 
-More importantly, the bird works at several levels at once. It is physically present on the river, so it belongs to everyday experience. It evokes the Thames without explanation. It carries medieval prestige through the de Bohuns and the House of Lancaster. It suits rowing, where grace on the water conceals effort beneath it. It can look dignified on a coat of arms and combative on a football badge.
+More importantly, the bird works at several levels at once. It is physically present on the river, so it belongs to everyday experience. It evokes the Thames without explanation. It carries medieval prestige through the de Bohuns. It suits rowing, where grace on the water conceals effort beneath it. It can look dignified on a coat of arms and combative on a football badge.
 
 That flexibility is also why continuity is so hard to prove. Different people could choose a swan independently and still produce something that felt unmistakably local.
 
