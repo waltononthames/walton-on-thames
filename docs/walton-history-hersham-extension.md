@@ -284,6 +284,69 @@ Hersham station sits on the South Western Main Line with at least two trains an 
 - Food and drink: same template as the Walton food hub, scaled down; every venue linked to a directory record.
 - Burhill: the estate history (Kelly's 1913 notes the club leasing Burhill Park from Viscount Iveagh; two 18-hole courses; club established 1907 per club history, VERIFY), the house as clubhouse, and honest visitor notes.
 
+### 4.11 `/hersham/development-and-planning/`
+
+**Added 2026-08-31.** Not part of the original extension. Written after a competitive review found this to be the one subject where the site's nearest rival, hershamvillage.co.uk, is genuinely stronger, and the one Hersham topic with recurring rather than one-off search demand.
+
+**Title:** Hersham Development and Planning
+**Meta:** What is being built in Hersham: current planning applications, the Green Belt, and how to have your say.
+**H1:** Development and planning in Hersham
+
+**Why this page exists.** Planning is the local subject residents search repeatedly, argue about and share. It earns return visits and referring domains in a way history articles do not. The rival's strength here is real but narrow: its coverage reads as advocacy, and it holds no structured record of what is actually proposed and at what stage. A neutral, sourced, current record is the gap.
+
+**Scope.** Hersham only, defined as a 2km radius of Hersham Green (51.3662, -0.4002). Major schemes only, see the significance rule below.
+
+**A Walton equivalent follows as 4.12, and the two stay separate pages.** Decided 2026-08-31. That has three consequences for how this one is built.
+
+*Build it as a parameterised component, not a bespoke page.* The loader and the rendering take a centre point, a radius and a place name. Hersham is the first instance, Walton the second. Do not hard-code Hersham anywhere except its own page's content and frontmatter. The Walton anchor is The Heart Shopping Centre (51.3853, -0.4202), from the audited coordinate in `content/businesses/the-heart-shopping-centre.md`.
+
+*The two catchments overlap, so schemes must be assigned, not just matched.* Hersham Green and The Heart are 2.54km apart, so 2km radii overlap across a wide band containing Weylands, North Weylands, Esher Rugby Club and the Mayfield Road sites. Without an assignment rule the same scheme appears on both pages, which is precisely the duplication the hub-and-spoke controls exist to prevent.
+
+**Assignment rule.** PlanIt returns a GeoJSON `location` on every record, so assign each site to the **nearer of the two centres**, computed at build time. Two cautions, both observed in the 31 August 2026 sample:
+
+- **Postal addresses mislead and must not be used.** Weylands Old Treatment Works, North Weylands Industrial Estate and Esher Rugby Football Club all carry "Walton-on-Thames" or "Esher" addresses while sitting nearer Hersham Green. Assign on coordinates, not on the address string.
+- **Borderline cases need a manual override.** The Waterloo Court car park site on Mayfield Road is 1.45km from Hersham Green and 1.51km from The Heart, a 60m margin. Maintain a small explicit override map of site to page, checked before the distance calculation, so marginal calls are a recorded editorial decision rather than an accident of arithmetic that can flip when a coordinate is corrected upstream.
+
+**Group by site, not by application.** A single scheme generates many applications over years: in the sample, Weylands appears four times, Hersham Place Technology Park twice, and Land south of Burwood Road twice, counting screening opinions, outline, hybrid, reserved matters and variations separately. Presenting each as a separate item would be both repetitive and misleading about how much is happening. Group applications under a named site, show the site's current overall stage, and list the individual references beneath it.
+
+**Structure.**
+
+- Intro: what is happening in Hersham in one paragraph, dated.
+- **Current applications (H2).** One short subsection per live major scheme: what is proposed, where, who applied, current stage, and a link to the council's own record. Status lines carry a "as recorded on [date]" stamp.
+- **Recently decided (H2).** Permitted, rejected and withdrawn majors, so the page answers "what happened to" queries as well as "what is happening".
+- **The Green Belt (H2).** Why most land around Hersham cannot be built on, and where the exceptions apply. Durable content.
+- **Who decides, and what changes in 2027 (H2).** Elmbridge Borough Council decides today. From 1 April 2027 Elmbridge is replaced by **East Surrey Council**, alongside Epsom and Ewell, Mole Valley, Reigate and Banstead and Tandridge, with shadow elections in May 2026. Verified against Elmbridge's own reorganisation page, 31 August 2026. Note for the record that an AI-generated source consulted during research stated Hersham would fall under a West Surrey authority; that was wrong, and is a live example of why Rule 1 puts AI-generated content at Tier 3.
+- **How to have your say (H2).** Finding an application, commenting within the consultation window, and Elmbridge's own planning alerts email service. Practical, not campaigning.
+- **FAQ block.** What is being built in Hersham? Can they build on the Green Belt? How do I object to a planning application? Who decides planning applications in Hersham after 2027?
+
+**Data source, and the rule that makes the page maintainable.** Applications come from the PlanIt open API (planit.org.uk), queried spatially rather than by authority:
+
+```
+https://www.planit.org.uk/api/applics/json?lat=51.3662&lng=-0.4002&krad=2&app_size=Large&start_date=...&end_date=...
+```
+
+Two properties of that query matter. First, **it is authority-agnostic**: a spatial query keeps working when Elmbridge becomes East Surrey in April 2027, where a query keyed on `auth=Elmbridge` would silently return nothing. Second, **`app_size=Large` is the significance filter**. Measured 31 August 2026: within 2km of Hersham Green, `Large` returns 18 applications across four and a half years, roughly four a year, and captures every scheme of public interest. `Medium` and `Small` are householder extensions and tree works at named private addresses. Those are public record but have no search value, and publishing an automated list of residents' rear extensions is not what this site is for. **Never publish below `Large`.**
+
+**Verification tiers.** PlanIt is an aggregator, therefore Tier 2, and never the authority. Every scheme must link to the council's own application page, and no claim may rest on PlanIt alone. Application descriptions may be quoted from the council record; do not paraphrase numbers of dwellings without checking the source document.
+
+**Editorial stance, per the Charter.** The Charter permits coverage of contested local matters where relevant to the public record, but requires evidence to be distinguished from advocacy and opinion clearly labelled. This page therefore reports what is proposed and at what stage, links to the consultation so readers can respond themselves, and takes no position for or against any scheme. It does not characterise applicants, quantify local opposition, or reproduce campaign material.
+
+**Currency.** A planning status is a fact that goes stale silently, the same failure mode `check-stale-events.mjs` exists to catch. Every status line is date-stamped. The build-time loader refreshes status on the nightly rebuild; the human-written narrative around each scheme needs review when a status changes and at least quarterly.
+
+**Loader design.** Follow `src/loaders/fixtures-loader.ts`: fetch at build time, fail soft. If the API is unavailable, log and keep previously synced entries rather than failing the build or rendering an empty section. Add one guard the fixtures loader does not need: if the query returns records but **none newer than the most recent already held**, that is a plausible signal the feed or the query has broken, and it should log loudly rather than pass silently.
+
+**Duplication controls.** The hub links here; it does not summarise the schemes. Nothing on this page duplicates `/hersham/`, `/hersham/history/` or `/things-to-do/hersham/`. Where a scheme touches a subject with its own page, for instance the golf club or the shopping parade, link rather than restate.
+
+**Linking.** Per Section 5: back to the `/hersham/` hub, one Hersham sibling, and one Walton page where the subject genuinely crosses. The Weylands Treatment Works schemes sit in Walton and are the natural crossing point.
+
+### 4.12 `/getting-here/` sibling: Walton development and planning
+
+**Reserved 2026-08-31, to be built after 4.11.** The Walton equivalent, kept as a separate page rather than merged.
+
+Everything in 4.11 applies unchanged except the centre point, which is The Heart Shopping Centre (51.3853, -0.4202), and the content, which is written fresh rather than adapted. Reuse the loader and the rendering component; share no prose. The assignment rule in 4.11 governs which page a scheme belongs to, and it is authoritative for both: a site assigned to Hersham does not also appear here, however its postal address reads.
+
+Note before building: the correct URL is undecided. `/hersham/development-and-planning/` sits naturally under the Hersham section, but Walton has no equivalent parent, so the Walton page may belong under `/living/` alongside property, or at the top level. Check `docs/site-audit.md` and the blueprint's architecture section before choosing, and record the decision here.
+
 ---
 
 ## 5. Internal linking matrix (implement as component logic, not ad hoc)
