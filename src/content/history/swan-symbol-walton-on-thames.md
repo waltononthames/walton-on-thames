@@ -364,7 +364,7 @@ The swan also entered the visual life of local education. Rydens School traces i
 
 <figure>
   <img src="/images/history/rydens-school-badge.webp" alt="Embroidered blazer badge: a shield with a red eagle above, a chequered field strewn with small black crosses, a gold swan on water below a chevron, and a scroll reading DO UT DES" loading="lazy" />
-  <figcaption>An embroidered Rydens School blazer badge. The gold swan swims on water beneath the chevron, the red eagle sits above, and the scroll carries the motto DO UT DES. The badge is undated and it is not known how it relates to the version shown in the 2010 newsletter. Photographed by Walton-on-Thames.org on 31 August 2026.</figcaption>
+  <figcaption>The badge on Darren Bayley's own Rydens School blazer. The gold swan swims on water beneath the chevron, the red eagle sits above, and the scroll carries the motto DO UT DES. The badge is undated and it is not known how it relates to the version shown in the 2010 newsletter. Photographed by Walton-on-Thames.org on 31 August 2026.</figcaption>
 </figure>
 
 The pairing is significant. Both birds appeared in the 1946 arms of Walton and Weybridge: the crowned swan's head as the crest and the red eagle on the shield (Civic Heraldry of England and Wales, n.d.b). The close resemblance makes it plausible that Rydens adapted elements of the council achievement. No school record located for this article, however, states who designed the badge, when it was adopted or what it was intended to represent. The badge therefore establishes the use of the two birds by the school, not that it had used them since opening in 1954 or that the council arms were their documented source.
@@ -383,17 +383,22 @@ HWM's changing badge tells a subtler story: the business began with a bird repre
 
 Walton & Hersham Football Club carries the bird in its visual identity and is known as the Swans. Formed in 1945 through the amalgamation of Walton FC and Hersham FC, the club's own history uses the nickname in its account of the 1950-51 season, showing that it was established by the early postwar years even though its precise adoption date remains unknown (Walton & Hersham FC, n.d.).
 
+The club's badge makes the amalgamation visible. The swan stands for Walton and a robin for Hersham, the two birds set above the waves of the Thames with the 1945 foundation date beneath. The swan, in other words, is not simply the club's emblem but the Walton half of a merger recorded in heraldic shorthand.
+
 Walton Athletic Club, founded in 1942, tells a similar story. Its present badge combines the club's name and foundation date with a white swan (Walton Athletic Club, n.d.).
 
-<figure>
-  <img src="/images/history/walton-and-hersham-fc-badge.webp" alt="Walton & Hersham Football Club badge on a pink shirt: a shield bearing the club name, a swan beside a second bird perched on a football, wavy lines of water below, and the date 1945" loading="lazy" />
-  <figcaption>The Walton & Hersham FC badge, carrying the swan beside a second bird perched on a football, above the waves of the Thames and the club's 1945 foundation date. Photographed by Walton-on-Thames.org on 31 August 2026.</figcaption>
-</figure>
-
-<!-- IMAGE SLOT: the Walton Athletic Club swan device is still outstanding.
-     Caption: Walton Athletic Club's badge combines the club's name and 1942 foundation date with a white swan.
-     Alt: Walton Athletic Club badge incorporating a stylised white swan.
-     Rights: permission is required before reproducing the club's logo, and an AI-generated substitute is not appropriate because this is a live mark in current use. -->
+<!-- IMAGE SLOT: both club devices are still outstanding, pending permission.
+     Walton & Hersham FC: a photograph of the badge exists and is held outside the
+     repository. It is not published because the club is active and the badge is a
+     live mark, photographed from a licensed replica shirt. Ask the club, which may
+     also supply a cleaner asset than a photograph of a shirt.
+     Caption if cleared: The Walton & Hersham FC badge pairs the swan for Walton with
+     a robin for Hersham, perched on a football, above the waves of the Thames and the
+     club's 1945 foundation date.
+     Walton Athletic Club: no image held. Its badge combines the club's name and 1942
+     foundation date with a white swan.
+     Rights: both are live marks in current use, so an AI-generated substitute is not
+     appropriate for either. -->
 
 Neither foundation date should be read as a date of adoption. Walton AC's founding in 1942 does not establish that its swan predates the 1946 civic grant, and no source located for this article records when either club first took up the bird, who designed it, or what reason was given at the time. Club minutes, early letterheads, programmes, photographs or kit may eventually settle it.
 
