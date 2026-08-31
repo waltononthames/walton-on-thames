@@ -178,13 +178,13 @@ Hersham gets its own top-level section targeting "Hersham" as a second head term
 
 ### 4.1 `/hersham/` hub (full copy below, adapt lightly)
 
-**Title:** Hersham, Surrey: The Local Guide to the Village
+**Title:** Hersham Village, Surrey  *(amended 2026-08-31, was "Hersham, Surrey: The Local Guide to the Village")*
 **Meta:** A local guide to Hersham, Surrey: the green, food and drink, walks by the River Mole, history from the Domesday era to Sham 69, and village life.
 **H1:** Hersham
 
 **Copy (target 900 to 1,100 words; core text):**
 
-Hersham is a village in the Borough of Elmbridge, Surrey, sitting between Walton-on-Thames to the north and Esher to the east, with the River Mole running along its edge. Around 12,600 people live here. It is contiguous with Walton and shares its post town, but Hersham has kept a distinct identity: a proper village green, its own shopping parade, its own station on the main line to Waterloo, and a history that runs from Mesolithic flint finds to the punk band that put the village's name in the charts.
+Hersham is a village in the Borough of Elmbridge, Surrey, sitting between Walton-on-Thames to the north and Esher to the east, with the River Mole running along its edge. The 2021 census recorded 12,630 people in the Hersham built-up area, up from 11,260 in 2011. It is contiguous with Walton and shares its post town, but Hersham has kept a distinct identity: a proper village green, its own shopping parade, its own station on the main line to Waterloo, and a history that runs from Mesolithic flint finds to the punk band that put the village's name in the charts.
 
 **The green (H2)**
 Hersham Green, about three and a half acres at the centre of the village, hosts regular events through the year and is faced by the village's shops and restaurants. It is the natural starting point for any visit. [link to /hersham/hersham-green/]
@@ -201,7 +201,18 @@ Hersham appears in the twelfth century as Haverichesham, probably Haeferic's set
 **Getting here and around (H2)**
 Hersham station sits on the South Western Main Line with at least two trains an hour; Walton-on-Thames station also serves the west of the village. The A3 passes through, and the M25 is minutes away. [cross-link to /getting-here/]
 
-**FAQ block:** Is Hersham part of Walton-on-Thames? (Distinct village, same post town; explain the 1851 parish and current borough arrangements.) Is Hersham a nice place to live? What is Hersham famous for? Where do the Hersham parakeets roost?
+**FAQ block:** Is Hersham part of Walton-on-Thames? (Distinct village, same post town; explain the 1851 parish and current borough arrangements.) Is Hersham a nice place to live? What is Hersham famous for? Where do the Hersham parakeets roost? What is the population of Hersham?
+
+**Amendment, 2026-08-31.** The hub was built to this section and matched it (967 words, the six H2s in order). It has since been extended, deliberately, to compete for the "hersham" head term against a 5,300-word AI-generated Grokipedia article and against hershamvillage.co.uk, which holds an exact-match domain. The section now additionally specifies:
+
+- **A hub link grid**, grouped as Village life / History and heritage / Outdoors and sport / Getting around, covering all eighteen Hersham destinations on the site. **Compact links, never cards.** The full card treatment belongs to the spokes (`/things-to-do/hersham/`, `/hersham/food-and-drink/`, `/hersham/history/`) under the duplication controls documented at the top of `things-to-do/hersham.astro`. A hub that reproduces its spokes' card grids cannibalises them.
+- **A live "What's on in Hersham" block**, the next three Hersham-only events. `/whats-on/` is site-wide and unfiltered, so nothing else on the site owns this view. It is the hub's only genuinely fresh element and the reason the nightly rebuild changes this page at all, which neither competitor can match.
+- **FAQPage JSON-LD**, generated from the same `faqs` array that renders the visible markup so the two cannot drift. Google requires FAQ content to be visible on the page; holding it in one place is what guarantees that.
+- **An enriched `Place` entity**: `alternateName` "Hersham Village", `geo` from the audited coordinate in `content/places/hersham-village-green.md`, `containedInPlace` (Elmbridge, then Surrey), `image`, and `sameAs` to Wikipedia and Wikidata `Q5744439`. Entity disambiguation is the most direct lever available on a head-term query for a place.
+
+**Word target revised:** prose stays at 900 to 1,100 words; the whole page now runs to roughly 1,400 including the link grid and event cards, which are navigational rather than prose. Do not pad the prose to reach the larger figure. Depth belongs in the spokes: the Hersham corpus already stands at roughly 23,800 words across twenty pages, four and a half times the Grokipedia article, and the architecture ("flat, hub and spoke, nothing more than two clicks from home") is the advantage. Grow the corpus by adding spokes, never by fattening the hub.
+
+**Sources for the amended figures:** population from the Office for National Statistics, Census 2021 built-up areas (Hersham, `E63005239`), accessed 31 August 2026. Wikidata identifier confirmed against the Wikidata search API the same day.
 
 ### 4.2 `/hersham/history/` hub
 

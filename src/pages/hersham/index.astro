@@ -1,9 +1,103 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EventCard from '../../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+// getCollection's entries do not infer through the chained callbacks below,
+// so every parameter would otherwise report ts(7006).
+type EventEntry = CollectionEntry<'events'>;
+
+// Upcoming Hersham events. /whats-on/ is site-wide and unfiltered, so this is
+// the only place a visitor can see Hersham's listings on their own. It is also
+// the hub's only genuinely fresh block: the nightly rebuild drops lapsed events
+// without an edit.
+const _today = new Date();
+_today.setHours(0, 0, 0, 0);
+const hershamEvents = (await getCollection('events'))
+  .filter((e: EventEntry) => e.data.neighbourhood === 'hersham')
+  .filter((e: EventEntry) => {
+    const d = new Date(e.data.end ?? e.data.start);
+    d.setHours(0, 0, 0, 0);
+    return d >= _today;
+  })
+  .sort((a: EventEntry, b: EventEntry) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime())
+  .slice(0, 3);
+
+// The FAQ block specified in extension 4.1, held as data so the visible markup
+// and the FAQPage JSON-LD cannot drift apart.
+const faqs = [
+  {
+    q: 'Is Hersham part of Walton-on-Thames?',
+    a: 'Hersham is a distinct village with its own parish history, formed out of Walton in 1851, and the two now share a post town and a borough council rather than a single identity.',
+  },
+  {
+    q: 'Is Hersham a nice place to live?',
+    a: 'Hersham combines a genuine village green and easy access to the River Mole with fast rail links to London, which is the main reason it consistently attracts people weighing up a move from further into the city.',
+  },
+  {
+    q: 'What is Hersham famous for?',
+    a: 'Hersham is best known locally for its green, its River Mole meadows, its parakeet colony, and for producing the punk band Sham 69, whose biggest hit is named directly after the village.',
+  },
+  {
+    q: 'Where do the Hersham parakeets roost?',
+    a: 'The best-documented roost is near Esher Rugby Club, on the edge of Hersham, where mid-2000s reporting put the colony at around 7,000 birds.',
+  },
+  {
+    q: 'What is the population of Hersham?',
+    a: 'The 2021 census recorded 12,630 people in the Hersham built-up area, up from 11,260 in 2011.',
+  },
+];
+
+// Extension 4.1 calls for a hub link grid. Deliberately compact links rather
+// than cards: the full card treatment belongs to the spokes
+// (/things-to-do/hersham/, /hersham/food-and-drink/, /hersham/history/), per the
+// duplication controls documented at the top of things-to-do/hersham.astro.
+const exploreGroups = [
+  {
+    heading: 'Village life',
+    links: [
+      { href: '/hersham/hersham-green/', label: 'Hersham Green' },
+      { href: '/hersham/food-and-drink/', label: 'Food and drink' },
+      { href: '/things-to-do/hersham/', label: 'Things to do in Hersham' },
+      { href: '/things-to-do/hersham-recreation-ground/', label: 'Hersham Recreation Ground' },
+      { href: '/things-to-do/coronation-recreation-ground-hersham/', label: 'Coronation Recreation Ground' },
+    ],
+  },
+  {
+    heading: 'History and heritage',
+    links: [
+      { href: '/hersham/history/', label: 'Hersham history' },
+      { href: '/hersham/st-peters-church/', label: "St Peter's Church" },
+      { href: '/hersham/hersham-lodge-and-hersham-place/', label: 'Hersham Lodge and Hersham Place' },
+      { href: '/hersham/queen-victoria-first-steam-train/', label: "Queen Victoria's first steam train" },
+      { href: '/history/abc-motors-hersham/', label: 'ABC Motors' },
+      { href: '/hersham/famous-residents/', label: 'Famous residents' },
+      { href: '/hersham/sham-69/', label: 'Sham 69' },
+    ],
+  },
+  {
+    heading: 'Outdoors and sport',
+    links: [
+      { href: '/hersham/river-mole-walks/', label: 'River Mole walks' },
+      { href: '/hersham/parakeets/', label: 'The Hersham parakeets' },
+      { href: '/hersham/burhill-and-golf/', label: 'Burhill and golf' },
+      { href: '/things-to-do/walton-and-hersham-fc/', label: 'Walton & Hersham FC' },
+      { href: '/hersham/whiteley-village/', label: 'Whiteley Village' },
+    ],
+  },
+  {
+    heading: 'Getting around',
+    links: [
+      { href: '/hersham-railway-station/', label: 'Hersham station' },
+      { href: '/walton-on-thames-railway-station/', label: 'Walton-on-Thames station' },
+    ],
+  },
+];
 ---
 
 <BaseLayout
-  title="Hersham Guide Near Walton-on-Thames"
+  title="Hersham Village, Surrey"
   description="A local guide to Hersham, Surrey: the green, food and drink, walks by the River Mole, history from the Domesday era to Sham 69, and village life."
   image="/images/hersham-green-village-sign-hero.webp"
 >
@@ -12,8 +106,37 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       "@context": "https://schema.org",
       "@type": "Place",
       "name": "Hersham",
+      "alternateName": "Hersham Village",
       "description": "A village in the Borough of Elmbridge, Surrey, between Walton-on-Thames and Esher.",
-      "url": "https://walton-on-thames.org/hersham/"
+      "url": "https://walton-on-thames.org/hersham/",
+      "image": "https://walton-on-thames.org/images/hersham-green-village-sign-hero.webp",
+      // Hersham Green, the centre of the village, from the audited coordinate
+      // in src/content/places/hersham-village-green.md.
+      "geo": { "@type": "GeoCoordinates", "latitude": 51.3662, "longitude": -0.4002 },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hersham",
+        "addressRegion": "Surrey",
+        "addressCountry": "GB"
+      },
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Borough of Elmbridge",
+        "containedInPlace": { "@type": "AdministrativeArea", "name": "Surrey" }
+      },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Hersham",
+        "https://www.wikidata.org/wiki/Q5744439"
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": { "@type": "Answer", "text": item.a },
+      })),
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -44,7 +167,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </ol>
       </nav>
       <h1>Hersham</h1>
-      <p>Hersham is a village in the Borough of Elmbridge, Surrey, sitting between Walton-on-Thames to the north and Esher to the east, with the River Mole running along its edge. Around 12,400 people live here, according to the 2011 census. Hersham is contiguous with Walton and shares its post town, but it has kept a distinct identity: a proper village green, its own shopping parade, its own station on the main line to Waterloo, and a history that runs from medieval field-names to the punk band that put the village's name in the charts.</p>
+      <p>Hersham is a village in the Borough of Elmbridge, Surrey, sitting between Walton-on-Thames to the north and Esher to the east, with the River Mole running along its edge. The 2021 census recorded 12,630 people in the Hersham built-up area, up from 11,260 in 2011. Hersham is contiguous with Walton and shares its post town, but it has kept a distinct identity: a proper village green, its own shopping parade, its own station on the main line to Waterloo, and a history that runs from medieval field-names to the punk band that put the village's name in the charts.</p>
     </div>
   </div>
 
@@ -66,25 +189,98 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h2>Getting here and around</h2>
         <p><a href="/hersham-railway-station/">Hersham station</a> sits on the South Western Main Line with two trains an hour to London Waterloo, a 33 minute journey, though it has no step-free access to either platform; <a href="/walton-on-thames-railway-station/">Walton-on-Thames station</a> also serves the west of the village. The A3 passes nearby, and the M25 is minutes away.</p>
 
+        <h2>Explore Hersham</h2>
+        <p>Everything on this site about Hersham, in one place.</p>
+        <div class="explore-grid">
+          {exploreGroups.map((group) => (
+            <div class="explore-group">
+              <h3>{group.heading}</h3>
+              <ul>
+                {group.links.map((link) => (
+                  <li><a href={link.href}>{link.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  {hershamEvents.length > 0 && (
+    <section class="section section-tinted" aria-labelledby="hersham-events-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="hersham-events-heading">What's on in Hersham</h2>
+          <p>The next events listed in the village. Walton and the wider area are on the main what's on page.</p>
+        </div>
+        <div class="card-grid">
+          {hershamEvents.map((event: EventEntry) => (
+            <EventCard
+              title={event.data.title}
+              slug={event.data.slug}
+              start={event.data.start}
+              venue={event.data.venue}
+              category={event.data.category}
+              price={event.data.price}
+              image={event.data.image}
+              description={event.data.description}
+            />
+          ))}
+        </div>
+        <div class="section-footer">
+          <a href="/whats-on/" class="btn btn-outline">See all events</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <article class="prose">
         <h2>Common questions about Hersham</h2>
 
-        <h3>Is Hersham part of Walton-on-Thames?</h3>
-        <p>Hersham is a distinct village with its own parish history, formed out of Walton in 1851, and the two now share a post town and a borough council rather than a single identity.</p>
-
-        <h3>Is Hersham a nice place to live?</h3>
-        <p>Hersham combines a genuine village green and easy access to the River Mole with fast rail links to London, which is the main reason it consistently attracts people weighing up a move from further into the city.</p>
-
-        <h3>What is Hersham famous for?</h3>
-        <p>Hersham is best known locally for its green, its River Mole meadows, its parakeet colony, and for producing the punk band Sham 69, whose biggest hit is named directly after the village.</p>
-
-        <h3>Where do the Hersham parakeets roost?</h3>
-        <p>The best-documented roost is near Esher Rugby Club, on the edge of Hersham, where mid-2000s reporting put the colony at around 7,000 birds. See our <a href="/hersham/parakeets/">full guide to the Hersham parakeets</a> for where and when to see them.</p>
+        {faqs.map((item) => (
+          <>
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </>
+        ))}
+        <p>For where and when to see the birds, see our <a href="/hersham/parakeets/">full guide to the Hersham parakeets</a>.</p>
       </article>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem 2rem;
+    margin: 1.5rem 0 0;
+  }
+
+  .explore-group h3 {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin: 0 0 0.6rem;
+  }
+
+  .explore-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .explore-group li {
+    margin-bottom: 0.35rem;
+  }
+
   .hersham-hero {
     position: relative;
     display: flex;
