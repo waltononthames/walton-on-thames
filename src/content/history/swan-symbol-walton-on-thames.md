@@ -360,7 +360,7 @@ The swan did not make the journey. Its use as the crest of a functioning local a
 
 ## Rydens School: a civic echo
 
-The swan also entered the visual life of local education. The institution later known as Rydens School traces its beginnings to 1954. A surviving school newsletter shows that its later badge prominently combined a white swan with a red eagle (Rydens School, 2010; Surrey Live, 2013).
+The swan also entered the visual life of local education. Rydens School traces its beginnings to 1954. A surviving school newsletter shows that its later badge prominently combined a white swan with a red eagle (Rydens School, 2010; Surrey Live, 2013).
 
 The pairing is significant. Both birds appeared in the 1946 arms of Walton and Weybridge: the crowned swan's head as the crest and the red eagle on the shield (Civic Heraldry of England and Wales, n.d.b). The close resemblance makes it plausible that Rydens adapted elements of the council achievement. No school record located for this article, however, states who designed the badge, when it was adopted or what it was intended to represent. The badge therefore establishes the use of the two birds by the school, not that it had used them since opening in 1954 or that the council arms were their documented source.
 
