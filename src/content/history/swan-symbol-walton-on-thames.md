@@ -364,7 +364,7 @@ The swan also entered the visual life of local education. Rydens School traces i
 
 <figure>
   <img src="/images/history/rydens-school-badge.webp" alt="Embroidered blazer badge: a shield with a red eagle above, a chequered field strewn with small black crosses, a gold swan on water below a chevron, and a scroll reading DO UT DES" loading="lazy" />
-  <figcaption>The badge on Darren Bayley's own Rydens School blazer. The gold swan swims on water beneath the chevron, the red eagle sits above, and the scroll carries the motto DO UT DES. The badge is undated and it is not known how it relates to the version shown in the 2010 newsletter. Photographed by Walton-on-Thames.org on 31 August 2026.</figcaption>
+  <figcaption>Rydens School blazer badge. The gold swan swims on water beneath the chevron, the red eagle sits above, and the scroll carries the motto DO UT DES. Photographed by Walton-on-Thames.org on 31 August 2026.</figcaption>
 </figure>
 
 The pairing is significant. Both birds appeared in the 1946 arms of Walton and Weybridge: the crowned swan's head as the crest and the red eagle on the shield (Civic Heraldry of England and Wales, n.d.b). The close resemblance makes it plausible that Rydens adapted elements of the council achievement. No school record located for this article, however, states who designed the badge, when it was adopted or what it was intended to represent. The badge therefore establishes the use of the two birds by the school, not that it had used them since opening in 1954 or that the council arms were their documented source.
