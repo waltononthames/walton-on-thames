@@ -402,7 +402,7 @@ Walton Athletic Club, founded in 1942, tells a similar story. Its present badge 
 
 Neither foundation date should be read as a date of adoption. Walton AC's founding in 1942 does not establish that its swan predates the 1946 civic grant, and no source located for this article records when either club first took up the bird, who designed it, or what reason was given at the time. Club minutes, early letterheads, programmes, photographs or kit may eventually settle it.
 
-The swan appeared in Walton's commercial life too. Walton Business Group, co-founded in 2005 by Sarah-Jane Shellard, used the bird in its logo. Shellard died in 2014 after nearly a decade as a director. The company later changed its name to Walton, Weybridge & District Business Group Limited and was dissolved in 2023 (Brooklands Radio, 2015; Companies House, n.d.; Funeral Notices, 2014; Walton Business Group, n.d.). Its logo does not make the swan an official town device, but it shows how readily the bird could function as shared local shorthand.
+The swan appeared in Walton's commercial life too. Walton Business Group, co-founded in 2005 by Sarah-Jane Shellard, used the bird in its logo. Shellard passed away in 2014 after nearly a decade as a director. The company later changed its name to Walton, Weybridge & District Business Group Limited and was dissolved in 2023 (Brooklands Radio, 2015; Companies House, n.d.; Funeral Notices, 2014; Walton Business Group, n.d.). Its logo does not make the swan an official town device, but it shows how readily the bird could function as shared local shorthand.
 
 The uncertainty is itself revealing. By the time these badges became familiar, the swan no longer needed an origin story. It had become visual shorthand for Walton.
 
