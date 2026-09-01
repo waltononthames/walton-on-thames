@@ -1,6 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { fixturesLoader } from './loaders/fixtures-loader';
+import { planningLoader } from './loaders/planning-loader';
 
 const businesses = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/businesses' }),
@@ -252,7 +253,61 @@ const fixtures = defineCollection({
   }),
 });
 
+// Major planning applications near Hersham, from the PlanIt open API.
+// Specified in docs/walton-history-hersham-extension.md section 4.11.
+// The Walton equivalent (section 4.12) gets its own collection with the same
+// loader, The Heart as its centre, and Hersham in its otherCentres.
+const hershamPlanning = defineCollection({
+  loader: planningLoader({
+    centre: { name: 'Hersham', lat: 51.3662, lng: -0.4002 },
+    radiusKm: 2,
+    otherCentres: [{ name: 'Walton-on-Thames', lat: 51.3853, lng: -0.4202 }],
+    overrides: {
+      // 1.45km from Hersham Green against 1.51km from The Heart. Too close to
+      // leave to arithmetic; Mayfield Road is the Hersham side of the railway.
+      'waterloo court': 'include',
+    },
+    // Order matters: the first match wins, so the more specific name goes first.
+    sites: [
+      { name: 'Hersham Place Technology Park', slug: 'hersham-place-technology-park', match: ['hersham place technology park'] },
+      { name: 'Land east of Molesey Road', slug: 'land-east-of-molesey-road', match: ['land east of molesey road'] },
+      { name: 'Land south of Burwood Road', slug: 'land-south-of-burwood-road', match: ['131 to 147 burwood road'] },
+      { name: 'Waterloo Court car park, Mayfield Road', slug: 'waterloo-court-car-park', match: ['waterloo court'] },
+      { name: 'Hersham Green Shopping Centre', slug: 'hersham-green-shopping-centre', match: ['hersham green shopping centre'] },
+      { name: 'Hersham Village Golf Club', slug: 'hersham-village-golf-club', match: ['hersham village golf club'] },
+      { name: 'Burhill Kennels', slug: 'burhill-kennels', match: ['burhill kennels'] },
+      { name: 'Burhill Golf Club', slug: 'burhill-golf-club', match: ['burhill golf club'] },
+      { name: 'Esher Rugby Club', slug: 'esher-rugby-club', match: ['esher rugby'] },
+      { name: 'North Weylands Industrial Estate', slug: 'north-weylands-industrial-estate', match: ['north weylands'] },
+      { name: 'Weylands Treatment Works', slug: 'weylands-treatment-works', match: ['weylands'] },
+      { name: 'Clarence House, Queens Road', slug: 'clarence-house-queens-road', match: ['clarence house'] },
+      { name: '3 Lyon Road', slug: '3-lyon-road', match: ['3 lyon road'] },
+      // Station Avenue is the Walton side of the railway. The distance rule puts
+      // it here; revisit when the Walton page (section 4.12) exists, as it is a
+      // candidate for reassignment or an explicit override.
+      { name: 'Walton Court, Station Avenue', slug: 'walton-court-station-avenue', match: ['walton court'] },
+    ],
+    yearsBack: 5,
+  }),
+  schema: z.object({
+    reference: z.string(),
+    address: z.string(),
+    postcode: z.string().optional(),
+    description: z.string(),
+    state: z.string(),
+    type: z.string(),
+    startDate: z.string(),
+    decidedDate: z.string().optional(),
+    councilUrl: z.string().optional(),
+    planitUrl: z.string().optional(),
+    place: z.string(),
+    siteName: z.string().optional(),
+    siteSlug: z.string(),
+  }),
+});
+
 export const collections = {
   businesses, events, places, news, history, hersham, fixtures,
   attractions, 'annual-events': annualEvents,
+  'hersham-planning': hershamPlanning,
 };
