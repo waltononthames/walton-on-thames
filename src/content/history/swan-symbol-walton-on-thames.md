@@ -317,7 +317,7 @@ The dated one is a goblet. An auction record describes a "Walton on Thames Regat
   <figcaption>The Walton-on-Thames Regatta goblet, hallmarked in London in 1864: a silver cup on a branch-form stem with a figure holding an oar, its bowl mounted with an applied cartouche carrying the swan, the lettered roundel and the crossed oars. Photograph courtesy of Bishop and Miller Auctioneers.</figcaption>
 </figure>
 
-The second object is a plain silver jug, photographed for this article, carrying the same device engraved into the body rather than applied to it (Walton-on-Thames.org, n.d.). No hallmark has been read from those photographs, so the jug is not dated here; the 1864 mark belongs to the goblet.
+The second object is a plain silver jug, which reached this article from an unconnected source, carrying the same device engraved into the body rather than applied to it (Walton-on-Thames.org, n.d.). No hallmark has been read from those photographs, so the jug is not dated here; the 1864 mark belongs to the goblet.
 
 <figure>
   <img src="/images/history/walton-on-thames-regatta-trophy-swan-engraving.webp" alt="Engraving on a silver trophy: the words LOCAL GIGS above a roundel lettered WALTON ON THAMES REGATTA enclosing a swan, with crossed oars behind it, and the names of the winning crew beneath" loading="lazy" />
@@ -331,7 +331,7 @@ The second object is a plain silver jug, photographed for this article, carrying
 
 The jug's engraving settles a different question. Beneath the words LOCAL GIGS, and above the roundel, it records that the prize was won by E. R. Kennedy and F. A. Stringer, with A. Payne as cox (Walton-on-Thames.org, n.d.). This was not commemorative silver but a trophy actually competed for and awarded, in a named event, to a named crew. What it does not give is a year, and the crew's own careers on the water have not been traced.
 
-Two objects change the reading of one. A single trophy shows only what one silversmith, or one commissioning committee, thought suitable for a Walton regatta prize on a single occasion. The same device on a second trophy of quite different manufacture, cast and applied on the goblet and cut into the body of the jug, points to something more settled: a badge the regatta used, rather than an ornament chosen once and forgotten. On this evidence the swan in its lettered roundel was not decoration applied to a Walton prize. It was the regatta's own emblem, and by 1864 it was already in use.
+Two objects change the reading of one. A single trophy shows only what one silversmith, or one commissioning committee, thought suitable for a Walton regatta prize on a single occasion. The same device on a second trophy of quite different manufacture, cast and applied on the goblet and cut into the body of the jug, points to something more settled: a badge the regatta used, rather than an ornament chosen once and forgotten. The two agree independently. They are not a matched pair from one collection: the goblet is known from a saleroom record, the jug came to this article from an unrelated source, and neither was found by looking for the other. On this evidence the swan in its lettered roundel was not decoration applied to a Walton prize. It was the regatta's own emblem, and by 1864 it was already in use.
 
 The device is simple and eloquent. The oars identify the competition. The swan locates it on the Thames. Nothing about it requires knowledge of medieval genealogy. On a silver cup above two oars, the bird simply announced the river.
 
