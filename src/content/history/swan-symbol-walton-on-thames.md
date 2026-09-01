@@ -93,7 +93,7 @@ sources:
     accessed: "31 August 2026"
   - author: "Invaluable"
     year: "n.d."
-    title: "Victorian silver Walton on Thames Regatta trophy, London 1864, maker EM/JM"
+    title: "Victorian silver Walton on Thames Regatta goblet trophy, London 1864, maker EM/JM, 19.5cm, 10.4oz"
     url: "https://www.invaluable.com/auction-lot/victorian-silver-walton-on-thames-regatta-trophy--14-c-23944e48be"
     accessed: "28 August 2026"
   - author: "London Museum"
@@ -240,7 +240,7 @@ At Walton Wharf, swans are part of the everyday life of the river. They gather b
 
 It would be tempting to present the swan as a symbol whose use stretches continuously from the Middle Ages to the present day. The historical record does not support that conclusion. What the evidence reveals is something more complex: a series of separate moments in Walton's history when the swan was chosen, adapted or rediscovered as a symbol of our community.
 
-The earliest takes us to 1301, when the de Bohun family held Walton Manor and one of its most powerful members pressed a swan into the wax of his seal. More than five and a half centuries later, a silver trophy hallmarked in 1864 paired a swan with crossed oars beneath the name of the Walton-on-Thames Regatta, although the engraving itself has not been independently dated. In 1946 the bird entered formal civic heraldry when a crowned swan's head became the crest of Walton and Weybridge Urban District Council. In the modern period it has appeared in school, sporting, motoring and community identities.
+The earliest takes us to 1301, when the de Bohun family held Walton Manor and one of its most powerful members pressed a swan into the wax of his seal. More than five and a half centuries later, a silver goblet hallmarked in 1864 carried a swan and a pair of crossed oars inside a roundel lettered for the Walton-on-Thames Regatta. In 1946 the bird entered formal civic heraldry when a crowned swan's head became the crest of Walton and Weybridge Urban District Council. In the modern period it has appeared in school, sporting, motoring and community identities.
 
 ## A swan above the shield
 
@@ -308,36 +308,36 @@ This wider history explains why the swan was such a resonant emblem for later he
 
 Walton Amateur Regatta was established in 1862, and its successor, the Walton and Weybridge Regatta, still races on the Thames at Walton over a course beginning below Walton Marina and finishing downstream near Walton Rowing Club (Weybridge Rowing Club, n.d.; Walton and Weybridge Regatta, n.d.).
 
-Among the surviving objects associated with the regatta is a Victorian silver trophy. An auction catalogue describes it as a "Walton on Thames Regatta" trophy, hallmarked in London in 1864 and marked by the maker EM/JM, its engraved decoration placing a swan above crossed oars (Invaluable, n.d.). Photographs of the jug itself show the arrangement more precisely: a swan sits within a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it (Walton-on-Thames.org, n.d.). The silver vessel therefore belongs securely to the period in which the regatta began, and its form and decoration are consistent with a Victorian rowing prize.
+Two silver prizes from the regatta survive in photographs, and only one of them is dated.
 
-The image is simple and eloquent. The oars identify the competition. The swan locates it on the Thames. Nothing about the engraving requires knowledge of medieval genealogy. On a silver cup above two oars, the bird simply announced the river.
+The dated one is a goblet. An auction record describes a "Walton on Thames Regatta" trophy, hallmarked in London in 1864 and marked by the maker EM/JM, standing 19.5cm high and weighing 10.4oz, with a crest above a branch column and a gentleman standing with an oar (Invaluable, n.d.). The photograph shows what that crest is: an applied cartouche mounted on the bowl, carrying a swan within a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it (Bishop and Miller Auctioneers, n.d.). Because the device is cast and applied rather than added later with a graver, it belongs to the making of the cup, and the hallmark therefore dates the swan as well as the silver.
+
+<figure>
+  <img src="/images/history/walton-on-thames-regatta-goblet-1864.webp" alt="Victorian silver goblet on a figural stem modelled as two figures, the bowl mounted with an applied cartouche enclosing a swan in a roundel lettered Walton on Thames Regatta with crossed oars behind" loading="lazy" />
+  <figcaption>The Walton-on-Thames Regatta goblet, hallmarked in London in 1864: a silver cup on a branch-form stem with a figure holding an oar, its bowl mounted with an applied cartouche carrying the swan, the lettered roundel and the crossed oars. Photograph courtesy of Bishop and Miller Auctioneers.</figcaption>
+</figure>
+
+The second object is a plain silver jug, photographed for this article, carrying the same device engraved into the body rather than applied to it (Walton-on-Thames.org, n.d.). No hallmark has been read from those photographs, so the jug is not dated here; the 1864 mark belongs to the goblet.
 
 <figure>
   <img src="/images/history/walton-on-thames-regatta-trophy-swan-engraving.webp" alt="Engraving on a silver trophy: the words LOCAL GIGS above a roundel lettered WALTON ON THAMES REGATTA enclosing a swan, with crossed oars behind it, and the names of the winning crew beneath" loading="lazy" />
-  <figcaption>The engraved panel on the trophy. A swan sits within a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it, beneath the name of the event, LOCAL GIGS, and above the winning crew: E. R. Kennedy and F. A. Stringer, with A. Payne as cox. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The engraved panel on the jug. A swan sits within a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it, beneath the name of the event, LOCAL GIGS, and above the winning crew: E. R. Kennedy and F. A. Stringer, with A. Payne as cox. Photograph supplied to Walton-on-Thames.org.</figcaption>
 </figure>
 
 <figure>
   <img src="/images/history/walton-on-thames-regatta-trophy.webp" alt="Victorian silver jug with a plain tapering body, curved handle and shaped lip, standing on a pale windowsill" loading="lazy" />
-  <figcaption>The trophy itself, a plain silver jug hallmarked in London in 1864. Photograph supplied to Walton-on-Thames.org.</figcaption>
+  <figcaption>The jug itself, a plain silver vessel carrying the engraved panel. No hallmark has been read from these photographs, so it is not dated here. Photograph supplied to Walton-on-Thames.org.</figcaption>
 </figure>
+
+The jug's engraving settles a different question. Beneath the words LOCAL GIGS, and above the roundel, it records that the prize was won by E. R. Kennedy and F. A. Stringer, with A. Payne as cox (Walton-on-Thames.org, n.d.). This was not commemorative silver but a trophy actually competed for and awarded, in a named event, to a named crew. What it does not give is a year, and the crew's own careers on the water have not been traced.
+
+Two objects change the reading of one. A single trophy shows only what one silversmith, or one commissioning committee, thought suitable for a Walton regatta prize on a single occasion. The same device on a second trophy of quite different manufacture, cast and applied on the goblet and cut into the body of the jug, points to something more settled: a badge the regatta used, rather than an ornament chosen once and forgotten. On this evidence the swan in its lettered roundel was not decoration applied to a Walton prize. It was the regatta's own emblem, and by 1864 it was already in use.
+
+The device is simple and eloquent. The oars identify the competition. The swan locates it on the Thames. Nothing about it requires knowledge of medieval genealogy. On a silver cup above two oars, the bird simply announced the river.
 
 The period is strikingly early in the development of mass leisure on the Thames. The railway had reached Walton in 1838, putting the town within easy reach of London, but the great boom in river recreation was still years away (Network Rail, 2024). The period now remembered as the golden age of the river, when boat outings, steam-launch trips, houseboat holidays, fairs, picnics and carnivals drew enormous crowds, rose most sharply between 1879 and 1887. By 1889 some 12,000 pleasure boats, 300 steamers and around 150 houseboats were registered on the water (Wenham, 2018). Walton's regatta was established a generation before that.
 
-In its surviving form, the trophy suggests that the later council's choice may have drawn upon an association already intelligible in Walton's river culture. Because the engraving has not been independently dated, the object cannot by itself prove that the association predates 1946. Its design nevertheless turns the medieval bird of dynastic identity into an immediately understandable riverside image: a swan, a pair of oars and Walton's name.
-
-The engraving settles part of the object's history. Beneath the words LOCAL GIGS, and above the roundel, it records that the prize was won by E. R. Kennedy and F. A. Stringer, with A. Payne as cox (Walton-on-Thames.org, n.d.). This was not a piece of commemorative silver but a trophy actually competed for and awarded, in a named event, to a named crew.
-
-What the engraving does not give is a year. A hallmark dates the silver rather than any later inscription, so it would still be unsafe to claim that this cup was presented at the 1864 regatta in particular, and the crew's own careers on the water have not been traced. What can be said is that this is the earliest identified object combining Walton's name with a swan, carried on a silver vessel securely belonging to the regatta's early Victorian era, and that the swan was used on a prize the competitors themselves took home.
-
-A second surviving prize carries the same device. Where the jug is plain silver with its ornament engraved into the body, this is a goblet raised on a figural stem, its bowl mounted with an applied silver cartouche. The badge within that cartouche is unmistakable: a swan in a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it, which is the arrangement engraved on the jug (Bishop and Miller Auctioneers, n.d.).
-
-<figure>
-  <img src="/images/history/walton-on-thames-regatta-goblet-1864.webp" alt="Victorian silver goblet on a figural stem modelled as two figures, the bowl mounted with an applied cartouche enclosing a swan in a roundel lettered Walton on Thames Regatta with crossed oars behind" loading="lazy" />
-  <figcaption>A second Walton-on-Thames Regatta trophy: a silver goblet on a figural stem, its bowl mounted with an applied cartouche carrying the swan, the lettered roundel and the crossed oars. Photograph courtesy of Bishop and Miller Auctioneers.</figcaption>
-</figure>
-
-Two objects change the reading of one. A single engraved cup shows only what one silversmith, or one commissioning committee, thought suitable for a Walton regatta prize on a single occasion. The same device applied to a second trophy of quite different manufacture suggests something more settled: a badge the regatta used, rather than an ornament chosen once and forgotten. On this evidence the swan in its lettered roundel was not merely decoration applied to a Walton prize. It was the regatta's own emblem.
+The dated goblet settles a question the article would otherwise have to leave open. Its hallmark places the swan, the roundel and the oars in 1864, more than eighty years before the council's grant of arms, so whatever the heralds were doing in 1946 they were not inventing the association. The design turns the medieval bird of dynastic identity into an immediately understandable riverside image: a swan, a pair of oars and Walton's name.
 
 ## Why the swan belongs so naturally to the Thames
 
@@ -427,8 +427,8 @@ The surviving evidence offers several different levels of certainty:
 | Date | Evidence | What it establishes | What it does not establish |
 |---|---|---|---|
 | 1301 | Humphrey de Bohun's counter-seal | A de Bohun lord of Walton used the swan badge | That Walton itself had adopted a swan emblem |
-| Silver hallmarked 1864 | The Walton-on-Thames Regatta trophy and its engraving | The earliest identified object explicitly combining Walton's name with a swan, on a vessel from the regatta's early Victorian era, awarded as a prize in the Local Gigs event to a named crew | That it was Walton's first use, that the engraving was made in 1864, or that the cup was presented at that year's regatta |
-| Undated, auction-photographed | A second Walton-on-Thames Regatta trophy, a goblet carrying an applied swan cartouche | The same swan, roundel and crossed oars were used on more than one regatta prize, so the device was the regatta's own | When this second trophy was made, or that the device was ever formally adopted |
+| 1864 | The Walton-on-Thames Regatta goblet, hallmarked and auction-catalogued, its swan cast into an applied cartouche | The swan, its lettered roundel and the crossed oars were in use as a regatta device by 1864 | That it was Walton's first use, or that the regatta ever formally adopted the device |
+| Undated | The Walton-on-Thames Regatta jug, carrying the same device engraved, with LOCAL GIGS and the winning crew | The device recurs across prizes of different manufacture, and was used on a trophy actually competed for and awarded | When the jug was made, or which year's regatta it belongs to |
 | 1946 | Grant to Walton and Weybridge Urban District Council | The swan received a formal civic role, explicitly representing the Thames and de Bohuns | That the arms belonged to Walton alone |
 | Postwar period, exact date unknown | HWM badges documented by Simon Taylor | HWM began with a heathcock emblem and later used a white swan | When or why the change was made, or that the council arms inspired it |
 | By 2010 | Surviving Rydens School publication | The school badge combined a swan and a red eagle, closely echoing the 1946 council arms | That the badge dated from the school's beginnings in 1954 or that direct borrowing was documented |
@@ -458,7 +458,8 @@ The swan's claim to represent Walton rests not on an invented continuity but on 
 | 1394 | Mary de Bohun dies in childbirth, five years before her husband takes the throne (Given-Wilson, 2016; Tout, 1891) |
 | c. 1400 | The Dunstable Swan Jewel is made (British Museum, n.d.) |
 | 1862 | Walton Amateur Regatta is established (Weybridge Rowing Club, n.d.) |
-| Silver hallmarked 1864 | A Victorian Walton-on-Thames Regatta trophy bears a swan and crossed oars, and is engraved as the Local Gigs prize won by E. R. Kennedy, F. A. Stringer and A. Payne, cox; the engraving itself has not been independently dated (Invaluable, n.d.; Walton-on-Thames.org, n.d.) |
+| 1864 | A Walton-on-Thames Regatta goblet is hallmarked in London, its applied cartouche carrying a swan in a lettered roundel with crossed oars behind (Invaluable, n.d.; Bishop and Miller Auctioneers, n.d.) |
+| Undated | A second regatta prize, a silver jug, carries the same device engraved, recording the Local Gigs win of E. R. Kennedy, F. A. Stringer and A. Payne, cox (Walton-on-Thames.org, n.d.) |
 | 1942 | Walton Athletic Club is founded; its current badge contains a swan (Walton Athletic Club, n.d.) |
 | 1945 | Walton & Hersham FC is formed; the club becomes known as the Swans (Walton & Hersham FC, n.d.) |
 | 29 March 1946 | A crowned swan's head becomes the crest of Walton and Weybridge Urban District Council (Civic Heraldry of England and Wales, n.d.b) |

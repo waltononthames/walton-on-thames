@@ -678,3 +678,19 @@ Bishop and Miller Auctioneers' photograph of a second Walton-on-Thames Regatta p
 ## Still open
 - **The Bishop and Miller lot record.** Its URL would let the goblet be dated and the citation pointed at the lot rather than the firm's homepage.
 - **Club badges.** Unchanged: Walton AC and Walton & Hersham FC both need permission, and the FC photograph is held outside the repository.
+
+## 2026-09-01 (later): the 1864 hallmark was on the wrong trophy
+
+Darren supplied the Bishop and Miller lot description: "Victorian silver Walton on Thames Regatta trophy, London 1864, maker EM JM **the goblet trophy** with a crest above the branch column and a gentleman standing with an oar, 19.5cm high, 10.4oz". The URL is the Invaluable link the article had cited since publication.
+
+**That citation was attached to the wrong object.** Invaluable aggregates auction listings, so that record is the Bishop and Miller sale of the goblet. The article had been reading it as the catalogue entry for the jug, and had therefore given the jug a London 1864 hallmark, a maker's mark of EM/JM, and a place "securely belonging to the regatta's early Victorian era". None of that was ever evidenced for the jug. The error was in five places: the standfirst, the opening of the regatta section, the jug's figcaption, the evidence table and the timeline.
+
+**The jug is now undated here.** Its photographs show no hallmark that has been read, so the section says so explicitly rather than borrowing the goblet's date. What the jug still carries, uniquely, is the LOCAL GIGS engraving and the winning crew, which is evidence of a different kind: a prize actually competed for and awarded.
+
+**The correction strengthens the article rather than weakening it.** The swan on the goblet is cast into an applied cartouche, part of the cup's manufacture, so the hallmark dates the device and not merely the metal. That is a firmer 1864 than an engraving could ever be, and it retires the old hedge that the object "cannot by itself prove that the association predates 1946". It now does: the swan, the lettered roundel and the crossed oars are documented more than eighty years before the grant of arms.
+
+Verified: `npm run build` clean, 371 pages, ten images on the page, and none of the three stale phrasings survive in the built output.
+
+## Still open
+- **The jug's hallmark.** Reading it from the object would date the second trophy and is now the single most useful outstanding check on this page.
+- **Club badges.** Unchanged: Walton AC and Walton & Hersham FC both need permission.
