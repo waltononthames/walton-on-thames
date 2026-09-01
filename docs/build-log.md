@@ -694,3 +694,26 @@ Verified: `npm run build` clean, 371 pages, ten images on the page, and none of 
 ## Still open
 - **The jug's hallmark.** Reading it from the object would date the second trophy and is now the single most useful outstanding check on this page.
 - **Club badges.** Unchanged: Walton AC and Walton & Hersham FC both need permission.
+
+## 2026-09-01: /hersham/development-and-planning/ built to extension 4.11
+
+The first new Hersham spoke since the hub rebuild, and the one identified as highest value: planning is the local subject residents search repeatedly and share, and it is the only ground on which hershamvillage.co.uk was genuinely ahead.
+
+**Built in two halves, deliberately.** The volatile half is machine-maintained: 20 major applications grouped into 14 named sites, refreshed by `src/loaders/planning-loader.ts` on the nightly rebuild. The durable half is written once: the Green Belt position, who decides, how to comment. That split is what makes the page maintainable by one person, and it is why the loader was built and proven before a word of prose was written.
+
+**What the data shows on first publication.** Seven applications awaiting a decision across six sites, including 284 dwellings on land east of Molesey Road, 62 on land south of Burwood Road, the Hersham Place Technology Park hybrid application, and 23 units at the Waterloo Court car park. Recently decided includes the Hersham Green Shopping Centre redevelopment, refused in 2024, which answers a "what happened to" query nobody else covers.
+
+**The context nobody had.** Elmbridge has no up-to-date Local Plan. An inspector found the draft Elmbridge Local Plan 2037 unsound and offered a six-month pause for further evidence; the council instead withdrew it following a Full Council decision on 26 February 2025. A replacement is scheduled for 2025 to 2028, and Elmbridge, Runnymede and Spelthorne have been awarded government funding to procure a joint Green Belt review, with consultants still being appointed. That is the frame every one of these applications sits in, and it was absent from every earlier note in this session.
+
+**Corrections to earlier working assumptions, all from the same bad source.** Research notes taken from the Grokipedia article had said Hersham would fall under a West Surrey unitary authority (it is East Surrey), that Berkeley proposed 280 homes at the Technology Park (that figure belongs to a different site, land east of Molesey Road, and is 284), and that a "Hersham Park" scheme of 221 homes was approved in March 2025 (no such application appears in four and a half years of Large applications within 2km). Three headline claims, none of which survived contact with the council record. Tier 3 in Rule 1 is not a formality.
+
+**Editorial stance.** Per the Charter, the page reports what is proposed and at what stage, links to the council record for every application and to the consultation route, and takes no position. It does not characterise applicants, quantify local opposition or reproduce campaign material. The "how to have your say" section is the most practically useful part: it sets out Elmbridge's own list of material considerations against the things the council explicitly cannot take into account, including perceived loss of property value, which is the objection residents most often waste.
+
+**One validator change.** `scripts/seo-validate.mjs` requires Article schema on any `/hersham/<slug>/` page, with an exception list for curated hubs. This page joins `food-and-drink` and `history` in that list: it has editorial prose but no publishDate or author in the content-collection sense, and an Article `dateModified` would move every night whether or not anything changed. Its freshness signal is the dated status stamp on the page instead.
+
+Verified: build clean, `seo:validate` passes on 371 pages, no new type errors, 3,177 rendered words, 20 applications each linking to the council's own record, FAQ count matches between markup and schema, linked from the hub's Explore grid.
+
+## Still open
+- Walton Court on Station Avenue currently assigns to Hersham on the distance rule, but Station Avenue is the Walton side of the railway. Flagged in `content.config.ts` as a candidate for reassignment or an explicit override once the Walton page (section 4.12) exists.
+- Applicant names are not shown. PlanIt does not return them and verifying twenty of them against the council record was out of scope for this pass; each application links to the record where the applicant is named. Worth adding for the live schemes only.
+- Section 4.12, the Walton equivalent, is specified but unbuilt. Its URL is undecided: Walton has no section parent, so it may belong under `/living/`.

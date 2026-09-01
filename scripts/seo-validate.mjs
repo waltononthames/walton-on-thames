@@ -120,8 +120,17 @@ for (const file of files) {
 
   // History / Hersham articles and news articles: Article schema.
   // (hersham/food-and-drink/ and hersham/history/ are curated hub pages,
-  // not content-collection articles, so they're excluded here.)
-  const hubExceptions = new Set(['/hersham/food-and-drink/', '/hersham/history/']);
+  // not content-collection articles, so they're excluded here.
+  // hersham/development-and-planning/ is the same: editorial prose wrapped
+  // around a build-time feed of council planning records, with no publishDate
+  // or author in the content-collection sense. Its freshness signal is the
+  // dated status stamp on the page, not an Article dateModified that would
+  // move every night whether or not anything changed.)
+  const hubExceptions = new Set([
+    '/hersham/food-and-drink/',
+    '/hersham/history/',
+    '/hersham/development-and-planning/',
+  ]);
   if ((/^\/(history|hersham)\/[^/]+\/$/.test(urlPath) && !hubExceptions.has(urlPath)) || /^\/community\/news\/[^/]+\/$/.test(urlPath)) {
     const article = findByType(blocks, 'Article')[0];
     if (!article) {

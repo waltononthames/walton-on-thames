@@ -1,0 +1,313 @@
+---
+// Built to docs/walton-history-hersham-extension.md section 4.11. Read it
+// before editing: the significance rule, the assignment rule and the editorial
+// stance are all specified there, and several of them are load-bearing.
+//
+// Editorial stance, from the Charter: this page reports what is proposed and at
+// what stage, links to the consultation so readers can respond themselves, and
+// takes no position for or against any scheme. It does not characterise
+// applicants, quantify local opposition, or reproduce campaign material.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+type PlanningEntry = CollectionEntry<'hersham-planning'>;
+
+const all = await getCollection('hersham-planning');
+
+// Group applications by site. A single scheme generates many applications over
+// years (Weylands has four), and listing them separately would both repeat
+// itself and overstate how much is happening.
+const bySite = new Map<string, { name: string; apps: PlanningEntry[] }>();
+for (const entry of all as PlanningEntry[]) {
+  const key = entry.data.siteSlug;
+  if (!bySite.has(key)) {
+    bySite.set(key, { name: entry.data.siteName ?? entry.data.address, apps: [] });
+  }
+  bySite.get(key)!.apps.push(entry);
+}
+
+const newest = (apps: PlanningEntry[]) =>
+  apps.map((a) => a.data.startDate).sort().at(-1) ?? '';
+
+const sites = [...bySite.values()]
+  .map((site) => ({
+    ...site,
+    apps: site.apps.sort((a, b) => b.data.startDate.localeCompare(a.data.startDate)),
+    live: site.apps.some((a) => a.data.state === 'Undecided'),
+  }))
+  .sort((a, b) => newest(b.apps).localeCompare(newest(a.apps)));
+
+const liveSites = sites.filter((s) => s.live);
+const decidedSites = sites.filter((s) => !s.live);
+
+// Every status on this page is a snapshot. Stamp it rather than implying the
+// page is evergreen: see section 4.11 on currency.
+const checkedOn = new Date().toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const dateStr = (iso?: string) =>
+  iso
+    ? new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+    : '';
+
+const faqs = [
+  {
+    q: 'What is being built in Hersham?',
+    a: `Several large schemes are in progress around the village, including proposals at Hersham Place Technology Park, land east of Molesey Road, and land south of Burwood Road. This page lists the major applications and their current stage, as recorded on ${checkedOn}.`,
+  },
+  {
+    q: 'Can they build on the Green Belt around Hersham?',
+    a: 'Green Belt land carries strong protection against development, but boundaries are set through a council’s Local Plan and can be reviewed. Elmbridge withdrew its draft Local Plan in February 2025 and is preparing a new one, and has been awarded government funding jointly with Runnymede and Spelthorne to carry out a Green Belt review as part of that evidence base.',
+  },
+  {
+    q: 'How do I object to a planning application in Hersham?',
+    a: 'Find the application on Elmbridge Borough Council’s planning search and use the comment form on it. Comments must address material planning considerations such as design, privacy, overshadowing, highway safety or noise. The council is not obliged to consider comments received after the consultation period closes.',
+  },
+  {
+    q: 'Who will decide planning applications in Hersham after 2027?',
+    a: 'Elmbridge Borough Council decides them today. From 1 April 2027 Elmbridge is replaced by East Surrey Council, a new unitary authority also covering Epsom and Ewell, Mole Valley, Reigate and Banstead, and Tandridge, with shadow elections held in May 2026.',
+  },
+];
+
+const stateLabel: Record<string, string> = {
+  Undecided: 'Undecided',
+  Permitted: 'Permitted',
+  Rejected: 'Refused',
+  Withdrawn: 'Withdrawn',
+  Conditions: 'Conditions',
+};
+---
+
+<BaseLayout
+  title="Hersham Development and Planning"
+  description="What is being built in Hersham: current planning applications, the Green Belt, and how to have your say."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://walton-on-thames.org/' },
+        { '@type': 'ListItem', position: 2, name: 'Hersham', item: 'https://walton-on-thames.org/hersham/' },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Development and planning',
+          item: 'https://walton-on-thames.org/hersham/development-and-planning/',
+        },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/hersham/">Hersham</a></li>
+          <li aria-current="page">Development and planning</li>
+        </ol>
+      </nav>
+      <h1>Development and planning in Hersham</h1>
+      <p>The major schemes proposed around the village, what stage each has reached, and how to comment on them.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <article class="prose">
+        <p>Hersham has an unusual number of large planning applications in progress, from housing on former golf course and industrial land to the redevelopment of the technology park on Molesey Road. This page tracks the major ones and links to the council&rsquo;s own record for each, so you can read the documents and comment within the consultation period.</p>
+
+        <blockquote>
+          <p><strong>Statuses checked {checkedOn}.</strong> Application stages change without notice. The council&rsquo;s record is the definitive source, and every scheme below links to it. This page lists major applications only, not householder extensions or tree works.</p>
+        </blockquote>
+
+        {liveSites.length > 0 && (
+          <>
+            <h2 id="current">Applications awaiting a decision</h2>
+            {liveSites.map((site) => (
+              <div class="scheme">
+                <h3>{site.name}</h3>
+                {site.apps.map((app) => (
+                  <div class="application">
+                    <p class="application-meta">
+                      <span class={`state state-${app.data.state.toLowerCase()}`}>{stateLabel[app.data.state] ?? app.data.state}</span>
+                      <span class="ref">{app.data.reference}</span>
+                      <span class="when">Registered {dateStr(app.data.startDate)}</span>
+                    </p>
+                    <p class="application-desc">{app.data.description}</p>
+                    <p class="application-links">
+                      <span class="addr">{app.data.address}</span>
+                      {app.data.councilUrl && (
+                        <a href={app.data.councilUrl} target="_blank" rel="noopener noreferrer">Council record &#8599;</a>
+                      )}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </>
+        )}
+
+        {decidedSites.length > 0 && (
+          <>
+            <h2 id="decided">Recently decided</h2>
+            <p>Schemes that have been permitted, refused or withdrawn. A refusal is not always the end of a proposal: applicants may appeal, or submit a revised scheme.</p>
+            {decidedSites.map((site) => (
+              <div class="scheme">
+                <h3>{site.name}</h3>
+                {site.apps.map((app) => (
+                  <div class="application">
+                    <p class="application-meta">
+                      <span class={`state state-${app.data.state.toLowerCase()}`}>{stateLabel[app.data.state] ?? app.data.state}</span>
+                      <span class="ref">{app.data.reference}</span>
+                      <span class="when">
+                        {app.data.decidedDate ? `Decided ${dateStr(app.data.decidedDate)}` : `Registered ${dateStr(app.data.startDate)}`}
+                      </span>
+                    </p>
+                    <p class="application-desc">{app.data.description}</p>
+                    <p class="application-links">
+                      <span class="addr">{app.data.address}</span>
+                      {app.data.councilUrl && (
+                        <a href={app.data.councilUrl} target="_blank" rel="noopener noreferrer">Council record &#8599;</a>
+                      )}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </>
+        )}
+
+        <h2 id="green-belt">The Green Belt, and why so much is happening at once</h2>
+        <p>Much of the open land around Hersham is Metropolitan Green Belt, which carries strong protection against development. Those boundaries are not fixed by national government, though: they are drawn through each council&rsquo;s Local Plan, and a Local Plan can review them.</p>
+        <p>Elmbridge does not currently have an up-to-date one. A planning inspector found the draft Elmbridge Local Plan 2037 unsound and offered a six-month pause to supply further evidence; the council instead <strong>withdrew the draft plan following a Full Council decision on 26 February 2025</strong>. A replacement is scheduled for production between 2025 and 2028, and the council is rebuilding its evidence base, including a land availability assessment, an employment land review and a housing needs assessment.</p>
+        <p>Part of that evidence is a Green Belt review. Elmbridge, together with Runnymede and Spelthorne, has been awarded government funding to procure a joint review of Green Belt boundaries, and was still appointing consultants at the time of writing. Whether any boundary around Hersham changes as a result is not yet decided, and the council has not said that it will.</p>
+        <p><a href="https://www.elmbridge.gov.uk/planning/planning-policy-and-guidance-0/new-local-plan" target="_blank" rel="noopener noreferrer">Elmbridge&rsquo;s New Local Plan pages &#8599;</a></p>
+
+        <h2 id="who-decides">Who decides, and what changes in 2027</h2>
+        <p>Planning applications in Hersham are decided by Elmbridge Borough Council, either by planning officers under delegated powers or, for larger or more contentious schemes, by a planning committee of elected councillors. Surrey County Council decides a separate class of applications, including minerals, waste and its own school and highway schemes.</p>
+        <p>Both are being abolished. From <strong>1 April 2027</strong> Elmbridge is replaced by <strong>East Surrey Council</strong>, a new unitary authority also covering Epsom and Ewell, Mole Valley, Reigate and Banstead, and Tandridge, which will take on both borough and county functions. Shadow authority elections were held in May 2026. Until the handover, Elmbridge continues to deliver services as now.</p>
+
+        <h2 id="have-your-say">How to have your say</h2>
+        <p>Anyone can comment on a planning application, and you do not need to live next door to it.</p>
+        <ol>
+          <li>Find the application on <a href="https://www.elmbridge.gov.uk/planning/planning/find-or-comment-planning-application" target="_blank" rel="noopener noreferrer">Elmbridge&rsquo;s planning search &#8599;</a>, by reference number or address. Every scheme above links straight to its record.</li>
+          <li>Use the &ldquo;Comment on this application&rdquo; option on the application itself.</li>
+          <li>Comment within the consultation period. The council states it has no obligation to consider comments received after it closes, and for applications going to committee, late comments are not considered after noon on the Friday before the meeting.</li>
+        </ol>
+
+        <h3>What counts, and what does not</h3>
+        <p>Objections carry weight only where they raise <strong>material planning considerations</strong>. Elmbridge lists these as including a building&rsquo;s design and appearance, loss of privacy, light and overshadowing, landscaping and effects on a conservation area, highway safety and traffic generation, noise, smells and disturbance, and relevant planning policies and previous decisions.</p>
+        <p>The council explicitly cannot take into account the perceived loss of property value, private disputes between neighbours, personal views about the applicant, or building regulation issues. Anonymous comments and those containing offensive language are also disregarded. An objection framed around house prices carries no weight; the same concern expressed as traffic, overshadowing or design does.</p>
+        <p>Comments are published with personal details removed, and are removed from the website once a decision is made and the appeal period has closed.</p>
+
+        <h3>Getting told about new applications</h3>
+        <p>Elmbridge runs a free planning alerts service. You choose an address and a radius of 100, 250, 500 or 1,000 metres, and receive an email the day after an application in that area is registered, and optionally when one is decided.</p>
+        <p>One limitation is worth knowing: alerts are triggered by an application&rsquo;s mapped centre point, so for a large site the centre may fall outside your chosen radius even when the boundary runs close to your home. The council says so itself. For big schemes, checking this page or the planning search directly is more reliable.</p>
+        <p><a href="https://www.elmbridge.gov.uk/planning/search-comment-participate/planning-alerts" target="_blank" rel="noopener noreferrer">Sign up for Elmbridge planning alerts &#8599;</a></p>
+
+        <h2 id="faqs">Common questions</h2>
+        {faqs.map((item) => (
+          <>
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </>
+        ))}
+
+        <h2>Where this information comes from</h2>
+        <p>Application references, descriptions and statuses are drawn at build time from the <a href="https://www.planit.org.uk/" target="_blank" rel="noopener noreferrer">PlanIt open planning database &#8599;</a>, which aggregates published council records, and are refreshed daily. PlanIt is an aggregator rather than the authority: where its record and the council&rsquo;s differ, the council&rsquo;s is correct, which is why every scheme above links to it. Policy and process detail comes from Elmbridge Borough Council&rsquo;s own pages, checked on {checkedOn}.</p>
+
+        <p>For the village more widely, see the <a href="/hersham/">Hersham guide</a>, the <a href="/hersham/hersham-green/">village green</a> and <a href="/hersham/history/">Hersham&rsquo;s history</a>. The Weylands sites sit on the boundary with Walton-on-Thames, covered in our <a href="/walton-on-thames-railway-station/">station guide</a> and across the Walton pages.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .scheme {
+    margin: 1.75rem 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .scheme h3 {
+    margin-top: 0;
+  }
+
+  .application + .application {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .application-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.85rem;
+    margin-bottom: 0.4rem !important;
+    font-size: 0.8rem;
+  }
+
+  .state {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-md);
+    background: rgba(11, 36, 46, 0.08);
+    color: var(--color-navy);
+  }
+
+  .state-undecided {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .ref {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--color-slate);
+  }
+
+  .when {
+    color: var(--color-slate-soft);
+  }
+
+  .application-desc {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .application-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0 !important;
+  }
+
+  .addr {
+    color: var(--color-slate);
+  }
+
+  h2[id],
+  h3 {
+    scroll-margin-top: calc(var(--nav-height) + 4rem);
+  }
+</style>
