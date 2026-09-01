@@ -664,3 +664,17 @@ Verified: build clean, `seo:validate` passes on 374 pages, all nineteen grid lin
 - **`/hersham/living/`** second: schools with Ofsted ratings, GP and pharmacy, buses 515 and 715, council services. Much of it exists but is Walton-scoped.
 - Live planning statuses go stale silently, the same failure mode `check-stale-events.mjs` exists to catch. Date-stamp every status line and put the page on a review cadence.
 - The hub's `Place` entity could add `containsPlace` for Burwood Park and Whiteley Village.
+
+## 2026-09-01: A second 1864 regatta trophy
+
+Bishop and Miller Auctioneers' photograph of a second Walton-on-Thames Regatta prize added to `/history/swan-symbol-walton-on-thames/`. **Permission granted by the auctioneers**, credited in the figcaption as "Photograph courtesy of Bishop and Miller Auctioneers" and cited in the sources block. This is the one third-party image on the page that is cleared rather than public domain or our own; the club badges remain withheld for want of exactly this.
+
+**The object is not another view of the jug, it is a different trophy.** A silver goblet raised on a figural stem, its bowl mounted with an applied cartouche rather than carrying an engraving. Enlarging the cartouche resolves it beyond doubt: a swan in a roundel lettered WALTON ON THAMES REGATTA with a pair of oars crossed behind, which is the arrangement engraved on the jug.
+
+**That upgrades the argument rather than decorating it.** One engraved cup only shows what a single silversmith or committee thought suitable on a single occasion. The same device applied to a second trophy of entirely different manufacture points to a badge the regatta used, so the section now concludes that the swan in its lettered roundel was the regatta's own emblem. A new evidence-table row carries the claim and its limits.
+
+**The goblet is not dated here.** The filename and Darren both give 1864, but no hallmark has been read and the lot record was not available, so the prose asserts only the device. The auctioneers' homepage stands in for the lot URL in the sources block.
+
+## Still open
+- **The Bishop and Miller lot record.** Its URL would let the goblet be dated and the citation pointed at the lot rather than the firm's homepage.
+- **Club badges.** Unchanged: Walton AC and Walton & Hersham FC both need permission, and the FC photograph is held outside the repository.
