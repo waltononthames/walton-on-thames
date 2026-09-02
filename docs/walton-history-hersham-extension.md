@@ -349,6 +349,35 @@ Note before building: the correct URL is undecided. `/hersham/development-and-pl
 
 ---
 
+
+### 4.13 `/hersham/living/`
+
+**Added 1 September 2026.** Not in the original extension. Completes the Hersham cluster with the practical-intent content that the `/living/` section covers for Walton but has never covered for the village.
+
+**Title:** Living in Hersham
+**Meta:** Practical information for Hersham residents: schools, doctors and pharmacies, getting around, and council services.
+**H1:** Living in Hersham
+
+**Why this page exists.** `/living/` and its spokes (`schools`, `gp-surgeries`, `pharmacies`, `dentists`, `post-offices-and-post-boxes`, `council-and-services`) are all written for Walton. A Hersham resident searching "schools in hersham" or "doctors in hersham" currently lands on Walton pages or nothing. This is practical-intent content, which converts and is genuinely useful, and it completes the cluster the head-term work depends on.
+
+**Content class.** Current/practical under `docs/historical-content-strategy.md`, so the Content Verification Protocol governs, not the Standards document. Do not dress it up with academic citations.
+
+**Structure.**
+
+- Intro, one paragraph, honest about what Hersham has and what it does not.
+- **Schools (H2).** The genuinely new content, and the reason the page ranks. Name each school with its address, age range and type, and **link to its Ofsted record rather than restating a rating**. Ratings on the four Hersham schools currently span 2012 to 2024, and Ofsted stopped making an overall effectiveness judgement for state-funded schools in September 2024, so a bare "rated Good" is at best undated and at worst describes a framework that no longer exists. The same principle the Protocol applies to opening hours: link to the authority, do not restate volatile data.
+- **Doctors, dentists and pharmacies (H2).** Link to the directory records, which are already verified. Do not restate addresses or hours; the directory is the single source and it is maintained.
+- **Getting around (H2).** Hersham station gets its own page; link it. Buses serve the village but route numbers and operators change, so link to Surrey County Council's travel information rather than hard-coding routes. Roads: the A244 and A317 corridors.
+- **Council services (H2).** Elmbridge for bins, council tax, parking and planning; Surrey County Council for schools admissions, highways and social care. Cross-link `/hersham/development-and-planning/` for planning, and cover the 1 April 2027 replacement of both by East Surrey Council.
+- **Shops and everyday needs (H2).** Short, linking to `/hersham/food-and-drink/` and the directory. Do not duplicate either.
+- **FAQ block.** What schools are in Hersham? Is there a doctor's surgery in Hersham? Which council covers Hersham? Is Hersham a good place to live with children?
+
+**Duplication controls.** This page routes to the Walton `/living/` spokes where the subject is genuinely borough-wide, and owns only what is Hersham-specific. It must not restate directory records, and must not duplicate `/hersham/` hub copy. Schools are the exception: `/living/schools/` is Walton-scoped and the Hersham schools are genuinely uncovered, so they belong here in full.
+
+**Verified for the first build, 1 September 2026.** Burhill Primary School, New Berry Lane, KT12 4HQ, nursery to Year 6 (school website). Bell Farm Primary School, Hersham Road, KT12 5NB, community primary with nursery, ages 3 to 11 (school website). Cardinal Newman Catholic Primary School, Arch Road, voluntary aided Catholic, two-form entry, serving the parishes of All Saints Hersham and St Erconwald's Walton, part of the Xavier Catholic Education Trust (school website). Three Rivers Academy, Bell Farm Way, KT12 5EJ, ages 11 to 18, 1,311 pupils, inspected 15 October 2024 with Good in all five categories (Ofsted).
+
+**Open at first build:** bus routes are linked rather than named. Grokipedia claimed routes 515 and 715 serve the village; that source has already been wrong three times in this cluster and the claim is unverified. Name routes only after checking Surrey County Council or the operator directly.
+
 ## 5. Internal linking matrix (implement as component logic, not ad hoc)
 
 - Every Walton history page links to: /history/ hub, two related Walton history pages (via `related` frontmatter), and one non-history page (guide or directory).

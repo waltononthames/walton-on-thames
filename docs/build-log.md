@@ -717,3 +717,22 @@ Verified: build clean, `seo:validate` passes on 371 pages, no new type errors, 3
 - Walton Court on Station Avenue currently assigns to Hersham on the distance rule, but Station Avenue is the Walton side of the railway. Flagged in `content.config.ts` as a candidate for reassignment or an explicit override once the Walton page (section 4.12) exists.
 - Applicant names are not shown. PlanIt does not return them and verifying twenty of them against the council record was out of scope for this pass; each application links to the record where the applicant is named. Worth adding for the live schemes only.
 - Section 4.12, the Walton equivalent, is specified but unbuilt. Its URL is undecided: Walton has no section parent, so it may belong under `/living/`.
+
+## 2026-09-02: /hersham/living/ built to extension 4.13
+
+Completes the Hersham cluster. `/living/` and its six spokes are all written for Walton, so a resident searching "schools in hersham" or "doctors in hersham" previously landed on Walton pages or nothing.
+
+**Schools are the reason the page exists.** They are the one genuinely uncovered subject: the health, post office and shopping content already sits in the directory and is linked rather than restated, per the duplication controls. All four schools verified this session against their own websites or Ofsted: Bell Farm Primary (Hersham Road, KT12 5NB, community primary with nursery, ages 3 to 11), Burhill Primary (New Berry Lane, KT12 4HQ, nursery to Year 6), Cardinal Newman Catholic Primary (Arch Road, voluntary aided, two-form entry, serving All Saints Hersham and St Erconwald's Walton, part of the Xavier Catholic Education Trust), and Three Rivers Academy (Bell Farm Way, KT12 5EJ, ages 11 to 18, 1,311 pupils, inspected 15 October 2024, Good in all five categories).
+
+**Ofsted ratings are linked, never restated, and the page says why.** Inspections across the four span 2012 to 2024, so any single word would be undated. More significantly, Ofsted's own report for Three Rivers states that from September 2024 it no longer makes an overall effectiveness judgement for state-funded schools. An older "Good" and a newer one are therefore not describing the same thing, and a local guide repeating either without that context would mislead. Same principle the Protocol applies to opening hours: link to the authority, do not restate volatile data.
+
+**Bus routes deliberately not named.** The Grokipedia article claimed routes 515 and 715 serve the village. That source has now been wrong on three separate claims in this cluster, the routes were not verified against Surrey County Council or the operator, and route numbers change. The page links to Surrey County Council's travel information instead. Naming routes is a worthwhile enhancement once checked directly.
+
+**Grokipedia error count for this cluster now stands at four:** West Surrey rather than East Surrey; 280 homes attributed to the Technology Park rather than the separate Molesey Road site; a "Hersham Park" scheme that does not appear in the council record at all; and Three Rivers Academy placed on Hersham Road where Ofsted gives Bell Farm Way. Every one would have shipped as fact had the article been treated as a source rather than a coverage checklist.
+
+Verified: build clean, `seo:validate` passes on 369 pages, no new type errors, 1,611 rendered words, all eight outbound school and council URLs return 200, seven internal directory links, FAQ count matches between markup and schema, linked from the hub's Explore grid. Joins the two other curated Hersham hubs in the `seo-validate` Article-schema exception list for the same reason.
+
+## Still open
+- Bus routes serving Hersham are linked rather than named. Verify against Surrey County Council or the operator, then name them.
+- Ofsted provider URLs are direct for Bell Farm and Three Rivers, but Burhill and Cardinal Newman link to an Ofsted search rather than a provider page, because their URNs were not established this session.
+- Section 4.12, the Walton planning page, remains specified and unbuilt, with its URL undecided.

@@ -1,0 +1,231 @@
+---
+// Built to docs/walton-history-hersham-extension.md section 4.13.
+//
+// Duplication controls, from that section: this page owns only what is
+// Hersham-specific and routes to the Walton /living/ spokes where the subject
+// is genuinely borough-wide. It must not restate directory records, which are
+// maintained in one place. Schools are the deliberate exception, because
+// /living/schools/ is Walton-scoped and the Hersham schools are uncovered.
+//
+// Ofsted ratings are linked, never restated. The four schools' inspections span
+// 2012 to 2024, and Ofsted stopped making an overall effectiveness judgement
+// for state-funded schools in September 2024, so a bare "rated Good" would be
+// undated at best and describe a retired framework at worst.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const reviewedOn = '1 September 2026';
+
+const schools = [
+  {
+    name: 'Bell Farm Primary School',
+    address: 'Hersham Road, Hersham, KT12 5NB',
+    detail: 'Community primary school with a nursery, for ages 3 to 11.',
+    site: 'https://bell-farm.co.uk/',
+    ofsted: 'https://reports.ofsted.gov.uk/provider/21/125058',
+  },
+  {
+    name: 'Burhill Primary School',
+    address: 'New Berry Lane, Hersham, KT12 4HQ',
+    detail: 'Primary school running from its own nursery through to Year 6.',
+    site: 'https://www.burhill.surrey.sch.uk/',
+    ofsted: 'https://reports.ofsted.gov.uk/search?q=Burhill+Primary+School',
+  },
+  {
+    name: 'Cardinal Newman Catholic Primary School',
+    address: 'Arch Road, Hersham',
+    detail:
+      'Voluntary aided Catholic primary, two forms of entry, serving the parishes of All Saints in Hersham and St Erconwald’s in Walton. Part of the Xavier Catholic Education Trust.',
+    site: 'https://www.cardinal-newman.surrey.sch.uk/',
+    ofsted: 'https://reports.ofsted.gov.uk/search?q=Cardinal+Newman+Catholic+Primary+School+Hersham',
+  },
+  {
+    name: 'Three Rivers Academy',
+    address: 'Bell Farm Way, Walton-on-Thames, KT12 5EJ',
+    detail:
+      'The secondary school serving Hersham, for ages 11 to 18 with a sixth form, and around 1,311 pupils. Its most recent Ofsted inspection, on 15 October 2024, graded it Good in all five categories: quality of education, behaviour and attitudes, personal development, leadership and management, and sixth form provision.',
+    site: 'https://www.threeriversacademy.org/',
+    ofsted: 'https://reports.ofsted.gov.uk/provider/23/144503',
+  },
+];
+
+const health = [
+  { name: 'Hersham Surgery', href: '/directory/hersham-surgery/', what: 'GP surgery, Pleasant Place' },
+  { name: 'Hersham Pharmacy', href: '/directory/hersham-pharmacy/', what: 'Pharmacy, Hersham Centre' },
+  { name: 'Philip J Adams Chemist', href: '/directory/philip-j-adams-chemist/', what: 'Pharmacy, Hersham Green' },
+  { name: 'Hersham Dental Practice', href: '/directory/hersham-dental-practice/', what: 'Dentist, The Green' },
+  { name: 'Windsor House Dental', href: '/directory/windsor-house-dental/', what: 'Dentist, Queens Road' },
+];
+
+const everyday = [
+  { name: 'Hersham Post Office', href: '/directory/hersham-post-office/', what: 'Molesey Road' },
+  { name: 'Longmore Road Drop + Collect', href: '/directory/longmore-road-drop-and-collect/', what: 'Parcel drop-off and collection' },
+];
+
+const faqs = [
+  {
+    q: 'What schools are in Hersham?',
+    a: 'Hersham has three primary schools: Bell Farm Primary School on Hersham Road, Burhill Primary School on New Berry Lane, and Cardinal Newman Catholic Primary School on Arch Road. Three Rivers Academy on Bell Farm Way is the secondary school serving the village, for ages 11 to 18 with a sixth form.',
+  },
+  {
+    q: 'Is there a doctor’s surgery in Hersham?',
+    a: 'Yes. Hersham Surgery is on Pleasant Place, off the green. There are also two pharmacies in the village, Hersham Pharmacy in the Hersham Centre and Philip J Adams Chemist on Hersham Green.',
+  },
+  {
+    q: 'Which council covers Hersham?',
+    a: 'Elmbridge Borough Council handles bins, council tax, parking and planning, and Surrey County Council handles schools admissions, highways and social care. Both are abolished on 1 April 2027 and replaced by East Surrey Council, a single unitary authority.',
+  },
+  {
+    q: 'Is Hersham a good place to live with children?',
+    a: 'Hersham has three primary schools and a secondary school within or immediately beside the village, two recreation grounds with play areas, a seasonal splash pad at Hersham Recreation Ground, and a village green that hosts events through the year. The station gives a direct line into London Waterloo for commuting parents.',
+  },
+];
+---
+
+<BaseLayout
+  title="Living in Hersham"
+  description="Practical information for Hersham residents: schools, doctors and pharmacies, getting around, and council services."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://walton-on-thames.org/' },
+        { '@type': 'ListItem', position: 2, name: 'Hersham', item: 'https://walton-on-thames.org/hersham/' },
+        { '@type': 'ListItem', position: 3, name: 'Living in Hersham', item: 'https://walton-on-thames.org/hersham/living/' },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/hersham/">Hersham</a></li>
+          <li aria-current="page">Living in Hersham</li>
+        </ol>
+      </nav>
+      <h1>Living in Hersham</h1>
+      <p>Schools, doctors, getting around and council services, for people who live in the village rather than visit it.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <article class="prose">
+        <p>Hersham works as a village in a way its size does not guarantee. Three primary schools and a secondary sit within or immediately beside it, there is a GP surgery and two pharmacies by the green, and the station puts London Waterloo within a direct half-hour. What it does not have is a large shopping centre, a hospital, or its own council: for those, Hersham looks to Walton-on-Thames, Kingston and Elmbridge.</p>
+
+        <blockquote>
+          <p><strong>Reviewed {reviewedOn}.</strong> Schools, services and council arrangements change. Every entry below links to the organisation&rsquo;s own page, which is the current source.</p>
+        </blockquote>
+
+        <h2 id="schools">Schools</h2>
+        <p>Three primary schools serve the village, along with one secondary immediately to its north.</p>
+
+        {schools.map((school) => (
+          <div class="entry">
+            <h3>{school.name}</h3>
+            <p class="entry-address">{school.address}</p>
+            <p>{school.detail}</p>
+            <p class="entry-links">
+              <a href={school.site} target="_blank" rel="noopener noreferrer">School website &#8599;</a>
+              <a href={school.ofsted} target="_blank" rel="noopener noreferrer">Ofsted record &#8599;</a>
+            </p>
+          </div>
+        ))}
+
+        <h3>A note on Ofsted ratings</h3>
+        <p>We link to each school&rsquo;s Ofsted record rather than repeating a rating here, and that is deliberate. Inspections of these four schools span more than a decade, so any single word would be undated. More importantly, <strong>Ofsted stopped making an overall effectiveness judgement for state-funded schools in September 2024</strong>. Schools inspected since then receive grades in separate categories with no headline verdict, which means an older &ldquo;Good&rdquo; and a newer one are not describing the same thing. Read the report rather than the label.</p>
+        <p>Admissions, catchment areas and appeals are handled by Surrey County Council, not by the schools or the borough. See <a href="https://www.surreycc.gov.uk/schools-and-learning/schools/admissions" target="_blank" rel="noopener noreferrer">Surrey County Council school admissions &#8599;</a>. For the wider picture across the borough, see our <a href="/living/schools/">schools guide</a>.</p>
+
+        <h2 id="health">Doctors, dentists and pharmacies</h2>
+        <p>Hersham has its own GP surgery and two pharmacies, both by the green, plus two dental practices. Full details and opening arrangements are on each listing.</p>
+        <ul>
+          {health.map((item) => (
+            <li><a href={item.href}>{item.name}</a> &mdash; {item.what}</li>
+          ))}
+        </ul>
+        <p>The nearest major hospitals are outside the village. For borough-wide lists see our guides to <a href="/living/gp-surgeries/">GP surgeries</a>, <a href="/living/pharmacies/">pharmacies</a> and <a href="/living/dentists/">dentists</a>.</p>
+
+        <h2 id="getting-around">Getting around</h2>
+        <p>Hersham station sits on the South West Main Line with direct trains to London Waterloo, and is the main reason the village works as a commuter base. Walton-on-Thames station also serves the west of the village and has more frequent services; both are covered in our <a href="/hersham-railway-station/">Hersham station guide</a> and <a href="/walton-on-thames-railway-station/">Walton-on-Thames station guide</a>.</p>
+        <p>By road, the A244 runs through the village between Esher and Walton, and the A317 links west towards Weybridge. The M25 is a few miles east at Junction 10.</p>
+        <p>Buses serve the village and connect it to Walton, Esher, Kingston and Cobham, but route numbers and operators change often enough that listing them here would go stale. Surrey County Council publishes current routes and timetables: see <a href="https://www.surreycc.gov.uk/roads-and-transport/buses-and-trains" target="_blank" rel="noopener noreferrer">Surrey County Council buses and trains &#8599;</a>.</p>
+
+        <h2 id="council">Council services</h2>
+        <p>Two councils currently cover Hersham, and residents regularly contact the wrong one.</p>
+        <ul>
+          <li><strong>Elmbridge Borough Council</strong> handles bin collections, council tax, parking, licensing and planning applications. <a href="https://www.elmbridge.gov.uk/" target="_blank" rel="noopener noreferrer">elmbridge.gov.uk &#8599;</a></li>
+          <li><strong>Surrey County Council</strong> handles schools and admissions, highways and roadworks, adult social care, children&rsquo;s services and libraries. <a href="https://www.surreycc.gov.uk/" target="_blank" rel="noopener noreferrer">surreycc.gov.uk &#8599;</a></li>
+        </ul>
+        <p>That split ends soon. On <strong>1 April 2027</strong> both are replaced by <strong>East Surrey Council</strong>, a single unitary authority also covering Epsom and Ewell, Mole Valley, Reigate and Banstead, and Tandridge, which will take on borough and county functions together. Shadow authority elections were held in May 2026. Until the handover, contact the councils as now.</p>
+        <p>For what is being built around the village, and how to comment on an application, see <a href="/hersham/development-and-planning/">development and planning in Hersham</a>.</p>
+
+        <h2 id="everyday">Shops and everyday needs</h2>
+        <p>The parade around Hersham Green carries the village&rsquo;s everyday shopping, with a supermarket, cafes and takeaways alongside the pharmacy and post office.</p>
+        <ul>
+          {everyday.map((item) => (
+            <li><a href={item.href}>{item.name}</a> &mdash; {item.what}</li>
+          ))}
+        </ul>
+        <p>For eating and drinking, see <a href="/hersham/food-and-drink/">food and drink in Hersham</a>. For everything else, the <a href="/directory/">business directory</a> lists Hersham businesses alongside the rest of the area.</p>
+
+        <h2 id="green-space">Parks and green space</h2>
+        <p>Two recreation grounds serve the village: <a href="/things-to-do/hersham-recreation-ground/">Hersham Recreation Ground</a>, which has a play area and a seasonal splash pad, and <a href="/things-to-do/coronation-recreation-ground-hersham/">Coronation Recreation Ground</a>, with a play area, sports pitches and a cafe. <a href="/hersham/hersham-green/">Hersham Green</a> itself hosts events through the year, and the <a href="/hersham/river-mole-walks/">River Mole walks</a> start within a few minutes of the built-up centre.</p>
+
+        <h2 id="faqs">Common questions</h2>
+        {faqs.map((item) => (
+          <>
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </>
+        ))}
+
+        <p>For the village more widely, see the <a href="/hersham/">Hersham guide</a>, <a href="/things-to-do/hersham/">things to do in Hersham</a> and <a href="/hersham/history/">Hersham&rsquo;s history</a>.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .entry {
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .entry h3 {
+    margin-top: 0;
+  }
+
+  .entry-address {
+    font-size: 0.9rem;
+    color: var(--color-slate);
+    margin-bottom: 0.5rem !important;
+  }
+
+  .entry-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    font-size: 0.875rem;
+    margin-bottom: 0 !important;
+  }
+
+  h2[id],
+  h3 {
+    scroll-margin-top: calc(var(--nav-height) + 4rem);
+  }
+</style>
