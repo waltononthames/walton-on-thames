@@ -8,38 +8,13 @@
 // takes no position for or against any scheme. It does not characterise
 // applicants, quantify local opposition, or reproduce campaign material.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PlanningSchemes from '../../components/PlanningSchemes.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 type PlanningEntry = CollectionEntry<'hersham-planning'>;
 
-const all = await getCollection('hersham-planning');
-
-// Group applications by site. A single scheme generates many applications over
-// years (Weylands has four), and listing them separately would both repeat
-// itself and overstate how much is happening.
-const bySite = new Map<string, { name: string; apps: PlanningEntry[] }>();
-for (const entry of all as PlanningEntry[]) {
-  const key = entry.data.siteSlug;
-  if (!bySite.has(key)) {
-    bySite.set(key, { name: entry.data.siteName ?? entry.data.address, apps: [] });
-  }
-  bySite.get(key)!.apps.push(entry);
-}
-
-const newest = (apps: PlanningEntry[]) =>
-  apps.map((a) => a.data.startDate).sort().at(-1) ?? '';
-
-const sites = [...bySite.values()]
-  .map((site) => ({
-    ...site,
-    apps: site.apps.sort((a, b) => b.data.startDate.localeCompare(a.data.startDate)),
-    live: site.apps.some((a) => a.data.state === 'Undecided'),
-  }))
-  .sort((a, b) => newest(b.apps).localeCompare(newest(a.apps)));
-
-const liveSites = sites.filter((s) => s.live);
-const decidedSites = sites.filter((s) => !s.live);
+const applications = (await getCollection('hersham-planning') as PlanningEntry[]).map((e) => e.data);
 
 // Every status on this page is a snapshot. Stamp it rather than implying the
 // page is evergreen: see section 4.11 on currency.
@@ -48,11 +23,6 @@ const checkedOn = new Date().toLocaleDateString('en-GB', {
   month: 'long',
   year: 'numeric',
 });
-
-const dateStr = (iso?: string) =>
-  iso
-    ? new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
-    : '';
 
 const faqs = [
   {
@@ -72,14 +42,6 @@ const faqs = [
     a: 'Elmbridge Borough Council decides them today. From 1 April 2027 Elmbridge is replaced by East Surrey Council, a new unitary authority also covering Epsom and Ewell, Mole Valley, Reigate and Banstead, and Tandridge, with shadow elections held in May 2026.',
   },
 ];
-
-const stateLabel: Record<string, string> = {
-  Undecided: 'Undecided',
-  Permitted: 'Permitted',
-  Rejected: 'Refused',
-  Withdrawn: 'Withdrawn',
-  Conditions: 'Conditions',
-};
 ---
 
 <BaseLayout
@@ -135,62 +97,7 @@ const stateLabel: Record<string, string> = {
           <p><strong>Statuses checked {checkedOn}.</strong> Application stages change without notice. The council&rsquo;s record is the definitive source, and every scheme below links to it. This page lists major applications only, not householder extensions or tree works.</p>
         </blockquote>
 
-        {liveSites.length > 0 && (
-          <>
-            <h2 id="current">Applications awaiting a decision</h2>
-            {liveSites.map((site) => (
-              <div class="scheme">
-                <h3>{site.name}</h3>
-                {site.apps.map((app) => (
-                  <div class="application">
-                    <p class="application-meta">
-                      <span class={`state state-${app.data.state.toLowerCase()}`}>{stateLabel[app.data.state] ?? app.data.state}</span>
-                      <span class="ref">{app.data.reference}</span>
-                      <span class="when">Registered {dateStr(app.data.startDate)}</span>
-                    </p>
-                    <p class="application-desc">{app.data.description}</p>
-                    <p class="application-links">
-                      <span class="addr">{app.data.address}</span>
-                      {app.data.councilUrl && (
-                        <a href={app.data.councilUrl} target="_blank" rel="noopener noreferrer">Council record &#8599;</a>
-                      )}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </>
-        )}
-
-        {decidedSites.length > 0 && (
-          <>
-            <h2 id="decided">Recently decided</h2>
-            <p>Schemes that have been permitted, refused or withdrawn. A refusal is not always the end of a proposal: applicants may appeal, or submit a revised scheme.</p>
-            {decidedSites.map((site) => (
-              <div class="scheme">
-                <h3>{site.name}</h3>
-                {site.apps.map((app) => (
-                  <div class="application">
-                    <p class="application-meta">
-                      <span class={`state state-${app.data.state.toLowerCase()}`}>{stateLabel[app.data.state] ?? app.data.state}</span>
-                      <span class="ref">{app.data.reference}</span>
-                      <span class="when">
-                        {app.data.decidedDate ? `Decided ${dateStr(app.data.decidedDate)}` : `Registered ${dateStr(app.data.startDate)}`}
-                      </span>
-                    </p>
-                    <p class="application-desc">{app.data.description}</p>
-                    <p class="application-links">
-                      <span class="addr">{app.data.address}</span>
-                      {app.data.councilUrl && (
-                        <a href={app.data.councilUrl} target="_blank" rel="noopener noreferrer">Council record &#8599;</a>
-                      )}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </>
-        )}
+        <PlanningSchemes applications={applications} placeName="Hersham" />
 
         <h2 id="green-belt">The Green Belt, and why so much is happening at once</h2>
         <p>Much of the open land around Hersham is Metropolitan Green Belt, which carries strong protection against development. Those boundaries are not fixed by national government, though: they are drawn through each council&rsquo;s Local Plan, and a Local Plan can review them.</p>
@@ -231,6 +138,8 @@ const stateLabel: Record<string, string> = {
         <h2>Where this information comes from</h2>
         <p>Application references, descriptions and statuses are drawn at build time from the <a href="https://www.planit.org.uk/" target="_blank" rel="noopener noreferrer">PlanIt open planning database &#8599;</a>, which aggregates published council records, and are refreshed daily. PlanIt is an aggregator rather than the authority: where its record and the council&rsquo;s differ, the council&rsquo;s is correct, which is why every scheme above links to it. Policy and process detail comes from Elmbridge Borough Council&rsquo;s own pages, checked on {checkedOn}.</p>
 
+        <p>Walton-on-Thames has its own page, covering town centre and New Zealand Avenue schemes: see <a href="/development-and-planning/">development and planning in Walton-on-Thames</a>. Sites are assigned to whichever page they are physically nearer, so a scheme appears on one or the other, never both.</p>
+
         <p>For the village more widely, see the <a href="/hersham/">Hersham guide</a>, the <a href="/hersham/hersham-green/">village green</a> and <a href="/hersham/history/">Hersham&rsquo;s history</a>. The Weylands sites sit on the boundary with Walton-on-Thames, covered in our <a href="/walton-on-thames-railway-station/">station guide</a> and across the Walton pages.</p>
       </article>
     </div>
@@ -238,74 +147,6 @@ const stateLabel: Record<string, string> = {
 </BaseLayout>
 
 <style>
-  .scheme {
-    margin: 1.75rem 0;
-    padding: 1.25rem 1.5rem;
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card);
-  }
-
-  .scheme h3 {
-    margin-top: 0;
-  }
-
-  .application + .application {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(11, 36, 46, 0.08);
-  }
-
-  .application-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 0.85rem;
-    margin-bottom: 0.4rem !important;
-    font-size: 0.8rem;
-  }
-
-  .state {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: var(--radius-md);
-    background: rgba(11, 36, 46, 0.08);
-    color: var(--color-navy);
-  }
-
-  .state-undecided {
-    background: var(--color-accent);
-    color: var(--color-white);
-  }
-
-  .ref {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    color: var(--color-slate);
-  }
-
-  .when {
-    color: var(--color-slate-soft);
-  }
-
-  .application-desc {
-    margin-bottom: 0.4rem !important;
-  }
-
-  .application-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem 1rem;
-    font-size: 0.85rem;
-    margin-bottom: 0 !important;
-  }
-
-  .addr {
-    color: var(--color-slate);
-  }
-
   h2[id],
   h3 {
     scroll-margin-top: calc(var(--nav-height) + 4rem);

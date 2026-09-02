@@ -736,3 +736,26 @@ Verified: build clean, `seo:validate` passes on 369 pages, no new type errors, 1
 - Bus routes serving Hersham are linked rather than named. Verify against Surrey County Council or the operator, then name them.
 - Ofsted provider URLs are direct for Bell Farm and Three Rivers, but Burhill and Cardinal Newman link to an Ofsted search rather than a provider page, because their URNs were not established this session.
 - Section 4.12, the Walton planning page, remains specified and unbuilt, with its URL undecided.
+
+## 2026-09-02: /development-and-planning/ (Walton), and a fabricated school removed
+
+**A non-existent school was live on the site.** `/living/schools/` carried a section headed "Primary Schools (Hersham)" whose sole entry was "Hersham Primary School, Community school, Ages 4-11". No school of that name exists. The three primaries serving Hersham are Bell Farm, Burhill and Cardinal Newman, with Three Rivers Academy as the secondary, all verified against their own websites and Ofsted the previous day. That entry was the site's entire Hersham schools coverage, so anyone searching for Hersham schools was being given a name that does not exist. Removed and replaced with a correct summary linking to `/hersham/living/`, and the page retitled to Walton, handing the Hersham detail to the village page as agreed.
+
+**The rest of that page has not been verified and should be.** It also lists Rydens Enterprise School as a secondary while omitting Three Rivers Academy, which is what Rydens became; and Heathside, Manby Lodge and Esher Church of England High School read as Weybridge and Esher schools rather than Walton ones. None of those were checked in this session and none were changed: one confirmed fabrication is grounds for auditing the page, not for rewriting entries on suspicion. Treat the whole page as unverified until someone works through it.
+
+**URL decision for the Walton planning page: `/development-and-planning/`, top level.** `/living/development-and-planning/` was the obvious choice and was rejected on inspection, because `/living/` describes itself as covering "Walton-on-Thames, Hersham and Whiteley Village" and `/living/schools/` was titled for both. `/living/` is the whole-area practical hub, not the Walton section, so a deliberately Walton-only page inside it would contradict its own hub. Top level matches `/things-to-do/`, `/food-and-drink/` and `/getting-here/`, each of which sits beside a Hersham spoke rather than containing one. Recorded in extension 4.12; blueprint Section 3's architecture list still needs the new entry.
+
+**The Walton catchment needed two filters Hersham did not.** Of 29 records the distance rule assigned to Walton, only 9 were actually in Walton. Twelve were cross-boundary consultation records that Elmbridge logs for Woking, Guildford and Surrey County Council, which PlanIt geocodes to the logging authority rather than the site, putting schemes in West Byfleet, Woking and Ockham inside the Walton radius. Eight more were Weybridge, Shepperton and Kingston. Without both filters the page would have listed schemes in six places that are not Walton.
+
+**The postal-town filter is the reverse of the assignment rule, deliberately.** Between our own two pages addresses mislead, because every Hersham address reads "Walton-on-Thames", so assignment uses coordinates. Between post towns coordinates mislead: the Oatlands Drive sites carry Weybridge addresses but sit 0.50 to 1.07km from The Heart, nearer than Laurelwood Place at 0.78km and Brownacres at 1.36km, both genuinely Walton. No radius separates them. Every drop is counted and logged in the build output rather than being silent.
+
+**Rendering extracted to `PlanningSchemes.astro`**, per 4.11's "parameterised component, not a bespoke page". Both pages now share the loader and the rendering and no prose.
+
+**Walton has no live applications.** All nine schemes were decided at first build, so the component shows an explicit empty state rather than dropping the section. That is itself informative: Walton is built up, so its majors are redevelopment of existing sites arriving singly, against Hersham's clustered edge-of-village housing pressure.
+
+Verified: build clean, `seo:validate` passes on 370 pages, no new type errors, 2,015 words on the Walton page, 8 schemes and 9 applications each linking to the council record, zero occurrences of Weybridge, Woking, Ockham, Shepperton, Byfleet or Kingston in the output, Hersham page unchanged at 20 applications after the refactor, reciprocal links between the two pages, and a card added to the Living hub.
+
+## Still open
+- **Audit the rest of `/living/schools/`.** Seven entries remain unverified after one was found fabricated.
+- Blueprint Section 3's architecture list does not yet include `/development-and-planning/`.
+- Bus routes on `/hersham/living/` are still linked rather than named.

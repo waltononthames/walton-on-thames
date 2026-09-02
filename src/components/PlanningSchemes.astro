@@ -1,0 +1,186 @@
+---
+// Renders grouped planning applications for one place. Shared by
+// /hersham/development-and-planning/ and /development-and-planning/, per
+// extension section 4.11: "build it as a parameterised component, not a
+// bespoke page". The two pages share this rendering and no prose.
+//
+// Applications are grouped by site because a single scheme generates many
+// applications over years (Weylands has four), and listing them separately
+// would repeat itself and overstate how much is happening.
+interface PlanningApplication {
+  reference: string;
+  address: string;
+  description: string;
+  state: string;
+  type: string;
+  startDate: string;
+  decidedDate?: string;
+  councilUrl?: string;
+  siteName?: string;
+  siteSlug: string;
+}
+
+interface Props {
+  applications: PlanningApplication[];
+  /** Rendered into the empty-state line, e.g. "Walton-on-Thames". */
+  placeName: string;
+}
+
+const { applications, placeName } = Astro.props;
+
+const bySite = new Map<string, { name: string; apps: PlanningApplication[] }>();
+for (const app of applications) {
+  if (!bySite.has(app.siteSlug)) {
+    bySite.set(app.siteSlug, { name: app.siteName ?? app.address, apps: [] });
+  }
+  bySite.get(app.siteSlug)!.apps.push(app);
+}
+
+const newest = (apps: PlanningApplication[]) => apps.map((a) => a.startDate).sort().at(-1) ?? '';
+
+const sites = [...bySite.values()]
+  .map((site) => ({
+    ...site,
+    apps: site.apps.sort((a, b) => b.startDate.localeCompare(a.startDate)),
+    live: site.apps.some((a) => a.state === 'Undecided'),
+  }))
+  .sort((a, b) => newest(b.apps).localeCompare(newest(a.apps)));
+
+const liveSites = sites.filter((s) => s.live);
+const decidedSites = sites.filter((s) => !s.live);
+
+const stateLabel: Record<string, string> = {
+  Undecided: 'Undecided',
+  Permitted: 'Permitted',
+  Rejected: 'Refused',
+  Withdrawn: 'Withdrawn',
+  Conditions: 'Conditions',
+};
+
+const dateStr = (iso?: string) =>
+  iso ? new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+---
+
+{liveSites.length > 0 ? (
+  <>
+    <h2 id="current">Applications awaiting a decision</h2>
+    {liveSites.map((site) => (
+      <div class="scheme">
+        <h3>{site.name}</h3>
+        {site.apps.map((app) => (
+          <div class="application">
+            <p class="application-meta">
+              <span class={`state state-${app.state.toLowerCase()}`}>{stateLabel[app.state] ?? app.state}</span>
+              <span class="ref">{app.reference}</span>
+              <span class="when">Registered {dateStr(app.startDate)}</span>
+            </p>
+            <p class="application-desc">{app.description}</p>
+            <p class="application-links">
+              <span class="addr">{app.address}</span>
+              {app.councilUrl && (
+                <a href={app.councilUrl} target="_blank" rel="noopener noreferrer">Council record &#8599;</a>
+              )}
+            </p>
+          </div>
+        ))}
+      </div>
+    ))}
+  </>
+) : (
+  <>
+    <h2 id="current">Applications awaiting a decision</h2>
+    <p>No major application in {placeName} is currently awaiting a decision. That can change at any time, and this page updates daily. Smaller applications, such as household extensions, are not listed here.</p>
+  </>
+)}
+
+{decidedSites.length > 0 && (
+  <>
+    <h2 id="decided">Recently decided</h2>
+    <p>Schemes that have been permitted, refused or withdrawn. A refusal is not always the end of a proposal: applicants may appeal, or submit a revised scheme.</p>
+    {decidedSites.map((site) => (
+      <div class="scheme">
+        <h3>{site.name}</h3>
+        {site.apps.map((app) => (
+          <div class="application">
+            <p class="application-meta">
+              <span class={`state state-${app.state.toLowerCase()}`}>{stateLabel[app.state] ?? app.state}</span>
+              <span class="ref">{app.reference}</span>
+              <span class="when">
+                {app.decidedDate ? `Decided ${dateStr(app.decidedDate)}` : `Registered ${dateStr(app.startDate)}`}
+              </span>
+            </p>
+            <p class="application-desc">{app.description}</p>
+            <p class="application-links">
+              <span class="addr">{app.address}</span>
+              {app.councilUrl && (
+                <a href={app.councilUrl} target="_blank" rel="noopener noreferrer">Council record &#8599;</a>
+              )}
+            </p>
+          </div>
+        ))}
+      </div>
+    ))}
+  </>
+)}
+
+<style>
+  .scheme {
+    margin: 1.75rem 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .scheme h3 { margin-top: 0; }
+
+  .application + .application {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .application-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.85rem;
+    margin-bottom: 0.4rem !important;
+    font-size: 0.8rem;
+  }
+
+  .state {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-md);
+    background: rgba(11, 36, 46, 0.08);
+    color: var(--color-navy);
+  }
+
+  .state-undecided {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .ref {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--color-slate);
+  }
+
+  .when { color: var(--color-slate-soft); }
+
+  .application-desc { margin-bottom: 0.4rem !important; }
+
+  .application-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0 !important;
+  }
+
+  .addr { color: var(--color-slate); }
+</style>

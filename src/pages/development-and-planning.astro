@@ -1,0 +1,146 @@
+---
+// Built to docs/walton-history-hersham-extension.md section 4.12.
+//
+// URL decision, recorded there: this sits at the top level rather than under
+// /living/, because /living/ describes itself as covering "Walton-on-Thames,
+// Hersham and Whiteley Village" and this page is deliberately Walton-only.
+// Top level also matches the other Walton-scoped topic hubs (/things-to-do/,
+// /food-and-drink/, /getting-here/), each of which has a Hersham spoke beside
+// it rather than containing one.
+//
+// Shares the loader and PlanningSchemes component with the Hersham page, and
+// no prose. Editorial stance is the Charter's: report and link, never advocate.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlanningSchemes from '../components/PlanningSchemes.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+type PlanningEntry = CollectionEntry<'walton-planning'>;
+
+const applications = (await getCollection('walton-planning') as PlanningEntry[]).map((e) => e.data);
+
+const checkedOn = new Date().toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const faqs = [
+  {
+    q: 'What is being built in Walton-on-Thames?',
+    a: `Walton's recent major applications have centred on the town centre and New Zealand Avenue rather than on greenfield sites, including the former Homebase site and several High Street buildings. This page lists the major applications and their stage, as recorded on ${checkedOn}.`,
+  },
+  {
+    q: 'How do I comment on a planning application in Walton?',
+    a: 'Search for it on Elmbridge Borough Council’s planning pages and use the comment option on the application itself. Comments have to raise material planning considerations, and the council is not required to consider anything submitted after the consultation window closes.',
+  },
+  {
+    q: 'Why are there so few large applications in Walton?',
+    a: 'Walton is largely built up, so major schemes tend to be redevelopment of existing sites rather than new land, and they arrive in ones and twos. This page covers major applications only. Householder work such as extensions is far more common but is not listed here.',
+  },
+  {
+    q: 'Which council handles planning in Walton-on-Thames?',
+    a: 'Elmbridge Borough Council, until 31 March 2027. From 1 April 2027 it is replaced by East Surrey Council, a unitary authority formed from Elmbridge, Epsom and Ewell, Mole Valley, Reigate and Banstead, and Tandridge.',
+  },
+];
+---
+
+<BaseLayout
+  title="Walton-on-Thames Development and Planning"
+  description="What is being built in Walton-on-Thames: major planning applications, the local plan position, and how to comment."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://walton-on-thames.org/' },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Development and planning',
+          item: 'https://walton-on-thames.org/development-and-planning/',
+        },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Development and planning</li>
+        </ol>
+      </nav>
+      <h1>Development and planning in Walton-on-Thames</h1>
+      <p>Major planning applications in the town, what stage each has reached, and how to comment on them.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <article class="prose">
+        <p>Walton is a built-up town, so the schemes that matter here are almost always redevelopment rather than new land: shop units on the High Street, the retail sites along New Zealand Avenue, and the occasional block of flats. That makes the pattern different from Hersham, where the pressure is on former golf course and industrial land at the edges of the village.</p>
+
+        <blockquote>
+          <p><strong>Statuses checked {checkedOn}.</strong> Stages change without notice and the council&rsquo;s own record is definitive, so every scheme below links to it. Major applications only: household extensions and tree works are not listed.</p>
+        </blockquote>
+
+        <PlanningSchemes applications={applications} placeName="Walton-on-Thames" />
+
+        <h2 id="local-plan">The local plan position</h2>
+        <p>Where a council&rsquo;s Local Plan is out of date, developers have more room to argue their case on appeal, and the council has less to point at when refusing. Elmbridge is in that position now.</p>
+        <p>A planning inspector examining the draft Elmbridge Local Plan 2037 found it unsound, and offered the council a six-month pause to produce further evidence. The council chose instead to withdraw the draft, by a Full Council decision on <strong>26 February 2025</strong>. Work on a replacement is scheduled across <strong>2025 to 2028</strong>, and the evidence base is being rebuilt from scratch: a land availability assessment, an employment land review, a housing needs assessment and a Green Belt review.</p>
+        <p>That Green Belt review is being procured jointly with Runnymede and Spelthorne using government funding, with consultants still being appointed. It matters less directly to Walton than to Hersham, since most of Walton is already built up, but it shapes where the borough&rsquo;s housing numbers end up landing.</p>
+        <p><a href="https://www.elmbridge.gov.uk/planning/planning-policy-and-guidance-0/new-local-plan" target="_blank" rel="noopener noreferrer">Elmbridge&rsquo;s New Local Plan pages &#8599;</a></p>
+
+        <h2 id="who-decides">Who decides</h2>
+        <p>Most applications are settled by Elmbridge planning officers under delegated powers. Larger or more contested ones go to a planning committee of elected councillors, which meets in public. Surrey County Council handles a separate set, covering minerals, waste, and its own highway and school proposals.</p>
+        <p>Both councils disappear on <strong>1 April 2027</strong>, replaced by <strong>East Surrey Council</strong>, a single unitary authority also taking in Epsom and Ewell, Mole Valley, Reigate and Banstead, and Tandridge. Shadow elections took place in May 2026. Nothing changes for applicants or objectors before the handover.</p>
+
+        <h2 id="have-your-say">Commenting on an application</h2>
+        <p>Comments are open to anyone, not only immediate neighbours, and they carry weight only where they raise <strong>material planning considerations</strong>. Elmbridge counts design and appearance, loss of privacy, light and overshadowing, landscaping and conservation area impact, highway safety and traffic, noise and disturbance, and relevant policy and precedent.</p>
+        <p>It cannot count the perceived effect on property values, disputes between neighbours, opinions about the applicant, or building regulations matters. Anonymous and abusive comments are disregarded. The distinction is worth getting right: the same worry about a scheme will be read if it is framed as traffic or overshadowing, and ignored if it is framed as house prices.</p>
+        <p>Timing matters too. The council states it has no obligation to consider comments arriving after the consultation period ends, and for applications going before committee, nothing is accepted after noon on the Friday beforehand. Published comments have personal details removed, and come down once a decision is made and the appeal period has passed.</p>
+        <ul>
+          <li><a href="https://www.elmbridge.gov.uk/planning/planning/find-or-comment-planning-application" target="_blank" rel="noopener noreferrer">Find or comment on a planning application &#8599;</a></li>
+          <li><a href="https://www.elmbridge.gov.uk/planning/search-comment-participate/planning-alerts" target="_blank" rel="noopener noreferrer">Elmbridge planning alerts, by address and radius &#8599;</a></li>
+        </ul>
+
+        <h2 id="hersham">Hersham</h2>
+        <p>Hersham has its own page, and a very different picture: several large housing schemes are live there at once, including proposals at the technology park on Molesey Road and on land east of Molesey Road and south of Burwood Road. See <a href="/hersham/development-and-planning/">development and planning in Hersham</a>.</p>
+        <p>Sites are assigned to whichever of the two pages they are physically nearer, so a scheme appears on one or the other, never both.</p>
+
+        <h2 id="faqs">Common questions</h2>
+        {faqs.map((item) => (
+          <>
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </>
+        ))}
+
+        <h2>Where this information comes from</h2>
+        <p>Application references, descriptions and statuses come from the <a href="https://www.planit.org.uk/" target="_blank" rel="noopener noreferrer">PlanIt open planning database &#8599;</a>, which aggregates published council records, refreshed here daily. PlanIt is an aggregator, not the authority: where it and the council differ, the council is right, which is why every scheme links to its official record. Policy and process detail comes from Elmbridge Borough Council&rsquo;s own pages, checked on {checkedOn}.</p>
+
+        <p>For living in the town more generally, see <a href="/living/">living in Walton-on-Thames</a>, and for getting around it, <a href="/getting-here/">getting here</a> and the <a href="/walton-on-thames-railway-station/">station guide</a>.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h2[id],
+  h3 {
+    scroll-margin-top: calc(var(--nav-height) + 4rem);
+  }
+</style>

@@ -3,8 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Schools in Walton-on-Thames & Hersham"
-  description="Primary and secondary schools serving Walton-on-Thames, Hersham and the surrounding area: Ofsted ratings, contacts and links."
+  title="Schools in Walton-on-Thames"
+  description="Primary and secondary schools serving Walton-on-Thames, with links to admissions, Ofsted and the Hersham schools guide."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -83,12 +83,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
 
         <div class="school-section">
-          <h2>Primary Schools (Hersham)</h2>
-          <div class="school-list">
-            <div class="school-card">
-              <h3>Hersham Primary School</h3>
-              <p class="school-type">Community school · Ages 4–11</p>
-            </div>
+          <h2>Schools in Hersham</h2>
+          <div class="prose" style="max-width: 70ch;">
+            <p>Hersham has three primary schools, <strong>Bell Farm Primary School</strong> on Hersham Road, <strong>Burhill Primary School</strong> on New Berry Lane and <strong>Cardinal Newman Catholic Primary School</strong> on Arch Road, with <strong>Three Rivers Academy</strong> on Bell Farm Way as the secondary serving the village. Each is covered with addresses, age ranges and links to its Ofsted record on our <a href="/hersham/living/">living in Hersham</a> page.</p>
           </div>
         </div>
       </div>

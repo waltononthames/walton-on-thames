@@ -339,13 +339,22 @@ Two properties of that query matter. First, **it is authority-agnostic**: a spat
 
 **Linking.** Per Section 5: back to the `/hersham/` hub, one Hersham sibling, and one Walton page where the subject genuinely crosses. The Weylands Treatment Works schemes sit in Walton and are the natural crossing point.
 
-### 4.12 `/getting-here/` sibling: Walton development and planning
+### 4.12 `/development-and-planning/` (Walton)
 
 **Reserved 2026-08-31, to be built after 4.11.** The Walton equivalent, kept as a separate page rather than merged.
 
 Everything in 4.11 applies unchanged except the centre point, which is The Heart Shopping Centre (51.3853, -0.4202), and the content, which is written fresh rather than adapted. Reuse the loader and the rendering component; share no prose. The assignment rule in 4.11 governs which page a scheme belongs to, and it is authoritative for both: a site assigned to Hersham does not also appear here, however its postal address reads.
 
-Note before building: the correct URL is undecided. `/hersham/development-and-planning/` sits naturally under the Hersham section, but Walton has no equivalent parent, so the Walton page may belong under `/living/` alongside property, or at the top level. Check `docs/site-audit.md` and the blueprint's architecture section before choosing, and record the decision here.
+**URL decided 2 September 2026: `/development-and-planning/`, at the top level.** The alternative was `/living/development-and-planning/`, matching the six existing `/living/` spokes, whose URLs are place-neutral and carry "Walton-on-Thames" in the title. Rejected on inspection: `/living/schools/` was titled "Schools in Walton-on-Thames & Hersham" and the `/living/` hub describes itself as covering "Walton-on-Thames, Hersham and Whiteley Village". `/living/` is the whole-area practical hub, not the Walton section, so a deliberately Walton-only page inside it would contradict the hub and produce a confusing pair against `/hersham/development-and-planning/`. Top level also matches the other Walton-scoped topic hubs, `/things-to-do/`, `/food-and-drink/` and `/getting-here/`, each of which sits beside a Hersham spoke rather than containing one. Walton has no place-namespace because Walton is the site. Blueprint Section 3's architecture list needs amending to record the new top-level entry.
+
+**Two filters this page needs and Hersham does not.** Measured 2 September 2026: of 29 records the distance rule assigned to Walton, only 9 were actually in Walton.
+
+- **Cross-boundary consultation records.** Elmbridge logs applications on which it is a neighbouring consultee, and PlanIt geocodes them to the logging authority rather than to the site, so schemes in West Byfleet, Woking and Ockham landed in the Walton catchment. Twelve of the 29. The loader drops any record whose description begins "Consultation from ... Council" (`excludeConsultations`, on by default for both pages).
+- **A postal-town whitelist**, which is the reverse of the assignment rule and deliberately so. Between our two pages addresses mislead, because everything in Hersham reads "Walton-on-Thames", so assignment uses coordinates. Between post towns coordinates mislead: the Oatlands Drive sites carry Weybridge addresses but sit 0.50 to 1.07km from The Heart, nearer than Laurelwood Place (0.78km) and Brownacres (1.36km), which are genuinely Walton. No radius separates them, so `addressMustInclude` filters on the post town instead. Eight of the 29.
+
+Every drop is counted and logged rather than silent. A filter that quietly removes the wrong things is the failure mode that matters here.
+
+**Expect no live applications at first.** All nine Walton schemes were decided at first build. The component renders an explicit empty state rather than dropping the section, and live schemes appear automatically when they arrive. Walton is largely built up, so its majors are redevelopment of existing sites arriving in ones and twos, rather than the clustered edge-of-village housing pressure Hersham has.
 
 ---
 

@@ -58,6 +58,24 @@ export interface PlanningLoaderOptions {
    * arithmetic that flips when a coordinate is corrected upstream.
    */
   overrides?: Record<string, 'include' | 'exclude'>;
+  /**
+   * Drop records whose description begins "Consultation from ... Council".
+   * Elmbridge logs applications on which it is a neighbouring consultee, and
+   * PlanIt geocodes them to the logging authority, not the site. Measured
+   * 2 September 2026: 12 of 29 records assigned to Walton were schemes
+   * physically in West Byfleet, Woking and Ockham. Defaults to true.
+   */
+  excludeConsultations?: boolean;
+  /**
+   * Optional postal-town whitelist, matched case-insensitively against the
+   * address. This is the OPPOSITE of the assignment rule and deliberately so.
+   * Between our own two pages, addresses mislead (everything in Hersham reads
+   * "Walton-on-Thames"), so assignment uses coordinates. Between post towns,
+   * coordinates mislead: the Oatlands Drive sites carry Weybridge addresses
+   * but sit 0.5km from The Heart, nearer than several genuine Walton sites, so
+   * no radius separates them. There the postal town is the correct signal.
+   */
+  addressMustInclude?: string[];
   /** Named schemes. Applications are grouped under these; see section 4.11. */
   sites?: PlanningSite[];
   /** How many years back to fetch. Covers "recently decided" as well as live. */
@@ -102,6 +120,8 @@ export function planningLoader(options: PlanningLoaderOptions): Loader {
     radiusKm,
     otherCentres = [],
     overrides = {},
+    excludeConsultations = true,
+    addressMustInclude,
     sites = [],
     yearsBack = 5,
   } = options;
@@ -182,6 +202,8 @@ export function planningLoader(options: PlanningLoaderOptions): Loader {
 
       let kept = 0;
       let assignedElsewhere = 0;
+      let droppedConsultation = 0;
+      let droppedOutsideTown = 0;
       const ungrouped: string[] = [];
       let latest = '';
 
@@ -191,6 +213,16 @@ export function planningLoader(options: PlanningLoaderOptions): Loader {
         if (!ref || !address) continue;
 
         const addressLower = address.toLowerCase();
+
+        if (excludeConsultations && /^\s*consultation from/i.test(r.description ?? '')) {
+          droppedConsultation++;
+          continue;
+        }
+
+        if (addressMustInclude && !addressMustInclude.some((t) => addressLower.includes(t.toLowerCase()))) {
+          droppedOutsideTown++;
+          continue;
+        }
 
         // Editorial overrides win over the distance calculation.
         const override = Object.entries(overrides).find(([needle]) => addressLower.includes(needle));
@@ -263,9 +295,17 @@ export function planningLoader(options: PlanningLoaderOptions): Loader {
         );
       }
 
+      // Every drop is counted, not silent. A filter that quietly removes the
+      // wrong things is the failure mode that matters here.
+      const dropped = [
+        assignedElsewhere > 0 ? `${assignedElsewhere} assigned to a neighbouring place` : '',
+        droppedConsultation > 0 ? `${droppedConsultation} cross-boundary consultation record(s)` : '',
+        droppedOutsideTown > 0 ? `${droppedOutsideTown} outside the postal town filter` : '',
+      ].filter(Boolean);
+
       logger.info(
         `planning-loader: ${kept} major application(s) within ${radiusKm}km of ${centre.name}` +
-          (assignedElsewhere > 0 ? `, ${assignedElsewhere} assigned to a neighbouring place` : ''),
+          (dropped.length > 0 ? `, dropped ${dropped.join(', ')}` : ''),
       );
     },
   };

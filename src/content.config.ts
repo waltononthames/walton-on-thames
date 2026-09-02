@@ -306,8 +306,59 @@ const hershamPlanning = defineCollection({
   }),
 });
 
+// Major planning applications near Walton town centre, extension section 4.12.
+// Same loader as Hersham, different centre, and two filters Hersham does not
+// need. Measured 2 September 2026: of 29 records the distance rule assigned to
+// Walton, only 9 were actually in Walton. Twelve were cross-boundary
+// consultation records that Elmbridge logs for Woking, Guildford and Surrey
+// County Council, geocoded to Elmbridge rather than to the site, and the rest
+// were Weybridge, Shepperton and Kingston.
+const waltonPlanning = defineCollection({
+  loader: planningLoader({
+    centre: { name: 'Walton-on-Thames', lat: 51.3853, lng: -0.4202 },
+    radiusKm: 2,
+    otherCentres: [{ name: 'Hersham', lat: 51.3662, lng: -0.4002 }],
+    overrides: {
+      // Claimed by the Hersham page; see the note on its collection above.
+      'waterloo court': 'exclude',
+    },
+    // No radius separates Weybridge here: the Oatlands Drive sites sit 0.50 to
+    // 1.07km from The Heart, nearer than Laurelwood Place (0.78km) and
+    // Brownacres (1.36km), which are genuinely Walton. Between post towns the
+    // address is the correct signal, which is the reverse of the Hersham split.
+    addressMustInclude: ['walton-on-thames', 'walton on thames'],
+    sites: [
+      { name: 'Former Homebase, New Zealand Avenue', slug: 'former-homebase-new-zealand-avenue', match: ['site of homebase'] },
+      { name: 'Auckland House, New Zealand Avenue', slug: 'auckland-house-new-zealand-avenue', match: ['auckland house'] },
+      { name: 'Brownacres Sports Ground', slug: 'brownacres-sports-ground', match: ['brownacres'] },
+      { name: 'Laurelwood Place, Felix Road', slug: 'laurelwood-place-felix-road', match: ['laurelwood place'] },
+      { name: '25 to 29 The Grove', slug: '25-to-29-the-grove', match: ['25 to 29 the grove'] },
+      { name: '12 to 16 High Street', slug: '12-to-16-high-street', match: ['12-16 high street'] },
+      { name: '9 to 21a High Street', slug: '9-to-21a-high-street', match: ['9-21a high street'] },
+      { name: '71 High Street', slug: '71-high-street', match: ['71 high street'] },
+    ],
+    yearsBack: 5,
+  }),
+  schema: z.object({
+    reference: z.string(),
+    address: z.string(),
+    postcode: z.string().optional(),
+    description: z.string(),
+    state: z.string(),
+    type: z.string(),
+    startDate: z.string(),
+    decidedDate: z.string().optional(),
+    councilUrl: z.string().optional(),
+    planitUrl: z.string().optional(),
+    place: z.string(),
+    siteName: z.string().optional(),
+    siteSlug: z.string(),
+  }),
+});
+
 export const collections = {
   businesses, events, places, news, history, hersham, fixtures,
   attractions, 'annual-events': annualEvents,
   'hersham-planning': hershamPlanning,
+  'walton-planning': waltonPlanning,
 };

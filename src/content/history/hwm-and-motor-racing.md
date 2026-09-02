@@ -4,13 +4,48 @@ metaTitle: "HWM: Walton's Aston Martin & Motor Racing History"
 metaDescription: "How Hersham and Walton Motors became the world's longest-established Aston Martin dealership and gave Stirling Moss his start in Grand Prix racing."
 slug: "hwm-and-motor-racing"
 cluster: "walton-history"
-era: ["postwar", "1950s"]
+era: ["postwar", "1950s", "contemporary"]
 entityType: "institution"
 heroImage: "/images/history/hwm-single-seater-walton-on-thames.webp"
 heroAlt: "A preserved green HWM single-seater racing car on display at HWM's Bridge Street premises, Walton-on-Thames"
 publishDate: 2026-07-02
-reviewedDate: 2026-08-02
+reviewedDate: 2026-09-02
 sources:
+  - author: "Caterham Cars"
+    year: "2023"
+    title: "Caterham welcomes HWM to UK retailer network"
+    date: "30 June"
+    url: "https://caterhamcars.com/en/news/caterham-welcomes-hwm-to-uk-retailer-network"
+    accessed: "2 September 2026"
+  - author: "Caterham Cars"
+    year: "2026a"
+    title: "Caterham unveils limited-edition Seven HWM Edition"
+    date: "9 March"
+    url: "https://caterhamcars.com/en/news/caterham-unveils-limited-edition-seven-hwm-edition"
+    accessed: "2 September 2026"
+  - author: "Caterham Cars"
+    year: "2026b"
+    title: "New HWM Caterham Seven Special"
+    url: "https://caterhamcars.com/en/find-buy/new-hwm-caterham-seven-special"
+    accessed: "2 September 2026"
+  - author: "Elmbridge Borough Council"
+    year: "2026"
+    title: "Help shape Walton's new public mural"
+    date: "2 March"
+    url: "https://www.elmbridge.gov.uk/news/2026/help-shape-waltons-new-public-mural"
+    accessed: "2 September 2026"
+  - author: "Evans, N."
+    year: "2026"
+    title: "Walton Life"
+    container: "Nathan Evans Illustration"
+    date: "March"
+    url: "https://n-evans.com/projects/walton-life/"
+    accessed: "2 September 2026"
+  - author: "HWM"
+    year: "2026"
+    title: "Caterham Seven HWM Edition: A Racing Legacy Reimagined"
+    url: "https://www.hwm.co.uk/new-cars/hwmcaterhamspecial/"
+    accessed: "2 September 2026"
   - author: "Wikipedia"
     year: "n.d."
     title: "Hersham and Walton Motors"
@@ -43,3 +78,35 @@ HWM's best-known contribution to motor racing history is the driver it gave a st
 ## HWM today
 
 HWM's racing ambitions did not last as long as its dealership business. The firm acquired the Aston Martin franchise in 1951, and that side of the business has long outlived the works racing team, making HWM the world's longest-established Aston Martin dealership, still trading under the same name from the same corner of Walton more than seven decades later. It is a rare example of a business that has genuinely spanned Walton's entire postwar motoring history, from Grand Prix ambition to a settled, long-running dealership.
+
+## A racing legacy revived: the Caterham Seven HWM Edition
+
+HWM's motor-racing history gained an unexpected new chapter on 9 March 2026, when HWM and Caterham Cars announced the Caterham Seven HWM Edition, a limited-production model drawn from the 1951 HWM-Alta Grand Prix car. The collaboration grew out of a more recent commercial relationship. Caterham took HWM into its UK retailer network in 2023, covering the South East from Walton-on-Thames and beginning sales that September, which brought the Walton business back into direct association with lightweight British sports and racing cars (Caterham Cars, 2023; Caterham Cars, 2026a).
+
+Rather than applying historic badges to a standard car, the two firms worked details from HWM's early-1950s competition machines into the specification. The HWM Edition is based on the Caterham Seven 420 and uses that car's naturally aspirated 2.0-litre Ford Duratec engine, producing 210 bhp through a five-speed manual gearbox. Nineteen examples were announced for the UK market (Caterham Cars, 2026a; HWM, 2026).
+
+The colour is the most direct link back to Walton. HWM Green, the standard finish, was scanned from the 1951 HWM-Alta itself. The other references include HWM-Alta-inspired side panel louvres, an HWM-inspired vertical bar grille, suspension wishbones, anti-roll bar and headlight brackets finished in Retro Grey, a bespoke HWM nosecone badge, and a numbered dashboard plaque marking each car as one of the 19 (Caterham Cars, 2026a; Caterham Cars, 2026b; HWM, 2026).
+
+Both companies framed the project in local terms. Trevor Steel of Caterham said the car "pays tribute to Walton-on-Thames' rich racing heritage", while HWM's chief executive Guy Jenner described the collaboration as "a unique opportunity to tell the story of how a small outfit from Walton-on-Thames took on the greatest teams in European grand prix racing" (Caterham Cars, 2026a).
+
+Seventy-five years after the 1951 season, the HWM name was back on a newly built British performance car. It is an unusual link between the firm's competition past and the business that still trades from the same corner of Walton, and a sign that the racing side of the story established by George Abecassis and John Heath still forms part of the company's identity (HWM, 2026).
+
+## HWM in Walton's townscape
+
+HWM's place in the town's identity was recognised in a different form during the same year, 2026. Surrey County Council commissioned the illustrator and mural artist Nathan Evans to paint a large public artwork on the wall of Walton Library facing Hepworth Way, working with Elmbridge Borough Council and Love Walton BID. Before the design was settled, residents, businesses and community groups were invited to contribute ideas, through a public survey and through engagement sessions that included workshops with local colleges and visits to community venues, so that the finished work would reflect the town as local people described it (Elmbridge Borough Council, 2026; Evans, 2026).
+
+The result, *Walton Life*, gathers a good deal of the town's history onto a single wall. Evans lists riverside life and wildlife among its themes, alongside [Walton Bridge](/history/walton-bridge/), Ashley House, the Cecil Hepworth Playhouse, the [Old Manor House](/history/old-manor-house/), [St Mary's Church](/history/st-marys-church/), [Mount Felix](/history/mount-felix/), the [films made at Walton's studios](/history/film-studios/) and HWM's racing team (Evans, 2026).
+
+<figure>
+  <img src="/images/history/walton-life-mural-hwm-racing-car-nathan-evans.webp" alt="A green single-seater racing car representing HWM, painted as part of Nathan Evans's Walton Life mural on Walton Library" loading="lazy" />
+  <figcaption>HWM remembered in Walton. A green HWM racing car forms part of Nathan Evans's <em>Walton Life</em> mural at Walton Library, painted in 2026 to reflect the town's history, heritage and identity. Photograph by Darren Bayley, 2026.</figcaption>
+</figure>
+
+HWM appears as a green single-seater, recognisably one of the post-war cars rather than a generic racing motif. Its inclusion matters because the design was not simply one artist's view of Walton. The subjects came out of the community engagement sessions, combined with Evans's own research into the town and its history (Evans, 2026).
+
+<figure>
+  <img src="/images/history/walton-life-mural-walton-library-hepworth-way.webp" alt="The Walton Life mural on the wall of Walton Library facing Hepworth Way, with the HWM racing car at its centre" loading="lazy" />
+  <figcaption>The <em>Walton Life</em> mural on the Walton Library wall facing Hepworth Way. Photograph by Darren Bayley, 2026.</figcaption>
+</figure>
+
+It is a fitting modern footnote to the HWM story. A racing operation that began in a local motor business and carried Walton's name onto European circuits in the years after the Second World War has become sufficiently embedded in the town's history to appear, generations later, in a piece of public art meant to represent Walton itself.
