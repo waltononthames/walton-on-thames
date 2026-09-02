@@ -9,6 +9,11 @@ entityType: "event"
 publishDate: 2026-09-03
 reviewedDate: 2026-09-03
 sources:
+  - author: "Bishop and Miller Auctioneers"
+    year: "n.d."
+    title: "Walton on Thames Regatta silver goblet, lot photograph"
+    url: "https://bishopandmillerauctions.co.uk/"
+    accessed: "3 September 2026"
   - author: "Environment Agency"
     year: "2026"
     title: "Thames Valley Skiff Club Walton Reach Regatta 2026: river restriction notice"
@@ -111,7 +116,7 @@ sources:
     title: "Race events we host: Walton & Weybridge Regatta"
     url: "https://www.weybridgerowing.club/race-events-we-host"
     accessed: "3 September 2026"
-related: ["swan-symbol-walton-on-thames", "river-thames-at-walton", "mount-felix", "walton-bridge"]
+related: ["swan-symbol-walton-on-thames", "walton-before-the-suburbs", "river-thames-at-walton", "mount-felix", "walton-bridge"]
 ---
 
 Walton's regatta is one of the oldest things that still happens here. The event now called Walton & Weybridge Regatta describes itself as formerly Walton Amateur Regatta, and as held annually since 1862 on the Thames at Walton-on-Thames (Walton and Weybridge Regatta, n.d.b). Weybridge Rowing Club, which shares the running of it, uses the same wording (Weybridge Rowing Club, n.d.b).
@@ -142,11 +147,34 @@ The timing of 1862 fits the wider opening up of the Thames. The railway had reac
 
 Walton had a practical asset as well: a long, straight reach with room to race, and banks from which a race could be watched from end to end. Almost everything else about the regatta has changed. The water has not.
 
+<figure>
+  <img src="/images/history/walton-on-thames-from-the-air-estimated-circa-1920.webp" alt="Vintage aerial photograph captioned 'Walton-on-Thames from the Air', showing Walton Bridge crossing the Thames surrounded by open fields, probably taken during the 1920s" loading="lazy" />
+  <figcaption>"Walton-on-Thames from the Air": a vintage photograph captioned by its original publisher and estimated to date from around the 1920s. Walton Bridge crosses towards a town still ringed by open fields, and the river runs through the middle of it. The same photograph is read in detail in our history of <a href="/history/walton-before-the-suburbs/">Walton before the suburbs</a>.</figcaption>
+</figure>
+
 ## Two silver prizes and a swan
 
 Two Victorian trophies survive in photographs, and both carry the same device: a swan inside a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it.
 
-The first is a silver goblet, hallmarked in London in 1864 and marked by the maker EM/JM, standing 19.5cm high, its bowl mounted with an applied cartouche carrying the device (Invaluable, n.d.). Because that cartouche is cast and applied rather than engraved afterwards, the hallmark dates the device as well as the silver. The second is an undated silver jug carrying the same device engraved, above the name of the event, LOCAL GIGS, and the winning crew: E. R. Kennedy and F. A. Stringer, with A. Payne as cox (Walton-on-Thames.org, n.d.).
+The first is a silver goblet, hallmarked in London in 1864 and marked by the maker EM/JM, standing 19.5cm high, its bowl mounted with an applied cartouche carrying the device (Invaluable, n.d.; Bishop and Miller Auctioneers, n.d.). Because that cartouche is cast and applied rather than engraved afterwards, the hallmark dates the device as well as the silver.
+
+<!-- Rights record: photograph of the goblet used by permission of Bishop and Miller Auctioneers, granted 1 September 2026, credited in the caption and cited in the sources block. -->
+<figure>
+  <img src="/images/history/walton-on-thames-regatta-goblet-1864.webp" alt="Victorian silver goblet on a figural stem modelled as two figures, the bowl mounted with an applied cartouche enclosing a swan in a roundel lettered Walton on Thames Regatta with crossed oars behind" loading="lazy" />
+  <figcaption>The Walton-on-Thames Regatta goblet, hallmarked in London in 1864: a silver cup on a branch-form stem with a figure holding an oar, its bowl mounted with an applied cartouche carrying the swan, the lettered roundel and the crossed oars. Photograph courtesy of Bishop and Miller Auctioneers.</figcaption>
+</figure>
+
+The second is an undated silver jug carrying the same device engraved, above the name of the event, LOCAL GIGS, and the winning crew: E. R. Kennedy and F. A. Stringer, with A. Payne as cox (Walton-on-Thames.org, n.d.). That engraving matters in its own right. It records a prize actually competed for and awarded, in a named event, to a named crew.
+
+<figure>
+  <img src="/images/history/walton-on-thames-regatta-trophy-swan-engraving.webp" alt="Engraving on a silver trophy: the words LOCAL GIGS above a roundel lettered WALTON ON THAMES REGATTA enclosing a swan, with crossed oars behind it, and the names of the winning crew beneath" loading="lazy" />
+  <figcaption>The engraved panel on the jug. A swan sits within a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it, beneath the name of the event, LOCAL GIGS, and above the winning crew: E. R. Kennedy and F. A. Stringer, with A. Payne as cox. Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
+
+<figure>
+  <img src="/images/history/walton-on-thames-regatta-trophy.webp" alt="Victorian silver jug with a plain tapering body, curved handle and shaped lip, standing on a pale windowsill" loading="lazy" />
+  <figcaption>The jug itself, a plain silver vessel carrying the engraved panel. No hallmark has been read from these photographs, so it is not dated here. Photograph supplied to Walton-on-Thames.org.</figcaption>
+</figure>
 
 The same device on two prizes of quite different manufacture is stronger evidence than either object alone. It points to a badge the regatta used rather than an ornament chosen once. We examine both objects, their marks and their limits in our history of [the swan as a symbol of Walton](/history/swan-symbol-walton-on-thames/).
 

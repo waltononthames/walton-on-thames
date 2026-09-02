@@ -786,3 +786,19 @@ Verified: `npm run build` clean at 367 pages, `seo:validate` all checks passed, 
 - **The 1924 meeting's formal title.** Olympedia says "the Walton-on-Thames Regatta" under NARA auspices, which is not the same as Walton Amateur Regatta under ARA rules. NARA records at The London Archives (GB 0074 A/NAR) are the best prospect.
 - **The change of name.** In use by June 2007; the date and reason are unevidenced.
 - **No images.** The page ships without any, because nothing suitable is cleared. Hughes's c. 1908 Mount Felix view and the TRC archive's 1920/1921 prints are both third-party and would need permission.
+
+## 2026-09-03 (later): four images added to /history/walton-regatta/
+
+Darren supplied four images already published elsewhere on the site, with the captions to use. All four are now on the regatta page, and the page is no longer image-free.
+
+**The three trophy photographs** carry the same captions and alt text as on `/history/swan-symbol-walton-on-thames/`, deliberately: they are the same objects making the same argument, and divergent captions for one photograph across two pages is how a caption quietly becomes wrong on one of them. The goblet keeps its "Photograph courtesy of Bishop and Miller Auctioneers" credit, and a rights-record comment now sits above that figure recording the 1 September permission. Bishop and Miller was added to the sources block, which it needed anyway: the article had been citing Invaluable alone for a photograph that is the auctioneers'.
+
+**The aerial photograph's caption had to be adapted.** Darren's text came from `walton-before-the-suburbs.md`, where it reads "the vintage photograph this article is about". That is true there and false here, so the caption now says "a vintage photograph", keeps the original publisher's title and the circa-1920s estimate verbatim, and carries the cross-link to `/history/walton-before-the-suburbs/` that was the point of including it. `walton-before-the-suburbs` was also added to `related`.
+
+**It sits in "Why the river, and why then", the section about the reach itself.** A 1920s photograph illustrating a paragraph about 1862 is a conflation risk, so the caption states its date plainly rather than letting the placement imply one. The alternative placement, "War, and the return of racing", would date better against the 1920 and 1921 Thames RC photographs but would bury the only establishing view of the river two thirds of the way down the page.
+
+Verified: build clean at 367 pages, `seo:validate` passed, `seo:links` zero broken links, all four `<figure>` blocks render with alt text and captions intact, all four files present under `public/images/history/`.
+
+## Still open
+- **The aerial photograph has no rights record on either page.** `walton-before-the-suburbs.md` publishes it with no provenance comment and no sources entry, and this page now inherits that gap. It reads as a published vintage view, but the basis for reproduction is undocumented in the repo, which Standards 11.2 requires. Worth fixing at source rather than here.
+- Page locators for Stonebanks (1980) and Hughes (2003) remain the largest outstanding item on this page.
