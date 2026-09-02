@@ -802,3 +802,15 @@ Verified: build clean at 367 pages, `seo:validate` passed, `seo:links` zero brok
 ## Still open
 - **The aerial photograph has no rights record on either page.** `walton-before-the-suburbs.md` publishes it with no provenance comment and no sources entry, and this page now inherits that gap. It reads as a published vintage view, but the basis for reproduction is undocumented in the repo, which Standards 11.2 requires. Worth fixing at source rather than here.
 - Page locators for Stonebanks (1980) and Hughes (2003) remain the largest outstanding item on this page.
+
+## 2026-09-03 (later still): aerial caption reworded on the regatta page
+
+Darren's wording, applied as given: the caption now opens `"Walton-on-Thames and the Walton Mile from the Air": the vintage photograph from around the 1920s.` The descriptive sentence and the cross-link to `/history/walton-before-the-suburbs/` are unchanged.
+
+**Two things about it are worth recording rather than quietly absorbing.** The quoted phrase is no longer the original publisher's caption. The printed caption on the photograph reads "Walton-on-Thames from the Air"; "and the Walton Mile" is our addition, and it now sits inside quotation marks, which Standards 8.5 reserves for the source's own wording. The `alt` attribute still describes the photograph as captioned "Walton-on-Thames from the Air", which is accurate to the object but no longer matches the visible caption, so a screen-reader user gets one title and a sighted reader another. Both are fixed by moving our words outside the quotation marks.
+
+"Walton Mile" also now appears on the page for the first time. It was deliberately kept out of the body text at publication because no source consulted attests it as the reach's name; the draft's "the reach traditionally known as the Walton Mile" was cut for that reason. It is plainly current local usage and the owner's own term, so it stands, but the page still does not introduce or evidence it anywhere in the prose.
+
+## Still open
+- **Source the name "Walton Mile."** A club, regatta or navigation document using it would let the term be introduced properly in the body rather than appearing only in a caption.
+- The aerial photograph's missing rights record, unchanged from the previous entry.

@@ -149,7 +149,7 @@ Walton had a practical asset as well: a long, straight reach with room to race, 
 
 <figure>
   <img src="/images/history/walton-on-thames-from-the-air-estimated-circa-1920.webp" alt="Vintage aerial photograph captioned 'Walton-on-Thames from the Air', showing Walton Bridge crossing the Thames surrounded by open fields, probably taken during the 1920s" loading="lazy" />
-  <figcaption>"Walton-on-Thames from the Air": a vintage photograph captioned by its original publisher and estimated to date from around the 1920s. Walton Bridge crosses towards a town still ringed by open fields, and the river runs through the middle of it. The same photograph is read in detail in our history of <a href="/history/walton-before-the-suburbs/">Walton before the suburbs</a>.</figcaption>
+  <figcaption>"Walton-on-Thames and the Walton Mile from the Air": the vintage photograph from around the 1920s. Walton Bridge crosses towards a town still ringed by open fields, and the river runs through the middle of it. The same photograph is read in detail in our history of <a href="/history/walton-before-the-suburbs/">Walton before the suburbs</a>.</figcaption>
 </figure>
 
 ## Two silver prizes and a swan
