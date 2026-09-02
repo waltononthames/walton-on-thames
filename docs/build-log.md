@@ -759,3 +759,30 @@ Verified: build clean, `seo:validate` passes on 370 pages, no new type errors, 2
 - **Audit the rest of `/living/schools/`.** Seven entries remain unverified after one was found fabricated.
 - Blueprint Section 3's architecture list does not yet include `/development-and-planning/`.
 - Bus routes on `/hersham/living/` are still linked rather than named.
+
+## 2026-09-03: /history/walton-regatta/ built from Darren's research paper
+
+Darren supplied a Harvard-cited draft on Walton Regatta. Rather than reformatting it, every online source in it was re-fetched this session and the article rewritten around what those sources actually say. Three claims changed as a result, and two sources were dropped.
+
+**The draft repeated an error this site had already corrected.** It described the auctioned 1864 trophy as "a tall silver presentation cup" and gave the jug's crew as "E. R. Kennedy and F. M. Stringer". The 1 September correction on `/history/swan-symbol-walton-on-thames/` established that the hallmarked object is a goblet, 19.5cm on a figural stem with an applied cartouche, and that the jug's engraving reads E. R. Kennedy and F. A. Stringer with A. Payne as cox. The new page follows the corrected position and links to the swan article rather than restating the object argument.
+
+**Team GB was dropped as a source.** Its Townend biography is rendered client-side and returns no biography text to a fetch, so it could not be checked. Olympedia's own John Townend page carries the same Townend Cup claim and is cited instead. The draft's Environment Agency claim that Walton Reach Regatta runs on the Sunbury reach was thin in the summary notice but is stated exactly in the full notice: "Sunbury reach, Walton Rowing Club to the Black Swan Sea Cadets".
+
+**Two findings are new to the site, from primary material the draft cited but had not read.** The 1949 *Thames Rowing Club Journal* is a scanned PDF with a text layer; extracting it and checking the two relevant pages against rendered images gives the 11 June 1949 programme, the six cups Thames entered, and the margins (beat Westminster Bank by 1¼ lengths, lost to Quintin by 3 feet), all on p. 9. Page 23 explains where one of those cups came from: Thames had begun lending its own club plate to regattas, and "a second and very handsome silver-gilt cup has been loaned to Walton Regatta to be used as a cup for the Senior Pairs". A Walton challenge cup on loan from a London club's silver safe is not in any secondary account of the regatta. The TRC archive also yields exact photograph labels and reference codes for 1920, 1921 and 1934, which is firmer than the draft's paraphrase, and the TRC-RAC-1-3 file turns out to hold booklets for only four years within its 1949-1975 span.
+
+**Walton Rowing Club's own site fails TLS negotiation for WebFetch** (`TLSV1_ALERT_INTERNAL_ERROR` on both www and apex). The Browser pane loads it without complaint, and the club's history page was read there: 1927 formation with Steve Fairbairn as president, and the 1951 lease of the Sunbury Lane plot from the Miskin family trust. That last detail sits beside the Miskin Challenge Cup in the 1949 programme; the page raises the coincidence as a question and explicitly declines to assert a connection.
+
+**Conflicts are shown, not resolved silently.** Weybridge Rowing Club's own 1924 page gives the crew as Joe Barnsley, Vince Bovington, Harry Monk, Jack Townend and Bernard Croucher, against Olympedia's Harry Barnsley, Vince Boveington, Thomas Monk, John Townend and Bernard Croucher. The article follows Olympedia and names the disagreement. The club's stronger claims (first NARA crew selected for the Olympics, subsequent exclusion from Leander) are attributed to the club in the sentence that carries them, since it is writing about its own members.
+
+**The organisers' "held annually since 1862" is treated as institutional continuity, not an unbroken run**, because Stonebanks records lapses before it settled and the Skiff Racing Association records both wars interrupting it. Saying so is the honest reading and costs the page nothing.
+
+Verified: `npm run build` clean at 367 pages, `seo:validate` all checks passed, `seo:links` reports zero links to non-existent pages, no em dashes, metaTitle 40 characters and metaDescription 149, all twenty source entries render correctly through the Harvard assembler. Hub integration: added to the Victorian era list and the Victorian prose on `/history/`, and reciprocally linked with the swan article.
+
+`npm run check` reports 155 pre-existing type errors across the repo (implicit `any` in map callbacks, `never` on news collection entries). None are in the new file or the two files touched; the baseline was already dirty.
+
+## Still open
+- **Page locators for Stonebanks (1980) and Hughes (2003).** Both are print, both are Darren's, and neither citation carries a page number. `sidney-road.md` shows the house style with locators; this page should match once the books are to hand. Every Stonebanks-sourced claim on the page depends on it: Walton Town Regatta, River House, Sullivan, the 1897 fête and the moveable finishing line.
+- **The 1862 meeting itself.** No contemporary account traced. Surrey and London newspapers for the weeks around it are the next search.
+- **The 1924 meeting's formal title.** Olympedia says "the Walton-on-Thames Regatta" under NARA auspices, which is not the same as Walton Amateur Regatta under ARA rules. NARA records at The London Archives (GB 0074 A/NAR) are the best prospect.
+- **The change of name.** In use by June 2007; the date and reason are unevidenced.
+- **No images.** The page ships without any, because nothing suitable is cleared. Hughes's c. 1908 Mount Felix view and the TRC archive's 1920/1921 prints are both third-party and would need permission.

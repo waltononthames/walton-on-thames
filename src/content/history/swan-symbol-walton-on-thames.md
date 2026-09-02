@@ -233,7 +233,7 @@ sources:
     title: "Race events we host: Walton & Weybridge Regatta"
     url: "https://www.weybridgerowing.club/race-events-we-host"
     accessed: "28 August 2026"
-related: ["heraldry-walton-on-thames-hersham-whiteley", "river-thames-at-walton", "elmbridge-hundred", "walton-bridge"]
+related: ["walton-regatta", "heraldry-walton-on-thames-hersham-whiteley", "river-thames-at-walton", "elmbridge-hundred", "walton-bridge"]
 ---
 
 At Walton Wharf, swans are part of the everyday life of the river. They gather beside the boats, glide past the towpath and are among the most familiar sights on this stretch of the Thames. Yet the swan is also a recurring symbol in Walton's history. It appears on the seal of a medieval nobleman connected with the manor, on a Victorian regatta trophy, in the coat of arms of the former urban district council, and in the badge and nickname of our beloved local football club, Walton & Hersham.
@@ -306,7 +306,7 @@ This wider history explains why the swan was such a resonant emblem for later he
 
 ## The Victorian regatta swan
 
-Walton Amateur Regatta was established in 1862, and its successor, the Walton and Weybridge Regatta, still races on the Thames at Walton over a course beginning below Walton Marina and finishing downstream near Walton Rowing Club (Weybridge Rowing Club, n.d.; Walton and Weybridge Regatta, n.d.).
+[Walton Amateur Regatta](/history/walton-regatta/) was established in 1862, and its successor, the Walton and Weybridge Regatta, still races on the Thames at Walton over a course beginning below Walton Marina and finishing downstream near Walton Rowing Club (Weybridge Rowing Club, n.d.; Walton and Weybridge Regatta, n.d.).
 
 Two silver prizes from the regatta survive in photographs, and only one of them is dated.
 
