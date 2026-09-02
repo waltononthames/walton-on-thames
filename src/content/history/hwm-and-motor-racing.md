@@ -46,6 +46,20 @@ sources:
     title: "Caterham Seven HWM Edition: A Racing Legacy Reimagined"
     url: "https://www.hwm.co.uk/new-cars/hwmcaterhamspecial/"
     accessed: "2 September 2026"
+  - author: "HWM Caterham"
+    year: "2024"
+    title: "Straight from the factory! Caterham 170R finished in HWM Green: a walk around with Ollie"
+    container: "YouTube"
+    date: "18 September"
+    url: "https://www.youtube.com/watch?v=7beaZO4u9eI"
+    accessed: "2 September 2026"
+  - author: "HWM Caterham"
+    year: "2026"
+    title: "HWM Caterham Special: a racing legacy reimagined, 09.03.26"
+    container: "YouTube"
+    date: "7 March"
+    url: "https://www.youtube.com/watch?v=NVqfxv8cl5I"
+    accessed: "2 September 2026"
   - author: "Wikipedia"
     year: "n.d."
     title: "Hersham and Walton Motors"
@@ -87,7 +101,23 @@ Rather than applying historic badges to a standard car, the two firms worked det
 
 The colour is the most direct link back to Walton. HWM Green, the standard finish, was scanned from the 1951 HWM-Alta itself. The other references include HWM-Alta-inspired side panel louvres, an HWM-inspired vertical bar grille, suspension wishbones, anti-roll bar and headlight brackets finished in Retro Grey, a bespoke HWM nosecone badge, and a numbered dashboard plaque marking each car as one of the 19 (Caterham Cars, 2026a; Caterham Cars, 2026b; HWM, 2026).
 
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/NVqfxv8cl5I" title="HWM Caterham Special: A Racing Legacy Reimagined, HWM Caterham" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>HWM's own film for the launch of the HWM Caterham Special, published on its YouTube channel on 7 March 2026, two days before the model was announced. Video: HWM Caterham.</figcaption>
+</figure>
+
 Both companies framed the project in local terms. Trevor Steel of Caterham said the car "pays tribute to Walton-on-Thames' rich racing heritage", while HWM's chief executive Guy Jenner described the collaboration as "a unique opportunity to tell the story of how a small outfit from Walton-on-Thames took on the greatest teams in European grand prix racing" (Caterham Cars, 2026a).
+
+HWM Green had already appeared on Caterhams sold by the Walton business before the limited edition was conceived. HWM's own walkaround of a Caterham 170R in the colour was published in September 2024, eighteen months before the Seven HWM Edition was announced (HWM Caterham, 2024).
+
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/7beaZO4u9eI" title="Caterham 170R finished in HWM Green: a walk around with Ollie, HWM Caterham" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>A Caterham 170R finished in HWM Green, published on HWM's YouTube channel on 18 September 2024. This is a road car HWM had for sale, not one of the 19 Seven HWM Editions. Video: HWM Caterham.</figcaption>
+</figure>
 
 Seventy-five years after the 1951 season, the HWM name was back on a newly built British performance car. It is an unusual link between the firm's competition past and the business that still trades from the same corner of Walton, and a sign that the racing side of the story established by George Abecassis and John Heath still forms part of the company's identity (HWM, 2026).
 
@@ -97,16 +127,6 @@ HWM's place in the town's identity was recognised in a different form during the
 
 The result, *Walton Life*, gathers a good deal of the town's history onto a single wall. Evans lists riverside life and wildlife among its themes, alongside [Walton Bridge](/history/walton-bridge/), Ashley House, the Cecil Hepworth Playhouse, the [Old Manor House](/history/old-manor-house/), [St Mary's Church](/history/st-marys-church/), [Mount Felix](/history/mount-felix/), the [films made at Walton's studios](/history/film-studios/) and HWM's racing team (Evans, 2026).
 
-<figure>
-  <img src="/images/history/walton-life-mural-hwm-racing-car-nathan-evans.webp" alt="A green single-seater racing car representing HWM, painted as part of Nathan Evans's Walton Life mural on Walton Library" loading="lazy" />
-  <figcaption>HWM remembered in Walton. A green HWM racing car forms part of Nathan Evans's <em>Walton Life</em> mural at Walton Library, painted in 2026 to reflect the town's history, heritage and identity. Photograph by Darren Bayley, 2026.</figcaption>
-</figure>
-
-HWM appears as a green single-seater, recognisably one of the post-war cars rather than a generic racing motif. Its inclusion matters because the design was not simply one artist's view of Walton. The subjects came out of the community engagement sessions, combined with Evans's own research into the town and its history (Evans, 2026).
-
-<figure>
-  <img src="/images/history/walton-life-mural-walton-library-hepworth-way.webp" alt="The Walton Life mural on the wall of Walton Library facing Hepworth Way, with the HWM racing car at its centre" loading="lazy" />
-  <figcaption>The <em>Walton Life</em> mural on the Walton Library wall facing Hepworth Way. Photograph by Darren Bayley, 2026.</figcaption>
-</figure>
+HWM appears as a green single-seater racing car. Its inclusion matters because the design was not simply one artist's view of Walton. The subjects came out of the community engagement sessions, combined with Evans's own research into the town and its history (Evans, 2026).
 
 It is a fitting modern footnote to the HWM story. A racing operation that began in a local motor business and carried Walton's name onto European circuits in the years after the Second World War has become sufficiently embedded in the town's history to appear, generations later, in a piece of public art meant to represent Walton itself.
