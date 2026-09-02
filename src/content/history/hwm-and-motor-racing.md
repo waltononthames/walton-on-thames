@@ -11,6 +11,16 @@ heroAlt: "A preserved green HWM single-seater racing car on display at HWM's Bri
 publishDate: 2026-07-02
 reviewedDate: 2026-09-02
 sources:
+  - author: "Aston Martin"
+    year: "n.d."
+    title: "Aston Martin Walton-on-Thames"
+    url: "https://www.astonmartin.com/en-gb/dealers/aston-martin-walton-on-thames"
+    accessed: "3 September 2026"
+  - author: "HWM"
+    year: "n.d."
+    title: "Our History"
+    url: "https://www.hwm.co.uk/about-us/our-history/"
+    accessed: "3 September 2026"
   - author: "Caterham Cars"
     year: "2023"
     title: "Caterham welcomes HWM to UK retailer network"
@@ -47,19 +57,19 @@ sources:
     url: "https://www.hwm.co.uk/new-cars/hwmcaterhamspecial/"
     accessed: "2 September 2026"
   - author: "HWM Caterham"
-    year: "2024"
-    title: "Straight from the factory! Caterham 170R finished in HWM Green: a walk around with Ollie"
-    container: "YouTube"
-    date: "18 September"
-    url: "https://www.youtube.com/watch?v=7beaZO4u9eI"
-    accessed: "2 September 2026"
-  - author: "HWM Caterham"
-    year: "2026"
+    year: "2026a"
     title: "HWM Caterham Special: a racing legacy reimagined, 09.03.26"
     container: "YouTube"
     date: "7 March"
     url: "https://www.youtube.com/watch?v=NVqfxv8cl5I"
     accessed: "2 September 2026"
+  - author: "HWM Caterham"
+    year: "2026b"
+    title: "HWM Caterham Special: the full unveil, a walk around with Guy and Oliver"
+    container: "YouTube"
+    date: "9 March"
+    url: "https://www.youtube.com/watch?v=OLa-dCfgNMc"
+    accessed: "3 September 2026"
   - author: "Wikipedia"
     year: "n.d."
     title: "Hersham and Walton Motors"
@@ -79,19 +89,19 @@ Not every piece of Walton's history is about the river or the church. Near Walto
 
 ## Hersham and Walton Motors
 
-HWM was founded in 1938 by John Heath, an engineer and accomplished racing driver, and was joined in 1946 by George Abecassis, another serious racing talent. What began as a garage and dealership business quickly grew a second identity as a racing car constructor, competing in Formula One and Formula Two as well as sports car racing through the early 1950s, an unusually ambitious sideline for a firm rooted in a Surrey car dealership.
+HWM was founded in 1938 by John Heath, an engineer and accomplished racing driver, and was joined in 1946 by George Abecassis, another serious racing talent, who by HWM's own account began racing with Heath that year (Caterham Cars, 2026a; HWM, 2026; HWM, n.d.). What began as a garage and dealership business quickly grew a second identity as a racing car constructor, competing in Formula One and Formula Two as well as sports car racing through the early 1950s, an unusually ambitious sideline for a firm rooted in a Surrey car dealership.
 
 ## Building their own racing cars
 
-HWM built and campaigned its own single-seater racing cars under the HWM name through the early 1950s, competing at Grand Prix level against factory teams with vastly larger budgets. The team scored a genuine landmark early on: Johnny Claes won the Grand Prix des Frontières at Chimay in an HWM, the first post-war Grand Prix victory for a British-built car, a result that gave the small Walton-based team a real claim to a place in British motor racing history.
+HWM built and campaigned its own single-seater racing cars under the HWM name through the early 1950s, competing at Grand Prix level against factory teams with vastly larger budgets. The team scored a genuine landmark early on: Johnny Claes won the Grand Prix des Frontières at Chimay in an HWM, the first post-war Grand Prix victory for a British-built car, a result that gave the small Walton-based team a real claim to a place in British motor racing history. Both HWM and Caterham describe the firm as the first British team to take a Grand Prix victory after the war, and HWM's own history traces the progression from the HW-Alta to a full team of cars built for the 1950 Formula Two season (Caterham Cars, 2026a; HWM, 2026; HWM, n.d.). Caterham's account of the 1951 HWM-Alta season records seven wins, seven seconds and ten thirds in international events (Caterham Cars, 2026a).
 
 ## Stirling Moss's first Grand Prix
 
-HWM's best-known contribution to motor racing history is the driver it gave a start to rather than any single race result. Stirling Moss, then still establishing himself after strong performances in Formula Three, was given his first drive in top-level international racing by HWM, and it was in an HWM car that he made his Grand Prix debut, at the 1951 Swiss Grand Prix, finishing eighth. Moss went on to race for the team for close to two years before moving on to the career that would make him one of the most celebrated drivers in the sport's history, and HWM's role as the team that gave him his start remains one of the most significant footnotes in British motor racing.
+HWM's best-known contribution to motor racing history is the driver it gave a start to rather than any single race result. Stirling Moss, then still establishing himself after strong performances in Formula Three, was given his first drive in top-level international racing by HWM, and it was in an HWM car that he made his Grand Prix debut, at the 1951 Swiss Grand Prix, finishing eighth. Moss went on to race for the team for close to two years before moving on to the career that would make him one of the most celebrated drivers in the sport's history, and HWM's role as the team that gave him his start remains one of the most significant footnotes in British motor racing. Caterham's account of the 1951 HWM-Alta names Moss among its drivers, and HWM's own history lists him among the drivers who took the cars to success in Formula One in the early 1950s (Caterham Cars, 2026a; HWM, n.d.).
 
 ## HWM today
 
-HWM's racing ambitions did not last as long as its dealership business. The firm acquired the Aston Martin franchise in 1951, and that side of the business has long outlived the works racing team, making HWM the world's longest-established Aston Martin dealership, still trading under the same name from the same corner of Walton more than seven decades later. It is a rare example of a business that has genuinely spanned Walton's entire postwar motoring history, from Grand Prix ambition to a settled, long-running dealership.
+HWM's racing ambitions did not last as long as its dealership business. The firm has represented Aston Martin since 1951, and that side of the business has long outlived the works racing team; Aston Martin's own dealer listing describes HWM as the oldest Aston Martin dealership in the world, still trading under the same name from the same corner of Walton more than seven decades later. It is a rare example of a business that has genuinely spanned Walton's entire postwar motoring history, from Grand Prix ambition to a settled, long-running dealership. HWM makes the continuity explicit, describing its Grand Prix cars as hand-built in the same Walton-on-Thames workshop it operates from today (HWM, 2026).
 
 ## A racing legacy revived: the Caterham Seven HWM Edition
 
@@ -110,13 +120,13 @@ The colour is the most direct link back to Walton. HWM Green, the standard finis
 
 Both companies framed the project in local terms. Trevor Steel of Caterham said the car "pays tribute to Walton-on-Thames' rich racing heritage", while HWM's chief executive Guy Jenner described the collaboration as "a unique opportunity to tell the story of how a small outfit from Walton-on-Thames took on the greatest teams in European grand prix racing" (Caterham Cars, 2026a).
 
-HWM Green had already appeared on Caterhams sold by the Walton business before the limited edition was conceived. HWM's own walkaround of a Caterham 170R in the colour was published in September 2024, eighteen months before the Seven HWM Edition was announced (HWM Caterham, 2024).
+Jenner walks around the finished car in HWM's own unveiling film, published on the day of the announcement.
 
 <figure>
   <div class="video-embed">
-    <iframe src="https://www.youtube-nocookie.com/embed/7beaZO4u9eI" title="Caterham 170R finished in HWM Green: a walk around with Ollie, HWM Caterham" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe src="https://www.youtube-nocookie.com/embed/OLa-dCfgNMc" title="HWM Caterham Special: The Full Unveil, a walk around with Guy and Oliver, HWM Caterham" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
-  <figcaption>A Caterham 170R finished in HWM Green, published on HWM's YouTube channel on 18 September 2024. This is a road car HWM had for sale, not one of the 19 Seven HWM Editions. Video: HWM Caterham.</figcaption>
+  <figcaption>The full unveiling of the HWM Caterham Special, a walk around the car with Guy Jenner and Oliver, published on HWM's YouTube channel on 9 March 2026. Video: HWM Caterham.</figcaption>
 </figure>
 
 Seventy-five years after the 1951 season, the HWM name was back on a newly built British performance car. It is an unusual link between the firm's competition past and the business that still trades from the same corner of Walton, and a sign that the racing side of the story established by George Abecassis and John Heath still forms part of the company's identity (HWM, 2026).
