@@ -21,6 +21,7 @@
 //     this page is unique to it.
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { HERSHAM_GREEN_HERO } from '../../utils/hero-images';
 import AttractionCard from '../../components/AttractionCard.astro';
 import { attractionCardProps as cardProps } from '../../utils/attractionCardProps';
 
@@ -83,6 +84,7 @@ const reviewedDateStr = new Date('2026-08-22T00:00:00').toLocaleDateString('en-G
   title="Things to Do in Hersham, Surrey"
   description="Things to do in Hersham: the village green, Coronation and Hersham recreation grounds, Safari Adventure Golf, and local sport on Molesey Road."
   image="/images/hersham-green-village-sign-hero.webp"
+  preloadImage={{ srcset: HERSHAM_GREEN_HERO.srcset, sizes: HERSHAM_GREEN_HERO.sizes }}
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -113,11 +115,13 @@ const reviewedDateStr = new Date('2026-08-22T00:00:00').toLocaleDateString('en-G
   <div class="hersham-hero">
     <div class="hersham-hero-bg" aria-hidden="true">
       <img
-        src="/images/hersham-green-village-sign-hero.webp"
-        alt="The Hersham Village sign on Hersham Green"
+        src={HERSHAM_GREEN_HERO.src}
+        srcset={HERSHAM_GREEN_HERO.srcset}
+        sizes={HERSHAM_GREEN_HERO.sizes}
+        alt={HERSHAM_GREEN_HERO.alt}
         fetchpriority="high"
-        width="2048"
-        height="768"
+        width={HERSHAM_GREEN_HERO.width}
+        height={HERSHAM_GREEN_HERO.height}
       />
       <div class="hersham-hero-overlay"></div>
     </div>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { HERSHAM_GREEN_HERO } from '../../utils/hero-images';
 import EventCard from '../../components/EventCard.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -111,6 +112,7 @@ const exploreGroups = [
   title="Hersham Village, Surrey"
   description="A local guide to Hersham, Surrey: the green, food and drink, walks by the River Mole, history from the Domesday era to Sham 69, and village life."
   image="/images/hersham-green-village-sign-hero.webp"
+  preloadImage={{ srcset: HERSHAM_GREEN_HERO.srcset, sizes: HERSHAM_GREEN_HERO.sizes }}
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -162,11 +164,13 @@ const exploreGroups = [
   <div class="hersham-hero">
     <div class="hersham-hero-bg" aria-hidden="true">
       <img
-        src="/images/hersham-green-village-sign-hero.webp"
-        alt="The Hersham Village sign on Hersham Green"
+        src={HERSHAM_GREEN_HERO.src}
+        srcset={HERSHAM_GREEN_HERO.srcset}
+        sizes={HERSHAM_GREEN_HERO.sizes}
+        alt={HERSHAM_GREEN_HERO.alt}
         fetchpriority="high"
-        width="2048"
-        height="768"
+        width={HERSHAM_GREEN_HERO.width}
+        height={HERSHAM_GREEN_HERO.height}
       />
       <div class="hersham-hero-overlay"></div>
     </div>

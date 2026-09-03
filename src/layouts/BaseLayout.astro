@@ -10,6 +10,13 @@ interface Props {
   canonicalURL?: string;
   type?: 'website' | 'article';
   noIndex?: boolean;
+  /**
+   * Preloads the page's LCP hero so the fetch starts before the stylesheet
+   * resolves. Pass the same srcset and sizes the <img> uses, or the browser
+   * preloads one file and then downloads another. Import the definition from
+   * src/utils/hero-images.ts rather than writing the strings out twice.
+   */
+  preloadImage?: { srcset: string; sizes: string };
 }
 
 const {
@@ -19,6 +26,7 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.url.origin).href,
   type = 'website',
   noIndex = false,
+  preloadImage,
 } = Astro.props;
 
 // Google shows roughly 60 characters of a title. Appending the brand to a
@@ -43,6 +51,15 @@ const siteTitle =
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
+
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        imagesrcset={preloadImage.srcset}
+        imagesizes={preloadImage.sizes}
+      />
+    )}
 
     <!-- Open Graph -->
     <meta property="og:type" content={type} />
