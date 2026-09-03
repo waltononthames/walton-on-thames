@@ -2,6 +2,27 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-04: Hersham Green merge and an FAQ fix
+
+**Hersham Green merge (Hersham plan item 1.3).** `docs/site-audit.md` line 43 decided in July that `content/places/hersham-village-green.md` should merge into `/hersham/hersham-green/`; the merge never happened, so two pages competed for the same subject. Retired the places entry.
+
+Compared both pages before deleting anything. Every fact the old page carried was already on the surviving page, sourced and in more detail: the period cottages and Victorian villas, the pond with its ducks and heron, the Barley Mow, the mile from Walton town centre via Queen's Road, and the ten-minute walk from the station. **Nothing was migrated, because nothing needed to be.** The old page's "serving locals for centuries" claim about the Barley Mow was unsourced and died with the file; the surviving page already words it more carefully.
+
+Repointed nine links across five pages. The plan named four files; `things-to-do/walton-and-hersham-fc.astro` was a fifth it had missed. Retargeted the `attractions` card's `internalUrl`, which the things-to-do pages read. Added three rules to `public/_redirects`, with the legacy `/visit/` form deliberately placed above the `/visit/things-to-do/*` wildcard so it resolves in one hop rather than two: that closes a cosmetic note that had been open in the site audit since July.
+
+**Two knock-on effects, both handled rather than left to break:**
+
+1. The homepage renders exactly three featured places and the green was one of them, so removing it would have left two cards in a three-column grid. Promoted Walton Bridge to `featured`. It is a defensible replacement: a landmark rather than a third park, and already named in the homepage hero copy.
+2. `things-to-do/riverside-walks.astro` filters places by category and was picking the green up as a park, so its meta description promised "green spaces in Hersham" that the page will no longer contain. Reworded the description to match what the page actually shows.
+
+**History note.** A second session was working this repo at the same time and committed `776faba` (an events refresh) while this task was mid-flight. That commit picked up the already-staged deletion of `src/content/places/hersham-village-green.md`, so the file's removal is recorded under an events-refresh message that does not mention it. The end state is correct and the commit was left alone rather than rewritten. If you are ever tracing when that page died, it was plan item 1.3 on 4 September 2026, not an events change.
+
+**Verified:** build drops from 375 to 374 indexed pages, `/things-to-do/hersham-village-green/` gone from both `dist/` and the sitemap, `/hersham/hersham-green/` still building, homepage showing three place cards, `seo:validate` clean at 373 pages, `seo:links` reporting zero dead internal links.
+
+**FAQ fix on `/hersham/`, owner-requested.** The closing sentence pointing at the parakeets guide sat in its own paragraph after the last FAQ, where it read as a footnote to the population answer rather than to the parakeet one. Moved it into the parakeet answer.
+
+It carries a link, and the `faqs` array feeds both the visible markup and the `FAQPage` JSON-LD, so a raw anchor in the answer string would have been escaped on the page. Held the answer as lead text, link and tail instead: the page renders the anchor, a small helper flattens the same three fields into the plain string the schema needs, and the two cannot drift apart. Confirmed in the built HTML that the visible answer and the schema answer now carry identical text, and that the orphaned paragraph is gone.
+
 ## 2026-09-04: Canonical host redirect (Hersham plan item 1.1)
 
 `www.walton-on-thames.org` was serving the entire site with a 200 rather than redirecting to the apex, so every page on the site existed at two URLs with only the canonical tag to tell Google which to keep. `functions/_middleware.js` previously redirected only the bare `walton-on-thames.pages.dev` host, so nothing caught the www duplicate. Rewrote it to redirect any hostname that is not `walton-on-thames.org`, preserving path and query and forcing https.
