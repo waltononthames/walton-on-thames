@@ -2,6 +2,18 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-04: Legacy URL decision and the Hersham hero image
+
+**Legacy URLs (Hersham plan item 1.4).** Documentation only, but the live behaviour was re-checked first rather than assumed. The pre-Astro `/forum/viewtopic.php` threads return a true 404 with the site's own 404 page, and `/?page_id=84` returns 200 carrying a canonical to the homepage. Both are correct as they stand and both are being left alone: redirecting hundreds of unrelated forum threads to one surviving page is the soft-404 pattern Google discounts, and a canonical is the right mechanism for an ignored query parameter. Recorded in `docs/site-audit.md` under a new "Pre-Astro URLs still in Google's index" section, together with the one condition that would reopen it, so the question is not re-litigated on every audit.
+
+**Hersham hero image (Hersham plan item 1.5).** The hero was a single 372KB 2048px WebP with no `srcset` and no preload, and it is the LCP element on both `/hersham/` and `/things-to-do/hersham/`. Generated 800, 1200 and 2048 variants with sharp at quality 72: 54KB, 109KB and 295KB. A 1200px viewport now fetches 109KB rather than 372KB, inside the plan's 120KB target.
+
+The interesting part is where the `srcset` lives. It has to appear twice on the page, once on the `<img>` and once on the `<link rel="preload">`, and if the two disagree the browser preloads one file and then downloads a different one, which is worse than not preloading at all. Rather than write the string out twice across two page files, it is declared once in a new `src/utils/hero-images.ts` and read by both, on both pages. `BaseLayout.astro` gained an optional `preloadImage` prop to carry it.
+
+The un-suffixed original stays on disk and is deliberately still the Open Graph image, so social cards are unaffected; no `<img>` references it any more, confirmed against the built output. Card images across the site already carried `loading="lazy"`, so that part of the plan item needed no change.
+
+**Verified:** the emitted preload `imagesrcset` is byte-identical to the img `srcset`, both pages carry the responsive markup, `og:image` still points at the original, no built page requests the un-suffixed file as an image, `seo:validate` clean at 373 pages, `seo:links` reporting zero dead internal links. Width and height attributes still describe the 2048 variant's aspect ratio, which matches every variant, so there is no layout shift.
+
 ## 2026-09-04: Hersham Green merge and an FAQ fix
 
 **Hersham Green merge (Hersham plan item 1.3).** `docs/site-audit.md` line 43 decided in July that `content/places/hersham-village-green.md` should merge into `/hersham/hersham-green/`; the merge never happened, so two pages competed for the same subject. Retired the places entry.
