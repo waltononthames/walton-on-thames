@@ -1,5 +1,5 @@
 ---
-title: "Hepworth Studios: How Walton-on-Thames Invented British Film"
+title: "Cecil Hepworth and Walton's Pioneering Film Studio"
 metaTitle: "Hepworth Studios: Walton's Film Studio History"
 metaDescription: "How Cecil Hepworth's studio in Walton became a major British film studio, made the first Alice in Wonderland, then lost its catalogue to bankruptcy."
 slug: "film-studios"
@@ -7,8 +7,13 @@ cluster: "walton-history"
 era: ["edwardian", "wartime", "interwar", "postwar"]
 entityType: "institution"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-17
+reviewedDate: 2026-09-03
 sources:
+  - author: "BFI Screenonline"
+    year: "n.d."
+    title: "Cecil Hepworth"
+    url: "https://www.screenonline.org.uk/people/id/450004/index.html"
+    accessed: "3 September 2026"
   - author: "Wikipedia"
     year: "n.d."
     title: "Walton Studios"
@@ -33,7 +38,7 @@ For a town best known today for its river and its railway station, Walton-on-Tha
 
 ## Cecil Hepworth comes to Hurst Grove, 1899
 
-Cecil Hepworth was still in his twenties when he leased a house called The Rosary, on Hurst Grove, in 1899, paying £36 a year for a property that would become the base of British cinema's first serious production operation. He installed electric lighting and a film processing laboratory, and, with his cousin Monty Wicks, formed a company known as Hepwix. A small stage, some fifteen feet by eight, was built in the back garden, hardly bigger than the average domestic outbuilding, and it was here that Hepworth began producing the actuality films, brief documentary-style records of real events, that made up most of early cinema's output.
+Cecil Hepworth was still in his twenties when he leased a house called The Rosary, on Hurst Grove, in 1899, paying £36 a year for a property that would become the base of one of Britain's most important early production studios, within an already developing British film culture. He installed electric lighting and a film processing laboratory, and, with his cousin Monty Wicks, formed a company known as Hepwix. A small stage, some fifteen feet by eight, was built in the back garden, hardly bigger than the average domestic outbuilding, and it was here that Hepworth began producing the actuality films, brief documentary-style records of real events, that made up most of early cinema's output.
 
 ## A hundred films a year
 

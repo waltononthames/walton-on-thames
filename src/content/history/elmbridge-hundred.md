@@ -14,6 +14,16 @@ sources:
     title: "Amelebrige to Elmbridge: The Biography of a Borough"
     url: "https://www.elmbridgehundred.org.uk/history/"
     accessed: "2 July 2026"
+  - author: "Surrey History Centre"
+    year: "n.d."
+    title: "Walton-on-Thames Urban District Council and Walton and Weybridge Urban District Council records (SHCOL_7723)"
+    url: "https://www.exploringsurreyspast.org.uk/collections/getrecord/SHCOL_7723"
+    accessed: "3 September 2026"
+  - author: "UK Government"
+    year: "1972"
+    title: "Local Government Act 1972"
+    url: "https://www.legislation.gov.uk/ukpga/1972/70/contents"
+    accessed: "3 September 2026"
 related: ["domesday-and-origins"]
 ---
 
@@ -31,7 +41,7 @@ The hundred covering [Walton](/history/domesday-and-origins/) and the surroundin
 
 ## An unusually persistent boundary
 
-What makes Elmbridge worth noting is not just its age but its persistence. The modern Borough of Elmbridge, created in the 1974 local government reorganisation that also absorbed Walton-on-Thames as an urban district in its own right, corresponds almost exactly to the boundaries of the old Saxon hundred, a genuinely unusual degree of continuity for an administrative boundary to maintain across roughly a thousand years of subsequent reorganisation, war and change.
+What makes Elmbridge worth noting is not just its age but its persistence. The modern Borough of Elmbridge was created in 1974 from Esher Urban District and Walton and Weybridge Urban District; Walton-on-Thames had already ceased to be a separate urban district in 1933, when it merged with Weybridge. That 1974 borough broadly resembles the boundaries of the old Saxon hundred, a genuinely unusual degree of continuity for an administrative boundary to maintain across roughly a thousand years of subsequent reorganisation, war and change, though a precise parcel-by-parcel comparison has not been carried out for this article.
 
 ## Researching the hundred
 

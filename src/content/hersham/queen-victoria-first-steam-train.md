@@ -34,6 +34,11 @@ sources:
     title: "London and Southampton Railway"
     url: "https://en.wikipedia.org/wiki/London_and_Southampton_Railway"
     accessed: "11 July 2026"
+  - author: "UK Government"
+    year: "1921"
+    title: "Railways Act 1921"
+    url: "https://www.legislation.gov.uk/ukpga/Geo5/11-12/55/contents/enacted"
+    accessed: "3 September 2026"
 related: ["hersham-green"]
 ---
 
@@ -61,6 +66,6 @@ Watching a train pass is not the same as riding on one, and the Hersham sighting
 
 ## A railway before it was finished
 
-What makes the Hersham sighting genuinely interesting is its timing. The line Victoria watched, built by the London and Southampton Railway, did not open to fare-paying passengers between London and Woking until May 1838, more than a year after her diary entry. She saw a railway under construction, or running test workings, rather than a public service. Hersham would not get a station of its own until 28 September 1936, on what had by then become the London and South Western Railway's route to Waterloo. In February 1837, the village her diary names had no station at all, only the line itself cutting through the fields nearby.
+What makes the Hersham sighting genuinely interesting is its timing. The line Victoria watched, built by the London and Southampton Railway, did not open to fare-paying passengers between London and Woking until May 1838, more than a year after her diary entry. She saw a railway under construction, or running test workings, rather than a public service. Hersham would not get a station of its own until 28 September 1936, on the former London and South Western Railway main line, by then operated by the Southern Railway following the 1923 grouping. In February 1837, the village her diary names had no station at all, only the line itself cutting through the fields nearby.
 
 The wider village history, including Hersham's other brush with royalty, a visit from George III to see the first drill plough, is covered on the [history of Hersham](/hersham/history/) page. The green at the heart of the modern village is barely a mile from where Victoria's railway once ran.

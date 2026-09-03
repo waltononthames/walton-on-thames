@@ -62,7 +62,7 @@ For anyone unfamiliar with Walton's history, the sight of the New Zealand flag a
 
 St Mary's Church flies the New Zealand flag in April in remembrance of the New Zealand servicemen and women whose lives became connected with Walton-on-Thames during the First World War.
 
-From 1915, Mount Felix in Walton-on-Thames became a hospital for sick and wounded New Zealand servicemen, later officially named No. 2 New Zealand General Hospital. Around 27,000 men were treated there over the course of the war. Those who died in Walton included New Zealand servicemen buried at St Mary's, and their memory has been marked here for more than a century. Every year, that connection is remembered around Anzac Day, 25 April, and the New Zealand flag flying at St Mary's is one of the most visible signs of a relationship that has continued ever since.
+From 1915, Mount Felix in Walton-on-Thames became a hospital for sick and wounded New Zealand servicemen, later officially named No. 2 New Zealand General Hospital. Together with the associated hospital at Oatlands Park in Weybridge, around 27,000 men were treated over the course of the war. Those who died in Walton included New Zealand servicemen buried at St Mary's, and their memory has been marked here for more than a century. Every year, that connection is remembered around Anzac Day, 25 April, and the New Zealand flag flying at St Mary's is one of the most visible signs of a relationship that has continued ever since.
 
 ## Why were thousands of New Zealand soldiers in Walton-on-Thames?
 
@@ -76,7 +76,7 @@ The New Zealand hospital at Mount Felix, close to the River Thames, opened on 31
 
 <!-- IMAGE: mount-felix-new-zealand-general-hospital-walton-on-thames.jpg, alt: "No. 2 New Zealand General Hospital at Mount Felix, Walton-on-Thames, during the First World War" -->
 
-Funding came in large part from the New Zealand War Contingent Association, led by the New Zealand High Commissioner, Sir Thomas Mackenzie, drawing on contributions from New Zealanders living in Britain as well as support from the New Zealand government. New Zealand's Ministry for Culture and Heritage records that approximately 27,000 men were treated at Mount Felix over the course of the war. Radio New Zealand reports that despite that huge number, only around 150 died, a low toll that Mackenzie himself attributed at the time to "the skill of the surgeons and physicians and the care of the nurses."
+Funding came in large part from the New Zealand War Contingent Association, led by the New Zealand High Commissioner, Sir Thomas Mackenzie, drawing on contributions from New Zealanders living in Britain as well as support from the New Zealand government. New Zealand's Ministry for Culture and Heritage records that approximately 27,000 men were treated at Mount Felix and the associated Oatlands Park hospital over the course of the war. Radio New Zealand reports that despite that huge number, only around 150 died, a low toll that Mackenzie himself attributed at the time to "the skill of the surgeons and physicians and the care of the nurses."
 
 For several years, this Surrey town became a temporary home to thousands of New Zealanders recovering from the war.
 
@@ -84,7 +84,7 @@ For several years, this Surrey town became a temporary home to thousands of New 
 
 The New Zealand presence at Mount Felix wasn't confined to wounded soldiers. New Zealand women also played an important role at the hospital, among them trained nurses and women serving with Voluntary Aid Detachments, who supported the nursing staff and undertook work ranging from kitchens to ambulance driving.
 
-The hospital's standing was reflected in a royal visit. Elmbridge Museum holds a commemorative postcard showing King George V, Queen Mary and the Prince of Wales visiting Mount Felix in 1917, meeting patients and staff. For wartime Walton, New Zealand was no longer a distant country on the other side of the world; New Zealanders had become part of everyday local life.
+The hospital's standing was reflected in a royal visit. New Zealand's Ministry for Culture and Heritage dates a visit by King George V, Queen Mary and the Prince of Wales to Mount Felix to August 1915; Elmbridge Museum's commemorative postcard of the same visit is catalogued as 1917, a discrepancy this article resolves in favour of the Ministry's dating. For wartime Walton, New Zealand was no longer a distant country on the other side of the world; New Zealanders had become part of everyday local life.
 
 ## The New Zealanders who never went home
 
@@ -133,7 +133,7 @@ In remembrance of the New Zealand servicemen treated at the First World War hosp
 
 ### When was the New Zealand hospital at Mount Felix open?
 
-It opened on 31 July 1915 and was officially named No. 2 New Zealand General Hospital from August 1916. Around 27,000 men were treated there during the war.
+It opened on 31 July 1915 and was officially named No. 2 New Zealand General Hospital from August 1916. Together with the associated hospital at Oatlands Park, around 27,000 men were treated there during the war.
 
 ### Are New Zealand soldiers buried in Walton-on-Thames?
 

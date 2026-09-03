@@ -9,11 +9,21 @@ entityType: "institution"
 publishDate: 2026-07-02
 reviewedDate: 2026-07-02
 sources:
-  - author: "Jonathan King"
-    year: "n.d."
-    title: "Wikipedia"
-    url: "https://en.wikipedia.org/wiki/Jonathan_King"
-    accessed: "2 July 2026"
+  - author: "The Independent"
+    year: "2005"
+    title: "Jonathan King: 'I have had a brilliant time'"
+    url: "https://www.independent.co.uk/news/uk/crime/jonathan-king-i-have-had-a-brilliant-time-7907527.html"
+    accessed: "3 September 2026"
+  - author: "The Guardian"
+    year: "2001"
+    title: "Contemporary report of the King trial"
+    url: "https://www.theguardian.com/uk/2001/nov/22/childprotection.society2"
+    accessed: "3 September 2026"
+  - author: "Garden Court Chambers"
+    year: "2018"
+    title: "Surrey Police apologise and trial collapses after defence submissions reveal systemic disclosure failings in Jonathan King sex abuse case"
+    url: "https://gardencourtchambers.co.uk/surrey-police-apologise-and-trial-collapses-after-defence-submissions-reveal-systemic-disclosure-failings-in-jonathan-king-sex-abuse-case/"
+    accessed: "3 September 2026"
   - author: "Wikipedia"
     year: "n.d."
     title: "Sham 69"
@@ -40,7 +50,7 @@ The Hop's best-documented connection to music history runs through [Sham 69](/he
 
 ## Its later history
 
-The Hop's story took a serious turn in its final years. In 2000, the record producer Jonathan King, a well-known figure who had frequented the venue, was arrested and later charged with historic sexual offences. It is important to state the facts precisely, because they are often reported loosely: King's 2001 conviction, for which he was sentenced to seven years, concerned offences against five boys between 1983 and 1987 that were not connected to the Walton Hop. A separate 2018 trial did specifically concern alleged offences connected to the Hop; that trial ended without any conviction, with some charges resulting in not-guilty verdicts and the remaining charges subject to a stay of proceedings after the judge found significant and repeated failings in the police investigation, for which Surrey Police apologised. No one has been convicted of an offence connected to the Walton Hop itself.
+The Hop's story took a serious turn in its final years. In 2000, the record producer Jonathan King, a well-known figure who had frequented the venue, was arrested and later charged with historic sexual offences. It is important to state the facts precisely, because they are often reported loosely: King was convicted in 2001 of six offences against five boys committed between 1983 and 1987, for which he was sentenced to seven years. Contemporary reports of that trial stated that some of the victims had been approached or picked up at the Walton Hop, although the assaults themselves took place elsewhere. A later and separate prosecution, brought in 2018, concerned further alleged offences said to be connected to the Hop; that trial collapsed without any conviction, with some charges resulting in not-guilty verdicts and the remaining charges stayed as an abuse of process after the judge found significant and repeated disclosure failings in the police investigation, for which Surrey Police apologised. The exact indictment and trial transcript have not been reviewed for this article, so the precise relationship of each count to the venue is not stated here.
 
 ## The building today
 

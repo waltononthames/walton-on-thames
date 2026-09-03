@@ -1,7 +1,7 @@
 ---
 title: "The Mount Felix Tapestry: Stitching Walton's War History"
 metaTitle: "The Mount Felix Tapestry: Walton's War in Thread"
-metaDescription: "How 600 volunteers embroidered 44 panels telling the story of Walton's WWI New Zealand hospital at Mount Felix, and where to see the tapestry today."
+metaDescription: "How hundreds of volunteers embroidered 44 panels telling the story of Walton's WWI New Zealand hospital at Mount Felix, and where to see it today."
 slug: "mount-felix-tapestry"
 cluster: "walton-history"
 era: ["wartime", "contemporary"]
@@ -19,6 +19,11 @@ sources:
     title: "The Mount Felix Tapestry at Canterbury Museum"
     url: "https://www.canterburymuseum.com/explore/latest-news/the-mount-felix-tapestry-at-canterbury-museum"
     accessed: "12 July 2026"
+  - author: "Manatū Taonga, Ministry for Culture and Heritage"
+    year: "n.d."
+    title: "Walton-on-Thames NZ General Hospital Roll of Honour"
+    url: "https://nzhistory.govt.nz/media/photo/walton-thames-nz-general-hospital-roll-honour"
+    accessed: "3 September 2026"
   - author: "Museum of New Zealand Te Papa Tongarewa"
     year: "n.d."
     title: "Memorial banner record"
@@ -29,6 +34,11 @@ sources:
     title: "Mt Felix Tapestry"
     url: "https://riverhousebarn.co.uk/get-involved/mount-felix-tapestry/"
     accessed: "12 July 2026"
+  - author: "Riverhouse Barn Arts Centre"
+    year: "2025"
+    title: "Tenth-anniversary Mount Felix Tapestry listing"
+    url: "https://www.riverhousebarn.co.uk/events/107450?language=en"
+    accessed: "3 September 2026"
   - author: "Lost Heritage"
     year: "n.d."
     title: "Mount Felix"
@@ -42,15 +52,15 @@ sources:
 related: ["mount-felix", "arthur-white", "st-marys-church", "mount-felix-memorial-banner"]
 ---
 
-The Mount Felix Tapestry is a set of 44 embroidered panels telling the story of the New Zealand military hospital that once stood in Walton-on-Thames. Made between 2015 and 2017 by more than 600 volunteers in Britain and New Zealand, it is a very different, much newer piece of work from the embroidered memorial banner hospital patients made around 1919, which is now held in New Zealand's national museum.
+The Mount Felix Tapestry is a set of 44 embroidered panels telling the story of the New Zealand military hospital that once stood in Walton-on-Thames. Made between 2015 and 2017, it is variously reported as the work of more than 600 volunteers (Elmbridge Museum, Canterbury Museum) or more than 800 stitchers (Riverhouse Barn's tenth-anniversary listing); it is not established from sources reviewed for this article whether the two figures count the same population differently or represent different stages of the project. It is, in any case, a very different, much newer piece of work from the embroidered memorial banner hospital patients made around 1919, which is now held in New Zealand's national museum.
 
-Mount Felix operated as No. 2 New Zealand General Hospital from July 1915, treating around 27,000 New Zealand servicemen before closing in March 1920. Its standing was reflected in a visit from King George V, Queen Mary and the Prince of Wales in 1917. The tapestry was created to tell that history through individual lives rather than numbers alone; for the fuller history of the hospital itself, see our guide to [Mount Felix](/history/mount-felix/).
+Mount Felix operated as No. 2 New Zealand General Hospital from July 1915, and together with the associated hospital at Oatlands Park treated around 27,000 New Zealand servicemen before closing in March 1920. Its standing was reflected in a visit from King George V, Queen Mary and the Prince of Wales in August 1915, a date given by New Zealand's Ministry for Culture and Heritage; a postcard in Elmbridge Museum's collection labels the same visit 1917, which this article treats as a conflicting catalogue record rather than the more reliable date. The tapestry was created to tell that history through individual lives rather than numbers alone; for the fuller history of the hospital itself, see our guide to [Mount Felix](/history/mount-felix/).
 
 <!-- IMAGE: mount-felix-tapestry-panels.jpg, alt: "Mount Felix Tapestry panels displayed together" -->
 
 ## How the tapestry was made
 
-The idea began with Emily Boulting, director of Riverhouse Barn Arts Centre in Walton, who came across the story of the Mount Felix hospital in 2013 and was struck by how little the town seemed to remember of it. The project she launched through Riverhouse Barn in April 2015 marked the centenary of the hospital's opening. Scottish artist Andrew Crummy designed a shared visual framework for the panels, within which community groups and individual stitchers in Walton and in New Zealand embroidered the 44 finished panels, contributing more than 6,000 hours of work between them. The completed tapestry was formally opened in Walton on 23 April 2017 by the New Zealand High Commissioner and the Mayor of Walton. Despite the name, the finished work is technically a series of embroidered panels rather than a woven tapestry, though "tapestry" has stuck as its popular title.
+The idea began with Emily Boulting, director of Riverhouse Barn Arts Centre in Walton, who came across the story of the Mount Felix hospital in 2013 and was struck by how little the town seemed to remember of it. The project she launched through Riverhouse Barn in April 2015 marked the centenary of the hospital's opening. Scottish artist Andrew Crummy designed a shared visual framework for the panels, within which community groups and individual stitchers in Walton and in New Zealand embroidered the 44 finished panels, contributing more than 6,000 hours of work between them. The completed tapestry was formally opened in Walton on 23 April 2017 by the New Zealand High Commissioner and local civic representatives; there is no separate civic office of "Mayor of Walton", the modern equivalent being the Mayor of Elmbridge, and the exact office-holder present has not been confirmed from sources available for this article. Despite the name, the finished work is technically a series of embroidered panels rather than a woven tapestry, though "tapestry" has stuck as its popular title.
 
 <!-- IMAGE: mount-felix-tapestry-stitching.jpg, alt: "Close view of hand embroidery on a Mount Felix Tapestry panel" -->
 

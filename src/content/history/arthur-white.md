@@ -30,7 +30,7 @@ sources:
 related: ["mount-felix", "mount-felix-tapestry"]
 ---
 
-Among the roughly 27,000 New Zealand soldiers treated at Mount Felix during the First World War was Gunner Arthur White, wounded on the Western Front and shipped to Walton-on-Thames to recover. His story survives today thanks to his grandson, Kevin Murphy.
+Among the roughly 27,000 New Zealand soldiers treated at Mount Felix and the associated hospital at Oatlands Park during the First World War was Gunner Arthur White, wounded on the Western Front and shipped to Walton-on-Thames to recover. His story survives today thanks to his grandson, Kevin Murphy.
 
 <figure>
   <img src="/images/history/arthur-white-portrait.webp" alt="Portrait of Arthur White in New Zealand Expeditionary Force uniform" loading="lazy" />

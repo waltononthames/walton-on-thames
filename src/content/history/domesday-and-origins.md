@@ -19,6 +19,11 @@ sources:
     title: "Amelebrige to Elmbridge"
     url: "https://www.elmbridgehundred.org.uk/history/"
     accessed: "2 July 2026"
+  - author: "Open Domesday"
+    year: "n.d."
+    title: "Walton-on-Thames"
+    url: "https://opendomesday.org/place/TQ1066/walton-on-thames/"
+    accessed: "3 September 2026"
 related: ["elmbridge-hundred", "st-marys-church"]
 ---
 
@@ -28,7 +33,7 @@ Walton's name is older than the town most people recognise today. Its first surv
 
 ## A Celtic name
 
-Walton's name is generally understood to derive from Old English elements associated with the Wealas, the word Anglo-Saxons used for the Britons who remained in England after their arrival, combined with tun, a settlement or farmstead. Read that way, "Walton" essentially means the settlement of the Britons, or of foreigners, from an Anglo-Saxon point of view, implying a pre-Saxon Celtic community here that the incoming Saxons recognised as distinct enough to name. It is a small piece of etymology, but it pushes Walton's story back before any of its written records, into the transition between Roman Britain and Anglo-Saxon England.
+Walton's name is generally explained from the Old English elements *walh*, the word Anglo-Saxons used for Britons or Welsh people, and *tun*, a settlement or farmstead. Read that way, "Walton" is usually understood as the settlement associated with Britons or Welsh people, from an Anglo-Saxon point of view. It may preserve evidence of a Brittonic-associated population at the time the name was formed, but the etymology alone does not prove continuous occupation from Roman Britain, identify the community's precise origin, or establish how incoming settlers perceived it: that stronger social narrative is a plausible interpretation built on the linguistic evidence, not something the name itself demonstrates.
 
 ## The Saxon settlement
 
