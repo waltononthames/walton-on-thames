@@ -1,6 +1,13 @@
 /blog/* /community/news/:splat 301
 /news/* /community/news/:splat 301
 
+# Hersham Green consolidation per docs/site-audit.md line 43 and plan item 1.3.
+# Kept above the /visit/things-to-do/* wildcard below so the legacy GoDaddy-era
+# URL lands on the surviving page in one hop instead of two.
+/visit/things-to-do/hersham-village-green/ /hersham/hersham-green/ 301
+/things-to-do/hersham-village-green /hersham/hersham-green/ 301
+/things-to-do/hersham-village-green/ /hersham/hersham-green/ 301
+
 # URL migration per docs/site-audit.md Decision 1
 /visit/things-to-do/ /things-to-do/ 301
 /visit/things-to-do/* /things-to-do/:splat 301

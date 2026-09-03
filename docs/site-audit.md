@@ -40,7 +40,7 @@ Maps every page and content file currently in the repo against `walton-seo-bluep
 | `content/places/cowey-sale.md` | Spoke `/things-to-do/...` entry (visit angle) **and** `/history/cowey-stakes/` (extension 3.2, history angle) | MERGE | Split: keep practical/visit facts here, move the Caesar/Camden history narrative to the new history entity page. Don't duplicate the tradition-vs-fact framing in both. |
 | `content/places/walton-bridge.md` | Spoke entry **and** `/history/walton-bridge/` (blueprint 3.6/4.7, extension expands with six-bridges detail) | MERGE | Same split as above — visit-facts vs. history-facts. |
 | `content/places/ashley-park.md` | Spoke entry (`/things-to-do/parks-and-green-spaces/`) **and** `/history/ashley-park-estate/` (blueprint 3.12) | MERGE | Same pattern. |
-| `content/places/hersham-village-green.md` | `/hersham/hersham-green/` (extension 4.3) | MERGE, URL change | Redirect `/visit/things-to-do/hersham-village-green/` → `/hersham/hersham-green/`. |
+| `content/places/hersham-village-green.md` | `/hersham/hersham-green/` (extension 4.3) | **RETIRED** (2026-09-04) | Deleted. Every fact it held was already on `/hersham/hersham-green/`, with sources, so nothing was migrated. Nine internal links repointed, the attractions card retargeted, and `/things-to-do/hersham-village-green/` plus the legacy `/visit/` form now 301 to the surviving page. See plan item 1.3. |
 | `content/places/whiteley-village.md` | `/hersham/whiteley-village/` (extension 4.5) | MERGE, URL change | Per Decision 3 — one of three duplicate sources, consolidating into one page. Redirect once merged. |
 | — | Blueprint 5 spokes: `/things-to-do/with-kids/`, `/rainy-day/`, `/on-the-river/`, `/parks-and-green-spaces/`, `/desborough-island/` | NEW | None of these exist yet. |
 | `src/pages/visit/walks-and-the-river.astro` | Blueprint 4.3 `/things-to-do/riverside-walks/` (full copy already written in the blueprint) | ADAPT, URL change | Blueprint gives ready-to-use copy (three named walks). Redirect `/visit/walks-and-the-river/` → `/things-to-do/riverside-walks/`. |
@@ -170,6 +170,10 @@ Live in `public/_redirects` (2026-07-02):
 /community/news/birth-of-baseball-walton-on-thames/ -> /history/origins-of-baseball/
 /community/news/birds-eye-walton-court-history/      -> /history/the-heart-and-town-centre/
 
+# Hersham Green consolidation (line 43 above) - added 2026-09-04
+/things-to-do/hersham-village-green/                 -> /hersham/hersham-green/
+/visit/things-to-do/hersham-village-green/           -> /hersham/hersham-green/
+
 # /neighbourhoods/ retired per Decision 2 — added 2026-07-03
 /neighbourhoods/walton-on-thames/                    -> /
 /neighbourhoods/hersham/                             -> /hersham/
@@ -177,6 +181,6 @@ Live in `public/_redirects` (2026-07-02):
 /neighbourhoods/                                     -> /
 ```
 
-Everything from the original "still open" list is now resolved. One cosmetic-only note remains: `/visit/things-to-do/hersham-village-green/` currently 301s to `/things-to-do/hersham-village-green/` under the general `/visit/things-to-do/*` rule above, rather than directly to `/hersham/hersham-green/` — a harmless two-hop redirect, not worth a dedicated rule unless traffic analytics ever show it matters.
+Everything from the original "still open" list is now resolved. The two-hop `/visit/things-to-do/hersham-village-green/` note recorded here previously is closed: as of 4 September 2026 that path has a dedicated rule, placed above the `/visit/things-to-do/*` wildcard so it resolves in one hop.
 
 Decisions 1–4 are resolved (see Section 0), and so is every item that was open as of the 2026-07-02 "still open" review. The only remaining open item in the entire project is `walton-charity`'s full version — see `docs/build-log.md`.

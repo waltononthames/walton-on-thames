@@ -7,7 +7,7 @@ lat: 51.3874
 lng: -0.4315
 description: "The current Walton Bridge, opened in 2013, is a single-span tied-arch structure crossing the Thames, on the site of the earlier bridge that Canaletto painted."
 images: []
-featured: false
+featured: true
 ---
 
 The Thames crossing at Walton has a long and storied history. The current Walton Bridge opened in 2013, replacing a 1950s concrete structure. It's a single-span tied-arch bridge, its steel arches springing from the deck in a distinctive sweeping silhouette, and offers fine views upstream and downstream.
