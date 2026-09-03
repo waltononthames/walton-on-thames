@@ -2,6 +2,20 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-04: Canonical host redirect (Hersham plan item 1.1)
+
+`www.walton-on-thames.org` was serving the entire site with a 200 rather than redirecting to the apex, so every page on the site existed at two URLs with only the canonical tag to tell Google which to keep. `functions/_middleware.js` previously redirected only the bare `walton-on-thames.pages.dev` host, so nothing caught the www duplicate. Rewrote it to redirect any hostname that is not `walton-on-thames.org`, preserving path and query and forcing https.
+
+**Deliberate deviation from the plan's wording.** Plan item 1.1 says "any hostname other than walton-on-thames.org". Taken literally that would also redirect Cloudflare Pages preview deployments (`<hash>.walton-on-thames.pages.dev`, `<branch>.walton-on-thames.pages.dev`), bouncing every branch build to production and making previews impossible to review. Preview subdomains are therefore exempt; the bare production `pages.dev` alias is still redirected as before. `localhost` and `127.0.0.1` are exempt too, so `wrangler pages dev` still works.
+
+**Verified:** eleven-case local test of the host logic covering the apex, www, http-to-https upgrade, query-string preservation, the production pages.dev alias, hash and branch previews, localhost, and an unrelated custom domain. All pass. `npm run build` clean (374 pages), `npm run seo:validate` clean, `npm run seo:links` clean with zero dead internal links.
+
+**Not verified yet:** the live 301. Cloudflare Pages has not been deployed with this change, and the dashboard Cache Rule can hold HTML at the edge for up to 7 days, so after deploying, check `curl -sI https://www.walton-on-thames.org/hersham/` and purge if it still returns 200.
+
+**Pre-existing, not introduced here:** `npm run check` reports 155 errors, all `ts(7006)` implicit-any and `ts(2339)` property-access in `.astro` pages under `src/`, none in the file this task touched. Worth its own task; it is not a regression from this change.
+
+**Also committed:** `src/data/lastmod.json`. The 2 September accuracy-audit commit touched fourteen files without regenerating the manifest, so those pages were advertising stale sitemap dates. Regenerating it also dropped four event entries whose files are deleted in the working tree but not yet committed by an in-progress session; those four were restored by hand so the committed manifest matches the committed tree, and they will fall out naturally when that event work lands.
+
 ## 2026-07-26 — Em dash cleanup across history and hersham collections
 
 Owner asked for the history section to be checked for em dashes and fixed per the site's rules. `docs/walton-history-hersham-extension.md` Section 1, Rule 2 (Register) already states this explicitly: "No em dashes anywhere; use commas, colons or full stops." Every file in both `src/content/history/` (22 files) and `src/content/hersham/` (9 files, governed by the identical rule) had violations — 125 instances total, none previously caught since no check for this existed.
