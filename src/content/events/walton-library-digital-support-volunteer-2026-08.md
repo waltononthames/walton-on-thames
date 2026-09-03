@@ -1,8 +1,8 @@
 ---
 title: "Digital Support Volunteer at Walton Library"
 slug: "walton-library-digital-support-volunteer-2026-08"
-start: "2026-09-01T17:45:00"
-end: "2026-09-01T18:45:00"
+start: "2026-09-08T17:45:00"
+end: "2026-09-08T18:45:00"
 venue: "Walton Library, 54 The Heart, Walton-on-Thames, KT12 1GH"
 neighbourhood: "walton-on-thames"
 category: "community"

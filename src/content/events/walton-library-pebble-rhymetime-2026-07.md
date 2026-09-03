@@ -1,8 +1,8 @@
 ---
 title: "Pebble Rhymetime at Walton Library"
 slug: "walton-library-pebble-rhymetime-2026-07"
-start: "2026-09-03T10:30:00"
-end: "2026-09-03T11:00:00"
+start: "2026-09-10T10:30:00"
+end: "2026-09-10T11:00:00"
 venue: "Walton Library, 54 The Heart, Walton-on-Thames, KT12 1GH"
 neighbourhood: "walton-on-thames"
 category: "family"
