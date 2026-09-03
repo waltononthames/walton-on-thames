@@ -41,20 +41,22 @@ const faqs = [
   },
   {
     q: 'Where do the Hersham parakeets roost?',
-    a: 'The best-documented roost is near Esher Rugby Club, on the edge of Hersham, where mid-2000s reporting put the colony at around 7,000 birds. For where and when to see the birds, see our ',
-    link: { href: '/hersham/parakeets/', label: 'full guide to the Hersham parakeets' },
-    aTail: '.',
+    a: 'The best-documented roost is near Esher Rugby Club, on the edge of Hersham, where mid-2000s reporting put the colony at around 7,000 birds.',
+    // Rendered as its own paragraph beneath the answer, and deliberately kept
+    // out of the FAQPage answer text: it points the reader onward rather than
+    // answering the question, so the schema answer stays the factual sentence.
+    followOn: {
+      lead: 'For where and when to see the birds, see our ',
+      href: '/hersham/parakeets/',
+      label: 'full guide to the Hersham parakeets',
+      tail: '.',
+    },
   },
   {
     q: 'What is the population of Hersham?',
     a: 'The 2021 census recorded 12,630 people in the Hersham built-up area, up from 11,260 in 2011.',
   },
 ];
-
-// Schema answers must be plain text, so an answer carrying an inline link is
-// flattened back into a single string here rather than duplicated by hand.
-const answerText = (item: { a: string; link?: { label: string }; aTail?: string }) =>
-  item.link ? `${item.a}${item.link.label}${item.aTail ?? ''}` : item.a;
 
 // Extension 4.1 calls for a hub link grid. Deliberately compact links rather
 // than cards: the full card treatment belongs to the spokes
@@ -144,7 +146,7 @@ const exploreGroups = [
       "mainEntity": faqs.map((item) => ({
         "@type": "Question",
         "name": item.q,
-        "acceptedAnswer": { "@type": "Answer", "text": answerText(item) },
+        "acceptedAnswer": { "@type": "Answer", "text": item.a },
       })),
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -253,7 +255,10 @@ const exploreGroups = [
         {faqs.map((item) => (
           <>
             <h3>{item.q}</h3>
-            <p>{item.a}{item.link && <a href={item.link.href}>{item.link.label}</a>}{item.aTail}</p>
+            <p>{item.a}</p>
+            {item.followOn && (
+              <p>{item.followOn.lead}<a href={item.followOn.href}>{item.followOn.label}</a>{item.followOn.tail}</p>
+            )}
           </>
         ))}
       </article>
