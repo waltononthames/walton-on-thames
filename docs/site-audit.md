@@ -184,3 +184,13 @@ Live in `public/_redirects` (2026-07-02):
 Everything from the original "still open" list is now resolved. The two-hop `/visit/things-to-do/hersham-village-green/` note recorded here previously is closed: as of 4 September 2026 that path has a dedicated rule, placed above the `/visit/things-to-do/*` wildcard so it resolves in one hop.
 
 Decisions 1–4 are resolved (see Section 0), and so is every item that was open as of the 2026-07-02 "still open" review. The only remaining open item in the entire project is `walton-charity`'s full version — see `docs/build-log.md`.
+
+## Pre-Astro URLs still in Google's index: deliberately left alone
+
+**Decided 4 September 2026** (Hersham plan item 1.4). Searches still surface two classes of URL from the site's earlier incarnations. Both were checked live on that date and both are being left exactly as they are. This section exists so the question is not reopened every time someone spots them in a site: search.
+
+**`/forum/viewtopic.php?...` (phpBB era).** These return a true 404 with the site's own "Page Not Found" page, which is the correct outcome. Do not redirect them. There were hundreds of threads on unrelated subjects, and pointing them all at one surviving page is the soft-404 pattern Google explicitly discounts: the destination does not answer the query the old thread ranked for, so the redirect earns nothing and can suppress the target. Google drops 404s from the index on its own schedule. Left alone.
+
+**`/?page_id=84` (WordPress era).** Returns 200, because it is the homepage with an ignored query parameter, and carries `<link rel="canonical" href="https://walton-on-thames.org/">`. That canonical is exactly the mechanism for this case, and Google consolidates the parameter URL into the homepage. A redirect would add nothing. Left alone.
+
+The one thing that would change this: if Search Console's coverage report ever shows the parameter form indexed *separately* from the homepage, or the forum URLs still appearing months from now with impressions attached. Neither is true today.
