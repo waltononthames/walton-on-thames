@@ -31,7 +31,9 @@ It carries a link, and the `faqs` array feeds both the visible markup and the `F
 
 **Verified:** eleven-case local test of the host logic covering the apex, www, http-to-https upgrade, query-string preservation, the production pages.dev alias, hash and branch previews, localhost, and an unrelated custom domain. All pass. `npm run build` clean (374 pages), `npm run seo:validate` clean, `npm run seo:links` clean with zero dead internal links.
 
-**Not verified yet:** the live 301. Cloudflare Pages has not been deployed with this change, and the dashboard Cache Rule can hold HTML at the edge for up to 7 days, so after deploying, check `curl -sI https://www.walton-on-thames.org/hersham/` and purge if it still returns 200.
+**Verified live later the same day**, once a concurrent session's push carried this commit to production. `www.walton-on-thames.org/hersham/` returns 301 to the apex, the apex still returns 200, and `?utm_source=test` survives the hop. No cache purge was needed.
+
+One residual, noted not chased: `http://www.walton-on-thames.org/` takes two hops, upgrading to https on the www host first and only then moving to the apex. That first hop is Cloudflare's Always Use HTTPS firing at the edge before the middleware runs, so it cannot be collapsed from this repo; it would need a zone-level Redirect Rule. Https traffic, which is effectively all of it, is unaffected.
 
 **Pre-existing, not introduced here:** `npm run check` reports 155 errors, all `ts(7006)` implicit-any and `ts(2339)` property-access in `.astro` pages under `src/`, none in the file this task touched. Worth its own task; it is not a regression from this change.
 
