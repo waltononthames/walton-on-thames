@@ -2,6 +2,20 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-04: One Place entity for the whole Hersham cluster (plan item 2.2)
+
+Before this, every Hersham page that mentioned the village in schema described its own unidentified "Hersham". Search engines resolve a place from a graph of statements about one identified thing, so twenty pages each inventing their own node is twenty weak signals rather than one strong one.
+
+The hub now defines the entity and nothing else may: the `Place` carries `@id` `https://walton-on-thames.org/hersham/#place`, a `hasMap` built from the audited green coordinate already used by its `geo`, and a `WebPage` node tying the page to both the entity and the site's `WebSite` node.
+
+Everything else points at it. Collection spokes get `about` added to the `Article` schema they already emit, done once in `HistoryArticle.astro` and keyed off `cluster === 'hersham'`, so the twenty-odd Walton history articles sharing that layout are untouched (verified: `/history/walton-bridge/` has no `about`). The four Hersham route pages that carry no Article of their own get a `WebPage` node from a small shared helper in the new `src/utils/schema.ts`, which is also where the ids live so no page hardcodes them.
+
+`/things-to-do/hersham/` was included although it sits outside `/hersham/`. It is a page about the same village, and excluding it would have drawn the boundary around a URL prefix rather than around the entity, which is the opposite of the point.
+
+**`scripts/seo-validate.mjs` now enforces both halves:** the hub must define a `Place` with that exact `@id` and a `hasMap`, and every page under `/hersham/` must carry a schema node declaring `about` that id. A page that starts describing its own Hersham again will now fail the build gate rather than quietly splitting the entity.
+
+**Verified, and specifically verified as non-vacuous:** a check that silently applies to zero pages passes just as greenly as one that works. Counted directly against the built output: the rule applies to 15 pages under `/hersham/`, and all 15 declare the reference. Confirmed the hub's `@id`, `hasMap` and `WebPage` links, confirmed a collection spoke resolves through the layout, confirmed `/things-to-do/hersham/` is wired, and confirmed a Walton article is not. `npm run check` still reports 155 errors, the same count as before this change, so no new type errors were introduced. `seo:links` clean, no em dashes.
+
 ## 2026-09-04: Hersham at a glance fact box (plan item 2.1)
 
 A compact definition list under the hub's hero carrying the administrative facts people search for directly: county, borough, borough ward, UK Parliament constituency, post town, postcode district, nearest stations, population, and links to the Wikipedia and Wikidata entities.
