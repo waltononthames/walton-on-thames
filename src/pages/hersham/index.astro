@@ -59,6 +59,27 @@ const faqs = [
   },
 ];
 
+// The "Hersham at a glance" fact box below. Sources for every value, all
+// checked 4 September 2026:
+//   County, borough, post town: Elmbridge Borough Council is the local
+//     authority and Walton-on-Thames is the post town on every verified
+//     Hersham address in src/content/businesses/.
+//   Borough ward "Hersham Village": Elmbridge Borough Council's own councillor
+//     index, grouped by ward, at mygov.elmbridge.gov.uk/mgMemberIndex.aspx
+//     (FN=WARD). Hersham North and Hersham South are no longer current wards;
+//     they were replaced by the single Hersham Village ward.
+//   Constituency "Esher and Walton": UK Parliament, constituency in existence
+//     from 31 May 2024 (electionresults.parliament.uk/constituency-areas/867).
+//     The 2023 Boundary Commission review placed the Hersham Village ward in
+//     it. /living/ already publishes the same constituency for Walton.
+//   Postcode district KT12: every Hersham business address verified on this
+//     site sits in KT12 (sectors KT12 4 and KT12 5), so the district is stated
+//     and no single postcode is, because the village spans two sectors.
+//   Population: ONS, Census 2021 built-up areas, Hersham (E63005239), the same
+//     figure already cited in the page intro.
+// Deliberately a data block, not prose: the hub's prose stays inside the 900
+// to 1,100 word band set by the extension amendment.
+
 // Extension 4.1 calls for a hub link grid. Deliberately compact links rather
 // than cards: the full card treatment belongs to the spokes
 // (/things-to-do/hersham/, /hersham/food-and-drink/, /hersham/history/), per the
@@ -186,6 +207,23 @@ const exploreGroups = [
     </div>
   </div>
 
+  <section class="section section-facts" aria-labelledby="hersham-facts-heading">
+    <div class="container">
+      <h2 id="hersham-facts-heading" class="facts-heading">Hersham at a glance</h2>
+      <dl class="fact-box">
+        <div><dt>County</dt><dd>Surrey</dd></div>
+        <div><dt>Borough</dt><dd>Elmbridge</dd></div>
+        <div><dt>Borough ward</dt><dd>Hersham Village</dd></div>
+        <div><dt>UK Parliament constituency</dt><dd>Esher and Walton</dd></div>
+        <div><dt>Post town</dt><dd>Walton-on-Thames</dd></div>
+        <div><dt>Postcode district</dt><dd>KT12</dd></div>
+        <div><dt>Nearest stations</dt><dd><a href="/hersham-railway-station/">Hersham</a>, <a href="/walton-on-thames-railway-station/">Walton-on-Thames</a></dd></div>
+        <div><dt>Population</dt><dd>12,630 (2021 census)</dd></div>
+        <div><dt>Reference</dt><dd><a href="https://en.wikipedia.org/wiki/Hersham" rel="noopener noreferrer">Wikipedia</a>, <a href="https://www.wikidata.org/wiki/Q5744439" rel="noopener noreferrer">Wikidata</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <article class="prose">
@@ -271,6 +309,42 @@ const exploreGroups = [
 </BaseLayout>
 
 <style>
+  .facts-heading {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin: 0 0 1rem;
+  }
+
+  .fact-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem 2rem;
+    margin: 0;
+  }
+
+  .fact-box > div {
+    border-top: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
+    padding-top: 0.6rem;
+  }
+
+  .fact-box dt {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-slate);
+    margin: 0 0 0.15rem;
+  }
+
+  .fact-box dd {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
   .explore-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
