@@ -2,6 +2,22 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-04: Hersham at a glance fact box (plan item 2.1)
+
+A compact definition list under the hub's hero carrying the administrative facts people search for directly: county, borough, borough ward, UK Parliament constituency, post town, postcode district, nearest stations, population, and links to the Wikipedia and Wikidata entities.
+
+**The ward was the one that needed real work, and it is why this took sourcing rather than recall.** The obvious assumption, that Hersham sits in wards called Hersham North and Hersham South, is out of date: those were replaced by a single Hersham Village ward. Confirmed against Elmbridge Borough Council's own councillor index grouped by ward, which lists Hersham Village with three sitting councillors and shows neither of the old names. Wikipedia's own demographic tables still use the old ward names, which is exactly the trap the verification protocol exists to catch.
+
+The constituency is Esher and Walton, in existence from 31 May 2024, per UK Parliament's own constituency record. The 2023 Boundary Commission review placed the Hersham Village ward in it, and `/living/` already publishes the same constituency for Walton, so the two pages agree.
+
+Postcode district rather than a postcode: Hersham spans the KT12 4 and KT12 5 sectors, so a single postcode would be wrong. KT12 is corroborated by every Hersham business address already verified on this site. Population is the ONS Census 2021 built-up area figure already cited in the page intro, not a second source that might disagree with it.
+
+**Nothing new was mirrored into the `Place` JSON-LD, deliberately.** Schema.org has no population property for a `Place`, `containedInPlace` already carried Elmbridge and Surrey, and a single `postalCode` would misstate a two-sector village. The entity graph work is item 2.2 and belongs there.
+
+**Verified:** all nine rows render with the intended values, no prose was added so the hub stays inside its word band, `seo:validate` clean at 373 pages, `seo:links` clean, no em dashes.
+
+**Source access note for later sessions:** `elmbridge.gov.uk` returns 403 to WebFetch and to the in-app browser on at least some pages, and its notice-of-poll PDFs cannot be rendered here without poppler. The council's committee system at `mygov.elmbridge.gov.uk` does fetch cleanly and is the better route to ward and councillor facts.
+
 ## 2026-09-04: Legacy URL decision and the Hersham hero image
 
 **Legacy URLs (Hersham plan item 1.4).** Documentation only, but the live behaviour was re-checked first rather than assumed. The pre-Astro `/forum/viewtopic.php` threads return a true 404 with the site's own 404 page, and `/?page_id=84` returns 200 carrying a canonical to the homepage. Both are correct as they stand and both are being left alone: redirecting hundreds of unrelated forum threads to one surviving page is the soft-404 pattern Google discounts, and a canonical is the right mechanism for an ignored query parameter. Recorded in `docs/site-audit.md` under a new "Pre-Astro URLs still in Google's index" section, together with the one condition that would reopen it, so the question is not re-litigated on every audit.
