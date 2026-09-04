@@ -2,6 +2,16 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-04: "Hersham Village" in the hub's body copy (plan item 2.3)
+
+The phrase "Hersham Village" existed on the hub only in the title tag, the schema `alternateName` and an image alt attribute, never in visible prose. One sentence in the intro now carries it.
+
+**Checked the photograph rather than the alt text.** The alt attribute claims the image shows a Hersham Village sign, but an alt attribute is an assertion by whoever wrote it, not evidence. Opened the image: an ironwork sign with a robin perched on top, reading HERSHAM VILLAGE over two lines, with a green roundel below it. The sentence is therefore verifiable from the site's own photograph.
+
+**Deviated from the plan's proposed wording, deliberately.** The plan suggested "The sign on the green reads Hersham Village, and that is what most people call it." The second clause is an unverifiable claim about what local people say, which is precisely the plausible-sounding filler Rule 2 of the verification protocol prohibits, and no source supports it. The published sentence states only what can be seen: "The ironwork sign standing on the green puts it plainly: it reads Hersham Village."
+
+**Verified:** the sentence renders in the intro, the phrase now appears four times in visible body text across the page, `seo:validate` clean, no em dashes.
+
 ## 2026-09-04: One Place entity for the whole Hersham cluster (plan item 2.2)
 
 Before this, every Hersham page that mentioned the village in schema described its own unidentified "Hersham". Search engines resolve a place from a graph of statements about one identified thing, so twenty pages each inventing their own node is twenty weak signals rather than one strong one.
