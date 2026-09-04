@@ -2,6 +2,18 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-04: Hub FAQ taken to seven questions (plan item 2.4)
+
+The five existing questions were kept unchanged. Two added, putting the block at the plan's seven-question cap.
+
+**"Which council covers Hersham?"** Two-tier local government is a real source of confusion, and the fact box added in item 2.1 can only name the borough, not explain the split. The answer names Elmbridge Borough Council for bins, planning and parks, and Surrey County Council for schools, libraries and roads. Both halves rest on sources this site already uses for Hersham specifically: Elmbridge's own pages carry Hersham's parks and the planning records behind `/hersham/development-and-planning/`, and the Hersham Village ward appears in its councillor index; Surrey County Council runs Hersham Library, already cited for the library events in this repo.
+
+**"How far is Hersham from London?"** Answered with a journey time rather than a distance, which is what people mean by the question. Thirty-three minutes to Waterloo, two trains an hour, and the reason there is no faster option: the two fast lines through the middle of the station have no platforms, so every London train is a stopping service. All of it verified against National Rail live departures on 26 August 2026 and already published with sources on `/hersham-railway-station/`, so the two pages cannot disagree.
+
+**Declined the plan's third candidate, "What postcode is Hersham?"** The fact box now sits directly above the FAQ and already gives the postcode district. Adding a question that repeats an answer visible on the same screen pads the page without helping anyone, and the cap exists to stop exactly that.
+
+**Verified:** seven visible questions, seven questions in the `FAQPage` schema, counts matching because both come from the same array. The parakeet follow-on paragraph is still correctly placed between its own answer and the population question. `seo:validate` clean, no em dashes.
+
 ## 2026-09-04: "Hersham Village" in the hub's body copy (plan item 2.3)
 
 The phrase "Hersham Village" existed on the hub only in the title tag, the schema `alternateName` and an image alt attribute, never in visible prose. One sentence in the intro now carries it.
