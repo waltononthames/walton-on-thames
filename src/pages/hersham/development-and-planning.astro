@@ -8,6 +8,7 @@
 // takes no position for or against any scheme. It does not characterise
 // applicants, quantify local opposition, or reproduce campaign material.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { hershamWebPage } from '../../utils/schema';
 import PlanningSchemes from '../../components/PlanningSchemes.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -49,6 +50,11 @@ const faqs = [
   description="What is being built in Hersham: current planning applications, the Green Belt, and how to have your say."
 >
   <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify(hershamWebPage({
+      path: '/hersham/development-and-planning/',
+      name: 'Hersham Development and Planning',
+      description: 'What is being built in Hersham: current planning applications, the Green Belt, and how to have your say.',
+    }))} />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

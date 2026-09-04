@@ -12,6 +12,7 @@
 // for state-funded schools in September 2024, so a bare "rated Good" would be
 // undated at best and describe a retired framework at worst.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { hershamWebPage } from '../../utils/schema';
 
 const reviewedOn = '1 September 2026';
 
@@ -86,6 +87,11 @@ const faqs = [
   description="Practical information for Hersham residents: schools, doctors and pharmacies, getting around, and council services."
 >
   <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify(hershamWebPage({
+      path: '/hersham/living/',
+      name: 'Living in Hersham',
+      description: 'Practical information for Hersham residents: schools, doctors and pharmacies, getting around, and council services.',
+    }))} />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

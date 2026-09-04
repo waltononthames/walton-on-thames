@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { HERSHAM_GREEN_HERO } from '../../utils/hero-images';
+import { HERSHAM_PLACE_ID, SITE_ID } from '../../utils/schema';
 import EventCard from '../../components/EventCard.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -139,6 +140,7 @@ const exploreGroups = [
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Place",
+      "@id": HERSHAM_PLACE_ID,
       "name": "Hersham",
       "alternateName": "Hersham Village",
       "description": "A village in the Borough of Elmbridge, Surrey, between Walton-on-Thames and Esher.",
@@ -158,10 +160,21 @@ const exploreGroups = [
         "name": "Borough of Elmbridge",
         "containedInPlace": { "@type": "AdministrativeArea", "name": "Surrey" }
       },
+      "hasMap": "https://www.openstreetmap.org/?mlat=51.3662&mlon=-0.4002#map=16/51.3662/-0.4002",
       "sameAs": [
         "https://en.wikipedia.org/wiki/Hersham",
         "https://www.wikidata.org/wiki/Q5744439"
       ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://walton-on-thames.org/hersham/#webpage",
+      "url": "https://walton-on-thames.org/hersham/",
+      "name": "Hersham Village, Surrey",
+      "description": "A local guide to Hersham, Surrey: the green, food and drink, walks by the River Mole, history from the Domesday era to Sham 69, and village life.",
+      "isPartOf": { "@id": SITE_ID },
+      "about": { "@id": HERSHAM_PLACE_ID },
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { ABOUT_HERSHAM } from '../utils/schema';
 
 interface Props {
   entry: CollectionEntry<'history'> | CollectionEntry<'hersham'>;
@@ -78,6 +79,9 @@ function sourceParts(s: SourceEntry) {
         "logo": { "@type": "ImageObject", "url": "https://walton-on-thames.org/images/walton-on-thames-org-logo-400.png", "width": 400, "height": 400 }
       },
       "mainEntityOfPage": { "@type": "WebPage", "@id": `https://walton-on-thames.org${selfHref}` },
+      // Hersham articles point at the entity the hub defines, so the cluster
+      // reads as many statements about one place rather than many places.
+      ...(data.cluster === 'hersham' ? { "about": ABOUT_HERSHAM } : {}),
       ...(data.heroImage ? { "image": `https://walton-on-thames.org${data.heroImage}` } : {}),
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({

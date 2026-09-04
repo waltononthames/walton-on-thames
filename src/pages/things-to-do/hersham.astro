@@ -20,6 +20,7 @@
 //     hub (from the same attractions collection); every other word on
 //     this page is unique to it.
 import { getCollection } from 'astro:content';
+import { hershamWebPage } from '../../utils/schema';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { HERSHAM_GREEN_HERO } from '../../utils/hero-images';
 import AttractionCard from '../../components/AttractionCard.astro';
@@ -87,6 +88,11 @@ const reviewedDateStr = new Date('2026-08-22T00:00:00').toLocaleDateString('en-G
   preloadImage={{ srcset: HERSHAM_GREEN_HERO.srcset, sizes: HERSHAM_GREEN_HERO.sizes }}
 >
   <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify(hershamWebPage({
+      path: '/things-to-do/hersham/',
+      name: 'Things to Do in Hersham, Surrey',
+      description: 'Things to do in Hersham, Surrey: the village green, parks and play areas, golf, and sport, with practical notes on each.',
+    }))} />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

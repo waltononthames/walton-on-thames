@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { hershamWebPage } from '../../../utils/schema';
 import HistoryTimeline from '../../../components/HistoryTimeline.astro';
 import { getCollection } from 'astro:content';
 
@@ -22,6 +23,11 @@ const eras = [
   description="A history of Hersham, Surrey, from Mesolithic flint finds beside the Mole to its 1851 parish, the industry and the punk band that shaped the village."
 >
   <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify(hershamWebPage({
+      path: '/hersham/history/',
+      name: 'The History of Hersham: From Flint Tools to Hersham Boys',
+      description: 'A history of Hersham, Surrey, from Mesolithic flint finds beside the Mole to its 1851 parish, the industry and the punk band that shaped the village.',
+    }))} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

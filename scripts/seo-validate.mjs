@@ -5,6 +5,10 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const DIST = 'dist';
+
+// The Hersham cluster resolves to one entity, defined on the hub. See
+// src/utils/schema.ts and docs/hersham-head-term-plan.md item 2.2.
+const HERSHAM_PLACE_ID = 'https://walton-on-thames.org/hersham/#place';
 if (!existsSync(DIST)) {
   console.error('dist/ not found: run `npm run build` first.');
   process.exit(1);
@@ -159,6 +163,26 @@ for (const file of files) {
     } else {
       if (!hasPath(biz, 'name')) fail(urlPath, 'LocalBusiness missing name');
       if (!hasPath(biz, 'address.streetAddress')) fail(urlPath, 'LocalBusiness missing address.streetAddress');
+    }
+  }
+
+  // Hersham cluster entity graph.
+  // The hub is the only page allowed to define the Place, and every page under
+  // /hersham/ must point at it. A page that describes its own unidentified
+  // "Hersham" instead splits the entity, which is the thing this cluster is
+  // built to avoid.
+  if (urlPath === '/hersham/') {
+    const place = findByType(blocks, 'Place').find((n) => n['@id'] === HERSHAM_PLACE_ID);
+    if (!place) {
+      fail(urlPath, `hub must define a Place with @id ${HERSHAM_PLACE_ID}`);
+    } else if (!hasPath(place, 'hasMap')) {
+      fail(urlPath, 'Hersham Place missing hasMap');
+    }
+  }
+  if (urlPath.startsWith('/hersham/')) {
+    const nodes = blocks.flatMap((b) => b['@graph'] ?? [b]);
+    if (!nodes.some((n) => n.about && n.about['@id'] === HERSHAM_PLACE_ID)) {
+      fail(urlPath, `no schema node declares about ${HERSHAM_PLACE_ID}`);
     }
   }
 }
