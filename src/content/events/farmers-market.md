@@ -1,8 +1,8 @@
 ---
 title: "Walton Farmers' Market"
 slug: "walton-farmers-market"
-start: "2026-09-05T09:30:00"
-end: "2026-09-05T14:00:00"
+start: "2026-10-03T09:30:00"
+end: "2026-10-03T14:00:00"
 venue: "New Zealand Avenue, outside The Heart Shopping Centre, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "market"
