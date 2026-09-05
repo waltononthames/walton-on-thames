@@ -2,6 +2,28 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-05: /hersham/community-groups/ (plan item 3.2)
+
+599 words, `entityType: institution`, five sources, all Tier 1: the group's own site, the Electoral Commission's register, the sports club's own site and Surrey County Council.
+
+**The merger is confirmed, but not by the page the plan expected.** The group's homepage says nothing about how it was formed. Its "community details" page does: the Hersham Community Group exists "following the merger of the Hersham Village Society (HVS) and the Hersham Residents Association (HRA)". That page also gives the constitution's revision date of 1 October 2025, the committee of nine, and the planning sites the group has engaged with.
+
+**A date circulating widely was deliberately not used.** Several sources give 3 October 2025 as the merger date. Every route back from it ends at a directory site, which Rule 1 puts in Tier 3. The page therefore gives the constitution date, which the group itself publishes, and does not assert a merger date at all.
+
+**The Electoral Commission record is the find.** The Hersham Village Society was a registered political party, PP1874, registered 21 February 2012, entitled to field candidates in England, and voluntarily deregistered on 30 June 2025. That is the mechanism by which a residents' association gets its name onto a ballot paper, and it makes the village's civic history considerably more concrete than "two groups merged". The deregistration precedes the merged constitution by a few months; the page reports both dates and states plainly that no record links them.
+
+**Three deliberate omissions.**
+
+*Hersham Churches Together* is named in the plan and was dropped. Its domain does not resolve at all, on either the apex or www. A dead domain is not evidence that an organisation has folded, but it is certainly not evidence that it is running, and nothing else consulted confirmed current activity.
+
+*Hersham Baptist Church* was also left out. Its site is reachable, but the most recent activity on it appears to date from 2024. Naming it as an active village organisation on that basis would be asserting something the source does not support.
+
+*Named individuals.* The Electoral Commission record lists two officers by name along with a residential address in Hersham, and the group's own site lists nine committee members. None of that is republished here. The address serves no reader and is somebody's home; the committee roster is reset at each annual general meeting and would be stale within a year. The page says there is a committee of nine and links to where the current list actually lives.
+
+**Sourcing note:** `hershamcommunitygroup.co.uk/community-details/` returns 403 to curl but serves fine to WebFetch, so a bare status check will wrongly suggest it is gone. The Electoral Commission's registration pages render client-side and come back blank to WebFetch; the in-app browser reads them fine.
+
+**Verified:** builds, carries the Hersham entity reference, five sources render, hub grid links to it, page count rose by exactly one to 374, `seo:validate` and `seo:links` clean, metaTitle 35 characters and metaDescription 150, no em dashes.
+
 ## 2026-09-05: /hersham/hersham-green-shopping-centre/ (plan item 3.1)
 
 The first Phase 3 spoke. 635 words, `entityType: place`, four sources, all Tier 1.
