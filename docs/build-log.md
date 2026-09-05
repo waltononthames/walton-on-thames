@@ -2,6 +2,26 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-05: Schools, and a contradiction on the hub (plan item 3.3)
+
+**No new page was built, deliberately.** Item 3.3 is conditional: build `/hersham/schools/` only if `/hersham/living/` does not already cover schools in depth. It does. That page carries all four schools with addresses, phases, their own websites and Ofsted report links, and a documented editorial policy of linking Ofsted judgements rather than restating them, on the sound reasoning that the inspections span 2012 to 2024 and Ofsted stopped issuing an overall effectiveness grade in September 2024. A separate spoke would have duplicated all of it and recreated precisely the cannibalisation item 1.3 was spent removing. Took the plan's other branch and improved the existing section instead.
+
+**Rechecked every school against its own site before touching anything.** All four school sites and both Ofsted report links still resolve. Three corrections and additions followed:
+
+*Three Rivers Academy.* Its own site gives the address as Bell Farm Way, **Hersham**, Walton-on-Thames, and our entry omitted Hersham, which understated the point for a parent wondering whether the secondary school is in the village. Added, along with its trust, The Howard Partnership Trust, and its opening in February 2018. The DfE register still lists the predecessor name Rydens, which is consistent with that opening date and is not an error in our copy.
+
+*Cardinal Newman.* Added the postcode, KT12 4QT, which was missing. Also removed the words "voluntary aided": the school's own site and the DfE register do not agree on whether it is voluntary aided or an academy converter. Rather than assert either, the page now states what both support, that it is a Catholic primary in the Xavier Catholic Education Trust.
+
+*Bell Farm.* Added The Hive, its on-site specialist centre for children with communication and interaction needs, which the school's own site describes and which is exactly the sort of thing a parent is looking for.
+
+**A contradiction I introduced yesterday, found and fixed.** The hub FAQ answer written for item 2.4 said Hersham has two councils and listed what each does. It did not mention that both are abolished on 1 April 2027 and replaced by East Surrey Council. Four other pages on this site already say so: both development and planning pages, `/hersham/living/`, and the `/living/` fact table. So the hub was contradicting the rest of the site on a question it had only just started answering.
+
+Verified the underlying fact rather than simply copying the site's own wording: the government confirmed the two-unitary model for Surrey on 28 October 2025, shadow elections were held on 7 May 2026, and the new authority takes power on 1 April 2027. The hub FAQ now says so, and the fact box gained a "Council from 2027" row mirroring the one `/living/` already carries.
+
+**Lesson worth keeping:** when adding a fact to a hub, check whether the site already states it elsewhere. The FAQ answer was correct in isolation and wrong in context, and only reading a neighbouring page caught it.
+
+**Verified:** build clean, fact box renders ten rows, the council answer carries the 2027 change in both visible text and schema, `seo:validate` and `seo:links` clean, no em dashes. Review date on the living page restamped to 5 September 2026 because every entry was rechecked.
+
 ## 2026-09-05: /hersham/community-groups/ (plan item 3.2)
 
 599 words, `entityType: institution`, five sources, all Tier 1: the group's own site, the Electoral Commission's register, the sports club's own site and Surrey County Council.
