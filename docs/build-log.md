@@ -2,6 +2,36 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-05: Hersham in wartime, which became one memorial (plan item 3.4)
+
+**No new page, and the reasoning matters more than the outcome.** Item 3.4 asked for a Hersham wartime page covering three things. Each was checked against what the site already holds before anything was written, as `docs/site-audit.md` requires.
+
+*The 4 September 1940 Vickers raid is not a Hersham event.* It happened at Brooklands, which is in Weybridge. `/history/walton-in-wartime/` already tells it and explicitly frames it as Weybridge rather than claiming it, and `/hersham/history/` already mentions it. A third telling on a Hersham page would have duplicated existing coverage and quietly migrated the geography, precisely the error the extension warned about for St George's Hill and the Diggers.
+
+*The industrial war work is already covered.* `/hersham/hersham-lodge-and-hersham-place/` runs to some 2,800 words on ABC Motors, its First World War aero-engine contracts, and Hackbridge and Hewittic on Molesey Road.
+
+*"Hersham's memorial" did not resolve to a village war memorial.* The IWM War Memorials Register could not be searched, its results rendering client-side and returning nothing to either WebFetch or form interaction, and no general village memorial surfaced by other routes.
+
+**What was added instead.** A stone plaque inside St Peter's Church to Flying Officer Michael Courtney Franklin Mee, killed off Narvik on 8 June 1940 aged 23. Mee flew with 46 Squadron and was one of eight of its pilots lost when HMS Glorious was sunk by Scharnhorst and Gneisenau. That belongs on `/hersham/st-peters-church/`, where the plaque physically is and where a page already existed, rather than on a new page assembled from other pages' material.
+
+**Two pieces of honesty carried into the published text.**
+
+The inscription is reproduced from the War Memorials Online register, not from the plaque or a photograph of it. Appendix C rule 18 requires transcriptions to be checked against the rendered original, and that has not been done, so the page says so plainly. Anyone visiting the church can close that gap.
+
+The sources disagree on the date of the sinking. The plaque and most accounts give 8 June 1940; Wikipedia's article on 46 Squadron gives 9 June. Rather than choose silently, the page records the disagreement and reproduces the plaque's own date.
+
+**What could not be reached.** The CWGC casualty search sits behind a bot check, which was not circumvented; an individual CWGC record does load directly if its id is known, so a later session can add that corroboration. `46squadron.org` fails TLS verification because its certificate covers only its host's wildcard domains.
+
+**Verified:** build clean, the section renders, `seo:validate` and `seo:links` clean, no em dashes, review date restamped, two sources added.
+
+## 2026-09-05: hersham.org.uk redirect closed as configured (plan item 1.2)
+
+The owner reported the redirect set up and asked for the item to be closed. It was checked rather than taken on trust, and closed with the configured state recorded, because what is live is not what the item specified.
+
+`hersham.org.uk` does reach the Hersham hub, which is the substance of what was wanted. Three differences from the specification remain, all confirmed by request on 5 September 2026: every path collapses to the hub, so `hersham.org.uk/parakeets/` lands on the hub rather than the parakeets page; the target is the www host, so a visitor takes two hops, the second supplied by the canonical host rule from item 1.1; and `www.hersham.org.uk` still returns a Cloudflare 522, because the DNS record item 1.2 called for was not added.
+
+The practical consequences worth remembering: a deep hersham.org.uk URL should not be printed on anything, and anyone typing the www form reaches an error page. The rules that would fix both are already written in `docs/hersham-org-uk-redirects.md`.
+
 ## 2026-09-05: Schools, and a contradiction on the hub (plan item 3.3)
 
 **No new page was built, deliberately.** Item 3.3 is conditional: build `/hersham/schools/` only if `/hersham/living/` does not already cover schools in depth. It does. That page carries all four schools with addresses, phases, their own websites and Ofsted report links, and a documented editorial policy of linking Ofsted judgements rather than restating them, on the sound reasoning that the inspections span 2012 to 2024 and Ofsted stopped issuing an overall effectiveness grade in September 2024. A separate spoke would have duplicated all of it and recreated precisely the cannibalisation item 1.3 was spent removing. Took the plan's other branch and improved the existing section instead.
