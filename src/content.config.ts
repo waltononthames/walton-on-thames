@@ -78,6 +78,11 @@ const news = defineCollection({
     description: z.string(),
     image: z.string().optional(),
     featured: z.boolean().default(false),
+    // Optional so the existing entries stay valid. Set it to scope an article
+    // to one place, which is what lets /hersham/ show its own news rather than
+    // the site-wide feed. Free string, matching the businesses collection,
+    // because the site covers Weybridge and Shepperton too.
+    neighbourhood: z.string().optional(),
   }),
 });
 
