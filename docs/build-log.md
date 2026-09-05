@@ -2,6 +2,28 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-05: /hersham/hersham-green-shopping-centre/ (plan item 3.1)
+
+The first Phase 3 spoke. 635 words, `entityType: place`, four sources, all Tier 1.
+
+**The story is better than the plan assumed.** The plan expected the centre's early-1980s origin, its Waitrose anchor and the 2026 acquisition. What the sources actually support is a sequence of ownership changes: a Safeway that Morrisons acquired, gutted and reopened as Waitrose Hersham (branch 765) on 9 June 2005, a hybrid application to build homes on the car park refused by Elmbridge in October 2024, and then, in February 2026, the anchor tenant buying the freehold of the whole centre and becoming landlord to the other sixteen units.
+
+**Sources, and what each carries.** The John Lewis Partnership's own announcement of 5 February 2026 gives the freehold purchase, the 54,000 square foot centre, the sixteen other units, the parking commitment and the wider investment programme. The Waitrose Memory Store, the Partnership's heritage archive, reproduces *The Gazette* of 18 June 2005 and gives the opening date, the branch number, the 22,000 square foot shop floor, the 230 space car park and the Safeway and Morrisons predecessor. Elmbridge Borough Council's planning record gives application 2024/0498 and its refusal on 23 October 2024, and that record already flows into this site through the live council feed behind `/hersham/development-and-planning/`.
+
+**Three deliberate restraints, each worth recording.**
+
+The construction date is not stated. "Built in 1985" and "thirteen retail units" circulate widely, but every route back from them ends at a directory site, which Rule 1 puts in Tier 3 and forbids as a sole source. The page says instead that the centre is older than its best-known tenant, which the Safeway predecessor establishes, and notes plainly that no source consulted records the year.
+
+The two Partnership figures for the shop's size disagree: 27,000 square feet in the 2026 announcement against a 22,000 square foot shop floor in 2005. They may be measuring a total area against a trading floor. The page presents the disagreement rather than silently choosing, as the Standards require.
+
+The sequence is reported without a causal claim. A refused scheme in 2024 followed by the tenant buying the ground sixteen months later invites an obvious inference, and no source states it. The page says the sources record both events and none links them.
+
+The Partnership's framing of its own purchase, that it secures the store's future, is attributed to the Partnership rather than asserted, since it is an interested party describing its own deal.
+
+**Verified:** builds, in the sitemap, carries the `about` reference the 2.2 rule requires, all three sources render, the hub's Village life grid links to it, `seo:validate` and `seo:links` clean, metaTitle 40 characters and metaDescription 147, no em dashes. Diffed the local build against the deployed sitemap to confirm the page count moved by exactly one and nothing was lost.
+
+**Access note:** `johnlewispartnership.co.uk` fetches cleanly. `waitrosememorystore.org.uk` returns 403 to WebFetch but loads fine in the in-app browser. Surrey Live redirects to a paid-content proxy on a different host and was not followed; the council record covers the same ground at Tier 1.
+
 ## 2026-09-04: Hub FAQ taken to seven questions (plan item 2.4)
 
 The five existing questions were kept unchanged. Two added, putting the block at the plan's seven-question cap.
