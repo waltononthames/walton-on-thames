@@ -2,6 +2,24 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-06: The drill plough claim, tested and corrected (plan item 3.5)
+
+Item 3.5 was conditional: build the Weylands Farm page only if sources exist beyond Wikipedia, and never on a single Tier 2 source. Testing that condition turned up an accuracy problem in what the site was already publishing.
+
+**There are no sources beyond Wikipedia, and Wikipedia does not have one either.** The sentence "King George III visited Weylands farm in Hersham where he saw the first drill plough" sits in that article's notable events section with **no citation attached**. Wikishire reproduces it. Under Appendix C rule 13, repeated copies of one account are not independent corroboration, so those two are a single uncited assertion. Searches for a county history, an archive record or a named local historian carrying it returned nothing; British History Online's Walton parish page could not be located at the URL tried, and Exploring Surrey's Past returns 403 to automated fetching, so the negative is scoped to the online records reached here rather than claimed as exhaustive.
+
+**The site was asserting it as fact in four places**: the Hersham hub, the history hub's opening line, the history hub's Royal glimpses section, and the Queen Victoria article's closing cross-reference. That is a Tier 3 claim published as unqualified fact, which Rule 1 does not permit.
+
+**The checkable part of it is false.** Jethro Tull developed a seed drill in 1701 and a drill plough by about 1733. George III came to the throne on 25 October 1760. Whatever may or may not have been demonstrated at Weylands, it cannot have been the first drill plough, and the superlative fails the Section 20 test that "first", "last" and "only" wording must be justified.
+
+**What was changed.** The claim is gone from the hub summary and from the Victoria article, which now refers to it as a widely repeated but untraced story. The history hub's opening swaps "a royal drill plough" for "a royal diary entry", which is the brush with royalty that is actually documented. Royal glimpses now leads with Victoria, then reports the George III story openly: that it circulates widely, that no source has been found in the records consulted, that it originates as an uncited sentence copied onward, and that the dates rule out the superlative. It closes by naming George Greenwood's *Hersham in Surrey*, cited elsewhere in the same Wikipedia article for other village claims but not for this one, as the obvious place to settle the visit itself.
+
+That treatment follows the same pattern as the Queen Victoria page, which was built to keep an honest ambiguity rather than resolve it by assertion. A reader now learns more than the original sentence told them, and none of it is invented.
+
+**Verified:** the phrase "first drill plough" survives in exactly one place, inside the passage that reports and refutes it. Build clean, `seo:validate`, `seo:links`, em dash and verification-marker checks all clean.
+
+**Unrelated observation while checking the build.** The local build has three fewer pages than the live sitemap, and all three are correct: two events fell into the past overnight and were filtered as designed, and Walton Farmers' Market is a `recurring: true` listing whose hardcoded date of 5 September has lapsed, so it has silently dropped off the site until someone re-dates it. `npm run content:stale-events` separately flags Life Drawing Classes at Riverhouse Barn, five days stale. Neither was re-dated here: Rule 4 forbids advancing a recurring event without re-verifying it against the organiser, and Riverhouse Barn is documented in this log as unreachable by every route tried.
+
 ## 2026-09-05: Hersham in wartime, which became one memorial (plan item 3.4)
 
 **No new page, and the reasoning matters more than the outcome.** Item 3.4 asked for a Hersham wartime page covering three things. Each was checked against what the site already holds before anything was written, as `docs/site-audit.md` requires.
