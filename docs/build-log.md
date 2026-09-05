@@ -959,3 +959,27 @@ Darren's wording, applied as given: the caption now opens `"Walton-on-Thames and
 ## Still open
 - **Source the name "Walton Mile."** A club, regatta or navigation document using it would let the term be introduced properly in the body rather than appearing only in a caption.
 - The aerial photograph's missing rights record, unchanged from the previous entry.
+
+## 2026-09-05: a 1775 ticket puts "regatta" at Walton Bridge eighty-seven years before 1862
+
+Darren obtained the British Museum's record of two admission tickets to the Walton Bridge Regatta and supplied the image and credit line. This is the strongest single object on the page and the only contemporary primary source it carries.
+
+**Verified against the museum's own catalogue, not the supplied description.** `britishmuseum.org` returns 403 to WebFetch, so the record was read in the Browser pane. It confirms every element: museum number C,2.1723-1724, Prints and Drawings, print made by William Darling, production date 1775, etching on paper, plate mark 160 x 213mm, "On the original mount", previous owner Sarah Sophia Banks, donated by Dorothea, Lady Banks. The inscription note transcribes the lettering and records "25 July 1775 / John Frederick" on the second ticket and "Thos Wood" plus a seal on the first.
+
+**Reading the photograph adds three things the catalogue does not transcribe**, and the article says so explicitly rather than blending them into the museum's record: both tickets are numbered by hand, 6 and 12; the red wax seal survives on the first; and the mount carries a pencil annotation reading "July 18 1775". Each was confirmed by enlarging the supplied image rather than inferred. The engraver's line was checked the same way and matches the museum's "W. Darling ft Newport St London" exactly, which is also what resolved the signature: it is Darling, not Darly.
+
+**The find creates a conflict, and the section presents it rather than smoothing it.** Stonebanks dates the Duke of Newcastle's Oatlands river entertainment to 7 August 1775. The tickets are dated to July, name Walton Bridge rather than Oatlands, and cover at least two separate days. Whether they are the same occasion, a distinct event at the bridge, or a short season of river occasions is unresolved by either source, and is now the page's first research lead.
+
+**It does not move the foundation date, and the article says that in terms.** Nothing traces a line across the eighty-seven years to 1862, and Stonebanks, who knew about the eighteenth-century occasions, still dated the continuing regatta to 1862. Two regattas at the same bridge separated by most of a century are two regattas until evidence joins them. The evidence table carries a new July 1775 row whose "what it does not establish" column says exactly this, and the old 7 August 1775 row now disclaims the narrower question of whether it is the same event.
+
+**The image** was converted to webp at 1100px (218KB, larger than this site's usual history images, deliberately: the lettering and the manuscript dates are the point and readers will zoom). The British Museum JPEG is retained unaltered at `public/images/history/Walton Regatta/1612984393.jpg`.
+
+The `metaDescription` now leads on the 1775 tickets rather than the 1924 crew, and `reviewedDate` moved to 5 September 2026.
+
+Verified: build clean at 374 pages, `seo:validate` passed, `seo:links` zero broken links, five figures render, no em dashes, metaDescription 134 characters.
+
+## Still open
+- **The CC BY-NC-SA licence is a decision for the Editor, not for this log to settle.** The British Museum shares the image under a NonCommercial ShareAlike licence. This site carries a business directory and an "advertise your business" page, and the Charter's section 9 contemplates sponsorships and paid placements, so whether the site's use is "non-commercial" within the licence is a legal judgement rather than an editorial one. The credit line Darren supplied is carried verbatim in the caption and a rights-record comment sits above the figure. Flagged rather than decided, per Standards Appendix C rule 21.
+- **The ShareAlike condition** attaches to adapted copies. The webp is a format conversion and resize of the museum's image, so if SA is read strictly the derived file should be offered under the same licence. Worth a line in the site's image credits policy rather than a per-page fix.
+- **The page title still says "Since 1862".** Defensible, since that is the modern event's own claim and the article supports it as institutional continuity, but the page now opens with a 1775 object. If the title changes, the slug should not: the URL is live and indexed.
+- Page locators for Stonebanks (1980) and Hughes (2003), unchanged.

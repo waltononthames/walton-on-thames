@@ -1,19 +1,24 @@
 ---
 title: "Walton Regatta: Racing on the Thames Since 1862"
 metaTitle: "Walton Regatta: On the Thames Since 1862"
-metaDescription: "Walton & Weybridge Regatta has raced on the Thames since 1862: Victorian spectacle, the amateur class divide, and the 1924 Olympic crew who won here."
+metaDescription: "Walton & Weybridge Regatta has raced on the Thames since 1862, and British Museum tickets record a Walton Bridge Regatta in July 1775."
 slug: "walton-regatta"
 cluster: "walton-history"
 era: ["victorian", "20th-century", "contemporary"]
 entityType: "event"
 publishDate: 2026-09-03
-reviewedDate: 2026-09-03
+reviewedDate: 2026-09-05
 sources:
   - author: "Bishop and Miller Auctioneers"
     year: "n.d."
     title: "Walton on Thames Regatta silver goblet, lot photograph"
     url: "https://bishopandmillerauctions.co.uk/"
     accessed: "3 September 2026"
+  - author: "British Museum"
+    year: "n.d."
+    title: "Print; ticket: two tickets to the Walton Bridge Regatta, print made by William Darling, 1775 (museum number C,2.1723-1724)"
+    url: "https://www.britishmuseum.org/collection/object/P_C-2-1723-1724"
+    accessed: "5 September 2026"
   - author: "Environment Agency"
     year: "2026"
     title: "Thames Valley Skiff Club Walton Reach Regatta 2026: river restriction notice"
@@ -123,7 +128,7 @@ Walton's regatta is one of the oldest things that still happens here. The event 
 
 That date matters locally, because it makes the regatta older than either of the clubs now most closely associated with it. Weybridge Rowing Club dates from 1881, and Walton Rowing Club was formed in 1927 with Steve Fairbairn as its first president (Weybridge Rowing Club, n.d.b; Walton Rowing Club, n.d.). The regatta was not created by a club and then opened to the public. It was already here, and the clubs grew up around it.
 
-What follows is what the surviving evidence supports: a Victorian riverside spectacle that drew crowds onto private lawns, a town that ran two regattas at once because the rules of amateur sport excluded working men, an Olympic crew who came home from Paris in 1924 and won on this reach, and a modern competitive regatta that still races the same water.
+What follows is what the surviving evidence supports: a pair of engraved tickets to a Walton Bridge Regatta in July 1775, a Victorian riverside spectacle that drew crowds onto private lawns, a town that ran two regattas at once because the rules of amateur sport excluded working men, an Olympic crew who came home from Paris in 1924 and won on this reach, and a modern competitive regatta that still races the same water.
 
 ## How firm is the 1862 date?
 
@@ -131,15 +136,29 @@ Two independent strands point to 1862. The present organisers state it, and the 
 
 Stonebanks adds something the modern phrasing does not. He records that the regatta began in 1862 but became an annual fixture only after several lapses (Stonebanks, 1980). Both statements can stand together if "held annually since 1862" is read as a claim about an institution rather than a guarantee that racing took place in every calendar year. The two world wars alone make the stricter reading impossible: the Skiff Racing Association's history records that regattas and the skiff marathon races lapsed during the First World War, and that competitions lapsed again during the Second and were not revived until afterwards (Skiff Racing Association, n.d.).
 
-The founding year is well attested by later writers. No contemporary programme, results list or newspaper report of the 1862 meeting has been traced for this article, so the detail of that first regatta remains unknown.
+The founding year is well attested by later writers. No contemporary programme, results list or newspaper report of the 1862 meeting has been traced for this article, so the detail of that first regatta remains unknown. Nor is 1862 the first time the word regatta was used at Walton, as the next section shows.
 
-## Before 1862: river spectacle at Oatlands
+## 1775: tickets to a Walton Bridge Regatta
 
-The word regatta once described a river entertainment as readily as a rowing competition, and Walton's reach had seen both.
+There is an object older than 1862 that puts the words beyond argument. It is a pair of admission tickets, and they survive in the British Museum.
 
-Stonebanks records an eighteenth-century regatta connected with Oatlands, and another on 7 August 1775, when the Duke of Newcastle staged a large river entertainment there attended by members of the royal family. He is careful to distinguish these social occasions from sporting regattas in the later competitive sense (Stonebanks, 1980).
+The museum holds two tickets to the Walton Bridge Regatta, etched by William Darling of Newport Street, London, and dated to 1775. They are catalogued together as one item, museum number C,2.1723-1724, in the Department of Prints and Drawings, and are recorded as still on their original mount. They came to the museum from the collection of Sarah Sophia Banks, given by Dorothea, Lady Banks (British Museum, n.d.).
 
-That distinction is worth keeping. The 1775 event does not make Walton's regatta older than 1862. What it shows is that this stretch of the Thames was already understood as a place where a crowd could be gathered and something staged on the water.
+Both tickets are printed from the same plate, one on yellow paper and one on green, with a plate mark of 160 by 213 millimetres. Across the top is a cluster of objects belonging to the occasion: oars, a float, an anchor and a flag. Beneath the lettering is a view of the wooden bridge over the Thames at Walton, with rowing boats passing under it (British Museum, n.d.).
+
+The manuscript additions are what turn a print into the record of an event. The museum transcribes the lettering as "Walton Bridge Regatta" and "W. Darling ft Newport St London", and records that the second ticket carries in pen "25 July 1775 / John Frederick", while the first is signed "Thos Wood" and stamped with a seal (British Museum, n.d.). Reading the photograph adds three details the catalogue entry does not transcribe: each ticket is numbered by hand, 6 and 12, the red wax seal survives on the first, and the mount carries a pencil annotation reading "July 18 1775".
+
+<!-- Rights record: image © The Trustees of the British Museum, museum number C,2.1723-1724, reproduced under CC BY-NC-SA 4.0. Credit line supplied by the site owner 5 September 2026 and carried in the caption. -->
+<figure>
+  <img src="/images/history/walton-bridge-regatta-tickets-1775.webp" alt="Two eighteenth-century engraved admission tickets mounted one above the other, both lettered WALTON BRIDGE Regatta above a view of the wooden Walton Bridge with rowing boats beneath it, the upper printed on yellow paper and numbered 6 with a red wax seal, the lower printed on green paper and numbered 12" loading="lazy" />
+  <figcaption>Two tickets to the Walton Bridge Regatta, etched by William Darling of Newport Street, London, 1775. The upper ticket is signed "Thos Wood" and sealed; the lower carries the pen date "25 July 1775" and the name John Frederick. British Museum, museum number C,2.1723-1724. © The Trustees of the British Museum. Shared under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) licence.</figcaption>
+</figure>
+
+What the tickets establish is narrow and solid. In July 1775 an event at Walton Bridge was called a regatta by the people running it, was serious enough to justify an engraved plate from a London printmaker, and admitted its guests by numbered ticket, countersigned and in one case sealed. That is an organised occasion with controlled entry, not an informal gathering on the bank.
+
+They also sit awkwardly beside the only other account we have of that summer. Stonebanks records an eighteenth-century regatta connected with Oatlands, and a large river entertainment there on 7 August 1775 staged by the Duke of Newcastle and attended by members of the royal family, and he is careful to distinguish such social occasions from sporting regattas in the later competitive sense (Stonebanks, 1980). The tickets are dated to July, name Walton Bridge rather than Oatlands, and were issued for at least two separate days. Whether they belong to Stonebanks's Oatlands festivities, to a distinct event at the bridge, or to a short season of river occasions that summer is not settled by either source.
+
+What the tickets do not do is push the modern regatta's origin back to 1775. Nothing yet traces a line across the eighty-seven years between these tickets and 1862, and Stonebanks, who knew about the eighteenth-century occasions, still dated the beginning of the continuing regatta to 1862 (Stonebanks, 1980). Two regattas at the same bridge, separated by the better part of a century, are two regattas until evidence joins them.
 
 ## Why the river, and why then
 
@@ -272,7 +291,8 @@ Almost everything around the racing has changed. The private lawns are gone, the
 
 | Date | Evidence | What it establishes | What it does not establish |
 |---|---|---|---|
-| 7 August 1775 | Stonebanks's account of the Duke of Newcastle's river entertainment at Oatlands | Organised river spectacle on this reach well before the Victorian regatta | Any continuity with the regatta founded in 1862 |
+| July 1775 | Two engraved admission tickets to the Walton Bridge Regatta, British Museum C,2.1723-1724 | That an event at Walton Bridge was called a regatta, engraved, numbered, signed and sealed in July 1775 | Any continuity with the regatta founded in 1862, or the event's relationship to Stonebanks's Oatlands entertainment |
+| 7 August 1775 | Stonebanks's account of the Duke of Newcastle's river entertainment at Oatlands | Organised river spectacle on this reach well before the Victorian regatta | Whether it is the same occasion as the ticketed Walton Bridge Regatta of July |
 | 1862 | The organisers' own statement, and Stonebanks | The foundation year as recorded by both the event and local history | That racing was held in every year since, which Stonebanks contradicts |
 | 1864 | The hallmarked regatta goblet, its device cast and applied | A swan and crossed oars in use as a regatta device by 1864 | Which race the goblet was awarded for, or to whom |
 | c. 1887 | Stonebanks on Walton Town Regatta and on River House | A second, separate Walton regatta for competitors outside amateur status, and the lending of private lawns | How long the town regatta ran, or how the two meetings related in practice |
@@ -287,6 +307,7 @@ Almost everything around the racing has changed. The private lawns are gone, the
 
 | Date | Development |
 |---|---|
+| 18 and 25 July 1775 | Numbered tickets admit Thos Wood and John Frederick to the Walton Bridge Regatta, engraved by William Darling of Newport Street, London (British Museum, n.d.) |
 | 7 August 1775 | The Duke of Newcastle stages a river entertainment at Oatlands, attended by members of the royal family (Stonebanks, 1980) |
 | 1838 | The railway reaches Walton, bringing London within easy reach (Network Rail, 2024) |
 | 1862 | The first Walton Regatta (Stonebanks, 1980; Walton and Weybridge Regatta, n.d.b) |
@@ -312,9 +333,11 @@ Almost everything around the racing has changed. The private lawns are gone, the
 
 ## Where the research could go next
 
-Four questions would repay archival work, and we would welcome help with any of them.
+Five questions would repay archival work, and we would welcome help with any of them.
 
-**The first regatta.** No contemporary account of the 1862 meeting has been traced. Surrey and London newspapers from the weeks around it are the obvious place to look for a programme, a results list or a committee notice.
+**The gap between 1775 and 1862.** The British Museum tickets prove a ticketed Walton Bridge Regatta in July 1775. Nothing yet connects it to the regatta that began in 1862, and nothing yet shows whether it ran for one summer or for years. Surrey and London newspapers for July and August 1775, and any surviving subscription list, would settle both. The two names on the tickets are the obvious thread to pull: John Frederick and Thos Wood. Frederick is a name that recurs in Walton, including the listed Frederick tomb in St Mary's churchyard, but no source consulted here connects the ticket-holder to that family, and the identification should not be assumed.
+
+**The first regatta of 1862.** No contemporary account of the 1862 meeting has been traced. Surrey and London newspapers from the weeks around it are the obvious place to look for a programme, a results list or a committee notice.
 
 **Walton Town Regatta.** Stonebanks gives a date of about 1887 and describes who could enter. Contemporary programmes and press reports would show who organised it, what was raced for, and how long it ran alongside the amateur regatta.
 
