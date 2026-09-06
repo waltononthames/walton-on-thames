@@ -33,7 +33,7 @@ const bySlug = (slug: string) => attractions.find((a) => a.data.slug === slug)!.
 
 const villageGreen = bySlug('hersham-village-green');
 const sportCards = ['watch-esher-rugby-in-hersham', 'watch-walton-and-hersham-fc', 'golf-in-hersham-and-walton'].map(bySlug);
-const familyCards = ['safari-adventure-golf-hersham', 'hersham-recreation-ground', 'coronation-recreation-ground-hersham'].map(bySlug);
+const familyCards = ['safari-adventure-golf-hersham', 'ceramics-cafe-hersham', 'hersham-recreation-ground', 'coronation-recreation-ground-hersham'].map(bySlug);
 const allShown = [villageGreen, ...sportCards, ...familyCards];
 
 const nearbyWalton = [
@@ -51,7 +51,7 @@ const nearbyWalton = [
 const faqs = [
   {
     q: 'What is there to do in Hersham with children?',
-    a: 'Safari Adventure Golf brings an 18-hole safari-themed adventure golf course to Hersham Golf Club, good for a quick family activity or a small group. Hersham Recreation Ground has a play area and a seasonal splash pad, and Coronation Recreation Ground adds another play area alongside its café and sports pitches. All three work well for a half-day out without booking anything in advance, other than checking the splash pad is running.',
+    a: 'Safari Adventure Golf brings an 18-hole safari-themed adventure golf course to Hersham Golf Club, good for a quick family activity or a small group. The Ceramics Café on Hersham Green is the indoor option, where you paint a piece of pottery at a table and collect it glazed and fired on a later visit. Hersham Recreation Ground has a play area and a seasonal splash pad, and Coronation Recreation Ground adds another play area alongside its café and sports pitches.',
   },
   {
     q: 'Does Hersham have a park with a splash pad?',
@@ -147,7 +147,7 @@ const reviewedDateStr = new Date('2026-08-22T00:00:00').toLocaleDateString('en-G
   <section class="section">
     <div class="container prose intro-prose">
       <p>Hersham sits immediately south of Walton-on-Thames, close enough that the two share a post town, but it has kept its own identity around Hersham Green: a proper village green faced by shops, a pub and a pond, and the natural place to start any visit. From the green, Hersham's things to do are mostly about green space and community sport rather than riverside sightseeing.</p>
-      <p>Coronation Recreation Ground and Hersham Recreation Ground give the village its everyday parks, with play areas, sport pitches and a seasonal splash pad. Molesey Road is Hersham's sporting corridor, home to Esher Rugby Club, and Walton and Hersham FC's ground lies just over the boundary in Walton at the Elmbridge Xcel Sports Hub. Golf has deep roots here too, with Hersham Golf Club and Burhill's championship courses both within the village bounds. For something more active with children, Safari Adventure Golf's safari-themed course adds a distinctly family option.</p>
+      <p>Coronation Recreation Ground and Hersham Recreation Ground give the village its everyday parks, with play areas, sport pitches and a seasonal splash pad. Molesey Road is Hersham's sporting corridor, home to Esher Rugby Club, and Walton and Hersham FC's ground lies just over the boundary in Walton at the Elmbridge Xcel Sports Hub. Golf has deep roots here too, with Hersham Golf Club and Burhill's championship courses both within the village bounds. For something more active with children, Safari Adventure Golf's safari-themed course adds a distinctly family option, and the Ceramics Café on the green is the one thing here that works just as well in the rain.</p>
       <p>This guide covers Hersham's own attractions in full, then signposts the short walk or drive into Walton-on-Thames for the riverside walks, boat trips and arts venues covered on the main <a href="/things-to-do/">things to do in Walton-on-Thames</a> hub.</p>
     </div>
   </section>
@@ -190,7 +190,7 @@ const reviewedDateStr = new Date('2026-08-22T00:00:00').toLocaleDateString('en-G
     <div class="container">
       <div class="section-header">
         <h2>Families in Hersham</h2>
-        <p>A run of low-key, easy-to-reach options for a half-day out with children, none of which need a car park battle or a booked ticket to get started. Safari Adventure Golf is the one worth planning around; the two recreation grounds are better as a spontaneous stop.</p>
+        <p>A run of low-key, easy-to-reach options for a half-day out with children, none of which need a car park battle or a long drive to get started. Safari Adventure Golf and the Ceramics Café are the two worth planning around, the café being the one that keeps working when it rains; the two recreation grounds are better as a spontaneous stop.</p>
       </div>
       <div class="card-grid card-grid-3">
         {familyCards.map((a) => (
