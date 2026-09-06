@@ -14,5 +14,5 @@ sources:
     accessed: "2026-09-06"
 lastVerified: "2026-09-06"
 hasPage: false
-relatedOrganisations: ["1st-hersham-scout-group"]
+relatedOrganisations: ["1st-hersham-scout-group", "4th-walton-on-thames-scout-group"]
 ---

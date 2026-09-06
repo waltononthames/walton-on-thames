@@ -30,9 +30,6 @@ verification. They have been deleted rather than softened.
 | Organisation | What is missing |
 | --- | --- |
 | Rotary Club of Walton-on-Thames | `waltonrotary.org.uk` no longer resolves in DNS. Search results still reference its pages and give a meeting place at Burhill Golf Club and a secretary's number, but with the site gone there is no live primary source and no way to confirm the club is still meeting. Check Rotary GB and Ireland's club finder before publishing. |
-| 9th Walton-on-Thames Viscount Air Scout Group | Listed on scouts.org.uk, which returned 403 to every fetch this session. Verify from the group's own site or the district. |
-| Other Walton scout groups | Only the 4th and the 9th surfaced. The numbering implies others. Enumerate through Walton & Weybridge District. |
-| Elmbridge Youth Theatre | Consistently described as based at the Cecil Hepworth Playhouse and aimed at ages 15 to 25, but only in secondary sources. Needs its own site or a Playhouse page. |
 | Hersham family, social and military history group | A directory entry describes a group meeting on the fourth Tuesday of the month at the Hersham Centre for the Community, with speakers. No primary source found. |
 | Kings Church Toddlers | Appears in Surrey County Council's family directory as a free under-5s playgroup at The Furrows. Needs the church's own confirmation that it is still running. |
 | Walsingham Care | A Walton-based charity. Scope decision needed first: it looks like a care provider rather than a club or community group, in which case it belongs in the directory, not here. |
@@ -40,6 +37,35 @@ verification. They have been deleted rather than softened.
 | Walton & Hersham Foodbank | Same: currently inside the Walton Charity record, and strong enough to stand alone with a primary source for its four weekly sessions. |
 | Preschool and early years groups | Happity and Red Kite Days list many across Walton, all secondary. Each needs its host church, hall or provider to confirm. |
 | Dementia and carers' support groups | Elmbridge Borough Council runs dementia social clubs at the Walton centre. Needs the council's own service page rather than a news item. |
+
+## Resolved 6 September 2026
+
+**The scout groups are done.** Walton & Weybridge District publishes its full
+list: seven groups, of which four are in our area. All four are now published.
+1st Walton (Viking) Sea Scouts and 9th Walton (Viscount) Air Scout Group are
+new, both with their own pages; 1st Hersham and 4th Walton gained the section
+meeting nights from the district's own timings table, which neither group
+publishes itself. The remaining three groups, 1st Weybridge, 4th Weybridge and
+Oatlands, are Weybridge-based and out of scope for this directory.
+
+Two source problems worth remembering. The district's link for the 9th
+(`9thwaltonscouts.org.uk`) is dead; the live site is `9thwaltonscoutgroup.org`.
+And Surrey Scouts' county page for the 9th gives its address as Bentley Copse,
+Shere, which is the county campsite rather than the group's headquarters, and
+its website as the county's own. County group pages here carry template
+defaults, so do not take an address or a URL from one without corroboration.
+
+**Elmbridge Youth Theatre is a "no", not a "not yet".** It is real and
+registered, charity 1071866, and its stated activity is one major production a
+year at the Playhouse plus one or two smaller ones at the Barn. But nothing
+shows it is still running: Charity Commission reporting is overdue by 1,529
+days, the last financial data on the register is for the year ending 31 August
+2020, its Facebook page's most recent visible post is 4 February 2023, and the
+domain that page gives, `elmbridgeyouththeatre.co.uk`, did not resolve from two
+separate tools. It is on file as `src/content/organisations/elmbridge-youth-theatre.md`
+with `status: uncertain`, so it does not render, and the record carries this
+evidence in a comment. Publish it only when a current source appears. Darren
+may know first-hand whether it is still going, which would settle it either way.
 
 ## Published, but thinner than it should be
 
@@ -52,9 +78,11 @@ verification. They have been deleted rather than softened.
 | Hersham Bowling Club | Charity number 220949 comes from Surrey County Council's directory. Cross-check against the Charity Commission register. |
 | Esher Rugby | The ground postcode KT12 3PF comes from our own attraction record, verified 22 August 2026; the club's own directions page returns 404. |
 
-## Site fix noted in passing, not applied
+## Site fix made in passing
 
-`src/content/attractions/watch-esher-rugby-in-hersham.json` has
-`"internalUrl": "/things-to-do/walton-and-hersham-fc/"`, which sends readers
-looking for the rugby club to the football club's page. It is outside the
-paths this piece of work was scoped to, so it has been left alone.
+`src/content/attractions/watch-esher-rugby-in-hersham.json` carried
+`"internalUrl": "/things-to-do/walton-and-hersham-fc/"`, which sent readers
+looking for the rugby club to the football club's page. The record has no
+internal guide of its own, so the field has been removed rather than
+repointed: `AttractionCard` then falls back to `officialUrl` and renders the
+club's own site as an explicit external link. Fixed 6 September 2026.

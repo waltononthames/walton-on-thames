@@ -9,16 +9,19 @@ shortDescription: "Beavers, Cubs and Scouts for ages six to fourteen, meeting at
 venue: "4th Walton Scouts HQ"
 address: "Cottimore Lane, Walton-on-Thames KT12 2BX"
 ageRange: "6 to 14"
-meetingInformation: "Weekly section meetings at the Cottimore Lane headquarters"
+meetingInformation: "Beavers on Mondays, Cubs on Tuesdays and Scouts on Fridays"
 website: "https://www.4thwaltonscouts.org.uk/"
 status: "active"
 sources:
   - label: "4th Walton-on-Thames Scout Group, group website"
     url: "https://www.4thwaltonscouts.org.uk/"
     accessed: "2026-09-06"
+  - label: "Walton and Weybridge District Scouts, timings of group meetings"
+    url: "https://www.waltonandweybridge.org.uk/spage-groups-timings_of_group_meetings.html"
+    accessed: "2026-09-06"
 lastVerified: "2026-09-06"
 hasPage: true
-relatedOrganisations: ["1st-hersham-scout-group", "girlguiding-hersham"]
+relatedOrganisations: ["1st-hersham-scout-group", "1st-walton-viking-sea-scouts", "9th-walton-viscount-air-scouts"]
 ---
 
 4th Walton-on-Thames Scout Group meets at its own headquarters on Cottimore Lane and runs three sections covering ages six to fourteen.
@@ -37,7 +40,7 @@ Scouting activities across the three sections.
 
 ## When and where
 
-Section meetings are held at the group's Cottimore Lane headquarters, KT12 2BX.
+Section meetings are held at the group's Cottimore Lane headquarters, KT12 2BX. The district publishes the nights as Beavers on Mondays, Cubs on Tuesdays and Scouts on Fridays.
 
 ## Joining or taking part
 
