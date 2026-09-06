@@ -73,4 +73,4 @@ Current dates and times for all of these are on our [what's on page](/whats-on/)
 
 ## Getting involved
 
-The Community Group takes new members through its own site, and the market, the club and the library are all open to anyone who turns up. For services rather than volunteering, schools, surgeries and council contacts are gathered on [living in Hersham](/hersham/living/), and the equivalent listing for the wider borough is on our [Walton community page](/living/community/).
+The Community Group takes new members through its own site, and the market, the club and the library are all open to anyone who turns up. For services rather than volunteering, schools, surgeries and council contacts are gathered on [living in Hersham](/hersham/living/), and a directory of the village's clubs and sports teams is on our [Hersham clubs and societies page](/hersham/clubs-and-societies/), and the equivalent listing for the wider area is the [Walton-on-Thames clubs and societies directory](/living/community/).

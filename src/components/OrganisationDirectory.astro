@@ -1,0 +1,375 @@
+---
+// The filterable listing shared by both clubs hubs. Everything here works
+// with JavaScript switched off: the filters are real form controls that
+// simply do nothing, and every organisation is in the HTML from the start.
+//
+// An organisation serving both audiences is rendered in both audience
+// sections. That is why the count is of unique slugs rather than of cards.
+import OrganisationCard from './OrganisationCard.astro';
+import {
+  AUDIENCE_SECTIONS, CATEGORY_ORDER, CATEGORY_LABELS,
+  LOCALITY_LABELS, AUDIENCE_LABELS,
+  type OrganisationCategory, type OrganisationLocality, type OrganisationAudience,
+} from '../utils/organisations';
+import type { OrganisationData } from '../utils/organisations';
+
+interface Props {
+  organisations: OrganisationData[];
+  /** Used in the visible label of the search field, e.g. "in Hersham". */
+  scopeLabel: string;
+}
+
+const { organisations, scopeLabel } = Astro.props;
+
+// Sort once, alphabetically, and let every section inherit that order so the
+// same club sits in the same relative place wherever it appears.
+const sorted = [...organisations].sort((a, b) => a.name.localeCompare(b.name, 'en-GB'));
+
+const sections = AUDIENCE_SECTIONS.map(section => {
+  const inSection = sorted.filter(o => o.audience.some(a => section.matches.includes(a)));
+  const categories = CATEGORY_ORDER
+    .filter(cat => inSection.some(o => o.category === cat))
+    .map(cat => ({
+      id: `${section.id}-${cat}`,
+      category: cat,
+      label: CATEGORY_LABELS[cat],
+      organisations: inSection.filter(o => o.category === cat),
+    }));
+  return { ...section, categories };
+}).filter(section => section.categories.length > 0);
+
+// Only offer a filter value that something on this page actually carries.
+const categoryOptions = CATEGORY_ORDER.filter(c => sorted.some(o => o.category === c));
+const localityOptions = (Object.keys(LOCALITY_LABELS) as OrganisationLocality[])
+  .filter(l => sorted.some(o => o.locality.includes(l)));
+const audienceOptions = (Object.keys(AUDIENCE_LABELS) as OrganisationAudience[])
+  .filter(a => sorted.some(o => o.audience.includes(a)));
+---
+
+<nav class="org-jump" aria-labelledby="org-jump-heading">
+  <h2 id="org-jump-heading" class="org-jump-heading">On this page</h2>
+  {sections.map(section => (
+    <div class="org-jump-group">
+      <p class="org-jump-group-title">
+        <a href={`#${section.id}`}>{section.heading}</a>
+      </p>
+      <ul class="org-jump-list">
+        {section.categories.map(cat => (
+          <li><a href={`#${cat.id}`}>{cat.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</nav>
+
+<form class="org-filters" id="org-filters">
+  <div class="filter-group filter-group-search">
+    <label for="org-search" class="filter-label">Search {scopeLabel}</label>
+    <input
+      type="search"
+      id="org-search"
+      class="filter-input"
+      autocomplete="off"
+      placeholder="Try cricket, scouts, toddlers"
+    />
+  </div>
+
+  <div class="filter-group">
+    <label for="org-audience" class="filter-label">Who it is for</label>
+    <select id="org-audience" class="filter-select">
+      <option value="">Anyone</option>
+      {audienceOptions.map(a => <option value={a}>{AUDIENCE_LABELS[a]}</option>)}
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="org-category" class="filter-label">Category</label>
+    <select id="org-category" class="filter-select">
+      <option value="">All categories</option>
+      {categoryOptions.map(c => <option value={c}>{CATEGORY_LABELS[c]}</option>)}
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="org-locality" class="filter-label">Area</label>
+    <select id="org-locality" class="filter-select">
+      <option value="">All areas</option>
+      {localityOptions.map(l => <option value={l}>{LOCALITY_LABELS[l]}</option>)}
+    </select>
+  </div>
+
+  <div class="filter-group filter-group-reset">
+    <button type="reset" class="btn btn-outline org-reset">Clear filters</button>
+  </div>
+</form>
+
+<p class="org-results-count" id="org-results-count" role="status" aria-live="polite">
+  Showing all {sorted.length} organisations.
+</p>
+
+<p class="org-no-results" id="org-no-results" hidden>
+  No organisations match those filters. Try clearing one of them, or
+  <a href="/contact/">tell us what is missing</a>.
+</p>
+
+{sections.map(section => (
+  <section class="org-section" data-org-section id={section.id}>
+    <h2 class="org-section-heading">{section.heading}</h2>
+    {section.categories.map(cat => (
+      <div class="org-category" data-org-category>
+        <h3 class="org-category-heading" id={cat.id}>{cat.label}</h3>
+        <div class="card-grid card-grid-3">
+          {cat.organisations.map(o => (
+            <div
+              class="org-item"
+              data-org-item
+              data-slug={o.slug}
+              data-category={o.category}
+              data-locality={o.locality.join(' ')}
+              data-audience={o.audience.join(' ')}
+              data-search={[o.name, o.shortDescription, o.subcategory, o.venue]
+                .filter(Boolean).join(' ').toLowerCase()}
+            >
+              <OrganisationCard
+                name={o.name}
+                slug={o.slug}
+                shortDescription={o.shortDescription}
+                subcategory={o.subcategory}
+                locality={o.locality}
+                audience={o.audience}
+                ageRange={o.ageRange}
+                venue={o.venue}
+                hasPage={o.hasPage}
+                internalUrl={o.internalUrl}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+))}
+
+<script>
+  const form = document.getElementById('org-filters') as HTMLFormElement | null;
+  if (form) {
+    const search = document.getElementById('org-search') as HTMLInputElement;
+    const audience = document.getElementById('org-audience') as HTMLSelectElement;
+    const category = document.getElementById('org-category') as HTMLSelectElement;
+    const locality = document.getElementById('org-locality') as HTMLSelectElement;
+    const countEl = document.getElementById('org-results-count');
+    const noResults = document.getElementById('org-no-results');
+    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-org-item]'));
+    const total = new Set(items.map(i => i.dataset.slug)).size;
+
+    // The form never submits: pressing Return in the search field should
+    // filter, not reload the page and lose the other three controls.
+    form.addEventListener('submit', e => e.preventDefault());
+
+    function apply() {
+      const term = search.value.trim().toLowerCase();
+      const aud = audience.value;
+      const cat = category.value;
+      const loc = locality.value;
+      const shown = new Set<string>();
+
+      items.forEach(item => {
+        const matches =
+          (!term || (item.dataset.search ?? '').includes(term)) &&
+          (!aud || (item.dataset.audience ?? '').split(' ').includes(aud)) &&
+          (!cat || item.dataset.category === cat) &&
+          (!loc || (item.dataset.locality ?? '').split(' ').includes(loc));
+        item.hidden = !matches;
+        if (matches && item.dataset.slug) shown.add(item.dataset.slug);
+      });
+
+      // Roll the emptiness up: a category heading with nothing under it, and
+      // then an audience heading with no categories left, are both noise.
+      document.querySelectorAll<HTMLElement>('[data-org-category]').forEach(group => {
+        const any = Array.from(group.querySelectorAll<HTMLElement>('[data-org-item]'))
+          .some(i => !i.hidden);
+        group.hidden = !any;
+      });
+      document.querySelectorAll<HTMLElement>('[data-org-section]').forEach(section => {
+        const any = Array.from(section.querySelectorAll<HTMLElement>('[data-org-category]'))
+          .some(g => !g.hidden);
+        section.hidden = !any;
+      });
+
+      const n = shown.size;
+      if (countEl) {
+        countEl.textContent = n === total
+          ? `Showing all ${total} organisations.`
+          : `Showing ${n} of ${total} organisations.`;
+      }
+      if (noResults) noResults.hidden = n !== 0;
+    }
+
+    search.addEventListener('input', apply);
+    [audience, category, locality].forEach(el => el.addEventListener('change', apply));
+    // reset fires before the fields are cleared, so read them on the next tick.
+    form.addEventListener('reset', () => window.setTimeout(apply, 0));
+  }
+</script>
+
+<style>
+  .org-jump {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 3rem;
+  }
+
+  .org-jump-heading {
+    flex-basis: 100%;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin: 0;
+  }
+
+  .org-jump-group-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .org-jump-group-title a,
+  .org-jump-list a {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .org-jump-group-title a:hover,
+  .org-jump-list a:hover,
+  .org-jump-group-title a:focus-visible,
+  .org-jump-list a:focus-visible {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .org-jump-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--color-slate);
+  }
+
+  .org-filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: var(--color-white);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .filter-group-search {
+    flex: 1 1 220px;
+  }
+
+  .filter-group-reset {
+    margin-left: auto;
+  }
+
+  .filter-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+  }
+
+  .filter-input,
+  .filter-select {
+    padding: 0.5rem 0.875rem;
+    border: 1.5px solid rgba(11, 36, 46, 0.15);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    background: var(--color-cream);
+    min-width: 170px;
+    width: 100%;
+  }
+
+  .filter-select {
+    cursor: pointer;
+  }
+
+  .filter-input:focus,
+  .filter-select:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-color: var(--color-accent);
+  }
+
+  .org-reset {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .org-results-count {
+    margin: 1rem 0 0;
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    /* Reserve the line so toggling the text never nudges the grid. */
+    min-height: 1.4em;
+  }
+
+  .org-no-results {
+    margin-top: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    font-size: 0.95rem;
+    color: var(--color-slate);
+  }
+
+  .org-section {
+    margin-top: 2.5rem;
+  }
+
+  .org-section-heading {
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(11, 36, 46, 0.08);
+  }
+
+  .org-category {
+    margin-top: 2rem;
+  }
+
+  .org-category-heading {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    /* Anchor targets need clearance from the top of the viewport. */
+    scroll-margin-top: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .filter-group,
+    .filter-group-reset {
+      flex: 1 1 100%;
+      margin-left: 0;
+    }
+  }
+</style>

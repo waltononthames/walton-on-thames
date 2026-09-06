@@ -238,6 +238,76 @@ const annualEvents = defineCollection({
   }),
 });
 
+// Clubs, societies and community organisations. One record per organisation,
+// never one per locality: a club serving both towns carries both localities
+// and keeps a single canonical page, which is why `locality` is an array and
+// the pages live in a flat /clubs/ namespace rather than under a town.
+//
+// Records with `hasPage: true` render a page from the markdown body, whose
+// H2s are the eight sections in the brief. Records with `hasPage: false`
+// appear on the hubs as a card with no link, which is the honest rendering
+// for an organisation we have verified exists but cannot yet describe in
+// depth. `internalUrl` is the third case: the organisation already has a
+// page elsewhere on the site (the FC, for one), so the card points there
+// rather than duplicating it under /clubs/.
+const organisations = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/organisations' }),
+  schema: z.object({
+    name: z.string(),
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    locality: z.array(z.enum([
+      'walton', 'hersham', 'whiteley-village', 'wider-elmbridge',
+    ])).min(1),
+    audience: z.array(z.enum([
+      'adults', 'children', 'young-people', 'families', 'older-people',
+    ])).min(1),
+    category: z.enum([
+      'sport-and-recreation',
+      'children-and-young-people',
+      'uniformed-organisations',
+      'arts-and-performance',
+      'hobbies-and-interests',
+      'faith-and-church-groups',
+      'health-wellbeing-and-support',
+      'older-people',
+      'volunteering-and-service',
+      'residents-and-civic',
+    ]),
+    subcategory: z.string().optional(),
+    shortDescription: z.string().max(160),
+    fullDescription: z.string().optional(),
+    venue: z.string().optional(),
+    address: z.string().optional(),
+    ageRange: z.string().optional(),
+    meetingInformation: z.string().optional(),
+    website: z.string().url().optional(),
+    contactUrl: z.string().url().optional(),
+    image: z.string().optional(),
+    imageCredit: z.string().optional(),
+    // `uncertain` and `closed` records are never rendered by the hubs. They
+    // exist so that a record we have looked at and could not confirm stays
+    // recorded rather than being silently rediscovered next time.
+    status: z.enum(['active', 'uncertain', 'closed']),
+    // Richer than the brief's bare sourceUrl[]: the site's history schema
+    // already carries access dates, and the Content Verification Protocol
+    // requires one, so a source is a label plus a URL plus the date checked.
+    sources: z.array(z.object({
+      label: z.string(),
+      url: z.string().url(),
+      accessed: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    })).min(1),
+    lastVerified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    hasPage: z.boolean().default(false),
+    // Set where the organisation already has a page elsewhere on the site.
+    // Mutually exclusive with hasPage: see the refine below.
+    internalUrl: z.string().optional(),
+    relatedOrganisations: z.array(z.string()).default([]),
+  }).refine(
+    (o) => !(o.hasPage && o.internalUrl),
+    { message: 'An organisation cannot both have a /clubs/ page and point at an existing page elsewhere' },
+  ),
+});
+
 // Walton & Hersham FC first-team fixtures, fetched live from the club's official
 // ECAL calendar feed at every build. Home and away fixtures both included.
 const fixtures = defineCollection({
@@ -362,7 +432,7 @@ const waltonPlanning = defineCollection({
 });
 
 export const collections = {
-  businesses, events, places, news, history, hersham, fixtures,
+  businesses, events, places, news, history, hersham, fixtures, organisations,
   attractions, 'annual-events': annualEvents,
   'hersham-planning': hershamPlanning,
   'walton-planning': waltonPlanning,

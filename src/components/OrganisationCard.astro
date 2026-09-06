@@ -1,0 +1,160 @@
+---
+// Card for one organisation on a clubs hub.
+//
+// Three link states, deliberately distinct:
+//   hasPage      the heading links to /clubs/<slug>/
+//   internalUrl  the heading links to the page the organisation already has
+//                elsewhere on the site, so no duplicate is created for it
+//   neither      the heading is plain text, and the card carries no link at
+//                all. That is the honest rendering for an organisation we
+//                have confirmed exists but cannot yet describe in depth.
+//
+// No external links here by design: the hub's only call to action is
+// internal, and official websites are linked from the organisation page.
+import {
+  AUDIENCE_LABELS, LOCALITY_LABELS,
+  type OrganisationAudience, type OrganisationLocality,
+} from '../utils/organisations';
+
+interface Props {
+  name: string;
+  slug: string;
+  shortDescription: string;
+  subcategory?: string;
+  locality: OrganisationLocality[];
+  audience: OrganisationAudience[];
+  ageRange?: string;
+  venue?: string;
+  hasPage: boolean;
+  internalUrl?: string;
+}
+
+const {
+  name, slug, shortDescription, subcategory,
+  locality, audience, ageRange, venue, hasPage, internalUrl,
+} = Astro.props;
+
+const href = hasPage ? `/clubs/${slug}/` : internalUrl;
+---
+
+<article class="card org-card">
+  <div class="card-body">
+    {subcategory && <span class="card-category">{subcategory}</span>}
+
+    <h4 class="card-title org-card-title">
+      {href ? <a href={href}>{name}</a> : name}
+    </h4>
+
+    <p class="card-description">{shortDescription}</p>
+
+    {(ageRange || venue) && (
+      <dl class="org-card-detail">
+        {ageRange && (
+          <div>
+            <dt>Ages</dt>
+            <dd>{ageRange}</dd>
+          </div>
+        )}
+        {venue && (
+          <div>
+            <dt>Where</dt>
+            <dd>{venue}</dd>
+          </div>
+        )}
+      </dl>
+    )}
+
+    <p class="org-card-badges">
+      {locality.map(l => <span class="badge">{LOCALITY_LABELS[l]}</span>)}
+      {audience.map(a => <span class="badge badge-audience">{AUDIENCE_LABELS[a]}</span>)}
+    </p>
+
+    {href && (
+      <p class="org-card-cta">
+        <a href={href} class="org-card-cta-link">
+          View {name}
+          <span aria-hidden="true"> &rsaquo;</span>
+        </a>
+      </p>
+    )}
+  </div>
+</article>
+
+<style>
+  .org-card {
+    /* The whole card is not a link: some cards have no destination at all,
+       and a card that is sometimes clickable and sometimes not is worse
+       than one that never is. The heading and the CTA carry the link. */
+    cursor: auto;
+  }
+
+  .org-card-title {
+    margin-top: 0.15rem;
+  }
+
+  .org-card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .org-card-title a:hover,
+  .org-card-title a:focus-visible {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .org-card-detail {
+    margin: 0.6rem 0 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .org-card-detail > div {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .org-card-detail dt {
+    flex-shrink: 0;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .org-card-detail dd {
+    color: var(--color-slate);
+  }
+
+  .org-card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .badge-audience {
+    background: rgba(184, 134, 46, 0.12);
+    color: var(--color-accent-dark);
+  }
+
+  .org-card-cta {
+    margin-top: 0.75rem;
+  }
+
+  .org-card-cta-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent-dark);
+    text-decoration: none;
+  }
+
+  .org-card-cta-link:hover,
+  .org-card-cta-link:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

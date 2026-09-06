@@ -1,0 +1,304 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import {
+  CATEGORY_LABELS, LOCALITY_LABELS, AUDIENCE_LABELS,
+  schemaTypeFor, checkedLabel,
+} from '../../utils/organisations';
+import type { OrganisationData } from '../../utils/organisations';
+
+export async function getStaticPaths() {
+  // Declared inside the function: Astro extracts getStaticPaths into its own
+  // module chunk, so it cannot see top-level frontmatter variables.
+  // Typed against the hand-written OrganisationData shape: `getCollection`
+  // resolves to `never` here, so inference would strip every property.
+  type Entry = { data: OrganisationData };
+
+  const entries = await getCollection(
+    'organisations',
+    ({ data }: Entry) => data.status === 'active' && data.hasPage,
+  ) as Entry[];
+  const all = await getCollection(
+    'organisations',
+    ({ data }: Entry) => data.status === 'active',
+  ) as Entry[];
+
+  return entries.map((entry: Entry) => ({
+    params: { slug: entry.data.slug },
+    props: {
+      entry,
+      related: entry.data.relatedOrganisations
+        .map((slug: string) => all.find((o: Entry) => o.data.slug === slug))
+        .filter((o): o is Entry => Boolean(o))
+        .map((o: Entry) => ({
+          name: o.data.name,
+          href: o.data.hasPage ? `/clubs/${o.data.slug}/` : o.data.internalUrl,
+        }))
+        .filter((o: { href?: string }) => Boolean(o.href)),
+    },
+  }));
+}
+
+const { entry, related } = Astro.props as {
+  entry: { data: OrganisationData };
+  related: { name: string; href: string }[];
+};
+const o = entry.data;
+const { Content } = await render(entry);
+
+const site = 'https://walton-on-thames.org';
+const pageUrl = `${site}/clubs/${o.slug}/`;
+
+const inHersham = o.locality.includes('hersham');
+const inWalton = o.locality.includes('walton');
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site}/` },
+        { "@type": "ListItem", "position": 2, "name": "Living", "item": `${site}/living/` },
+        { "@type": "ListItem", "position": 3, "name": "Clubs & Societies", "item": `${site}/living/community/` },
+        { "@type": "ListItem", "position": 4, "name": o.name, "item": pageUrl }
+      ]
+    },
+    {
+      "@type": schemaTypeFor(o.category, o.subcategory),
+      "@id": pageUrl,
+      "name": o.name,
+      "description": o.shortDescription,
+      ...(o.website ? { "url": o.website } : {}),
+      ...(o.address ? { "address": o.address } : {}),
+      "areaServed": o.locality.map(l => ({ "@type": "Place", "name": LOCALITY_LABELS[l] })),
+      "mainEntityOfPage": pageUrl
+    }
+  ]
+};
+
+// Titles run long here, so BaseLayout drops the brand suffix on most of
+// them. That is the intended behaviour: the organisation's own name is
+// what people search for, not ours.
+const title = `${o.name} | Clubs & Societies`;
+---
+
+<BaseLayout title={title} description={o.shortDescription}>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/living/">Living</a></li>
+          <li><a href="/living/community/">Clubs & Societies</a></li>
+          <li aria-current="page">{o.name}</li>
+        </ol>
+      </nav>
+      <h1>{o.name}</h1>
+      <p>{o.shortDescription}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="org-layout">
+        <div class="org-main prose">
+          <Content />
+
+          <h2>Contact and official website</h2>
+          {o.website ? (
+            <Fragment>
+              <p>
+                Everything current about {o.name}, including anything that has changed
+                since we last checked, is on the organisation's own site.
+              </p>
+              <p>
+                <a href={o.website} class="btn btn-primary" target="_blank" rel="noopener">
+                  Visit the {o.name} website
+                  <span class="sr-only"> (opens in a new tab)</span>
+                </a>
+              </p>
+            </Fragment>
+          ) : (
+            <p>We do not currently hold a website for {o.name}. If you can point us to one, please <a href="/contact/">get in touch</a>.</p>
+          )}
+
+          <p class="org-checked">Information checked: {checkedLabel(o.lastVerified)}</p>
+        </div>
+
+        <aside class="org-aside" aria-labelledby="org-facts-heading">
+          <h2 id="org-facts-heading" class="org-aside-heading">At a glance</h2>
+          <dl class="org-facts">
+            <div>
+              <dt>Category</dt>
+              <dd>{CATEGORY_LABELS[o.category]}{o.subcategory ? `, ${o.subcategory}` : ''}</dd>
+            </div>
+            <div>
+              <dt>Who it is for</dt>
+              <dd>{o.audience.map(a => AUDIENCE_LABELS[a]).join(', ')}</dd>
+            </div>
+            {o.ageRange && (
+              <div>
+                <dt>Ages</dt>
+                <dd>{o.ageRange}</dd>
+              </div>
+            )}
+            {o.venue && (
+              <div>
+                <dt>Venue</dt>
+                <dd>{o.venue}</dd>
+              </div>
+            )}
+            {o.address && (
+              <div>
+                <dt>Address</dt>
+                <dd>{o.address}</dd>
+              </div>
+            )}
+            {o.meetingInformation && (
+              <div>
+                <dt>When</dt>
+                <dd>{o.meetingInformation}</dd>
+              </div>
+            )}
+            <div>
+              <dt>Area</dt>
+              <dd>{o.locality.map(l => LOCALITY_LABELS[l]).join(', ')}</dd>
+            </div>
+          </dl>
+
+          {related.length > 0 && (
+            <div class="org-related">
+              <h2 class="org-aside-heading">Related organisations</h2>
+              <ul>
+                {related.map(r => <li><a href={r.href}>{r.name}</a></li>)}
+              </ul>
+            </div>
+          )}
+        </aside>
+      </div>
+
+      <nav class="org-back" aria-label="More clubs and societies">
+        {inWalton && <a href="/living/community/">More clubs and societies in Walton-on-Thames</a>}
+        {inHersham && <a href="/hersham/clubs-and-societies/">More clubs and societies in Hersham</a>}
+        {!inWalton && !inHersham && <a href="/living/community/">More clubs and societies</a>}
+      </nav>
+
+      <p class="org-accuracy-note">
+        Information here is compiled from public and organisation-provided sources.
+        Details change, so please check with the organisation before travelling or turning up.
+        If something is wrong, <a href="/contact/">tell us</a> and we will correct it.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .org-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .org-main {
+    max-width: 70ch;
+  }
+
+  .org-main :global(h2) {
+    font-size: 1.35rem;
+  }
+
+  .org-checked {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--color-slate-soft);
+  }
+
+  .org-aside {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  .org-aside-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.9rem;
+  }
+
+  .org-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .org-facts dt {
+    font-weight: 600;
+    color: var(--color-navy);
+    margin-bottom: 0.1rem;
+  }
+
+  .org-facts dd {
+    color: var(--color-slate);
+  }
+
+  .org-related {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.1);
+  }
+
+  .org-related ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+  }
+
+  .org-related a {
+    color: var(--color-navy);
+  }
+
+  .org-back {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.75rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .org-accuracy-note {
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid rgba(11, 36, 46, 0.12);
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    max-width: 70ch;
+  }
+
+  @media (max-width: 900px) {
+    .org-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .org-aside {
+      position: static;
+    }
+  }
+</style>
