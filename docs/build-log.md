@@ -2,6 +2,38 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-07: Phase 6 outreach framework and the first batch (plan items 6.1 to 6.4)
+
+Created `docs/outreach/hersham/` with the working rules, a status table covering seventeen targets, a press calendar of dated hooks, and five fully drafted approaches for September. Claude drafts, Darren sends; nothing goes out unread.
+
+**The rules are the substance, not the drafts.** Offer a specific page the recipient's own readers would want, never a request to link. Disclose that Darren runs the site, in the first two sentences, every time. Invite correction before asking for anything, which is both the strongest opening and true. No paid links, no exchanges, no directory submissions, and never an edit to Wikipedia adding our own link. Log outcomes including silence, so nobody re-runs a dead approach next quarter. Five targets a month, because more reads as a campaign in a village this size.
+
+**The five for September**, each chosen because there is something real to say: the Hersham Community Group, whose page we just published and who should get first refusal on correcting it; Surrey Bird Club, approached with a genuine question rather than a favour, since our roost figure is twenty years old and we would rather have a better one; Elmbridge Museum, as a research relationship first, citing the Surrey History Centre references already in the Hersham Lodge article; the Whiteley Homes Trust, on the visiting guidance rather than the history, because the village is somebody's home before it is anybody's day out; and a Wikipedia Talk note.
+
+**The Wikipedia note leads with something that has nothing to do with us.** That article's external links are genuinely stale: one points at a 2016 Wayback capture of a dead site, the other at an organisation that merged away in 2025. Saying so is a service whether or not anything of ours is ever cited. The note also flags the uncited drill plough sentence and the dates that rule out its superlative. Our own pages are mentioned only as disclosure, and the decision is left to uninvolved editors.
+
+**Verified:** all ten site URLs quoted in the drafts return 200, and every target organisation's site was requested this session. The Community Group's site returns 403 to automated requests but works in a browser, which is noted in the draft so a status check does not mislead.
+
+## 2026-09-06: Quarterly source re-verification (plan item 3.7)
+
+First pass of the standing quarterly check. All 41 source URLs across the twelve Hersham articles were requested.
+
+**No dead links and no citation rot.** Six return 403 to automated clients, which is bot protection rather than absence: the Community Group's two pages, Exploring Surrey's Past, the SEC filing, UCL and AllTrails. One case looked like real rot and was not: the Imperial War Museums page on Odette Sansom appeared to redirect to a generic intelligence page, but a second client returns the correct article, so the redirect was a bot-handling artefact and nothing was changed.
+
+**One factual gap found and fixed.** `burhill-and-golf` described the Hersham Village course without mentioning that its entire site is the subject of application 2023/3519, for 221 homes, a GP surgery, a cafe and a country park. Added with two sources. The council register still shows the application undecided, and the page says that rather than adopting secondary reporting that permission was granted in 2024, which is the kind of difference a Section 106 agreement routinely explains. The applicant's figures are attributed to the applicant.
+
+**Exactly one reviewedDate was bumped**, on the one file that changed. The other eleven were checked and left alone. That is the rule this item sets, and it is the opposite of what a routine quarterly bump would do.
+
+## 2026-09-06: Hersham news stream started (plan item 3.6)
+
+**The item could not be done as written.** The `news` schema had no `neighbourhood` field, so both the monthly Hersham entry this item asks for and the hub block in item 2.6 that filters on it were impossible. Added it as an optional string, so the five existing articles stay valid.
+
+First entry published: the four housing schemes registered with Elmbridge and awaiting a decision in Hersham, with what each proposes and where it stands, drawn from the council's own live planning data that this repo already fetches nightly for the development and planning page. Reportage with no position taken, per the editorial stance the item sets.
+
+The three schemes that state a number come to 369 homes. Hersham Place Technology Park does not state one, because its second phase is outline with all matters reserved, and the article says so rather than implying a total, since Hersham housing figures get quoted loosely elsewhere.
+
+This item stays open as a standing monthly commitment rather than being closed by one article.
+
 ## 2026-09-06: The drill plough claim, tested and corrected (plan item 3.5)
 
 Item 3.5 was conditional: build the Weylands Farm page only if sources exist beyond Wikipedia, and never on a single Tier 2 source. Testing that condition turned up an accuracy problem in what the site was already publishing.
