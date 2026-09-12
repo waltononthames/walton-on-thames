@@ -1,16 +1,19 @@
 ---
 // Card for one organisation on a clubs hub.
 //
-// Three link states, deliberately distinct:
-//   hasPage      the heading links to /clubs/<slug>/
-//   internalUrl  the heading links to the page the organisation already has
-//                elsewhere on the site, so no duplicate is created for it
-//   neither      the heading is plain text, and the card carries no link at
-//                all. That is the honest rendering for an organisation we
-//                have confirmed exists but cannot yet describe in depth.
+// Three link states, in order of preference:
+//   hasPage      links to /clubs/<slug>/
+//   internalUrl  links to the page the organisation already has elsewhere on
+//                the site, so no duplicate is created for it
+//   website      links out to the organisation's own site, marked as external
 //
-// No external links here by design: the hub's only call to action is
-// internal, and official websites are linked from the organisation page.
+// The brief originally kept external links off the hub entirely, so a card
+// with no page of its own rendered as dead text. In practice that stranded
+// a third of the directory: a reader who found Esher Rugby or Walton Charity
+// had nowhere to go next. Darren asked for the rule to be reversed on
+// 12 September 2026. Every published record carries a `website`, so in
+// practice every card now links somewhere; the plain-text fallback is kept
+// for the case where one does not.
 import {
   AUDIENCE_LABELS, LOCALITY_LABELS,
   type OrganisationAudience, type OrganisationLocality,
@@ -27,14 +30,17 @@ interface Props {
   venue?: string;
   hasPage: boolean;
   internalUrl?: string;
+  website?: string;
 }
 
 const {
   name, slug, shortDescription, subcategory,
-  locality, audience, ageRange, venue, hasPage, internalUrl,
+  locality, audience, ageRange, venue, hasPage, internalUrl, website,
 } = Astro.props;
 
-const href = hasPage ? `/clubs/${slug}/` : internalUrl;
+const internalHref = hasPage ? `/clubs/${slug}/` : internalUrl;
+const href = internalHref ?? website;
+const isExternal = !internalHref && !!website;
 ---
 
 <article class="card org-card">
@@ -42,7 +48,19 @@ const href = hasPage ? `/clubs/${slug}/` : internalUrl;
     {subcategory && <span class="card-category">{subcategory}</span>}
 
     <h4 class="card-title org-card-title">
-      {href ? <a href={href}>{name}</a> : name}
+      {href
+        ? (
+          <a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener' : undefined}>
+            {name}
+            {isExternal && (
+              <>
+                <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h6v6M12.5 3.5 4 12"/></svg>
+                <span class="sr-only"> (opens the organisation's own site in a new tab)</span>
+              </>
+            )}
+          </a>
+        )
+        : name}
     </h4>
 
     <p class="card-description">{shortDescription}</p>
@@ -71,9 +89,21 @@ const href = hasPage ? `/clubs/${slug}/` : internalUrl;
 
     {href && (
       <p class="org-card-cta">
-        <a href={href} class="org-card-cta-link">
-          View {name}
-          <span aria-hidden="true"> &rsaquo;</span>
+        <a
+          href={href}
+          class="org-card-cta-link"
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener' : undefined}
+        >
+          {isExternal ? `Visit ${name}` : `View ${name}`}
+          {isExternal
+            ? (
+              <>
+                <svg class="external-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h6v6M12.5 3.5 4 12"/></svg>
+                <span class="sr-only"> (opens in a new tab)</span>
+              </>
+            )
+            : <span aria-hidden="true"> &rsaquo;</span>}
         </a>
       </p>
     )}
@@ -102,6 +132,15 @@ const href = hasPage ? `/clubs/${slug}/` : internalUrl;
     color: var(--color-accent-dark);
     text-decoration: underline;
     text-underline-offset: 2px;
+  }
+
+  /* Matches AttractionCard's treatment, so an outbound link looks the same
+     wherever it appears on the site. */
+  .external-icon {
+    flex-shrink: 0;
+    margin-left: 0.25rem;
+    color: var(--color-slate);
+    vertical-align: baseline;
   }
 
   .org-card-detail {
