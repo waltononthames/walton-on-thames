@@ -1,8 +1,8 @@
 ---
 title: "Hersham Village Friday Market"
 slug: "hersham-village-friday-market-2026-08"
-start: "2026-09-11T10:30:00"
-end: "2026-09-11T12:00:00"
+start: "2026-09-25T10:30:00"
+end: "2026-09-25T12:00:00"
 venue: "All Saints Church Hall, Queens Road, Hersham, KT12 5LU"
 neighbourhood: "hersham"
 category: "market"

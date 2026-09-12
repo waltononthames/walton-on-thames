@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: false
-price: "See venue for details"
+price: "£5 to £8"
 description: "The RC Sherriff Trust’s September talk and film afternoon at Riverhouse Barn."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/171589"
 ---
 
 The RC Sherriff Trust presents its September Sherriff Talk and Silver Screen afternoon at Riverhouse Barn, running from 11:30am to 3:30pm.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/171589). Always verify details directly with the organiser before attending.*

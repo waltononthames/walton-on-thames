@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "music"
 recurring: false
-price: "See venue for details"
+price: "£15"
 description: "A Sunday lunchtime jazz session at Riverhouse Barn with The Louisiana Rhythm Kings."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/174969"
 ---
 
 The Louisiana Rhythm Kings play Riverhouse Barn's Jazz & Beer session, running from 12:15pm to 2:15pm on the Sunday.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/174969). Always verify details directly with the organiser before attending.*
