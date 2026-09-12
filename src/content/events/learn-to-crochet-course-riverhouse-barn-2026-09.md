@@ -7,12 +7,12 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: true
-price: "See venue for details"
+price: "£98 for the four week course, materials included"
 description: "A four week evening crochet course at Riverhouse Barn for complete beginners and those wanting to refresh the basics."
 source_url: "https://www.riverhousebarn.co.uk/events/172999"
 ---
 
-This beginners' crochet course runs on Tuesday evenings from 7:30pm to 9:30pm, with sessions on 22 and 29 September and 6 and 13 October 2026.
+This beginners' crochet course runs on Tuesday evenings from 7:30pm to 9:30pm, with sessions on 22 and 29 September and 6 and 13 October 2026. The course costs £98, including a kit with hook, yarn and class notes, and is booked through the tutor, Mezzacraft.
 
 It is aimed at complete beginners who have never picked up a hook, people who have dabbled without getting to grips with it, anyone returning after many years, and self-taught crocheters who want to check they have not picked up bad habits.
 
