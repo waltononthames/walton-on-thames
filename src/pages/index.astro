@@ -43,7 +43,7 @@ const nearby = [
     name: 'Hersham',
     href: '/hersham/',
     tagline: 'A proper Surrey village: green, pond, and its own railway station.',
-    image: '/images/neighbourhoods/hersham.jpg',
+    image: '/images/neighbourhoods/hersham-village-sign.webp',
   },
   {
     name: 'Whiteley Village',
@@ -186,7 +186,7 @@ const faqs = [
         {nearby.map(n => (
           <a href={n.href} class="neighbourhood-card">
             <div class="neighbourhood-img">
-              <img src={n.image} alt={n.name} loading="lazy" width="600" height="400" />
+              <img src={n.image} alt={n.name} loading="lazy" width="800" height="600" />
               <div class="neighbourhood-overlay" aria-hidden="true"></div>
             </div>
             <div class="neighbourhood-body">
