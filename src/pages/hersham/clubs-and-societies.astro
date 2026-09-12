@@ -3,22 +3,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import OrganisationDirectory from '../../components/OrganisationDirectory.astro';
 import { getCollection } from 'astro:content';
 import type { OrganisationData } from '../../utils/organisations';
+import { HERSHAM_PLACE_ID, SITE_ID } from '../../utils/schema';
 
-// Only `active` records are published. `uncertain` and `closed` records exist
-// so that an organisation we have looked at and could not confirm stays on
-// file rather than being rediscovered from scratch next time. See
-// docs/research-backlog.md for the ones that never made it this far.
+// The Hersham subset: organisations based in the village, plus those that
+// genuinely serve it from just outside, which is why locality is an array.
 const all = await getCollection(
   'organisations',
   ({ data }: { data: OrganisationData }) => data.status === 'active',
 ) as { data: OrganisationData }[];
-const organisations: OrganisationData[] = all.map(entry => entry.data);
+const organisations: OrganisationData[] = all
+  .map(entry => entry.data)
+  .filter(o => o.locality.includes('hersham'));
 const count = organisations.length;
 
-const hershamCount = organisations.filter(o => o.locality.includes('hersham')).length;
-
 const site = 'https://walton-on-thames.org';
-const pageUrl = `${site}/living/community/`;
+const pageUrl = `${site}/hersham/clubs-and-societies/`;
 
 const itemListElement = [...organisations]
   .sort((a, b) => a.name.localeCompare(b.name, 'en-GB'))
@@ -34,8 +33,8 @@ const itemListElement = [...organisations]
 ---
 
 <BaseLayout
-  title="Clubs & Societies in Walton-on-Thames | Sports & Groups"
-  description="A directory of clubs, societies and community groups in Walton-on-Thames, Hersham and Whiteley Village, from sport and scouting to arts and support groups."
+  title="Clubs & Societies in Hersham | Sports, Groups & Activities"
+  description="Clubs, societies and community groups in Hersham, Surrey: bowls, rugby, football, scouting, the village social club and more, each with a checked source."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -45,7 +44,7 @@ const itemListElement = [...organisations]
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": `${site}/` },
-            { "@type": "ListItem", "position": 2, "name": "Living", "item": `${site}/living/` },
+            { "@type": "ListItem", "position": 2, "name": "Hersham", "item": `${site}/hersham/` },
             { "@type": "ListItem", "position": 3, "name": "Clubs & Societies", "item": pageUrl }
           ]
         },
@@ -53,17 +52,15 @@ const itemListElement = [...organisations]
           "@type": "CollectionPage",
           "@id": pageUrl,
           "url": pageUrl,
-          "name": "Clubs, Societies and Community Groups in Walton-on-Thames",
-          "description": "A directory of clubs, societies and community groups in Walton-on-Thames, Hersham and Whiteley Village.",
-          "isPartOf": { "@id": `${site}/#website` },
-          "about": {
-            "@type": "Place",
-            "name": "Walton-on-Thames",
-            "sameAs": "https://en.wikipedia.org/wiki/Walton-on-Thames"
-          },
+          "name": "Clubs, Societies and Community Groups in Hersham",
+          "description": "Clubs, societies and community groups based in or serving Hersham, Surrey.",
+          "isPartOf": { "@id": SITE_ID },
+          // Reference the Hersham entity defined on /hersham/ rather than
+          // describing a second, unidentified Hersham here. See src/utils/schema.ts.
+          "about": { "@id": HERSHAM_PLACE_ID },
           "mainEntity": {
             "@type": "ItemList",
-            "name": "Clubs, societies and community groups in Walton-on-Thames, Hersham and Whiteley Village",
+            "name": "Clubs, societies and community groups in Hersham",
             "numberOfItems": count,
             "itemListOrder": "https://schema.org/ItemListOrderAscending",
             "itemListElement": itemListElement
@@ -78,23 +75,23 @@ const itemListElement = [...organisations]
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
-          <li><a href="/living/">Living</a></li>
+          <li><a href="/hersham/">Hersham</a></li>
           <li aria-current="page">Clubs & Societies</li>
         </ol>
       </nav>
-      <h1>Clubs, Societies and Community Groups in Walton-on-Thames</h1>
-      <p>Explore {count} clubs, societies and community groups across Walton-on-Thames, Hersham and Whiteley Village.</p>
+      <h1>Clubs, Societies and Community Groups in Hersham</h1>
+      <p>Explore {count} clubs, societies and community groups based in Hersham or serving the village.</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
       <div class="org-intro">
-        <p>This directory covers the organised side of local life in this corner of Elmbridge: sports clubs, uniformed groups, drama and music societies, church and community groups, support charities and the bodies that speak for their villages. Every organisation listed has been checked against its own website, its governing body, or Elmbridge Borough Council, and each record carries the date we last confirmed it. Where a club is based just outside the town but genuinely serves people here, we say so on the card rather than presenting it as local.</p>
-        <p>Use the two sections below to browse by who an organisation is for, or the filters to narrow by category, area or audience. Clubs with a fuller profile on this site have their own page; the rest carry everything we have been able to confirm. Hersham has <a href="/hersham/clubs-and-societies/">its own clubs and societies guide</a>, covering the {hershamCount} organisations based in or serving the village.</p>
+        <p>Hersham has no parish council, so the village's organised life runs almost entirely on volunteers: a bowling club that has played at Coronation Playing Fields since 1900, a social club founded in 1921 whose main hall nights are open to anyone, a scout group with over a hundred young members in its own headquarters, and a rugby club that plays on Molesey Road despite carrying another town's name. Two of the largest are shared with Walton, which is why several organisations below appear on both this page and the wider Walton directory: they are one organisation with one page, not two listings.</p>
+        <p>Every record here has been checked against the organisation's own website, its governing body or Elmbridge Borough Council. For the bodies that represent the village rather than run activities in it, including the Hersham Community Group formed in 2025, see our fuller account of <a href="/hersham/community-groups/">community groups in Hersham</a>. The <a href="/living/community/">Walton-on-Thames clubs and societies directory</a> covers the whole area.</p>
       </div>
 
-      <OrganisationDirectory organisations={organisations} scopeLabel="clubs and groups" />
+      <OrganisationDirectory organisations={organisations} scopeLabel="Hersham clubs and groups" />
 
       <p class="org-accuracy-note">
         Information here is compiled from public and organisation-provided sources.
@@ -103,15 +100,15 @@ const itemListElement = [...organisations]
 
       <div class="org-cta">
         <div>
-          <h2>Is your club missing, or is something wrong?</h2>
+          <h2>Is your Hersham club missing?</h2>
           <p>Listing is free, and always will be. Tell us about a club we have missed, correct a detail, or ask us to remove a listing.</p>
         </div>
         <a href="/contact/" class="btn btn-primary">Get in touch</a>
       </div>
 
       <div class="org-onward">
-        <h2>Not sure what you are looking for?</h2>
-        <p>If you want something to do rather than something to join, our <a href="/things-to-do/">things to do guide</a> covers days out, parks and attractions, and <a href="/whats-on/">what's on</a> lists dated local events, rebuilt nightly.</p>
+        <h2>More of Hersham</h2>
+        <p>Our <a href="/hersham/">Hersham guide</a> covers the village as a whole, <a href="/things-to-do/hersham/">things to do in Hersham</a> covers the green, the recreation grounds and the Mole walks, and <a href="/whats-on/">what's on</a> lists dated events including the Friday village market.</p>
       </div>
     </div>
   </section>
