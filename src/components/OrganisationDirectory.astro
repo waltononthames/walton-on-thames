@@ -1,5 +1,6 @@
 ---
-// The filterable listing shared by both clubs hubs. Everything here works
+// The filterable listing for the site's single clubs and societies directory,
+// /living/community/. Everything here works
 // with JavaScript switched off: the filters are real form controls that
 // simply do nothing, and every organisation is in the HTML from the start.
 //
@@ -206,10 +207,29 @@ const audienceOptions = (Object.keys(AUDIENCE_LABELS) as OrganisationAudience[])
       if (noResults) noResults.hidden = n !== 0;
     }
 
+    // ?area=hersham opens the directory with the Area filter already set.
+    // That is how the retired Hersham hub's redirect, the footer and the
+    // "More clubs in Hersham" links keep their reader's context. Without
+    // JavaScript the parameter is ignored and the full list shows.
+    const requested = new URLSearchParams(window.location.search).get('area');
+    if (requested && Array.from(locality.options).some(o => o.value === requested)) {
+      locality.value = requested;
+      apply();
+    }
+
+    // Keep the address in step, so a filtered view can be shared or bookmarked.
+    function syncArea() {
+      const url = new URL(window.location.href);
+      if (locality.value) url.searchParams.set('area', locality.value);
+      else url.searchParams.delete('area');
+      window.history.replaceState(null, '', url);
+    }
+
     search.addEventListener('input', apply);
     [audience, category, locality].forEach(el => el.addEventListener('change', apply));
+    locality.addEventListener('change', syncArea);
     // reset fires before the fields are cleared, so read them on the next tick.
-    form.addEventListener('reset', () => window.setTimeout(apply, 0));
+    form.addEventListener('reset', () => window.setTimeout(() => { apply(); syncArea(); }, 0));
   }
 </script>
 

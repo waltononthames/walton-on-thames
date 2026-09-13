@@ -135,7 +135,6 @@ for (const file of files) {
     '/hersham/history/',
     '/hersham/development-and-planning/',
     '/hersham/living/',
-    '/hersham/clubs-and-societies/',
   ]);
   if ((/^\/(history|hersham)\/[^/]+\/$/.test(urlPath) && !hubExceptions.has(urlPath)) || /^\/community\/news\/[^/]+\/$/.test(urlPath)) {
     const article = findByType(blocks, 'Article')[0];

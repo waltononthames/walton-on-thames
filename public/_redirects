@@ -6,6 +6,12 @@
 # URL lands on the surviving page in one hop instead of two.
 /visit/things-to-do/hersham-village-green/ /hersham/hersham-green/ 301
 /things-to-do/hersham-village-green /hersham/hersham-green/ 301
+
+# One site-wide clubs directory, 13 September 2026: the Hersham hub was a
+# filtered copy of /living/community/. Its readers land on the same list with
+# the Area filter already set to Hersham. The canonical stays the bare URL.
+/hersham/clubs-and-societies/ /living/community/?area=hersham 301
+/hersham/clubs-and-societies /living/community/?area=hersham 301
 /things-to-do/hersham-village-green/ /hersham/hersham-green/ 301
 
 # URL migration per docs/site-audit.md Decision 1
