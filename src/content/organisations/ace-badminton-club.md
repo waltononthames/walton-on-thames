@@ -10,6 +10,18 @@ venue: "Heathside Walton-on-Thames"
 address: "Waterside Drive, Walton-on-Thames KT12 2JP"
 ageRange: "Juniors and adults"
 meetingInformation: "Thursdays 7pm to 10pm and Saturdays 10am to noon at Heathside Walton-on-Thames; Mondays 7.45pm to 9.45pm at Cleves School, Weybridge"
+# Photographs supplied by Darren on 13 September 2026, filed as the club's
+# Weybridge session. Camera dates are 26 July 2021 and 25 April 2022; the
+# games photograph carries none. No photographer is recorded, so no credit
+# is shown. Nothing in the images identifies the hall, so the alt text does
+# not name a venue.
+images:
+  - src: "/images/clubs/ace-badminton-club/ace-badminton-club-sports-hall.webp"
+    alt: "A sports hall with several badminton games under way, a player in a grey top in the foreground raising a racket towards the net"
+  - src: "/images/clubs/ace-badminton-club/ace-badminton-club-players.webp"
+    alt: "Four Ace Badminton Club players standing together on a court in a sports hall, holding rackets, one wearing a black club top printed ACE B.C."
+  - src: "/images/clubs/ace-badminton-club/ace-badminton-club-games.webp"
+    alt: "Players spread across two badminton courts in a sports hall, with games in progress at both nets"
 # The club has no website, which Darren confirmed directly on 13 September
 # 2026, along with the session times, coaching, restringing and contact
 # details in this record. The club's own Meetup listings corroborate the
