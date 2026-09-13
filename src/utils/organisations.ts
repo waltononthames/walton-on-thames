@@ -44,7 +44,7 @@ export interface OrganisationData {
   meetingInformation?: string;
   website?: string;
   contactUrl?: string;
-  image?: string;
+  images: { src: string; alt: string; caption?: string }[];
   imageCredit?: string;
   status: 'active' | 'uncertain' | 'closed';
   sources: { label: string; url: string; accessed: string }[];

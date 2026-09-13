@@ -282,7 +282,15 @@ const organisations = defineCollection({
     meetingInformation: z.string().optional(),
     website: z.string().url().optional(),
     contactUrl: z.string().url().optional(),
-    image: z.string().optional(),
+    // Photographs for the organisation page, the same shape as business
+    // listings: the first is the page hero and the Open Graph image, the rest
+    // form a gallery. Objects rather than bare paths so every image carries
+    // its own alt text. This replaces a single `image` path no record used.
+    images: z.array(z.object({
+      src: z.string(),
+      alt: z.string().min(20),
+      caption: z.string().optional(),
+    })).default([]),
     imageCredit: z.string().optional(),
     // `uncertain` and `closed` records are never rendered by the hubs. They
     // exist so that a record we have looked at and could not confirm stays

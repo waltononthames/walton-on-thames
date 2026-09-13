@@ -52,6 +52,10 @@ const pageUrl = `${site}/clubs/${o.slug}/`;
 const inHersham = o.locality.includes('hersham');
 const inWalton = o.locality.includes('walton');
 
+// First photograph is the page hero and the Open Graph image; the rest form
+// the gallery. Pages with no photographs keep the plain navy hero.
+const [heroImage, ...galleryImages] = o.images;
+
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -71,6 +75,7 @@ const structuredData = {
       "description": o.shortDescription,
       ...(o.website ? { "url": o.website } : {}),
       ...(o.address ? { "address": o.address } : {}),
+      ...(o.images.length > 0 ? { "image": o.images.map(img => new URL(img.src, site).href) } : {}),
       "areaServed": o.locality.map(l => ({ "@type": "Place", "name": LOCALITY_LABELS[l] })),
       "mainEntityOfPage": pageUrl
     }
@@ -83,13 +88,25 @@ const structuredData = {
 const title = `${o.name} | Clubs & Societies`;
 ---
 
-<BaseLayout title={title} description={o.shortDescription}>
+<BaseLayout title={title} description={o.shortDescription} image={heroImage?.src}>
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </slot>
 
-  <div class="page-hero">
-    <div class="container">
+  <div class:list={['page-hero', heroImage && 'org-hero']}>
+    {heroImage && (
+      <div class="org-hero-bg">
+        <img
+          src={heroImage.src}
+          alt={heroImage.alt}
+          fetchpriority="high"
+          width="2048"
+          height="1536"
+        />
+        <div class="org-hero-overlay" aria-hidden="true"></div>
+      </div>
+    )}
+    <div class="container org-hero-content">
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
@@ -108,6 +125,26 @@ const title = `${o.name} | Clubs & Societies`;
       <div class="org-layout">
         <div class="org-main prose">
           <Content />
+
+          {galleryImages.length > 0 && (
+            <Fragment>
+              <h2>Photographs</h2>
+              <div class="org-gallery">
+                {galleryImages.map(img => (
+                  <figure class="org-gallery-item">
+                    <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+                    {img.caption && <figcaption>{img.caption}</figcaption>}
+                  </figure>
+                ))}
+              </div>
+            </Fragment>
+          )}
+
+          {/* Outside the gallery on purpose: a page with a single photograph
+              has a hero but no gallery, and its credit still has to appear. */}
+          {o.imageCredit && o.images.length > 0 && (
+            <p class="org-image-credit">{o.imageCredit}</p>
+          )}
 
           <h2>Contact and official website</h2>
           {o.website ? (
@@ -198,6 +235,89 @@ const title = `${o.name} | Clubs & Societies`;
 </BaseLayout>
 
 <style>
+  /* Photo hero, only when the organisation supplies photographs. Mirrors the
+     business listing hero, so a photographed page looks the same site-wide.
+     Without photographs the shared navy .page-hero renders exactly as before. */
+  .org-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+  }
+
+  .org-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .org-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 45%;
+  }
+
+  .org-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(1, 32, 44, 0.5) 0%, rgba(1, 32, 44, 0.66) 60%, rgba(1, 32, 44, 0.85) 100%);
+  }
+
+  .org-hero .org-hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Breadcrumbs default to slate, which is unreadable over a photograph. */
+  .org-hero .breadcrumbs,
+  .org-hero .breadcrumbs a,
+  .org-hero .breadcrumbs li + li::before {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .org-hero .breadcrumbs a:hover { color: var(--color-white); }
+
+  .org-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+  }
+
+  .org-gallery-item {
+    margin: 0;
+  }
+
+  /* Fixed ratio keeps the grid tidy across mixed source photographs, and
+     reserves space before the lazy load resolves. */
+  .org-gallery-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .org-gallery-item figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-slate);
+    font-style: italic;
+  }
+
+  /* Slate rather than slate-soft: small text needs the stronger contrast. */
+  .org-image-credit {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--color-slate);
+  }
+
   .org-layout {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
