@@ -50,7 +50,7 @@ Adults and juniors, of all standards: people returning to badminton after a brea
 - Competitive play and league matches on Thursdays
 - A junior session and singles and doubles competitions on Saturday mornings
 - Coaching courses
-- A Yonex racket supply and restringing service
+- A Yonex racket supply and [restringing service](/directory/ace-badminton-racquet-restringing/)
 
 ## When and where
 
