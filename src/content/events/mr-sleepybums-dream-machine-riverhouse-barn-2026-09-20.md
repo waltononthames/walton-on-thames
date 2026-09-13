@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "family"
 recurring: false
-price: "See venue for details"
+price: "£12"
 description: "A 50-minute family show, Mr Sleepybum's Dream Machine, at Riverhouse Barn."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/166040"
 ---
 
 Mr Sleepybum's Dream Machine comes to Riverhouse Barn for a Sunday afternoon family show lasting around 50 minutes.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/166040). Always verify details directly with the organiser before attending.*

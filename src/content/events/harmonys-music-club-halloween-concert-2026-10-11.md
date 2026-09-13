@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "family"
 recurring: false
-price: "See venue for details"
+price: "£16"
 description: "A Halloween-themed introductory concert for young children from Harmony's Music Club at Riverhouse Barn."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/164610"
 ---
 
 Harmony's Music Club brings My 1st Halloween Concert to Riverhouse Barn on the Sunday afternoon, running from 2pm to 3:30pm.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/164610). Always verify details directly with the organiser before attending.*

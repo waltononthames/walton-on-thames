@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: false
-price: "See venue for details"
+price: "Free"
 description: "An hour-long talk on the story of Mount Felix at Riverhouse Barn, part of Heritage Open Days."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/171868"
 ---
 
 Riverhouse Barn hosts a talk on the story of Mount Felix as part of its Heritage Open Days programme. The hour-long session runs on the Saturday afternoon.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/171868). Always verify details directly with the organiser before attending.*

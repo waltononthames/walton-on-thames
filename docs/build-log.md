@@ -2,6 +2,38 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-07: Phase 6 outreach framework and the first batch (plan items 6.1 to 6.4)
+
+Created `docs/outreach/hersham/` with the working rules, a status table covering seventeen targets, a press calendar of dated hooks, and five fully drafted approaches for September. Claude drafts, Darren sends; nothing goes out unread.
+
+**The rules are the substance, not the drafts.** Offer a specific page the recipient's own readers would want, never a request to link. Disclose that Darren runs the site, in the first two sentences, every time. Invite correction before asking for anything, which is both the strongest opening and true. No paid links, no exchanges, no directory submissions, and never an edit to Wikipedia adding our own link. Log outcomes including silence, so nobody re-runs a dead approach next quarter. Five targets a month, because more reads as a campaign in a village this size.
+
+**The five for September**, each chosen because there is something real to say: the Hersham Community Group, whose page we just published and who should get first refusal on correcting it; Surrey Bird Club, approached with a genuine question rather than a favour, since our roost figure is twenty years old and we would rather have a better one; Elmbridge Museum, as a research relationship first, citing the Surrey History Centre references already in the Hersham Lodge article; the Whiteley Homes Trust, on the visiting guidance rather than the history, because the village is somebody's home before it is anybody's day out; and a Wikipedia Talk note.
+
+**The Wikipedia note leads with something that has nothing to do with us.** That article's external links are genuinely stale: one points at a 2016 Wayback capture of a dead site, the other at an organisation that merged away in 2025. Saying so is a service whether or not anything of ours is ever cited. The note also flags the uncited drill plough sentence and the dates that rule out its superlative. Our own pages are mentioned only as disclosure, and the decision is left to uninvolved editors.
+
+**Verified:** all ten site URLs quoted in the drafts return 200, and every target organisation's site was requested this session. The Community Group's site returns 403 to automated requests but works in a browser, which is noted in the draft so a status check does not mislead.
+
+## 2026-09-06: Quarterly source re-verification (plan item 3.7)
+
+First pass of the standing quarterly check. All 41 source URLs across the twelve Hersham articles were requested.
+
+**No dead links and no citation rot.** Six return 403 to automated clients, which is bot protection rather than absence: the Community Group's two pages, Exploring Surrey's Past, the SEC filing, UCL and AllTrails. One case looked like real rot and was not: the Imperial War Museums page on Odette Sansom appeared to redirect to a generic intelligence page, but a second client returns the correct article, so the redirect was a bot-handling artefact and nothing was changed.
+
+**One factual gap found and fixed.** `burhill-and-golf` described the Hersham Village course without mentioning that its entire site is the subject of application 2023/3519, for 221 homes, a GP surgery, a cafe and a country park. Added with two sources. The council register still shows the application undecided, and the page says that rather than adopting secondary reporting that permission was granted in 2024, which is the kind of difference a Section 106 agreement routinely explains. The applicant's figures are attributed to the applicant.
+
+**Exactly one reviewedDate was bumped**, on the one file that changed. The other eleven were checked and left alone. That is the rule this item sets, and it is the opposite of what a routine quarterly bump would do.
+
+## 2026-09-06: Hersham news stream started (plan item 3.6)
+
+**The item could not be done as written.** The `news` schema had no `neighbourhood` field, so both the monthly Hersham entry this item asks for and the hub block in item 2.6 that filters on it were impossible. Added it as an optional string, so the five existing articles stay valid.
+
+First entry published: the four housing schemes registered with Elmbridge and awaiting a decision in Hersham, with what each proposes and where it stands, drawn from the council's own live planning data that this repo already fetches nightly for the development and planning page. Reportage with no position taken, per the editorial stance the item sets.
+
+The three schemes that state a number come to 369 homes. Hersham Place Technology Park does not state one, because its second phase is outline with all matters reserved, and the article says so rather than implying a total, since Hersham housing figures get quoted loosely elsewhere.
+
+This item stays open as a standing monthly commitment rather than being closed by one article.
+
 ## 2026-09-06: The drill plough claim, tested and corrected (plan item 3.5)
 
 Item 3.5 was conditional: build the Weylands Farm page only if sources exist beyond Wikipedia, and never on a single Tier 2 source. Testing that condition turned up an accuracy problem in what the site was already publishing.
@@ -1051,3 +1083,46 @@ Verified: build clean at 374 pages, `seo:validate` passed, `seo:links` zero brok
 - **The ShareAlike condition** attaches to adapted copies. The webp is a format conversion and resize of the museum's image, so if SA is read strictly the derived file should be offered under the same licence. Worth a line in the site's image credits policy rather than a per-page fix.
 - **The page title still says "Since 1862".** Defensible, since that is the modern event's own claim and the article supports it as institutional continuity, but the page now opens with a 1775 object. If the title changes, the slug should not: the URL is live and indexed.
 - Page locators for Stonebanks (1980) and Hughes (2003), unchanged.
+
+## 2026-09-06: Clubs, societies and community groups hub
+
+Rebuilt `/living/community/` as a filterable directory, added `/hersham/clubs-and-societies/` as its Hersham child hub, and created a flat `/clubs/<slug>/` namespace for organisation pages. New `organisations` content collection with a closed, typed taxonomy; every record carries a `sources` array with access dates and a `lastVerified` date, and only `status: active` records render.
+
+**30 organisations published, 16 with their own page.** The rest render as cards without a link, which is the honest treatment for an organisation confirmed to exist but not yet describable in depth. Three organisations that already had pages elsewhere (Walton & Hersham FC, Hersham Community Group, and the FC's Things to Do guide) point at those rather than getting a duplicate under `/clubs/`.
+
+**Two listings on the old page did not survive verification and were deleted.** "Hersham Sailing Club" has no primary source under that or any near name, and the reservoir it was placed on is private land with no public access, in neither Hersham nor a sailing venue. "Walton & Weybridge Music Club" has no website, no Charity Commission entry and no listing anywhere; the organisation that does exist under a similar name is the Walton & Weybridge Amateur Operatic Society, now published in its own right. Two further corrections: the cricket ground is Ashley Park Avenue, not Ashley Road, and the Rotary club is the Rotary Club of Walton-on-Thames, not "Walton & Weybridge".
+
+**The Rotary club is not published at all.** `waltonrotary.org.uk` no longer resolves in DNS, so there is no live primary source and no way to confirm the club still meets. Recorded in `docs/research-backlog.md`, which is new and holds every organisation found but not published, plus the published records that are thinner than they should be.
+
+**Walton Rowing Club carries `lastVerified: 2026-08-22`, not today's date.** Its site failed a TLS handshake from two separate tools this session and British Rowing's club page redirects to its finder, so the record rests on our own earlier verification and says so.
+
+`seo-validate.mjs` gained `/hersham/clubs-and-societies/` in its `hubExceptions` set: it is a curated CollectionPage, not a content-collection article, like the food and drink and history hubs before it. The hub references `HERSHAM_PLACE_ID` rather than describing a second, unidentified Hersham.
+
+Verified: build clean at 394 pages, `seo:validate` passes, `seo:links` reports zero broken internal links, `npm run check` adds no new errors (155 before and after, all pre-existing in other files). No horizontal overflow at 375px, 768px or 1280px, measured as `scrollWidth === clientWidth` with zero elements past the viewport edge. Filters, the result count, the empty state and the reset control were all exercised in the browser; the page carries all 28 organisations in static HTML and works with JavaScript disabled.
+
+**Addendum, same day: the scout groups and Elmbridge Youth Theatre.** Walton & Weybridge District publishes its full list of seven groups, four of them in our area. 1st Walton (Viking) Sea Scouts and 9th Walton (Viscount) Air Scout Group are now published with their own pages, and 1st Hersham and 4th Walton gained section meeting nights from the district's timings table, which neither group publishes itself. Elmbridge Youth Theatre is on file as `status: uncertain` and does not render: charity reporting is overdue by 1,529 days, the last register data is for the year ending 31 August 2020, its Facebook page has been silent since February 2023 and its own domain does not resolve. Two source traps recorded in the backlog: the district's link for the 9th is dead, and Surrey Scouts' county group pages carry template defaults, giving the 9th the county campsite's address and the county's own website.
+
+**Closed:** `src/content/attractions/watch-esher-rugby-in-hersham.json` had `internalUrl` pointing at `/things-to-do/walton-and-hersham-fc/`, sending rugby readers to the football club. Field removed, so the card falls back to `officialUrl` and links the club's own site as an external link.
+
+## 2026-09-06 (later): the Watermans Arms listing gets its own photography
+
+Darren supplied four photographs taken outside the pub that morning, staged as HEIC at `public/images/history/Directory/Pubs/Watermans Arms`. Converted and published to `public/images/directory/watermans-arms-hersham/` as webp at 158-283KB, matching the range the Khyber Pass and Patel's sets already sit in. The frontage close-up is `images[0]`, so it is the tile on `/directory/`, the hero on the listing page and the Open Graph image, as Darren asked.
+
+**Sharp cannot decode HEIC in this repo's build of libvips.** It reads the metadata happily and then fails on decode with "Support for this compression format has not been built in". No ImageMagick, ffmpeg or `heif-convert` on this machine either. What works with no new dependency is WIC through WPF's `System.Windows.Media.Imaging.BitmapDecoder` from PowerShell, which picks up the Microsoft HEIF Decoder that Windows 11 already has: HEIC to lossless PNG there, then the usual sharp resize and webp encode. Worth remembering, since every photograph Darren takes on an iPhone will arrive this way.
+
+**The photographs settled a fact the desk research had wrong by omission.** The building carries two fascias, Watermans Arms over the bar and The Lodge over the rooms, with a central panel reading "Eat, Drink, Sleep". The listing now says so in its second paragraph. A visitor sent to "the Watermans Arms" for a booked room could reasonably walk past the door marked The Lodge, and no source consulted in July mentioned it.
+
+**They also produced an internal link the site should have had.** A green plaque on the pub's front wall commemorates Sham 69, formed in Hersham in 1975, listing "Hersham Boys", "Hurry Up Harry" and "If the Kids Are United". The listing now carries the photograph and links to `/hersham/sham-69/`, which had no inbound link from the Directory at all.
+
+**The operator's website is gone and the field was removed rather than left to rot.** `watermansarmshersham.com`, recorded in the July 2026 listing, now returns NXDOMAIN on both the apex and www. No replacement was found: `facebook.com/watermansarmshersham` is a personal profile ("Profile - Digital creator"), not the pub's business page, so it is not a substitute for an official site in a directory field. Existence, name and address were re-confirmed against the Food Standards Agency register (business 1779048, "The Watermans Arms", Pub/bar/nightclub, 1 Queens Road, Hersham, KT12 5LT), which matches the listing character for character. The `source` field records both the photography and the dead domain.
+
+**One sentence was removed as collateral.** The listing said "Bookings are made through the OYO website or app", which traces to the owner-supplied spreadsheet of July 2026 and could not be re-verified this session now that the operator's own site is gone. It now says rooms and tables are booked by telephone, which the listing's own phone number supports.
+
+## Still open
+- **Two phone numbers are in circulation.** The listing carries 01932 254580, from the owner-supplied spreadsheet. Several aggregators give 01932 501571. Both are Tier 3 or owner-supplied, neither is a Tier 1 source, and the listing was left unchanged. The number on the pub door would settle it in ten seconds on the next visit.
+- **The category is probably wrong now.** The listing is `accommodation` with `guest-house` and `pub-with-rooms` subcategories, which is how it was filed in July when it came in as an OYO entry. The FSA register classifies it as Pub/bar/nightclub, and the frontage advertises pool, darts and televised sport. Moving it to `pubs-and-bars` would read truer, but it would also drop out of wherever accommodation is surfaced, so this is an Editor's call rather than a tidy-up.
+- **The hanging sign is a heraldry lead.** It carries a shield of a boat on wavy bars with two silver sea-creature supporters and the motto "At Command Of Our Superiors". The photograph is published and the motto is transcribed, but no attribution is made on the page, because none has been verified. If it is the Worshipful Company of Watermen and Lightermen's arms, `heraldry-walton-on-thames-hersham-whiteley` wants a paragraph and this photograph.
+- **`/hersham/sham-69/` still has no photograph of its own.** The plaque image is now in the repo and the page carries none. It is a history page, so it needs a caption and rights record under the Standards document rather than a copy-paste from the Directory.
+**Camera originals are now git-ignored, and the earlier note in this entry overstated the problem.** `public/images/history/Directory/` is 471MB of staged HEIC plus one 65MB MOV, and Astro does copy all of it into `dist/`. It was never reaching production: not one of those files is tracked, and Cloudflare Pages builds from the git clone, so the bloat has only ever been local. The live risk was a future `git add -A` sweeping them in, which is a real hazard while another session is committing against a shared index. `.gitignore` now carries `*.HEIC` / `*.heic` / `*.MOV` / `*.mov` under a comment explaining that Cloudflare builds from the clone and that `git add -f` is the deliberate override. Nothing in `src/` references either extension: pages use the webp derivatives under `public/images/directory/`. The staging tree is now invisible to `git status`, which also makes the untracked list readable again.
+
+Moving the staging tree out of `public/` altogether is still the tidier end state, since it would stop the local `dist/` carrying half a gigabyte it never serves. Not urgent now that nothing can be committed by accident.

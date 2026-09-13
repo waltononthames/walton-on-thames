@@ -1,0 +1,34 @@
+{
+  "name": "Ceramics Café, Hersham",
+  "slug": "ceramics-cafe-hersham",
+  "area": "Hersham",
+  "locationBand": "local",
+  "summary": "Paint your own pottery at a table on Hersham Green. Choose a plain bisque shape from the studio's range, paint it with underglaze colours, and leave it to be glazed and fired in the studio kiln, returning to collect the finished piece. A dry, sit-down activity that works as well for adults as for children.",
+  "reasonToVisit": "Paint-your-own pottery studio on Hersham Green, indoors and year-round",
+  "planningDetail": "Book a table by phone or online; pieces are fired and collected on a later visit",
+  "categories": [
+    "families",
+    "rainy-days"
+  ],
+  "bestFor": [
+    "Families",
+    "children",
+    "adults",
+    "small groups",
+    "birthdays",
+    "rainy afternoons"
+  ],
+  "setting": "indoor",
+  "costBand": "paid",
+  "seasonality": "year-round",
+  "checkBeforeTravelling": true,
+  "bookingNote": "Call the studio to book a table, or use the online booking form at ceramicscafe.com",
+  "address": "On The Green, 1 Berry Lane, Hersham, Surrey, KT12 4HN",
+  "geo": { "lat": 51.3651, "lng": -0.3993 },
+  "officialUrl": "https://www.facebook.com/ceramicscafehersham/",
+  "internalUrl": "/directory/ceramics-cafe-hersham/",
+  "schemaType": "LocalBusiness",
+  "lastVerified": "2026-09-06",
+  "featured": false,
+  "sortWeight": 74
+}

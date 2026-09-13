@@ -1,14 +1,14 @@
 {
   "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source: the rest of this file was deliberately left untouched rather than overwritten with a guess.",
-  "status": "unconfirmed",
-  "headline": "No date confirmed yet for the coming weekend",
-  "detail": "Apps Court Farm's car boot page still carries the banner it posted for the August Bank Holiday weekend, \"THE CAR BOOT IS OPEN THIS SUNDAY & MONDAY\", which covered Sunday 30 and Monday 31 August. Those dates have now passed and the farm has not yet posted a notice for the coming Sunday, so we are not treating any specific date as confirmed. There is no postponement notice in place. The farm states its car boot sales run \"every Sunday from early March, through to the Autumn\" and on Bank Holiday Mondays, weather permitting, but it does not publish a fixed calendar. Check the banner on the official page or call 01932 244 822 for the recorded status before travelling.",
+  "status": "off",
+  "headline": "Not open on Sunday 13 September 2026",
+  "detail": "Apps Court Farm's car boot page now carries the banner \"THE CAR BOOT IS NOT OPEN THIS SUNDAY\". On Friday evening, 11 September, the same banner read \"THE CAR BOOT IS OPEN THIS SUNDAY\". We read the new notice just after midnight on Sunday 13 September, so it refers to today's sale. The farm has not given a reason on the page. It says it posts weather postponements and other call-offs in this same place. No date has been posted for the following Sunday yet. Check the banner on the official page or call 01932 244 822 for the recorded status before travelling.",
   "nextConfirmedDateISO": null,
   "nextConfirmedDateLabel": null,
-  "checkedDateISO": "2026-09-01",
-  "checkedDateLabel": "1 September 2026",
+  "checkedDateISO": "2026-09-13",
+  "checkedDateLabel": "13 September 2026",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Automated check, source read successfully. Banner text unchanged from the previous check on 29 August (\"THE CAR BOOT IS OPEN THIS SUNDAY & MONDAY\"), but it was posted for the 30/31 August Bank Holiday weekend and both dates have now passed: \"& MONDAY\" cannot refer to Monday 7 September, which is not a Bank Holiday. Status therefore moved from on to unconfirmed and the confirmed date cleared rather than rolled forward to 6 September, which the source does not state. No cancellation or postponement notice on the page."
+  "lastCheckNote": "Automated check, source read successfully at 00:14 BST on Sunday 13 September 2026. The in-page banner changed from \"THE CAR BOOT IS OPEN THIS SUNDAY\" (read 23:30 BST Friday 11 September) to \"THE CAR BOOT IS NOT OPEN THIS SUNDAY\". Read on the Sunday itself, and posted after the Friday confirmation, the notice can only refer to Sunday 13 September, so the status moves from on to off. The confirmed date is cleared rather than kept, because the page emits a sub-Event with eventStatus hardcoded to EventScheduled whenever a date is set, which would advertise a called-off sale as scheduled. No reason is given on the page (no weather or festival wording), so none is stated here. Verified in the DOM that this is the in-page block inside <main> (a plain span, no outbound link). The site-wide section.announcement strip now carries the same NOT OPEN wording but still links to a Christmas trees 2025 shop product, so it was not relied on. The only other mentions of postponement and cancellation are standing FAQ text."
 }

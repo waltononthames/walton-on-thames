@@ -20,3 +20,13 @@ Thumbs.db
 
 # Logs
 npm-debug.log*
+
+# Staged camera originals, not for deploy yet.
+# Cloudflare Pages builds from the git clone, so anything ignored here never
+# reaches production even though Astro copies public/ into dist/ locally.
+# Nothing in src/ references a .HEIC: pages use the webp derivatives under
+# public/images/directory/. To deploy one deliberately: git add -f <path>
+*.HEIC
+*.heic
+*.MOV
+*.mov

@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "music"
 recurring: false
-price: "See venue for details"
+price: "£15"
 description: "Hannah Sanders and Ben Savage play Walton Folk at Riverhouse Barn with Jon Thorne."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/165957"
 ---
 
 Hannah Sanders and Ben Savage, joined by Jon Thorne, play the Walton Folk night at Riverhouse Barn from 7:30pm to 9:30pm.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/165957). Always verify details directly with the organiser before attending.*

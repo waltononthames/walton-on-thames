@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "music"
 recurring: false
-price: "See venue for details"
+price: "£15"
 description: "A piano recital by Nikita Burzanitsa at Riverhouse Barn in aid of The Amber Trust."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/163588"
 ---
 
 Pianist Nikita Burzanitsa gives an hour-long recital at Riverhouse Barn in aid of The Amber Trust, starting at 7pm.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/163588). Always verify details directly with the organiser before attending.*

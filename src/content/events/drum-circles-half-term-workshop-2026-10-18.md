@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "family"
 recurring: false
-price: "See venue for details"
+price: "£12"
 description: "A 45-minute family drum circle workshop at Riverhouse Barn for half term."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/172909"
 ---
 
 Riverhouse Barn runs a family drum circle workshop over the half term break, lasting 45 minutes from 2pm.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/172909). Always verify details directly with the organiser before attending.*

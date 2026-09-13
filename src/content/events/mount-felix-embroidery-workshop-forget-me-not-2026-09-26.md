@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: false
-price: "See venue for details"
+price: "£35"
 description: "The first of two floral embroidery workshops at Riverhouse Barn inspired by the Mount Felix Tapestry."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/172527"
 ---
 
 The first of two floral embroidery workshops inspired by the Mount Felix Tapestry takes the forget-me-not as its subject. The session runs from 2pm to 4pm at Riverhouse Barn.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/172527). Always verify details directly with the organiser before attending.*

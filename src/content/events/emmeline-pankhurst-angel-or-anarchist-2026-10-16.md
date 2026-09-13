@@ -7,11 +7,11 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: false
-price: "See venue for details"
+price: "£16.50"
 description: "A theatre piece on Emmeline Pankhurst at Riverhouse Barn."
-source_url: "https://www.riverhousebarn.co.uk/"
+source_url: "https://www.riverhousebarn.co.uk/events/158678"
 ---
 
 Riverhouse Barn stages Emmeline Pankhurst: Angel or Anarchist?, running from 7:30pm to 9pm.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/158678). Always verify details directly with the organiser before attending.*
