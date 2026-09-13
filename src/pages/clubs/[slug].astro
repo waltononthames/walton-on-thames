@@ -146,9 +146,13 @@ const title = `${o.name} | Clubs & Societies`;
             <p class="org-image-credit">{o.imageCredit}</p>
           )}
 
-          <h2>Contact and official website</h2>
-          {o.website ? (
+          {/* Only when there is a website to point to. Some clubs genuinely have
+              none (Ace Badminton Club, confirmed by Darren), and an invitation to
+              "point us to one" would imply it exists; their contact details live
+              in the record's own "Joining or taking part" section instead. */}
+          {o.website && (
             <Fragment>
+              <h2>Contact and official website</h2>
               <p>
                 Everything current about {o.name}, including anything that has changed
                 since we last checked, is on the organisation's own site.
@@ -160,8 +164,6 @@ const title = `${o.name} | Clubs & Societies`;
                 </a>
               </p>
             </Fragment>
-          ) : (
-            <p>We do not currently hold a website for {o.name}. If you can point us to one, please <a href="/contact/">get in touch</a>.</p>
           )}
 
           <p class="org-checked">Information checked: {checkedLabel(o.lastVerified)}</p>
