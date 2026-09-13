@@ -437,7 +437,7 @@
   "src/pages/accessibility-statement.astro": "2026-08-26T11:42:45+01:00",
   "src/pages/advertise-your-business.astro": "2026-08-26T09:35:20+01:00",
   "src/pages/charter.astro": "2026-08-26T09:35:20+01:00",
-  "src/pages/clubs/[slug].astro": "2026-09-13T15:25:39+01:00",
+  "src/pages/clubs/[slug].astro": "2026-09-13T15:32:29+01:00",
   "src/pages/community/news/[slug].astro": "2026-08-31T17:56:16+01:00",
   "src/pages/community/news/index.astro": "2026-08-26T09:35:20+01:00",
   "src/pages/contact.astro": "2026-08-26T11:42:45+01:00",
