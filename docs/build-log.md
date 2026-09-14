@@ -2,6 +2,40 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-15: corrections from the 14 September 2026 accuracy audit
+
+Darren supplied the weekly audit: thirteen findings, two High, ten Medium, one Low. Every finding was reproduced against `origin/main` before anything changed, and every replacement fact was fetched this session. Where a source could not be read, the claim was narrowed or left alone rather than rewritten from a search snippet.
+
+**H1 and H2 were one defect.** `whats-on/[slug].astro` took the date from `start` and attached `end`'s clock time to it regardless of day, so Pantoland read "Thursday, 17 December 2026 · 19:30 – 16:30" and every exhibition showed only its opening day. `EventCard` never received `end` at all. Eleven listings on main end on a later day. The new `src/utils/eventDates.ts` works from the raw ISO strings, so no day can shift with the build machine's time zone, and it separates three shapes: a single day; an overnight occasion that ends the next day earlier on the clock (the Surrey Soul party, 20:00 to 01:00), shown on its start day with times; and a multi-day run or exhibition, shown as a date range with no single time span, the Times row pointing to the description. The event page, its title tag and all three `EventCard` call sites use it. `npm run test:events` runs ten regression cases taken from real listings, both audit examples among them. It needs Node 23.6 or later to import TypeScript, so it is deliberately not in prebuild, where Cloudflare's Node version would decide whether the site builds.
+
+**The five Cecil Hepworth Playhouse runs carried invented finishing times.** Pantoland, The Shakespeare Revue, Robin Hood and the Babes in the Wood, Shrek the Musical and Hadestown each had an estimated closing time in `end` and a sentence admitting it. Their `end` is now date-only and the sentence is gone; each body already lists its performance times.
+
+**M1, Stirling Moss.** Motor Sport (Hughes, 13 April 2020) supports the narrower claim: his Formula One World Championship debut at the 1951 Swiss Grand Prix in an HWM-Alta Formula Two car, eighth and first in the Formula Two class, after joining HWM's Formula Two team in 1950 and finishing third at Bari in a non-championship race. Corrected in the body, the section heading (no page links to its anchor), the metaDescription and the history hub. "A teenage Stirling Moss" went too: the page cites nothing for his age, and removing an unsourced word needs no source.
+
+**M8, the 1864 hallmark.** The inference that the goblet's hallmark also dates its applied cartouche is removed from both pages that made it. The swan-symbol page had built a conclusion on it, that the goblet proved the swan was a regatta device eighty years before the 1946 grant of arms. That conclusion is withdrawn in the text itself, and both pages' evidence tables now list the cartouche's date among what the object does not establish.
+
+**M9, the parakeets.** The title no longer claims "Britain's Loudest Roost", and the metaDescription, opening, roost paragraph and Hersham history hub no longer rank the colony. The mid-2000s figure of about 7,000 birds stays, now with its in-text citation. "No comparable published count has been made since" became "this research has found no comparable published count since then", because a negative claim needs a stated scope. The Guardian refuses fetching, so nothing new was taken from it.
+
+**M10, M6 and M3.** Walton & Hersham United FC keeps its own figures, re-read on wahufc.com, and loses "the largest children's sports club in the area by some distance". The film-studios page and history hub lose "one of only three major" and "one of the first serious". On Walton Bridge only the superlative went. The audit's suggested replacement, that the bridge crosses the navigation channel without piers in the river, is not in the Surrey County Council committee report either. That report describes the scheme permitted in 2008 as an arch bridge with a suspended road deck and an approach viaduct on concrete piers across the floodplain, which is what the page now says, with the report cited.
+
+**M7, Matt Brittin.** Every direct source was blocked: bbc.co.uk and bbc.com, the Guardian, Parliament's committee pages, and Variety and Deadline, which redirect to a paywall gateway. Two independent readable outlets agree: Variety through its Australian site (Yossman) and Fox News (Wulfsohn), both dated 25 March 2026. Both give the May start only as a plan, so the entry says he was appointed Director-General in March 2026 and does not say when he took office.
+
+**L1, review dates.** The Walton Hop, Mount Felix Tapestry, Elmbridge Hundred and St Mary's New Zealand flag pages were all corrected in `52935e8` on 3 September, and the Queen Victoria page again in `468d4c1` on 6 September, without `reviewedDate` moving. They now show those dates. Pages whose audited claims were checked and amended on 14 September show that date, except Famous Residents (see below).
+
+**`seo:validate` had been failing since 6 September, from this log's own change.** The Ceramics Café's `activities` category maps to `EntertainmentBusiness`, a genuine schema.org LocalBusiness subtype that the validator's list did not include. It does now.
+
+**Le Petit Cafe, a separate request the same evening.** Darren's shopfront photograph, taken 12 September 2026 according to its EXIF, is `images[0]`, so it is the Directory tile, the listing hero and the og:image.
+
+Verified: build clean at 421 pages, `seo:validate` passes, `seo:links` reports zero links to non-existent pages, `astro check` stays at the pre-existing 155 errors with none on changed lines, all ten event tests pass, no em dashes, and every retired phrase counts zero across `dist/`.
+
+## Still open
+- **Famous Residents keeps its 2 July review date on purpose.** Only the Brittin line was checked on 14 September. The page as a whole still rests on a single Wikipedia citation (audit M2), so moving "Last reviewed" would claim a review that has not happened. One `reviewedDate` field cannot say "one line amended"; the audit's suggestion of separate published, amended and fact-checked dates is the real fix, and a schema decision for the Editor.
+- **No visible correction notes.** Standards 18.2 expects a notice for a factual correction and an explanation for a conclusion revision. The swan-symbol page's revised text explains itself, but the site has no correction-note mechanism, and the 3 September corrections added none either.
+- **Research not attempted in this pass:** the residence evidence register (M2), the Cowey Stakes chain to Camden and the Surrey Historic Environment Record (M4), claim-level replacement of Wikipedia across nineteen pages (M5), the Walton Bridge chronology and £32.4 million cost (M3), and a recent parakeet count, where the September approach to Surrey Bird Club is the live lead.
+- **The Andrew Champion page the audit found still live** ended on 6 September and is not built. A live copy is Cloudflare's HTML edge cache, not the code; a purge clears it.
+- **An estimated finishing time on a single-day event would still display.** The five that existed were all runs. The habit of estimating `end` times should stop, since the renderer cannot tell an estimate from a published time.
+- **`src/pages/index.astro` has uncommitted edits from another session in the shared tree.** This change adds one line there, the `end` prop on `EventCard`.
+
 ## 2026-09-07: Phase 6 outreach framework and the first batch (plan items 6.1 to 6.4)
 
 Created `docs/outreach/hersham/` with the working rules, a status table covering seventeen targets, a press calendar of dated hooks, and five fully drafted approaches for September. Claude drafts, Darren sends; nothing goes out unread.

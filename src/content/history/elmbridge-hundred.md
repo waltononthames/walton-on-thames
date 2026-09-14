@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["saxon"]
 entityType: "overview"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-09-03
 sources:
   - author: "The Elmbridge Hundred"
     year: "n.d."

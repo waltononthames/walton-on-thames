@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["1960s", "1970s", "1980s"]
 entityType: "institution"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-09-03
 sources:
   - author: "The Independent"
     year: "2005"

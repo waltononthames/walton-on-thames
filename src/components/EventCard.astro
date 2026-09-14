@@ -1,8 +1,11 @@
 ---
+import { formatEventDate, formatEventTime } from '../utils/eventDates';
+
 interface Props {
   title: string;
   slug: string;
   start: string;
+  end?: string;
   venue: string;
   category: string;
   price: string;
@@ -10,11 +13,10 @@ interface Props {
   description?: string;
 }
 
-const { title, slug, start, venue, category, price, image, description } = Astro.props;
+const { title, slug, start, end, venue, category, price, image, description } = Astro.props;
 
-const date = new Date(start);
-const dateStr = date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long' });
-const timeStr = date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+const dateStr = formatEventDate(start, end, 'short');
+const timeStr = formatEventTime(start, end);
 const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 ---
 
@@ -28,7 +30,7 @@ const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUppe
     <h3 class="card-title">{title}</h3>
     {description && <p class="card-description">{description}</p>}
     <div class="event-meta">
-      <span class="event-date">{dateStr} · {timeStr}</span>
+      <span class="event-date">{dateStr}{timeStr ? ` · ${timeStr}` : ''}</span>
       <span class="event-venue">{venue}</span>
       <span class="badge badge-accent">{price}</span>
     </div>

@@ -1,7 +1,7 @@
 ---
 title: "HWM: The World's Longest-Established Aston Martin Dealership"
 metaTitle: "HWM: Walton's Aston Martin & Motor Racing History"
-metaDescription: "How Hersham and Walton Motors became the world's longest-established Aston Martin dealership and gave Stirling Moss his start in Grand Prix racing."
+metaDescription: "How Hersham and Walton Motors became the world's longest-established Aston Martin dealership and gave Stirling Moss his World Championship debut."
 slug: "hwm-and-motor-racing"
 cluster: "walton-history"
 era: ["postwar", "1950s", "contemporary"]
@@ -9,7 +9,7 @@ entityType: "institution"
 heroImage: "/images/history/hwm-single-seater-walton-on-thames.webp"
 heroAlt: "A preserved green HWM single-seater racing car on display at HWM's Bridge Street premises, Walton-on-Thames"
 publishDate: 2026-07-02
-reviewedDate: 2026-09-02
+reviewedDate: 2026-09-14
 sources:
   - author: "Aston Martin"
     year: "n.d."
@@ -75,10 +75,17 @@ sources:
     title: "Hersham and Walton Motors"
     url: "https://en.wikipedia.org/wiki/Hersham_and_Walton_Motors"
     accessed: "2 July 2026"
+  - author: "Hughes, M."
+    year: "2020"
+    title: "Hints of future glory in Stirling Moss's first world championship grand prix"
+    container: "Motor Sport"
+    date: "13 April"
+    url: "https://www.motorsportmagazine.com/articles/single-seaters/f1/mph-hints-of-future-glory-in-stirling-mosss-first-world-championship-grand-prix/"
+    accessed: "14 September 2026"
 related: ["walton-bridge", "walton-in-wartime"]
 ---
 
-Not every piece of Walton's history is about the river or the church. Near Walton Bridge, a garage business founded in 1938 went on to build its own Grand Prix cars, give a teenage Stirling Moss his start in top-level motor racing, and become the longest-established Aston Martin dealership anywhere in the world. The name gives away its origins: HWM stands for Hersham and Walton Motors, tying the firm directly to both halves of this guide.
+Not every piece of Walton's history is about the river or the church. Near Walton Bridge, a garage business founded in 1938 went on to build its own Grand Prix cars, give Stirling Moss his Formula One World Championship debut, and become the longest-established Aston Martin dealership anywhere in the world. The name gives away its origins: HWM stands for Hersham and Walton Motors, tying the firm directly to both halves of this guide.
 
 <figure>
   <img src="/images/history/hwm-single-seater-walton-on-thames.webp" alt="A preserved green HWM single-seater racing car on display at HWM's Bridge Street premises, Walton-on-Thames" loading="eager" />
@@ -95,9 +102,9 @@ HWM was founded in 1938 by John Heath, an engineer and accomplished racing drive
 
 HWM built and campaigned its own single-seater racing cars under the HWM name through the early 1950s, competing at Grand Prix level against factory teams with vastly larger budgets. The team scored a genuine landmark early on: Johnny Claes won the Grand Prix des Frontières at Chimay in an HWM, the first post-war Grand Prix victory for a British-built car, a result that gave the small Walton-based team a real claim to a place in British motor racing history. Both HWM and Caterham describe the firm as the first British team to take a Grand Prix victory after the war, and HWM's own history traces the progression from the HW-Alta to a full team of cars built for the 1950 Formula Two season (Caterham Cars, 2026a; HWM, 2026; HWM, n.d.). Caterham's account of the 1951 HWM-Alta season records seven wins, seven seconds and ten thirds in international events (Caterham Cars, 2026a).
 
-## Stirling Moss's first Grand Prix
+## Stirling Moss's World Championship debut
 
-HWM's best-known contribution to motor racing history is the driver it gave a start to rather than any single race result. Stirling Moss, then still establishing himself after strong performances in Formula Three, was given his first drive in top-level international racing by HWM, and it was in an HWM car that he made his Grand Prix debut, at the 1951 Swiss Grand Prix, finishing eighth. Moss went on to race for the team for close to two years before moving on to the career that would make him one of the most celebrated drivers in the sport's history, and HWM's role as the team that gave him his start remains one of the most significant footnotes in British motor racing. Caterham's account of the 1951 HWM-Alta names Moss among its drivers, and HWM's own history lists him among the drivers who took the cars to success in Formula One in the early 1950s (Caterham Cars, 2026a; HWM, n.d.).
+HWM's best-known contribution to motor racing history is the driver it gave a start to rather than any single race result. Stirling Moss, then still establishing himself after strong performances in Formula Three, joined HWM's Formula Two team in 1950 and raced its cars in non-championship events that season, finishing third at the Bari Grand Prix. It was in an HWM-Alta that he made his Formula One World Championship debut, at the 1951 Swiss Grand Prix, finishing eighth, two laps down, and first in the Formula Two class (Hughes, 2020). Moss went on to race for the team for close to two years before moving on to the career that would make him one of the most celebrated drivers in the sport's history, and HWM's role as the team that gave him his start remains one of the most significant footnotes in British motor racing. Caterham's account of the 1951 HWM-Alta names Moss among its drivers, and HWM's own history lists him among the drivers who took the cars to success in Formula One in the early 1950s (Caterham Cars, 2026a; HWM, n.d.).
 
 ## HWM today
 

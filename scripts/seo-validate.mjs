@@ -154,7 +154,7 @@ for (const file of files) {
   const NON_LISTING_DIRECTORY_PAGES = new Set(['/directory/enhanced-listing/']);
   if (/^\/directory\/[^/]+\/$/.test(urlPath) && !NON_LISTING_DIRECTORY_PAGES.has(urlPath)) {
     const localBusinessTypes = [
-      'LocalBusiness', 'Restaurant', 'FastFoodRestaurant', 'CafeOrCoffeeShop',
+      'LocalBusiness', 'Restaurant', 'FastFoodRestaurant', 'CafeOrCoffeeShop', 'EntertainmentBusiness',
       'BarOrPub', 'LodgingBusiness', 'SportsActivityLocation', 'Store',
     ];
     const biz = blocks.flatMap((b) => b['@graph'] ?? [b]).find((n) => localBusinessTypes.includes(n['@type']));

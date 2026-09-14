@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["victorian", "20th-century", "contemporary"]
 entityType: "event"
 publishDate: 2026-09-03
-reviewedDate: 2026-09-05
+reviewedDate: 2026-09-14
 sources:
   - author: "Bishop and Miller Auctioneers"
     year: "n.d."
@@ -175,7 +175,7 @@ Walton had a practical asset as well: a long, straight reach with room to race, 
 
 Two Victorian trophies survive in photographs, and both carry the same device: a swan inside a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it.
 
-The first is a silver goblet, hallmarked in London in 1864 and marked by the maker EM/JM, standing 19.5cm high, its bowl mounted with an applied cartouche carrying the device (Invaluable, n.d.; Bishop and Miller Auctioneers, n.d.). Because that cartouche is cast and applied rather than engraved afterwards, the hallmark dates the device as well as the silver.
+The first is a silver goblet, hallmarked in London in 1864 and marked by the maker EM/JM, standing 19.5cm high, its bowl mounted with an applied cartouche carrying the device (Invaluable, n.d.; Bishop and Miller Auctioneers, n.d.). The hallmark dates the assay of the goblet. It does not, on its own, show when the cartouche was made or fixed to the bowl, and this article cites no condition report or specialist examination of the joins.
 
 <!-- Rights record: photograph of the goblet used by permission of Bishop and Miller Auctioneers, granted 1 September 2026, credited in the caption and cited in the sources block. -->
 <figure>
@@ -294,7 +294,7 @@ Almost everything around the racing has changed. The private lawns are gone, the
 | July 1775 | Two engraved admission tickets to the Walton Bridge Regatta, British Museum C,2.1723-1724 | That an event at Walton Bridge was called a regatta, engraved, numbered, signed and sealed in July 1775 | Any continuity with the regatta founded in 1862, or the event's relationship to Stonebanks's Oatlands entertainment |
 | 7 August 1775 | Stonebanks's account of the Duke of Newcastle's river entertainment at Oatlands | Organised river spectacle on this reach well before the Victorian regatta | Whether it is the same occasion as the ticketed Walton Bridge Regatta of July |
 | 1862 | The organisers' own statement, and Stonebanks | The foundation year as recorded by both the event and local history | That racing was held in every year since, which Stonebanks contradicts |
-| 1864 | The hallmarked regatta goblet, its device cast and applied | A swan and crossed oars in use as a regatta device by 1864 | Which race the goblet was awarded for, or to whom |
+| 1864 | The hallmarked regatta goblet, its device on an applied cartouche | A silver goblet assayed in London in 1864 that now carries the regatta device | When the cartouche was made or attached, and so whether the device was in use by 1864; which race the goblet was awarded for, or to whom |
 | c. 1887 | Stonebanks on Walton Town Regatta and on River House | A second, separate Walton regatta for competitors outside amateur status, and the lending of private lawns | How long the town regatta ran, or how the two meetings related in practice |
 | 1894 and July 1897 | Stonebanks on Sullivan, the Rifle Brigade band and the Venetian fête | Sullivan's involvement, and the regatta's character as a public spectacle | That Walton approached Henley Royal Regatta in sporting standing |
 | 1920, 1921 and 1934 | Thames Rowing Club archive photographs, with reference codes | Leading London clubs racing at Walton after the First World War and in the 1930s | The full programme or scale of those meetings |
@@ -311,7 +311,7 @@ Almost everything around the racing has changed. The private lawns are gone, the
 | 7 August 1775 | The Duke of Newcastle stages a river entertainment at Oatlands, attended by members of the royal family (Stonebanks, 1980) |
 | 1838 | The railway reaches Walton, bringing London within easy reach (Network Rail, 2024) |
 | 1862 | The first Walton Regatta (Stonebanks, 1980; Walton and Weybridge Regatta, n.d.b) |
-| 1864 | A Walton-on-Thames Regatta goblet is hallmarked in London, its applied cartouche carrying a swan and crossed oars (Invaluable, n.d.) |
+| 1864 | A silver goblet is hallmarked in London; it now carries the regatta's swan and crossed oars on an applied cartouche of undetermined date (Invaluable, n.d.) |
 | c. 1887 | Walton Town Regatta is inaugurated for watermen and others outside amateur status; River House's lawn begins to be lent to the regatta committees (Stonebanks, 1980) |
 | 1890 | The National Amateur Rowing Association is founded for men excluded from the ARA by their manual occupations (The London Archives, n.d.) |
 | 1894 | Sullivan's lawn at River House is placed at the organisers' disposal, and the Rifle Brigade band plays his music (Stonebanks, 1980) |

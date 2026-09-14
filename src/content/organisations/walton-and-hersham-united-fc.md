@@ -15,13 +15,13 @@ status: "active"
 sources:
   - label: "Walton & Hersham United FC, About Us"
     url: "https://wahufc.com/about/"
-    accessed: "2026-09-06"
-lastVerified: "2026-09-06"
+    accessed: "2026-09-14"
+lastVerified: "2026-09-14"
 hasPage: true
 relatedOrganisations: ["walton-and-hersham-fc", "walton-and-hersham-youth-fc"]
 ---
 
-Walton & Hersham United FC is the largest children's sports club in the area by some distance: more than 40 teams and over 1,000 playing members, based at the Elmbridge Xcel Sports Hub.
+Walton & Hersham United FC reports more than 40 teams and over 1,000 playing members, from under-6 to under-18, and is based at the Elmbridge Xcel Sports Hub.
 
 ## About
 

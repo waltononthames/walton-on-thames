@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["georgian", "victorian", "wartime", "modern"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-16
+reviewedDate: 2026-09-14
 sources:
   - author: "Wikipedia"
     year: "n.d."
@@ -24,6 +24,13 @@ sources:
     title: "A View of Walton Bridge"
     url: "https://en.wikipedia.org/wiki/A_View_of_Walton_Bridge"
     accessed: "16 July 2026"
+  - author: "Surrey County Council"
+    year: "2010"
+    title: "Surrey County Council Proposal SP10/0311 and EL10/0824"
+    date: "June"
+    work: true
+    url: "https://mycouncil.surreycc.gov.uk/Data/Planning%20and%20Regulatory%20Committee/20100618/Agenda/Delegated%20Walton%20Bridge%20EL10%200824%20SP10%200311.pdf"
+    accessed: "14 September 2026"
 related: ["cowey-stakes"]
 ---
 
@@ -49,7 +56,7 @@ The damaged Victorian bridge was eventually replaced by a fourth, deliberately t
 
 ## The current bridge
 
-The sixth and current Walton Bridge opened on 22 July 2013, at a cost of some £32.4 million. It is a single-span, parabolic tied-arch bridge, and it was reported at the time as the first bridge of its kind heading up the River Thames without piers standing in the water itself, a genuine piece of modern engineering rather than a like-for-like replacement. It carries the A244 across to Shepperton and has quickly become one of the most recognisable pieces of modern architecture in Walton, visible for a considerable distance along the towpath in both directions.
+The sixth and current Walton Bridge opened on 22 July 2013, at a cost of some £32.4 million. It is a single-span, parabolic tied-arch bridge. The scheme granted planning permission in 2008 comprised a new arch bridge with a suspended road deck and a new approach viaduct across the floodplain supported on concrete piers (Surrey County Council, 2010). It carries the A244 across to Shepperton and has quickly become one of the most recognisable pieces of modern architecture in Walton, visible for a considerable distance along the towpath in both directions.
 
 ## Walking to the bridge
 

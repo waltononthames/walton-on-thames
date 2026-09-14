@@ -7,7 +7,7 @@ cluster: "hersham"
 era: ["victorian"]
 entityType: "event"
 publishDate: 2026-07-11
-reviewedDate: 2026-07-11
+reviewedDate: 2026-09-06
 sources:
   - author: "PBS Empires"
     year: "n.d."

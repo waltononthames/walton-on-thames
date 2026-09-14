@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["edwardian", "wartime", "interwar", "postwar"]
 entityType: "institution"
 publishDate: 2026-07-02
-reviewedDate: 2026-09-03
+reviewedDate: 2026-09-14
 sources:
   - author: "BFI Screenonline"
     year: "n.d."
@@ -54,7 +54,7 @@ Success brought a serious setback in 1907, when a fire destroyed the studio and 
 
 ## The Great War years
 
-By 1914, Hepworth's studio at Walton was one of only three major film studios operating in Britain, a genuinely significant position for a business that had started in a leased house's back garden fifteen years earlier. The studio continued production through the First World War, including work that supported the wartime propaganda effort, and the site attracted talent from further afield: the American actress Florence Turner worked at Walton during the war years, evidence that the studio's reputation extended well beyond Surrey.
+Hepworth's business at Walton, started in a leased house's back garden in 1899, continued production through the First World War, including work that supported the wartime propaganda effort, and the site attracted talent from further afield: the American actress Florence Turner worked at Walton during the war years, evidence that the studio's reputation extended well beyond Surrey.
 
 ## The 1923 bankruptcy and the melted negatives
 

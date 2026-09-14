@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { formatEventDate, formatEventTime, isMultiDay } from '../../utils/eventDates';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -51,14 +52,14 @@ const isAwayFixture = kind === 'fixture' && Astro.props.fixture.data.homeAway ==
 
 const { Content } = kind === 'event' ? await render(Astro.props.event) : { Content: undefined };
 
-const start = new Date(startRaw);
-const end = endRaw ? new Date(endRaw) : null;
-const dateStr = start.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+// A run of performances or an exhibition shows its whole date range and no
+// single start-to-finish time; see src/utils/eventDates.ts for why.
+const multiDay = isMultiDay(startRaw, endRaw);
+const dateStr = formatEventDate(startRaw, endRaw);
 // The tag gets a compact date so the event's own name keeps the characters
 // Google will actually show; the page keeps the long form above.
-const titleDateStr = start.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-const timeStr = start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-const endTimeStr = end ? end.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : null;
+const titleDateStr = formatEventDate(startRaw, endRaw, 'compact');
+const timeStr = formatEventTime(startRaw, endRaw);
 const isFreeEvent = /^free/i.test(price);
 ---
 
@@ -129,7 +130,7 @@ const isFreeEvent = /^free/i.test(price);
       </div>
       <h1>{title}</h1>
       <div class="event-datetime">
-        <time datetime={startRaw}>{dateStr} · {timeStr}{endTimeStr ? ` – ${endTimeStr}` : ''}</time>
+        <time datetime={startRaw}>{dateStr}{timeStr ? ` · ${timeStr}` : ''}</time>
       </div>
       <p class="event-venue">📍 {venue}</p>
     </div>
@@ -151,10 +152,10 @@ const isFreeEvent = /^free/i.test(price);
         <div class="info-card">
           <h2>Event details</h2>
           <dl class="event-details">
-            <dt>Date</dt>
+            <dt>{multiDay ? 'Dates' : 'Date'}</dt>
             <dd><time datetime={startRaw}>{dateStr}</time></dd>
-            <dt>Time</dt>
-            <dd>{timeStr}{endTimeStr ? ` – ${endTimeStr}` : ''}</dd>
+            <dt>{multiDay ? 'Times' : 'Time'}</dt>
+            <dd>{timeStr ?? 'Vary: see the event description'}</dd>
             <dt>Venue</dt>
             <dd>{venue}</dd>
             <dt>Price</dt>

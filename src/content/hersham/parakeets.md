@@ -1,13 +1,13 @@
 ---
-title: "The Hersham Parakeets: Britain's Loudest Roost"
+title: "The Hersham Parakeets: Where They Roost and Where They Came From"
 metaTitle: "The Hersham Parakeets: Where to See Them"
-metaDescription: "One of Britain's largest ring-necked parakeet colonies roosts near Hersham: where they came from, the myths that aren't true, and when to see them."
+metaDescription: "Ring-necked parakeets roost near Hersham: what was counted in the mid-2000s, where they came from, the myths that aren't true, and when to see them."
 slug: "parakeets"
 cluster: "hersham"
 era: ["contemporary"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-08-26
+reviewedDate: 2026-09-14
 sources:
   - author: "Wikipedia"
     year: "n.d."
@@ -27,13 +27,13 @@ sources:
 related: ["hersham-green"]
 ---
 
-On any evening near Hersham, you may notice a bright green streak crossing the sky, usually in numbers, usually loudly. Ring-necked parakeets are not native to Britain, but the colony that roosts near Hersham is one of the largest and longest-established in the country, and it has become one of the village's more surprising talking points.
+On any evening near Hersham, you may notice a bright green streak crossing the sky, usually in numbers, usually loudly. Ring-necked parakeets are not native to Britain, but a colony roosts near Hersham, and it has become one of the village's more surprising talking points.
 
 <!-- IMAGE: ring-necked-parakeets-hersham.jpg, alt: "Ring-necked parakeets in flight near Hersham, Surrey" -->
 
 ## The colony near Esher Rugby Club
 
-The best-documented local roost is near Esher Rugby Club, on the edge of Hersham, where contemporary reporting in the mid-2000s put the colony at around 7,000 birds. Numbers of that scale made it one of the largest single parakeet roosts recorded anywhere in Britain, and the birds' habit of gathering in the same trees every evening, in noisy, fast-moving flocks, makes a roost on that scale hard to miss once you know where to look. No comparable published count has been made since, and parakeet roosts do shift over time, so the present size of the Hersham gathering is not something the record establishes.
+The best-documented local roost is near Esher Rugby Club, on the edge of Hersham, where contemporary reporting in the mid-2000s put the colony at around 7,000 birds (The Guardian, 2006). The birds' habit of gathering in the same trees every evening, in noisy, fast-moving flocks, makes a roost hard to miss once you know where to look. This research has found no comparable published count since then, and parakeet roosts do shift over time, so the present size of the Hersham gathering is not something the record establishes.
 
 ## Where ring-necked parakeets came from
 

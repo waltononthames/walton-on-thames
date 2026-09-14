@@ -9,7 +9,7 @@ entityType: "overview"
 heroImage: "/images/history/bohun-swan-heraldic-badge.webp"
 heroAlt: "White heraldic Bohun swan with red beak and feet, wearing a gold coronet and golden chain"
 publishDate: 2026-08-29
-reviewedDate: 2026-08-31
+reviewedDate: 2026-09-14
 sources:
   - author: "Boase, G. C."
     year: "1896"
@@ -310,7 +310,7 @@ This wider history explains why the swan was such a resonant emblem for later he
 
 Two silver prizes from the regatta survive in photographs, and only one of them is dated.
 
-The dated one is a goblet. An auction record describes a "Walton on Thames Regatta" trophy, hallmarked in London in 1864 and marked by the maker EM/JM, standing 19.5cm high and weighing 10.4oz, with a crest above a branch column and a gentleman standing with an oar (Invaluable, n.d.). The photograph shows what that crest is: an applied cartouche mounted on the bowl, carrying a swan within a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it (Bishop and Miller Auctioneers, n.d.). Because the device is cast and applied rather than added later with a graver, it belongs to the making of the cup, and the hallmark therefore dates the swan as well as the silver.
+The dated one is a goblet. An auction record describes a "Walton on Thames Regatta" trophy, hallmarked in London in 1864 and marked by the maker EM/JM, standing 19.5cm high and weighing 10.4oz, with a crest above a branch column and a gentleman standing with an oar (Invaluable, n.d.). The photograph shows what that crest is: an applied cartouche mounted on the bowl, carrying a swan within a roundel lettered WALTON ON THAMES REGATTA, with a pair of oars crossed behind it (Bishop and Miller Auctioneers, n.d.). The hallmark dates the assay of the goblet. It does not, on its own, show when the cartouche was made or fixed to the bowl, and this article cites no condition report or specialist examination of the joins, so the hallmark does not date the swan.
 
 <figure>
   <img src="/images/history/walton-on-thames-regatta-goblet-1864.webp" alt="Victorian silver goblet on a figural stem modelled as two figures, the bowl mounted with an applied cartouche enclosing a swan in a roundel lettered Walton on Thames Regatta with crossed oars behind" loading="lazy" />
@@ -337,7 +337,7 @@ The device is simple and eloquent. The oars identify the competition. The swan l
 
 The period is strikingly early in the development of mass leisure on the Thames. The railway had reached Walton in 1838, putting the town within easy reach of London, but the great boom in river recreation was still years away (Network Rail, 2024). The period now remembered as the golden age of the river, when boat outings, steam-launch trips, houseboat holidays, fairs, picnics and carnivals drew enormous crowds, rose most sharply between 1879 and 1887. By 1889 some 12,000 pleasure boats, 300 steamers and around 150 houseboats were registered on the water (Wenham, 2018). Walton's regatta was established a generation before that.
 
-The dated goblet settles a question the article would otherwise have to leave open. Its hallmark places the swan, the roundel and the oars in 1864, more than eighty years before the council's grant of arms, so whatever the heralds were doing in 1946 they were not inventing the association. The design turns the medieval bird of dynastic identity into an immediately understandable riverside image: a swan, a pair of oars and Walton's name.
+The goblet cannot yet settle whether the swan was a regatta device before the council's grant of arms in 1946. Its hallmark dates the silver to 1864, but not the applied cartouche that carries the swan, so that question stays open until the cartouche itself can be dated. The design turns the medieval bird of dynastic identity into an immediately understandable riverside image: a swan, a pair of oars and Walton's name.
 
 ## Why the swan belongs so naturally to the Thames
 
@@ -427,7 +427,7 @@ The surviving evidence offers several different levels of certainty:
 | Date | Evidence | What it establishes | What it does not establish |
 |---|---|---|---|
 | 1301 | Humphrey de Bohun's counter-seal | A de Bohun lord of Walton used the swan badge | That Walton itself had adopted a swan emblem |
-| 1864 | The Walton-on-Thames Regatta goblet, hallmarked and auction-catalogued, its swan cast into an applied cartouche | The swan, its lettered roundel and the crossed oars were in use as a regatta device by 1864 | That it was Walton's first use, or that the regatta ever formally adopted the device |
+| 1864 | The Walton-on-Thames Regatta goblet, hallmarked and auction-catalogued, its swan on an applied cartouche | A silver goblet assayed in London in 1864 now carries the swan device | When the cartouche was made or attached, and so whether the device was in use by 1864; that it was Walton's first use, or that the regatta ever formally adopted the device |
 | Undated | The Walton-on-Thames Regatta jug, carrying the same device engraved, with LOCAL GIGS and the winning crew | The device recurs across prizes of different manufacture, and was used on a trophy actually competed for and awarded | When the jug was made, or which year's regatta it belongs to |
 | 1946 | Grant to Walton and Weybridge Urban District Council | The swan received a formal civic role, explicitly representing the Thames and de Bohuns | That the arms belonged to Walton alone |
 | Postwar period, exact date unknown | HWM badges documented by Simon Taylor | HWM began with a heathcock emblem and later used a white swan | When or why the change was made, or that the council arms inspired it |
@@ -458,7 +458,7 @@ The swan's claim to represent Walton rests not on an invented continuity but on 
 | 1394 | Mary de Bohun dies in childbirth, five years before her husband takes the throne (Given-Wilson, 2016; Tout, 1891) |
 | c. 1400 | The Dunstable Swan Jewel is made (British Museum, n.d.) |
 | 1862 | Walton Amateur Regatta is established (Weybridge Rowing Club, n.d.) |
-| 1864 | A Walton-on-Thames Regatta goblet is hallmarked in London, its applied cartouche carrying a swan in a lettered roundel with crossed oars behind (Invaluable, n.d.; Bishop and Miller Auctioneers, n.d.) |
+| 1864 | A silver goblet is hallmarked in London; it now carries a swan in a lettered roundel with crossed oars behind, on an applied cartouche of undetermined date (Invaluable, n.d.; Bishop and Miller Auctioneers, n.d.) |
 | Undated | A second regatta prize, a silver jug, carries the same device engraved, recording the Local Gigs win of E. R. Kennedy, F. A. Stringer and A. Payne, cox (Walton-on-Thames.org, n.d.) |
 | 1942 | Walton Athletic Club is founded; its current badge contains a swan (Walton Athletic Club, n.d.) |
 | 1945 | Walton & Hersham FC is formed; the club becomes known as the Swans (Walton & Hersham FC, n.d.) |

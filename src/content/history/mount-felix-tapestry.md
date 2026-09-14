@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["wartime", "contemporary"]
 entityType: "event"
 publishDate: 2026-07-11
-reviewedDate: 2026-07-12
+reviewedDate: 2026-09-03
 sources:
   - author: "Elmbridge Museum"
     year: "n.d."

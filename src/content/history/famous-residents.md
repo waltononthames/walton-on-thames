@@ -14,6 +14,20 @@ sources:
     title: "Walton-on-Thames"
     url: "https://en.wikipedia.org/wiki/Walton-on-Thames"
     accessed: "2 July 2026"
+  - author: "Wulfsohn, J."
+    year: "2026"
+    title: "BBC taps ex-Google exec as new director general following Trump documentary controversy"
+    container: "Fox News"
+    date: "25 March"
+    url: "https://www.foxnews.com/media/bbc-taps-ex-google-exec-director-general-following-trump-documentary-controversy"
+    accessed: "14 September 2026"
+  - author: "Yossman, K. J."
+    year: "2026"
+    title: "BBC Appoints Former Google Exec Matt Brittin as Director General"
+    container: "Variety"
+    date: "25 March"
+    url: "https://au.variety.com/?p=34625"
+    accessed: "14 September 2026"
 related: ["film-studios", "walton-bridge"]
 ---
 
@@ -47,7 +61,7 @@ Ian Rank-Broadley, born in 1952, is a sculptor whose most widely seen work is ar
 
 ## Matthew Brittin
 
-Matthew Brittin, born in 1968, has held senior leadership roles at Google, including as head of Google's operations across Europe, the Middle East and Africa, representing Walton's more recent, corporate connection to the wider world.
+Matthew Brittin, born in 1968, spent eighteen years at Google, latterly as its president for Europe, the Middle East and Africa, before stepping down in 2024. In March 2026 he was appointed Director-General of the BBC (Wulfsohn, 2026; Yossman, 2026).
 
 ## Samuel Croxall
 

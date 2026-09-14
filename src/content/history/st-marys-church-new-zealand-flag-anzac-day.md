@@ -9,7 +9,7 @@ entityType: "event"
 heroImage: "/images/history/st-marys-church-walton-on-thames-new-zealand-flag.webp"
 heroAlt: "The New Zealand flag flying above St Mary's Church, Walton-on-Thames, framed by spring blossom"
 publishDate: 2026-07-28
-reviewedDate: 2026-07-28
+reviewedDate: 2026-09-03
 sources:
   - author: "Manatū Taonga, Ministry for Culture and Heritage"
     year: "n.d."
