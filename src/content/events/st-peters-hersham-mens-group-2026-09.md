@@ -1,7 +1,7 @@
 ---
 title: "St Peter's Men's Group (SPAM)"
 slug: "st-peters-hersham-mens-group-2026-09"
-start: "2026-09-14T20:00:00"
+start: "2026-10-12T20:00:00"
 venue: "The Royal George, 130 Hersham Road, Hersham"
 neighbourhood: "hersham"
 category: "community"

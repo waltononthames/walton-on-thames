@@ -1,8 +1,8 @@
 ---
 title: "Crochet Cardigan Course at Riverhouse Barn"
 slug: "crochet-cardigan-course-riverhouse-barn-2026-09"
-start: "2026-09-14T12:30:00"
-end: "2026-09-14T14:30:00"
+start: "2026-09-21T12:30:00"
+end: "2026-09-21T14:30:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"
