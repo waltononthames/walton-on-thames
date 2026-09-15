@@ -1160,3 +1160,30 @@ Darren supplied four photographs taken outside the pub that morning, staged as H
 **Camera originals are now git-ignored, and the earlier note in this entry overstated the problem.** `public/images/history/Directory/` is 471MB of staged HEIC plus one 65MB MOV, and Astro does copy all of it into `dist/`. It was never reaching production: not one of those files is tracked, and Cloudflare Pages builds from the git clone, so the bloat has only ever been local. The live risk was a future `git add -A` sweeping them in, which is a real hazard while another session is committing against a shared index. `.gitignore` now carries `*.HEIC` / `*.heic` / `*.MOV` / `*.mov` under a comment explaining that Cloudflare builds from the clone and that `git add -f` is the deliberate override. Nothing in `src/` references either extension: pages use the webp derivatives under `public/images/directory/`. The staging tree is now invisible to `git status`, which also makes the untracked list readable again.
 
 Moving the staging tree out of `public/` altogether is still the tidier end state, since it would stop the local `dist/` carrying half a gigabyte it never serves. Not urgent now that nothing can be committed by accident.
+
+## 2026-09-15 (later): /history/lost-breweries-of-walton-on-thames/
+
+Status: built from Darren's draft (`lost-breweries-of-walton-on-thames.md`), not yet committed. Historical content, so the Research and Editorial Standards govern. Added to the Victorian era list on `/history/`; it appears in "Explore by topic" automatically. `metaTitle` 55 characters, `metaDescription` 147.
+
+**Checked on 15 September 2026.**
+- Brewery History Society wiki, "Brandon's Brewery Ltd" (last modified 17 July 2026): "Registered July 1896 to acquire A.J.Brandon Ltd. and Jason Gurney's Star Brewery, Walton-on-Thames", and "Acquired by Mann, Crossman & Paulin Ltd in 1920". That corroborates Gurney's name and the 1920 takeover, and the July 1896 registration now appears in the text beside the draft's note that accounts differ.
+- Engine River Brew Co's own site calls itself a "nano-brewery" on the banks of the Engine River and the fields of the Old Dairy farm in Weybridge, and is trading.
+
+**Changed from the draft.**
+- Engine River was "a microbrewery ... on the border of Walton and Weybridge". Its site says a nano-brewery in Weybridge, so the text now says that. The sentence "It is great to see a small microbrewery operating locally..." was removed: Standards §9.7 requires opinion to be labelled and kept apart from historical conclusions.
+- "Both breweries appear to have stopped production" now reads "had both stopped brewing". Tarplee (p. 44), as the draft itself cites him, supports that directly, so the hedge was unnecessary (Protocol Rule 3).
+- The draft's map placeholder and NLS credit line were removed at first because no image had been supplied. The map was added later the same session (below).
+- The body "References" list moved into the `sources` frontmatter, which the layout renders as the Sources block. Martin's editor, edition and paper number are carried in the title field, because the layout's `editor` field renders as "in X (ed.)" for a container.
+
+**Not checked this session.** Martin (1999), Tarplee (1998) and Hughes (2003) are print works supplied by Darren and were not examined here. Every date, name and locator from them is as drafted.
+
+**Map added (Standards §10.1 image record).** Darren supplied the image on 15 September 2026, staged as a 1846x1260 PNG (3.3MB) at `public/images/history/breweries/`. Published as a 1400x956 webp (133KB) at `public/images/history/ashley-brewery-map-walton-on-thames-1871.webp`, resized only, and placed after the introduction where the draft's placeholder was. It's not the hero image, because map lettering wouldn't survive the hero overlay.
+- **Source:** Ordnance Survey, Six-inch England and Wales, 1842-1952, Surrey Sheet XII, surveyed 1866 to 1868, published 1871, map 61 x 92 cm. Viewed at https://maps.nls.uk/view/266664424 on 15 September 2026; the title and dates match the details Darren supplied. Added to `sources`, cited in the caption as (Ordnance Survey, 1871).
+- **Rights:** the NLS viewer gives the licence as "CC-BY (NLS)" with the credit "Reproduced with the permission of the National Library of Scotland". Its copyright page asks online publications to link to the Map Images site. The caption carries the credit and links to the NLS sheet.
+- **Crop:** Darren's crop shows Ashley Brewery by name beside the High Street, with Church Street, St Mary's and Elm Grove. Bridge Street and the Star Brewery are outside it, so the caption names only Ashley.
+- **Evidence value:** the map shows Ashley Brewery named on a survey of 1866 to 1868. That fits Tarplee's 1850s foundation, but it is a snapshot and says nothing about when brewing started or stopped (Standards §7.2).
+- **The staged PNG is not for commit.** Nothing references it. It stays local as the retained original; commit only the webp.
+
+## Still open
+- **Brandon's date conflict.** The page says the accounts differ but doesn't give Hughes's or Tarplee's dates. Stating them would satisfy Standards §2.5 better than a bare "differ".
+- **Tarplee p. 44 is carrying a lot.** Walton, Ditton and Cobham breweries all cite that one page. Worth confirming against the book.
