@@ -55,6 +55,8 @@ const categories = [
         ))}
       </div>
 
+      <p class="guide-link">Need somewhere to open a laptop? Read our guide to <a href="/food-and-drink/coffee-shops-working-walton-on-thames/">the best coffee shops for working in Walton-on-Thames</a>.</p>
+
       {eatDrink.length > 0 ? (
         <div class="card-grid card-grid-3">
           {eatDrink.map(biz => (
@@ -77,6 +79,11 @@ const categories = [
 </BaseLayout>
 
 <style>
+  .guide-link {
+    margin: -0.5rem 0 1.5rem;
+    font-size: 0.95rem;
+  }
+
   .cat-tabs {
     display: flex;
     gap: 0.75rem;

@@ -1,0 +1,466 @@
+---
+// Guide to working from cafés, written from Darren's draft of September 2026.
+// Every address was checked against the Food Standards Agency register, and
+// every "the venue lists" claim against the venue's own page, on 15 September
+// 2026. Opinions on Wi-Fi quality, space, sockets and atmosphere are the
+// editor's own first-hand assessments and are written as such. Removed from
+// the draft because no official source could be reached or found: Costa's
+// branch Wi-Fi listings (costa.co.uk refused to respond), Esquires' opening
+// time, The Walton Village's Wi-Fi listing, and a reference to a customer
+// review (Tier 3). Opening times are stated only where the venue's own page
+// gives them, with the date they were read.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SITE = 'https://walton-on-thames.org';
+const PAGE = '/food-and-drink/coffee-shops-working-walton-on-thames/';
+const CHECKED = '15 September 2026';
+
+const reviewedDateStr = new Date('2026-09-15T00:00:00').toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const atGlance = [
+  { id: 'cacao-route', name: 'Cacao Route', area: 'Walton High Street', why: 'Our best overall choice: spacious inside, good Wi-Fi and independent' },
+  { id: 'costa-the-heart', name: 'Costa Coffee', area: 'The Heart', why: 'Central, comfortable and dependable' },
+  { id: 'starbucks', name: 'Starbucks', area: 'New Zealand Avenue', why: 'The most room of Walton’s main coffee shops' },
+  { id: 'caffe-nero', name: 'Caffè Nero', area: 'Walton High Street', why: 'Good Wi-Fi and a very central location' },
+  { id: 'esquires', name: 'Esquires Coffee', area: 'Walton High Street', why: 'A comfortable High Street alternative' },
+  { id: 'greggs', name: 'Greggs', area: 'The Heart', why: 'Good value, café-style seating and plenty of sockets' },
+  { id: 'riverhouse-barn', name: 'Riverhouse Barn Community Café', area: 'Manor Road', why: 'A quieter setting with Wi-Fi' },
+  { id: 'the-walton-village', name: 'The Walton Village', area: 'Walton High Street', why: 'Lots of space and excellent Wi-Fi, from midday' },
+  { id: 'bean-on-the-green', name: 'Bean on the Green', area: 'Hersham', why: 'Our preferred independent option in Hersham' },
+  { id: 'costa-hersham', name: 'Costa Coffee', area: 'Hersham', why: 'A dependable Hersham alternative' },
+  { id: 'whiteley-community-cafe', name: 'The Whiteley Community Café', area: 'Whiteley Village', why: 'Free Wi-Fi, plenty of power points and suited to informal meetings' },
+];
+
+const faqs = [
+  {
+    q: 'What is the best coffee shop for working in Walton-on-Thames?',
+    a: 'Our top choice is Cacao Route on Walton High Street. It combines good Wi-Fi, plenty of room inside and a central location, with a broader food and drink offer than most of the chains.',
+  },
+  {
+    q: 'Which coffee shops in Walton-on-Thames have good Wi-Fi?',
+    a: 'In our experience Cacao Route, Caffè Nero and Esquires all have good Wi-Fi, and Starbucks lists Google Wi-Fi at its New Zealand Avenue branch. Riverhouse Barn’s Community Café and The Walton Village also have Wi-Fi, and the Whiteley Community Café advertises free Wi-Fi and plenty of power points.',
+  },
+  {
+    q: 'Is Costa, Starbucks, Caffè Nero or Esquires best for working?',
+    a: 'There is little between them, and we would rank all four broadly equally. Starbucks has the most room, Costa in The Heart is particularly convenient, Caffè Nero has a central High Street location and Esquires is another comfortable High Street choice.',
+  },
+  {
+    q: 'Which coffee shop in Walton-on-Thames has the most space?',
+    a: 'Of the main coffee shops, Starbucks on New Zealand Avenue is the one where we have found the most room. If you do not need a coffee shop as such, The Walton Village has considerably more space once it opens at midday.',
+  },
+  {
+    q: 'Where can I work on a laptop in Hersham?',
+    a: 'Bean on the Green, on The Green, is our preferred independent option. Costa Coffee in The Hersham Centre is the dependable alternative.',
+  },
+  {
+    q: 'Where can I work with access to plug sockets?',
+    a: 'The Whiteley Community Café advertises plenty of power points. Greggs in The Heart is also a good option, with plenty of sockets in its café-style seating area. Cacao Route has some sockets, but not many, so arrive with a charged device if you plan to stay.',
+  },
+  {
+    q: 'Is Greggs good for working in Walton-on-Thames?',
+    a: 'Yes. The Heart branch has a café-style seating area, Wi-Fi and plenty of plug sockets, and it is one of the best-value options if you want food and coffee while you work.',
+  },
+  {
+    q: 'Can I work at The Walton Village?',
+    a: 'Yes, during the day. It opens at midday on weekdays and 10am at weekends, and has plenty of space and excellent Wi-Fi, which makes it useful for informal meetings or working through lunch.',
+  },
+  {
+    q: 'Which cafés have no laptop time limit?',
+    a: 'At the time of our latest review, we are not aware of a published fixed laptop-working time limit at any venue in this guide. Venues can change their policies, and staff guidance always comes first.',
+  },
+];
+
+const sources = [
+  { label: 'Food Standards Agency, food hygiene rating register: addresses for every venue in this guide', url: 'https://ratings.food.gov.uk/' },
+  { label: 'Cacao Route: contact page', url: 'https://cacaoroute.co.uk/contact.html' },
+  { label: 'Cacao Route: menu', url: 'https://cacaoroute.co.uk/menu.html' },
+  { label: 'Cacao Route: about', url: 'https://cacaoroute.co.uk/about.html' },
+  { label: 'Starbucks: Walton on Thames, Sainsbury’s store page', url: 'https://www.starbucks.co.uk/store-locator/12312' },
+  { label: 'Greggs: Walton on Thames, The Heart shop page', url: 'https://www.greggs.com/shops/walton-on-thames/u45-the-heart/6446' },
+  { label: 'Esquires Coffee: Walton-on-Thames store page', url: 'https://esquirescoffee.co.uk/store/esquires-walton-on-thames/' },
+  { label: 'Riverhouse Barn: Community Café', url: 'https://riverhousebarn.co.uk/cafe/' },
+  { label: 'The Walton Village: website', url: 'https://thewaltonvillage.com/' },
+  { label: 'Whiteley Homes Trust: Community Café', url: 'https://www.thewhiteleyhomestrust.org.uk/community-and-activities/community-cafe' },
+  { label: 'Whiteley Homes Trust: Community Café Opens! (28 July 2025)', url: 'https://www.thewhiteleyhomestrust.org.uk/about-us/latest-news/community-cafe-opens' },
+];
+---
+
+<BaseLayout
+  title="Coffee Shops for Working in Walton-on-Thames: Wi-Fi Guide"
+  description="Where to work on a laptop in Walton-on-Thames, Hersham and Whiteley Village: cafés with Wi-Fi, space and sockets, and no known fixed time limits."
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Food & Drink', item: `${SITE}/food-and-drink/` },
+        { '@type': 'ListItem', position: 3, name: 'Coffee shops for working', item: `${SITE}${PAGE}` },
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/food-and-drink/">Food & Drink</a></li>
+          <li aria-current="page">Coffee shops for working</li>
+        </ol>
+      </nav>
+      <h1>Best Coffee Shops for Working in Walton-on-Thames: Wi-Fi and Laptop-Friendly Cafés</h1>
+      <p class="byline">By Darren Bayley · Last reviewed {reviewedDateStr}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose guide">
+        <p>
+          If you need somewhere in Walton-on-Thames to open a laptop, connect to Wi-Fi and get a few hours of
+          work done, there are good options in the town centre, and more in nearby Hersham and Whiteley Village.
+        </p>
+        <p>
+          <strong>Our top pick is Cacao Route.</strong> Costa, Starbucks, Caffè Nero and Esquires are all sound
+          alternatives in Walton, with little between them overall, though Starbucks has the most room. In
+          Hersham, Bean on the Green is our preferred independent option. The Whiteley Community Café stands out
+          if you need power points or somewhere suitable for an informal meeting.
+        </p>
+        <p>
+          Greggs in The Heart is worth considering as a lower-cost alternative, and The Walton Village can be a
+          useful workspace from midday if space matters more than a coffee shop setting.
+        </p>
+
+        <h2>How we chose</h2>
+        <p>
+          This guide combines each venue’s own published information with our experience of working from cafés
+          around Walton-on-Thames and Hersham. We looked at four practical things:
+        </p>
+        <ul>
+          <li>reliable Wi-Fi</li>
+          <li>enough space to work comfortably</li>
+          <li>access to power, where we know about it</li>
+          <li>no fixed laptop-working time restriction that we are aware of</li>
+        </ul>
+        <p>
+          Policies change, and a venue may take a different view when it is busy. Staff guidance always comes
+          first.
+        </p>
+
+        <h2>At a glance</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Place</th><th scope="col">Area</th><th scope="col">Why consider it?</th></tr>
+            </thead>
+            <tbody>
+              {atGlance.map((row) => (
+                <tr>
+                  <td><a href={`#${row.id}`}><strong>{row.name}</strong></a></td>
+                  <td>{row.area}</td>
+                  <td>{row.why}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Options in Walton-on-Thames</h2>
+        {/* IMAGE: cacao-route-walton-on-thames-interior.webp, alt: "Seating inside Cacao Route on Walton High Street" (photo priority 1) */}
+
+        <h3 id="cacao-route">Cacao Route: our top pick</h3>
+        <p class="venue-address">30 High Street, Walton-on-Thames, KT12 1BZ</p>
+        <p>
+          If we were choosing one place in Walton-on-Thames to work for a couple of hours, Cacao Route would be our
+          first choice.
+        </p>
+        <p>
+          From the High Street it looks fairly compact. Inside, it is much larger than the frontage suggests, with
+          several seating areas and enough room to settle in comfortably. The Wi-Fi is good, and laptop users are a
+          familiar sight.
+        </p>
+        <p>
+          Cacao Route has a broader food and drink offer than the big chains: coffee, breakfast dishes and an
+          all-day lunch menu, alongside its own chocolates, cakes and speciality hot chocolate. The Walton shop
+          opened in 2022.
+        </p>
+        <p>
+          One practical drawback for a longer session: <strong>plug sockets are limited in some areas, so arrive
+          with your laptop or tablet fully charged.</strong> For most people, the combination of space, Wi-Fi and
+          location still makes it the strongest all-round choice.
+        </p>
+        <p><strong>Website:</strong> <a href="https://cacaoroute.co.uk/" rel="noopener">cacaoroute.co.uk</a></p>
+
+        <h3 id="costa-the-heart">Costa Coffee, The Heart</h3>
+        <p class="venue-address">Unit 11, The Heart, Walton-on-Thames, KT12 1GH</p>
+        <p>
+          Costa is a straightforward choice if you want to work in the centre of Walton. It has plenty of seating
+          and sits inside The Heart, which makes it useful between appointments or when you simply need somewhere
+          central for an hour or two.
+        </p>
+        <p><strong>Best for:</strong> central convenience.</p>
+
+        {/* IMAGE: starbucks-walton-on-thames-interior.webp, alt: "Seating at Starbucks, New Zealand Avenue, Walton-on-Thames" (photo priority 2) */}
+        <h3 id="starbucks">Starbucks, New Zealand Avenue</h3>
+        <p class="venue-address">Inside Sainsbury’s, 53 New Zealand Avenue, Walton-on-Thames, KT12 1AD</p>
+        <p>
+          Starbucks’ main advantage is space. Of Walton’s main coffee shops, it is the one where we have found the
+          most room, so it is a good choice if you want more space around you or a better chance of a table.
+        </p>
+        <p>
+          Starbucks lists Google Wi-Fi among this branch’s amenities, and gives its opening time as 7am, Monday to
+          Saturday (as listed on {CHECKED}).
+        </p>
+        <p><strong>Best for:</strong> space and longer work sessions.</p>
+        <p><strong>Website:</strong> <a href="https://www.starbucks.co.uk/store-locator/12312" rel="noopener">Starbucks store page</a></p>
+
+        <h3 id="caffe-nero">Caffè Nero, Walton High Street</h3>
+        <p class="venue-address">18 High Street, Walton-on-Thames, KT12 1DA</p>
+        <p>
+          Caffè Nero is another dependable option. It has good Wi-Fi and one of the most useful locations in town,
+          directly on the High Street. If you are combining a work session with shopping, appointments or a meeting
+          elsewhere in the town centre, it is well placed.
+        </p>
+        <p><strong>Best for:</strong> a central High Street location.</p>
+        <p><strong>Website:</strong> <a href="https://www.caffenero.com/uk/stores/walton-on-thames" rel="noopener">Caffè Nero store finder</a></p>
+
+        <h3 id="esquires">Esquires Coffee, Walton High Street</h3>
+        <p class="venue-address">67 High Street, Walton-on-Thames, KT12 1DJ</p>
+        <p>
+          Esquires is another credible option for working in central Walton-on-Thames, with comfortable seating and
+          good Wi-Fi.
+        </p>
+        <p><strong>Best for:</strong> a comfortable High Street alternative.</p>
+        <p>
+          <strong>Website:</strong> <a href="https://esquirescoffee.co.uk/store/esquires-walton-on-thames/" rel="noopener">Esquires store page</a>
+          · <a href="/directory/esquires-coffee/">Directory listing</a>
+        </p>
+
+        <h3>Which of Walton’s main coffee shops is best?</h3>
+        <p>
+          For working, we would rank <strong>Costa, Starbucks, Caffè Nero and Esquires broadly equally</strong>.
+          Choose Starbucks if space is the priority, Costa for convenience, Caffè Nero for its central High Street
+          position, or Esquires for another comfortable High Street option. The differences are useful, but not
+          large enough to justify a league table.
+        </p>
+
+        {/* IMAGE: greggs-the-heart-walton-on-thames-seating.webp, alt: "Café-style seating at Greggs in The Heart, Walton-on-Thames" (photo priority 3) */}
+        <h3 id="greggs">Greggs, The Heart: the value option</h3>
+        <p class="venue-address">Unit 45, The Heart, Walton-on-Thames, KT12 1GH</p>
+        <p>
+          Greggs is not one of Walton’s main coffee shops, but this branch is more useful for working than a
+          typical takeaway-focused bakery. It has a café-style seating section, comfortable seats, Wi-Fi and plenty
+          of plug sockets.
+        </p>
+        <p>
+          Its strongest advantage is value: if you want coffee, breakfast or lunch while you work, it is one of the
+          least expensive options in the town centre. It also opens early, at 6am Monday to Saturday according to
+          Greggs’ shop page (checked {CHECKED}).
+        </p>
+        <p>
+          For a couple of hours with a laptop, where a socket, a seat and a reliable connection matter more than
+          the surroundings, Greggs is a practical choice.
+        </p>
+        <p><strong>Best for:</strong> value for money and access to power.</p>
+        <p><strong>Website:</strong> <a href="https://www.greggs.com/shops/walton-on-thames/u45-the-heart/6446" rel="noopener">Greggs shop page</a></p>
+
+        <h3 id="riverhouse-barn">Riverhouse Barn Community Café</h3>
+        <p class="venue-address">Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames, KT12 2PF</p>
+        <p>
+          The Community Café at <a href="/things-to-do/riverhouse-barn/">Riverhouse Barn</a> is a quieter
+          alternative to the town-centre coffee shops. It sits inside Walton’s riverside arts centre, and suits
+          reading, writing or other work where a calmer setting helps. The café itself is a not-for-profit run by
+          volunteers and staff, cooking with surplus food.
+        </p>
+        <p>
+          Riverhouse is a community arts venue rather than a co-working space, so performances, classes and events
+          can change the atmosphere considerably, and some days suit laptop working better than others. When it is
+          quiet, it is a pleasant place to spend an hour or two.
+        </p>
+        <p><strong>Best for:</strong> quieter work, reading and writing.</p>
+        <p><strong>Website:</strong> <a href="https://riverhousebarn.co.uk/cafe/" rel="noopener">Riverhouse Barn Community Café</a></p>
+
+        {/* IMAGE: the-walton-village-daytime-tables.webp, alt: "Tables at The Walton Village on Walton High Street during the day" (photo priority 5) */}
+        <h3 id="the-walton-village">The Walton Village: a useful daytime alternative</h3>
+        <p class="venue-address">29-31 High Street, Walton-on-Thames, KT12 1DG</p>
+        <p>
+          The Walton Village is a pub rather than a coffee shop, but it deserves a place here because it can work
+          very well as a daytime workspace. The main advantage is space: there are plenty of tables, the Wi-Fi is
+          excellent and it is easier to spread out than in most cafés.
+        </p>
+        <p>
+          Note that it does not open until midday on weekdays, or 10am at weekends (times from the pub’s website,
+          checked {CHECKED}), so it suits working through lunch or an afternoon rather than an early start. It is
+          particularly useful for an informal meeting. The atmosphere changes later in the day, so this
+          recommendation is specifically about daytime use.
+        </p>
+        <p><strong>Best for:</strong> space, informal meetings and working through lunch.</p>
+        <p>
+          <strong>Website:</strong> <a href="https://thewaltonvillage.com/" rel="noopener">thewaltonvillage.com</a>
+          · <a href="/directory/the-walton-village/">Directory listing</a>
+        </p>
+
+        <h2>Options in Hersham</h2>
+        {/* IMAGE: bean-on-the-green-hersham.webp, alt: "Bean on the Green café on Hersham Green" (photo priority 6) */}
+
+        <h3 id="bean-on-the-green">Bean on the Green</h3>
+        <p class="venue-address">1 The Green, Hersham, KT12 4HW</p>
+        <p>
+          Bean on the Green is our preferred independent option in <a href="/hersham/">Hersham</a>. Its spot on
+          <a href="/hersham/hersham-green/">Hersham Green</a> gives it a local, neighbourhood feel, and it works
+          particularly well for a morning with a laptop if you live nearby and do not want to head into Walton.
+        </p>
+        <p>
+          The Wi-Fi is good, the atmosphere is friendly and the breakfast and lunch menu makes staying through the
+          morning practical.
+        </p>
+        <p>
+          It is not a large café, and that matters. If it gets busy at lunchtime, holding a table for several hours
+          with a laptop is unlikely to be the best use of the space. Outside the busiest periods, it is one of the
+          more pleasant places locally to work.
+        </p>
+        <p><strong>Best for:</strong> independent coffee and a neighbourhood setting.</p>
+        <p><a href="/directory/bean-on-the-green-bloomings-coffee/">Directory listing</a></p>
+
+        <h3 id="costa-hersham">Costa Coffee, Hersham</h3>
+        <p class="venue-address">Unit 10, The Hersham Centre, The Green, Hersham, KT12 4HL</p>
+        <p>
+          Also on The Green, Costa gives Hersham a second reliable option. Bean on the Green has more individual
+          character; Costa offers the predictability of a larger chain, and is a sensible fallback if you simply
+          want to find a table and start working.
+        </p>
+        <p><strong>Best for:</strong> a dependable Hersham option.</p>
+
+        <h2>Options in Whiteley Village</h2>
+        {/* IMAGE: whiteley-community-cafe-lounge.webp, alt: "The Lounge at the Whiteley Community Café" (photo priority 4) */}
+
+        <h3 id="whiteley-community-cafe">The Whiteley Community Café</h3>
+        <p class="venue-address">Whiteley Village Club, Octagon Road, Whiteley Village, Hersham, KT12 4DN</p>
+        <p>
+          The Whiteley Community Café is one of the strongest work-focused options in this guide. The Whiteley Homes
+          Trust describes it as <strong>ideal for informal business meetings</strong>, with <strong>free Wi-Fi and
+          plenty of power points</strong>.
+        </p>
+        <p>
+          It is open to everyone, not only residents. You can choose between the Lobby and the Lounge, or sit on the
+          terrace overlooking the Whiteley woodland when it is warm. Alongside coffee, teas, fresh sandwiches, cakes
+          and pastries, the café also serves beer, wine and cocktails.
+        </p>
+        <p>Opening hours, as published by the Whiteley Homes Trust and correct as of {CHECKED}:</p>
+        <ul>
+          <li><strong>Monday to Thursday:</strong> 10am to 4pm</li>
+          <li><strong>Friday and Saturday:</strong> 10am to 8pm</li>
+          <li><strong>Sunday:</strong> 10am to 4pm</li>
+        </ul>
+        <p>
+          The café opened in its current form on 21 July 2025, after a complete redevelopment. Whiteley Village is a
+          private residential community, so read our <a href="/hersham/whiteley-village/">guide to Whiteley
+          Village</a> before your first visit.
+        </p>
+        <p>
+          If you need dependable Wi-Fi, access to power and enough space for an informal meeting or several hours’
+          work, it is particularly well equipped.
+        </p>
+        <p><strong>Best for:</strong> power points, informal meetings and quieter working.</p>
+        <p>
+          <strong>Website:</strong> <a href="https://www.thewhiteleyhomestrust.org.uk/community-and-activities/community-cafe" rel="noopener">Whiteley Homes Trust café page</a>
+          · <a href="/directory/whiteley-village-community-cafe/">Directory listing</a>
+        </p>
+
+        <h2>So where would we actually work?</h2>
+        <p>For most people, <strong>Cacao Route is our first choice in Walton-on-Thames</strong>.</p>
+        <p>
+          If you prefer one of the main coffee shops, there is no compelling reason to rank Costa, Starbucks, Caffè
+          Nero or Esquires above one another. Starbucks has the most room. Costa is very convenient. Caffè Nero is
+          right on the High Street. Esquires is another comfortable central option.
+        </p>
+        <ul>
+          <li>For <strong>Hersham</strong>, start with Bean on the Green, with Costa as the dependable alternative.</li>
+          <li>For <strong>power points and informal meetings</strong>, the Whiteley Community Café is arguably the best-equipped venue in the guide.</li>
+          <li>For <strong>quieter work</strong>, Riverhouse Barn is worth considering.</li>
+          <li>For <strong>value and sockets</strong>, Greggs is hard to ignore.</li>
+          <li>If you need <strong>space rather than a conventional coffee shop</strong>, The Walton Village is one of central Walton’s most useful options from midday.</li>
+        </ul>
+
+        <h2>Working from a café without becoming unpopular</h2>
+        <p>A café table is not a free desk.</p>
+        <p>
+          If you are staying for a couple of hours, buy another drink or something to eat. Avoid taking a
+          four-person table when a smaller one is free. Use headphones for calls, and if a small independent café
+          suddenly fills up at lunchtime, consider whether it is time to move on. Laptop-friendly cafés are more
+          likely to stay laptop-friendly when the people working from them are considerate customers.
+        </p>
+
+        <h2>Frequently asked questions</h2>
+        {faqs.map((f) => (
+          <div class="faq">
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+
+        <h2>Have we missed somewhere?</h2>
+        <p>
+          This guide is meant to stay current. If you know a café or other daytime workspace in Walton-on-Thames,
+          Hersham or Whiteley Village with reliable Wi-Fi and no fixed laptop-working restriction,
+          <a href="/contact/">let us know</a>.
+        </p>
+        <p>
+          For more places to eat and drink locally, explore our <a href="/food-and-drink/">Food & Drink guide</a>
+          and the <a href="/food-and-drink/cafes/">cafés in the directory</a>.
+        </p>
+
+        <div class="sources-block">
+          <h2>Sources</h2>
+          <p>
+            Venue details below were checked on {CHECKED}. Assessments of Wi-Fi, space, sockets and atmosphere are
+            our own, from working at these venues.
+          </p>
+          <ul>
+            {sources.map((s) => (
+              <li><a href={s.url} rel="noopener">{s.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .guide {
+    max-width: 70ch;
+  }
+
+  .venue-address {
+    margin-top: -0.25rem;
+    font-weight: 600;
+    color: var(--color-slate);
+  }
+
+  .faq {
+    margin-bottom: 1.5rem;
+  }
+
+  .sources-block {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.12);
+    font-size: 0.9rem;
+  }
+</style>
