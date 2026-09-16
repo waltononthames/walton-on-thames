@@ -1161,6 +1161,68 @@ Darren supplied four photographs taken outside the pub that morning, staged as H
 
 Moving the staging tree out of `public/` altogether is still the tidier end state, since it would stop the local `dist/` carrying half a gigabyte it never serves. Not urgent now that nothing can be committed by accident.
 
+## 2026-09-14: Whiteley Village gets photography, and the café the page said wasn't there
+
+Darren supplied three photographs taken at Whiteley Village on 13 September 2026, staged as HEIC at `public/images/history/Whiteley Village/`. Decoded through WIC as before, published as 1200x900 webp to `public/images/history/` (137-246KB). The almshouse is the hero and Open Graph image and a captioned figure under "The plan"; the two café photographs sit under "Visiting". Its tile on the homepage "Beyond the Town" section is a tighter 800x600 crop (79KB) at `public/images/neighbourhoods/whiteley-village-arms-house.webp`, framed so the roof and twisted porch columns clear the card's dark gradient. That closes the missing `whiteley-village.jpg` gap flagged in the earlier audits.
+
+**Image record (Standards §10.1).** Original photographs by Darren Bayley / Walton-on-Thames.org, 13 September 2026, owner's own copyright, credited in every caption. Not retouched. The article's almshouse figure is cropped to trim flat grey sky, the tile more tightly; the café pair are full-frame. EXIF, including iPhone GPS, is stripped by the encode.
+
+**The photographs contradicted the page.** It said "There are no visitor facilities on site". The Whiteley Homes Trust's own café page and its news item of 28 July 2025 say the Whiteley Community Café, in the Clubhouse on Octagon Road, opened on 21 July 2025 and is open to residents, the local community and anyone visiting the area. Sentence replaced, both Trust pages added to `sources`, `reviewedDate` moved to 14 September 2026. Hours are linked, not stated (Content Verification Protocol, Rule 4).
+
+## Still open
+- **"Almshouse" is Darren's own identification as photographer**, not a documentary source. The caption first read "almshouse range" from the file name `arms-house`; on 15 September 2026 he asked for "almshouse". Which building it is and who designed it are unrecorded, and a Grade II list entry would settle both.
+- **Café hours disagree between sources.** The Trust's undated café page gives Mon-Thu 10am-4pm, Fri-Sat 10am-8pm, Sun 10am-4pm; search-result summaries repeat an older Mon-Fri 10am-4pm. The page links to the Trust rather than stating either, so nothing to fix, but don't copy hours from anywhere but the Trust.
+- **`<!-- IMAGE: whiteley-village-central-green.jpg -->` is still unfilled.** None of the three photographs shows the central green.
+
+## 2026-09-15: the Whiteley Village Community Cafe listing gets its photographs
+
+Darren asked for the two café photographs from 13 September on `/directory/whiteley-village-community-cafe/`, with one featured as the directory image. Encoded from the HEIC originals rather than the article's 1200px copies, into `public/images/directory/whiteley-village-community-cafe/`. The entrance, 1400x1050 at 294KB, is `images[0]`, so it is the `/directory/` card, the listing hero and the Open Graph image; the steps, 1200x900 at 237KB, form the gallery. First encodes came out at 460KB and 324KB because the brickwork is dense, and dropping resolution, not quality, brought them into the range the other photographed listings sit in. `featured` stays false: that flag is the editorial "Local highlight", not the choice of image.
+
+Also on `/hersham/whiteley-village/`, the almshouse caption now reads "An almshouse" rather than "An almshouse range", at Darren's request.
+
+**Re-verified while the listing was open.**
+- Name, address and postcode match the Food Standards Agency register: FHRSID 1833403, "Whiteley Village Community Cafe", Whiteley Village Club, Octagon Road, KT12 4DN, rated 5 on 11 March 2026. The listing name was left as registered; the door sign and the Trust's page both say "The Whiteley Community Café", which the body now mentions so a visitor recognises it.
+- The recorded website, `whiteleyvillage.org.uk/community-cafe/`, is dead. The domain still resolves, to 83.223.116.101, but refuses connections on 443 and timed out from a second network. Replaced with the Whiteley Homes Trust's café page.
+- 01932 842360 appears on the Trust's café page as the Trust's general enquiries line, not a café line. Kept, and labelled as such in the body.
+- Hours are linked, not stated. `verified_date` moved to 2026-09-15 and `source` rewritten to record all of the above.
+
+## 2026-09-15 (later): /food-and-drink/coffee-shops-working-walton-on-thames/
+
+Status: built from Darren's draft (`best-coffee-shops-working-walton-on-thames-hersham-whiteley-village.md`), not yet published. Current/practical content, so the Content Verification Protocol governs. New static page at `src/pages/food-and-drink/coffee-shops-working-walton-on-thames.astro`, with BreadcrumbList and FAQPage JSON-LD, a visible sources block, and a link from the Food & Drink hub. Title shortened to "Coffee Shops for Working in Walton-on-Thames: Wi-Fi Guide" (57 characters); the draft's SEO title was 63.
+
+**Checked on 15 September 2026.** Every address against the FSA register (Cacao Route 1778977, Costa The Heart 1778172, Costa Hersham 1778580, Starbucks 1778229, Caffe Nero 1778178, Esquires 1778942, Greggs 1806203, Riverhouse Barn Cafe 1778698, The Walton Village 1778682, Bean on the Green 1779085, Whiteley Village Community Cafe 1833403). Official pages for: Cacao Route (menu, contact, and 2022 Walton opening from its About page), Starbucks (Google Wi-Fi, 7am Monday to Saturday), Greggs (6am Monday to Saturday), Esquires (address only), Riverhouse Barn café, The Walton Village (a pub; opens midday weekdays, 10am weekends), and the Whiteley Homes Trust café page and news item (meetings, free Wi-Fi, power points, Lobby, Lounge, terrace, menu, hours, 21 July 2025 reopening after redevelopment).
+
+**Corrected from the draft.** Costa Hersham was "Molesey Road, The Green"; the register has Unit 10, The Hersham Centre, The Green, KT12 4HL. Whiteley's postcode was KT12 4BF, the Trust's head office at Huntley House; the café is KT12 4DN. Greggs opens at 6am Monday to Saturday, not "most weekdays". The Walton Village was framed as an all-day workspace; it opens at midday on weekdays, which the page now says.
+
+**Removed from the draft, unverifiable this session.** Costa's branch Wi-Fi listings and "free" customer Wi-Fi at both branches: costa.co.uk accepts a TCP connection and never responds, from this machine and from WebFetch. Esquires' 7am weekday opening: its store page gives no hours, only aggregators do. The Walton Village's "free Wi-Fi listed among facilities": its site lists no Wi-Fi. Cacao Route's "customer review published in July 2026": a review is Tier 3 and barred by Rule 2. Bean on the Green's website: `beanonthegreen.co.uk` no longer resolves, so the page links the directory listing instead.
+
+**Kept as Darren's first-hand assessments, written as such.** Wi-Fi quality at Cacao Route, Caffè Nero, Esquires, Greggs, Riverhouse Barn, The Walton Village and Bean on the Green; Cacao Route being larger inside than it looks and short of sockets; Starbucks having the most room; Greggs' café seating and plenty of sockets; atmosphere at Riverhouse, The Walton Village and Bean on the Green; the rankings and the absence of known laptop time limits.
+
+## Still open
+- **Darren to confirm the first-hand list above** before publication, since the page now carries those claims under his byline.
+- **Costa Wi-Fi.** If the branch pages can be read from another network, the Wi-Fi mention for both Costas can go back in. The Costa store URLs from the draft are also left off the page until a page can actually be loaded.
+- **Overlaps the blueprint's planned `/food-and-drink/cafes-and-coffee/` spoke** (site-audit line 54, NEW, unbuilt), whose brief includes "which cafes suit laptops". Decide whether that spoke absorbs this page, links to it, or is dropped.
+- **Existing directory listings disagree with the FSA register.** Costa Hersham (`10 Queens Road`, and its website points at the Walton branch), Esquires (description says "in The Heart"; it is at 67 High Street), and The Walton Village (`29 High Street`; register has 29-31). Fixed in the next entry.
+
+## 2026-09-15 (later still): four directory listings brought into line with the FSA register
+
+Follow-up to the coffee shops guide, which turned up listings that disagreed with the Food Standards Agency food hygiene register. Each was re-queried by FHRSID through `api.ratings.food.gov.uk/Establishments/{id}` (header `x-api-version: 2`) on 15 September 2026, and websites were retested the same day. Slugs are unchanged throughout, so no redirects are needed and the existing inbound links still resolve, including `/hersham/hersham-green-shopping-centre/` to the Costa listing.
+
+**`costa-coffee-hersham`.** Address was "10 Queens Road, The Hersham Centre, Hersham, Walton-on-Thames KT12 4HL"; the register (1778580) gives "Unit 10, The Hersham Centre, The Green, Hersham, KT12 4HL", now used in the frontmatter and the body. The website pointed at `costa.co.uk/stores/walton-on-thames`, which Costa's own site indexes under the title "Walton On Thames", a separate branch from the one it indexes as "Hersham" at `costa.co.uk/stores/hersham`. Corrected to the Hersham page on that evidence. costa.co.uk still accepts a connection and never responds from this machine, so neither page was actually loaded.
+
+**`esquires-coffee`.** The description, in both frontmatter and body, said "in The Heart"; the cafe is at 67 High Street (register 1778942 and its own store page), so it now says "on Walton High Street". The phone was stored as `1932223960`, missing its leading zero, which made the listing's `tel:` link and its LocalBusiness telephone wrong; the store page gives 01932223960, now `01932 223960`. The address already matched the store page character for character and was left alone.
+
+**`the-walton-village`.** Address changed from "29 High Street" to "29-31 High Street", per the register (1778682). The two official sources genuinely differ: the pub's own website gives "29 High St". The register's fuller numbering is used because it describes the whole premises and does not contradict the pub's; the `source` field records both. Name, phone (01932 254431) and website confirmed against thewaltonvillage.com, which loads.
+
+**`bean-on-the-green-bloomings-coffee`.** Name changed from "Bean on the Green / Bloomings Coffee" to "Bean on the Green", which is what the register (1779085) carries at 1 The Green, KT12 4HW. "Bloomings Coffee" (also spelt "Blooming Coffee") turns up only on third-party directories and social pages for the same address and the same phone number, which reads as a predecessor business rather than a second current name; no current official source supports it. The listing links the Facebook page, not the dead `beanonthegreen.co.uk`, so there was no website to remove.
+
+**`verified_date` moved to 2026-09-15 on all four**, and each `source` now names exactly which fields were re-verified against what. Fields not re-verified are named as coming from the July 2026 owner-supplied spreadsheet.
+
+## Still open
+- **Phone numbers at Costa Hersham (01932 269553) and Bean on the Green (01932 225260)** are still spreadsheet-sourced. Bean's number is the one third-party sites attach to Bloomings Coffee, so it may predate the current business.
+- **Costa's own address wording may differ from the register's.** A search summary quoted "Molesey Road, The Green, Hersham" for the Hersham store, which is also what Darren's coffee guide draft had. That wording comes from a summary, not a page, so it was not used; worth reading Costa's store page from a network where costa.co.uk responds.
+- **Descriptions on all four** remain as supplied in July 2026 apart from the Esquires location fix. The Walton Village's "Sunday-style pub options" in particular has no source.
+
 ## 2026-09-15 (later): /history/lost-breweries-of-walton-on-thames/
 
 Status: built from Darren's draft (`lost-breweries-of-walton-on-thames.md`), not yet committed. Historical content, so the Research and Editorial Standards govern. Added to the Victorian era list on `/history/`; it appears in "Explore by topic" automatically. `metaTitle` 55 characters, `metaDescription` 147.
