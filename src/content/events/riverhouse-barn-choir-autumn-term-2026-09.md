@@ -1,8 +1,8 @@
 ---
 title: "Riverhouse Barn Choir: Autumn Term 2026"
 slug: "riverhouse-barn-choir-autumn-term-2026-09"
-start: "2026-09-15T10:00:00"
-end: "2026-09-15T11:30:00"
+start: "2026-09-22T10:00:00"
+end: "2026-09-22T11:00:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "music"

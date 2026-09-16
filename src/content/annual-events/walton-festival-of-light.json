@@ -3,10 +3,12 @@
   "slug": "walton-festival-of-light",
   "summary": "The Festival of Light welcomes the Christmas season with town-centre entertainment. Previous programmes have included a Christmas market, local performances, fairground attractions and festive lights.",
   "usualTiming": "Late November",
-  "dateStatus": "to_be_announced",
-  "dateSourceUrl": "https://lovewalton.co.uk/tag/festival-of-light/",
+  "nextStartDate": "2026-11-28",
+  "nextEndDate": "2026-11-28",
+  "dateStatus": "confirmed",
+  "dateSourceUrl": "https://www.facebook.com/events/1436351235056532/",
   "eventLocation": "Walton town centre",
   "eventUrl": "https://lovewalton.co.uk/tag/festival-of-light/",
   "area": "Walton-on-Thames",
-  "lastVerified": "2026-08-22"
+  "lastVerified": "2026-09-16"
 }
