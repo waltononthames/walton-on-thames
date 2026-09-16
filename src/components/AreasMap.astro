@@ -1,0 +1,354 @@
+---
+// The map on /living/areas/. Everything drawn here comes from
+// src/data/walton-areas-map.json, which scripts/build-areas-map.mjs generates
+// from OpenStreetMap, planning.data.gov.uk and the Environment Agency. Edit the
+// script, not the numbers.
+//
+// Two layers: a static base image (streets, water, rail), cached like any
+// other image, and an inline SVG on top carrying the areas, labels and the
+// official overlays. Both share one viewBox, so they line up exactly.
+//
+// The overlay toggles are plain checkboxes read by CSS :has(), so they work
+// without JavaScript. The SVG itself holds no links: the legend below it does,
+// which keeps every focusable element visible and announced.
+import mapData from '../data/walton-areas-map.json';
+
+const { width, height, bandWidth, areas, overlays, labels } = mapData;
+const description = `Map of Walton-on-Thames showing six practical local areas, each drawn along the streets its description names: ${areas
+  .map((a) => `${a.number}, ${a.name}`)
+  .join('; ')}. Walton Bridge and the River Thames are to the north-west, Walton-on-Thames station to the south, and Hersham, a separate village, lies beyond the south-east edge.`;
+---
+
+<div class="areas-map">
+  <fieldset class="map-layers">
+    <legend>Official layers</legend>
+    <label>
+      <input type="checkbox" id="layer-conservation" />
+      <span class="layer-key layer-key-conservation" aria-hidden="true"></span>
+      Conservation areas
+    </label>
+    <label>
+      <input type="checkbox" id="layer-flood" />
+      <span class="layer-key layer-key-flood" aria-hidden="true"></span>
+      Environment Agency flood-warning area
+    </label>
+  </fieldset>
+
+  <figure class="map-figure">
+    <div class="map-canvas" style={`aspect-ratio: ${width} / ${height}`}>
+      <img
+        class="map-base"
+        src="/images/maps/walton-areas-base.svg"
+        alt=""
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+      />
+      <svg
+        class="map-overlay"
+        viewBox={`0 0 ${width} ${height}`}
+        role="img"
+        aria-labelledby="areas-map-title areas-map-desc"
+      >
+        <title id="areas-map-title">Practical local areas of Walton-on-Thames</title>
+        <desc id="areas-map-desc">{description}</desc>
+
+        <g class="layer-conservation">
+          {overlays.conservationAreas.map((ca) => (
+            <path d={ca.d} class="conservation-area">
+              <title>{ca.name} conservation area</title>
+            </path>
+          ))}
+        </g>
+
+        <g class="layer-flood">
+          <path d={overlays.floodWarningArea.d} class="flood-area">
+            <title>{overlays.floodWarningArea.name} flood-warning area</title>
+          </path>
+        </g>
+
+        {areas.map((area) => (
+          <path
+            d={area.d}
+            class="area-band"
+            stroke={area.colour}
+            stroke-width={bandWidth}
+          />
+        ))}
+
+        <text
+          class="map-label map-label-water"
+          x={labels.river.at[0]}
+          y={labels.river.at[1]}
+          transform={`rotate(${labels.river.rotate} ${labels.river.at[0]} ${labels.river.at[1]})`}
+          text-anchor="middle"
+        >{labels.river.text}</text>
+
+        {labels.water.map((label) => (
+          <text class="map-label map-label-water map-label-minor" x={label.at[0]} y={label.at[1]} text-anchor="middle">{label.text}</text>
+        ))}
+
+        {labels.landmarks.map((label) => (
+          <g class:list={['landmark', { 'map-label-minor': label.minor }]}>
+            <circle cx={label.at[0]} cy={label.at[1]} r="5" />
+            <text
+              class="map-label"
+              x={label.anchor === 'end' ? label.at[0] - 10 : label.at[0] + 10}
+              y={label.at[1] + 6}
+              text-anchor={label.anchor}
+            >{label.text}</text>
+          </g>
+        ))}
+
+        <text class="map-label map-label-pointer" x={labels.hersham.at[0]} y={labels.hersham.at[1]} text-anchor="middle">
+          {labels.hersham.text} ↓
+        </text>
+
+        {areas.map((area) => (
+          <g class="marker">
+            <circle cx={area.marker[0]} cy={area.marker[1]} r="21" stroke={area.colour} />
+            <text x={area.marker[0]} y={area.marker[1] + 8} text-anchor="middle">{area.number}</text>
+          </g>
+        ))}
+      </svg>
+    </div>
+
+    <figcaption>
+      <p><strong>Bands follow the streets each description names. They are not boundaries.</strong> Walton has no official neighbourhood boundaries, and the gaps between bands belong to no particular area.</p>
+      <p class="map-credit">
+        Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors ↗</a>. Conservation areas: Elmbridge and Spelthorne borough councils, via planning.data.gov.uk. Flood-warning area: Environment Agency. Both under the Open Government Licence.
+        <a href="/images/maps/walton-areas-map.svg">Open the map at full size</a>.
+      </p>
+    </figcaption>
+  </figure>
+
+  <ol class="map-legend" role="list">
+    {areas.map((area) => (
+      <li>
+        <span class="legend-swatch" style={`background: ${area.colour}`} aria-hidden="true"></span>
+        <a href={`#${area.id}`}><span class="legend-number">{area.number}</span> {area.name}</a>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<style>
+  .areas-map {
+    margin: 1.5rem 0 2.5rem;
+  }
+
+  .map-layers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    border: none;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .map-layers legend {
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+    margin-bottom: 0.4rem;
+    float: left;
+    width: 100%;
+  }
+
+  .map-layers label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  .map-layers input {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--color-navy);
+  }
+
+  .layer-key {
+    display: inline-block;
+    width: 1.25rem;
+    height: 0.85rem;
+    border-radius: 2px;
+  }
+
+  .layer-key-conservation {
+    background: rgba(11, 36, 46, 0.12);
+    border: 2px dashed #0B242E;
+  }
+
+  .layer-key-flood {
+    background: rgba(31, 111, 178, 0.18);
+    border: 2px solid #1F6FB2;
+  }
+
+  .map-figure {
+    margin: 0;
+  }
+
+  .map-canvas {
+    position: relative;
+    width: 100%;
+    border: 1px solid rgba(11, 36, 46, 0.12);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #F3F0E4;
+  }
+
+  .map-base,
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .layer-conservation,
+  .layer-flood {
+    display: none;
+  }
+
+  .areas-map:has(#layer-conservation:checked) .layer-conservation,
+  .areas-map:has(#layer-flood:checked) .layer-flood {
+    display: inline;
+  }
+
+  .conservation-area {
+    fill: rgba(11, 36, 46, 0.1);
+    stroke: #0B242E;
+    stroke-width: 2.5;
+    stroke-dasharray: 7 5;
+  }
+
+  .flood-area {
+    fill: rgba(31, 111, 178, 0.16);
+    stroke: #1F6FB2;
+    stroke-width: 2.5;
+  }
+
+  .area-band {
+    fill: none;
+    stroke-opacity: 0.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* A halo in the base map colour keeps labels readable over streets. */
+  .map-label {
+    font-family: var(--font-body);
+    font-size: 17px;
+    fill: var(--color-navy);
+    stroke: #F3F0E4;
+    stroke-width: 5px;
+    stroke-linejoin: round;
+    paint-order: stroke;
+  }
+
+  .map-label-water {
+    font-style: italic;
+    fill: #3D6B78;
+  }
+
+  .map-label-pointer {
+    font-weight: 600;
+  }
+
+  .landmark circle {
+    fill: var(--color-navy);
+  }
+
+  .marker circle {
+    fill: var(--color-navy);
+    stroke-width: 5;
+  }
+
+  .marker text {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 700;
+    fill: #FFFFFF;
+  }
+
+  figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    line-height: 1.55;
+  }
+
+  figcaption p {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .map-credit {
+    font-size: 0.8rem;
+  }
+
+  .map-legend {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.25rem 1.5rem;
+    margin: 1rem 0 0 !important;
+    padding: 0 !important;
+  }
+
+  .map-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 !important;
+  }
+
+  .map-legend a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    font-size: 0.9rem;
+    color: var(--color-navy);
+  }
+
+  .legend-swatch {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 3px;
+    opacity: 0.8;
+  }
+
+  .legend-number {
+    font-weight: 700;
+  }
+
+  /* On a phone the map is roughly a third of its drawn size, so the labels and
+     markers are enlarged and the labels the build script marks as minor are
+     dropped. The script places the markers clear of labels at these sizes, so
+     change them together. Every name remains in the text below. */
+  @media (max-width: 600px) {
+    .map-label {
+      font-size: 30px;
+    }
+
+    .map-label-minor {
+      display: none;
+    }
+
+    .landmark circle {
+      r: 9px;
+    }
+
+    .marker {
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: scale(1.6);
+    }
+  }
+</style>

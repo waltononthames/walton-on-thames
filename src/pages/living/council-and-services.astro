@@ -33,6 +33,33 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </div>
 
   <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Civic basics</h2>
+        <p>Who is responsible for what in Walton-on-Thames and Hersham. These facts moved here from the Living hub, which now leads with the guide to living in the town.</p>
+      </div>
+      <div class="facts-table-wrap">
+        <table class="facts-table">
+          <tbody>
+            <tr><th scope="row">Borough</th><td>Elmbridge Borough Council</td></tr>
+            <tr><th scope="row">County council</th><td>Surrey County Council</td></tr>
+            <tr><th scope="row">Future unitary authority</th><td>East Surrey Council, from 1 April 2027</td></tr>
+            <tr><th scope="row">Parliamentary constituency</th><td>Esher and Walton</td></tr>
+            <tr><th scope="row">Current MP</th><td>Monica Harding, Liberal Democrat (elected July 2024)</td></tr>
+            <tr><th scope="row">Police force</th><td>Surrey Police</td></tr>
+            <tr><th scope="row">Fire and rescue</th><td>Surrey Fire and Rescue Service</td></tr>
+            <tr><th scope="row">Ambulance service</th><td>South East Coast Ambulance Service NHS Foundation Trust</td></tr>
+            <tr><th scope="row">NHS integrated care board</th><td>NHS Surrey and Sussex Integrated Care Board, from 1 April 2026</td></tr>
+            <tr><th scope="row">Main acute NHS trust</th><td>Ashford and St Peter's Hospitals NHS Foundation Trust</td></tr>
+            <tr><th scope="row">Bus operators</th><td>Falcon Buses and White Bus</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="facts-note">Surrey is undergoing local government reorganisation: the current county and borough structure is due to be replaced by new unitary councils, with Walton-on-Thames and Hersham expected to fall within East Surrey Council from 1 April 2027. Until then, services continue via Elmbridge Borough Council and Surrey County Council, using the links below.</p>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container services-grid">
 
       <div class="service-block">
@@ -111,6 +138,47 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  .facts-table-wrap {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+  }
+
+  .facts-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .facts-table tr:not(:last-child) {
+    border-bottom: 1px solid rgba(11, 36, 46, 0.06);
+  }
+
+  .facts-table th,
+  .facts-table td {
+    text-align: left;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .facts-table th {
+    color: var(--color-slate);
+    font-weight: 600;
+    width: 40%;
+  }
+
+  .facts-table td {
+    color: var(--color-navy);
+  }
+
+  .facts-note {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    line-height: 1.6;
+    max-width: 70ch;
+  }
+
   .services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -1249,3 +1249,140 @@ Status: built from Darren's draft (`lost-breweries-of-walton-on-thames.md`), not
 ## Still open
 - **Brandon's date conflict.** The page says the accounts differ but doesn't give Hughes's or Tarplee's dates. Stating them would satisfy Standards §2.5 better than a bare "differ".
 - **Tarplee p. 44 is carrying a lot.** Walton, Ditton and Cobham breweries all cite that one page. Worth confirming against the book.
+
+## 2026-09-16: /living/ rebuilt as the Living pillar page
+
+Status: built, not committed. Hybrid page under `docs/historical-content-strategy.md`: the
+area histories (Ashley Park 1923, Stonebanks on Cottimore) are historical content and keep
+their print citations; everything else is current/practical content governed by the Content
+Verification Protocol. Editorial source was Darren's approved Harvard-referenced guide
+(`walton-on-thames-living-guide-final-harvard.md`) plus its implementation notes.
+
+Structure follows the notes: the existing service-card grid stays directly under the
+introduction (it is why residents come to `/living/`), with the relocation guide below it.
+URL unchanged. `ThingsToDoStickyNav` is reused for the contents control rather than a second
+copy of the same pattern. No `FAQPage` schema: Google restricts FAQ rich results to
+government and health sites, so the markup would describe content that will not be shown.
+`WebPage` + `BreadcrumbList` only, both validated as parsing JSON.
+
+**Verified on 16 September 2026** (every figure re-checked against its source this session,
+not taken from the draft): Elmbridge Band D 2026/27 £2,556.87; ONS Elmbridge £744,000
+June 2026 provisional, down 2.1%, first-time buyers £500,000, movers £948,000, rent £1,867
+July 2026 and the four bedroom-count averages; Census 2021 BUA E63005192 population 28,837;
+National Rail 140 parking spaces, step-free, cycle storage; Surrey CC bus routes 400/813,
+458, 459, 461; EA "River Thames at Walton" warning area covering Desborough Island, Walton
+Bridge and Elmbridge Leisure Centre; St Peter's 24-hour A&E; Walton Community Hospital lists
+no A&E; the four GP practice addresses; Xcel on Waterside Drive; regatta "annually since
+1862"; Rightmove Walton-on-Thames results carrying Hersham addresses (Southdown Road, Vaux
+Crescent, Queens Road), data to 25 August 2026; GIAS Rydens closed 31 August 2016 and Three
+Rivers Academy opened 1 September 2016; Ofsted inspection 15 October 2024, published
+21 November 2024.
+
+**Corrected against the draft rather than published as drafted.**
+- Council Tax: the draft said the total included "the relevant county and policing elements".
+  The Elmbridge table publishes only combined totals with no authority breakdown, so the
+  claim was removed rather than hedged.
+- St Peter's: the draft cited the A&E page for Walton being served. That page says only
+  "parts of Elmbridge". The trust's St Peter's Hospital page does name Walton on Thames among
+  the main centres of population, so that page was added as reference 2026b and cited for
+  that specific claim.
+- Conservation areas: the draft credited both designations to Elmbridge. The council's own
+  page gives Church Street/Bridge Street as designated by Surrey County Council in 1974 and
+  Riverside by Elmbridge in 1975; both are now named with their designating body.
+- Schools admissions: the draft's "catchment, feeder schools, siblings and other categories"
+  could not be confirmed (the secondary booklet is a PDF that would not parse and the
+  criteria are not on the landing page). Reworded to what Surrey's page does support:
+  arrangements are set per school in the admission booklets, and the school map shows
+  distance and whether a school has a catchment area.
+- The Heart: "apartments" and "public space" are not supported by any Heart source reachable
+  this session. Replaced with the verified mix (shops, eating places, gym, Walton Library,
+  anchors including Sainsbury's, Next and Waterstones), cited to heartshopping.co.uk rather
+  than the 2023 PDF, which would not parse.
+- Thames Path reference: reviewed date is 3 September 2026, not 16 February 2026.
+- Whiteley Village/KT12: the draft's Royal Mail URL returns 403. Replaced with Whiteley Homes
+  Trust's own address (Octagon Road, Walton on Thames, KT12 4EH) plus the Rightmove Hersham
+  KT12 evidence.
+- The draft's "Editorial note before publication" about the schools page was not published as
+  prose (Protocol Rule 3). The schools page was corrected instead.
+
+**Other pages changed.** `/living/schools/`: Rydens Enterprise School replaced with Three
+Rivers Academy, per GIAS. `/living/council-and-services/`: gained the civic basics table (MP,
+future unitary, police, fire, ambulance, ICB, bus operators) moved off `/living/`, where it
+was crowding out the relocation summary. Waterloo journey wording standardised on the
+homepage hero, homepage FAQ and `/getting-here/`, which all said "around 32 minutes", to the
+station guide's verified "22 to 25 minutes fastest, 30 to 35 stopping". Contextual links back
+to `/living/` added from the station guide, the schools page and the GP page.
+
+## Still open
+- **SWR journey times could not be re-confirmed from source this session.** The SWR page
+  renders times client-side, so it returned no durations. The 22 to 25 / 30 to 35 range rests
+  on the station guide's August 2026 check against National Rail and SWR. Re-check at the next
+  timetable change.
+- **`src/data/lastmod.json` is stale for these pages** because the changes are uncommitted.
+  Run the prebuild and commit the regenerated file, or production dates will lag.
+- **`/images/og-default.jpg` does not exist**, so the BaseLayout default Open Graph image
+  404s on every page that does not pass its own. `/living/` now passes the Walton Bridge hero.
+  Worth fixing site-wide.
+- **Hersham living page says Three Rivers Academy "opened in February 2018"**; GIAS gives
+  1 September 2016 (the 2018 date may be the current building). Needs one source, then a fix.
+- **Walton Bridge hero is only 640x427** and is the only riverside photograph on the site.
+  Original photography of the river, Cowey Sale, The Heart and the High Street is the biggest
+  single gap on this page.
+
+## 2026-09-16 (later): /living/areas/ with an annotated map
+
+Status: built, not committed. Blueprint section 5 spoke ("one H2 per neighbourhood"). Hybrid
+page, same split as `/living/`. `/living/` now links to it from its areas section.
+
+**The map is generated, not drawn.** `scripts/build-areas-map.mjs` (`npm run map:areas`,
+add `-- --fetch` to refresh data) builds it from OpenStreetMap (Overpass API, ODbL),
+planning.data.gov.uk conservation areas (OGL) and the Environment Agency flood-monitoring
+API polygon for 061FWF23Walton (OGL). Raw downloads live in `.cache/areas-map/`, which is
+gitignored; the generated files are committed: `public/images/maps/walton-areas-base.svg`,
+`walton-areas-map.svg` (full size), `walton-areas-map-og.png`, and
+`src/data/walton-areas-map.json`.
+
+**How the six areas are drawn.** No official neighbourhood boundaries exist, so each area is
+a 60-metre band along exactly the streets its `/living/` description names, plus the
+landmarks it names. A first version used padded convex hulls; it was discarded because the
+hulls claimed territory no description names (the Cottimore hull became a large rectangle,
+and the Ashley Park and station hulls sat on top of each other). Street names that repeat in
+neighbouring towns (High Street, Church Street) are taken only near their Walton anchor.
+
+**Editorial judgements to confirm.**
+- "The western part of Hersham Road" in the approved guide is ambiguous: literally it is the
+  town-centre end. Only the stretch within 250 metres of Halfway Green is drawn, because
+  drawing the whole western length ran the station-side band up to The Heart. The page says so.
+- Field Common is named in the guide but OpenStreetMap holds only a NaPTAN bus-stop record of
+  that name, with no location. It is not placed, and the page says why.
+- Cowey Sale has no mapped open-space polygon, so it is not labelled.
+
+**"On the official layers" statements were measured, not assumed.** The script tests the
+street geometry itself (not the drawn bands) against both overlays. An earlier hull-based
+test wrongly reported the town centre inside the flood-warning area; the point test shows 0%
+of High Street and New Zealand Avenue inside it. Published results: Bridge Street 10% and
+Manor Road 5% of mapped points inside the warning area; Waterside Drive 12%, and the Xcel
+building, which matches the EA's own description naming Elmbridge Leisure Centre. St Mary's
+Church sits in Walton Church Street-Bridge Street, the Old Manor House in Walton Riverside,
+matching Elmbridge's page. Designation dates (11 November 1974, 1 December 1975) come from
+the dataset's `start-date` and match Elmbridge; the page now fails the build if a date is
+missing.
+
+**Data notes.** The main Overpass instance was overloaded all session; `maps.mail.ru` worked
+intermittently. The committed map was built from same-session fetches seeded into the cache
+after the scripted `--fetch` run timed out on two residential tiles. OpenStreetMap is not on
+the Protocol's source tiers: it is used only for geometry (where streets run), never for a
+claim the text relies on without an official source alongside.
+
+**Checked.** Build passes (markers, em dashes); no type errors in the new files; both JSON-LD
+blocks parse; 48 internal links resolve; no broken anchors; in the sitemap. Layer toggles are
+CSS-only (`:has()`) and verified switching; no console errors; no horizontal overflow at
+375px; legend and toggle tap targets at least 44px. Markers are placed clear of label text at
+mobile size, where three minor labels are hidden.
+
+## Still open
+- The map would benefit from a named-street index or search for people checking one address;
+  deliberately not built, because the map must not be read as settling which area a property
+  is in.
+
+**Resolved before going live (16 September 2026).** The Riverhouse Barn sentence on `/living/` cited the venue's What's On page, which returned 403, so it had not been re-checked. It now says only what this site's Riverhouse Barn page (reviewed 22 August 2026, with its own sources) supports: theatre, music, comedy, exhibitions and arts and crafts classes. "Community events" was dropped, because no source checked supports it. The citation now points to that page.

@@ -14,7 +14,8 @@
     "seo:links": "node scripts/seo-links.mjs",
     "content:stale-events": "node scripts/check-stale-events.mjs",
     "content:em-dashes": "node scripts/check-em-dashes.mjs",
-    "seo:lastmod": "node scripts/generate-lastmod.mjs"
+    "seo:lastmod": "node scripts/generate-lastmod.mjs",
+    "map:areas": "node scripts/build-areas-map.mjs"
   },
   "keywords": [],
   "author": "",

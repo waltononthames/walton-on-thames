@@ -1,0 +1,316 @@
+---
+// /living/areas/, the "Areas" spoke of the Living hub (docs/walton-seo-blueprint.md
+// section 5: one H2 per neighbourhood). Hybrid page: the area histories follow
+// the Research and Editorial Standards and keep their print citations; the rest
+// is current information checked against official sources on 16 September 2026.
+//
+// Every area description restates only what the approved guide on /living/
+// already supports, plus two things measured directly from official data:
+// which named streets lie in a conservation area, and which lie in the
+// Environment Agency's flood-warning area. Those statements come from the
+// report printed by scripts/build-areas-map.mjs, which tests the street
+// geometry itself rather than the drawn bands. Re-run the script and re-read
+// its report before changing any of them.
+//
+// Field Common is named in the guide on /living/ but is not mapped as a place
+// in OpenStreetMap (only a bus-stop record carries the name), so it is not
+// placed on the map, and this page does not guess where it is.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AreasMap from '../../components/AreasMap.astro';
+import mapData from '../../data/walton-areas-map.json';
+
+const reviewedOn = '16 September 2026';
+const reviewedISO = '2026-09-16';
+
+const PAGE_TITLE = 'Areas of Walton-on-Thames | Map and Local Guide';
+const PAGE_DESCRIPTION =
+  'Walton-on-Thames area by area: the riverside, The Heart, Ashley Park, the station side, Cottimore and Walton North, mapped from open official data.';
+
+const areaById = Object.fromEntries(mapData.areas.map((a) => [a.id, a]));
+const osmDate = new Date(mapData.generatedFrom.osmTimestamp).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Fails the build rather than printing "designated on ," if the dataset ever
+// stops supplying a date.
+const designated = (name: string) => {
+  const ca = mapData.overlays.conservationAreas.find((c) => c.name === name);
+  if (!ca?.designated) throw new Error(`No designation date in the conservation area data for ${name}`);
+  return new Date(ca.designated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+};
+
+const references = [
+  { id: 'ref-ebc-na', text: 'Elmbridge Borough Council (n.d.a) ', title: 'Walton conservation areas', tail: '.', url: 'https://www.elmbridge.gov.uk/planning/conservation-areas/walton-conservation-areas' },
+  { id: 'ref-ebc-nb', text: 'Elmbridge Borough Council (n.d.b) ', title: 'The Xcel Leisure Complex and Sports Hub', tail: '.', url: 'https://www.elmbridge.gov.uk/sports-and-health/sports-venues/sports-and-health/sports-venues/xcel-leisure-complex-and-sports-hub' },
+  { id: 'ref-ea-2026a', text: 'Environment Agency (2026a) ', title: 'River Thames at Walton flood warning area', tail: '.', url: 'https://check-for-flooding.service.gov.uk/target-area/061FWF23Walton' },
+  { id: 'ref-ea-2026b', text: 'Environment Agency (2026b) ', title: 'Flood-monitoring API: flood area 061FWF23Walton, polygon', tail: '. Open Government Licence.', url: 'https://environment.data.gov.uk/flood-monitoring/id/floodAreas/061FWF23Walton/polygon' },
+  { id: 'ref-ea-nd', text: 'Environment Agency (n.d.) ', title: 'Check the long-term flood risk for an area in England', tail: '. GOV.UK.', url: 'https://www.gov.uk/check-long-term-flood-risk' },
+  { id: 'ref-hughes-2003', text: 'Hughes, W. (2003) ', title: 'Images of England: Walton-on-Thames', tail: '. Stroud: Tempus Publishing.' },
+  { id: 'ref-mhclg-2026', text: 'Ministry of Housing, Communities and Local Government (2026) ', title: 'Planning data: conservation area dataset', tail: '. Boundaries supplied by Elmbridge Borough Council and Spelthorne Borough Council. Open Government Licence.', url: 'https://www.planning.data.gov.uk/dataset/conservation-area' },
+  { id: 'ref-nr-2026', text: 'National Rail (2026) ', title: 'Walton-on-Thames (WAL)', tail: '.', url: 'https://www.nationalrail.co.uk/stations/walton-on-thames/' },
+  { id: 'ref-nhs-a', text: 'NHS (n.d.a) ', title: 'The Red Practice Walton', tail: '.', url: 'https://www.nhs.uk/services/gp-surgery/the-red-practice-walton/H81094' },
+  { id: 'ref-nhs-b', text: 'NHS (n.d.b) ', title: 'The White Practice', tail: '.', url: 'https://www.nhs.uk/services/gp-surgery/The-White-Practice/H81131' },
+  { id: 'ref-nhs-c', text: 'NHS (n.d.c) ', title: 'The Yellow Practice', tail: '.', url: 'https://www.nhs.uk/services/gp-surgery/the-yellow-practice/H81095' },
+  { id: 'ref-osm-2026', text: 'OpenStreetMap contributors (2026) ', title: 'OpenStreetMap data for Walton-on-Thames, retrieved through the Overpass API', tail: `. Data as at ${osmDate}. Open Database Licence.`, url: 'https://www.openstreetmap.org/copyright' },
+  { id: 'ref-stonebanks-1982', text: 'Stonebanks, J.A. (1982) ', title: 'Cottimore and Walton Lodge, Walton-on-Thames: An account of the two estates after the Inclosure of 1800', tail: '. Walton and Weybridge Local History Society Paper No. 20.' },
+  { id: 'ref-heart-2026', text: 'The Heart Shopping Centre (2026) ', title: 'The Heart, Walton-on-Thames', tail: '.', url: 'https://heartshopping.co.uk/' },
+  { id: 'ref-wot-2026a', text: 'Walton-on-Thames.org (2026a) ', title: 'Walton-on-Thames Railway Station', tail: '.', url: 'https://walton-on-thames.org/walton-on-thames-railway-station/' },
+  { id: 'ref-wot-2026b', text: 'Walton-on-Thames.org (2026b) ', title: 'Hersham', tail: '.', url: 'https://walton-on-thames.org/hersham/' },
+  { id: 'ref-whiteley-nd', text: 'Whiteley Homes Trust (n.d.) ', title: 'Whiteley Village', tail: '. Admin Building, Octagon Road, Walton on Thames, Surrey KT12 4EH.', url: 'https://whiteleyvillage.org.uk/who-we-are/whiteley-village/' },
+];
+---
+
+<BaseLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} image="/images/maps/walton-areas-map-og.png" type="article">
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': 'https://walton-on-thames.org/living/areas/#webpage',
+      url: 'https://walton-on-thames.org/living/areas/',
+      name: PAGE_TITLE,
+      description: PAGE_DESCRIPTION,
+      inLanguage: 'en-GB',
+      isPartOf: { '@id': 'https://walton-on-thames.org/#website' },
+      datePublished: reviewedISO,
+      dateModified: reviewedISO,
+      publisher: { '@id': 'https://walton-on-thames.org/#organization' },
+      about: {
+        '@type': 'Place',
+        name: 'Walton-on-Thames',
+        sameAs: ['https://en.wikipedia.org/wiki/Walton-on-Thames', 'https://www.wikidata.org/wiki/Q2003600'],
+        hasMap: 'https://walton-on-thames.org/images/maps/walton-areas-map.svg',
+      },
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://walton-on-thames.org/' },
+        { '@type': 'ListItem', position: 2, name: 'Living', item: 'https://walton-on-thames.org/living/' },
+        { '@type': 'ListItem', position: 3, name: 'Areas', item: 'https://walton-on-thames.org/living/areas/' },
+      ],
+    })} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/living/">Living</a></li>
+          <li aria-current="page">Areas</li>
+        </ol>
+      </nav>
+      <h1>Areas of Walton-on-Thames</h1>
+      <p class="hero-standfirst">Six practical local areas on one map, from the riverside and The Heart to Ashley Park, the station side, Cottimore and Walton North.</p>
+      <p class="hero-meta">
+        <span>By Walton-on-Thames.org</span>
+        <span>Last reviewed {reviewedOn}</span>
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <article class="prose areas-guide">
+        <p><strong>Walton-on-Thames has no official neighbourhood boundaries.</strong> The six areas on this page are practical local descriptions, the same ones used in our <a href="/living/">guide to living in Walton-on-Thames</a>. So the map draws each one along the streets its description names, and nothing more. Filling in the spaces between would invent a boundary that does not exist.</p>
+        <p>Hersham and Whiteley Village share the KT12 postcode district and the Walton-on-Thames postal town, but they are separate places with their own centres, and they are not counted as Walton areas here <a class="cite" href="#ref-wot-2026b">(Walton-on-Thames.org, 2026b; Whiteley Homes Trust, n.d.)</a>.</p>
+
+        <h2 id="map">Map of Walton's practical local areas</h2>
+        <p>Two official layers can be switched on: the Elmbridge and Spelthorne conservation areas, and the Environment Agency's River Thames at Walton flood-warning area.</p>
+      </article>
+
+      <div class="map-wrap">
+        <AreasMap />
+      </div>
+
+      <article class="prose areas-guide">
+        <h2 id={areaById['historic-centre'].id}><span class="area-number" style={`--area: ${areaById['historic-centre'].colour}`}>1</span> The historic centre, Church Street and the riverside</h2>
+        <p class="area-streets">Streets drawn: {areaById['historic-centre'].streets.join(', ')}</p>
+        <p>The oldest surviving part of Walton is around Church Street, Bridge Street, Manor Road and the Thames, with <a href="/history/st-marys-church/">St Mary's Church</a> and the <a href="/history/old-manor-house/">Old Manor House</a> within a compact area.</p>
+        <p>Two conservation areas cover it. <strong>Walton Church Street and Bridge Street</strong>, designated on {designated('Walton Church Street-Bridge Street')}, is based on the historic road junction and includes the Grade I listed parish church of St Mary. <strong>Walton Riverside</strong>, designated on {designated('Walton Riverside')}, covers the area known locally as Old Walton and includes the Grade I listed Manor House <a class="cite" href="#ref-ebc-na">(Elmbridge Borough Council, n.d.a; Ministry of Housing, Communities and Local Government, 2026)</a>.</p>
+        <div class="official-layers">
+          <h3>On the official layers</h3>
+          <p>Parts of Bridge Street and Manor Road lie inside the Environment Agency's River Thames at Walton flood-warning area; Church Street, St Mary's Church and the Old Manor House do not <a class="cite" href="#ref-ea-2026b">(Environment Agency, 2026b)</a>. A warning area is not a measure of risk to a particular home, and flood exposure changes over short distances, so check the exact address with the <a href="https://www.gov.uk/check-long-term-flood-risk" target="_blank" rel="noopener noreferrer">government's long-term flood risk service ↗</a> <a class="cite" href="#ref-ea-nd">(Environment Agency, n.d.)</a>.</p>
+        </div>
+        <p class="area-links">Further reading: <a href="/history/walton-bridge/">Walton Bridge</a> · <a href="/things-to-do/riverhouse-barn/">Riverhouse Barn</a> · <a href="/things-to-do/riverside-walks/">riverside walks</a></p>
+
+        <h2 id={areaById['town-centre'].id}><span class="area-number" style={`--area: ${areaById['town-centre'].colour}`}>2</span> Walton town centre and The Heart</h2>
+        <p class="area-streets">Streets drawn: {areaById['town-centre'].streets.join(', ')}, plus The Heart</p>
+        <p>The modern commercial centre is focused on High Street, New Zealand Avenue and The Heart. On the map it sits immediately south of the historic core, close to it but distinct from it.</p>
+        <p>The Heart has shops, places to eat, a gym and Walton Library, with anchor names including Sainsbury's, Next and Waterstones <a class="cite" href="#ref-heart-2026">(The Heart Shopping Centre, 2026)</a>. Many everyday needs can be reached on foot from the streets around it. It is also the most urban-feeling part of Walton, with more flats, traffic and commercial activity than the quieter residential streets farther out.</p>
+        <div class="official-layers">
+          <h3>On the official layers</h3>
+          <p>Neither High Street nor New Zealand Avenue lies inside a conservation area or the River Thames at Walton flood-warning area as mapped <a class="cite" href="#ref-mhclg-2026">(Ministry of Housing, Communities and Local Government, 2026; Environment Agency, 2026b)</a>. That is not the same as having no flood risk: check the individual address.</p>
+        </div>
+        <p class="area-links">Further reading: <a href="/shopping/the-heart/">The Heart</a> · <a href="/food-and-drink/">food and drink</a> · <a href="/history/the-heart-and-town-centre/">history of the town centre</a></p>
+
+        <h2 id={areaById['ashley-park'].id}><span class="area-number" style={`--area: ${areaById['ashley-park'].colour}`}>3</span> Ashley Park</h2>
+        <p class="area-streets">Streets drawn: {areaById['ashley-park'].streets.join(', ')}</p>
+        <p>Ashley Park takes its street pattern and its name from the former Ashley Park estate, which was broken up for development in 1923. Ashley Park Road, Ashley Drive and Ashley Rise occupy land once associated with the estate, and much of the interwar housing followed its sale <a class="cite" href="#ref-hughes-2003">(Hughes, 2003)</a>.</p>
+        <p>The map shows why it suits people who want both halves of Walton: the Ashley streets lie between the town centre and the railway station, with Ashley Park Road running up from the station towards the centre.</p>
+        <div class="official-layers">
+          <h3>On the official layers</h3>
+          <p>None of the three streets lies inside a conservation area or the flood-warning area as mapped <a class="cite" href="#ref-mhclg-2026">(Ministry of Housing, Communities and Local Government, 2026; Environment Agency, 2026b)</a>.</p>
+        </div>
+        <p class="area-links">Further reading: <a href="/history/ashley-park-estate/">the Ashley Park estate</a></p>
+
+        <h2 id={areaById['station-halfway'].id}><span class="area-number" style={`--area: ${areaById['station-halfway'].colour}`}>4</span> The station, Halfway and Hersham Road</h2>
+        <p class="area-streets">Streets drawn: Station Avenue, Halfway Green, and Hersham Road where it passes the Halfway</p>
+        <p>Walton-on-Thames railway station is <strong>not in the town centre</strong>. The walk to The Heart takes approximately 20 to 25 minutes, depending on route and pace, and the map shows the distance plainly <a class="cite" href="#ref-wot-2026a">(Walton-on-Thames.org, 2026a)</a>. The streets around Station Avenue, the Halfway and Hersham Road form a distinct station side, where the daily journey for a London commuter can be very different from the one made from the centre.</p>
+        <p>The station has two operational platforms, step-free access, cycle storage and paid parking <a class="cite" href="#ref-nr-2026">(National Rail, 2026)</a>. It also serves north Hersham, whose own station appears at the right-hand edge of the map <a class="cite" href="#ref-wot-2026a">(Walton-on-Thames.org, 2026a)</a>.</p>
+        <p>Hersham Road runs south-east from near the town centre, through the Halfway, towards Hersham <a class="cite" href="#ref-osm-2026">(OpenStreetMap contributors, 2026)</a>. Only the stretch at the Halfway is drawn in this band, so that it does not imply the station side reaches The Heart.</p>
+        <div class="official-layers">
+          <h3>On the official layers</h3>
+          <p>None of these streets lies inside a conservation area or the flood-warning area as mapped <a class="cite" href="#ref-mhclg-2026">(Ministry of Housing, Communities and Local Government, 2026; Environment Agency, 2026b)</a>.</p>
+        </div>
+        <p class="area-links">Further reading: <a href="/walton-on-thames-railway-station/">Walton-on-Thames station guide</a> · <a href="/getting-here/">getting here</a></p>
+
+        <h2 id={areaById['cottimore'].id}><span class="area-number" style={`--area: ${areaById['cottimore'].colour}`}>5</span> Cottimore, Sidney Road and the east of the town</h2>
+        <p class="area-streets">Streets drawn: {areaById['cottimore'].streets.join(', ')}</p>
+        <p>Much of this side of Walton was once the Walton Lodge and Cottimore estates. Research by local historian John A. Stonebanks shows how their land was sold and developed in the nineteenth and early twentieth centuries, while older carriage routes and estate names survived in the modern street pattern <a class="cite" href="#ref-stonebanks-1982">(Stonebanks, 1982)</a>.</p>
+        <p>Sidney Road is the clearest example. It runs between Terrace Road and Rydens Road <a class="cite" href="#ref-osm-2026">(OpenStreetMap contributors, 2026)</a>, along the line of an earlier private carriage way, part of which was laid down as a regular road in 1867 to 1868 <a class="cite" href="#ref-stonebanks-1982">(Stonebanks, 1982, p. 13)</a>. On the map it is the long north to south band.</p>
+        <p><a href="/living/gp-surgeries/">Walton Health Centre</a>, on Rodney Road just off Sidney Road, is home to The Red, White and Yellow practices <a class="cite" href="#ref-nhs-a">(NHS, n.d.a; NHS, n.d.b; NHS, n.d.c)</a>.</p>
+        <div class="official-layers">
+          <h3>On the official layers</h3>
+          <p>Neither Cottimore Lane nor Sidney Road lies inside a conservation area or the flood-warning area as mapped <a class="cite" href="#ref-mhclg-2026">(Ministry of Housing, Communities and Local Government, 2026; Environment Agency, 2026b)</a>.</p>
+        </div>
+        <p class="area-links">Further reading: <a href="/history/sidney-road/">Sidney Road and the Walton Lodge estate</a></p>
+
+        <h2 id={areaById['walton-north'].id}><span class="area-number" style={`--area: ${areaById['walton-north'].colour}`}>6</span> Walton North and Waterside Drive</h2>
+        <p class="area-streets">Streets drawn: {areaById['walton-north'].streets.join(', ')}, plus the Xcel Leisure Complex</p>
+        <p>North and north-east Walton mix residential streets, open space and sports facilities, with routes towards the Thames and the reservoirs, which the map shows to the east.</p>
+        <p>The Xcel Leisure Complex and Sports Hub on Waterside Drive is the anchor, with a 25-metre pool, a sports hall, a floodlit athletics track and pitches <a class="cite" href="#ref-ebc-nb">(Elmbridge Borough Council, n.d.b)</a>. Housing character varies from street to street, so a label such as "Walton North" tells a buyer or renter less than looking at the streets immediately around a property.</p>
+        <div class="official-layers">
+          <h3>On the official layers</h3>
+          <p>Part of Waterside Drive and the Xcel leisure centre building lie inside the River Thames at Walton flood-warning area, which the Environment Agency describes as including the Elmbridge Leisure Centre <a class="cite" href="#ref-ea-2026a">(Environment Agency, 2026a; 2026b)</a>. Check any individual address with the <a href="https://www.gov.uk/check-long-term-flood-risk" target="_blank" rel="noopener noreferrer">long-term flood risk service ↗</a>.</p>
+        </div>
+        <p class="area-links">Further reading: <a href="/directory/elmbridge-xcel/">Elmbridge Xcel Leisure Complex</a> · <a href="/living/community/">clubs and societies</a></p>
+
+        <h2 id="hersham-and-whiteley">Hersham and Whiteley Village</h2>
+        <p>Hersham adjoins Walton to the south-east. It is a distinct village with its own centre, green and station, not a seventh Walton area, which is why the map points towards it rather than drawing it <a class="cite" href="#ref-wot-2026b">(Walton-on-Thames.org, 2026b)</a>. Whiteley Village lies south of Hersham, beyond the edge of the map.</p>
+        <p class="area-links"><a href="/hersham/">Hersham</a> · <a href="/hersham/living/">living in Hersham</a> · <a href="/hersham/whiteley-village/">Whiteley Village</a></p>
+
+        <h2 id="method">How this map was made</h2>
+        <p>Every line on the map comes from open data, and a script rebuilds it from source, so it can be checked and updated rather than redrawn by hand.</p>
+        <ul>
+          <li><strong>Streets, river, railway, reservoirs and landmarks</strong> come from OpenStreetMap, as at {osmDate} <a class="cite" href="#ref-osm-2026">(OpenStreetMap contributors, 2026)</a>.</li>
+          <li><strong>Each area</strong> is a band {mapData.generatedFrom.bandWidthMetres} metres wide along the streets its description names, with a dot for any landmark it names. Where a street name also occurs in a neighbouring town, only the Walton stretch is used.</li>
+          <li><strong>Conservation areas</strong> are the boundaries the borough councils supply to the government's planning data service <a class="cite" href="#ref-mhclg-2026">(Ministry of Housing, Communities and Local Government, 2026)</a>.</li>
+          <li><strong>The flood-warning area</strong> is the Environment Agency's own polygon for the River Thames at Walton <a class="cite" href="#ref-ea-2026b">(Environment Agency, 2026b)</a>.</li>
+          <li><strong>The statements under "On the official layers"</strong> were measured on the street geometry itself, not read off the drawn bands.</li>
+        </ul>
+        <p>The map is accurate enough to show where places are in relation to one another, not to settle whether a particular property lies inside a line. For that, use the council's and the Environment Agency's own services. Our guide to living in Walton also mentions Field Common, but OpenStreetMap does not map it as a place, so it is not marked here.</p>
+
+        <h2 id="references">References</h2>
+        <ol class="reference-list">
+          {references.map((ref) => (
+            <li id={ref.id}>
+              {ref.text}<em>{ref.title}</em>{ref.tail}
+              {ref.url && (
+                <> Available at: <a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.url} ↗</a> (Accessed: {reviewedOn}).</>
+              )}
+            </li>
+          ))}
+        </ol>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-standfirst {
+    max-width: 62ch;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .areas-guide {
+    max-width: 68ch;
+  }
+
+  .map-wrap {
+    max-width: 760px;
+  }
+
+  .area-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.35rem;
+    border-radius: 50%;
+    background: var(--color-navy);
+    box-shadow: 0 0 0 3px var(--area);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    vertical-align: 0.2em;
+  }
+
+  .area-streets {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: var(--color-accent-dark);
+  }
+
+  .official-layers {
+    margin: 1.25rem 0;
+    padding: 1rem 1.25rem;
+    background: var(--color-white);
+    border: 1px solid rgba(11, 36, 46, 0.1);
+    border-radius: var(--radius-md);
+  }
+
+  .official-layers h3 {
+    margin: 0 0 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-slate);
+  }
+
+  .official-layers p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .area-links {
+    font-size: 0.9rem;
+  }
+
+  .cite {
+    font-size: 0.9em;
+    color: var(--color-slate);
+    text-decoration-color: rgba(80, 101, 113, 0.4);
+  }
+
+  .reference-list {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    line-height: 1.6;
+  }
+
+  .reference-list li {
+    margin-bottom: 0.6rem;
+  }
+
+  .reference-list a {
+    word-break: break-word;
+  }
+
+  h2[id],
+  .reference-list li[id] {
+    scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+  }
+</style>

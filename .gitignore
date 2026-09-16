@@ -5,6 +5,10 @@ dist/
 # Dependencies
 node_modules/
 
+# Raw downloads for scripts/build-areas-map.mjs. The generated map files are
+# committed; the source data is re-fetched with `npm run map:areas -- --fetch`.
+.cache/
+
 # OS
 .DS_Store
 Thumbs.db
