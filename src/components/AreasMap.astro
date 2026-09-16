@@ -57,7 +57,7 @@ const description = `Map of Walton-on-Thames showing six practical local areas, 
         <g class="layer-conservation">
           {overlays.conservationAreas.map((ca) => (
             <path d={ca.d} class="conservation-area">
-              <title>{ca.name} conservation area</title>
+              <title>{/conservation area$/i.test(ca.name) ? ca.name : `${ca.name} conservation area`}</title>
             </path>
           ))}
         </g>
