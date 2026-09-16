@@ -6,8 +6,10 @@ slug: "whiteley-village"
 cluster: "hersham"
 era: ["edwardian", "contemporary"]
 entityType: "place"
+heroImage: "/images/history/whiteley-village-arms-house.webp"
+heroAlt: "A long single-storey red-brick building with a steep hipped tiled roof, tall chimneys and twisted brick porch columns, set among trees"
 publishDate: 2026-07-02
-reviewedDate: 2026-08-05
+reviewedDate: 2026-09-14
 sources:
   - author: "Whitebus"
     year: "n.d."
@@ -29,6 +31,16 @@ sources:
     title: "William Whiteley"
     url: "https://en.wikipedia.org/wiki/William_Whiteley"
     accessed: "2 July 2026"
+  - author: "Whiteley Homes Trust"
+    year: "n.d."
+    title: "Community Café"
+    url: "https://www.thewhiteleyhomestrust.org.uk/community-and-activities/community-cafe"
+    accessed: "14 September 2026"
+  - author: "Whiteley Homes Trust"
+    year: "2025"
+    title: "Community Café Opens!"
+    url: "https://www.thewhiteleyhomestrust.org.uk/about-us/latest-news/community-cafe-opens"
+    accessed: "14 September 2026"
 related: ["hersham-green"]
 ---
 
@@ -44,13 +56,28 @@ William Whiteley built one of Victorian London's great retail empires, styling h
 
 The site was laid out around a central octagonal green, with further concentric octagons of housing radiating outward through the woodland, a genuinely distinctive piece of Edwardian town planning. Several notable architects contributed buildings in a broadly unified Arts and Crafts style, among them Reginald Blomfield, Mervyn Macartney, Ernest Newton and Aston Webb, working to an overall layout devised by Frank Atkinson; the result, drawing on perhaps eight architects in total, holds together as a single coherent village despite the variety of hands involved. Building continued through the First World War, and the first residents moved into their new homes from 1917 onwards.
 
+<figure>
+  <img src="/images/history/whiteley-village-arms-house.webp" alt="A long single-storey red-brick building with a steep hipped tiled roof, tall chimneys and twisted brick porch columns, set among trees" loading="lazy" />
+  <figcaption>An almshouse at Whiteley Village, its porch carried on twisted brick columns. Photograph by Darren Bayley / Walton-on-Thames.org, 13 September 2026.</figcaption>
+</figure>
+
 ## Who lives there
 
 Whiteley Village remains exactly what it was built to be: a retirement community for older people of limited financial means who are capable of independent living. It today provides well over 250 almshouse cottages, alongside more recent self-contained flats and care accommodation, all owned and run by the charitable Whiteley Homes Trust rather than any commercial landlord. More than a hundred of the village's buildings are individually Grade II listed, and the whole village has been a designated conservation area since 1979, protecting both the architecture and the woodland setting around it.
 
 ## Visiting and respecting a private community
 
-Whiteley Village is not a museum, and it is worth remembering that before visiting. It is a genuinely private residential community, home to real residents who chose to live there for its quiet, and the grounds should be treated accordingly: stay on the roads and paths, keep noise to a minimum, and be mindful that this is somebody's home rather than a heritage attraction with an admission desk. There are no visitor facilities on site. Bus route 459 (Staines – Walton-on-Thames – Hersham – Whiteley Village) stops at "Stores, Whiteley Village"; otherwise a car, taxi or bicycle from Walton or [Hersham](/hersham/) is the practical way to get there.
+Whiteley Village is not a museum, and it is worth remembering that before visiting. It is a genuinely private residential community, home to real residents who chose to live there for its quiet, and the grounds should be treated accordingly: stay on the roads and paths, keep noise to a minimum, and be mindful that this is somebody's home rather than a heritage attraction with an admission desk. The Whiteley Community Café, in the Clubhouse on Octagon Road, opened on 21 July 2025 and is open to residents, the local community and anyone visiting the area; check [the Whiteley Homes Trust's café page](https://www.thewhiteleyhomestrust.org.uk/community-and-activities/community-cafe) for current opening hours. Bus route 459 (Staines – Walton-on-Thames – Hersham – Whiteley Village) stops at "Stores, Whiteley Village"; otherwise a car, taxi or bicycle from Walton or [Hersham](/hersham/) is the practical way to get there.
+
+<figure>
+  <img src="/images/history/whiteley-village-community-cafe-entrance.webp" alt="The brick-pillared porch and open front door of the Whiteley Community Café, with its signboard and flower-filled planters" loading="lazy" />
+  <figcaption>The entrance to the Whiteley Community Café, in the Clubhouse on Octagon Road. Photograph by Darren Bayley / Walton-on-Thames.org, 13 September 2026.</figcaption>
+</figure>
+
+<figure>
+  <img src="/images/history/whiteley-village-community-cafe-stairs.webp" alt="Wide steps with metal handrails climbing between brick retaining walls to a brick building, with a café A-board on the left" loading="lazy" />
+  <figcaption>Steps leading up from the road to the Clubhouse, home of the Whiteley Community Café. Photograph by Darren Bayley / Walton-on-Thames.org, 13 September 2026.</figcaption>
+</figure>
 
 ## The village today
 
