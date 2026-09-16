@@ -1199,7 +1199,7 @@ Status: built from Darren's draft (`best-coffee-shops-working-walton-on-thames-h
 **Kept as Darren's first-hand assessments, written as such.** Wi-Fi quality at Cacao Route, Caffè Nero, Esquires, Greggs, Riverhouse Barn, The Walton Village and Bean on the Green; Cacao Route being larger inside than it looks and short of sockets; Starbucks having the most room; Greggs' café seating and plenty of sockets; atmosphere at Riverhouse, The Walton Village and Bean on the Green; the rankings and the absence of known laptop time limits.
 
 ## Still open
-- **Darren to confirm the first-hand list above** before publication, since the page now carries those claims under his byline.
+- ~~Darren to confirm the first-hand list above before publication.~~ Closed 16 September 2026: Darren previewed the built page locally and approved it to go live.
 - **Costa Wi-Fi.** If the branch pages can be read from another network, the Wi-Fi mention for both Costas can go back in. The Costa store URLs from the draft are also left off the page until a page can actually be loaded.
 - **Overlaps the blueprint's planned `/food-and-drink/cafes-and-coffee/` spoke** (site-audit line 54, NEW, unbuilt), whose brief includes "which cafes suit laptops". Decide whether that spoke absorbs this page, links to it, or is dropped.
 - **Existing directory listings disagree with the FSA register.** Costa Hersham (`10 Queens Road`, and its website points at the Walton branch), Esquires (description says "in The Heart"; it is at 67 High Street), and The Walton Village (`29 High Street`; register has 29-31). Fixed in the next entry.
