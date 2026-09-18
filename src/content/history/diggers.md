@@ -513,6 +513,13 @@ A second incident followed in which Winstanley said a crowd of more than one hun
 
 Elmbridge Museum's modern Diggers Trail correctly treats St Mary's as one of the principal surviving locations in the story (Elmbridge Museum, n.d.).
 
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/mhw3sBFT3X4" title="St Mary's Church, Protests and Digger Prison, Part Three of English Civil War Radicals, Royal Holloway History Hub" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>"St Mary's Church, Protests and Digger Prison", the third part of the English Civil War Radicals series, made with Elmbridge Museum and published on Royal Holloway's History Hub YouTube channel on 9 December 2020. Video: Royal Holloway History Hub.</figcaption>
+</figure>
+
 ### From harassment to organised violence
 
 The plantation did not fall in one decisive eviction. It was worn down through repeated disruption.
