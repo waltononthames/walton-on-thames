@@ -339,6 +339,13 @@ sources:
     group: "reception"
     cite: ["Brownlow and Mollo, 1975"]
     apa: "Brownlow, K., & Mollo, A. (Directors). (1975). *Winstanley* [Film]. British Film Institute Production Board."
+  - author: "Rosselson, L."
+    year: "1975"
+    title: "The World Turned Upside Down"
+    id: "rosselson-1975"
+    group: "reception"
+    cite: ["Rosselson, 1975"]
+    apa: "Rosselson, L. (1975). The world turned upside down [Song]. On *That's not the way it's got to be* [Album, with Roy Bailey]. Acorn Records."
   - author: "The Land Is Ours"
     year: "1999"
     title: "Diggers 350: St George's Hill reoccupation"
@@ -803,6 +810,23 @@ Across the Atlantic, the San Francisco Diggers of the 1960s consciously reused t
 Closer to home, the land-rights group **The Land Is Ours** returned deliberately to St George's Hill in April 1999 for the 350th anniversary. Around 300 activists marched from Walton-on-Thames and established a temporary camp near Camp End Road and Old Avenue (The Land Is Ours, 1999). Their action demonstrated the continuing ability of Winstanley's language to frame modern arguments about access to land, while also creating another layer of memory around a site whose exact seventeenth-century footprint remains uncertain.
 
 The Surrey Diggers Trail followed in 2005, linking Cobham, St George's Hill, St Mary's Walton, Little Heath and the modern memorial. Elmbridge Museum has since redeveloped and expanded the interpretation with new research (Elmbridge Museum, n.d.).
+
+### The Diggers in song: a voice from 1650
+
+The Diggers did not communicate their ideas through pamphlets and petitions alone. They also used song.
+
+The best-known surviving example begins with a call for the Diggers to stand together. Its verses describe their attempts to cultivate common land, the destruction of their houses and their opposition to the landowning gentry, lawyers and clergy. It ends by presenting love, rather than violence, as the means of overcoming their opponents. The song is a remarkable historical source because it gives us a different kind of testimony from the legal records and political pamphlets. It conveys the movement's sense of shared purpose while revealing how its members understood the hostility they faced.
+
+Its origins, however, are not entirely settled. The surviving text is anonymous, untitled and undated. It was copied into the papers of Sir William Clarke, a secretary to the parliamentary army's commander, Thomas Fairfax, probably between March and May 1650. It remained unpublished until historian Charles Harding Firth printed it in 1894 and gave it the title *The Diggers' Song*. Firth suggested that Gerrard Winstanley was its author. Historian Ariel Hessayon has since argued that Robert Coster, another Digger who published verse, is also a plausible candidate. Hessayon dates the composition to either December 1649 or around March 1650, during the movement's occupation of Little Heath in Cobham. The original melody is also uncertain, so modern performances cannot be regarded as exact reconstructions of how the Diggers sang it (Hessayon, 2023, pp. 189–193).
+
+The Diggers' story subsequently inspired new music. In 1975, songwriter Leon Rosselson released *The World Turned Upside Down*, a separate composition based on the movement's history and Winstanley's writings. Later recordings helped carry the story of St George's Hill to audiences far beyond Surrey. The two songs should not be confused: one is a surviving expression of the seventeenth-century movement; the other is a modern interpretation of its legacy (Rosselson, 1975).
+
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/DD_v-5q5xwA" title="The Diggers' Song, an English protest song, English Folk Project" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>A modern performance of <em>The Diggers' Song</em>, published on the English Folk Project YouTube channel. The original tune does not survive, so the melody heard here is a modern setting rather than a reconstruction of how the Diggers sang it. Video: English Folk Project.</figcaption>
+</figure>
 
 ## Assessing the Diggers
 
