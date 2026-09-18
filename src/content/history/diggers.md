@@ -523,6 +523,11 @@ One of the strongest physical links between the Diggers and modern Walton-on-Tha
 
 Winstanley later stated that several Diggers were carried as prisoners into Walton church and that some were struck there before a justice ordered their release. Ratcliffe preserves the episode in his Walton-on-Thames-focused study, while Sandells includes it in her church history (Ratcliffe, 1994; Sandells, 1992). The significance is that St Mary's is not merely part of the atmosphere of radical religion in 1649. It is a place explicitly named in a Digger account of persecution.
 
+<figure>
+  <img src="/images/history/st-marys-parish-church-walton-on-thames-2026.webp" alt="The flint and stone west tower of St Mary's Church at dusk, with a clock face, a traceried window and a lamp lit above the pointed arched doorway, approached by a path running between gravestones" width="1200" height="900" loading="lazy" />
+  <figcaption>St Mary's Parish Church, Church Street, Walton-on-Thames, the parish church named in Winstanley's account of Diggers carried there as prisoners. Photograph by Darren Bayley, Walton-on-Thames.org, 10 September 2026.</figcaption>
+</figure>
+
 A second incident followed in which Winstanley said a crowd of more than one hundred people, led by John Taylor, took Digger spades and carried some of the group through Walton before they were brought before a justice at Kingston and again released (Winstanley, 1650a/2009; Ratcliffe, 1994).
 
 Elmbridge Museum's modern Diggers Trail correctly treats St Mary's as one of the principal surviving locations in the story (Elmbridge Museum, n.d.).
