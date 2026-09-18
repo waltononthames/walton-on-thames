@@ -469,6 +469,13 @@ Historians have long interpreted "True Levellers" as a claim by Winstanley's gro
 
 "Diggers" was initially an external label, carrying connotations of rough labourers and enclosure rioters. By June 1649 the group had begun to appropriate it for themselves. That process of turning a dismissive name into a collective identity is one reason "Diggers" became the name that survived (Roberge, 2022).
 
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/0pRT0RWridc" title="Gerrard Winstanley, the Diggers' Manifesto, 1649, a reading of abridged excerpts, Royal Holloway History Hub" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>Klemens Koehring reads abridged excerpts from <em>The True Levellers Standard Advanced</em>, the Diggers' declaration of April 1649, in a reading published on Royal Holloway's History Hub YouTube channel on 2 April 2021. The excerpts are shortened, not the complete pamphlet. Video: Royal Holloway History Hub.</figcaption>
+</figure>
+
 ## Conflict in Walton, 1649
 
 ### Henry Sanders raises the alarm
