@@ -7,8 +7,15 @@ cluster: "walton-history"
 era: ["medieval", "georgian", "wartime"]
 entityType: "place"
 publishDate: 2026-07-02
-reviewedDate: 2026-09-03
+reviewedDate: 2026-09-16
 sources:
+  - author: "Berens, L. H."
+    year: "1906"
+    title: "The Digger Movement in the Days of the Commonwealth"
+    work: true
+    publisher: "Simpkin, Marshall, Hamilton, Kent & Co."
+    url: "https://www.gutenberg.org/ebooks/17480"
+    accessed: "16 September 2026"
   - author: "Historic England"
     year: "n.d."
     title: "Church of St Mary (List Entry 1030224)"
@@ -24,7 +31,7 @@ sources:
     title: "St Mary's Self-Guided Tour"
     url: "https://waltonparish.org.uk/tour/"
     accessed: "3 September 2026"
-related: ["walton-bridge", "famous-residents", "mount-felix-memorial-banner", "mount-felix"]
+related: ["diggers", "walton-bridge", "famous-residents", "mount-felix-memorial-banner", "mount-felix"]
 ---
 
 St Mary's Church, on Church Street, is Walton's oldest building and the direct physical link between the modern town and its medieval parish. It is Grade I listed, and its fabric alone tells a longer story than most local histories manage: the oldest securely dated fabric in the present building is Norman, in the north arcade of about 1150, with much of the rest of the church dating from the thirteenth century or later. It stands a short walk from [Walton Bridge](/history/walton-bridge/) and the older riverside core of the town.
@@ -34,6 +41,10 @@ St Mary's Church, on Church Street, is Walton's oldest building and the direct p
 ## A church recorded in 1086, and what actually survives
 
 Walton's Domesday entry of 1086 already records a church here, but that establishes only that an eleventh-century church existed on the site, not that any of its fabric survives in the present building. Historic England dates the present church mainly to the thirteenth century, with a fourteenth-century chancel and later additions, and identifies Norman piers of about 1150. The specialist Corpus of Romanesque Sculpture in Britain and Ireland goes further, identifying the twelfth-century north arcade as the oldest fabric in the building. No architectural survey consulted for this article identifies surviving Saxon masonry, so the result is best described as a medieval building, added to rather than replaced across roughly eight centuries, which is exactly why it repays a slow look rather than a quick one.
+
+## The Diggers held in the church, 1649
+
+The church has a direct part in one of the most radical episodes of the English Revolution. In 1649 the Diggers began cultivating waste land on St George's Hill, then within the parish of Walton, and met fierce local opposition. A list of their sufferings that Gerrard Winstanley printed with *A New-Yeers Gift for the Parliament and Armie* in 1650 records that on the first occasion several Diggers were carried as prisoners into Walton church, where some were struck, before a Justice freed them (Berens, 1906). The full story is told in [The Diggers in Walton-on-Thames and Elmbridge](/history/diggers/).
 
 ## The tower and the bells
 

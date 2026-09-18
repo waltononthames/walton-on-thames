@@ -2,6 +2,61 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-18: Diggers article, editor's revision applied
+
+Darren reviewed the full text himself, exported as a single markdown file, and returned an edited version. That text is now what the page carries. It came back markdown-escaped; the escaping was undone, and the tables and reference list were confirmed unchanged before the original table formatting was restored.
+
+The body is about 9,600 words, down from about 10,000, with several passages cut (the Sermon of the Four Candles, the cross-dressing paragraph, the two Francis Drake paragraphs, the Wellingborough chronology paragraph, and a number of closing sentences). Eleven mechanical corrections were applied to the new wording: typos, a dropped word, a broken comparison, an ampersand that would have stopped a citation linking, and "St." normalised to "St". "No national Digger movement" contradicted its own section heading; that was flagged and changed to "organisation" on Darren's instruction. Publication and review dates set to 18 September 2026.
+
+Two things the cuts left open were flagged and then fixed on Darren's instruction: the Francis Drake section had lost both its explanation and its only citations, so the manuscript's two paragraphs were restored as one in the manuscript's own wording, minus the two framing sentences cut in the same pass. That restores Gurney (2007) and Pulford (2000) to the section, leaving *An Humble Request* as the only uncited reference, which is pending the item 3.3 attribution question.
+
+Checks after the revision: build clean including the em dash and marker gates; citation check 124 linked, same 3 unmatched as before; all 7 in-brief anchors resolve; `seo:links` 0 broken; `seo:validate` unchanged (the one pre-existing Ceramics Café failure). Body about 9,700 words. Still not committed or deployed.
+
+## 2026-09-16: The Diggers in Walton-on-Thames and Elmbridge (`/history/diggers/`), implemented locally, not published
+
+Built from Darren's researched manuscript (`diggers-walton-elmbridge-definitive-history.md`) under the accompanying publication brief. The brief makes this an editorial-preservation job, not new research. The manuscript's printed and archival sources were supplied by Darren and were not re-verified, which the brief says is not a blocker. The full record of changes, the citation check and the open questions is in **`docs/diggers-editorial-report.md`**.
+
+**Architecture.** The page is a normal `history` collection entry, so it gets the hub, the sitemap, lastmod and related links like any other article. It sets `layout: longform`, and `[slug].astro` then renders it with the new `HistoryLongform.astro` instead of `HistoryArticle.astro`. The long-form layout adds a subtitle, a standfirst, sticky grouped contents on desktop and a `<details>` contents list on mobile, in-text citations linked to their references, a grouped APA 7 reference list with "back to text", and related reading. All the new schema fields are optional, so every existing article renders unchanged. `src/components/LinkedCitations.astro` and `src/utils/citations.ts` link author-date citations at build time and **log any citation with no reference entry on every build**, which gives the page a standing structural citation check.
+
+**Content.** The manuscript text is preserved: a word-count comparison shows the only differences are the logged ones. Ten internal ChatGPT `filecite` markers were removed; nine resolved and one did not. Citation formatting fixes:
+- the orphan suffix in 1649b was removed;
+- two Winstanley 1650 citations were disambiguated to *A New-Yeers Gift*, after locating the passages in the Bill of Account in Berens (1906).
+
+Other changes:
+- one piece of second-person wording addressed to the editor was removed;
+- eight part headings were added;
+- "What remains uncertain" and the Conclusion were moved ahead of the tables.
+
+Additions derived only from the manuscript: a "Diggers in brief" box and a "places in the story" table stating how precisely each place can be located. The table stands in for a map, because a drawn map would need coordinates the research does not establish.
+
+**Cross-links.**
+- **History hub:** the Tudor & Stuart section gains a sentence and a timeline entry.
+- **St Mary's Church article:** new short section on Diggers held in the church, citing Berens (1906), which was read this session.
+- **`/hersham/history/`:** corrected. It said the Diggers' story "belong[s] properly to Weybridge, not Hersham". The manuscript shows the Diggers placed George Hill in Walton parish, which then included Hersham. The sentence now gives that framing, without claiming the site is in modern Hersham, and links to the new page.
+
+**Open VERIFY items (for Darren, detail in the report):**
+- **Hessayon 2023:** missing reference entry.
+- **Surrey Archaeological Society 2000:** missing reference entry.
+- **Winstanley 1650/2009 (miscarriage allegation):** ambiguous between *New-Yeers Gift* and *Humble Request*, left unlinked.
+- **Unresolved marker `turn44file14`:** the WWLHS bibliographies claim.
+- **Quotation spellings:** "George-Hill" and "True Commonwealths Freedom" should be checked against Corns et al.; Berens modernises them.
+- **Uncited table rows:** several chronology and key-people rows carry no citations.
+- **Publication decisions:** dates set to the implementation date, byline, image rights, and the Section 20 sign-off.
+
+**Checks.**
+- `npm run build`: clean, including the em dash and verification-marker gates.
+- Citation check: 128 linked, 3 unmatched (the three above).
+- `seo:links`: 0 broken internal links.
+- `seo:validate`: one failure, on `/directory/ceramics-cafe-hersham/`, unrelated and pre-existing.
+- `astro check`: no errors from the new files; the 156 remaining errors are pre-existing collection-typing errors.
+- Browser checks (`npm run preview`):
+  - desktop and 375px mobile, with no page-level horizontal overflow and tables scrolling inside their own containers;
+  - anchors clear the sticky header;
+  - citation → reference → "back to text" works.
+- A mobile overflow bug was found and fixed during the check.
+
+`src/data/lastmod.json` has no entry for the page until it is committed.
+
 ## 2026-09-15: corrections from the 14 September 2026 accuracy audit
 
 Darren supplied the weekly audit: thirteen findings, two High, ten Medium, one Low. Every finding was reproduced against `origin/main` before anything changed, and every replacement fact was fetched this session. Where a source could not be read, the claim was narrowed or left alone rather than rewritten from a search snippet.

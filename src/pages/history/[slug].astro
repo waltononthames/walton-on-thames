@@ -1,5 +1,6 @@
 ---
 import HistoryArticle from '../../layouts/HistoryArticle.astro';
+import HistoryLongform from '../../layouts/HistoryLongform.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -13,4 +14,6 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 ---
 
-<HistoryArticle entry={entry} />
+{entry.data.layout === 'longform'
+  ? <HistoryLongform entry={entry} />
+  : <HistoryArticle entry={entry} />}

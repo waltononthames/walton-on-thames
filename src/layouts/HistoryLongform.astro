@@ -1,0 +1,537 @@
+---
+// Long-form history feature layout, selected by `layout: longform` in a
+// history entry's frontmatter. Built for /history/diggers/: a very long,
+// heavily cited article that needs grouped contents navigation, linked
+// author-date citations and a grouped APA reference list. Article prose is
+// fully static; the only script is a small progressive enhancement for the
+// contents highlight and the "back to text" link on reference entries.
+import BaseLayout from './BaseLayout.astro';
+import LinkedCitations from '../components/LinkedCitations.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { renderApa } from '../utils/citations';
+
+interface Props {
+  entry: CollectionEntry<'history'>;
+}
+
+type Src = CollectionEntry<'history'>['data']['sources'][number];
+type HistoryEntry = CollectionEntry<'history'>;
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const data = entry.data;
+
+const selfHref = `/history/${data.slug}/`;
+const selfUrl = `https://walton-on-thames.org${selfHref}`;
+const dateFmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const allHistory = await getCollection('history');
+const relatedEntries = data.related
+  .map((slug: string) => allHistory.find((e: HistoryEntry) => e.data.slug === slug))
+  .filter((e: HistoryEntry | undefined): e is HistoryEntry => Boolean(e));
+
+// Contents: each H2 part with its H3 sections beneath it.
+type TocPart = { slug: string; text: string; children: { slug: string; text: string }[] };
+const toc: TocPart[] = [];
+for (const h of headings) {
+  if (h.depth === 2) toc.push({ slug: h.slug, text: h.text, children: [] });
+  else if (h.depth === 3 && toc.length) toc[toc.length - 1].children.push({ slug: h.slug, text: h.text });
+}
+
+const cited = data.sources.filter((s: Src) => s.apa && s.id && s.group && s.group !== 'further');
+const further = data.sources.filter((s: Src) => s.apa && s.group === 'further');
+const groups = [
+  { key: 'primary', label: 'Primary and contemporary sources' },
+  { key: 'scholarship', label: 'Specialist scholarship' },
+  { key: 'local', label: 'Local history and heritage' },
+  { key: 'reception', label: 'Reception history and later interpretation' },
+].map((g) => ({
+  ...g,
+  items: cited
+    .filter((s: Src) => s.group === g.key)
+    .sort((a: Src, b: Src) => (a.apa as string).localeCompare(b.apa as string, 'en-GB')),
+})).filter((g) => g.items.length);
+
+toc.push({
+  slug: 'references',
+  text: 'References',
+  children: [
+    ...groups.map((g) => ({ slug: `references-${g.key}`, text: g.label })),
+    ...(further.length ? [{ slug: 'further-research', text: 'Priority sources for future research' }] : []),
+  ],
+});
+
+const citeSources = cited.map((s: Src) => ({ id: s.id as string, cite: s.cite ?? [] }));
+const stripItalics = (s: string) => s.replace(/\*/g, '');
+---
+
+<BaseLayout
+  title={data.metaTitle}
+  description={data.metaDescription}
+  image={data.heroImage}
+  type="article"
+>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": data.title,
+      ...(data.subtitle ? { "alternativeHeadline": data.subtitle } : {}),
+      "description": data.metaDescription,
+      "inLanguage": "en-GB",
+      "datePublished": data.publishDate.toISOString(),
+      "dateModified": data.reviewedDate.toISOString(),
+      "author": data.contributor
+        ? { "@type": "Person", "name": data.contributor }
+        : { "@type": "Person", "name": "Darren Bayley", "url": "https://walton-on-thames.org/about/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Walton-on-Thames.org",
+        "url": "https://walton-on-thames.org/",
+        "logo": { "@type": "ImageObject", "url": "https://walton-on-thames.org/images/walton-on-thames-org-logo-400.png", "width": 400, "height": 400 }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": selfUrl },
+      ...(data.heroImage ? { "image": `https://walton-on-thames.org${data.heroImage}` } : {}),
+      "citation": cited.map((s: Src) => stripItalics(s.apa as string)),
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
+        { "@type": "ListItem", "position": 2, "name": "History", "item": "https://walton-on-thames.org/history/" },
+        { "@type": "ListItem", "position": 3, "name": data.title, "item": selfUrl }
+      ]
+    })} />
+  </slot>
+
+  <div class="page-hero lf-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/history/">History</a></li>
+          <li aria-current="page">{data.title}</li>
+        </ol>
+      </nav>
+      <h1>{data.title}</h1>
+      {data.subtitle && <p class="lf-subtitle">{data.subtitle}</p>}
+      <p class="lf-byline">{data.contributor ? `Contributed by ${data.contributor}` : 'By Darren Bayley'} · Last reviewed <time datetime={data.reviewedDate.toISOString().slice(0, 10)}>{dateFmt(data.reviewedDate)}</time></p>
+    </div>
+  </div>
+
+  <section class="section lf-section">
+    <div class="container lf-layout">
+      <nav class="lf-toc" aria-labelledby="lf-toc-heading">
+        <h2 id="lf-toc-heading" class="lf-toc-title">Contents</h2>
+        <ol class="lf-toc-parts">
+          {toc.map((part) => (
+            <li>
+              <a href={`#${part.slug}`} class="lf-toc-part">{part.text}</a>
+              {part.children.length > 0 && (
+                <ol class="lf-toc-sections">
+                  {part.children.map((c) => <li><a href={`#${c.slug}`}>{c.text}</a></li>)}
+                </ol>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <article class="prose lf-article">
+        {data.standfirst && <p class="lf-standfirst">{data.standfirst}</p>}
+
+        <details class="lf-contents-mobile">
+          <summary>Contents</summary>
+          <ol class="lf-toc-parts">
+            {toc.map((part) => (
+              <li>
+                <a href={`#${part.slug}`} class="lf-toc-part">{part.text}</a>
+                {part.children.length > 0 && (
+                  <ol class="lf-toc-sections">
+                    {part.children.map((c) => <li><a href={`#${c.slug}`}>{c.text}</a></li>)}
+                  </ol>
+                )}
+              </li>
+            ))}
+          </ol>
+        </details>
+
+        <LinkedCitations sources={citeSources} label={selfHref}>
+          <Content />
+        </LinkedCitations>
+
+        <section class="lf-references" aria-labelledby="references">
+          <h2 id="references">References</h2>
+          <p class="lf-ref-note">Citations in the text use the Harvard author-date system, and each links to its entry below. The list follows APA 7. A date written as 1649/2009 gives the original year of publication followed by the modern edition cited. Printed and archival sources are listed from the editor's research record whether or not they are available online.</p>
+          {groups.map((g) => (
+            <>
+              <h3 id={`references-${g.key}`}>{g.label}</h3>
+              <ul class="lf-ref-list">
+                {g.items.map((s: Src) => (
+                  <li id={`ref-${s.id}`}>
+                    <span set:html={renderApa(s.apa as string)} />
+                    <a class="lf-ref-back" href="#" hidden>Back to text<span class="visually-hidden"> where this source was cited</span></a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
+          {further.length > 0 && (
+            <>
+              <h3 id="further-research">Priority sources for future research</h3>
+              <p class="lf-ref-note">Not cited above. These are the local studies and archive series identified as the best routes to resolving the open questions in this article.</p>
+              <ul class="lf-ref-list">
+                {further.map((s: Src) => <li set:html={renderApa(s.apa as string)} />)}
+              </ul>
+            </>
+          )}
+        </section>
+
+        {relatedEntries.length > 0 && (
+          <aside class="lf-related" aria-labelledby="lf-related-heading">
+            <h2 id="lf-related-heading">Related Walton history</h2>
+            <ul>
+              {relatedEntries.map((r: HistoryEntry) => (
+                <li><a href={`/history/${r.data.slug}/`}>{r.data.title}</a></li>
+              ))}
+              <li><a href="/history/">All Walton-on-Thames history</a></li>
+            </ul>
+          </aside>
+        )}
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    // "Back to text": remember the citation a reader followed, and offer a
+    // link back to exactly that point from the reference entry. Without
+    // JavaScript the browser's own Back button does the same job.
+    document.addEventListener('click', function (e) {
+      var cite = e.target.closest && e.target.closest('a.cite');
+      if (!cite) return;
+      var ref = document.getElementById(cite.getAttribute('href').slice(1));
+      if (!ref) return;
+      document.querySelectorAll('.lf-ref-back').forEach(function (b) { b.hidden = true; });
+      var back = ref.querySelector('.lf-ref-back');
+      if (back) {
+        back.setAttribute('href', '#' + cite.id);
+        back.hidden = false;
+      }
+    });
+
+    // Contents highlight: marks the section currently being read.
+    var links = Array.prototype.slice.call(document.querySelectorAll('.lf-toc a[href^="#"]'));
+    if (!('IntersectionObserver' in window) || !links.length) return;
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var targets = Object.keys(byId).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    var current = null;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var link = byId[entry.target.id];
+        if (!link || link === current) return;
+        if (current) current.removeAttribute('aria-current');
+        link.setAttribute('aria-current', 'location');
+        current = link;
+        var box = link.closest('.lf-toc');
+        if (box && box.scrollHeight > box.clientHeight) {
+          var top = link.offsetTop - box.clientHeight / 3;
+          box.scrollTop = Math.max(0, top);
+        }
+      });
+    }, { rootMargin: '-80px 0px -70% 0px' });
+    targets.forEach(function (t) { observer.observe(t); });
+  })();
+</script>
+
+<style>
+  .lf-hero h1 { max-width: 22ch; }
+
+  .lf-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 2vw, 1.35rem) !important;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.88) !important;
+    max-width: 60ch !important;
+    margin-bottom: 0.75rem;
+  }
+
+  .lf-byline {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem !important;
+  }
+
+  .lf-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  /* min-width: 0 stops the tables' own minimum width (below) propagating up
+     through the grid item and widening the whole article on phones; the
+     tables scroll inside .table-wrap instead. */
+  .lf-article { max-width: 70ch; min-width: 0; }
+
+  /* Anchored headings, citations and references clear the sticky header. */
+  .lf-article :global(:is(h2, h3, li[id], a.cite, #further-research)) {
+    scroll-margin-top: calc(var(--nav-height) + 1.25rem);
+  }
+
+  .lf-standfirst {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--color-navy);
+    margin-bottom: 2rem !important;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid rgba(11,36,46,0.12);
+  }
+
+  /* Part headings (H2) read as section openers in a long piece. */
+  .lf-article :global(h2) {
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--color-navy);
+    font-size: 1.75rem;
+  }
+
+  .lf-article :global(h3) {
+    margin-top: 2.25rem;
+  }
+
+  .lf-article :global(.lf-standfirst + .lf-contents-mobile + h2),
+  .lf-article :global(.callout + h2) {
+    margin-top: 2.5rem;
+  }
+
+  /* Contents */
+  .lf-toc {
+    position: sticky;
+    top: calc(var(--nav-height) + 1rem);
+    max-height: calc(100vh - var(--nav-height) - 2rem);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    overscroll-behavior: contain;
+  }
+
+  .lf-toc-title {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .lf-toc-parts,
+  .lf-toc-sections {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .lf-toc-parts > li { margin-bottom: 0.9rem; }
+
+  .lf-toc a {
+    display: block;
+    color: var(--color-slate);
+    text-decoration: none;
+    padding: 0.2rem 0 0.2rem 0.6rem;
+    border-left: 2px solid transparent;
+  }
+
+  .lf-toc a.lf-toc-part {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+
+  .lf-toc-sections a { padding-left: 1.1rem; }
+
+  .lf-toc a:hover { color: var(--color-accent-dark); }
+
+  .lf-toc a[aria-current="location"] {
+    color: var(--color-navy);
+    border-left-color: var(--color-accent);
+    background: rgba(184,134,46,0.08);
+  }
+
+  .lf-contents-mobile { display: none; }
+
+  @media (max-width: 1000px) {
+    .lf-layout { grid-template-columns: minmax(0, 1fr); }
+    .lf-toc { display: none; }
+    /* Explicit width: with auto margins alone a grid item shrink-wraps to its
+       min-content, which the tables' minimum width would force past the
+       screen edge. */
+    .lf-article { width: 100%; max-width: 70ch; margin: 0 auto; }
+
+    .lf-contents-mobile {
+      display: block;
+      margin: 0 0 2rem;
+      border: 1px solid rgba(11,36,46,0.15);
+      border-radius: var(--radius-md);
+      background: var(--color-white);
+    }
+
+    .lf-contents-mobile summary {
+      cursor: pointer;
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      min-height: 44px;
+    }
+
+    .lf-contents-mobile > .lf-toc-parts {
+      padding: 0 1rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    .lf-contents-mobile a {
+      display: block;
+      padding: 0.3rem 0;
+      text-decoration: none;
+    }
+
+    .lf-contents-mobile .lf-toc-part { font-weight: 600; color: var(--color-navy); }
+    .lf-contents-mobile .lf-toc-sections { padding-left: 1rem; margin-bottom: 0.5rem; }
+    .lf-contents-mobile .lf-toc-sections a { color: var(--color-slate); }
+  }
+
+  @media (max-width: 600px) {
+    .lf-standfirst { font-size: 1.15rem; }
+    .lf-article :global(h2) { font-size: 1.45rem; }
+  }
+
+  /* In-text citations: legible, clearly links, not shouting. */
+  .lf-article :global(a.cite) {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(184,134,46,0.55);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  .lf-article :global(a.cite:hover),
+  .lf-article :global(a.cite:focus-visible) {
+    color: var(--color-accent-dark);
+    text-decoration-color: currentColor;
+  }
+
+  /* Tables: scroll inside their own container, never the page. */
+  .lf-article :global(.table-wrap:focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .lf-article :global(.table-wrap table) { min-width: 36rem; }
+  .lf-article :global(.table-wrap thead th) { white-space: normal; }
+  .lf-article :global(.table-wrap td:first-child) { white-space: nowrap; font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .lf-article :global(.table-wrap td:first-child) { white-space: normal; min-width: 7rem; }
+  }
+
+  /* Callouts inside the article body. */
+  .lf-article :global(.callout) {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border-top: 3px solid var(--color-accent);
+  }
+
+  .lf-article :global(.callout > strong:first-child) {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .lf-article :global(.callout ul) { margin-bottom: 0; }
+  .lf-article :global(.callout li) { margin-bottom: 0.6rem; }
+
+  /* References */
+  .lf-references { margin-top: 4rem; }
+
+  .lf-ref-note {
+    font-size: 0.9rem;
+    color: var(--color-slate);
+  }
+
+  .lf-references h3 {
+    font-size: 1.05rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    margin-top: 2rem;
+  }
+
+  .lf-ref-list {
+    list-style: none;
+    padding: 0 !important;
+  }
+
+  .lf-ref-list li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 0.45rem 0.6rem 0.45rem 2rem;
+    text-indent: -1.4rem;
+    margin: 0 !important;
+    border-radius: var(--radius-md);
+    overflow-wrap: anywhere;
+  }
+
+  .lf-ref-list li:target {
+    background: rgba(184,134,46,0.12);
+    box-shadow: inset 3px 0 0 var(--color-accent);
+  }
+
+  .lf-ref-back {
+    display: inline-block;
+    text-indent: 0;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .lf-ref-back[hidden] { display: none; }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .lf-related {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .lf-related h2 {
+    border-top: none !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    font-size: 1.2rem !important;
+  }
+
+  .lf-related ul { margin-bottom: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) { scroll-behavior: auto; }
+  }
+</style>

@@ -1,0 +1,22 @@
+---
+// Renders its slot (an article's markdown) with in-text author-date citations
+// linked to the reference list. See src/utils/citations.ts.
+import { linkCitations, type CiteSource } from '../utils/citations';
+
+interface Props {
+  sources: CiteSource[];
+  label: string;
+}
+
+const { sources, label } = Astro.props;
+const raw = await Astro.slots.render('default');
+const { html, unmatched, linked } = linkCitations(raw, sources);
+
+// Build-time structural check, printed on every build of the page.
+console.log(`[citations] ${label}: ${linked} in-text citation(s) linked, ${unmatched.length} unmatched.`);
+for (const u of new Set(unmatched)) {
+  console.warn(`[citations] ${label}: no reference-list entry for "${u}"`);
+}
+---
+
+<Fragment set:html={html} />

@@ -97,6 +97,13 @@ const historySchema = z.object({
   contributor: z.string().optional(),
   heroImage: z.string().optional(),
   heroAlt: z.string().optional(),
+  // Long-form features (e.g. /history/diggers/) opt into HistoryLongform.astro,
+  // which adds a subtitle, a standfirst, grouped contents navigation, linked
+  // in-text citations and a grouped APA reference list. Everything else keeps
+  // HistoryArticle.astro unchanged.
+  layout: z.enum(["longform"]).optional(),
+  subtitle: z.string().optional(),
+  standfirst: z.string().optional(),
   publishDate: z.date(),
   reviewedDate: z.date(),
   // Harvard/APA-shaped. Web sources render as "Author (Year) 'Title'.
@@ -138,6 +145,15 @@ const historySchema = z.object({
     work: z.boolean().optional(),
     url: z.string().url().optional(),
     accessed: z.string().optional(),
+    // Long-form layout only. id is the reference anchor (#ref-<id>); cite
+    // lists the exact in-text author-date strings that link to this entry,
+    // e.g. "Firth, 1894"; group places it in the reference list; apa is the
+    // complete APA 7 reference as written by the editor, *asterisks* marking
+    // italics. Entries without apa are not shown by the long-form layout.
+    id: z.string().optional(),
+    cite: z.array(z.string()).optional(),
+    group: z.enum(["primary", "scholarship", "local", "reception", "further"]).optional(),
+    apa: z.string().optional(),
   })),
   related: z.array(z.string()),
 });
