@@ -2,6 +2,26 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-15: 34 verified shops for the Directory, and /shopping/ lists all of them
+
+Darren asked why `/shopping/` showed only two shops, then asked for verified shop listings with pharmacies included. The page filtered on `category === 'shopping'`, which two of 131 listings carried, and the Directory had barely any shops to find, having grown from a restaurant spreadsheet plus the NHS pharmacy and Post Office lists.
+
+**`/shopping/` now groups every shop by what it sells**, in ten sections with jump links. Pharmacies join through their `pharmacy` subcategory and keep their `healthcare` category, which `/living/pharmacies/` depends on. A listing lands in the first group any of its subcategories matches, and an "Other shops" fallback catches the rest; it is currently empty.
+
+**Every one of the 34 was verified this session on the shop's own site or its operator's.** Twenty-two are tenants on The Heart's own store directory at heartshopping.co.uk, the venue's official site. Their descriptions paraphrase The Heart's own store pages and carry no brand claims from memory, and because no store page gives a unit number, each uses the centre address exactly as The Heart publishes it. Aveda and Serenity appear in that directory but are salons, so they are not listed as shops. Eight more were found through Love Walton, the BID's directory, and each confirmed at its postcode on its own website: 99 Bikes, Bridgman, Connect FMH Charity Shop, Country Carpets, Dreams, Hoops Walton, Love Me Do Brides and Slinky Pinks. Love Walton's phone numbers were wrong for two of them, 99 Bikes and Connect, and the shops' own numbers are used. In Hersham, Sue Ryder comes from its own shop page and Waitrose from the John Lewis Partnership's release of 5 February 2026.
+
+**Two supermarkets rest on the Food Standards Agency register, because their own store pages refuse automated reading.** Tesco's Hersham Road store uses the register's address (business 1778391). For the Co-op on Terrace Road the register gives 58-62 and KT12 2SA while the Co-op's own store-finder address gives 56-62 and KT12 2SD, so the listing gives the street only rather than pick one.
+
+**None of the 34 states opening hours.** The operators publish them, but chain hours change often, so each listing links to the shop instead.
+
+Verified: build clean at 455 pages, `seo:validate` passes, `seo:links` reports zero links to non-existent pages, no em dashes, `astro check` down to 153 errors with none on the shopping page, and `/shopping/` renders 43 shops in ten sections.
+
+## Still open
+- **Held back because their own sites could not confirm them this session:** Artielli Goldsmiths (its site gives a phone number but no address), Fleur Jewellery and Zebra Boutique (both domains no longer resolve, which may mean they have closed), Rainbow Rising (absent from its charity's own site and from The Heart's directory), Warehouse Outlet and The Local Food & Wine (no website at all), and a second Tesco on Lyon Road (register only). A walk down the High Street, Bridge Street and Church Street would settle most of them.
+- **Hersham Green Shopping Centre's other units are mostly unlisted.** Waitrose puts sixteen other retail units in the centre; Sue Ryder and Hersham Pharmacy are the only ones in the Directory.
+- ~~`/shopping/the-heart/` still shows only the centre's own card.~~ Done the same day: the page now lists every Directory shop whose address is in the centre, the 22 tenants plus Brightlife Chemist, drawn from the collection so it cannot drift from `/shopping/`.
+- **The Heart's tenant list will drift, and it is the only source for 22 listings.** Its store pages carry no dates. Re-check it when the next accuracy audit runs.
+
 ## 2026-09-18: Diggers article, obelisk photograph and the last three citations resolved
 
 **Image.** The Soviet obelisk section now carries Darren's copy of the Alexander Garden monument photograph (Wikimedia Commons `File:Obelisque_alexander.jpg`, 17 August 2008, by Mitrius, released into the public domain). Converted to WebP at 900x1200, lazy-loaded with explicit dimensions. The caption gives the date, the 1918 redesign from the Romanov tercentenary monument, the pre-restoration state and the credit, and links the file page. The nineteen inscribed names follow as an ordered list, transcribed from the photograph, which independently confirms the article's "nineteen names" and puts Winstanley eighth, between Meslier and More. One sentence of my own interpretation about the company Winstanley keeps on the stone was written and then removed: it had no source.

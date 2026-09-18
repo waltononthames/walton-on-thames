@@ -4,7 +4,33 @@ import BusinessCard from '../../components/BusinessCard.astro';
 import { getCollection } from 'astro:content';
 
 const businesses = await getCollection('businesses');
-const shops = businesses.filter(b => b.data.category === 'shopping');
+type Biz = (typeof businesses)[number];
+
+// Every shop in the directory, grouped by what it sells. Pharmacies keep their
+// `healthcare` category, which /living/pharmacies/ relies on, and join this
+// page through their `pharmacy` subcategory instead. A listing lands in the
+// first group any of its subcategories matches.
+const SHOP_GROUPS: { id: string; heading: string; subcategories: string[] }[] = [
+  { id: 'shopping-centres', heading: 'Shopping centres', subcategories: ['shopping-centre'] },
+  { id: 'food', heading: 'Supermarkets and food shops', subcategories: ['supermarket', 'grocery', 'convenience', 'off-licence'] },
+  { id: 'pharmacies', heading: 'Pharmacies', subcategories: ['pharmacy'] },
+  { id: 'health-beauty', heading: 'Health, beauty and opticians', subcategories: ['health-food', 'sports-nutrition', 'fragrance', 'optician'] },
+  { id: 'fashion', heading: 'Fashion, footwear and jewellery', subcategories: ['fashion', 'footwear', 'accessories', 'jewellery', 'bridal', 'eveningwear'] },
+  { id: 'sport', heading: 'Sport, outdoors and bikes', subcategories: ['sportswear', 'outdoor-clothing', 'cycles'] },
+  { id: 'home', heading: 'Home, furniture and hardware', subcategories: ['furniture', 'beds', 'carpets', 'hardware', 'homeware'] },
+  { id: 'books-gifts', heading: 'Books, gifts and stationery', subcategories: ['books', 'gifts', 'stationery'] },
+  { id: 'phones-general', heading: 'Phones and general stores', subcategories: ['mobile-phones', 'phone-accessories', 'general-merchandise', 'discount'] },
+  { id: 'charity', heading: 'Charity shops', subcategories: ['charity-shop'] },
+];
+
+const isShop = (b: Biz) => b.data.category === 'shopping' || b.data.subcategories.includes('pharmacy');
+const groupOf = (b: Biz) =>
+  SHOP_GROUPS.find((g) => b.data.subcategories.some((sub: string) => g.subcategories.includes(sub)))?.id ?? 'other';
+
+const shops = businesses.filter(isShop).sort((a: Biz, b: Biz) => a.data.name.localeCompare(b.data.name));
+const sections = [...SHOP_GROUPS, { id: 'other', heading: 'Other shops', subcategories: [] as string[] }]
+  .map((g) => ({ ...g, shops: shops.filter((s: Biz) => groupOf(s) === g.id) }))
+  .filter((g) => g.shops.length > 0);
 ---
 
 <BaseLayout
@@ -31,7 +57,7 @@ const shops = businesses.filter(b => b.data.category === 'shopping');
         </ol>
       </nav>
       <h1>Shopping in Walton-on-Thames</h1>
-      <p>From The Heart shopping centre to independent boutiques on Church Street, Walton-on-Thames has a genuinely varied retail offer for a Surrey town of its size. This guide covers the main shopping centre and the independent shops around Walton-on-Thames town centre.</p>
+      <p>From The Heart shopping centre to independent boutiques on Church Street, Walton-on-Thames has a genuinely varied retail offer for a Surrey town of its size. This guide covers the main shopping centre, the shops around Walton-on-Thames town centre, and the everyday shopping on Hersham Green.</p>
     </div>
   </div>
 
@@ -50,11 +76,19 @@ const shops = businesses.filter(b => b.data.category === 'shopping');
         </a>
       </div>
 
-      {shops.length > 0 ? (
-        <div style="margin-top: 2rem;">
-          <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">All Shopping Listings</h2>
+      {sections.length > 0 && (
+        <nav class="shop-sections" aria-label="Types of shop">
+          {sections.map((section) => (
+            <a href={`#${section.id}`}>{section.heading} <span>({section.shops.length})</span></a>
+          ))}
+        </nav>
+      )}
+
+      {sections.map((section) => (
+        <div class="shop-section" id={section.id}>
+          <h2>{section.heading}</h2>
           <div class="card-grid card-grid-3">
-            {shops.map(biz => (
+            {section.shops.map((biz: Biz) => (
               <BusinessCard
                 name={biz.data.name}
                 slug={biz.data.slug}
@@ -67,7 +101,7 @@ const shops = businesses.filter(b => b.data.category === 'shopping');
             ))}
           </div>
         </div>
-      ) : null}
+      ))}
     </div>
   </section>
 </BaseLayout>
@@ -102,6 +136,35 @@ const shops = businesses.filter(b => b.data.category === 'shopping');
   .shopping-nav-item span:first-child { font-size: 1.75rem; }
   .shopping-nav-item strong { font-family: var(--font-heading); font-size: 1.05rem; color: var(--color-navy); }
   .shopping-nav-item span:last-child { font-size: 0.8rem; color: var(--color-slate); }
+
+  .shop-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .shop-sections a {
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+    font-size: 0.85rem;
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .shop-sections a span { color: var(--color-slate); }
+
+  .shop-section {
+    margin-top: 2.5rem;
+    scroll-margin-top: 5rem;
+  }
+
+  .shop-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
 
   @media (max-width: 480px) {
     .shopping-nav { grid-template-columns: 1fr; }

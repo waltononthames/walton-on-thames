@@ -4,7 +4,15 @@ import BusinessCard from '../../components/BusinessCard.astro';
 import { getCollection } from 'astro:content';
 
 const businesses = await getCollection('businesses');
-const heartBiz = businesses.filter(b => b.data.slug === 'the-heart-shopping-centre');
+type Biz = (typeof businesses)[number];
+
+// Every shop whose address is in the centre, pharmacies included, taken from
+// the Directory so this page and /shopping/ can never disagree.
+const heartShops = businesses
+  .filter((b: Biz) => b.data.slug !== 'the-heart-shopping-centre')
+  .filter((b: Biz) => b.data.address.includes('The Heart Shopping Centre'))
+  .filter((b: Biz) => b.data.category === 'shopping' || b.data.subcategories.includes('pharmacy'))
+  .sort((a: Biz, b: Biz) => a.data.name.localeCompare(b.data.name));
 ---
 
 <BaseLayout
@@ -62,4 +70,28 @@ const heartBiz = businesses.filter(b => b.data.slug === 'the-heart-shopping-cent
       </div>
     </div>
   </section>
+
+  {heartShops.length > 0 && (
+    <section class="section band-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Shops in The Heart</h2>
+          <p>{heartShops.length} shops, taken from the centre's own store directory. Shops come and go, so check <a href="https://heartshopping.co.uk/shop" target="_blank" rel="noopener noreferrer">The Heart's store list ↗</a> before a special trip.</p>
+        </div>
+        <div class="card-grid card-grid-3">
+          {heartShops.map((biz: Biz) => (
+            <BusinessCard
+              name={biz.data.name}
+              slug={biz.data.slug}
+              category={biz.data.category}
+              neighbourhood={biz.data.neighbourhood}
+              description={biz.data.description}
+              images={biz.data.images}
+              featured={biz.data.featured}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>
