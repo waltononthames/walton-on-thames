@@ -543,6 +543,13 @@ An older Francis Drake of Esher had held Walton property and made a will in 1633
 
 Drake had parliamentary credentials, and his political position had become difficult by 1649. Again the story refuses easy alignment. A man could support Parliament, oppose royalism and still defend manorial interests against the Diggers.
 
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/6P4tx46RxUo" title="The Diggers arrive at St George's Hill, Part Two of English Civil War Radicals, Royal Holloway History Hub" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>"The Diggers arrive at St George's Hill", the second part of the English Civil War Radicals series, made with Elmbridge Museum and published on Royal Holloway's History Hub YouTube channel on 8 December 2020. Video: Royal Holloway History Hub.</figcaption>
+</figure>
+
 ## Little Heath, Cobham, 1649–1650
 
 ### The move to Little Heath
