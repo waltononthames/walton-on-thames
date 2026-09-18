@@ -678,6 +678,13 @@ Winstanley died on **10 September 1676**. The Westminster Friends' register desc
 
 That date is worth stressing because later ideological literature sometimes got it badly wrong. The Soviet book *Names on an Obelisk*, published in English in 1983, gives Winstanley as **1609–1652** and concludes that nobody knew where or when he died, supposing death around 1652 (Valovoi and Lapshina, 1983, pp. 144–156). The error is useful evidence of the state of Soviet popular historiography, not of Winstanley's actual biography.
 
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/cBlG-0Rys0c" title="The Significance and Legacy of the Diggers, Part 5 of English Civil War Political Radicals, Royal Holloway History Hub" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>"The Significance and Legacy of the Diggers", the fifth and final part of the English Civil War Radicals series, made with Elmbridge Museum and published on Royal Holloway's History Hub YouTube channel on 11 December 2020. Video: Royal Holloway History Hub.</figcaption>
+</figure>
+
 ## Place, landscape and memory
 
 ### Where exactly did they dig?
