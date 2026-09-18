@@ -442,6 +442,13 @@ What is clear is that Winstanley's radicalism emerged before the spades went int
 
 *Winstanley's Walton* published by local historian Eric Ratcliffe in 1994 preserves this transition well, even though it also reproduces contradictions in older local accounts over whether Everard or Winstanley initiated the first digging (Ratcliffe, 1994, p. 16).
 
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/oZrqyKtqs60" title="War and Winstanley: the origins of the Diggers, Part One of English Civil War Radicals, Royal Holloway History Hub" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>"War and Winstanley: the origins of the Diggers", the first part of the English Civil War Radicals series, made with Elmbridge Museum and published on Royal Holloway's History Hub YouTube channel on 7 December 2020. Video: Royal Holloway History Hub.</figcaption>
+</figure>
+
 ## Ideas and names
 
 ### The "Common Treasury"
