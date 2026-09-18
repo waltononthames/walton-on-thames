@@ -2,6 +2,18 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-09-18: Diggers article, obelisk photograph and the last three citations resolved
+
+**Image.** The Soviet obelisk section now carries Darren's copy of the Alexander Garden monument photograph (Wikimedia Commons `File:Obelisque_alexander.jpg`, 17 August 2008, by Mitrius, released into the public domain). Converted to WebP at 900x1200, lazy-loaded with explicit dimensions. The caption gives the date, the 1918 redesign from the Romanov tercentenary monument, the pre-restoration state and the credit, and links the file page. The nineteen inscribed names follow as an ordered list, transcribed from the photograph, which independently confirms the article's "nineteen names" and puts Winstanley eighth, between Meslier and More. One sentence of my own interpretation about the company Winstanley keeps on the stone was written and then removed: it had no source.
+
+**Citations.** Darren settled the three outstanding attributions and authorised the corrections:
+
+- **Hessayon (2023)** added: *The Diggers' Song*, Notes and Queries 70(3), 189-193. The demolition citation is now (Hessayon, 2023, p. 192; Gurney, 2007).
+- **Surrey Archaeological Society**: the year was 2001, not 2000. Added: *The Diggers' commemorative stone*, SAS Bulletin 346, 16-17. In-text now (Surrey Archaeological Society, 2001).
+- **The miscarriage allegation** is *An Humble Request*, so the citation is now (Winstanley, 1650b/2009; Gurney, 2007). No page number was supplied and none was invented, and the qualification that this is Winstanley's allegation stands.
+
+**The citation check now reports 127 linked and 0 unmatched**, the first build with nothing outstanding. Every reference entry is cited, all ids are unique, and each of the three fixed citations was confirmed to link to its own entry in the built HTML. The SAS bulletin PDF resolves; the Notes and Queries DOI returns 403 to automated requests, as OUP links do.
+
 ## 2026-09-18: Diggers article, editor's revision applied
 
 Darren reviewed the full text himself, exported as a single markdown file, and returned an edited version. That text is now what the page carries. It came back markdown-escaped; the escaping was undone, and the tables and reference list were confirmed unchanged before the original table formatting was restored.

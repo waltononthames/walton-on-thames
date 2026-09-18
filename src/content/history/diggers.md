@@ -189,6 +189,15 @@ sources:
     group: "scholarship"
     cite: ["Hessayon, 2014"]
     apa: "Hessayon, A. (2014). Gerrard Winstanley and Jacob Boehme. In A. Hessayon & D. Finnegan (Eds.), *Varieties of seventeenth- and early eighteenth-century English radicalism in context*. Ashgate."
+  - author: "Hessayon, A."
+    year: "2023"
+    title: "The Diggers' Song"
+    journal: "Notes and Queries"
+    url: "https://doi.org/10.1093/notesj/gjad040"
+    id: "hessayon-2023"
+    group: "scholarship"
+    cite: ["Hessayon, 2023"]
+    apa: "Hessayon, A. (2023). The Diggers' Song. *Notes and Queries, 70*(3), 189–193. https://doi.org/10.1093/notesj/gjad040"
   - author: "Hill, C."
     year: "1972"
     title: "The World Turned Upside Down: Radical Ideas During the English Revolution"
@@ -286,6 +295,15 @@ sources:
     group: "local"
     cite: ["Stonebanks, 1982"]
     apa: "Stonebanks, J. A. (1982). *Cottimore and Walton Lodge: An account of the two estates after the Inclosure of 1800*. Walton and Weybridge Local History Society."
+  - author: "Surrey Archaeological Society"
+    year: "2001"
+    title: "The Diggers' commemorative stone"
+    journal: "Surrey Archaeological Society Bulletin"
+    url: "https://www.surreyarchaeology.org.uk/system/files/SAS346_0.pdf"
+    id: "surrey-arch-2001"
+    group: "local"
+    cite: ["Surrey Archaeological Society, 2001"]
+    apa: "Surrey Archaeological Society. (2001). The Diggers' commemorative stone. *Surrey Archaeological Society Bulletin, 346*, 16–17. https://www.surreyarchaeology.org.uk/system/files/SAS346_0.pdf"
   - author: "Winstanley, D."
     year: "2013"
     title: "Wigan: The origins of Gerrard Winstanley's radicalism"
@@ -542,7 +560,7 @@ Nor was Platt a Royalist reactionary in any simple sense. He had supported Parli
 
 In October 1649 central government again became involved after reports of a tumultuous gathering at Cobham. Several Diggers were arrested but were able to use habeas corpus and obtain bail after procedural irregularities. Further Kingston proceedings followed in the autumn (Gurney, 2007).
 
-Late in November, soldiers and countrymen pulled down two Digger houses and removed the materials. The chronology of surviving papers suggests 28 November as a probable date, though that precision should be presented cautiously (Hessayon, 2023; Gurney, 2007).
+Late in November, soldiers and countrymen pulled down two Digger houses and removed the materials. The chronology of surviving papers suggests 28 November as a probable date, though that precision should be presented cautiously (Hessayon, 2023, p. 192; Gurney, 2007).
 
 The community nevertheless survived the winter.
 
@@ -564,7 +582,7 @@ The Diggers became more explicit in challenging the manorial system as the winte
 
 The same declaration provides one of the best late membership lists, naming twenty-five people associated publicly with the Cobham experiment (Winstanley et al., 1650/2009).
 
-By early April several Diggers were also facing legal proceedings over cottages. Winstanley then accused Platt and Thomas Sutton of another attack in which a pregnant woman was struck and miscarried. This is serious contemporary testimony but remains Winstanley's allegation rather than an independently corroborated medical or judicial finding (Winstanley, 1650/2009; Gurney, 2007).
+By early April several Diggers were also facing legal proceedings over cottages. Winstanley then accused Platt and Thomas Sutton of another attack in which a pregnant woman was struck and miscarried. This is serious contemporary testimony but remains Winstanley's allegation rather than an independently corroborated medical or judicial finding (Winstanley, 1650b/2009; Gurney, 2007).
 
 The decisive attack came on **Friday 19 April 1650**. Draft indictments later prepared against the attackers independently confirm the date. Winstanley named Platt, Thomas Sutton and Sir Anthony Vincent among the organisers and said about fifty men were involved. Six houses were burned. Furniture, clothing and bedding were damaged or dispersed. The remaining corn was left exposed, and men were stationed on the heath to prevent rebuilding (Gurney, 2007). The purpose was not simply to demonstrate opposition. It was to make reconstruction impossible.
 
@@ -646,7 +664,7 @@ Together these clues make the **hillfort and Camp End Road landscape the stronge
 
 Alternative suggestions include ground beneath the south-western ramparts and, more speculatively, land towards Silvermere. No archaeological evidence has fixed the settlement to a particular modern house or garden. Archaeological work at Ravenridge on Camp End Road did not find remains attributable to the Diggers, although a temporary seventeenth-century occupation would be difficult to detect after centuries of landscaping and development.
 
-The current Digger memorial near Brooklands Road does **not** mark the original plantation. It is a commemorative site chosen because placing the stone on St George's Hill proved impractical. Likewise, the 1999 Diggers 350 occupation at Camp End Road and Old Avenue was a deliberate act of modern commemoration, not proof that activists had rediscovered the exact 1649 plot (The Land Is Ours, 1999; Surrey Archaeological Society, 2000).
+The current Digger memorial near Brooklands Road does **not** mark the original plantation. It is a commemorative site chosen because placing the stone on St George's Hill proved impractical. Likewise, the 1999 Diggers 350 occupation at Camp End Road and Old Avenue was a deliberate act of modern commemoration, not proof that activists had rediscovered the exact 1649 plot (The Land Is Ours, 1999; Surrey Archaeological Society, 2001).
 
 Two local works remain particularly important for future site research: Shirley Martin's *Field Names & Minor Place Names of Walton & Weybridge* (1984) and Michael E. Blackman's *St George's Hill, Weybridge* (1988), both listed in Walton and Weybridge Local History Society bibliographies. The seventeenth-century manorial and parliamentary surveys identified by Gurney offer an even stronger archival route.
 
@@ -696,6 +714,33 @@ The best approach is therefore to distinguish two questions: **what Winstanley a
 One of the most remarkable examples of later appropriation occurred in revolutionary Russia.
 
 In 1918 the Soviet authorities transformed an obelisk in Moscow's Alexander Garden into a monument carrying the names of revolutionary and socialist thinkers. Gerrard Winstanley appeared among nineteen names alongside Marx, Engels, Thomas More, Campanella, Saint-Simon, Fourier, Proudhon, Bakunin and others (Valovoi and Lapshina, 1983, pp. 7–10).
+
+<figure>
+  <img src="/images/history/alexander-garden-obelisk-moscow-2008.webp" alt="A tall grey stone obelisk standing among trees in a Moscow park, its shaft carrying nineteen surnames inscribed in Cyrillic, one to each block, from Marx at the top to Plekhanov at the foot, above a carved base" width="900" height="1200" loading="lazy" />
+  <figcaption>The obelisk in the Alexander Garden, Moscow, photographed on 17 August 2008, before its restoration. Redesigned in 1918 from a monument raised for the Romanov tercentenary, it carries nineteen names of socialist and communist thinkers. Photograph by Mitrius, released into the public domain. Available at: <a href="https://commons.wikimedia.org/wiki/File:Obelisque_alexander.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>.</figcaption>
+</figure>
+
+The names are inscribed in a single column, with Winstanley eighth:
+
+1. Karl Marx
+2. Friedrich Engels
+3. Wilhelm Liebknecht
+4. Ferdinand Lassalle
+5. August Bebel
+6. Tommaso Campanella
+7. Jean Meslier
+8. Gerrard Winstanley
+9. Thomas More
+10. Claude-Henri Saint-Simon
+11. Edouard Vaillant
+12. Charles Fourier
+13. Jean Jaurès
+14. Pierre-Joseph Proudhon
+15. Mikhail Bakunin
+16. Nikolay Chernyshevsky
+17. Pyotr Lavrov
+18. Nikolay Mikhaylovsky
+19. Georgi Plekhanov
 
 The 1983 English-language Soviet book *Names on an Obelisk* is valuable precisely because it shows how this commemoration was explained. Its authors place Winstanley among the founders of "Utopian socialism" and describe his thought through the later Marxist-Leninist categories of class, private ownership and the transition towards scientific socialism. They present the Diggers as representatives of propertyless and poor peasant strata and interpret Winstanley's common land programme as an anticipation of later socialist thought (Valovoi and Lapshina, 1983, pp. 144–156).
 

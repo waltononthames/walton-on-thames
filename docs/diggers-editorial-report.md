@@ -84,18 +84,26 @@ Berens (1906) is public domain and reproduces several contemporary texts in mode
 
 ## 3. Structural citation check
 
-The build now runs this check automatically. `src/components/LinkedCitations.astro` links every in-text author-date citation to its reference entry and logs anything it cannot match. On the current build: **128 in-text citations linked, 3 unmatched.**
+The build now runs this check automatically. `src/components/LinkedCitations.astro` links every in-text author-date citation to its reference entry and logs anything it cannot match. On the current build: **127 in-text citations linked, 0 unmatched.**
 
-Each reference entry was also checked for at least one in-text citation, excluding the "further research" group, which is deliberately uncited. Every entry is cited except *An Humble Request* (Winstanley, 1650b/2009). It stays in the list because it is almost certainly the work intended in 3.3; if the editor decides otherwise, remove it.
+Each reference entry was also checked for at least one in-text citation, excluding the "further research" group, which is deliberately uncited. Every entry is now cited, and every reference id is unique.
 
-### 3.1 Missing reference: Hessayon, 2023
-Cited for the probable 28 November 1649 date for the pulling down of two Little Heath houses. There is no Hessayon 2023 entry. Supply the full reference, or confirm that another Hessayon work was meant. Rendered as plain text for now.
+**Items 3.1 to 3.3 were resolved by the editor on 18 September 2026** and are implemented; the wording below is kept as the record of what was outstanding.
 
-### 3.2 Missing reference: Surrey Archaeological Society, 2000
-Cited, alongside The Land Is Ours (1999), for the 1999 reoccupation not being evidence of the 1649 plot. There is no entry. Supply it (a *Bulletin* or *Collections* item?). Rendered as plain text for now.
+### 3.1 Missing reference: Hessayon, 2023 (RESOLVED)
+**Resolved 18 September 2026.** Added: Hessayon, A. (2023). The Diggers’ Song. *Notes and Queries, 70*(3), 189–193. The demolition citation now reads (Hessayon, 2023, p. 192; Gurney, 2007), and the prose is unchanged. The DOI returns 403 to automated requests, as Oxford University Press links do; check it in a browser.
 
-### 3.3 Ambiguous: Winstanley, 1650/2009 (Platt and Sutton attack, pregnant woman)
-Could be *A New-Yeers Gift* or *An Humble Request*. The attack is dated to early April 1650, after *A New-Yeers Gift* appeared, and web summaries (not checked sources) attribute the story to *An Humble Request*. It was **not** assigned without confirmation. Confirm 1650b and it will link automatically (add the suffix in `diggers.md`).
+Originally: cited for the probable 28 November 1649 date for the pulling down of two Little Heath houses. There is no Hessayon 2023 entry. Supply the full reference, or confirm that another Hessayon work was meant. Rendered as plain text for now.
+
+### 3.2 Missing reference: Surrey Archaeological Society, 2000 (RESOLVED)
+**Resolved 18 September 2026.** The year was wrong: it is 2001, not 2000. Added: Surrey Archaeological Society. (2001). The Diggers’ commemorative stone. *Surrey Archaeological Society Bulletin, 346*, 16–17, which resolves and is a working PDF link. The in-text citation now reads (Surrey Archaeological Society, 2001). The article does not state the memorial’s unveiling date, so nothing else changed.
+
+Originally: cited, alongside The Land Is Ours (1999), for the 1999 reoccupation not being evidence of the 1649 plot. There is no entry. Supply it (a *Bulletin* or *Collections* item?). Rendered as plain text for now.
+
+### 3.3 Ambiguous: Winstanley, 1650/2009 (RESOLVED)
+**Resolved 18 September 2026.** The editor confirms the source is *An Humble Request*, so the citation is now (Winstanley, 1650b/2009; Gurney, 2007). No page number was supplied and none was invented. The qualification that this is Winstanley’s allegation and not independently corroborated is unchanged. *An Humble Request* is therefore no longer an uncited entry.
+
+Originally: could be *A New-Yeers Gift* or *An Humble Request*. The attack is dated to early April 1650, after *A New-Yeers Gift* appeared, and web summaries (not checked sources) attribute the story to *An Humble Request*. It was **not** assigned without confirmation. Confirm 1650b and it will link automatically (add the suffix in `diggers.md`).
 
 ### 3.4 Unresolved marker: turn44file14
 Supports the statement that Martin (1984) and Blackman (1988) are "both listed in Walton and Weybridge Local History Society bibliographies". The underlying file is not identifiable, and no WWLHS bibliography appears in the references. This is a low-stakes claim, but it needs an attribution, for example a WWLHS publications list with a URL or date.
@@ -132,8 +140,10 @@ Blocked automated access (403/202), not treated as broken: Folger ×3, Mancheste
 3. **Name variant:** the *True Levellers Standard* signatory list gives "Courton, J."; the narrative uses John Coulton. This is presumably the pamphlet's spelling. Confirm.
 4. **Lights of Walton:** the manuscript calls the church episode the "Sermon of the Four Candles", while Ratcliffe's subtitle has "The 'Lights' in Walton St Mary". The page keeps the manuscript wording and presents the episode as context, not a Digger action, as the brief requires.
 
-### 5.1 Images: none published
-No image with documented rights exists in the repository for this subject. Opportunities, each needing a rights decision first:
+### 5.1 Images
+**One image published, 18 September 2026.** The obelisk in the Alexander Garden, Moscow, in the Soviet obelisk section: `public/images/history/alexander-garden-obelisk-moscow-2008.webp`, 900x1200, WebP from the editor’s JPEG, lazy-loaded with explicit dimensions so it cannot shift the layout. Source: Wikimedia Commons, `File:Obelisque_alexander.jpg`, photographed 17 August 2008 by Mitrius, who released it into the public domain, so no attribution is required; the caption credits the photographer anyway and links the file page. The caption records the date, the 1918 redesign from the Romanov tercentenary monument and that the photograph predates restoration. Beneath it, the nineteen inscribed names are listed in order, transcribed from the photograph itself, which confirms Winstanley eighth, between Meslier and More.
+
+Further opportunities, each needing a rights decision first:
 - Your own photographs of St Mary's Church (the St Mary's article already has an unfilled image slot) and of the Digger memorial near Brooklands Road, captioned as commemorative.
 - Title pages of *The True Levellers Standard Advanced*, *A Declaration of the Bloudie and Unchristian Acting* and *An Appeal to the House of Commons* from Folger digital collections or the British Library Thomason Tracts. Check the specific image licence; online availability is not permission.
 - A still from Brownlow and Mollo's *Winstanley* (1975), captioned as a 1975 interpretation. Needs BFI permission.
