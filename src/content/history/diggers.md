@@ -571,6 +571,13 @@ Little Heath itself occupied a broader historical common than the modern place-n
 
 On 24 August Winstanley alleged that knights, gentlemen and wealthy freeholders met at the White Lion in Cobham to consider how the Diggers could be suppressed. The historic inn and Portsmouth Road landscape therefore belong to the geography of the second settlement, although continuity between the seventeenth-century building and surviving fabric should be treated cautiously (Gurney, 2007; Winstanley, 1649/2009).
 
+<figure>
+  <div class="video-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/htQsHkCfjyw" title="The Diggers move to Little Heath, Part Four of English Civil War Political Radicals, Royal Holloway History Hub" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>"The Diggers move to Little Heath", the fourth part of the English Civil War Radicals series, made with Elmbridge Museum and published on Royal Holloway's History Hub YouTube channel on 10 December 2020. Video: Royal Holloway History Hub.</figcaption>
+</figure>
+
 ### John Platt and the Cobham opposition
 
 The leading opponent at Little Heath was **John Platt**, rector of West Horsley and holder of a manorial interest in Cobham through marriage.
