@@ -1499,3 +1499,103 @@ Darren asked for a map with pins at the former sites of Ashley Brewery and the S
 
 At Darren's request the Bridge Street pin now reads "The Star Brewery, approximate location" instead of "Brewery, probably the Star". This is his editorial decision to state the identification on the map; the evidence is unchanged. Neither 25-inch sheet names the brewery, and the caption still says reading it as the Star is our inference from Tarplee. The sub-label changed with it, from "named on the 1894 revision" to "labelled "Brewery" on the 1894 map", because the 1894 sheet did not name it the Star. Alt text updated to match. The label is nudged 70 px right to clear Thames Street.
 Once deployed, the plain SVG URL still served the old label from Cloudflare's edge (cf-cache-status HIT, max-age 604800 from `public/_headers`). The article now references `lost-breweries-map.svg?v=20260919`, a new cache key, rather than needing a dashboard purge. A first attempt, `?v=2`, failed: a pre-deploy poll had already requested that URL, so the edge cached the old map under it. The build script's header now says to use the date and not to request the URL before the deploy lands.
+
+## 2026-09-19: /living/ rebuilt as the moving and living guide
+
+Built to Darren's "Definitive Moving & Living Guide" brief. The page keeps its URL,
+its service-card hub and the September research; what changed is who it is written
+for and how it is navigated.
+
+**Structure.** H1 is now a reader question rather than a place name, followed by
+three reader journeys (considering a move, newly arrived, already here) that anchor
+into the guide instead of duplicating it. Sections run: at a glance, explore the
+areas (Walton, Hersham, Whiteley Village, what counts as Walton), housing and the
+real cost of living, getting around, schools nurseries and childcare, everyday life,
+meeting people, weighing it up, before choosing a property, your first month,
+common questions, research notes, references. Nothing verified was deleted: the old
+sections were moved and re-levelled, and the dropped community block's Riverhouse
+Barn and news links were folded into meeting people.
+
+**Contents navigation.** `ThingsToDoStickyNav` (horizontal) is replaced by the
+Diggers sidebar pattern, extracted from `HistoryLongform.astro` into
+`src/components/GuideContents.astro` (sidebar and mobile variants, shared
+active-section observer). The Diggers article now renders that component: its
+contents output is byte-identical to before the extraction, checked link by link
+against a pre-refactor snapshot. One fix was needed during extraction: the sidebar
+renders before the article, so the observer had to wait for DOMContentLoaded or it
+was handed an empty target list.
+
+**Navigation label.** Main nav now reads "Moving & living here", route unchanged.
+No overflow at 1280px. The homepage hero now links to the guide, which nothing on
+the homepage did before.
+
+**New material, all verified 19 September 2026.**
+- Whiteley Village: 264 almshouse cottages plus Huntley House (51 extra-care flats),
+  charitable almshouse tenure, not for sale or private rent (Whiteley Homes Trust,
+  n.d.b). Eligibility stated as published: 65+ male, 60+ female, net income no more
+  than £25,000 single or £40,000 couple, capital no more than £30,000 or £50,000,
+  five consecutive years' UK residence, a defined housing need, and applications not
+  currently accepted from people with a dementia diagnosis (Whiteley Homes Trust, n.d.c).
+- Childcare: Surrey's Family Information Service childcare pages (Surrey County
+  Council, 2026d) and the government's Best Start in Life service, which replaced
+  childcarechoices.gov.uk (301 to beststartinlife.gov.uk). Funded hours quoted only
+  as the service states them, "15 and 30 hours support" for children "aged between 9
+  months and 4 years", with the checker linked as the live source (Best Start in
+  Life, 2026a; 2026b).
+- Property checks: Ofcom mobile and broadband checker (Ofcom, n.d.), Elmbridge "Find
+  or comment on a planning application" (Elmbridge Borough Council, n.d.c), plus the
+  existing Environment Agency and Surrey admissions sources.
+- Hersham is framed as a neighbouring village with its own centre, station and guide,
+  never as a Walton neighbourhood.
+
+**Citations.** The page's 25 hand-written citation links were replaced by the shared
+`linkCitations` helper, so all 84 in-text author-dates link to their own reference,
+grouped ones included. Two backwards-compatible fixes to that helper: it no longer
+splits a citation group on the semicolon inside an HTML entity (which broke "St
+Peter's"), and it carries the author across a bare continuation year ("2026a; 2026b").
+Diggers still links 129 citations with 0 unmatched. The research notes had lost every
+citation group when the page was first built; they are restored from the approved
+guide, along with the flood-risk note's dropped second sentence. Department for
+Education (n.d.b) was removed from the reference list: it supported only the
+pre-publication editorial note about Rydens, which was never published, so nothing
+cited it.
+
+**QA run 19 September 2026.** Build clean. `seo:validate` passes on 417 pages.
+`seo:links` reports zero internal links to non-existent pages. No broken in-page
+anchors, no heading-level skips, every reference cited. Mobile 375px: no horizontal
+scroll, sidebar hidden, contents disclosure shown, summary 55px tall, all sub-24px
+links are inline text rather than standalone targets. `astro check` reports 156
+errors against 153 on main; the three-error gap is in `shopping/` pages this
+checkout has not yet pulled, not in anything changed here.
+
+## Still open
+- **Anchor scrolling could not be exercised in the embedded browser.** Scripted hash
+  changes and synthetic clicks did not move the page there. Verified structurally
+  instead: every contents link resolves to an id that exists, and scroll-margin-top
+  computes to 136px, clearing the 72px sticky header. Worth one manual check.
+- **Active-section highlighting only marks a heading while it sits in the observer's
+  band.** Landing between headings marks nothing. The live Diggers page behaves
+  identically, so this is inherited, not introduced, but it is worth revisiting.
+- **Darren's resident interview** is still to come. No placeholder box was published
+  and no quotation invented; the meeting-people and areas sections are where it will go.
+- **The Whiteley Village history page cites Wikipedia twice** (Protocol Tier 3,
+  never acceptable as a sole source). Out of scope here, but it needs replacing with
+  the Trust's own material or a published history.
+- **Hersham living page still says Three Rivers Academy "opened in February 2018"**;
+  GIAS gives 1 September 2016. Unchanged from the last session.
+
+## 2026-09-20: two cross-page corrections alongside the living guide
+
+**Three Rivers Academy on `/hersham/living/`** said "It opened in February 2018",
+which conflated the school with its building. Get Information about Schools records
+Rydens Enterprise School and Sixth Form College as closed on 31 August 2016 and Three
+Rivers Academy as opened on 1 September 2016 as its successor, so the entry now says
+that. The February 2018 building date, which construction-industry pages and Wikipedia
+carry, is left out: the school's own site does not date the building, and no Tier 1 or
+Tier 2 source checked on 20 September 2026 supports it.
+
+**`/living/areas/` now links back into the guide.** Its opening paragraph names the
+guide by its new title, and a short "Working out where to live" section before the
+references points to housing and costs, getting around, and the property checks. The
+two pages keep separate jobs: areas explains where each one is, the guide explains
+what living there involves.
