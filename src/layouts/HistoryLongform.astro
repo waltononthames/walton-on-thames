@@ -7,6 +7,7 @@
 // contents highlight and the "back to text" link on reference entries.
 import BaseLayout from './BaseLayout.astro';
 import LinkedCitations from '../components/LinkedCitations.astro';
+import GuideContents from '../components/GuideContents.astro';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { renderApa } from '../utils/citations';
@@ -123,40 +124,12 @@ const stripItalics = (s: string) => s.replace(/\*/g, '');
 
   <section class="section lf-section">
     <div class="container lf-layout">
-      <nav class="lf-toc" aria-labelledby="lf-toc-heading">
-        <h2 id="lf-toc-heading" class="lf-toc-title">Contents</h2>
-        <ol class="lf-toc-parts">
-          {toc.map((part) => (
-            <li>
-              <a href={`#${part.slug}`} class="lf-toc-part">{part.text}</a>
-              {part.children.length > 0 && (
-                <ol class="lf-toc-sections">
-                  {part.children.map((c) => <li><a href={`#${c.slug}`}>{c.text}</a></li>)}
-                </ol>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
+      <GuideContents parts={toc} variant="sidebar" />
 
       <article class="prose lf-article">
         {data.standfirst && <p class="lf-standfirst">{data.standfirst}</p>}
 
-        <details class="lf-contents-mobile">
-          <summary>Contents</summary>
-          <ol class="lf-toc-parts">
-            {toc.map((part) => (
-              <li>
-                <a href={`#${part.slug}`} class="lf-toc-part">{part.text}</a>
-                {part.children.length > 0 && (
-                  <ol class="lf-toc-sections">
-                    {part.children.map((c) => <li><a href={`#${c.slug}`}>{c.text}</a></li>)}
-                  </ol>
-                )}
-              </li>
-            ))}
-          </ol>
-        </details>
+        <GuideContents parts={toc} variant="mobile" />
 
         <LinkedCitations sources={citeSources} label={selfHref}>
           <Content />
@@ -223,29 +196,7 @@ const stripItalics = (s: string) => s.replace(/\*/g, '');
       }
     });
 
-    // Contents highlight: marks the section currently being read.
-    var links = Array.prototype.slice.call(document.querySelectorAll('.lf-toc a[href^="#"]'));
-    if (!('IntersectionObserver' in window) || !links.length) return;
-    var byId = {};
-    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
-    var targets = Object.keys(byId).map(function (id) { return document.getElementById(id); }).filter(Boolean);
-    var current = null;
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var link = byId[entry.target.id];
-        if (!link || link === current) return;
-        if (current) current.removeAttribute('aria-current');
-        link.setAttribute('aria-current', 'location');
-        current = link;
-        var box = link.closest('.lf-toc');
-        if (box && box.scrollHeight > box.clientHeight) {
-          var top = link.offsetTop - box.clientHeight / 3;
-          box.scrollTop = Math.max(0, top);
-        }
-      });
-    }, { rootMargin: '-80px 0px -70% 0px' });
-    targets.forEach(function (t) { observer.observe(t); });
+
   })();
 </script>
 
@@ -305,104 +256,19 @@ const stripItalics = (s: string) => s.replace(/\*/g, '');
     margin-top: 2.25rem;
   }
 
-  .lf-article :global(.lf-standfirst + .lf-contents-mobile + h2),
+  .lf-article :global(.lf-standfirst + .gc-contents-mobile + h2),
   .lf-article :global(.callout + h2) {
     margin-top: 2.5rem;
   }
 
-  /* Contents */
-  .lf-toc {
-    position: sticky;
-    top: calc(var(--nav-height) + 1rem);
-    max-height: calc(100vh - var(--nav-height) - 2rem);
-    overflow-y: auto;
-    padding-right: 0.5rem;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    overscroll-behavior: contain;
-  }
-
-  .lf-toc-title {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-slate);
-    margin-bottom: 0.75rem;
-  }
-
-  .lf-toc-parts,
-  .lf-toc-sections {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .lf-toc-parts > li { margin-bottom: 0.9rem; }
-
-  .lf-toc a {
-    display: block;
-    color: var(--color-slate);
-    text-decoration: none;
-    padding: 0.2rem 0 0.2rem 0.6rem;
-    border-left: 2px solid transparent;
-  }
-
-  .lf-toc a.lf-toc-part {
-    color: var(--color-navy);
-    font-weight: 600;
-  }
-
-  .lf-toc-sections a { padding-left: 1.1rem; }
-
-  .lf-toc a:hover { color: var(--color-accent-dark); }
-
-  .lf-toc a[aria-current="location"] {
-    color: var(--color-navy);
-    border-left-color: var(--color-accent);
-    background: rgba(184,134,46,0.08);
-  }
-
-  .lf-contents-mobile { display: none; }
 
   @media (max-width: 1000px) {
     .lf-layout { grid-template-columns: minmax(0, 1fr); }
-    .lf-toc { display: none; }
     /* Explicit width: with auto margins alone a grid item shrink-wraps to its
        min-content, which the tables' minimum width would force past the
        screen edge. */
     .lf-article { width: 100%; max-width: 70ch; margin: 0 auto; }
 
-    .lf-contents-mobile {
-      display: block;
-      margin: 0 0 2rem;
-      border: 1px solid rgba(11,36,46,0.15);
-      border-radius: var(--radius-md);
-      background: var(--color-white);
-    }
-
-    .lf-contents-mobile summary {
-      cursor: pointer;
-      padding: 0.85rem 1rem;
-      font-weight: 600;
-      min-height: 44px;
-    }
-
-    .lf-contents-mobile > .lf-toc-parts {
-      padding: 0 1rem 1rem;
-      font-size: 0.95rem;
-    }
-
-    .lf-contents-mobile a {
-      display: block;
-      padding: 0.3rem 0;
-      text-decoration: none;
-    }
-
-    .lf-contents-mobile .lf-toc-part { font-weight: 600; color: var(--color-navy); }
-    .lf-contents-mobile .lf-toc-sections { padding-left: 1rem; margin-bottom: 0.5rem; }
-    .lf-contents-mobile .lf-toc-sections a { color: var(--color-slate); }
   }
 
   @media (max-width: 600px) {

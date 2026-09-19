@@ -1,0 +1,201 @@
+---
+// Shared in-page contents navigation, extracted from HistoryLongform (the
+// Diggers article) so long guides outside the history cluster can use the same
+// pattern. Two variants, because the two sit in different places in the DOM:
+//
+//   variant="sidebar"  the sticky desktop column, hidden below 1000px
+//   variant="mobile"   a <details> disclosure inside the article, shown below 1000px
+//
+// A page renders both. The sidebar variant carries the active-section script,
+// which marks whichever section is being read with aria-current="location";
+// it finds links by the data-guide-toc attribute, so both variants stay in
+// step without the page wiring anything up.
+export interface ContentsPart {
+  slug: string;
+  text: string;
+  children?: { slug: string; text: string }[];
+}
+
+interface Props {
+  parts: ContentsPart[];
+  variant: 'sidebar' | 'mobile';
+  /** Heading above the list. "Contents" suits an article, "In this guide" a guide. */
+  label?: string;
+}
+
+const { parts, variant, label = 'Contents' } = Astro.props;
+const headingId = `gc-toc-heading-${variant}`;
+---
+
+{variant === 'sidebar' ? (
+  <nav class="gc-toc" data-guide-toc aria-labelledby={headingId}>
+    <h2 id={headingId} class="gc-toc-title">{label}</h2>
+    <ol class="gc-toc-parts">
+      {parts.map((part) => (
+        <li>
+          <a href={`#${part.slug}`} class="gc-toc-part">{part.text}</a>
+          {part.children && part.children.length > 0 && (
+            <ol class="gc-toc-sections">
+              {part.children.map((c) => <li><a href={`#${c.slug}`}>{c.text}</a></li>)}
+            </ol>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+) : (
+  <details class="gc-contents-mobile" data-guide-toc>
+    <summary>{label}</summary>
+    <ol class="gc-toc-parts">
+      {parts.map((part) => (
+        <li>
+          <a href={`#${part.slug}`} class="gc-toc-part">{part.text}</a>
+          {part.children && part.children.length > 0 && (
+            <ol class="gc-toc-sections">
+              {part.children.map((c) => <li><a href={`#${c.slug}`}>{c.text}</a></li>)}
+            </ol>
+          )}
+        </li>
+      ))}
+    </ol>
+  </details>
+)}
+
+{variant === 'sidebar' && (
+  <script is:inline>
+    (function () {
+      // The sidebar renders before the article, so the sections it points at
+      // do not exist yet when this runs. Wait for the document, or the
+      // observer would be handed an empty list and never mark anything.
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      function init() {
+      // Marks the section currently being read. Progressive enhancement: the
+      // links are ordinary anchors and work without this.
+      var links = Array.prototype.slice.call(
+        document.querySelectorAll('[data-guide-toc] a[href^="#"]')
+      );
+      if (!('IntersectionObserver' in window) || !links.length) return;
+      var byId = {};
+      links.forEach(function (a) {
+        var id = a.getAttribute('href').slice(1);
+        (byId[id] = byId[id] || []).push(a);
+      });
+      var targets = Object.keys(byId)
+        .map(function (id) { return document.getElementById(id); })
+        .filter(Boolean);
+      var current = null;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var group = byId[entry.target.id];
+          if (!group || group === current) return;
+          if (current) current.forEach(function (a) { a.removeAttribute('aria-current'); });
+          group.forEach(function (a) { a.setAttribute('aria-current', 'location'); });
+          current = group;
+          var box = group[0].closest('.gc-toc');
+          if (box && box.scrollHeight > box.clientHeight) {
+            box.scrollTop = Math.max(0, group[0].offsetTop - box.clientHeight / 3);
+          }
+        });
+      }, { rootMargin: '-80px 0px -70% 0px' });
+      targets.forEach(function (t) { observer.observe(t); });
+      }
+    })();
+  </script>
+)}
+
+<style>
+  .gc-toc {
+    position: sticky;
+    top: calc(var(--nav-height) + 1rem);
+    max-height: calc(100vh - var(--nav-height) - 2rem);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    overscroll-behavior: contain;
+  }
+
+  .gc-toc-title {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+    margin-bottom: 0.75rem;
+  }
+
+  .gc-toc-parts,
+  .gc-toc-sections {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .gc-toc-parts > li { margin-bottom: 0.9rem; }
+
+  .gc-toc a {
+    display: block;
+    color: var(--color-slate);
+    text-decoration: none;
+    padding: 0.2rem 0 0.2rem 0.6rem;
+    border-left: 2px solid transparent;
+  }
+
+  .gc-toc a.gc-toc-part {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+
+  .gc-toc-sections a { padding-left: 1.1rem; }
+
+  .gc-toc a:hover { color: var(--color-accent-dark); }
+
+  .gc-toc a[aria-current='location'] {
+    color: var(--color-navy);
+    border-left-color: var(--color-accent);
+    background: rgba(184, 134, 46, 0.08);
+  }
+
+  .gc-contents-mobile { display: none; }
+
+  @media (max-width: 1000px) {
+    .gc-toc { display: none; }
+
+    .gc-contents-mobile {
+      display: block;
+      margin: 0 0 2rem;
+      border: 1px solid rgba(11, 36, 46, 0.15);
+      border-radius: var(--radius-md);
+      background: var(--color-white);
+    }
+
+    .gc-contents-mobile summary {
+      cursor: pointer;
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      min-height: 44px;
+    }
+
+    .gc-contents-mobile > .gc-toc-parts {
+      padding: 0 1rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    .gc-contents-mobile a {
+      display: block;
+      padding: 0.3rem 0;
+      text-decoration: none;
+    }
+
+    .gc-contents-mobile .gc-toc-part { font-weight: 600; color: var(--color-navy); }
+    .gc-contents-mobile .gc-toc-sections { padding-left: 1rem; margin-bottom: 0.5rem; }
+    .gc-contents-mobile .gc-toc-sections a { color: var(--color-slate); }
+  }
+</style>

@@ -26,6 +26,16 @@ export interface LinkResult {
 // (optionally with a reprint year or a/b suffix) or "n.d.".
 const LOOKS_LIKE_CITATION = /^[A-Z][^,;()]*(,|\bet al\.)[^;()]*?(\b\d{4}[a-z]?(\/\d{4})?\b|n\.d\.)/;
 
+// Text rendered through an Astro expression arrives HTML-escaped, so an
+// apostrophe in an author name reaches the matcher as an entity. Compare on
+// the decoded form; the displayed text is never changed.
+function decodeForMatch(s: string) {
+  return s.replace(/&#39;|&#x27;|&apos;|&rsquo;|\u2019/g, "'").replace(/&amp;/g, '&');
+}
+
+// A bare date continuing the previous author, as in "(Smith, 2020a; 2020b)".
+const BARE_DATE = /^(\d{4}[a-z]?|n\.d\.[a-z]?)$/;
+
 function escapeRegExp(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -41,13 +51,18 @@ export function linkCitations(html: string, sources: CiteSource[]): LinkResult {
   // Only text between tags is considered, so attributes are never rewritten.
   const out = html.replace(/>([^<]+)</g, (whole, textNode: string) => {
     const replaced = textNode.replace(/\(([^()]+)\)/g, (group, inner: string) => {
-      const parts = inner.split(/;\s*/);
-      if (!parts.some((p) => LOOKS_LIKE_CITATION.test(p.trim()))) return group;
+      const parts = inner.split(/(?<!&#?[a-zA-Z0-9]+);\s*/);
+      if (!parts.some((p) => LOOKS_LIKE_CITATION.test(decodeForMatch(p.trim())))) return group;
+      let previousAuthor = '';
       const rendered = parts.map((raw) => {
         const part = raw.trim();
-        const hit = keys.find(({ key }) => new RegExp(`^${escapeRegExp(key)}(,\\s|$)`).test(part));
+        const decoded = decodeForMatch(part);
+        const candidate = BARE_DATE.test(decoded) && previousAuthor ? `${previousAuthor}, ${decoded}` : decoded;
+        const author = candidate.split(',')[0];
+        if (author && LOOKS_LIKE_CITATION.test(candidate)) previousAuthor = author;
+        const hit = keys.find(({ key }) => new RegExp(`^${escapeRegExp(key)}(,\\s|$)`).test(candidate));
         if (!hit) {
-          if (LOOKS_LIKE_CITATION.test(part)) unmatched.push(part);
+          if (LOOKS_LIKE_CITATION.test(candidate)) unmatched.push(part);
           return part;
         }
         linked++;

@@ -21,16 +21,17 @@
 // questions, marked up as ordinary headings and text, which is what both
 // readers and answer engines actually need.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ThingsToDoStickyNav from '../../components/ThingsToDoStickyNav.astro';
+import GuideContents from '../../components/GuideContents.astro';
 import mapData from '../../data/walton-areas-map.json';
+import LinkedCitations from '../../components/LinkedCitations.astro';
 
-const reviewedOn = '16 September 2026';
-const reviewedISO = '2026-09-16';
+const reviewedOn = '19 September 2026';
+const reviewedISO = '2026-09-19';
 const publishedISO = '2026-07-03';
 
-const PAGE_TITLE = 'Living in Walton-on-Thames | Areas, Schools & Local Services';
+const PAGE_TITLE = 'Moving to Walton-on-Thames, Hersham & Whiteley Village';
 const PAGE_DESCRIPTION =
-  'Thinking of moving to Walton-on-Thames? Independent local guide to areas, house prices, schools, Waterloo trains, healthcare, council tax and local services.';
+  'Independent guide to moving to and living in Walton-on-Thames, Hersham and Whiteley Village: areas, costs, commuting, schools, childcare and community.';
 
 // The existing service hub. These are the routes residents come to /living/
 // for, and they keep their prominent position at the top of the page.
@@ -65,7 +66,7 @@ const glance = [
   {
     label: 'Main postcode district',
     value: 'KT12, which also covers Hersham and Whiteley Village addresses.',
-    source: 'Whiteley Homes Trust, n.d.; Rightmove, 2026',
+    source: 'Whiteley Homes Trust, n.d.a; Rightmove, 2026',
   },
   {
     label: 'Railway station',
@@ -109,23 +110,85 @@ const glance = [
   },
 ];
 
-const sections = [
-  { id: 'geography', label: 'What counts as Walton' },
-  { id: 'character', label: 'What it is like' },
-  { id: 'areas', label: 'Areas' },
-  { id: 'property', label: 'House prices & renting' },
-  { id: 'costs', label: 'Council Tax' },
-  { id: 'commuting', label: 'Commuting' },
-  { id: 'getting-around', label: 'Getting around' },
-  { id: 'schools', label: 'Schools' },
-  { id: 'healthcare', label: 'Healthcare' },
-  { id: 'shopping', label: 'Shopping' },
-  { id: 'outdoors', label: 'River & green space' },
-  { id: 'community', label: 'Clubs & community' },
-  { id: 'flood-risk', label: 'Flood risk' },
-  { id: 'trade-offs', label: 'Before you move' },
-  { id: 'faqs', label: 'Common questions' },
-  { id: 'references', label: 'References' },
+// The three reader journeys, per the brief: progressive disclosure into the
+// one guide, not three copies of it.
+const journeys = [
+  {
+    title: "I'm considering moving here",
+    description: 'Compare the three communities, then work through costs, commuting and the checks that apply to a specific address.',
+    links: [
+      { href: '#areas', text: 'Explore the areas' },
+      { href: '#housing', text: 'Housing and costs' },
+      { href: '#transport', text: 'Commuting' },
+      { href: '#property-checks', text: 'Before choosing a property' },
+    ],
+  },
+  {
+    title: "I'm new to the area",
+    description: 'Get the essentials set up, find your way around, and find something regular to go to.',
+    links: [
+      { href: '#first-month', text: 'Your first month here' },
+      { href: '#schools', text: 'Schools and childcare' },
+      { href: '#meeting-people', text: 'Meeting people' },
+    ],
+  },
+  {
+    title: 'I already live here',
+    description: 'The maintained local directories, plus clubs, events and council services.',
+    links: [
+      { href: '/living/community/', text: 'Clubs and societies' },
+      { href: '/whats-on/', text: "What's on" },
+      { href: '/living/council-and-services/', text: 'Council and services' },
+      { href: '#everyday', text: 'Everyday life' },
+    ],
+  },
+];
+
+const contentsParts = [
+  { slug: 'at-a-glance', text: 'At a glance', children: [{ slug: 'character', text: 'What living here is like' }] },
+  {
+    slug: 'areas',
+    text: 'Explore the areas',
+    children: [
+      { slug: 'walton', text: 'Walton-on-Thames' },
+      { slug: 'hersham', text: 'Hersham' },
+      { slug: 'whiteley-village', text: 'Whiteley Village' },
+      { slug: 'geography', text: 'What counts as Walton?' },
+    ],
+  },
+  {
+    slug: 'housing',
+    text: 'Housing and costs',
+    children: [
+      { slug: 'costs', text: 'Council Tax' },
+      { slug: 'monthly-costs', text: 'Monthly budget' },
+    ],
+  },
+  { slug: 'transport', text: 'Getting around', children: [{ slug: 'getting-around', text: 'Buses and roads' }] },
+  {
+    slug: 'schools',
+    text: 'Schools and childcare',
+    children: [
+      { slug: 'early-years', text: 'Nurseries and childminders' },
+      { slug: 'wraparound', text: 'Wraparound care' },
+    ],
+  },
+  {
+    slug: 'everyday',
+    text: 'Everyday life',
+    children: [
+      { slug: 'healthcare', text: 'Healthcare' },
+      { slug: 'shopping', text: 'Shopping and food' },
+      { slug: 'outdoors', text: 'River and green space' },
+    ],
+  },
+  { slug: 'meeting-people', text: 'Meeting people' },
+  { slug: 'trade-offs', text: 'Weighing it up' },
+  { slug: 'property-checks', text: 'Before choosing a property', children: [{ slug: 'flood-risk', text: 'Flood risk' }] },
+  { slug: 'first-month', text: 'Your first month' },
+  { slug: 'faqs', text: 'Common questions' },
+  { slug: 'methodology', text: 'Research notes' },
+  { slug: 'references', text: 'References' },
 ];
 
 // Each area gets one sentence here; the full descriptions live on
@@ -137,32 +200,32 @@ const areaSummaries = {
   'historic-centre': {
     where: 'Church Street, Bridge Street, Manor Road and the Thames',
     text: "Walton's oldest surviving streets, with parts of the historic townscape protected by two conservation areas",
-    cite: 'Elmbridge Borough Council, n.d.a', href: '#ref-ebc-na',
+    cite: 'Elmbridge Borough Council, n.d.a',
   },
   'town-centre': {
     where: 'High Street, New Zealand Avenue and The Heart',
     text: 'The modern commercial centre, with shops, places to eat, a gym and Walton Library, and the most urban-feeling part of town',
-    cite: 'The Heart Shopping Centre, 2026', href: '#ref-heart-2026',
+    cite: 'The Heart Shopping Centre, 2026',
   },
   'ashley-park': {
     where: 'West and south-west of the town centre',
     text: 'Built on the former Ashley Park estate, broken up for development in 1923, and between the town centre and the station',
-    cite: 'Hughes, 2003', href: '#ref-hughes-2003',
+    cite: 'Hughes, 2003',
   },
   'station-halfway': {
     where: 'Station Avenue, the Halfway and western Hersham Road',
     text: 'Closest to the railway station, which is approximately a 20 to 25-minute walk from The Heart',
-    cite: 'Walton-on-Thames.org, 2026a', href: '#ref-wot-2026a',
+    cite: 'Walton-on-Thames.org, 2026a',
   },
   'cottimore': {
     where: 'Cottimore Lane and Sidney Road',
     text: 'Once part of the Walton Lodge and Cottimore estates, whose older carriage routes and names survive in the street pattern',
-    cite: 'Stonebanks, 1982', href: '#ref-stonebanks-1982',
+    cite: 'Stonebanks, 1982',
   },
   'walton-north': {
     where: 'North and north-east Walton',
     text: 'Mixed housing, open space and the Xcel Leisure Complex on Waterside Drive, with housing character varying from street to street',
-    cite: 'Elmbridge Borough Council, n.d.b', href: '#ref-ebc-nb',
+    cite: 'Elmbridge Borough Council, n.d.b',
   },
 };
 
@@ -177,37 +240,31 @@ const faqs = [
     q: 'How long is the train from Walton-on-Thames to London Waterloo?',
     a: 'The fastest scheduled direct services are usually around 22 to 25 minutes. Many trains making more stops take around 30 to 35 minutes. Check the current timetable for the service you actually intend to use.',
     cite: 'South Western Railway, 2026',
-    href: '#ref-swr-2026',
   },
   {
     q: 'Is Walton-on-Thames station in the town centre?',
     a: 'No. It is approximately a 20 to 25-minute walk from the main town centre and The Heart. Areas around Ashley Park, Station Avenue and the Halfway are closer.',
     cite: 'Walton-on-Thames.org, 2026a',
-    href: '#ref-wot-2026a',
   },
   {
     q: 'Is Hersham part of Walton-on-Thames?',
     a: 'No. Hersham is a distinct village, although the two built-up areas adjoin one another and Hersham uses Walton-on-Thames as its postal town.',
     cite: 'Walton-on-Thames.org, 2026b',
-    href: '#ref-wot-2026b',
   },
   {
     q: 'How much do houses cost in Walton-on-Thames?',
     a: 'There is no official Walton-only house-price index. The latest official ONS figure for Elmbridge was an average of £744,000 in June 2026, but the borough contains several different property markets. Commercial "Walton-on-Thames" averages can include Hersham addresses, so street-level completed sales are more useful for an individual purchase.',
     cite: 'Office for National Statistics, 2026; Rightmove, 2026',
-    href: '#ref-ons-2026',
   },
   {
     q: 'What is the average rent in Walton-on-Thames?',
     a: 'Official rental data are published for Elmbridge rather than Walton. The Elmbridge average was £1,867 a month in July 2026. Actual Walton rents vary by property type, location and condition.',
     cite: 'Office for National Statistics, 2026',
-    href: '#ref-ons-2026',
   },
   {
     q: 'Does Walton-on-Thames flood?',
     a: "Some parts of Walton are within Environment Agency flood-warning and flood-risk areas, particularly around the Thames. Risk is property-specific, so the exact address should be checked using the government's long-term flood-risk service.",
     cite: 'Environment Agency, 2026a; Environment Agency, n.d.',
-    href: '#ref-ea-2026a',
   },
 ];
 
@@ -245,14 +302,6 @@ const references = [
     title: 'Rydens Enterprise School and Sixth Form College',
     tail: '. Get Information about Schools, URN 137137.',
     url: 'https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/137137',
-    accessed: '16 September 2026',
-  },
-  {
-    id: 'ref-dfe-b',
-    text: 'Department for Education (n.d.b) ',
-    title: 'Three Rivers Academy',
-    tail: '. Get Information about Schools, URN 144503.',
-    url: 'https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/144503',
     accessed: '16 September 2026',
   },
   {
@@ -460,14 +509,80 @@ const references = [
     accessed: '16 September 2026',
   },
   {
+    id: 'ref-bsl-2026a',
+    text: 'Best Start in Life (2026a) ',
+    title: 'Childcare and early years education',
+    tail: '. Last updated 22 May 2026.',
+    url: 'https://beststartinlife.gov.uk/childcare-early-years-education/',
+    accessed: '19 September 2026',
+  },
+  {
+    id: 'ref-bsl-2026b',
+    text: 'Best Start in Life (2026b) ',
+    title: 'Breakfast clubs and wraparound childcare',
+    tail: '.',
+    url: 'https://beststartinlife.gov.uk/childcare-early-years-education/breakfast-clubs-and-wraparound-childcare/',
+    accessed: '19 September 2026',
+  },
+  {
+    id: 'ref-ebc-nc',
+    text: 'Elmbridge Borough Council (n.d.c) ',
+    title: 'Find or comment on a planning application',
+    tail: '.',
+    url: 'https://www.elmbridge.gov.uk/planning/planning/find-or-comment-planning-application',
+    accessed: '19 September 2026',
+  },
+  {
+    id: 'ref-ofcom-nd',
+    text: 'Ofcom (n.d.) ',
+    title: 'Mobile and broadband checker',
+    tail: '.',
+    url: 'https://checker.ofcom.org.uk/en-gb/broadband-coverage',
+    accessed: '19 September 2026',
+  },
+  {
+    id: 'ref-scc-2026d',
+    text: 'Surrey County Council (2026d) ',
+    title: 'Childcare',
+    tail: '. Surrey Family Information Service.',
+    url: 'https://www.surreycc.gov.uk/children/support-and-advice/families/childcare',
+    accessed: '19 September 2026',
+  },
+  {
+    id: 'ref-whiteley-ndb',
+    text: 'Whiteley Homes Trust (n.d.b) ',
+    title: 'Living at Whiteley',
+    tail: '.',
+    url: 'https://www.thewhiteleyhomestrust.org.uk/living-at-whiteley',
+    accessed: '19 September 2026',
+  },
+  {
+    id: 'ref-whiteley-ndc',
+    text: 'Whiteley Homes Trust (n.d.c) ',
+    title: 'Apply to live at Whiteley',
+    tail: '.',
+    url: 'https://www.thewhiteleyhomestrust.org.uk/living-at-whiteley/apply-to-live-at-whiteley',
+    accessed: '19 September 2026',
+  },
+  {
     id: 'ref-whiteley-nd',
-    text: 'Whiteley Homes Trust (n.d.) ',
+    text: 'Whiteley Homes Trust (n.d.a) ',
     title: 'Whiteley Village',
     tail: '. Admin Building, Octagon Road, Walton on Thames, Surrey KT12 4EH.',
     url: 'https://whiteleyvillage.org.uk/who-we-are/whiteley-village/',
     accessed: '16 September 2026',
   },
 ];
+
+// Every in-text author-date becomes its own link to its reference, including
+// grouped ones like "(NHS, n.d.a; NHS, n.d.b)". Keys come from the reference
+// text itself so the two cannot drift apart.
+const citeSources = references.map((ref) => {
+  const m = ref.text.match(/^(.*?) \(([^)]+)\)\s*$/);
+  if (!m) throw new Error(`Reference text not in "Author (date)" form: ${ref.text}`);
+  const author = m[1].includes(', ') ? m[1].split(', ')[0] : m[1];
+  return { id: ref.id.replace(/^ref-/, ''), cite: [`${author}, ${m[2]}`] };
+});
 ---
 
 <BaseLayout
@@ -518,8 +633,8 @@ const references = [
           <li aria-current="page">Living</li>
         </ol>
       </nav>
-      <h1>Living in Walton-on-Thames</h1>
-      <p class="hero-standfirst">Walton-on-Thames is a riverside town in north-west Surrey, within the Borough of Elmbridge. It has a substantial town centre, direct trains to London Waterloo, access to the Thames, and housing that runs from town-centre flats to large detached homes.</p>
+      <h1>Moving to Walton-on-Thames, Hersham or Whiteley Village? Your guide to living here</h1>
+      <p class="hero-standfirst">Considering a move, recently arrived, or already living here? This independent guide covers the practical questions: which of the three communities fits, what housing and daily life cost, how commuting, schools and childcare work, and where to meet people. Whiteley Village is a charitable retirement village with eligibility rules, so it is treated separately rather than as ordinary housing.</p>
       <p class="hero-meta">
         <span>By Walton-on-Thames.org</span>
         <span>Last reviewed {reviewedOn}</span>
@@ -527,11 +642,28 @@ const references = [
     </div>
   </div>
 
+  <section class="section journeys-section" aria-labelledby="journeys-heading">
+    <div class="container">
+      <h2 id="journeys-heading" class="sr-only">Start where you are</h2>
+      <ul class="journey-grid" role="list">
+        {journeys.map((journey) => (
+          <li class="journey">
+            <h3>{journey.title}</h3>
+            <p>{journey.description}</p>
+            <ul class="journey-links" role="list">
+              {journey.links.map((link) => <li><a href={link.href}>{link.text}</a></li>)}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
   <section class="section services-section" aria-labelledby="services-heading">
     <div class="container">
       <div class="section-header">
         <h2 id="services-heading">Local services and community</h2>
-        <p>Already live here? These are the practical pages residents come to this site for. The guide to moving to Walton follows below.</p>
+        <p>The maintained pages residents come to this site for. The guide below covers moving here and settling in.</p>
       </div>
 
       <ul class="service-grid" role="list">
@@ -546,18 +678,22 @@ const references = [
       </ul>
 
       <p class="services-note">
-        Hersham and Whiteley Village are closely connected to Walton but have their own identities, so they have their own guides:
+        These directories cover Walton and Hersham together. Hersham and Whiteley Village also have guides of their own:
         <a href="/hersham/living/">living in Hersham</a> and <a href="/hersham/whiteley-village/">Whiteley Village</a>.
       </p>
     </div>
   </section>
 
   <section class="section section-guide">
-    <div class="container">
-      <article class="prose living-guide">
-        <ThingsToDoStickyNav sections={sections} />
+    <div class="container living-layout">
+      <GuideContents parts={contentsParts} variant="sidebar" label="In this guide" />
 
-        <p class="guide-intro">This second half of the page is an independent guide for anyone weighing up a move to Walton-on-Thames. Time-sensitive information such as house prices, rents, Council Tax, transport and schools is dated and linked to the source it came from, so you can check how current it is.</p>
+      <article class="prose living-guide">
+        <GuideContents parts={contentsParts} variant="mobile" label="In this guide" />
+
+        <LinkedCitations sources={citeSources} label="/living/">
+
+        <p class="guide-intro">Time-sensitive information here, including house prices, rents, Council Tax, transport, schools and childcare, is dated and linked to the source it came from, so you can see how current it is and check it yourself.</p>
 
         <h2 id="at-a-glance">Walton-on-Thames at a glance</h2>
         <div class="table-wrap">
@@ -568,7 +704,7 @@ const references = [
                   <th scope="row">{row.label}</th>
                   <td>
                     {row.value}
-                    {row.source && <span class="fact-source">Source: {row.source}</span>}
+                    {row.source && <span class="fact-source">Source: ({row.source})</span>}
                   </td>
                 </tr>
               ))}
@@ -576,14 +712,7 @@ const references = [
           </table>
         </div>
 
-        <h2 id="geography">What counts as Walton-on-Thames?</h2>
-        <p>This is more complicated than the postal address suggests.</p>
-        <p>The Office for National Statistics defines a <strong>Walton-on-Thames built-up area</strong> as a statistical geography. Census 2021 data can therefore be reported for that geography, but it is not the same thing as the KT12 postcode district, current council wards or the historic parish <a class="cite" href="#ref-ons-2023">(Office for National Statistics, 2023)</a>.</p>
-        <p>The <strong>KT12 postcode district is broader than Walton-on-Thames</strong>. It includes Hersham and Whiteley Village addresses: Whiteley Homes Trust gives its own address as Octagon Road, Walton on Thames, KT12 4EH, and sold-price records for streets in Hersham such as Southdown Road and Queens Road carry KT12 postcodes with Walton-on-Thames as the postal town <a class="cite" href="#ref-whiteley-nd">(Whiteley Homes Trust, n.d.; Rightmove, 2026)</a>. Hersham is a distinct village with its own centre and identity, while Whiteley Village is a distinct residential community south of Hersham. Both are covered by this site because of their close practical links with the town, but neither should simply be counted as a Walton neighbourhood.</p>
-        <p>Walton-on-Thames railway station adds another complication. It serves Walton and north Hersham, and sits much closer to some residential streets than it does to Walton town centre <a class="cite" href="#ref-wot-2026a">(Walton-on-Thames.org, 2026a)</a>.</p>
-        <p>For anyone comparing properties, the most useful unit is therefore the <strong>actual street and immediate neighbourhood</strong>, not the postal town or the postcode.</p>
-
-        <h2 id="character">What is it like to live in Walton-on-Thames?</h2>
+        <h3 id="character">What living here is like</h3>
         <p>Walton combines three things that explain much of its modern appeal: <strong>London access, a functioning town centre and the River Thames</strong>.</p>
         <p>It is not one uniform suburban area. The historic streets around St Mary's and the river feel very different from the modern centre around The Heart. Ashley Park has a different housing character again, while the station and Halfway area are more convenient for rail commuters. Cottimore and Sidney Road preserve the layout of older estates, and north Walton has its own mixture of housing, sport and open space.</p>
         <p>That variation matters. A general description of Walton can only take a prospective resident so far, which is why the next section goes area by area.</p>
@@ -600,7 +729,10 @@ const references = [
           <figcaption>St Mary's Church stands at the heart of the Church Street conservation area. The New Zealand flag flies from its tower each April, a legacy of the town's First World War hospital at Mount Felix. Photograph by Darren Bayley.</figcaption>
         </figure>
 
-        <h2 id="areas">The different parts of Walton-on-Thames</h2>
+        <h2 id="areas">Explore the areas</h2>
+        <p>This guide covers three communities that share a postal address and very little else: a Thames-side town, a village with its own centre and station, and a charitable retirement village with its own rules about who can live there.</p>
+
+        <h3 id="walton">Walton-on-Thames</h3>
         <p>There is no single official set of neighbourhood boundaries for the town. These six are <strong>practical local descriptions, not formal administrative divisions</strong>. Each is covered in full, with its streets drawn on a map, in our <a href="/living/areas/">guide to the areas of Walton-on-Thames</a>.</p>
 
         <div class="areas-summary">
@@ -611,7 +743,7 @@ const references = [
                 <div>
                   <h3><a href={`/living/areas/#${area.id}`}>{area.name}</a></h3>
                   <p class="area-where">{area.where}</p>
-                  <p class="area-text">{area.text} <a class="cite" href={area.href}>({area.cite})</a>.</p>
+                  <p class="area-text">{area.text} ({area.cite}).</p>
                 </div>
               </li>
             ))}
@@ -633,23 +765,43 @@ const references = [
 
         <p>Hersham is a neighbouring village rather than a seventh area of Walton: see <a href="/hersham/living/">living in Hersham</a>.</p>
 
-        <h2 id="property">House prices and renting</h2>
+        <h3 id="hersham">Hersham</h3>
+        <p>Hersham is a village in its own right, not a district of Walton. It has its own centre around the green, its own shops and surgery, and its own railway station on a different line, and it keeps a separate identity that long predates the shared KT12 postal address (Walton-on-Thames.org, 2026b).</p>
+        <p>For anyone weighing up the two, the practical differences are the ones that matter: Hersham station is a smaller station with a less frequent service than Walton-on-Thames, the village centre is compact rather than a full town centre, and schools, clubs and everyday services are covered in the dedicated Hersham guide rather than repeated here.</p>
+        <p class="deeper-link"><a href="/hersham/living/">Living in Hersham: schools, doctors, getting around and council services</a> · <a href="/hersham/">the Hersham guide</a> · <a href="/hersham-railway-station/">Hersham railway station</a></p>
+
+        <h3 id="whiteley-village">Whiteley Village</h3>
+        <p>Whiteley Village, south of Hersham, is not conventional housing and cannot be bought or rented on the open market. It is a charitable almshouse village run by the Whiteley Homes Trust, which provides 264 one and two-bedroom almshouse cottages for independent living, alongside Huntley House, 51 self-contained extra-care flats (Whiteley Homes Trust, n.d.b).</p>
+        <p>Because it is an almshouse charity, residents have to qualify. The Trust asks applicants to be 65 or over if male and 60 or over if female, with a net annual income of no more than £25,000 for a single person or £40,000 for a couple, and capital of no more than £30,000 per person or £50,000 per couple. Applicants must have lived in the UK for five or more consecutive years and must show a housing need, such as being at risk of involuntary homelessness, a medical or welfare need made worse by their present home, or insecurity in a private shorthold tenancy. The Trust states that it does not currently accept applicants with a dementia diagnosis (Whiteley Homes Trust, n.d.c).</p>
+        <p>Applications are made on the Trust's own forms rather than through an agent or the council, so anyone considering it should start at the Trust's application page and check the current criteria and vacancies there (Whiteley Homes Trust, n.d.c).</p>
+        <p>The village is a private residential community rather than an attraction, and not everything in it is open to the public. The Whiteley Community Café in the Clubhouse on Octagon Road is open to residents and visitors alike, but the grounds are people's homes.</p>
+        <p class="deeper-link"><a href="/hersham/whiteley-village/">Whiteley Village: its history, architecture and how to visit respectfully</a> · <a href="https://www.thewhiteleyhomestrust.org.uk/living-at-whiteley/apply-to-live-at-whiteley" target="_blank" rel="noopener noreferrer">Apply to live at Whiteley, Whiteley Homes Trust ↗</a></p>
+
+
+        <h3 id="geography">What counts as Walton-on-Thames?</h3>
+        <p>This is more complicated than the postal address suggests.</p>
+        <p>The Office for National Statistics defines a <strong>Walton-on-Thames built-up area</strong> as a statistical geography. Census 2021 data can therefore be reported for that geography, but it is not the same thing as the KT12 postcode district, current council wards or the historic parish (Office for National Statistics, 2023).</p>
+        <p>The <strong>KT12 postcode district is broader than Walton-on-Thames</strong>. It includes Hersham and Whiteley Village addresses: Whiteley Homes Trust gives its own address as Octagon Road, Walton on Thames, KT12 4EH, and sold-price records for streets in Hersham such as Southdown Road and Queens Road carry KT12 postcodes with Walton-on-Thames as the postal town (Whiteley Homes Trust, n.d.a; Rightmove, 2026). Hersham is a distinct village with its own centre and identity, while Whiteley Village is a distinct residential community south of Hersham. Both are covered by this site because of their close practical links with the town, but neither should simply be counted as a Walton neighbourhood.</p>
+        <p>Walton-on-Thames railway station adds another complication. It serves Walton and north Hersham, and sits much closer to some residential streets than it does to Walton town centre (Walton-on-Thames.org, 2026a).</p>
+        <p>For anyone comparing properties, the most useful unit is therefore the <strong>actual street and immediate neighbourhood</strong>, not the postal town or the postcode.</p>
+
+        <h2 id="housing">Housing and the real cost of living</h2>
         <p>Walton sits within an expensive borough housing market, but no single headline figure accurately represents every part of the town.</p>
 
         <h3>Official Elmbridge market context</h3>
-        <p>The Office for National Statistics, using UK House Price Index data from HM Land Registry, reported an <strong>average Elmbridge house price of £744,000 in June 2026</strong>, down 2.1% from June 2025. The figure was provisional when published <a class="cite" href="#ref-ons-2026">(Office for National Statistics, 2026)</a>.</p>
-        <p>In the same release, the average price paid by first-time buyers in Elmbridge was <strong>£500,000</strong>, while home movers paid an average of <strong>£948,000</strong> <a class="cite" href="#ref-ons-2026">(Office for National Statistics, 2026)</a>.</p>
+        <p>The Office for National Statistics, using UK House Price Index data from HM Land Registry, reported an <strong>average Elmbridge house price of £744,000 in June 2026</strong>, down 2.1% from June 2025. The figure was provisional when published (Office for National Statistics, 2026).</p>
+        <p>In the same release, the average price paid by first-time buyers in Elmbridge was <strong>£500,000</strong>, while home movers paid an average of <strong>£948,000</strong> (Office for National Statistics, 2026).</p>
         <p>Those figures are useful context, but they cover the whole borough. Elmbridge includes Walton, Weybridge, Esher, Cobham, the Moleseys, the Dittons and other settlements with different property markets.</p>
 
         <h3>Why this guide does not quote a "Walton average" from a property portal</h3>
         <p>Commercial portals publish useful sold-price data, but their geography does not always match the town itself.</p>
-        <p>Current Rightmove results labelled <strong>Walton-on-Thames</strong> include properties in Hersham, because Hersham commonly uses Walton-on-Thames as its postal town. Sold entries for Southdown Road, Vaux Crescent and Queens Road, all in Hersham, appear under the Walton-on-Thames heading. A single portal average can therefore mix more than one local market <a class="cite" href="#ref-rightmove-2026">(Rightmove, 2026)</a>.</p>
+        <p>Current Rightmove results labelled <strong>Walton-on-Thames</strong> include properties in Hersham, because Hersham commonly uses Walton-on-Thames as its postal town. Sold entries for Southdown Road, Vaux Crescent and Queens Road, all in Hersham, appear under the Walton-on-Thames heading. A single portal average can therefore mix more than one local market (Rightmove, 2026).</p>
         <p>For that reason, this guide does not present a portal average as an official Walton-only figure. For a purchase, the most useful evidence is <strong>recent completed sales of genuinely comparable homes on the same street or in the same immediate area</strong>.</p>
         <p>A future property page on this site should calculate a reproducible Walton-only measure directly from HM Land Registry Price Paid Data, using a clearly documented geographic definition.</p>
 
         <h3>Renting</h3>
-        <p>Official rental statistics are also published at Elmbridge level rather than for Walton. The average private rent across Elmbridge was <strong>£1,867 a month in July 2026</strong>, up 1.1% year on year <a class="cite" href="#ref-ons-2026">(Office for National Statistics, 2026)</a>.</p>
-        <p>Average monthly rents by bedroom number were <a class="cite" href="#ref-ons-2026">(Office for National Statistics, 2026)</a>:</p>
+        <p>Official rental statistics are also published at Elmbridge level rather than for Walton. The average private rent across Elmbridge was <strong>£1,867 a month in July 2026</strong>, up 1.1% year on year (Office for National Statistics, 2026).</p>
+        <p>Average monthly rents by bedroom number were (Office for National Statistics, 2026):</p>
         <ul>
           <li>one bedroom: <strong>£1,247</strong></li>
           <li>two bedrooms: <strong>£1,569</strong></li>
@@ -658,15 +810,20 @@ const references = [
         </ul>
         <p>These are borough-wide averages, not expected rents for an individual Walton property.</p>
 
-        <h2 id="costs">Council Tax and household costs</h2>
-        <p>For the 2026/27 financial year, total Council Tax for an <strong>Elmbridge Band D property outside Claygate Parish is £2,556.87</strong> <a class="cite" href="#ref-ebc-2026a">(Elmbridge Borough Council, 2026a)</a>.</p>
-        <p>That is the total charge published by Elmbridge Borough Council for the borough outside Claygate Parish. The amount due depends on the individual property's valuation band, and properties within Claygate Parish are charged separately <a class="cite" href="#ref-ebc-2026a">(Elmbridge Borough Council, 2026a)</a>.</p>
+        <h3 id="costs">Council Tax</h3>
+        <p>For the 2026/27 financial year, total Council Tax for an <strong>Elmbridge Band D property outside Claygate Parish is £2,556.87</strong> (Elmbridge Borough Council, 2026a).</p>
+        <p>That is the total charge published by Elmbridge Borough Council for the borough outside Claygate Parish. The amount due depends on the individual property's valuation band, and properties within Claygate Parish are charged separately (Elmbridge Borough Council, 2026a).</p>
         <p>For commuters, rail fares and parking can also be significant household costs. Anyone moving specifically for the London connection should price the journey they will actually make, including office frequency, ticket type, station access and onward travel in London.</p>
 
-        <h2 id="commuting">Commuting to London</h2>
-        <p><strong>Direct trains run from Walton-on-Thames to London Waterloo. The fastest scheduled services are usually around 22 to 25 minutes, while many stopping services take around 30 to 35 minutes.</strong> The pattern varies by time of day, at weekends and during engineering work <a class="cite" href="#ref-swr-2026">(South Western Railway, 2026; Walton-on-Thames.org, 2026a)</a>.</p>
-        <p>The headline rail time is only part of the commute. The station is roughly a <strong>20 to 25-minute walk from Walton town centre</strong>, and total journey time varies substantially depending on the street you live on and where in London you need to reach <a class="cite" href="#ref-wot-2026a">(Walton-on-Thames.org, 2026a)</a>.</p>
-        <p>The station also has direct services towards Weybridge and Woking, with onward connections across Surrey and the wider south-west rail network <a class="cite" href="#ref-nr-2026">(National Rail, 2026)</a>.</p>
+        <h3 id="monthly-costs">What a monthly budget has to cover</h3>
+        <p>Beyond the mortgage or rent, a realistic monthly figure for this area needs to allow for Council Tax at the property's own band, utilities and broadband, buildings and contents insurance, the full commute including any station parking and onward travel in London, childcare if relevant, and car ownership where a household keeps one. A flat or a house on an estate may also carry a service charge or other lease obligations, which are property-specific and need checking before an offer.</p>
+        <p>This guide does not publish an example household budget, because the numbers that would make it useful, the exact band, tariff, ticket, nursery and lease, are all property-specific. The checks in <a href="#property-checks">before choosing a property</a> are the ones that turn those into real figures.</p>
+
+
+        <h2 id="transport">Getting around and commuting</h2>
+        <p><strong>Direct trains run from Walton-on-Thames to London Waterloo. The fastest scheduled services are usually around 22 to 25 minutes, while many stopping services take around 30 to 35 minutes.</strong> The pattern varies by time of day, at weekends and during engineering work (South Western Railway, 2026; Walton-on-Thames.org, 2026a).</p>
+        <p>The headline rail time is only part of the commute. The station is roughly a <strong>20 to 25-minute walk from Walton town centre</strong>, and total journey time varies substantially depending on the street you live on and where in London you need to reach (Walton-on-Thames.org, 2026a).</p>
+        <p>The station also has direct services towards Weybridge and Woking, with onward connections across Surrey and the wider south-west rail network (National Rail, 2026).</p>
 
         <figure>
           <img
@@ -682,8 +839,8 @@ const references = [
 
         <p class="deeper-link"><a href="/walton-on-thames-railway-station/">Complete station guide: platforms, tickets, parking and accessibility</a> · <a href="/getting-here/">Getting here by road, rail and bus</a></p>
 
-        <h2 id="getting-around">Buses, roads and getting around</h2>
-        <p>Surrey County Council's current Walton-area timetable list includes <a class="cite" href="#ref-scc-2026a">(Surrey County Council, 2026a)</a>:</p>
+        <h3 id="getting-around">Buses, roads and getting around</h3>
+        <p>Surrey County Council's current Walton-area timetable list includes (Surrey County Council, 2026a):</p>
         <ul>
           <li><strong>400/813</strong>, linking Walton with Shepperton, Charlton Village, Ashford and Staines;</li>
           <li><strong>458</strong>, linking Walton with Hersham, Esher, Thames Ditton and Kingston in one direction, and Shepperton, Laleham and Staines in the other;</li>
@@ -693,25 +850,38 @@ const references = [
         <p>Routes and timetables change, so this page deliberately does not reproduce departure times.</p>
         <p>By road, Walton connects towards Weybridge, Esher, Molesey, Chertsey, the A3 and the M25. Peak journey times vary substantially, so a fixed claim such as "ten minutes to the motorway" is less useful than checking the journey at the time you would normally travel.</p>
 
-        <h2 id="schools">Schools</h2>
-        <p>Families should treat school choice as an <strong>address-specific admissions question</strong>, not a town-wide promise. Admission arrangements are set by each school and published in Surrey County Council's admission booklets, and Surrey's school map shows how far a school is from your home and whether it has a catchment area, so an individual address can materially affect priority <a class="cite" href="#ref-scc-2026b">(Surrey County Council, 2026b)</a>.</p>
+        <h2 id="schools">Schools, nurseries and childcare</h2>
+        <p>Families should treat school choice as an <strong>address-specific admissions question</strong>, not a town-wide promise. Admission arrangements are set by each school and published in Surrey County Council's admission booklets, and Surrey's school map shows how far a school is from your home and whether it has a catchment area, so an individual address can materially affect priority (Surrey County Council, 2026b).</p>
         <p>Walton and the immediately surrounding area have a mixture of state and independent primary schools, with secondary options in Walton's neighbouring communities as well as the wider Elmbridge area.</p>
         <p>Use our directory as a starting point, then check admission criteria, school places and inspection outcomes against Surrey County Council, the school itself and Ofsted before making a decision.</p>
         <p class="deeper-link"><a href="/living/schools/">Schools serving Walton-on-Thames</a> · <a href="/hersham/living/">Schools in Hersham</a></p>
 
-        <h2 id="healthcare">GPs, dentists, pharmacies and healthcare</h2>
-        <p>Walton has several NHS GP practices. The Red Practice, The White Practice and The Yellow Practice operate from the health centre on Rodney Road, while Ashley Medical Practice is on Crutchfield Lane <a class="cite" href="#ref-nhs-a">(NHS, n.d.a; NHS, n.d.b; NHS, n.d.c; NHS, n.d.d)</a>. Hersham has its own surgery.</p>
+        <h3 id="early-years">Nurseries, childminders and funded childcare</h3>
+        <p>Early years provision is separate from school admissions and is organised differently. Surrey County Council runs the Family Information Service, whose childcare directory lists Ofsted-registered nurseries, preschools and childminders by postcode, and explains the types of childcare and how funded places work (Surrey County Council, 2026d).</p>
+        <p>Funded hours are a national scheme rather than a local one. The government's Best Start in Life service describes 15 and 30 hours support for children aged between 9 months and 4 years, alongside Tax-Free Childcare and Universal Credit childcare support, and provides a checker that estimates what a family qualifies for and finds providers nearby. Eligibility rules and start dates change, so the checker is the source to use rather than a figure repeated here (Best Start in Life, 2026a).</p>
+        <p>Two practical points are worth knowing before a move. A nursery near a chosen house is not a place: popular settings in this area operate waiting lists, and families often register well before they need the place. And funded hours do not always cover a full working day, so the gap between funded hours and actual working patterns is usually filled by paid extra hours, which vary by provider.</p>
+        <p class="deeper-link"><a href="https://www.surreycc.gov.uk/children/support-and-advice/families/childcare" target="_blank" rel="noopener noreferrer">Childcare in Surrey, Surrey County Council ↗</a> · <a href="https://childcare.beststartinlife.gov.uk/" target="_blank" rel="noopener noreferrer">Childcare checker, Best Start in Life ↗</a></p>
+
+        <h3 id="wraparound">Breakfast clubs, after-school and holiday care</h3>
+        <p>For school-age children, the working day rarely matches the school day. The government's Best Start in Life service covers free breakfast clubs and wraparound childcare for primary-school-aged children, which is the national framework schools work within (Best Start in Life, 2026b).</p>
+        <p>What each school actually offers, and at what cost, differs school by school, so the school's own website and office are the reliable source. Holiday provision is separate again and is usually run by private providers or clubs rather than by the school itself.</p>
+        <p class="deeper-link"><a href="https://beststartinlife.gov.uk/childcare-early-years-education/breakfast-clubs-and-wraparound-childcare/" target="_blank" rel="noopener noreferrer">Breakfast clubs and wraparound childcare, Best Start in Life ↗</a></p>
+
+
+        <h2 id="everyday">Everyday life</h2>
+        <h3 id="healthcare">GPs, dentists, pharmacies and healthcare</h3>
+        <p>Walton has several NHS GP practices. The Red Practice, The White Practice and The Yellow Practice operate from the health centre on Rodney Road, while Ashley Medical Practice is on Crutchfield Lane (NHS, n.d.a; NHS, n.d.b; NHS, n.d.c; NHS, n.d.d). Hersham has its own surgery.</p>
         <p>Registration status changes, so our GP directory links through to the NHS service used to check whether a practice is currently accepting patients, rather than freezing that into this page.</p>
         <ul>
           <li><a href="/living/gp-surgeries/">GP surgeries in Walton-on-Thames and Hersham</a></li>
           <li><a href="/living/pharmacies/">Pharmacies</a></li>
           <li><a href="/living/dentists/">Dentists</a></li>
         </ul>
-        <p>For hospital care, <strong>St Peter's Hospital in Chertsey</strong> provides a 24-hour Accident and Emergency service, and the trust lists Walton-on-Thames among the main centres of population the hospital serves <a class="cite" href="#ref-asph-2026a">(Ashford and St Peter's Hospitals NHS Foundation Trust, 2026a; 2026b)</a>. Walton Community Hospital provides local health services but does not list an A&E department <a class="cite" href="#ref-nhs-e">(NHS, n.d.e)</a>.</p>
+        <p>For hospital care, <strong>St Peter's Hospital in Chertsey</strong> provides a 24-hour Accident and Emergency service, and the trust lists Walton-on-Thames among the main centres of population the hospital serves (Ashford and St Peter's Hospitals NHS Foundation Trust, 2026a; 2026b). Walton Community Hospital provides local health services but does not list an A&E department (NHS, n.d.e).</p>
 
-        <h2 id="shopping">Shopping, food and everyday life</h2>
+        <h3 id="shopping">Shopping, food and everyday life</h3>
         <p>Walton has a proper town centre rather than a commuter station surrounded by housing.</p>
-        <p>The Heart, High Street, Bridge Street, Church Street and New Zealand Avenue provide a mixture of shops, supermarkets, cafes, restaurants, pubs and services <a class="cite" href="#ref-heart-2026">(The Heart Shopping Centre, 2026)</a>. The exact mix changes, which is why this site maintains live directories rather than freezing a business list into a guide.</p>
+        <p>The Heart, High Street, Bridge Street, Church Street and New Zealand Avenue provide a mixture of shops, supermarkets, cafes, restaurants, pubs and services (The Heart Shopping Centre, 2026). The exact mix changes, which is why this site maintains live directories rather than freezing a business list into a guide.</p>
         <ul>
           <li><a href="/shopping/">Shopping in Walton-on-Thames</a></li>
           <li><a href="/food-and-drink/">Food and drink</a></li>
@@ -719,10 +889,10 @@ const references = [
         </ul>
         <p>Kingston upon Thames is the nearest major retail centre for a much larger range of shops. Weybridge and Hersham provide additional nearby options.</p>
 
-        <h2 id="outdoors">The Thames, parks and outdoor life</h2>
+        <h3 id="outdoors">The Thames, parks and outdoor life</h3>
         <p>The Thames is one of Walton's defining features and one of its main public spaces.</p>
-        <p>The <strong>Thames Path</strong> passes through Walton. Surrey County Council describes the walk upstream from Walton Bridge towards the Shepperton Ferry as a level surfaced path <a class="cite" href="#ref-scc-2026c">(Surrey County Council, 2026c)</a>. Cowey Sale provides riverside open space near <a href="/history/walton-bridge/">Walton Bridge</a>, and walking routes continue along the river in both directions.</p>
-        <p>The river supports rowing, boating and the Walton and Weybridge Regatta, whose organisers describe the event as formerly Walton Amateur Regatta and as held annually since 1862 <a class="cite" href="#ref-regatta-nd">(Walton and Weybridge Regatta, n.d.)</a>. Away from the Thames, Ashley Park and local recreation grounds provide further green space, while sports facilities are concentrated around Waterside Drive and elsewhere across the town <a class="cite" href="#ref-ebc-nb">(Elmbridge Borough Council, n.d.b)</a>.</p>
+        <p>The <strong>Thames Path</strong> passes through Walton. Surrey County Council describes the walk upstream from Walton Bridge towards the Shepperton Ferry as a level surfaced path (Surrey County Council, 2026c). Cowey Sale provides riverside open space near <a href="/history/walton-bridge/">Walton Bridge</a>, and walking routes continue along the river in both directions.</p>
+        <p>The river supports rowing, boating and the Walton and Weybridge Regatta, whose organisers describe the event as formerly Walton Amateur Regatta and as held annually since 1862 (Walton and Weybridge Regatta, n.d.). Away from the Thames, Ashley Park and local recreation grounds provide further green space, while sports facilities are concentrated around Waterside Drive and elsewhere across the town (Elmbridge Borough Council, n.d.b).</p>
 
         <figure>
           <img
@@ -738,16 +908,19 @@ const references = [
 
         <p class="deeper-link"><a href="/things-to-do/riverside-walks/">Riverside walks, Cowey Sale and the Thames Path</a></p>
 
-        <h2 id="community">Clubs, sport and community</h2>
-        <p>Walton has a broad range of sports clubs, societies, arts groups, volunteering organisations and community groups. Rather than duplicate a list that would date quickly, we maintain a directory with a source and a checked date behind every entry.</p>
-        <p>The <a href="/things-to-do/riverhouse-barn/">Riverhouse Barn Arts Centre</a> is an important part of local cultural life, with a year-round programme of theatre, music, comedy and exhibitions, and arts and crafts classes <a class="cite" href="#ref-wot-2026c">(Walton-on-Thames.org, 2026c)</a>.</p>
-        <p class="deeper-link"><a href="/living/community/">Clubs, societies and community groups</a> · <a href="/community/news/">Local news</a></p>
+        <h2 id="meeting-people">Meeting people and making friends</h2>
+        <p>Moving somewhere new and knowing nobody is the part of a move that guides tend to skip. Walton and Hersham have a large organised social life, and the most reliable way into it is a regular fixture rather than a one-off event.</p>
+        <p>Our clubs and societies directory is the maintained list, covering sport and recreation, uniformed groups, arts and performance, hobbies and interests, faith and church groups, volunteering, support organisations and civic bodies. Each entry says where the organisation is based and when we last checked it, and the Area filter narrows the list to Walton-on-Thames, Hersham or Whiteley Village.</p>
+        <ul>
+          <li><strong>Sport and recreation:</strong> the largest category in the directory, from clubs with competitive sides to groups that welcome beginners. Check with the club whether a session is open to newcomers before turning up.</li>
+          <li><strong>Arts, music and performance:</strong> choirs, drama and music groups, several of which rehearse weekly and recruit through the year.</li>
+          <li><strong>Volunteering and community groups:</strong> a practical route in for people who would rather be useful than sociable on day one.</li>
+          <li><strong>Informal and drop-in:</strong> some of the friendliest entry points are the least formal. Empty Chairs, a monthly meet-up for people who would rather not spend an evening alone, is listed in our events calendar with its current date.</li>
+        </ul>
+        <p>Membership, cost, booking and whether an activity is open to the public all vary, and they change, so confirm with the organiser rather than relying on any list. Activities inside Whiteley Village are largely for its residents; the Community Café is the part that is open to everyone.</p>
+        <p>The <a href="/things-to-do/riverhouse-barn/">Riverhouse Barn Arts Centre</a> is the main cultural venue, with a year-round programme of theatre, music, comedy and exhibitions, and arts and crafts classes (Walton-on-Thames.org, 2026c). Local news and community stories are published in our <a href="/community/news/">news section</a>.</p>
+        <p class="deeper-link"><a href="/living/community/">Clubs, societies and community groups</a> · <a href="/whats-on/">what's on in Walton and Hersham</a> · <a href="/living/community/?area=hersham">clubs and groups in Hersham</a></p>
 
-        <h2 id="flood-risk">Flood risk: check the address, not the town name</h2>
-        <p>Flooding deserves specific attention, because Walton sits beside the Thames and close to other watercourses.</p>
-        <p>The Environment Agency maintains a <strong>River Thames at Walton flood-warning area</strong>, covering locations including Desborough Island, Walton Bridge and the Elmbridge Leisure Centre area <a class="cite" href="#ref-ea-2026a">(Environment Agency, 2026a)</a>. That does not mean every property close to the river carries the same risk, and it does not justify describing Walton as a town that either "floods" or "does not flood".</p>
-        <p>Anyone buying or renting should check the exact address using the government's long-term flood-risk service and, for a purchase, investigate the property's own flood history and insurance position <a class="cite" href="#ref-ea-nd">(Environment Agency, n.d.)</a>.</p>
-        <p class="deeper-link"><a href="https://www.gov.uk/check-long-term-flood-risk" target="_blank" rel="noopener noreferrer">Check the long-term flood risk for a property on GOV.UK ↗</a></p>
 
         <h2 id="trade-offs">What to consider before moving to Walton-on-Thames</h2>
         <p>Walton has clear practical strengths, and it also involves trade-offs.</p>
@@ -771,12 +944,47 @@ const references = [
         <p>The useful question is not simply "Is Walton-on-Thames a good place to live?" It is <strong>which part of Walton best suits the way you actually live</strong>.</p>
         <p>A five-day-a-week Waterloo commuter may prioritise the station. Someone working mostly from home may value the river or the town centre more. A household choosing around a school may have a different search area again.</p>
 
+        <h2 id="property-checks">Before choosing a property</h2>
+        <p>These are the checks worth making on a specific address, rather than on the town. None of this replaces a solicitor, a surveyor or an independent financial adviser.</p>
+        <ul>
+          <li><strong>Flood risk at the address.</strong> Use the government's long-term flood risk service for the exact property, and treat an area-level flood map as context rather than a property assessment (Environment Agency, n.d.).</li>
+          <li><strong>Insurance.</strong> Get an indicative quote before committing, particularly near the river, since availability and excesses vary by address.</li>
+          <li><strong>Survey and condition.</strong> Commission a survey appropriate to the building's age and type rather than relying on a mortgage valuation.</li>
+          <li><strong>Leasehold, service charges and major works.</strong> For a flat, ask for the lease, the service charge accounts and any planned major works before exchange.</li>
+          <li><strong>Parking.</strong> Check whether the street is in a controlled parking zone and what a permit costs, especially near the station and the town centre.</li>
+          <li><strong>Planning proposals nearby.</strong> Search Elmbridge Borough Council's planning register for the address and its surrounding streets, where you can also see and comment on live applications (Elmbridge Borough Council, n.d.c).</li>
+          <li><strong>Broadband and mobile coverage.</strong> Check the address on Ofcom's mobile and broadband checker, which gives predicted broadband speeds and mobile availability at that location (Ofcom, n.d.).</li>
+          <li><strong>The commute you will actually make.</strong> Test the real door-to-door journey at the time of day you would travel, including the walk or drive to the station and parking.</li>
+          <li><strong>School and childcare admissions.</strong> Check the admission arrangements for the exact address, and remember that living near a school or nursery does not secure a place (Surrey County Council, 2026b).</li>
+        </ul>
+        <p class="deeper-link"><a href="https://www.gov.uk/check-long-term-flood-risk" target="_blank" rel="noopener noreferrer">Check the long-term flood risk for a property ↗</a> · <a href="https://www.elmbridge.gov.uk/planning/planning/find-or-comment-planning-application" target="_blank" rel="noopener noreferrer">Find or comment on a planning application ↗</a> · <a href="https://checker.ofcom.org.uk/en-gb/broadband-coverage" target="_blank" rel="noopener noreferrer">Ofcom mobile and broadband checker ↗</a></p>
+
+
+        <h3 id="flood-risk">Flood risk: check the address, not the town name</h3>
+        <p>Flooding deserves specific attention, because Walton sits beside the Thames and close to other watercourses.</p>
+        <p>The Environment Agency maintains a <strong>River Thames at Walton flood-warning area</strong>, covering locations including Desborough Island, Walton Bridge and the Elmbridge Leisure Centre area (Environment Agency, 2026a). That does not mean every property close to the river carries the same risk, and it does not justify describing Walton as a town that either "floods" or "does not flood".</p>
+        <p>Anyone buying or renting should check the exact address using the government's long-term flood-risk service and, for a purchase, investigate the property's own flood history and insurance position (Environment Agency, n.d.).</p>
+        <p class="deeper-link"><a href="https://www.gov.uk/check-long-term-flood-risk" target="_blank" rel="noopener noreferrer">Check the long-term flood risk for a property on GOV.UK ↗</a></p>
+
+        <h2 id="first-month">Your first month here</h2>
+        <p>A short list of the things worth doing early, each of which is covered in more detail on the page it links to.</p>
+        <ul>
+          <li><strong>Council Tax and bins.</strong> Tell Elmbridge Borough Council you have moved in, and find your collection day and which bin is which.</li>
+          <li><strong>Register with a GP, dentist and pharmacy.</strong> Practices take patients by catchment and availability changes, so check before assuming the nearest one can take you.</li>
+          <li><strong>Sort out utilities and broadband.</strong> Take meter readings on day one, and check what is actually available at the address rather than what is advertised nationally.</li>
+          <li><strong>Get your travel set up.</strong> Work out which station suits your commute, and whether parking, a season ticket or a bike gets you there most cheaply.</li>
+          <li><strong>Schools and childcare, if relevant.</strong> Contact Surrey County Council about a school place in-year, and start nursery waiting lists early.</li>
+          <li><strong>Find one regular thing to go to.</strong> A club, a class, a choir or a volunteering slot does more for settling in than any amount of exploring.</li>
+        </ul>
+        <p class="deeper-link"><a href="/living/council-and-services/">Council and local services</a> · <a href="/living/gp-surgeries/">GP surgeries</a> · <a href="/living/dentists/">dentists</a> · <a href="/living/pharmacies/">pharmacies</a> · <a href="/living/post-offices-and-post-boxes/">post offices and post boxes</a> · <a href="/getting-here/">getting around</a></p>
+
+
         <h2 id="faqs">Common questions about living in Walton-on-Thames</h2>
         <div class="faq-list">
           {faqs.map((item) => (
             <details class="faq-item">
               <summary>{item.q}</summary>
-              <p>{item.a} <a class="cite" href={item.href}>({item.cite})</a></p>
+              <p>{item.a} ({item.cite})</p>
             </details>
           ))}
         </div>
@@ -784,15 +992,16 @@ const references = [
         <h2 id="methodology">Research and citation notes</h2>
         <p>This guide deliberately distinguishes town-level local knowledge from borough-level official statistics. Inline references use Harvard author-date citation, and each links to its full entry below.</p>
         <ul>
-          <li><strong>Population:</strong> based on Census 2021 data for the Walton-on-Thames built-up area geography. Built-up-area, postcode, ward and historic-parish boundaries are not interchangeable.</li>
-          <li><strong>House prices and rents:</strong> the official figures quoted are for Elmbridge, not Walton alone. Commercial Walton-on-Thames search areas can include Hersham, so they are not presented as official Walton-only averages.</li>
-          <li><strong>Council Tax:</strong> the annual table is published by Elmbridge Borough Council, and the amount due depends on the property's valuation band.</li>
-          <li><strong>Transport:</strong> train and bus information is time-sensitive. South Western Railway, National Rail and Surrey County Council hold the current timetables and service changes.</li>
-          <li><strong>Schools:</strong> admissions, places and inspection outcomes are time-sensitive. Surrey County Council, the Department for Education and Ofsted are the principal sources.</li>
-          <li><strong>Healthcare:</strong> practice registration and service availability can change quickly, so NHS and provider pages should be checked before relying on an individual listing.</li>
-          <li><strong>Flood risk:</strong> a flood-warning area is not the same as property-level long-term flood risk.</li>
+          <li><strong>Population:</strong> based on Census 2021 data for the Walton-on-Thames built-up area geography. Built-up-area, postcode, ward and historic-parish boundaries are not interchangeable (Office for National Statistics, 2023; CensusData.uk, 2022).</li>
+          <li><strong>House prices and rents:</strong> the official figures quoted are for Elmbridge, not Walton alone. Commercial Walton-on-Thames search areas can include Hersham, so they are not presented as official Walton-only averages (Office for National Statistics, 2026; Rightmove, 2026).</li>
+          <li><strong>Council Tax:</strong> the annual table is published by Elmbridge Borough Council, and the amount due depends on the property's valuation band (Elmbridge Borough Council, 2026a).</li>
+          <li><strong>Transport:</strong> train and bus information is time-sensitive. South Western Railway, National Rail and Surrey County Council hold the current timetables and service changes (South Western Railway, 2026; National Rail, 2026; Surrey County Council, 2026a).</li>
+          <li><strong>Schools:</strong> admissions, places and inspection outcomes are time-sensitive. Surrey County Council, the Department for Education and Ofsted are the principal sources (Surrey County Council, 2026b; Department for Education, n.d.a; Ofsted, 2024).</li>
+          <li><strong>Healthcare:</strong> practice registration and service availability can change quickly, so NHS and provider pages should be checked before relying on an individual listing (NHS, n.d.a; Ashford and St Peter's Hospitals NHS Foundation Trust, 2026a).</li>
+          <li><strong>Flood risk:</strong> a flood-warning area is not the same as property-level long-term flood risk. The exact address should be checked using the Environment Agency service (Environment Agency, 2026a; Environment Agency, n.d.).</li>
         </ul>
         <p>This site is an independent, not-for-profit community website. How we research, source and correct pages is set out in <a href="/charter/">our charter</a>.</p>
+        </LinkedCitations>
 
         <h2 id="references">References</h2>
         <ol class="reference-list">
@@ -898,8 +1107,67 @@ const references = [
     padding-top: 0;
   }
 
+  /* Sidebar contents beside the article, the Diggers pattern. */
+  .living-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+
   .living-guide {
-    max-width: 68ch;
+    max-width: 70ch;
+    min-width: 0;
+  }
+
+  @media (max-width: 1000px) {
+    .living-layout { grid-template-columns: minmax(0, 1fr); }
+    .living-guide { width: 100%; margin: 0 auto; }
+  }
+
+  /* Three reader journeys, directly under the introduction. */
+  .journeys-section {
+    padding-bottom: 0;
+  }
+
+  .journey-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .journey {
+    padding: 1.35rem 1.5rem;
+    background: var(--color-white);
+    border: 1px solid rgba(11, 36, 46, 0.12);
+    border-top: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+  }
+
+  .journey h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .journey p {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .journey-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .journey-grid { grid-template-columns: 1fr; }
   }
 
   .guide-intro {
@@ -909,14 +1177,14 @@ const references = [
 
   /* Inline Harvard citations: present but quiet, so they never compete with
      the sentence they support. */
-  .cite {
+  .living-guide :global(.cite) {
     font-size: 0.9em;
     color: var(--color-slate);
     text-decoration-color: rgba(80, 101, 113, 0.4);
     white-space: normal;
   }
 
-  .cite:hover {
+  .living-guide :global(.cite:hover) {
     color: var(--color-accent-dark);
   }
 
