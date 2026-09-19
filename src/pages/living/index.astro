@@ -22,6 +22,7 @@
 // readers and answer engines actually need.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ThingsToDoStickyNav from '../../components/ThingsToDoStickyNav.astro';
+import mapData from '../../data/walton-areas-map.json';
 
 const reviewedOn = '16 September 2026';
 const reviewedISO = '2026-09-16';
@@ -34,60 +35,15 @@ const PAGE_DESCRIPTION =
 // The existing service hub. These are the routes residents come to /living/
 // for, and they keep their prominent position at the top of the page.
 const services = [
-  {
-    href: '/community/news/',
-    icon: '📰',
-    title: 'Local News',
-    description: 'Community stories, local history features, and news from across the three neighbourhoods.',
-  },
-  {
-    href: '/living/community/',
-    icon: '🤝',
-    title: 'Clubs & Societies',
-    description: 'Sports clubs, societies, uniformed groups and community organisations, with a source and a checked date behind every listing.',
-  },
-  {
-    href: '/living/schools/',
-    icon: '🏫',
-    title: 'Schools',
-    description: 'Primary and secondary schools serving Walton-on-Thames, with the Hersham schools alongside.',
-  },
-  {
-    href: '/development-and-planning/',
-    icon: '🏗️',
-    title: 'Development & Planning',
-    description: 'Major planning applications, the local plan position, and how to comment on a scheme.',
-  },
-  {
-    href: '/living/council-and-services/',
-    icon: '🏛️',
-    title: 'Council & Services',
-    description: 'Elmbridge and Surrey county services, bins, libraries, the civic basics and who to contact.',
-  },
-  {
-    href: '/living/post-offices-and-post-boxes/',
-    icon: '📮',
-    title: 'Post Offices & Post Boxes',
-    description: 'Post Office branches, the Royal Mail Delivery Office, and postbox locations across the area.',
-  },
-  {
-    href: '/living/gp-surgeries/',
-    icon: '🩺',
-    title: 'GP Surgeries',
-    description: 'NHS GP surgeries in Walton-on-Thames and Hersham, with addresses and opening hours.',
-  },
-  {
-    href: '/living/pharmacies/',
-    icon: '💊',
-    title: 'Pharmacies',
-    description: 'Community pharmacies in Walton-on-Thames and Hersham offering NHS prescriptions.',
-  },
-  {
-    href: '/living/dentists/',
-    icon: '🦷',
-    title: 'Dentists',
-    description: 'Dental practices in Walton-on-Thames and Hersham, NHS and private.',
-  },
+  { href: '/community/news/', title: 'Local News', description: 'Community stories and local history features.' },
+  { href: '/living/community/', title: 'Clubs & Societies', description: 'Sports clubs, societies and community groups.' },
+  { href: '/living/schools/', title: 'Schools', description: "Primary and secondary schools, with Hersham's alongside." },
+  { href: '/development-and-planning/', title: 'Development & Planning', description: 'Major applications and how to comment.' },
+  { href: '/living/council-and-services/', title: 'Council & Services', description: 'Bins, libraries, contacts and the civic basics.' },
+  { href: '/living/post-offices-and-post-boxes/', title: 'Post Offices & Post Boxes', description: 'Branches, the delivery office and postboxes.' },
+  { href: '/living/gp-surgeries/', title: 'GP Surgeries', description: 'NHS practices in Walton and Hersham.' },
+  { href: '/living/pharmacies/', title: 'Pharmacies', description: 'Community pharmacies for NHS prescriptions.' },
+  { href: '/living/dentists/', title: 'Dentists', description: 'NHS and private dental practices.' },
 ];
 
 // Every volatile figure carries its own source and date, so a reader can see
@@ -172,38 +128,49 @@ const sections = [
   { id: 'references', label: 'References' },
 ];
 
-const areas = [
-  {
-    id: 'area-riverside',
-    name: 'The historic centre, Church Street and the riverside',
+// Each area gets one sentence here; the full descriptions live on
+// /living/areas/, so the two pages do not compete for the same query. Numbers,
+// colours and anchors come from the map data so they always match that page.
+// Every citation the old long-form section used is kept, so the reference
+// list below still matches the text.
+const areaSummaries = {
+  'historic-centre': {
     where: 'Church Street, Bridge Street, Manor Road and the Thames',
+    text: "Walton's oldest surviving streets, with parts of the historic townscape protected by two conservation areas",
+    cite: 'Elmbridge Borough Council, n.d.a', href: '#ref-ebc-na',
   },
-  {
-    id: 'area-town-centre',
-    name: 'Walton town centre and The Heart',
+  'town-centre': {
     where: 'High Street, New Zealand Avenue and The Heart',
+    text: 'The modern commercial centre, with shops, places to eat, a gym and Walton Library, and the most urban-feeling part of town',
+    cite: 'The Heart Shopping Centre, 2026', href: '#ref-heart-2026',
   },
-  {
-    id: 'area-ashley-park',
-    name: 'Ashley Park',
+  'ashley-park': {
     where: 'West and south-west of the town centre',
+    text: 'Built on the former Ashley Park estate, broken up for development in 1923, and between the town centre and the station',
+    cite: 'Hughes, 2003', href: '#ref-hughes-2003',
   },
-  {
-    id: 'area-station',
-    name: 'The station, Halfway and Hersham Road',
-    where: 'Station Avenue, the Halfway and the western part of Hersham Road',
+  'station-halfway': {
+    where: 'Station Avenue, the Halfway and western Hersham Road',
+    text: 'Closest to the railway station, which is approximately a 20 to 25-minute walk from The Heart',
+    cite: 'Walton-on-Thames.org, 2026a', href: '#ref-wot-2026a',
   },
-  {
-    id: 'area-cottimore',
-    name: 'Cottimore, Sidney Road and the east of the town',
+  'cottimore': {
     where: 'Cottimore Lane and Sidney Road',
+    text: 'Once part of the Walton Lodge and Cottimore estates, whose older carriage routes and names survive in the street pattern',
+    cite: 'Stonebanks, 1982', href: '#ref-stonebanks-1982',
   },
-  {
-    id: 'area-north',
-    name: 'Walton North, Field Common and Waterside Drive',
+  'walton-north': {
     where: 'North and north-east Walton',
+    text: 'Mixed housing, open space and the Xcel Leisure Complex on Waterside Drive, with housing character varying from street to street',
+    cite: 'Elmbridge Borough Council, n.d.b', href: '#ref-ebc-nb',
   },
-];
+};
+
+const areas = mapData.areas.map((area, i) => ({
+  ...area,
+  number: i + 1,
+  ...areaSummaries[area.id as keyof typeof areaSummaries],
+}));
 
 const faqs = [
   {
@@ -571,7 +538,6 @@ const references = [
         {services.map((service) => (
           <li>
             <a href={service.href} class="service-card">
-              <span class="service-icon" aria-hidden="true">{service.icon}</span>
               <span class="service-title">{service.title}</span>
               <span class="service-description">{service.description}</span>
             </a>
@@ -622,18 +588,6 @@ const references = [
         <p>It is not one uniform suburban area. The historic streets around St Mary's and the river feel very different from the modern centre around The Heart. Ashley Park has a different housing character again, while the station and Halfway area are more convenient for rail commuters. Cottimore and Sidney Road preserve the layout of older estates, and north Walton has its own mixture of housing, sport and open space.</p>
         <p>That variation matters. A general description of Walton can only take a prospective resident so far, which is why the next section goes area by area.</p>
 
-        <h2 id="areas">The different parts of Walton-on-Thames</h2>
-        <p>There is no single official set of neighbourhood boundaries for the town. The areas below are <strong>practical local descriptions, not formal administrative divisions</strong>. <a href="/living/areas/">See all six on a map</a>, with conservation areas and the flood-warning area as optional layers.</p>
-
-        <div class="area" id={areas[0].id}>
-          <h3>{areas[0].name}</h3>
-          <p class="area-where">{areas[0].where}</p>
-          <p>The oldest surviving part of Walton is around Church Street, Bridge Street, Manor Road and the Thames. Two conservation areas protect parts of the historic townscape: Walton Church Street and Bridge Street, designated in 1974 and based on the historic road junction including the Grade I listed parish church of St Mary, and Walton Riverside, designated in 1975 and based on the area known locally as Old Walton, including the Grade I listed Manor House <a class="cite" href="#ref-ebc-na">(Elmbridge Borough Council, n.d.a)</a>.</p>
-          <p><a href="/history/st-marys-church/">St Mary's Church</a>, the <a href="/history/old-manor-house/">Old Manor House</a>, older cottages and the river all sit within a compact area, with Cowey Sale and the Thames Path close by.</p>
-          <p>For homebuyers, the attraction of living near the river needs to be weighed against <strong>address-specific flood risk</strong>. Flood exposure changes over short distances, so the right approach is to check the exact property rather than assume either that all riverside homes are at risk or that Walton as a whole is not <a class="cite" href="#ref-ea-2026a">(Environment Agency, 2026a; Environment Agency, n.d.)</a>.</p>
-          <p class="area-link"><a href="/things-to-do/riverside-walks/">Riverside walks and the Thames Path</a></p>
-        </div>
-
         <figure>
           <img
             src="/images/history/st-marys-church-walton-on-thames-new-zealand-flag.webp"
@@ -646,62 +600,38 @@ const references = [
           <figcaption>St Mary's Church stands at the heart of the Church Street conservation area. The New Zealand flag flies from its tower each April, a legacy of the town's First World War hospital at Mount Felix. Photograph by Darren Bayley.</figcaption>
         </figure>
 
-        <div class="area" id={areas[1].id}>
-          <h3>{areas[1].name}</h3>
-          <p class="area-where">{areas[1].where}</p>
-          <p>The modern commercial centre is focused on High Street, New Zealand Avenue and The Heart. It is close to, but distinct from, the historic core around Church Street.</p>
-          <p>The Heart provides shops, places to eat, a gym and Walton Library, with anchor names including Sainsbury's, Next and Waterstones <a class="cite" href="#ref-heart-2026">(The Heart Shopping Centre, 2026)</a>. High Street, Bridge Street and Church Street add independent businesses, services, pubs and restaurants.</p>
-          <p>For residents in and immediately around the centre, many everyday needs can be reached on foot. The trade-off is that this is the most urban-feeling part of Walton, with a greater concentration of flats, traffic and commercial activity than the quieter residential streets farther out.</p>
-          <p class="area-link"><a href="/shopping/the-heart/">The Heart shopping centre</a> · <a href="/food-and-drink/">places to eat and drink</a></p>
+        <h2 id="areas">The different parts of Walton-on-Thames</h2>
+        <p>There is no single official set of neighbourhood boundaries for the town. These six are <strong>practical local descriptions, not formal administrative divisions</strong>. Each is covered in full, with its streets drawn on a map, in our <a href="/living/areas/">guide to the areas of Walton-on-Thames</a>.</p>
+
+        <div class="areas-summary">
+          <ol class="area-list" role="list">
+            {areas.map((area) => (
+              <li class="area-item">
+                <span class="area-number" style={`--area: ${area.colour}`} aria-hidden="true">{area.number}</span>
+                <div>
+                  <h3><a href={`/living/areas/#${area.id}`}>{area.name}</a></h3>
+                  <p class="area-where">{area.where}</p>
+                  <p class="area-text">{area.text} <a class="cite" href={area.href}>({area.cite})</a>.</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <figure class="areas-map-thumb">
+            <a href="/living/areas/#map">
+              <img
+                src="/images/maps/walton-areas-map.svg"
+                alt="Map of Walton-on-Thames with the six practical local areas numbered 1 to 6 along the streets each one names"
+                loading="lazy"
+                width={mapData.width}
+                height={mapData.height}
+              />
+            </a>
+            <figcaption><a href="/living/areas/#map">Open the areas map</a>, with conservation areas and the flood-warning area as optional layers.</figcaption>
+          </figure>
         </div>
 
-        <div class="area" id={areas[2].id}>
-          <h3>{areas[2].name}</h3>
-          <p class="area-where">{areas[2].where}</p>
-          <p>Ashley Park is one of Walton's most recognisable residential areas. Its street pattern and name come from the former Ashley Park estate, which was broken up for development in 1923 <a class="cite" href="#ref-hughes-2003">(Hughes, 2003)</a>.</p>
-          <p>The history still explains the area today. Ashley Park Road, Ashley Drive and Ashley Rise occupy land once associated with the estate, and much of the interwar residential development followed its sale <a class="cite" href="#ref-hughes-2003">(Hughes, 2003)</a>.</p>
-          <p>The area sits between the town centre and the railway station, which makes parts of it practical for residents who want access to both.</p>
-          <p class="area-link"><a href="/history/ashley-park-estate/">The history of the Ashley Park estate</a></p>
-        </div>
-
-        <div class="area" id={areas[3].id}>
-          <h3>{areas[3].name}</h3>
-          <p class="area-where">{areas[3].where}</p>
-          <p>Walton-on-Thames railway station is <strong>not in the town centre</strong>. The walk between the station and The Heart is approximately 20 to 25 minutes, depending on route and pace <a class="cite" href="#ref-wot-2026a">(Walton-on-Thames.org, 2026a)</a>.</p>
-          <p>That creates a distinct station-side area around Station Avenue, the Halfway and the western part of Hersham Road. For frequent London commuters, proximity to the station can materially change the daily journey.</p>
-          <p>The station has two operational platforms, step-free access, cycle storage and paid parking. National Rail currently lists 140 parking spaces, but parking arrangements and charges change, so use the station guide for the current position rather than relying on an undated figure <a class="cite" href="#ref-nr-2026">(National Rail, 2026)</a>.</p>
-          <p class="area-link"><a href="/walton-on-thames-railway-station/">Complete Walton-on-Thames station guide</a></p>
-        </div>
-
-        <div class="area" id={areas[4].id}>
-          <h3>{areas[4].name}</h3>
-          <p class="area-where">{areas[4].where}</p>
-          <p>The residential streets around Cottimore Lane and Sidney Road preserve another layer of Walton's growth.</p>
-          <p>Much of the area once formed part of the Walton Lodge and Cottimore estates. Research by local historian John A. Stonebanks shows how land was gradually sold and developed during the nineteenth and early twentieth centuries, while older carriage routes and estate names survived in the modern street pattern <a class="cite" href="#ref-stonebanks-1982">(Stonebanks, 1982)</a>.</p>
-          <p>It is a good example of why Walton often feels like several periods of development joined together rather than a town built to one plan.</p>
-          <p class="area-link"><a href="/history/sidney-road/">Sidney Road and the Walton Lodge estate</a></p>
-        </div>
-
-        <figure>
-          <img
-            src="/images/history/sidney-road-sign-walton-on-thames-1200.webp"
-            srcset="/images/history/sidney-road-sign-walton-on-thames-800.webp 800w, /images/history/sidney-road-sign-walton-on-thames-1200.webp 1200w"
-            sizes="(max-width: 700px) 100vw, 640px"
-            alt="The Sidney Road street sign in Walton-on-Thames, mounted on a low brick wall in front of houses"
-            loading="lazy"
-            width="1200"
-            height="900"
-          />
-          <figcaption>Sidney Road takes its name from Thomas Sidney, and its line from a private carriage drive through the Walton Lodge parkland.</figcaption>
-        </figure>
-
-        <div class="area" id={areas[5].id}>
-          <h3>{areas[5].name}</h3>
-          <p class="area-where">{areas[5].where}</p>
-          <p>North and north-east Walton contain a mixture of residential streets, open space, sports facilities and routes towards the Thames and the reservoirs.</p>
-          <p>The Xcel Leisure Complex and Sports Hub on Waterside Drive makes this part of the town important for local sport and recreation, with a 25-metre pool, a sports hall, a floodlit athletics track and pitches <a class="cite" href="#ref-ebc-nb">(Elmbridge Borough Council, n.d.b)</a>. Housing character varies significantly from street to street, so a broad label such as "Walton North" is less useful to a buyer or renter than inspecting the immediate area around a property.</p>
-          <p class="area-link"><a href="/directory/elmbridge-xcel/">Elmbridge Xcel Leisure Complex</a></p>
-        </div>
+        <p>Hersham is a neighbouring village rather than a seventh area of Walton: see <a href="/hersham/living/">living in Hersham</a>.</p>
 
         <h2 id="property">House prices and renting</h2>
         <p>Walton sits within an expensive borough housing market, but no single headline figure accurately represents every part of the town.</p>
@@ -909,46 +839,52 @@ const references = [
   .service-grid {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    border-top: 1px solid rgba(11, 36, 46, 0.12);
+  }
+
+  .service-grid li {
+    border-bottom: 1px solid rgba(11, 36, 46, 0.12);
   }
 
   .service-card {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.15rem;
     height: 100%;
-    padding: 1.5rem;
-    background: var(--color-white);
-    border: 1px solid rgba(11, 36, 46, 0.08);
-    border-radius: var(--radius-lg);
+    padding: 0.85rem 0;
     text-decoration: none;
     color: inherit;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
 
   .service-card:hover {
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-card);
     color: inherit;
-  }
-
-  .service-icon {
-    font-size: 1.5rem;
-    line-height: 1;
   }
 
   .service-title {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--color-navy);
   }
 
+  .service-title::after {
+    content: ' \2192';
+    color: var(--color-accent);
+  }
+
+  .service-card:hover .service-title,
+  .service-card:focus-visible .service-title {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .service-description {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     color: var(--color-slate);
-    line-height: 1.55;
+    line-height: 1.45;
   }
 
   .services-note {
@@ -995,27 +931,92 @@ const references = [
     color: var(--color-slate);
   }
 
-  /* Areas: a restrained block per area, not a floating card deck. */
-  .area {
-    margin: 2rem 0;
-    padding-left: 1.25rem;
-    border-left: 3px solid rgba(184, 134, 46, 0.35);
+  /* Areas: one numbered line each, keyed to the colours on the areas map. */
+  .areas-summary {
+    display: grid;
+    grid-template-columns: 1fr 13rem;
+    gap: 1.75rem;
+    align-items: start;
+    margin: 1.5rem 0;
   }
 
-  .area h3 {
-    margin-top: 0;
+  .area-list {
+    list-style: none;
+    padding-left: 0 !important;
+    margin: 0 !important;
+  }
+
+  .area-item {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .area-item:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .area-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--color-navy);
+    box-shadow: 0 0 0 3px var(--area);
+    color: var(--color-white);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-top: 0.1rem;
+  }
+
+  .area-item h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.15rem;
+  }
+
+  .area-item h3 a {
+    color: var(--color-navy);
+    text-decoration-color: rgba(184, 134, 46, 0.5);
+  }
+
+  .area-item h3 a:hover {
+    color: var(--color-accent-dark);
   }
 
   .area-where {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 600;
     color: var(--color-accent-dark);
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.3rem !important;
   }
 
-  .area-link,
+  .area-text {
+    margin-bottom: 0 !important;
+    font-size: 0.95rem;
+  }
+
+  .areas-map-thumb {
+    margin: 0 !important;
+  }
+
+  .areas-map-thumb img {
+    border: 1px solid rgba(11, 36, 46, 0.12);
+    border-radius: var(--radius-md) !important;
+    box-shadow: none !important;
+    background: var(--color-white);
+  }
+
+  .areas-map-thumb figcaption {
+    font-style: normal !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* .deeper-link: "read more" links under a section */
   .deeper-link {
     font-size: 0.9rem;
   }
@@ -1069,9 +1070,24 @@ const references = [
 
   h2[id],
   h3,
-  .area[id],
   .reference-list li[id] {
     scroll-margin-top: calc(var(--nav-height) + 4rem);
+  }
+
+  @media (max-width: 900px) {
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .areas-summary {
+      grid-template-columns: 1fr;
+    }
+
+    .areas-map-thumb {
+      max-width: 22rem;
+    }
   }
 
   @media (max-width: 600px) {
