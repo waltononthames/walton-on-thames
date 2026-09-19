@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["georgian", "victorian", "edwardian", "interwar", "contemporary"]
 entityType: "institution"
 publishDate: 2026-09-15
-reviewedDate: 2026-09-15
+reviewedDate: 2026-09-18
 sources:
   - author: "Brewery History Society"
     year: "n.d."
@@ -35,6 +35,25 @@ sources:
     work: true
     url: "https://maps.nls.uk/view/266664424#zoom=6.1&lat=10138&lon=2427&layers=BT"
     accessed: "15 September 2026"
+  - author: "Ordnance Survey"
+    year: "1896"
+    title: "Middlesex Sheet XXV.13 [Map, 25 inch to the mile, 2nd edition; revised 1894]"
+    publisher: "National Library of Scotland"
+    work: true
+    url: "https://maps.nls.uk/view/103658642"
+    accessed: "18 September 2026"
+  - author: "Ordnance Survey"
+    year: "1914"
+    title: "Surrey Sheet XII.5 [Map, 25 inch to the mile; revised 1912]"
+    publisher: "National Library of Scotland"
+    work: true
+    url: "https://maps.nls.uk/view/103314202"
+    accessed: "18 September 2026"
+  - author: "OpenStreetMap contributors"
+    year: "n.d."
+    title: "OpenStreetMap"
+    url: "https://www.openstreetmap.org/copyright"
+    accessed: "18 September 2026"
   - author: "Tarplee, P."
     year: "1998"
     title: "A Guide to the Industrial History of the Borough of Elmbridge"
@@ -49,6 +68,11 @@ In nineteenth-century Walton, brewing was a town-centre trade. The Star Brewery 
 By around 1900, both breweries had stopped brewing. Ashley's buildings were demolished around 1900. The Star remained in use as a depot before most of its buildings were pulled down in the 1920s. Much of their history survives in accounts of property transactions and the pubs their owners bought and leased (Martin, 1999; Tarplee, 1998, p. 44).
 
 Those records reach back beyond the Victorian breweries to an earlier generation of Walton brewers. The histories of the Plough and the Crown provide a starting point (Martin, 1999).
+
+<figure>
+  <img src="/images/maps/lost-breweries-map.svg" alt="Street map of central Walton-on-Thames with two pins: Ashley Brewery behind the east side of the High Street, south of St Mary's Church, and a brewery, probably the Star, behind the north-east side of Bridge Street near its junction with Church Street" width="1200" height="1155" loading="lazy" />
+  <figcaption>Where the two breweries stood, on today's streets. The Ashley pin marks where the Ordnance Survey printed "Ashley Brewery" on the six-inch sheet surveyed 1866 to 1868 (Ordnance Survey, 1871). The Bridge Street pin marks premises labelled only "Brewery" on the 25-inch revision of 1894 (Ordnance Survey, 1896), and still so labelled on the 1912 revision (Ordnance Survey, 1914), which need not mean brewing continued: Tarplee records the Star as a depot after Brandon's took over. The sheets do not name this brewery; reading it as the Star is our inference from Tarplee's placing of the Star on the east side of Bridge Street (Tarplee, 1998, p. 44). Positions were read from the National Library of Scotland's georeferenced copies, which agree with the modern map to within about 10 metres at St Mary's Church. The dashed rings show approximate extent, because the old sheets name a yard, not the buildings that made up each brewery. Base map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>. <a href="/images/maps/lost-breweries-map.svg">Open the map at full size</a>.</figcaption>
+</figure>
 
 <figure>
   <img src="/images/history/ashley-brewery-map-walton-on-thames-1871.webp" alt="Detail of an Ordnance Survey six-inch map of Walton upon Thames, with Ashley Brewery labelled beside the High Street, Church Street and St Mary's Church to the north, and Elm Grove to the south" width="1400" height="956" loading="lazy" />

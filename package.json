@@ -15,7 +15,8 @@
     "content:stale-events": "node scripts/check-stale-events.mjs",
     "content:em-dashes": "node scripts/check-em-dashes.mjs",
     "seo:lastmod": "node scripts/generate-lastmod.mjs",
-    "map:areas": "node scripts/build-areas-map.mjs"
+    "map:areas": "node scripts/build-areas-map.mjs",
+    "map:breweries": "node scripts/build-brewery-map.mjs"
   },
   "keywords": [],
   "author": "",

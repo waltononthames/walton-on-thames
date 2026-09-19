@@ -1473,3 +1473,20 @@ mobile size, where three minor labels are hidden.
   is in.
 
 **Resolved before going live (16 September 2026).** The Riverhouse Barn sentence on `/living/` cited the venue's What's On page, which returned 403, so it had not been re-checked. It now says only what this site's Riverhouse Barn page (reviewed 22 August 2026, with its own sources) supports: theatre, music, comedy, exhibitions and arts and crafts classes. "Community events" was dropped, because no source checked supports it. The citation now points to that page.
+
+## 2026-09-18: a locator map for the lost breweries
+
+Darren asked for a map with pins at the former sites of Ashley Brewery and the Star Brewery. Added `scripts/build-brewery-map.mjs` (`npm run map:breweries`, `-- --fetch` to refresh), modelled on the `/living/areas/` map: an OpenStreetMap base via Overpass (ODbL, credited in the SVG and caption) with the two sites drawn on top, output as a single static SVG at `public/images/maps/lost-breweries-map.svg`. No JavaScript, no third-party tiles. Placed after the article's introduction, ahead of the 1871 detail; `reviewedDate` moved to 18 September 2026.
+
+**How the sites were placed (Standards §10.5).** Both positions were read off the National Library of Scotland's georeferenced Ordnance Survey layers on 18 September 2026 (tiles stitched and converted pixel by pixel, not eyeballed from a screenshot), at the point where the OS printed each brewery's name. Sheet details come from the NLS sheet index (WFS), not from memory.
+- **Ashley Brewery:** "Ashley Brewery" on Surrey XII, six-inch, surveyed 1866-68, published 1871 (NLS 266664424), behind the east side of the High Street. Pin at 51.38546, -0.41811; ring 40 m.
+- **Bridge Street:** "Brewery" on Middlesex XXV.13, 25-inch, 2nd edition, revised 1894, published 1896 (NLS 103658642): a yard behind the frontages on the north-east side of Bridge Street near Church Street. The 1912 revision, Surrey XII.5, published 1914 (NLS 103314202), still prints "Brewery", about 40 m to the west on the same side. Pin at 51.38697, -0.41992; ring 45 m covers both labels.
+- **Alignment:** St Mary's Church on those sheets sits about 6 m (six-inch) and 9 m (25-inch) from its OpenStreetMap position. The rings are wider than that on purpose: the sheets name a yard, not the buildings that made up the brewery.
+
+**Stated as inference, not fact.** Neither 25-inch sheet names the Bridge Street brewery. The page calls it "probably the Star", and the caption says the identification is ours, from Tarplee's placing of the Star on the east side of Bridge Street and the 1894 revision predating Brandon's July 1896 acquisition of Gurney's Star Brewery (Brewery History Society). The 1912 "Brewery" label is reported with Tarplee's depot account beside it, so it isn't read as brewing continuing.
+
+**Negative result, recorded so it isn't searched again.** The first-edition six-inch sheet covering Bridge Street (Middlesex XXV, surveyed 1864-70) names no brewery there.
+
+## Still open
+- **Ashley Terrace.** On the 1894 revision no brewery is labelled at the Ashley site, and a street named Ashley Terrace runs across roughly the same ground. Tarplee dates Ashley's demolition to around 1900. That is a possible conflict, or a georeferencing or naming coincidence; it is not on the page. Worth checking against the 1894 sheet itself and a local directory before saying anything.
+- **The Star's buildings.** A larger-scale plan (a 1:500 town plan, if Walton has one, or a sale plan) would let the ring shrink to real outlines.
