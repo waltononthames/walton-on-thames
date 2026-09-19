@@ -23,7 +23,9 @@
 //
 // /images/* is cached for 7 days at the edge and in browsers (public/_headers),
 // so a redrawn map keeps its old look until the URL changes. After rebuilding,
-// bump the ?v= on both references in the article.
+// bump the ?v= on both references in the article to that day's date, and
+// do not request the new URL until the deploy has finished, or the edge
+// caches the old map under it.
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
