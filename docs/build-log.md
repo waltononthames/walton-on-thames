@@ -1494,3 +1494,7 @@ Darren asked for a map with pins at the former sites of Ashley Brewery and the S
 ## 2026-09-19: default Open Graph image added
 
 `/images/og-default.jpg` was referenced by `BaseLayout.astro` as the fallback social image but had never existed, so 395 of the 417 built pages advertised a 404 as their share image. It is now a 1200x630 JPEG (52KB): the site logo, "Walton-on-Thames.org" and the site's own WebSite schema description ("An independent community guide to Walton-on-Thames, Hersham & Whiteley Village") on brand navy with a gold rule. A branded card rather than a photograph, because no Walton photograph on disk is large enough (the Walton Bridge hero is 640px wide) and the fallback has to suit Hersham and Whiteley pages too. Pages that pass their own `image` are unaffected. Generated with sharp; Georgia stands in for Fraunces because sharp's SVG renderer cannot load the webfont.
+
+## 2026-09-19: the Star's map label
+
+At Darren's request the Bridge Street pin now reads "The Star Brewery, approximate location" instead of "Brewery, probably the Star". This is his editorial decision to state the identification on the map; the evidence is unchanged. Neither 25-inch sheet names the brewery, and the caption still says reading it as the Star is our inference from Tarplee. The sub-label changed with it, from "named on the 1894 revision" to "labelled "Brewery" on the 1894 map", because the 1894 sheet did not name it the Star. Alt text updated to match. The label is nudged 70 px right to clear Thames Street.

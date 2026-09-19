@@ -53,20 +53,23 @@ const SITES = [
     labelSide: 'above',
   },
   {
-    name: 'Brewery, probably the Star',
-    note: 'named on the 1894 revision',
+    name: 'The Star Brewery, approximate location',
+    note: 'labelled “Brewery” on the 1894 map',
     // "Brewery" on OS Middlesex Sheet XXV.13, 25-inch, revised 1894, published
     // 1896 (NLS 103658642): the yard behind the frontages on the north-east
     // side of Bridge Street, near Church Street. The 1912 revision, Surrey
     // XII.5 (NLS 103314202), still prints "Brewery" about 40 m to the west on
     // the same side of the street; the ring covers both. The sheets do not
     // name it: identifying it as the Star follows Tarplee (1998, p. 44), who
-    // puts the Star on the east side of Bridge Street.
+    // puts the Star on the east side of Bridge Street. The label states the
+    // identification (Darren's editorial decision, 19 September 2026); the
+    // page caption carries the inference, so keep the two together.
     lat: 51.38697,
     lon: -0.41992,
     ringM: 45,
     colour: '#3F5F8F',
     labelSide: 'above',
+    labelDx: 70, // clears the Thames Street label
   },
 ];
 
@@ -174,7 +177,7 @@ function generate() {
     const cx = x(s.lon), cy = y(s.lat), r = s.ringM * PX_PER_M;
     // Labels sit beside the ring, or above it where the street names need the room.
     const above = s.labelSide === 'above';
-    const tx = above ? cx : s.labelSide === 'right' ? cx + r + 14 : cx - r - 14;
+    const tx = (above ? cx : s.labelSide === 'right' ? cx + r + 14 : cx - r - 14) + (s.labelDx ?? 0);
     const anchor = above ? 'middle' : s.labelSide === 'right' ? 'start' : 'end';
     const ty = above ? cy - r - 52 : cy - 8;
     // Teardrop pin, tip on the named spot.

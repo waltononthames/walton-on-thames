@@ -27,8 +27,8 @@
 <circle cx="497.1" cy="396" r="92.6" fill="#3F5F8F" fill-opacity="0.12" stroke="#3F5F8F" stroke-width="3" stroke-dasharray="10 7"/>
 <path d="M497.1 396c-4-9-17-19-17-31a17 17 0 1 1 34 0c0 12-13 22-17 31z" fill="#3F5F8F" stroke="#FFFFFF" stroke-width="2.5"/>
 <circle cx="497.1" cy="365" r="6.5" fill="#FFFFFF"/>
-<text x="497.1" y="251.4" font-size="34" font-weight="700" fill="#3F5F8F" text-anchor="middle" stroke="#F3F0E4" stroke-width="6" paint-order="stroke" stroke-linejoin="round">Brewery, probably the Star</text>
-<text x="497.1" y="283.4" font-size="26" fill="#0B242E" text-anchor="middle" stroke="#F3F0E4" stroke-width="6" paint-order="stroke" stroke-linejoin="round">named on the 1894 revision</text>
+<text x="567.1" y="251.4" font-size="34" font-weight="700" fill="#3F5F8F" text-anchor="middle" stroke="#F3F0E4" stroke-width="6" paint-order="stroke" stroke-linejoin="round">The Star Brewery, approximate location</text>
+<text x="567.1" y="283.4" font-size="26" fill="#0B242E" text-anchor="middle" stroke="#F3F0E4" stroke-width="6" paint-order="stroke" stroke-linejoin="round">labelled “Brewery” on the 1894 map</text>
 <g transform="translate(1140 70)"><path d="M0 -34 L13 8 L0 0 L-13 8 Z" fill="#0B242E"/><text y="30" font-size="20" font-weight="700" fill="#0B242E" text-anchor="middle" stroke="#F3F0E4" stroke-width="6" paint-order="stroke" stroke-linejoin="round">N</text></g>
 <g transform="translate(28 1065)"><rect x="-10" y="-30" width="225.8" height="52" rx="6" fill="#F3F0E4" fill-opacity="0.85"/><path d="M0 0h205.8" stroke="#0B242E" stroke-width="4"/><path d="M0 -7v14M205.8 -7v14" stroke="#0B242E" stroke-width="3"/><text x="102.9" y="-11" font-size="18" fill="#0B242E" text-anchor="middle">100 m</text></g>
 </g>
