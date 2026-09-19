@@ -1407,7 +1407,7 @@ to `/living/` added from the station guide, the schools page and the GP page.
   timetable change.
 - **`src/data/lastmod.json` is stale for these pages** because the changes are uncommitted.
   Run the prebuild and commit the regenerated file, or production dates will lag.
-- **`/images/og-default.jpg` does not exist**, so the BaseLayout default Open Graph image
+- ~~`/images/og-default.jpg` does not exist~~ Closed 19 September 2026, see below., so the BaseLayout default Open Graph image
   404s on every page that does not pass its own. `/living/` now passes the Walton Bridge hero.
   Worth fixing site-wide.
 - **Hersham living page says Three Rivers Academy "opened in February 2018"**; GIAS gives
@@ -1490,3 +1490,7 @@ Darren asked for a map with pins at the former sites of Ashley Brewery and the S
 ## Still open
 - **Ashley Terrace.** On the 1894 revision no brewery is labelled at the Ashley site, and a street named Ashley Terrace runs across roughly the same ground. Tarplee dates Ashley's demolition to around 1900. That is a possible conflict, or a georeferencing or naming coincidence; it is not on the page. Worth checking against the 1894 sheet itself and a local directory before saying anything.
 - **The Star's buildings.** A larger-scale plan (a 1:500 town plan, if Walton has one, or a sale plan) would let the ring shrink to real outlines.
+
+## 2026-09-19: default Open Graph image added
+
+`/images/og-default.jpg` was referenced by `BaseLayout.astro` as the fallback social image but had never existed, so 395 of the 417 built pages advertised a 404 as their share image. It is now a 1200x630 JPEG (52KB): the site logo, "Walton-on-Thames.org" and the site's own WebSite schema description ("An independent community guide to Walton-on-Thames, Hersham & Whiteley Village") on brand navy with a gold rule. A branded card rather than a photograph, because no Walton photograph on disk is large enough (the Walton Bridge hero is 640px wide) and the fallback has to suit Hersham and Whiteley pages too. Pages that pass their own `image` are unaffected. Generated with sharp; Georgia stands in for Fraunces because sharp's SVG renderer cannot load the webfont.
