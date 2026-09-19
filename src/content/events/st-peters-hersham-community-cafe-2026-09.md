@@ -1,8 +1,8 @@
 ---
 title: "Community Cafe at St Peter's Hersham"
 slug: "st-peters-hersham-community-cafe-2026-09"
-start: "2026-09-16T10:00:00"
-end: "2026-09-16T12:00:00"
+start: "2026-09-23T10:00:00"
+end: "2026-09-23T12:00:00"
 venue: "St Peter's Church, Burwood Road, Hersham, Surrey KT12 4AA"
 neighbourhood: "hersham"
 category: "community"

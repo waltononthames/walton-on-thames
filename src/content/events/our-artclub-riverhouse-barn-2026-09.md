@@ -1,8 +1,8 @@
 ---
 title: "Our ArtClub (Years 1 to 6) at Riverhouse Barn"
 slug: "our-artclub-riverhouse-barn-2026-09"
-start: "2026-09-17T16:45:00"
-end: "2026-09-17T17:45:00"
+start: "2026-09-24T16:45:00"
+end: "2026-09-24T17:45:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "family"
