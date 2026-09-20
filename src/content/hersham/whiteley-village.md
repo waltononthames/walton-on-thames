@@ -63,7 +63,7 @@ The site was laid out around a central octagonal green, with further concentric 
 
 ## Who lives there
 
-Whiteley Village remains exactly what it was built to be: a retirement community for older people of limited financial means who are capable of independent living. It today provides well over 250 almshouse cottages, alongside more recent self-contained flats and care accommodation, all owned and run by the charitable Whiteley Homes Trust rather than any commercial landlord. More than a hundred of the village's buildings are individually Grade II listed, and the whole village has been a designated conservation area since 1979, protecting both the architecture and the woodland setting around it.
+For who can apply to live at Whiteley Village, how applications work and what the village provides day to day, see our [guide to living at Whiteley Village](/living/?place=whiteley-village). Whiteley Village remains exactly what it was built to be: a retirement community for older people of limited financial means who are capable of independent living. It today provides well over 250 almshouse cottages, alongside more recent self-contained flats and care accommodation, all owned and run by the charitable Whiteley Homes Trust rather than any commercial landlord. More than a hundred of the village's buildings are individually Grade II listed, and the whole village has been a designated conservation area since 1979, protecting both the architecture and the woodland setting around it.
 
 ## Visiting and respecting a private community
 

@@ -25,8 +25,8 @@ import GuideContents from '../../components/GuideContents.astro';
 import mapData from '../../data/walton-areas-map.json';
 import LinkedCitations from '../../components/LinkedCitations.astro';
 
-const reviewedOn = '19 September 2026';
-const reviewedISO = '2026-09-19';
+const reviewedOn = '20 September 2026';
+const reviewedISO = '2026-09-20';
 const publishedISO = '2026-07-03';
 
 const PAGE_TITLE = 'Moving to Walton-on-Thames, Hersham & Whiteley Village';
@@ -71,7 +71,7 @@ const glance = [
   {
     label: 'Railway station',
     value: 'Walton-on-Thames, station code WAL, managed by South Western Railway.',
-    source: 'National Rail, 2026',
+    source: 'National Rail, 2026a',
   },
   {
     label: 'Direct trains to Waterloo',
@@ -90,12 +90,12 @@ const glance = [
   },
   {
     label: 'Official house-price context',
-    value: 'Average Elmbridge house price £744,000 in June 2026, provisional.',
+    value: 'Average Elmbridge house price £748,000 in July 2026, provisional and subject to revision.',
     source: 'Office for National Statistics, 2026',
   },
   {
     label: 'Official rent context',
-    value: 'Average private rent in Elmbridge £1,867 a month in July 2026.',
+    value: 'Average private rent in Elmbridge £1,891 a month in August 2026.',
     source: 'Office for National Statistics, 2026',
   },
   {
@@ -107,6 +107,39 @@ const glance = [
     label: 'Defining natural feature',
     value: 'The River Thames, with the Thames Path and Cowey Sale.',
     source: 'Surrey County Council, 2026c',
+  },
+];
+
+// The three communities this guide covers. The keys match the site's existing
+// area taxonomy (src/content.config.ts) and the directory's ?area= filter, so
+// one vocabulary runs through the whole site.
+const places = [
+  { key: 'all', label: 'All three places', short: 'All three' },
+  { key: 'walton-on-thames', label: 'Walton-on-Thames', short: 'Walton' },
+  { key: 'hersham', label: 'Hersham', short: 'Hersham' },
+  { key: 'whiteley-village', label: 'Whiteley Village', short: 'Whiteley' },
+];
+
+// The comparison cards. Deliberately not symmetrical: Whiteley Village is a
+// charitable almshouse community, not a housing market.
+const comparison = [
+  {
+    key: 'walton-on-thames',
+    name: 'Walton-on-Thames',
+    summary: 'A riverside town with the main shopping centre, a station with frequent Waterloo trains, the Thames, and the widest range of shops, healthcare and community facilities of the three.',
+    points: ['Town centre and The Heart', 'Walton-on-Thames station', 'Thames, Cowey Sale and riverside walks'],
+  },
+  {
+    key: 'hersham',
+    name: 'Hersham',
+    summary: 'A village with its own green and centre, its own station, primary schools and surgery, and quick road links to Walton, Weybridge, Esher and Kingston.',
+    points: ['Village green and centre', 'Hersham station, two trains an hour', 'Its own schools and GP surgery'],
+  },
+  {
+    key: 'whiteley-village',
+    name: 'Whiteley Village',
+    summary: 'A charitable retirement village run by the Whiteley Homes Trust, with eligibility rules, almshouse cottages and extra-care flats. It is not open-market housing and cannot be bought or rented.',
+    points: ['Eligibility rules set by the Trust', 'Almshouse cottages and Huntley House', 'Shop, Post Office, cafe and pool on site'],
   },
 ];
 
@@ -144,51 +177,65 @@ const journeys = [
   },
 ];
 
+const ALL = ['walton-on-thames', 'hersham', 'whiteley-village'];
+const WALTON_HERSHAM = ['walton-on-thames', 'hersham'];
+
+// Each entry carries the same area keys as the section it points at, so the
+// sidebar and the page filter from one source rather than two.
 const contentsParts = [
-  { slug: 'at-a-glance', text: 'At a glance', children: [{ slug: 'character', text: 'What living here is like' }] },
+  { slug: 'at-a-glance', text: 'At a glance', areas: ['walton-on-thames'], children: [{ slug: 'character', text: 'What living here is like' }] },
   {
     slug: 'areas',
     text: 'Explore the areas',
+    areas: ['walton-on-thames'],
     children: [
       { slug: 'walton', text: 'Walton-on-Thames' },
-      { slug: 'hersham', text: 'Hersham' },
-      { slug: 'whiteley-village', text: 'Whiteley Village' },
       { slug: 'geography', text: 'What counts as Walton?' },
+    ],
+  },
+  { slug: 'hersham-guide', text: 'Hersham', areas: ['hersham'] },
+  {
+    slug: 'whiteley-guide',
+    text: 'Whiteley Village',
+    areas: ['whiteley-village'],
+    children: [
+      { slug: 'whiteley-apply', text: 'Who can apply' },
+      { slug: 'whiteley-accommodation', text: 'Accommodation' },
+      { slug: 'whiteley-life', text: 'Life in the village' },
+      { slug: 'whiteley-health', text: 'Healthcare nearby' },
+      { slug: 'whiteley-transport', text: 'Getting there' },
+      { slug: 'whiteley-costs', text: 'Costs and checks' },
     ],
   },
   {
     slug: 'housing',
     text: 'Housing and costs',
+    areas: WALTON_HERSHAM,
     children: [
       { slug: 'costs', text: 'Council Tax' },
       { slug: 'monthly-costs', text: 'Monthly budget' },
     ],
   },
-  { slug: 'transport', text: 'Getting around', children: [{ slug: 'getting-around', text: 'Buses and roads' }] },
+  { slug: 'transport', text: 'Getting around', areas: ['walton-on-thames'], children: [{ slug: 'getting-around', text: 'Buses and roads' }] },
   {
     slug: 'schools',
     text: 'Schools and childcare',
+    areas: WALTON_HERSHAM,
     children: [
       { slug: 'early-years', text: 'Nurseries and childminders' },
       { slug: 'wraparound', text: 'Wraparound care' },
     ],
   },
-  {
-    slug: 'everyday',
-    text: 'Everyday life',
-    children: [
-      { slug: 'healthcare', text: 'Healthcare' },
-      { slug: 'shopping', text: 'Shopping and food' },
-      { slug: 'outdoors', text: 'River and green space' },
-    ],
-  },
-  { slug: 'meeting-people', text: 'Meeting people' },
-  { slug: 'trade-offs', text: 'Weighing it up' },
-  { slug: 'property-checks', text: 'Before choosing a property', children: [{ slug: 'flood-risk', text: 'Flood risk' }] },
-  { slug: 'first-month', text: 'Your first month' },
-  { slug: 'faqs', text: 'Common questions' },
-  { slug: 'methodology', text: 'Research notes' },
-  { slug: 'references', text: 'References' },
+  { slug: 'everyday', text: 'Everyday life', areas: WALTON_HERSHAM, children: [{ slug: 'healthcare', text: 'Healthcare' }] },
+  { slug: 'shopping', text: 'Shopping and food', areas: ALL },
+  { slug: 'outdoors', text: 'River and green space', areas: ALL },
+  { slug: 'meeting-people', text: 'Meeting people', areas: ALL },
+  { slug: 'trade-offs', text: 'Choosing between the three', areas: ALL },
+  { slug: 'property-checks', text: 'Before choosing a property', areas: WALTON_HERSHAM, children: [{ slug: 'flood-risk', text: 'Flood risk' }] },
+  { slug: 'first-month', text: 'Your first month', areas: WALTON_HERSHAM },
+  { slug: 'faqs', text: 'Common questions', areas: ALL },
+  { slug: 'methodology', text: 'Research notes', areas: ALL },
+  { slug: 'references', text: 'References', areas: ALL },
 ];
 
 // Each area gets one sentence here; the full descriptions live on
@@ -237,34 +284,70 @@ const areas = mapData.areas.map((area, i) => ({
 
 const faqs = [
   {
+    areas: ['walton-on-thames'],
     q: 'How long is the train from Walton-on-Thames to London Waterloo?',
     a: 'The fastest scheduled direct services are usually around 22 to 25 minutes. Many trains making more stops take around 30 to 35 minutes. Check the current timetable for the service you actually intend to use.',
     cite: 'South Western Railway, 2026',
   },
   {
+    areas: ['walton-on-thames'],
     q: 'Is Walton-on-Thames station in the town centre?',
     a: 'No. It is approximately a 20 to 25-minute walk from the main town centre and The Heart. Areas around Ashley Park, Station Avenue and the Halfway are closer.',
     cite: 'Walton-on-Thames.org, 2026a',
   },
   {
+    areas: ['walton-on-thames', 'hersham', 'whiteley-village'],
     q: 'Is Hersham part of Walton-on-Thames?',
     a: 'No. Hersham is a distinct village, although the two built-up areas adjoin one another and Hersham uses Walton-on-Thames as its postal town.',
     cite: 'Walton-on-Thames.org, 2026b',
   },
   {
+    areas: ['walton-on-thames', 'hersham'],
     q: 'How much do houses cost in Walton-on-Thames?',
-    a: 'There is no official Walton-only house-price index. The latest official ONS figure for Elmbridge was an average of £744,000 in June 2026, but the borough contains several different property markets. Commercial "Walton-on-Thames" averages can include Hersham addresses, so street-level completed sales are more useful for an individual purchase.',
+    a: 'There is no official Walton-only house-price index. The latest official ONS figure for Elmbridge was an average of £748,000 in July 2026, marked provisional, but the borough contains several different property markets. Commercial "Walton-on-Thames" averages can include Hersham addresses, so street-level completed sales are more useful for an individual purchase.',
     cite: 'Office for National Statistics, 2026; Rightmove, 2026',
   },
   {
+    areas: ['walton-on-thames', 'hersham'],
     q: 'What is the average rent in Walton-on-Thames?',
-    a: 'Official rental data are published for Elmbridge rather than Walton. The Elmbridge average was £1,867 a month in July 2026. Actual Walton rents vary by property type, location and condition.',
+    a: 'Official rental data are published for Elmbridge rather than Walton. The Elmbridge average was £1,891 a month in August 2026. Actual Walton rents vary by property type, location and condition.',
     cite: 'Office for National Statistics, 2026',
   },
   {
+    areas: ['walton-on-thames'],
     q: 'Does Walton-on-Thames flood?',
     a: "Some parts of Walton are within Environment Agency flood-warning and flood-risk areas, particularly around the Thames. Risk is property-specific, so the exact address should be checked using the government's long-term flood-risk service.",
     cite: 'Environment Agency, 2026a; Environment Agency, n.d.',
+  },
+  {
+    areas: ['hersham'],
+    q: 'Is Hersham station on the same line as Walton-on-Thames?',
+    a: 'Yes. Both are on the South West Main Line, but Hersham is a smaller station with a different stopping pattern: two trains an hour each way, all stopping services, and about 33 minutes to Waterloo. It has no lift and no step-free access to the platforms.',
+    cite: 'Walton-on-Thames.org, 2026d; National Rail, 2026b',
+  },
+  {
+    areas: ['hersham'],
+    q: 'Are Hersham house prices reported separately?',
+    a: 'No. Official figures are published for the whole borough of Elmbridge, and property portals fold Hersham addresses into their Walton-on-Thames results, because Hersham uses Walton-on-Thames as its postal town. Street-level completed sales are the useful comparison.',
+    cite: 'Rightmove, 2026',
+  },
+  {
+    areas: ['whiteley-village'],
+    q: 'Can anyone move to Whiteley Village?',
+    a: 'No. It is a charitable almshouse community, not open-market housing. The Whiteley Homes Trust sets age, income, capital, residence and housing-need criteria, and applications are made to the Trust on its own forms. Check the Trust\u2019s current rules before making any plans.',
+    cite: 'Whiteley Homes Trust, n.d.c',
+  },
+  {
+    areas: ['whiteley-village'],
+    q: 'Is there a doctor in Whiteley Village?',
+    a: 'No GP surgery with a Whiteley Village address appears in our directory. The Trust\u2019s residents\u2019 handbook directs residents towards Hersham Surgery, with Walton Health Centre and nearby pharmacies also serving the village. The nearest 24-hour A&E is at St Peter\u2019s Hospital in Chertsey.',
+    cite: 'Walton-on-Thames.org, 2026e; Ashford and St Peter\u2019s Hospitals NHS Foundation Trust, 2026a',
+  },
+  {
+    areas: ['whiteley-village'],
+    q: 'Which bus serves Whiteley Village?',
+    a: 'Route 459, which runs between Staines, Laleham, Shepperton, Walton, Hersham and Whiteley Village, stopping at Stores, Whiteley Village. Timetables change, so check the current one.',
+    cite: 'Surrey County Council, 2026a',
   },
 ];
 
@@ -352,11 +435,19 @@ const references = [
   },
   {
     id: 'ref-nr-2026',
-    text: 'National Rail (2026) ',
+    text: 'National Rail (2026a) ',
     title: 'Walton-on-Thames (WAL)',
     tail: '.',
     url: 'https://www.nationalrail.co.uk/stations/walton-on-thames/',
     accessed: '16 September 2026',
+  },
+  {
+    id: 'ref-nr-2026b',
+    text: 'National Rail (2026b) ',
+    title: 'Hersham (HER)',
+    tail: '.',
+    url: 'https://www.nationalrail.co.uk/stations/hersham/',
+    accessed: '20 September 2026',
   },
   {
     id: 'ref-nhs-a',
@@ -389,6 +480,14 @@ const references = [
     tail: '.',
     url: 'https://www.nhs.uk/services/gp-surgery/ashley-medical-practice/H81663',
     accessed: '16 September 2026',
+  },
+  {
+    id: 'ref-nhs-f',
+    text: 'NHS (n.d.f) ',
+    title: 'Fort House Surgery',
+    tail: '. Walton Community Hospital, Rodney Road, Walton-on-Thames, KT12 3LD.',
+    url: 'https://www.nhs.uk/services/gp-surgery/fort-house-surgery/H81020',
+    accessed: '20 September 2026',
   },
   {
     id: 'ref-nhs-e',
@@ -565,6 +664,54 @@ const references = [
     accessed: '19 September 2026',
   },
   {
+    id: 'ref-wot-2026d',
+    text: 'Walton-on-Thames.org (2026d) ',
+    title: 'Hersham Railway Station',
+    tail: '.',
+    url: 'https://walton-on-thames.org/hersham-railway-station/',
+    accessed: '20 September 2026',
+  },
+  {
+    id: 'ref-wot-2026e',
+    text: 'Walton-on-Thames.org (2026e) ',
+    title: 'GP Surgeries in Walton-on-Thames and Hersham',
+    tail: '.',
+    url: 'https://walton-on-thames.org/living/gp-surgeries/',
+    accessed: '20 September 2026',
+  },
+  {
+    id: 'ref-whiteley-ndd',
+    text: 'Whiteley Homes Trust (n.d.d) ',
+    title: 'Almshouse Cottages',
+    tail: '.',
+    url: 'https://www.thewhiteleyhomestrust.org.uk/living-at-whiteley/almshouse-cottages',
+    accessed: '20 September 2026',
+  },
+  {
+    id: 'ref-whiteley-nde',
+    text: 'Whiteley Homes Trust (n.d.e) ',
+    title: 'Village Shop & Post Office',
+    tail: '.',
+    url: 'https://www.thewhiteleyhomestrust.org.uk/community-and-activities/village-shop-and-post-office',
+    accessed: '20 September 2026',
+  },
+  {
+    id: 'ref-whiteley-ndf',
+    text: 'Whiteley Homes Trust (n.d.f) ',
+    title: 'Community Cafe',
+    tail: '.',
+    url: 'https://www.thewhiteleyhomestrust.org.uk/community-and-activities/community-cafe',
+    accessed: '20 September 2026',
+  },
+  {
+    id: 'ref-whiteley-ndg',
+    text: 'Whiteley Homes Trust (n.d.g) ',
+    title: 'Community and Activities',
+    tail: '.',
+    url: 'https://www.thewhiteleyhomestrust.org.uk/community-and-activities',
+    accessed: '20 September 2026',
+  },
+  {
     id: 'ref-whiteley-nd',
     text: 'Whiteley Homes Trust (n.d.a) ',
     title: 'Whiteley Village',
@@ -603,16 +750,31 @@ const citeSources = references.map((ref) => {
       isPartOf: { '@id': 'https://walton-on-thames.org/#website' },
       datePublished: publishedISO,
       dateModified: reviewedISO,
-      about: {
-        '@type': 'Place',
-        name: 'Walton-on-Thames',
-        sameAs: [
-          'https://en.wikipedia.org/wiki/Walton-on-Thames',
-          'https://www.wikidata.org/wiki/Q2003600',
-        ],
-        containedInPlace: { '@type': 'AdministrativeArea', name: 'Elmbridge, Surrey' },
-        geo: { '@type': 'GeoCoordinates', latitude: 51.3867, longitude: -0.4133 },
-      },
+      // The page is about all three communities, so all three are named.
+      about: [
+        {
+          '@type': 'Place',
+          name: 'Walton-on-Thames',
+          sameAs: [
+            'https://en.wikipedia.org/wiki/Walton-on-Thames',
+            'https://www.wikidata.org/wiki/Q2003600',
+          ],
+          containedInPlace: { '@type': 'AdministrativeArea', name: 'Elmbridge, Surrey' },
+          geo: { '@type': 'GeoCoordinates', latitude: 51.3867, longitude: -0.4133 },
+        },
+        {
+          '@id': 'https://walton-on-thames.org/hersham/#place',
+          '@type': 'Place',
+          name: 'Hersham',
+          containedInPlace: { '@type': 'AdministrativeArea', name: 'Elmbridge, Surrey' },
+        },
+        {
+          '@type': 'Place',
+          name: 'Whiteley Village',
+          sameAs: ['https://en.wikipedia.org/wiki/Whiteley_Village'],
+          containedInPlace: { '@type': 'AdministrativeArea', name: 'Elmbridge, Surrey' },
+        },
+      ],
       publisher: { '@id': 'https://walton-on-thames.org/#organization' },
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -659,6 +821,40 @@ const citeSources = references.map((ref) => {
     </div>
   </section>
 
+  <section class="section place-section" aria-labelledby="choose-place-heading">
+    <div class="container">
+      <h2 id="choose-place-heading">Choose a place</h2>
+      <p class="place-intro">This guide covers three separate communities. Choose one to see the sections that apply to it, or keep all three side by side. Your choice is kept in the address, so the view can be shared or bookmarked.</p>
+
+      <nav class="place-selector" aria-label="Choose a place">
+        {places.map((place) => (
+          <a
+            href={place.key === 'all' ? '/living/' : `/living/?place=${place.key}`}
+            class="place-option"
+            data-place-option={place.key}
+            aria-current={place.key === 'all' ? 'true' : undefined}
+          >{place.label}</a>
+        ))}
+      </nav>
+
+      <p class="place-context" id="place-context" role="status" aria-live="polite">Showing all three places: Walton-on-Thames, Hersham and Whiteley Village.</p>
+
+      <ul class="comparison-grid" role="list">
+        {comparison.map((place) => (
+          <li class="comparison-card" data-areas={place.key}>
+            <h3>{place.name}</h3>
+            <p>{place.summary}</p>
+            <ul class="comparison-points" role="list">
+              {place.points.map((point) => <li>{point}</li>)}
+            </ul>
+            <p class="comparison-link"><a href={`/living/?place=${place.key}`}>See {place.name} on its own</a></p>
+          </li>
+        ))}
+      </ul>
+      <p class="comparison-note">Whiteley Village is not directly comparable with the other two: it is a charitable almshouse community with eligibility rules, rather than a place to buy or rent on the open market.</p>
+    </div>
+  </section>
+
   <section class="section services-section" aria-labelledby="services-heading">
     <div class="container">
       <div class="section-header">
@@ -695,6 +891,7 @@ const citeSources = references.map((ref) => {
 
         <p class="guide-intro">Time-sensitive information here, including house prices, rents, Council Tax, transport, schools and childcare, is dated and linked to the source it came from, so you can see how current it is and check it yourself.</p>
 
+        <section class="guide-section" data-areas="walton-on-thames" data-primary="walton-on-thames" data-relevance="primary">
         <h2 id="at-a-glance">Walton-on-Thames at a glance</h2>
         <div class="table-wrap">
           <table class="glance-table">
@@ -728,9 +925,11 @@ const citeSources = references.map((ref) => {
           />
           <figcaption>St Mary's Church stands at the heart of the Church Street conservation area. The New Zealand flag flies from its tower each April, a legacy of the town's First World War hospital at Mount Felix. Photograph by Darren Bayley.</figcaption>
         </figure>
+        </section>
 
+        <section class="guide-section" data-areas="walton-on-thames" data-primary="walton-on-thames" data-relevance="primary">
         <h2 id="areas">Explore the areas</h2>
-        <p>This guide covers three communities that share a postal address and very little else: a Thames-side town, a village with its own centre and station, and a charitable retirement village with its own rules about who can live there.</p>
+        <p>Walton-on-Thames has no official neighbourhood boundaries. The six below are practical local descriptions, covered in full on our areas page. Hersham and Whiteley Village have their own sections further down, because neither is a Walton neighbourhood.</p>
 
         <h3 id="walton">Walton-on-Thames</h3>
         <p>There is no single official set of neighbourhood boundaries for the town. These six are <strong>practical local descriptions, not formal administrative divisions</strong>. Each is covered in full, with its streets drawn on a map, in our <a href="/living/areas/">guide to the areas of Walton-on-Thames</a>.</p>
@@ -765,32 +964,93 @@ const citeSources = references.map((ref) => {
 
         <p>Hersham is a neighbouring village rather than a seventh area of Walton: see <a href="/hersham/living/">living in Hersham</a>.</p>
 
-        <h3 id="hersham">Hersham</h3>
-        <p>Hersham is a village in its own right, not a district of Walton. It has its own centre around the green, its own shops and surgery, and its own railway station on a different line, and it keeps a separate identity that long predates the shared KT12 postal address (Walton-on-Thames.org, 2026b).</p>
-        <p>For anyone weighing up the two, the practical differences are the ones that matter: Hersham station is a smaller station with a less frequent service than Walton-on-Thames, the village centre is compact rather than a full town centre, and schools, clubs and everyday services are covered in the dedicated Hersham guide rather than repeated here.</p>
-        <p class="deeper-link"><a href="/hersham/living/">Living in Hersham: schools, doctors, getting around and council services</a> · <a href="/hersham/">the Hersham guide</a> · <a href="/hersham-railway-station/">Hersham railway station</a></p>
-
-        <h3 id="whiteley-village">Whiteley Village</h3>
-        <p>Whiteley Village, south of Hersham, is not conventional housing and cannot be bought or rented on the open market. It is a charitable almshouse village run by the Whiteley Homes Trust, which provides 264 one and two-bedroom almshouse cottages for independent living, alongside Huntley House, 51 self-contained extra-care flats (Whiteley Homes Trust, n.d.b).</p>
-        <p>Because it is an almshouse charity, residents have to qualify. The Trust asks applicants to be 65 or over if male and 60 or over if female, with a net annual income of no more than £25,000 for a single person or £40,000 for a couple, and capital of no more than £30,000 per person or £50,000 per couple. Applicants must have lived in the UK for five or more consecutive years and must show a housing need, such as being at risk of involuntary homelessness, a medical or welfare need made worse by their present home, or insecurity in a private shorthold tenancy. The Trust states that it does not currently accept applicants with a dementia diagnosis (Whiteley Homes Trust, n.d.c).</p>
-        <p>Applications are made on the Trust's own forms rather than through an agent or the council, so anyone considering it should start at the Trust's application page and check the current criteria and vacancies there (Whiteley Homes Trust, n.d.c).</p>
-        <p>The village is a private residential community rather than an attraction, and not everything in it is open to the public. The Whiteley Community Café in the Clubhouse on Octagon Road is open to residents and visitors alike, but the grounds are people's homes.</p>
-        <p class="deeper-link"><a href="/hersham/whiteley-village/">Whiteley Village: its history, architecture and how to visit respectfully</a> · <a href="https://www.thewhiteleyhomestrust.org.uk/living-at-whiteley/apply-to-live-at-whiteley" target="_blank" rel="noopener noreferrer">Apply to live at Whiteley, Whiteley Homes Trust ↗</a></p>
-
-
         <h3 id="geography">What counts as Walton-on-Thames?</h3>
         <p>This is more complicated than the postal address suggests.</p>
         <p>The Office for National Statistics defines a <strong>Walton-on-Thames built-up area</strong> as a statistical geography. Census 2021 data can therefore be reported for that geography, but it is not the same thing as the KT12 postcode district, current council wards or the historic parish (Office for National Statistics, 2023).</p>
         <p>The <strong>KT12 postcode district is broader than Walton-on-Thames</strong>. It includes Hersham and Whiteley Village addresses: Whiteley Homes Trust gives its own address as Octagon Road, Walton on Thames, KT12 4EH, and sold-price records for streets in Hersham such as Southdown Road and Queens Road carry KT12 postcodes with Walton-on-Thames as the postal town (Whiteley Homes Trust, n.d.a; Rightmove, 2026). Hersham is a distinct village with its own centre and identity, while Whiteley Village is a distinct residential community south of Hersham. Both are covered by this site because of their close practical links with the town, but neither should simply be counted as a Walton neighbourhood.</p>
         <p>Walton-on-Thames railway station adds another complication. It serves Walton and north Hersham, and sits much closer to some residential streets than it does to Walton town centre (Walton-on-Thames.org, 2026a).</p>
         <p>For anyone comparing properties, the most useful unit is therefore the <strong>actual street and immediate neighbourhood</strong>, not the postal town or the postcode.</p>
+        </section>
 
+        <section class="guide-section" data-areas="hersham" data-primary="hersham" data-relevance="primary">
+        <h2 id="hersham-guide">Hersham</h2>
+        <p>Hersham is a village in its own right, not a district of Walton. It has its own green and centre, its own shops and surgery, its own primary schools and its own station, and it keeps a separate identity that long predates the shared KT12 postal address (Walton-on-Thames.org, 2026b).</p>
+
+        <h3 id="hersham-centre">The village centre</h3>
+        <p>Everyday shopping is centred on the parade around Hersham Green and the Hersham Centre, with a supermarket, cafes and takeaways alongside the pharmacy and Post Office. It is a village centre rather than a town centre: for a full range of shops, most people go into Walton, Kingston or Weybridge.</p>
+        <p class="deeper-link"><a href="/hersham/">The Hersham guide</a> · <a href="/hersham/food-and-drink/">food and drink in Hersham</a></p>
+
+        <h3 id="hersham-station">Hersham station</h3>
+        <p>Hersham has its own smaller station, on the same South West Main Line as Walton-on-Thames but with a different stopping pattern and a less frequent service. Two trains an hour run each way, all of them stopping services, and every London train takes about 33 minutes to Waterloo because the fast lines through the middle of the station have no platforms. Times are approximate and change with the timetable, stopping patterns and engineering work (Walton-on-Thames.org, 2026d; National Rail, 2026b).</p>
+        <p>The station has no lift and no step-free route to the platforms, which matters for anyone with mobility needs, a pushchair or heavy luggage (National Rail, 2026b). Walton-on-Thames station also serves the west of the village and has the faster and more frequent service.</p>
+        <p class="deeper-link"><a href="/hersham-railway-station/">Hersham station guide</a> · <a href="/walton-on-thames-railway-station/">Walton-on-Thames station guide</a></p>
+
+        <h3 id="hersham-schools">Schools and surgery</h3>
+        <p>Three primary schools sit within the village, Bell Farm, Burhill and Cardinal Newman, with Three Rivers Academy on Bell Farm Way as the secondary serving it. Hersham Surgery is on Pleasant Place, off the green, with two pharmacies in the village. Our Hersham living guide covers all of them with addresses, age ranges and links to each school's Ofsted record, and it is the page to use rather than this summary.</p>
+        <p class="deeper-link"><a href="/hersham/living/">Living in Hersham: schools, doctors, getting around and council services</a></p>
+
+        <h3 id="hersham-getting-around">Getting around</h3>
+        <p>Buses link the village to Walton, Esher, Kingston, Shepperton, Staines and Whiteley Village, including routes 458 and 459, with 564 and 663 serving local and school journeys. Surrey County Council publishes the current routes and timetables, which change often enough that reproducing them here would date quickly (Surrey County Council, 2026a).</p>
+        <p>By road the A244 runs through the village between Esher and Walton, and the A317 links west towards Weybridge, with M25 Junction 10 a few miles east.</p>
+
+        <h3 id="hersham-housing">Housing and families</h3>
+        <p>Hersham has no house-price index of its own. The official figures on this page are for the whole borough of Elmbridge, and commercial portals fold Hersham addresses into their Walton-on-Thames results, because Hersham uses Walton-on-Thames as its postal town: sold entries for Southdown Road, Vaux Crescent and Queens Road all appear that way (Rightmove, 2026). For a purchase here, street-level completed sales are the only reliable comparison.</p>
+        <p class="deeper-link"><a href="/living/community/?area=hersham">Clubs and groups in Hersham</a> · <a href="/hersham/development-and-planning/">development and planning in Hersham</a></p>
+        </section>
+
+        <section class="guide-section" data-areas="whiteley-village" data-primary="whiteley-village" data-relevance="primary">
+        <h2 id="whiteley-guide">Whiteley Village</h2>
+        <p><strong>Whiteley Village is a charitable retirement community, not open-market housing.</strong> It is owned and run by the Whiteley Homes Trust, it cannot be bought or rented in the ordinary way, and people move there by applying to the Trust and meeting its eligibility rules. Nothing on this page sets those rules: they are the Trust's, and the Trust decides who qualifies.</p>
+        <p>The village sits south of Hersham in its own grounds, laid out around a series of concentric octagons, and has been a designated conservation area since 1979. It was built with the fortune left by the Bayswater department-store owner William Whiteley for older people of limited means, and that is still who it houses.</p>
+        <p class="deeper-link"><a href="/hersham/whiteley-village/">The history and architecture of Whiteley Village</a> · <a href="https://www.thewhiteleyhomestrust.org.uk/living-at-whiteley" target="_blank" rel="noopener noreferrer">Living at Whiteley, Whiteley Homes Trust ↗</a></p>
+
+        <h3 id="whiteley-apply">Who can apply</h3>
+        <p>The Trust publishes its criteria, and they are stricter than most people expect. At the time of checking, applicants must be 65 or over if male and 60 or over if female, with a net annual income of no more than £25,000 for a single person or £40,000 for a couple, and capital of no more than £30,000 per person or £50,000 per couple. Applicants must have lived in the UK for five or more consecutive years, and must show a housing need, such as being at risk of involuntary homelessness, a medical or welfare need made worse by their present home, or insecurity in a private shorthold tenancy. The Trust also states that it does not currently accept applicants with a dementia diagnosis (Whiteley Homes Trust, n.d.c).</p>
+        <p><strong>These are the Trust's rules and they change.</strong> Check the current criteria on the Trust's own page before making any decision, and treat this summary as a pointer rather than an authority.</p>
+
+        <h3 id="whiteley-how-to-apply">How to apply</h3>
+        <p>Applications go directly to the Whiteley Homes Trust on its own forms, not through an estate agent, a letting agent or the council. The Trust asks for an application form, an equality monitoring form and a references consent form, completed in full with supporting documentation, and publishes a list of current vacancies (Whiteley Homes Trust, n.d.c).</p>
+        <p class="deeper-link"><a href="https://www.thewhiteleyhomestrust.org.uk/living-at-whiteley/apply-to-live-at-whiteley" target="_blank" rel="noopener noreferrer">Apply to live at Whiteley, Whiteley Homes Trust ↗</a></p>
+
+        <h3 id="whiteley-accommodation">Accommodation and what it is called</h3>
+        <p>The village provides more than 250 one and two-bedroom almshouse cottages, together with 51 self-contained extra-care flats at Huntley House (Whiteley Homes Trust, n.d.b; n.d.d). The Trust's pages currently give slightly different counts for the cottages, so this guide uses the cautious figure until the Trust confirms one.</p>
+        <p>The word to understand here is <strong>almshouse</strong>. These are not tenancies in the ordinary sense and they are not properties for sale, so the usual language of buying, renting, deposits and landlords does not apply. Cottages are offered unfurnished, residents arrange and pay for their own utilities and service contracts, and the Trust provides a maintenance and repairs service (Whiteley Homes Trust, n.d.d).</p>
+
+        <h3 id="whiteley-life">Life and facilities in the village</h3>
+        <p>The village has its own shop and Post Office, open Monday to Friday mornings and early afternoons and on Saturday mornings, selling groceries, fresh produce and bakery deliveries alongside Post Office services (Whiteley Homes Trust, n.d.e). The Whiteley Community Café in the Clubhouse on Octagon Road is open every day and is open to everyone, not only residents (Whiteley Homes Trust, n.d.f). There is also a swimming pool, and the Trust runs a volunteering programme (Whiteley Homes Trust, n.d.g).</p>
+        <p>Those are the facilities the Trust publishes, and this guide names only those. For anything else, including clubs, activities and worship, ask the Trust.</p>
+        <p>The grounds are private and residential. The café is the part most visitors use.</p>
+
+        <h3 id="whiteley-health">Healthcare and pharmacies</h3>
+        <p><strong>Healthcare is accessed outside the village.</strong> No GP surgery with a Whiteley Village address appears in our GP directory, and the Trust's residents' handbook directs residents towards Hersham Surgery, with Walton Health Centre and nearby pharmacies also serving the village (Walton-on-Thames.org, 2026e).</p>
+        <p>For emergencies, St Peter's Hospital in Chertsey has the 24-hour Accident and Emergency department (Ashford and St Peter's Hospitals NHS Foundation Trust, 2026a). Walton Community Hospital provides local health services, including Fort House Surgery, but it is not an A&E (NHS, n.d.e; NHS, n.d.f).</p>
+        <p class="deeper-link"><a href="/living/gp-surgeries/">GP surgeries</a> · <a href="/living/pharmacies/">pharmacies</a> · <a href="/living/dentists/">dentists</a></p>
+
+        <h3 id="whiteley-transport">Getting to and from the village</h3>
+        <p>Bus route <strong>459</strong> is the village's public transport link, running between Staines, Laleham, Shepperton, Walton, Hersham and Whiteley Village, and stopping at "Stores, Whiteley Village" (Surrey County Council, 2026a). Timetables change, so check the current one before relying on a particular journey.</p>
+        <p>Otherwise a car, taxi or bicycle from Walton or Hersham is the practical way in. The nearest stations are Walton-on-Thames and Hersham, both of which need a bus, car or taxi from the village.</p>
+
+        <h3 id="whiteley-costs">Costs and what to check</h3>
+        <p>The borough house-price and rent figures elsewhere on this page <strong>do not describe Whiteley Village</strong>. Almshouse accommodation is not sold or let on the open market, so those numbers are irrelevant to a move here.</p>
+        <p><strong>What living at Whiteley Village costs is for the Trust to set out, not this guide.</strong> Contact the Whiteley Homes Trust directly for the current charges and what they cover. It is also the place to ask about:</p>
+        <ul>
+          <li>which utilities and services residents arrange and pay for themselves;</li>
+          <li>Council Tax, and which band the accommodation falls in;</li>
+          <li>the occupancy terms, including what an almshouse appointment means in practice and the circumstances in which it can end;</li>
+          <li>what happens if care needs increase, and how Huntley House differs from a cottage; and</li>
+          <li>current vacancies and how long the waiting list is.</li>
+        </ul>
+        <p class="deeper-link"><a href="https://www.thewhiteleyhomestrust.org.uk/living-at-whiteley" target="_blank" rel="noopener noreferrer">Living at Whiteley, Whiteley Homes Trust ↗</a> · <a href="https://www.thewhiteleyhomestrust.org.uk/contact-us" target="_blank" rel="noopener noreferrer">Contact the Trust ↗</a></p>
+        <p>The general moving checklist further down this page is written for people buying or renting on the open market. Much of it, including surveys, leases and landlord checks, does not apply to an almshouse appointment.</p>
+        </section>
+
+        <section class="guide-section" data-areas="walton-on-thames hersham" data-primary="walton-on-thames hersham" data-relevance="shared">
         <h2 id="housing">Housing and the real cost of living</h2>
         <p>Walton sits within an expensive borough housing market, but no single headline figure accurately represents every part of the town.</p>
 
         <h3>Official Elmbridge market context</h3>
-        <p>The Office for National Statistics, using UK House Price Index data from HM Land Registry, reported an <strong>average Elmbridge house price of £744,000 in June 2026</strong>, down 2.1% from June 2025. The figure was provisional when published (Office for National Statistics, 2026).</p>
-        <p>In the same release, the average price paid by first-time buyers in Elmbridge was <strong>£500,000</strong>, while home movers paid an average of <strong>£948,000</strong> (Office for National Statistics, 2026).</p>
+        <p>The Office for National Statistics, using UK House Price Index data from HM Land Registry, reported an <strong>average Elmbridge house price of £748,000 in July 2026</strong>, up 1.9% from July 2025. ONS marks these local figures as provisional, and they are revised as more sales complete (Office for National Statistics, 2026).</p>
+        <p>In the same release, the average price paid by first-time buyers in Elmbridge was <strong>£501,000</strong>, while home movers paid an average of <strong>£956,000</strong> (Office for National Statistics, 2026).</p>
         <p>Those figures are useful context, but they cover the whole borough. Elmbridge includes Walton, Weybridge, Esher, Cobham, the Moleseys, the Dittons and other settlements with different property markets.</p>
 
         <h3>Why this guide does not quote a "Walton average" from a property portal</h3>
@@ -800,13 +1060,13 @@ const citeSources = references.map((ref) => {
         <p>A future property page on this site should calculate a reproducible Walton-only measure directly from HM Land Registry Price Paid Data, using a clearly documented geographic definition.</p>
 
         <h3>Renting</h3>
-        <p>Official rental statistics are also published at Elmbridge level rather than for Walton. The average private rent across Elmbridge was <strong>£1,867 a month in July 2026</strong>, up 1.1% year on year (Office for National Statistics, 2026).</p>
+        <p>Official rental statistics are also published at Elmbridge level rather than for Walton. The average private rent across Elmbridge was <strong>£1,891 a month in August 2026</strong>, up 2.6% from £1,843 a year earlier (Office for National Statistics, 2026).</p>
         <p>Average monthly rents by bedroom number were (Office for National Statistics, 2026):</p>
         <ul>
-          <li>one bedroom: <strong>£1,247</strong></li>
-          <li>two bedrooms: <strong>£1,569</strong></li>
-          <li>three bedrooms: <strong>£1,912</strong></li>
-          <li>four or more bedrooms: <strong>£2,848</strong></li>
+          <li>one bedroom: <strong>£1,264</strong></li>
+          <li>two bedrooms: <strong>£1,589</strong></li>
+          <li>three bedrooms: <strong>£1,937</strong></li>
+          <li>four or more bedrooms: <strong>£2,884</strong></li>
         </ul>
         <p>These are borough-wide averages, not expected rents for an individual Walton property.</p>
 
@@ -818,12 +1078,13 @@ const citeSources = references.map((ref) => {
         <h3 id="monthly-costs">What a monthly budget has to cover</h3>
         <p>Beyond the mortgage or rent, a realistic monthly figure for this area needs to allow for Council Tax at the property's own band, utilities and broadband, buildings and contents insurance, the full commute including any station parking and onward travel in London, childcare if relevant, and car ownership where a household keeps one. A flat or a house on an estate may also carry a service charge or other lease obligations, which are property-specific and need checking before an offer.</p>
         <p>This guide does not publish an example household budget, because the numbers that would make it useful, the exact band, tariff, ticket, nursery and lease, are all property-specific. The checks in <a href="#property-checks">before choosing a property</a> are the ones that turn those into real figures.</p>
+        </section>
 
-
+        <section class="guide-section" data-areas="walton-on-thames" data-primary="walton-on-thames" data-relevance="primary">
         <h2 id="transport">Getting around and commuting</h2>
         <p><strong>Direct trains run from Walton-on-Thames to London Waterloo. The fastest scheduled services are usually around 22 to 25 minutes, while many stopping services take around 30 to 35 minutes.</strong> The pattern varies by time of day, at weekends and during engineering work (South Western Railway, 2026; Walton-on-Thames.org, 2026a).</p>
         <p>The headline rail time is only part of the commute. The station is roughly a <strong>20 to 25-minute walk from Walton town centre</strong>, and total journey time varies substantially depending on the street you live on and where in London you need to reach (Walton-on-Thames.org, 2026a).</p>
-        <p>The station also has direct services towards Weybridge and Woking, with onward connections across Surrey and the wider south-west rail network (National Rail, 2026).</p>
+        <p>The station also has direct services towards Weybridge and Woking, with onward connections across Surrey and the wider south-west rail network (National Rail, 2026a).</p>
 
         <figure>
           <img
@@ -849,7 +1110,9 @@ const citeSources = references.map((ref) => {
         </ul>
         <p>Routes and timetables change, so this page deliberately does not reproduce departure times.</p>
         <p>By road, Walton connects towards Weybridge, Esher, Molesey, Chertsey, the A3 and the M25. Peak journey times vary substantially, so a fixed claim such as "ten minutes to the motorway" is less useful than checking the journey at the time you would normally travel.</p>
+        </section>
 
+        <section class="guide-section" data-areas="walton-on-thames hersham" data-primary="walton-on-thames hersham" data-relevance="shared">
         <h2 id="schools">Schools, nurseries and childcare</h2>
         <p>Families should treat school choice as an <strong>address-specific admissions question</strong>, not a town-wide promise. Admission arrangements are set by each school and published in Surrey County Council's admission booklets, and Surrey's school map shows how far a school is from your home and whether it has a catchment area, so an individual address can materially affect priority (Surrey County Council, 2026b).</p>
         <p>Walton and the immediately surrounding area have a mixture of state and independent primary schools, with secondary options in Walton's neighbouring communities as well as the wider Elmbridge area.</p>
@@ -866,11 +1129,12 @@ const citeSources = references.map((ref) => {
         <p>For school-age children, the working day rarely matches the school day. The government's Best Start in Life service covers free breakfast clubs and wraparound childcare for primary-school-aged children, which is the national framework schools work within (Best Start in Life, 2026b).</p>
         <p>What each school actually offers, and at what cost, differs school by school, so the school's own website and office are the reliable source. Holiday provision is separate again and is usually run by private providers or clubs rather than by the school itself.</p>
         <p class="deeper-link"><a href="https://beststartinlife.gov.uk/childcare-early-years-education/breakfast-clubs-and-wraparound-childcare/" target="_blank" rel="noopener noreferrer">Breakfast clubs and wraparound childcare, Best Start in Life ↗</a></p>
+        </section>
 
-
+        <section class="guide-section" data-areas="walton-on-thames hersham" data-primary="walton-on-thames hersham" data-relevance="shared">
         <h2 id="everyday">Everyday life</h2>
         <h3 id="healthcare">GPs, dentists, pharmacies and healthcare</h3>
-        <p>Walton has several NHS GP practices. The Red Practice, The White Practice and The Yellow Practice operate from the health centre on Rodney Road, while Ashley Medical Practice is on Crutchfield Lane (NHS, n.d.a; NHS, n.d.b; NHS, n.d.c; NHS, n.d.d). Hersham has its own surgery.</p>
+        <p>Walton has several NHS GP practices. The Red, White and Yellow Practices operate from Walton Health Centre on Rodney Road, Fort House Surgery is at Walton Community Hospital on the same road, and Ashley Medical Practice is on Crutchfield Lane (NHS, n.d.a; NHS, n.d.b; NHS, n.d.c; NHS, n.d.d; NHS, n.d.f). Hersham has its own surgery. Practices open, merge and close their lists, so our <a href="/living/gp-surgeries/">GP surgeries directory</a> is the maintained list rather than this paragraph.</p>
         <p>Registration status changes, so our GP directory links through to the NHS service used to check whether a practice is currently accepting patients, rather than freezing that into this page.</p>
         <ul>
           <li><a href="/living/gp-surgeries/">GP surgeries in Walton-on-Thames and Hersham</a></li>
@@ -879,7 +1143,10 @@ const citeSources = references.map((ref) => {
         </ul>
         <p>For hospital care, <strong>St Peter's Hospital in Chertsey</strong> provides a 24-hour Accident and Emergency service, and the trust lists Walton-on-Thames among the main centres of population the hospital serves (Ashford and St Peter's Hospitals NHS Foundation Trust, 2026a; 2026b). Walton Community Hospital provides local health services but does not list an A&E department (NHS, n.d.e).</p>
 
-        <h3 id="shopping">Shopping, food and everyday life</h3>
+        </section>
+
+        <section class="guide-section" data-areas="walton-on-thames hersham whiteley-village" data-primary="walton-on-thames" data-relevance="primary">
+        <h2 id="shopping">Shopping, food and everyday life</h2>
         <p>Walton has a proper town centre rather than a commuter station surrounded by housing.</p>
         <p>The Heart, High Street, Bridge Street, Church Street and New Zealand Avenue provide a mixture of shops, supermarkets, cafes, restaurants, pubs and services (The Heart Shopping Centre, 2026). The exact mix changes, which is why this site maintains live directories rather than freezing a business list into a guide.</p>
         <ul>
@@ -887,9 +1154,12 @@ const citeSources = references.map((ref) => {
           <li><a href="/food-and-drink/">Food and drink</a></li>
           <li><a href="/directory/">Business directory</a></li>
         </ul>
-        <p>Kingston upon Thames is the nearest major retail centre for a much larger range of shops. Weybridge and Hersham provide additional nearby options.</p>
+        <p>Kingston upon Thames, about seven miles away, has a far larger range of shops, and is the retail centre most people here name for a bigger shopping trip. Weybridge and Hersham provide additional nearby options.</p>
 
-        <h3 id="outdoors">The Thames, parks and outdoor life</h3>
+        </section>
+
+        <section class="guide-section" data-areas="walton-on-thames hersham whiteley-village" data-primary="walton-on-thames" data-relevance="primary">
+        <h2 id="outdoors">The Thames, parks and outdoor life</h2>
         <p>The Thames is one of Walton's defining features and one of its main public spaces.</p>
         <p>The <strong>Thames Path</strong> passes through Walton. Surrey County Council describes the walk upstream from Walton Bridge towards the Shepperton Ferry as a level surfaced path (Surrey County Council, 2026c). Cowey Sale provides riverside open space near <a href="/history/walton-bridge/">Walton Bridge</a>, and walking routes continue along the river in both directions.</p>
         <p>The river supports rowing, boating and the Walton and Weybridge Regatta, whose organisers describe the event as formerly Walton Amateur Regatta and as held annually since 1862 (Walton and Weybridge Regatta, n.d.). Away from the Thames, Ashley Park and local recreation grounds provide further green space, while sports facilities are concentrated around Waterside Drive and elsewhere across the town (Elmbridge Borough Council, n.d.b).</p>
@@ -907,7 +1177,9 @@ const citeSources = references.map((ref) => {
         </figure>
 
         <p class="deeper-link"><a href="/things-to-do/riverside-walks/">Riverside walks, Cowey Sale and the Thames Path</a></p>
+        </section>
 
+        <section class="guide-section" data-areas="walton-on-thames hersham whiteley-village" data-primary="walton-on-thames hersham whiteley-village" data-relevance="shared">
         <h2 id="meeting-people">Meeting people and making friends</h2>
         <p>Moving somewhere new and knowing nobody is the part of a move that guides tend to skip. Walton and Hersham have a large organised social life, and the most reliable way into it is a regular fixture rather than a one-off event.</p>
         <p>Our clubs and societies directory is the maintained list, covering sport and recreation, uniformed groups, arts and performance, hobbies and interests, faith and church groups, volunteering, support organisations and civic bodies. Each entry says where the organisation is based and when we last checked it, and the Area filter narrows the list to Walton-on-Thames, Hersham or Whiteley Village.</p>
@@ -918,11 +1190,12 @@ const citeSources = references.map((ref) => {
           <li><strong>Informal and drop-in:</strong> some of the friendliest entry points are the least formal. Empty Chairs, a monthly meet-up for people who would rather not spend an evening alone, is listed in our events calendar with its current date.</li>
         </ul>
         <p>Membership, cost, booking and whether an activity is open to the public all vary, and they change, so confirm with the organiser rather than relying on any list. Activities inside Whiteley Village are largely for its residents; the Community Café is the part that is open to everyone.</p>
-        <p>The <a href="/things-to-do/riverhouse-barn/">Riverhouse Barn Arts Centre</a> is the main cultural venue, with a year-round programme of theatre, music, comedy and exhibitions, and arts and crafts classes (Walton-on-Thames.org, 2026c). Local news and community stories are published in our <a href="/community/news/">news section</a>.</p>
+        <p>The <a href="/things-to-do/riverhouse-barn/">Riverhouse Barn Arts Centre</a> runs a year-round programme of theatre, music, comedy and exhibitions, and arts and crafts classes (Walton-on-Thames.org, 2026c). Local news and community stories are published in our <a href="/community/news/">news section</a>.</p>
         <p class="deeper-link"><a href="/living/community/">Clubs, societies and community groups</a> · <a href="/whats-on/">what's on in Walton and Hersham</a> · <a href="/living/community/?area=hersham">clubs and groups in Hersham</a></p>
+        </section>
 
-
-        <h2 id="trade-offs">What to consider before moving to Walton-on-Thames</h2>
+        <section class="guide-section" data-areas="walton-on-thames hersham whiteley-village" data-primary="walton-on-thames hersham whiteley-village" data-relevance="shared">
+        <h2 id="trade-offs">Choosing between the three communities</h2>
         <p>Walton has clear practical strengths, and it also involves trade-offs.</p>
         <p><strong>Reasons people may find Walton particularly practical include:</strong></p>
         <ul>
@@ -943,7 +1216,9 @@ const citeSources = references.map((ref) => {
         </ul>
         <p>The useful question is not simply "Is Walton-on-Thames a good place to live?" It is <strong>which part of Walton best suits the way you actually live</strong>.</p>
         <p>A five-day-a-week Waterloo commuter may prioritise the station. Someone working mostly from home may value the river or the town centre more. A household choosing around a school may have a different search area again.</p>
+        </section>
 
+        <section class="guide-section" data-areas="walton-on-thames hersham" data-primary="walton-on-thames hersham" data-relevance="shared">
         <h2 id="property-checks">Before choosing a property</h2>
         <p>These are the checks worth making on a specific address, rather than on the town. None of this replaces a solicitor, a surveyor or an independent financial adviser.</p>
         <ul>
@@ -965,42 +1240,49 @@ const citeSources = references.map((ref) => {
         <p>The Environment Agency maintains a <strong>River Thames at Walton flood-warning area</strong>, covering locations including Desborough Island, Walton Bridge and the Elmbridge Leisure Centre area (Environment Agency, 2026a). That does not mean every property close to the river carries the same risk, and it does not justify describing Walton as a town that either "floods" or "does not flood".</p>
         <p>Anyone buying or renting should check the exact address using the government's long-term flood-risk service and, for a purchase, investigate the property's own flood history and insurance position (Environment Agency, n.d.).</p>
         <p class="deeper-link"><a href="https://www.gov.uk/check-long-term-flood-risk" target="_blank" rel="noopener noreferrer">Check the long-term flood risk for a property on GOV.UK ↗</a></p>
+        </section>
 
+        <section class="guide-section" data-areas="walton-on-thames hersham" data-primary="walton-on-thames hersham" data-relevance="shared">
         <h2 id="first-month">Your first month here</h2>
         <p>A short list of the things worth doing early, each of which is covered in more detail on the page it links to.</p>
         <ul>
           <li><strong>Council Tax and bins.</strong> Tell Elmbridge Borough Council you have moved in, and find your collection day and which bin is which.</li>
-          <li><strong>Register with a GP, dentist and pharmacy.</strong> Practices take patients by catchment and availability changes, so check before assuming the nearest one can take you.</li>
+          <li><strong>Register with a GP and a dentist, and choose a pharmacy.</strong> Practices take patients by catchment and availability changes, so check before assuming the closest one can take you. You do not register with a pharmacy: you choose one and, if you want repeat prescriptions sent there, nominate it for electronic prescriptions.</li>
           <li><strong>Sort out utilities and broadband.</strong> Take meter readings on day one, and check what is actually available at the address rather than what is advertised nationally.</li>
           <li><strong>Get your travel set up.</strong> Work out which station suits your commute, and whether parking, a season ticket or a bike gets you there most cheaply.</li>
           <li><strong>Schools and childcare, if relevant.</strong> Contact Surrey County Council about a school place in-year, and start nursery waiting lists early.</li>
           <li><strong>Find one regular thing to go to.</strong> A club, a class, a choir or a volunteering slot does more for settling in than any amount of exploring.</li>
         </ul>
         <p class="deeper-link"><a href="/living/council-and-services/">Council and local services</a> · <a href="/living/gp-surgeries/">GP surgeries</a> · <a href="/living/dentists/">dentists</a> · <a href="/living/pharmacies/">pharmacies</a> · <a href="/living/post-offices-and-post-boxes/">post offices and post boxes</a> · <a href="/getting-here/">getting around</a></p>
+        </section>
 
-
-        <h2 id="faqs">Common questions about living in Walton-on-Thames</h2>
+        <section class="guide-section" data-areas="walton-on-thames hersham whiteley-village" data-primary="walton-on-thames hersham whiteley-village" data-relevance="shared">
+        <h2 id="faqs">Common questions</h2>
         <div class="faq-list">
           {faqs.map((item) => (
-            <details class="faq-item">
+            <details class="faq-item" data-areas={item.areas.join(' ')}>
               <summary>{item.q}</summary>
               <p>{item.a} ({item.cite})</p>
             </details>
           ))}
         </div>
+        </section>
 
+        <section class="guide-section" data-areas="walton-on-thames hersham whiteley-village" data-primary="walton-on-thames hersham whiteley-village" data-relevance="shared">
         <h2 id="methodology">Research and citation notes</h2>
         <p>This guide deliberately distinguishes town-level local knowledge from borough-level official statistics. Inline references use Harvard author-date citation, and each links to its full entry below.</p>
         <ul>
           <li><strong>Population:</strong> based on Census 2021 data for the Walton-on-Thames built-up area geography. Built-up-area, postcode, ward and historic-parish boundaries are not interchangeable (Office for National Statistics, 2023; CensusData.uk, 2022).</li>
           <li><strong>House prices and rents:</strong> the official figures quoted are for Elmbridge, not Walton alone. Commercial Walton-on-Thames search areas can include Hersham, so they are not presented as official Walton-only averages (Office for National Statistics, 2026; Rightmove, 2026).</li>
           <li><strong>Council Tax:</strong> the annual table is published by Elmbridge Borough Council, and the amount due depends on the property's valuation band (Elmbridge Borough Council, 2026a).</li>
-          <li><strong>Transport:</strong> train and bus information is time-sensitive. South Western Railway, National Rail and Surrey County Council hold the current timetables and service changes (South Western Railway, 2026; National Rail, 2026; Surrey County Council, 2026a).</li>
+          <li><strong>Transport:</strong> train and bus information is time-sensitive. South Western Railway, National Rail and Surrey County Council hold the current timetables and service changes (South Western Railway, 2026; National Rail, 2026a; Surrey County Council, 2026a).</li>
           <li><strong>Schools:</strong> admissions, places and inspection outcomes are time-sensitive. Surrey County Council, the Department for Education and Ofsted are the principal sources (Surrey County Council, 2026b; Department for Education, n.d.a; Ofsted, 2024).</li>
           <li><strong>Healthcare:</strong> practice registration and service availability can change quickly, so NHS and provider pages should be checked before relying on an individual listing (NHS, n.d.a; Ashford and St Peter's Hospitals NHS Foundation Trust, 2026a).</li>
           <li><strong>Flood risk:</strong> a flood-warning area is not the same as property-level long-term flood risk. The exact address should be checked using the Environment Agency service (Environment Agency, 2026a; Environment Agency, n.d.).</li>
         </ul>
         <p>This site is an independent, not-for-profit community website. How we research, source and correct pages is set out in <a href="/charter/">our charter</a>.</p>
+        </section>
+
         </LinkedCitations>
 
         <h2 id="references">References</h2>
@@ -1017,6 +1299,137 @@ const citeSources = references.map((ref) => {
       </article>
     </div>
   </section>
+<script is:inline>
+  (function () {
+    // Location-aware view. Every section, contents entry, comparison card and
+    // FAQ carries data-areas, so nothing here matches on words: it reads the
+    // metadata the page was built with. Without JavaScript the page shows all
+    // three places, which is the honest default rather than an empty view.
+    var PLACES = {
+      'walton-on-thames': 'Walton-on-Thames',
+      'hersham': 'Hersham',
+      'whiteley-village': 'Whiteley Village',
+    };
+    var NEARBY = {
+      'whiteley-village': ['hersham', 'walton-on-thames'],
+      'hersham': ['walton-on-thames'],
+      'walton-on-thames': ['hersham'],
+    };
+
+    function start() {
+      var context = document.getElementById('place-context');
+      var options = Array.prototype.slice.call(document.querySelectorAll('[data-place-option]'));
+      if (!context || !options.length) return;
+
+      function matches(el, place) {
+        var areas = (el.getAttribute('data-areas') || '').split(/\s+/).filter(Boolean);
+        return !areas.length || place === 'all' || areas.indexOf(place) !== -1;
+      }
+
+      function names(keys) {
+        var list = keys.map(function (key) { return PLACES[key]; }).filter(Boolean);
+        if (list.length < 2) return list.join('');
+        return list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+      }
+
+      // "areas" is where a section appears; "primary" is what it is about.
+      // A Walton section shown in the Hersham view is Nearby, not In Hersham.
+      function label(el, place) {
+        var areas = (el.getAttribute('data-areas') || '').split(/\s+/).filter(Boolean);
+        var primary = (el.getAttribute('data-primary') || '').split(/\s+/).filter(Boolean);
+        var relevance = el.getAttribute('data-relevance');
+        if (place === 'all' || !areas.length) return '';
+        if (relevance === 'shared') {
+          return primary.length === 3 ? 'Shared across the area' : 'Shared across ' + names(primary);
+        }
+        if (primary.indexOf(place) !== -1) return 'In ' + PLACES[place];
+        if (primary.length) return 'Nearby in ' + names(primary);
+        return '';
+      }
+
+      function apply(place, announce) {
+        if (!PLACES[place]) place = 'all';
+
+        Array.prototype.forEach.call(document.querySelectorAll('.guide-section'), function (section) {
+          var show = matches(section, place);
+          section.hidden = !show;
+          var tag = section.querySelector('.place-tag');
+          var text = show ? label(section, place) : '';
+          if (text && !tag) {
+            tag = document.createElement('p');
+            tag.className = 'place-tag';
+            section.insertBefore(tag, section.firstChild);
+          }
+          if (tag) {
+            tag.textContent = text;
+            tag.hidden = !text;
+          }
+        });
+
+        // Contents entries follow their sections, so the sidebar never points
+        // at something that is not on the page.
+        Array.prototype.forEach.call(document.querySelectorAll('[data-guide-toc] li[data-areas]'), function (item) {
+          item.hidden = !matches(item, place);
+        });
+
+        Array.prototype.forEach.call(document.querySelectorAll('.comparison-card, .faq-item'), function (el) {
+          el.hidden = !matches(el, place);
+        });
+
+        options.forEach(function (option) {
+          var isCurrent = option.getAttribute('data-place-option') === place;
+          if (isCurrent) option.setAttribute('aria-current', 'true');
+          else option.removeAttribute('aria-current');
+        });
+
+        var message;
+        if (place === 'all') {
+          message = 'Showing all three places: Walton-on-Thames, Hersham and Whiteley Village.';
+        } else {
+          var nearby = (NEARBY[place] || []).map(function (key) { return PLACES[key]; });
+          message = 'You are viewing information for ' + PLACES[place] + '.';
+          if (nearby.length) {
+            message += ' Nearby services in ' + nearby.join(' and ') + ' are included where they are relevant.';
+          }
+        }
+        context.textContent = message;
+        if (announce) {
+          // Re-inserting the text makes the live region announce a change that
+          // would otherwise be silent for a screen reader user.
+          context.setAttribute('aria-busy', 'true');
+          context.removeAttribute('aria-busy');
+        }
+        document.documentElement.setAttribute('data-place', place);
+      }
+
+      function fromUrl() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get('place') || params.get('area') || 'all';
+      }
+
+      options.forEach(function (option) {
+        option.addEventListener('click', function (event) {
+          if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+          event.preventDefault();
+          var place = option.getAttribute('data-place-option');
+          var url = new URL(window.location.href);
+          if (place === 'all') url.searchParams.delete('place');
+          else url.searchParams.set('place', place);
+          url.searchParams.delete('area');
+          window.history.pushState({ place: place }, '', url);
+          apply(place, true);
+        });
+      });
+
+      window.addEventListener('popstate', function () { apply(fromUrl(), true); });
+      apply(fromUrl(), false);
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+    else start();
+  })();
+</script>
+
 </BaseLayout>
 
 <style>
@@ -1123,6 +1536,130 @@ const citeSources = references.map((ref) => {
   @media (max-width: 1000px) {
     .living-layout { grid-template-columns: minmax(0, 1fr); }
     .living-guide { width: 100%; margin: 0 auto; }
+  }
+
+  /* Place selector and comparison. */
+  .place-section { padding-bottom: 1rem; }
+
+  .place-intro {
+    color: var(--color-slate);
+    max-width: 70ch;
+    margin-bottom: 1.25rem;
+  }
+
+  .place-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .place-option {
+    display: inline-block;
+    padding: 0.6rem 1.1rem;
+    min-height: 44px;
+    border: 1px solid rgba(11, 36, 46, 0.2);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: var(--color-navy);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .place-option:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-dark);
+  }
+
+  /* The chosen place is marked by weight, colour and a leading tick, so the
+     state does not depend on colour alone. */
+  .place-option[aria-current='true'] {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  .place-option[aria-current='true']::before {
+    content: '\2713\00a0';
+  }
+
+  .place-context {
+    font-size: 0.95rem;
+    color: var(--color-slate);
+    max-width: 70ch;
+    margin-bottom: 1.75rem;
+    padding-left: 0.85rem;
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .comparison-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .comparison-card {
+    padding: 1.35rem 1.5rem;
+    background: var(--color-white);
+    border: 1px solid rgba(11, 36, 46, 0.12);
+    border-radius: var(--radius-md);
+  }
+
+  .comparison-card h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+
+  .comparison-card p {
+    font-size: 0.9rem;
+    color: var(--color-slate);
+    line-height: 1.55;
+  }
+
+  .comparison-points {
+    list-style: none;
+    margin: 0.75rem 0;
+    font-size: 0.85rem;
+    color: var(--color-navy);
+  }
+
+  .comparison-points li {
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.25rem;
+  }
+
+  .comparison-points li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  .comparison-link { font-size: 0.875rem; font-weight: 600; margin-bottom: 0 !important; }
+
+  .comparison-note {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-slate);
+    max-width: 70ch;
+  }
+
+  /* Label a section as local or shared once a place is chosen. */
+  .living-guide :global(.place-tag) {
+    display: inline-block;
+    margin: 0 0 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radius-sm);
+    background: rgba(184, 134, 46, 0.14);
+    color: var(--color-accent-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 900px) {
+    .comparison-grid { grid-template-columns: 1fr; }
   }
 
   /* Three reader journeys, directly under the introduction. */

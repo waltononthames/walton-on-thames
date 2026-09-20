@@ -14,6 +14,12 @@ export interface ContentsPart {
   slug: string;
   text: string;
   children?: { slug: string; text: string }[];
+  /**
+   * Area keys this entry belongs to, matching the site's area taxonomy. When
+   * present, a page's filtering script can hide entries whose section is
+   * hidden, so the contents never points at something that is not there.
+   */
+  areas?: string[];
 }
 
 interface Props {
@@ -32,7 +38,7 @@ const headingId = `gc-toc-heading-${variant}`;
     <h2 id={headingId} class="gc-toc-title">{label}</h2>
     <ol class="gc-toc-parts">
       {parts.map((part) => (
-        <li>
+        <li data-areas={part.areas ? part.areas.join(' ') : undefined}>
           <a href={`#${part.slug}`} class="gc-toc-part">{part.text}</a>
           {part.children && part.children.length > 0 && (
             <ol class="gc-toc-sections">
@@ -48,7 +54,7 @@ const headingId = `gc-toc-heading-${variant}`;
     <summary>{label}</summary>
     <ol class="gc-toc-parts">
       {parts.map((part) => (
-        <li>
+        <li data-areas={part.areas ? part.areas.join(' ') : undefined}>
           <a href={`#${part.slug}`} class="gc-toc-part">{part.text}</a>
           {part.children && part.children.length > 0 && (
             <ol class="gc-toc-sections">

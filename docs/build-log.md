@@ -1599,3 +1599,96 @@ guide by its new title, and a short "Working out where to live" section before t
 references points to housing and costs, getting around, and the property checks. The
 two pages keep separate jobs: areas explains where each one is, the guide explains
 what living there involves.
+
+## 2026-09-20: /living/ made location-aware for all three communities
+
+Built to Darren's location-aware brief. No new routes: he chose not to build
+static `/living/walton-on-thames/`, `/living/hersham/` or
+`/living/whiteley-village/` pages, which also avoids a collision with
+`docs/hersham-head-term-plan.md`, where `/hersham/living/` is the designated
+"living in Hersham" spoke and item 1.3 deleted a duplicate for that reason.
+
+**How the filtering works.** Every guide section, contents entry, comparison
+card and FAQ carries explicit metadata, never keyword matching:
+`data-areas` (where it appears), `data-primary` (what it is about) and
+`data-relevance` (primary or shared). The area keys are the site's existing
+taxonomy from `src/content.config.ts`, the same vocabulary the clubs directory
+filters on. A small inline script reads `?place=` (accepting `?area=` as an
+alias for consistency with the directory), hides what does not apply, labels
+what remains as "In X", "Nearby in X" or "Shared across ...", updates the
+sidebar so it never points at a hidden section, and announces the change in a
+live region. Links are real hrefs, history uses pushState, and back and forward
+were tested. Without JavaScript every section is visible, which is the honest
+default rather than an empty page.
+
+**Whiteley Village is a separate journey**, not a filtered Walton page: what it
+is, who can apply, how to apply, accommodation and terminology, life and
+facilities, healthcare accessed outside the village, the 459, and costs with a
+list of what to ask the Trust. It states plainly that it is not open-market
+housing and that the borough price and rent figures do not describe it, and it
+says the eligibility rules are the Trust's, not ours.
+
+### Source and verification log, all checked 20 September 2026
+- **ONS, Elmbridge (E07000207), last updated 16 September 2026.** House price
+  £748,000 July 2026 provisional, up 1.9%; first-time buyers £501,000; home
+  movers £956,000; average private rent £1,891 August 2026, up 2.6% from
+  £1,843; rents by bedroom £1,264 / £1,589 / £1,937 / £2,884. The page had
+  carried the June/July figures; all were updated together, and the provisional
+  wording is now explicit.
+- **Fort House Surgery** (NHS, H81020): Walton Community Hospital, Rodney Road,
+  KT12 3LD. Added to the healthcare paragraph, which now defers to the
+  maintained GP directory rather than presenting a fixed list.
+- **Whiteley Homes Trust**: 264 almshouse cottages on the cottages page and the
+  same figure on Living at Whiteley, plus Huntley House at 51 extra-care flats.
+  Published as "more than 250" per the brief's cautious wording. Cottages are
+  unfurnished and residents arrange their own service contracts. Eligibility,
+  forms and the dementia exclusion from the apply page. Shop and Post Office
+  hours, and the community cafe open to everyone, from their own pages.
+- **Hersham station** (National Rail, HER; this site's station guide): South
+  West Main Line, two trains an hour each way, all stopping, about 33 minutes
+  to Waterloo, no lift and no step-free platform access.
+- **Bus 459** (Surrey County Council): Staines, Laleham, Shepperton, Walton,
+  Hersham and Whiteley Village.
+
+### Corrections made
+- **"Its own railway station on a different line"** was wrong: Hersham is on the
+  same South West Main Line. Replaced with the stopping-pattern and frequency
+  distinction.
+- **Cross-page contradiction fixed:** `/walton-on-thames-railway-station/` said
+  Hersham "has a separate station on the branch towards Hampton Court", which
+  contradicted this site's own Hersham station page. Corrected.
+- **"Register with a pharmacy"** became choosing a pharmacy and nominating it
+  for electronic prescriptions.
+- **Unsupported superlatives:** "the main cultural venue" is now "runs a
+  year-round programme"; "the nearest major retail centre" is now Kingston
+  "about seven miles away ... the retail centre most people here name".
+- **"What to consider before moving to Walton-on-Thames"** is now "Choosing
+  between the three communities".
+
+### QA
+Build clean. `seo:validate` passes on 467 pages. `seo:links`: zero links to
+non-existent pages. `astro check`: 153 errors, identical to clean main, none
+from these files. One H1, no duplicate ids, no broken anchors, no hidden links
+reachable by keyboard. At 390px: no horizontal scroll, 46px selector targets,
+cards stacked, contents disclosure filtered. Canonical on every `?place=` view
+is the clean `/living/` URL, so the query states are not separately indexable;
+no FAQ schema is emitted, so nothing is claimed for hidden questions.
+
+## Still open
+- **Whiteley facilities: only what the Trust publishes.** The brief listed a
+  library, church, activity centre, allotments and clubs; the Trust's community
+  pages name only the shop and Post Office, community cafe, swimming pool and
+  volunteering. Darren's decision, 20 September 2026: state only what we have
+  evidence for. The page names those four and sends readers to the Trust for
+  anything else, and a sentence reporting what residents "describe" was removed
+  for the same reason. Still worth asking the Trust for a citable list.
+- **The residents' handbook could not be re-read.** It is an image-based PDF and
+  no text could be extracted, so the statement that it directs residents to
+  Hersham Surgery is carried from this site's GP surgeries page rather than
+  re-verified against the handbook itself.
+- **Charges are off the page entirely.** Darren's decision, 20 September 2026:
+  do not mention a weekly maintenance contribution at all, and direct readers to
+  the Whiteley Homes Trust for what living there costs. The costs section says
+  the Trust sets this out, and links its Living at Whiteley and Contact Us pages
+  (both checked, HTTP 200, 20 September 2026).
+- **Darren's resident interview** is still outstanding and unaffected by this work.
