@@ -23,9 +23,9 @@ export async function getStaticPaths() {
 const { biz } = Astro.props;
 const { Content } = await render(biz);
 
-// First image is the hero, the rest form the gallery. Listings with no
-// images keep the plain navy .page-hero and render no gallery at all.
-const [heroImage, ...galleryImages] = biz.data.images;
+// The first image is also the hero background. Listings with no images keep
+// the plain navy .page-hero and render no gallery at all.
+const heroImage = biz.data.images[0];
 
 
 const categoryLabel = biz.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
@@ -161,25 +161,56 @@ const openingHoursSpecification = biz.data.hours
       <article class="prose">
         <Content />
 
-        {galleryImages.length > 0 && (
+        {/* Every photograph appears here, including the hero: behind the
+            title it is darkened and mostly covered, so this is the only
+            place it can actually be seen. Each links to the full image,
+            and the script below opens that link in a lightbox instead. */}
+        {biz.data.images.length > 0 && (
           <>
             <h2>Photographs</h2>
             <div class="biz-gallery">
-              {galleryImages.map((img: ListingImage) => (
+              {biz.data.images.map((img: ListingImage) => (
                 <figure class="biz-gallery-item">
-                  <img src={img.src} alt={img.alt} loading="lazy" />
+                  <a href={img.src} class="biz-gallery-link" data-caption={img.caption ?? ''}>
+                    <img src={img.src} alt={img.alt} loading="lazy" />
+                    <span class="sr-only"> (opens a larger view)</span>
+                  </a>
                   {img.caption && <figcaption>{img.caption}</figcaption>}
                 </figure>
               ))}
             </div>
-          </>
-        )}
+            {biz.data.image_credit && <p class="biz-image-credit">{biz.data.image_credit}</p>}
 
-        {/* Outside the gallery block on purpose: a listing with a single
-            photograph has a hero but no gallery, and its credit still has
-            to appear somewhere. */}
-        {biz.data.image_credit && biz.data.images.length > 0 && (
-          <p class="biz-image-credit">{biz.data.image_credit}</p>
+            <dialog class="biz-lightbox" aria-label="Enlarged photograph">
+              <button type="button" class="biz-lightbox-close" aria-label="Close">×</button>
+              <figure>
+                <img alt="" />
+                <figcaption></figcaption>
+              </figure>
+            </dialog>
+            <script is:inline>
+              (() => {
+                const dialog = document.querySelector('.biz-lightbox');
+                if (!dialog || typeof dialog.showModal !== 'function') return; // falls back to opening the image
+                const img = dialog.querySelector('img');
+                const caption = dialog.querySelector('figcaption');
+                document.querySelectorAll('.biz-gallery-link').forEach((link) => {
+                  link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const thumb = link.querySelector('img');
+                    img.src = link.getAttribute('href');
+                    img.alt = thumb ? thumb.alt : '';
+                    caption.textContent = link.dataset.caption || '';
+                    caption.hidden = !caption.textContent;
+                    dialog.showModal();
+                  });
+                });
+                dialog.querySelector('.biz-lightbox-close').addEventListener('click', () => dialog.close());
+                // A click on the dimmed backdrop lands on the dialog itself.
+                dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+              })();
+            </script>
+          </>
         )}
       </article>
 
@@ -331,6 +362,71 @@ const openingHoursSpecification = biz.data.hours
     font-size: 0.8rem;
     color: var(--color-slate-soft);
   }
+
+  .biz-gallery-link {
+    display: block;
+    border-radius: var(--radius-lg);
+    cursor: zoom-in;
+  }
+
+  .biz-gallery-link:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .biz-gallery-link:hover img { box-shadow: var(--shadow-card-hover); }
+
+  .biz-lightbox {
+    /* The global reset zeroes margins, which is what normally centres a
+       modal dialog, so centre it explicitly. */
+    margin: auto;
+    inset: 0;
+    border: none;
+    padding: 0;
+    background: transparent;
+    max-width: min(96vw, 1600px);
+    max-height: 94vh;
+    overflow: visible;
+  }
+
+  .biz-lightbox::backdrop { background: rgba(1, 32, 44, 0.88); }
+
+  .biz-lightbox figure { margin: 0; }
+
+  .biz-lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 86vh;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    border-radius: var(--radius-md);
+  }
+
+  .biz-lightbox figcaption {
+    color: var(--color-white);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.6rem;
+  }
+
+  .biz-lightbox-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--color-white);
+    background: var(--color-navy);
+    color: var(--color-white);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .biz-lightbox-close:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
 
   .hero-meta {
     display: flex;
