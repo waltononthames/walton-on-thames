@@ -1692,3 +1692,23 @@ no FAQ schema is emitted, so nothing is claimed for hidden questions.
   the Trust sets this out, and links its Living at Whiteley and Contact Us pages
   (both checked, HTTP 200, 20 September 2026).
 - **Darren's resident interview** is still outstanding and unaffected by this work.
+
+## 2026-09-20: LinkedIn added to the footer and the Organization schema
+
+Darren supplied the new company page, `linkedin.com/company/walton-on-thames-org`, which returns 200. Added in the two places the site's social profiles live, so they cannot drift apart:
+
+- `Footer.astro`, a fourth badge after Facebook, same 36px target and 20px glyph as the others, same `rel="me noopener noreferrer"`, `aria-label="Walton-on-Thames.org on LinkedIn"`. The footer is in `BaseLayout`, so the badge is on every page.
+- `BaseLayout.astro`, appended to the Organization node's `sameAs`. That array is what tells search engines the profiles belong to the same entity, and it had the other three already.
+
+Note for future edits: `Footer.astro` is LF throughout and `BaseLayout.astro` is CRLF throughout. A scripted edit that assumes one will silently fail to match in the other.
+
+The Bluesky placeholder comment in the footer was left for an account that did not exist yet; filled the next day, see below.
+
+## 2026-09-21: Bluesky added to the footer and the Organization schema
+
+Darren supplied the account, `bsky.app/profile/walton-on-thames.org`. A 200 from bsky.app proves nothing, since it is a JavaScript app that serves the same shell for any path, so the account was checked through Bluesky's public API instead: `app.bsky.actor.getProfile` returns handle `walton-on-thames.org`, DID `did:plc:d7lydwjkdj5xox7gmavgsutc`, display name "Walton-on-Thames.org", 29 posts.
+
+- `Footer.astro`: the badge replaces the `<!-- Bluesky to be added here once the account exists -->` placeholder, so it sits first, before Instagram, as that comment specified. Same 36px target, 20px glyph, `rel="me noopener noreferrer"` and aria-label pattern as the other four.
+- `BaseLayout.astro`: appended to the Organization node's `sameAs`, which now lists all five profiles.
+
+**The handle depends on DNS, not on this repo.** `walton-on-thames.org` is a domain handle, and Bluesky verifies it through the TXT record `_atproto.walton-on-thames.org` = `did=did:plc:d7lydwjkdj5xox7gmavgsutc`. The alternative method, a file at `/.well-known/atproto-did`, is not used: the live site returns 404 there and the repo has no `public/.well-known/`. So no deploy can break the handle, but deleting that TXT record in the Cloudflare DNS dashboard would, and the account would drop back to a `.bsky.social` handle.
