@@ -1,0 +1,260 @@
+---
+// "Nearby pharmacies" on a GP practice profile. Pharmacy details come from
+// the central pharmacy listings; journey times come from
+// src/data/pharmacy-routes.json, built by scripts/build-pharmacy-routes.mjs.
+// No times are ever computed or estimated here.
+//
+// The list and the map are rendered together per travel mode and switched
+// as a pair, so a number on the map always means the same pharmacy as the
+// number in the list beside it. The switch is two radio buttons read by CSS
+// :has(), which works without JavaScript and from the keyboard.
+import type { CollectionEntry } from 'astro:content';
+import routeData from '../../data/pharmacy-routes.json';
+import { candidatesFor, rankPharmacies, formatDuration, formatDistance, DEFAULT_VISIBLE, type RouteMatrix, type TravelMode } from '../../utils/pharmacyRanking';
+import { summariseHours } from '../../utils/hoursSummary';
+import { areaBase, project, cropAround, baseImageStyle, spreadMarkers, MAP_VERSION } from './mapProjection';
+
+interface Props {
+  practice: CollectionEntry<'businesses'>;
+  pharmacies: CollectionEntry<'businesses'>[];
+}
+
+const { practice, pharmacies } = Astro.props;
+const matrix = routeData as RouteMatrix;
+const p = practice.data;
+const origin = { slug: p.slug, lat: p.lat!, lng: p.lng! };
+
+const pool = pharmacies
+  .filter((ph) => ph.data.lat != null && ph.data.lng != null)
+  .map((ph) => ({ slug: ph.data.slug, name: ph.data.name, lat: ph.data.lat!, lng: ph.data.lng!, entry: ph }));
+const candidates = candidatesFor(origin, pool);
+
+const MODES: { mode: TravelMode; word: string; google: string }[] = [
+  { mode: 'drive', word: 'driving', google: 'driving' },
+  { mode: 'walk', word: 'walking', google: 'walking' },
+];
+const rankings = MODES.map((m) => ({ ...m, ranking: rankPharmacies(origin, m.mode, candidates, matrix.routes) }));
+const drive = rankings[0];
+const walk = rankings[1];
+const hasDrive = drive.ranking.hasRoutes;
+const hasWalk = walk.ranking.hasRoutes;
+const showSwitch = hasDrive && hasWalk;
+// Without any driving routes there is nothing to rank, so a single list is
+// shown by straight-line distance and says so.
+const panels = showSwitch ? [drive, walk] : hasDrive ? [drive] : hasWalk ? [walk] : [drive];
+
+const dateFmt = (iso: string | null) => iso
+  ? new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/London' })
+  : null;
+
+const directions = (to: string, mode: string) =>
+  `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(`${p.name}, ${p.address}`)}&destination=${encodeURIComponent(to)}&travelmode=${mode}`;
+
+// The map crop covers the practice and every listed pharmacy.
+const crop = cropAround(areaBase, [origin, ...candidates], 60);
+const R = crop.w * 0.02;
+const practiceXY = project(areaBase, origin);
+
+function panelEntries(r: typeof rankings[number]) {
+  const all = [...r.ranking.ranked, ...r.ranking.unavailable];
+  const placed = spreadMarkers(all.map((e, i) => ({ ...project(areaBase, e.item), n: i + 1, e })), R, [practiceXY]);
+  return { all, placed };
+}
+const uid = p.slug;
+---
+
+<section class="nearby" aria-labelledby={`nearby-h-${uid}`} id="nearby-pharmacies">
+  {showSwitch ? (
+    <>
+      <h2 id={`nearby-h-${uid}`}>Nearby pharmacies, ordered by estimated <span class="lbl-drive">driving</span><span class="lbl-walk">walking</span> time</h2>
+      <fieldset class="mode-switch">
+        <legend>Order by</legend>
+        <label><input type="radio" name={`mode-${uid}`} value="drive" class="mode-input-drive" checked /> Driving time</label>
+        <label><input type="radio" name={`mode-${uid}`} value="walk" class="mode-input-walk" /> Walking time</label>
+      </fieldset>
+    </>
+  ) : (
+    <h2 id={`nearby-h-${uid}`}>{panels[0].ranking.hasRoutes ? `Nearby pharmacies, ordered by estimated ${panels[0].word} time` : 'Nearby pharmacies'}</h2>
+  )}
+
+  {panels.map((r) => {
+    const { all, placed } = panelEntries(r);
+    const visible = all.slice(0, DEFAULT_VISIBLE);
+    const more = all.slice(DEFAULT_VISIBLE);
+    const when = dateFmt(r.ranking.calculatedAt);
+    const item = (e: typeof all[number], n: number) => {
+      const d = e.item.entry.data;
+      const hours = summariseHours(d.hours);
+      return (
+        <li class:list={['pharm', !e.route && 'pharm-unrouted']} id={`ph-${r.mode}-${d.slug}`}>
+          <span class="pharm-num" aria-hidden="true">{n}</span>
+          <div class="pharm-body">
+            <h3><a href={`/directory/${d.slug}/`}>{d.name}</a></h3>
+            {e.route ? (
+              <p class="pharm-travel"><strong>{formatDuration(e.route.duration_s)}</strong> {r.word === 'driving' ? 'by car' : 'on foot'}, {formatDistance(e.route.distance_m)} {r.word === 'driving' ? 'by road' : 'walking route'}</p>
+            ) : (
+              <p class="pharm-travel pharm-travel-none">Travel time unavailable <span>({formatDistance(e.straightLineM)} in a straight line)</span></p>
+            )}
+            <address>{d.address}</address>
+            <ul class="pharm-facts">
+              {d.phone && <li>Phone: <a href={`tel:${d.phone.replace(/\s/g, '')}`}>{d.phone}</a></li>}
+              {d.website
+                ? <li>Website: <a href={d.website} rel="noopener noreferrer" target="_blank">{d.website}<span class="sr-only"> (external site, opens in a new tab)</span></a></li>
+                : <li>No website of its own is listed on its NHS profile.</li>}
+              {hours.length > 0 && <li>Usual hours: {hours.join(' · ')}</li>}
+              {d.nhs_url && <li><a href={`${d.nhs_url}/contact-details-and-opening-times`} rel="noopener noreferrer" target="_blank">Check today's opening on its NHS listing<span class="sr-only"> (external site, opens in a new tab)</span></a></li>}
+              <li><a href={directions(`${d.name}, ${d.address}`, r.google)} rel="noopener noreferrer" target="_blank">{r.word === 'driving' ? 'Driving' : 'Walking'} directions from {p.name} (Google Maps)<span class="sr-only"> (external site, opens in a new tab)</span></a></li>
+            </ul>
+          </div>
+        </li>
+      );
+    };
+    return (
+      <div class={`mode-panel mode-panel-${r.mode}`}>
+        {r.ranking.hasRoutes ? (
+          <p class="nearby-note">
+            Journey estimates were calculated by {matrix.provider?.name} on {when}, from {p.name} to each pharmacy{r.mode === 'drive' ? '. They are typical times, not live traffic, and leave out parking and the walk from the car' : '. They are typical walking times along mapped paths'}. Pharmacies the router could not reach are listed afterwards as "Travel time unavailable". {matrix.provider?.attribution}
+          </p>
+        ) : (
+          <p class="nearby-note">
+            We have not calculated travel times for these pharmacies yet, so they are not ranked by journey time. They are listed by straight-line distance from {p.name}, which can differ a lot from the distance by road.
+          </p>
+        )}
+        <p class="nearby-note">Any pharmacy can be nominated for NHS electronic prescriptions: being near this surgery doesn't mean a pharmacy dispenses its prescriptions or stocks a particular medicine. Hours are each pharmacy's usual hours from its NHS listing and can change, especially on bank holidays.</p>
+
+        <div class="nearby-layout">
+          <div class="nearby-list">
+            <ol class="pharm-list">{visible.map((e, i) => item(e, i + 1))}</ol>
+            {more.length > 0 && (
+              <details class="pharm-more">
+                <summary>Show {more.length} more {more.length === 1 ? 'pharmacy' : 'pharmacies'}</summary>
+                <ol class="pharm-list" start={DEFAULT_VISIBLE + 1}>{more.map((e, i) => item(e, DEFAULT_VISIBLE + i + 1))}</ol>
+              </details>
+            )}
+          </div>
+
+          <figure class="gpmap-figure">
+            <div class="gpmap" style={`aspect-ratio:${crop.w} / ${crop.h}`}>
+              <img class="gpmap-base" src={`${areaBase.src}?v=${MAP_VERSION}`} alt="" loading="lazy" decoding="async" width={areaBase.width} height={areaBase.height} style={baseImageStyle(areaBase, crop)} />
+              <svg class="gpmap-overlay" viewBox={`${crop.x} ${crop.y} ${crop.w} ${crop.h}`} role="group" aria-label={`Map of ${p.name} and the numbered pharmacies in the list`}>
+                {placed.map((m) => Math.hypot(m.bx - m.x, m.by - m.y) > R * 0.4 && (
+                  <line x1={m.x} y1={m.y} x2={m.bx} y2={m.by} class="gpmap-leader" stroke-width={R * 0.12} />
+                ))}
+                {placed.map((m) => <circle cx={m.x} cy={m.y} r={R * 0.22} class="gpmap-dot" />)}
+                <g class="gpmap-origin">
+                  <rect x={practiceXY.x - R * 1.05} y={practiceXY.y - R * 1.05} width={R * 2.1} height={R * 2.1} rx={R * 0.3} transform={`rotate(45 ${practiceXY.x} ${practiceXY.y})`} stroke-width={R * 0.18} />
+                  <text x={practiceXY.x} y={practiceXY.y} font-size={R * 0.95} text-anchor="middle" dominant-baseline="central">GP</text>
+                </g>
+                {placed.map((m) => (
+                  <a href={`#ph-${r.mode}-${m.e.item.slug}`} class:list={['gpmap-marker', !m.e.route && 'gpmap-marker-unrouted']} aria-label={`${m.n}: ${m.e.item.name}${m.e.route ? `, ${formatDuration(m.e.route.duration_s)}` : ', travel time unavailable'}`}>
+                    <circle cx={m.bx} cy={m.by} r={R} stroke-width={R * 0.16} />
+                    <text x={m.bx} y={m.by} font-size={R * 1.05} text-anchor="middle" dominant-baseline="central">{m.n}</text>
+                  </a>
+                ))}
+              </svg>
+            </div>
+            <figcaption>
+              The diamond marked GP is {p.name}. Numbers match the list; select one to jump to its details. Where markers would overlap, a line joins each number to its pharmacy's position. Base map © <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer" target="_blank">OpenStreetMap contributors</a> (ODbL). <a href="https://www.openstreetmap.org/fixthemap" rel="noopener noreferrer" target="_blank">Report a map error</a>.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    );
+  })}
+</section>
+
+<style>
+  .nearby h2 { margin-bottom: 0.75rem; }
+  .lbl-walk { display: none; }
+  .nearby:has(.mode-input-walk:checked) .lbl-drive { display: none; }
+  .nearby:has(.mode-input-walk:checked) .lbl-walk { display: inline; }
+  .nearby:has(.mode-input-walk:checked) .mode-panel-drive { display: none; }
+  .mode-panel-walk { display: none; }
+  .nearby:has(.mode-input-walk:checked) .mode-panel-walk { display: block; }
+
+  .mode-switch {
+    border: 1px solid rgba(11, 36, 46, 0.15);
+    border-radius: var(--radius-md);
+    padding: 0.5rem 1rem 0.75rem;
+    margin: 0 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+  .mode-switch legend { font-size: 0.85rem; color: var(--color-slate); padding: 0 0.25rem; }
+  .mode-switch label { display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer; }
+  .mode-switch input { width: 1.1rem; height: 1.1rem; accent-color: var(--color-navy); }
+
+  .nearby-note { font-size: 0.875rem; color: var(--color-slate); max-width: 70ch; margin-bottom: 0.75rem; }
+
+  .nearby-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1rem;
+  }
+
+  .pharm-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+  .pharm {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 0.75rem;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0.9rem 1rem;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+  }
+  .pharm:target { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+  .pharm-num {
+    width: 2.25rem; height: 2.25rem; border-radius: 50%;
+    background: var(--color-navy); color: var(--color-white);
+    display: grid; place-items: center; font-weight: 700; font-size: 0.95rem;
+  }
+  .pharm-unrouted .pharm-num { background: var(--color-white); color: var(--color-navy); border: 2px dashed var(--color-navy); }
+  .pharm-body h3 { font-size: 1.05rem; margin: 0 0 0.25rem; }
+  .pharm-body h3 a { color: var(--color-navy); }
+  .pharm-travel { font-size: 0.9rem; margin: 0 0 0.35rem; }
+  .pharm-travel-none { color: var(--color-slate); font-weight: 600; }
+  .pharm-travel-none span { font-weight: 400; }
+  .pharm-body address { font-style: normal; font-size: 0.875rem; color: var(--color-slate); margin-bottom: 0.35rem; }
+  .pharm-facts { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; display: grid; gap: 0.2rem; }
+  .pharm-facts a { color: var(--color-navy); overflow-wrap: anywhere; }
+
+  .pharm-more { margin-top: 0.75rem; }
+  .pharm-more summary {
+    cursor: pointer; font-weight: 600; color: var(--color-navy);
+    min-height: 44px; display: flex; align-items: center;
+  }
+  .pharm-more .pharm-list { margin-top: 0.5rem; }
+
+  .gpmap-figure { margin: 0; position: sticky; top: calc(var(--nav-height) + 1rem); }
+  .gpmap {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    background: #F3F0E4;
+  }
+  .gpmap-base { position: absolute; max-width: none; height: auto; }
+  .gpmap-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .gpmap-leader { stroke: var(--color-navy); }
+  .gpmap-dot { fill: var(--color-navy); }
+  .gpmap-origin rect { fill: #B5543C; stroke: #FFFFFF; }
+  .gpmap-origin text { fill: #FFFFFF; font-weight: 700; font-family: var(--font-body); }
+  .gpmap-marker circle { fill: var(--color-navy); stroke: #FFFFFF; }
+  .gpmap-marker text { fill: #FFFFFF; font-weight: 700; font-family: var(--font-body); }
+  .gpmap-marker-unrouted circle { fill: #FFFFFF; stroke: var(--color-navy); stroke-dasharray: 3 2; }
+  .gpmap-marker-unrouted text { fill: var(--color-navy); }
+  .gpmap-marker:focus { outline: none; }
+  .gpmap-marker:focus-visible circle, .gpmap-marker:hover circle { fill: var(--color-accent-dark); stroke: #FFFFFF; }
+  .gpmap-marker-unrouted:focus-visible text, .gpmap-marker-unrouted:hover text { fill: #FFFFFF; }
+  .gpmap-figure figcaption { font-size: 0.8rem; color: var(--color-slate); margin-top: 0.5rem; }
+  .gpmap-figure figcaption a { color: var(--color-slate); }
+
+  @media (max-width: 900px) {
+    .nearby-layout { grid-template-columns: 1fr; }
+    .gpmap-figure { position: static; }
+  }
+</style>

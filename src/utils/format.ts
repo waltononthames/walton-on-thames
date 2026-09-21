@@ -3,6 +3,7 @@
 // hyphens; a slug like "walton-on-thames" must not become "Walton On Thames").
 const PLACE_NAME_OVERRIDES: Record<string, string> = {
   'walton-on-thames': 'Walton-on-Thames',
+  'sunbury-on-thames': 'Sunbury-on-Thames',
 };
 
 /**

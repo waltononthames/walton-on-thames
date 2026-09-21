@@ -2,16 +2,23 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BusinessCard from '../../components/BusinessCard.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 const businesses = await getCollection('businesses');
 const pharmacies = businesses
   .filter(b => b.data.subcategories.includes('pharmacy'))
   .sort((a, b) => a.data.neighbourhood.localeCompare(b.data.neighbourhood) || a.data.name.localeCompare(b.data.name));
+// Pharmacies just over the boundary are listed because the GP profiles'
+// nearby-pharmacy module needs them; they are shown separately so this page
+// still answers "which pharmacies are in Walton and Hersham".
+const LOCAL = ['walton-on-thames', 'hersham'];
+const local = pharmacies.filter((b: CollectionEntry<'businesses'>) => LOCAL.includes(b.data.neighbourhood));
+const nearby = pharmacies.filter((b: CollectionEntry<'businesses'>) => !LOCAL.includes(b.data.neighbourhood));
 ---
 
 <BaseLayout
   title="Pharmacies, Walton-on-Thames"
-  description="Community pharmacies in Walton-on-Thames and Hersham, with addresses, phone numbers and opening hours."
+  description="Community pharmacies in Walton-on-Thames and Hersham, plus nearby ones in Esher, Weybridge and Sunbury, with addresses, phone numbers and opening hours."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -41,9 +48,9 @@ const pharmacies = businesses
 
   <section class="section">
     <div class="container">
-      <p class="section-intro">No pharmacy with a Whiteley Village address was found: the pharmacies below are the nearest options. Hours shown are pharmacy-counter hours and can change, particularly around bank holidays: confirm before a special journey, or use <a href="https://www.nhs.uk/service-search/pharmacy/find-a-pharmacy" target="_blank" rel="noopener noreferrer">NHS's Find a Pharmacy service ↗</a>.</p>
+      <p class="section-intro">No pharmacy with a Whiteley Village address was found: the pharmacies below are the nearest options. Each <a href="/living/gp-surgeries/">GP practice's page</a> also lists the pharmacies closest to it. Hours shown are pharmacy-counter hours and can change, particularly around bank holidays: confirm before a special journey, or use <a href="https://www.nhs.uk/service-search/pharmacy/find-a-pharmacy" target="_blank" rel="noopener noreferrer">NHS's Find a Pharmacy service ↗</a>.</p>
       <div class="card-grid card-grid-3">
-        {pharmacies.map(biz => (
+        {local.map(biz => (
           <BusinessCard
             name={biz.data.name}
             slug={biz.data.slug}
@@ -55,6 +62,26 @@ const pharmacies = businesses
           />
         ))}
       </div>
+
+      {nearby.length > 0 && (
+        <>
+          <h2 class="nearby-heading">Just outside Walton and Hersham</h2>
+          <p class="section-intro">Pharmacies in Esher, Weybridge and Sunbury-on-Thames that are close to Walton or Hersham.</p>
+          <div class="card-grid card-grid-3">
+            {nearby.map((biz: CollectionEntry<'businesses'>) => (
+              <BusinessCard
+                name={biz.data.name}
+                slug={biz.data.slug}
+                category={biz.data.category}
+                neighbourhood={biz.data.neighbourhood}
+                description={biz.data.description}
+                images={biz.data.images}
+                featured={biz.data.featured}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   </section>
 
@@ -80,6 +107,8 @@ const pharmacies = businesses
     margin-bottom: 1.5rem;
     line-height: 1.6;
   }
+
+  .nearby-heading { margin: 2.5rem 0 0.75rem; }
 
   .section-alt {
     background: var(--color-cream, #f7f4ee);

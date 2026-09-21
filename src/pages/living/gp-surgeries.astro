@@ -1,28 +1,77 @@
 ---
+// The GP directory. Every practice with a Walton-on-Thames or Hersham
+// location has one profile at /directory/<slug>/; this page compares them
+// and links to each. The location filter is two radio buttons read by CSS
+// :has(), so it creates no extra URLs to index and the full list is always
+// in the HTML. See docs/gp-directory.md.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BusinessCard from '../../components/BusinessCard.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { formatPlaceName } from '../../utils/format';
+import { areaBase, project, cropAround, baseImageStyle, spreadMarkers, MAP_VERSION } from '../../components/gp/mapProjection';
 
-const businesses = await getCollection('businesses');
+type Biz = CollectionEntry<'businesses'>;
+// Walton first: it has five of the six practices and is the site's main town.
+const LOCATION_ORDER = ['walton-on-thames', 'hersham'];
+const businesses: Biz[] = await getCollection('businesses');
 const surgeries = businesses
-  .filter(b => b.data.subcategories.includes('gp-surgery'))
-  .sort((a, b) => a.data.neighbourhood.localeCompare(b.data.neighbourhood) || a.data.name.localeCompare(b.data.name));
+  .filter((b: Biz) => b.data.subcategories.includes('gp-surgery'))
+  .sort((a: Biz, b: Biz) => LOCATION_ORDER.indexOf(a.data.neighbourhood) - LOCATION_ORDER.indexOf(b.data.neighbourhood) || a.data.name.localeCompare(b.data.name));
+
+// One map marker per building: three practices share Walton Health Centre,
+// and a marker each would sit on top of one another.
+const premises = [...new Map(surgeries.map((s: Biz) => {
+  const name = s.data.gp?.premises.name ?? s.data.name;
+  return [name, { name, lat: s.data.lat!, lng: s.data.lng!, neighbourhood: s.data.neighbourhood }];
+})).values()]
+  .sort((a, b) => b.lat - a.lat || a.name.localeCompare(b.name))
+  .map((p, i) => ({ ...p, letter: String.fromCharCode(65 + i), practices: surgeries.filter((s: Biz) => (s.data.gp?.premises.name ?? s.data.name) === p.name) }));
+
+const crop = cropAround(areaBase, premises, 120, 1.1);
+const R = crop.w * 0.028;
+const placed = spreadMarkers(premises.map((p) => ({ ...project(areaBase, p), p })), R);
+
+const locations = [...new Set(surgeries.map((s: Biz) => s.data.neighbourhood))];
+const countIn = (n: string) => surgeries.filter((s: Biz) => s.data.neighbourhood === n).length;
+const postcodeOf = (a: string) => a.match(/[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/)?.[0] ?? '';
+const CHECKED = '21 September 2026';
+const ext = ' (external site, opens in a new tab)';
+
+const SITE = 'https://walton-on-thames.org';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${SITE}/living/gp-surgeries/#webpage`,
+      url: `${SITE}/living/gp-surgeries/`,
+      name: 'GP surgeries in Walton-on-Thames and Hersham',
+      publisher: { '@type': 'Organization', name: 'Walton-on-Thames.org', url: `${SITE}/` },
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: surgeries.map((s: Biz, i: number) => ({
+          '@type': 'ListItem', position: i + 1, name: s.data.name, url: `${SITE}/directory/${s.data.slug}/`,
+        })),
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Moving & living here', item: `${SITE}/living/` },
+        { '@type': 'ListItem', position: 3, name: 'GP surgeries', item: `${SITE}/living/gp-surgeries/` },
+      ],
+    },
+  ],
+};
 ---
 
 <BaseLayout
-  title="GP Surgeries, Walton-on-Thames"
-  description="NHS GP surgeries in Walton-on-Thames and Hersham, with addresses, phone numbers and opening hours."
+  title="GP surgeries in Walton-on-Thames and Hersham"
+  description="All six NHS GP practices in Walton-on-Thames and Hersham, with addresses, phone numbers, websites, a map and how to check catchment and register. Whiteley Village included."
 >
   <slot name="structured-data">
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walton-on-thames.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Moving & living here", "item": "https://walton-on-thames.org/living/" },
-        { "@type": "ListItem", "position": 3, "name": "GP Surgeries", "item": "https://walton-on-thames.org/living/gp-surgeries/" }
-      ]
-    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </slot>
 
   <div class="page-hero">
@@ -31,84 +80,182 @@ const surgeries = businesses
         <ol class="breadcrumbs">
           <li><a href="/">Home</a></li>
           <li><a href="/living/">Moving &amp; living here</a></li>
-          <li aria-current="page">GP Surgeries</li>
+          <li aria-current="page">GP surgeries</li>
         </ol>
       </nav>
-      <h1>GP Surgeries</h1>
-      <p>NHS GP surgeries in Walton-on-Thames and Hersham. Four of the six (The Red, White and Yellow Practices, plus Fort House Surgery) share the Walton Health Centre building on Rodney Road but are independent practices with their own patient lists.</p>
+      <h1>GP surgeries in Walton-on-Thames and Hersham</h1>
+      <p>There are {surgeries.length} NHS GP practices in Walton-on-Thames and Hersham, and none in Whiteley Village. Compare them below, then open a practice's page for its registration links, parking, bus stops and nearest pharmacies.</p>
     </div>
   </div>
 
   <section class="section">
-    <div class="container">
-      <p class="section-intro">No GP surgery with a Whiteley Village address was found: the surgeries below are the nearest options. To register or check current availability, use <a href="https://www.nhs.uk/service-search/find-a-gp/" target="_blank" rel="noopener noreferrer">NHS's Find a GP service ↗</a>, which shows real-time acceptance status.</p>
-      <p class="section-intro">Whiteley Village residents: the <a href="https://www.thewhiteleyhomestrust.org.uk/application/files/1617/7443/7330/Residents_Handbook_version_26.1.pdf" target="_blank" rel="noopener noreferrer">Whiteley Homes Trust residents' handbook ↗</a> directs residents to Hersham Surgery. Hersham Surgery has previously run occasional clinics inside Whiteley Village, but these aren't a permanent branch surgery: check current arrangements with the Trust or the surgery directly.</p>
-      <div class="card-grid card-grid-3">
-        {surgeries.map(biz => (
-          <BusinessCard
-            name={biz.data.name}
-            slug={biz.data.slug}
-            category={biz.data.category}
-            neighbourhood={biz.data.neighbourhood}
-            description={biz.data.description}
-            images={biz.data.images}
-            featured={biz.data.featured}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
+    <div class="container gp-dir">
+      <p class="lead-note">This is an independent community guide, not an NHS service. To register, book an appointment or order a prescription, use the practice's own website or the NHS. The locations below are where each practice is, not who it will register: that depends on its catchment area, explained <a href="#registering">further down</a>.</p>
 
-  <section class="section section-alt">
-    <div class="container">
-      <div class="info-card">
-        <h2>Related local services</h2>
-        <ul class="related-links">
-          <li><a href="/living/pharmacies/">Pharmacies</a></li>
-          <li><a href="/living/dentists/">Dentists</a></li>
-          <li><a href="/living/post-offices-and-post-boxes/">Post Offices & Post Boxes</a></li>
-          <li><a href="/living/council-and-services/">Council & Services</a></li>
-          <li><a href="/living/">Living in Walton-on-Thames</a>: areas, schools, commuting and healthcare</li>
-        </ul>
+      <fieldset class="loc-filter">
+        <legend>Show practices located in</legend>
+        <label><input type="radio" name="gp-loc" value="all" class="loc-all" checked /> Both ({surgeries.length})</label>
+        {locations.map((l) => (
+          <label><input type="radio" name="gp-loc" value={l} class={`loc-${l}`} /> {formatPlaceName(l)} ({countIn(l)})</label>
+        ))}
+      </fieldset>
+
+      <div class="table-wrap">
+        <table class="gp-table">
+          <caption class="sr-only">NHS GP practices in Walton-on-Thames and Hersham</caption>
+          <thead>
+            <tr><th scope="col">Practice</th><th scope="col">Located in</th><th scope="col">Address</th><th scope="col">Telephone</th><th scope="col">Official website</th></tr>
+          </thead>
+          <tbody>
+            {surgeries.map((s: Biz) => {
+              const d = s.data;
+              const letter = premises.find((p) => p.practices.includes(s))?.letter;
+              return (
+                <tr data-loc={d.neighbourhood}>
+                  <th scope="row" data-label="Practice"><a href={`/directory/${d.slug}/`}>{d.name}</a><span class="row-sub">Profile, parking and pharmacies</span></th>
+                  <td data-label="Located in">{d.gp?.premises.name && d.gp.premises.name !== d.name ? `${d.gp.premises.name}, ` : ''}{formatPlaceName(d.neighbourhood)}{letter && <span class="map-letter" aria-label={`map marker ${letter}`}>{letter}</span>}</td>
+                  <td data-label="Address">{d.address.replace(/,?\s*[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/, '')}<br />{postcodeOf(d.address)}</td>
+                  <td data-label="Telephone">{d.phone && <a href={`tel:${d.phone.replace(/\s/g, '')}`}>{d.phone}</a>}</td>
+                  <td data-label="Official website">{d.website && <a href={d.website} rel="noopener noreferrer" target="_blank">{d.website}<span class="sr-only">{ext}</span></a>}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
+      <p class="small-note">Addresses, phone numbers and websites checked against each practice's own website and NHS profile on {CHECKED}.</p>
+
+      <h2 id="map">Map of GP practices</h2>
+      <div class="map-layout">
+        <figure class="gpmap-figure">
+          <div class="gpmap" style={`aspect-ratio:${crop.w} / ${crop.h}`}>
+            <img class="gpmap-base" src={`${areaBase.src}?v=${MAP_VERSION}`} alt="" loading="lazy" decoding="async" width={areaBase.width} height={areaBase.height} style={baseImageStyle(areaBase, crop)} />
+            <svg class="gpmap-overlay" viewBox={`${crop.x} ${crop.y} ${crop.w} ${crop.h}`} role="group" aria-label="Map of GP practice buildings in Walton-on-Thames and Hersham, lettered to match the list beside it">
+              {placed.map((m) => (
+                <a href={`#premises-${m.p.letter}`} class="gpmap-marker" data-loc={m.p.neighbourhood} aria-label={`${m.p.letter}: ${m.p.name}`}>
+                  <circle cx={m.bx} cy={m.by} r={R} stroke-width={R * 0.16} />
+                  <text x={m.bx} y={m.by} font-size={R * 1.05} text-anchor="middle" dominant-baseline="central">{m.p.letter}</text>
+                </a>
+              ))}
+            </svg>
+          </div>
+          <figcaption>Letters mark buildings, which can house more than one practice. Base map © <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer" target="_blank">OpenStreetMap contributors</a> (ODbL). <a href="https://www.openstreetmap.org/fixthemap" rel="noopener noreferrer" target="_blank">Report a map error</a>.</figcaption>
+        </figure>
+        <ol class="premises-list">
+          {premises.map((p) => (
+            <li id={`premises-${p.letter}`} data-loc={p.neighbourhood}>
+              <span class="map-letter" aria-hidden="true">{p.letter}</span>
+              <div>
+                <strong>{p.name}</strong>, {formatPlaceName(p.neighbourhood)}
+                <ul>
+                  {p.practices.map((s: Biz) => <li><a href={`/directory/${s.data.slug}/`}>{s.data.name}</a></li>)}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <p class="small-note">Walton Health Centre and Walton Community Hospital are separate sites on Rodney Road, about 100 metres apart, with different postcodes (KT12 3LB and KT12 3LD).</p>
+
+      <h2 id="registering">Checking catchment and registering</h2>
+      <div class="prose">
+        <p>Most practices only register people who live inside their catchment area, so the nearest practice isn't always one you can join, and a practice can cover streets well beyond its own town. Some also accept registrations from outside their area, usually without home visits. Check before you apply:</p>
+        <ul>
+          <li>Each practice's profile here links to its page on the NHS website, where you can check a postcode against that practice's catchment.</li>
+          <li><a href="https://www.nhs.uk/service-search/find-a-gp/" rel="noopener noreferrer" target="_blank">NHS Find a GP<span class="sr-only">{ext}</span></a> lists the practices that cover a postcode, and shows whether each is accepting new patients.</li>
+          <li>The NHS explains <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/" rel="noopener noreferrer" target="_blank">how to register with a GP surgery<span class="sr-only">{ext}</span></a>, including when a practice can refuse, and <a href="https://www.nhs.uk/nhs-services/gps/registering-with-a-gp-outside-your-area/" rel="noopener noreferrer" target="_blank">registering outside the area you live in<span class="sr-only">{ext}</span></a>.</li>
+        </ul>
+        <p>The NHS says you don't need proof of address or immigration status, ID or an NHS number to register online (NHS website, checked {CHECKED}). All six practices were listed as accepting new patients when we checked on {CHECKED}; that can change without notice.</p>
+      </div>
+
+      <h2 id="whiteley-village">Whiteley Village residents</h2>
+      <div class="prose">
+        <p>No GP practice has premises in Whiteley Village. When we read it in July 2026, the <a href="https://www.thewhiteleyhomestrust.org.uk/application/files/1617/7443/7330/Residents_Handbook_version_26.1.pdf" rel="noopener noreferrer" target="_blank">Whiteley Homes Trust residents' handbook<span class="sr-only">{ext}</span></a> directed residents to <a href="/directory/hersham-surgery/">Hersham Surgery</a>, which had run occasional clinics inside the village rather than a permanent branch. Check current arrangements with the Trust or the surgery. Being directed to a practice is not the same as being inside its catchment: use the postcode check above.</p>
+      </div>
+
+      <h2 id="related">Related guides</h2>
+      <ul class="related-links">
+        <li><a href="/living/pharmacies/">Pharmacies in Walton-on-Thames and Hersham</a></li>
+        <li><a href="/living/#healthcare">Living guide: GPs, dentists, pharmacies and healthcare</a></li>
+        <li><a href="/hersham/living/#health">Living in Hersham: doctors, dentists and pharmacies</a></li>
+        <li><a href="/living/dentists/">Dentists</a></li>
+        <li><a href="/living/council-and-services/">Council and services</a></li>
+      </ul>
+
+      <p class="small-note">Compiled by the Walton-on-Thames.org editor from each practice's website, the NHS website and Department for Transport bus stop data, checked {CHECKED}. We are not connected to any practice or the NHS. <a href="/contact/?subject=Correction%3A%20GP%20surgeries">Send a correction</a>, but please don't include any personal or medical details.</p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .section-intro {
-    color: var(--color-slate);
-    max-width: 70ch;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+  .gp-dir h2 { margin: 2.5rem 0 1rem; }
+  .lead-note { max-width: 75ch; color: var(--color-slate); line-height: 1.6; margin-bottom: 1.25rem; }
+  .small-note { font-size: 0.85rem; color: var(--color-slate); max-width: 75ch; margin-top: 0.75rem; }
+
+  .loc-filter {
+    border: 1px solid rgba(11, 36, 46, 0.15);
+    border-radius: var(--radius-md);
+    padding: 0.5rem 1rem 0.75rem;
+    margin: 0 0 1rem;
+    display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem;
+  }
+  .loc-filter legend { font-size: 0.85rem; color: var(--color-slate); padding: 0 0.25rem; }
+  .loc-filter label { display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer; }
+  .loc-filter input { width: 1.1rem; height: 1.1rem; accent-color: var(--color-navy); }
+
+  /* The filter only hides; every practice stays in the HTML. */
+  .gp-dir:has(.loc-walton-on-thames:checked) [data-loc]:not([data-loc="walton-on-thames"]),
+  .gp-dir:has(.loc-hersham:checked) [data-loc]:not([data-loc="hersham"]) { display: none; }
+
+  .table-wrap { overflow-x: auto; }
+  .gp-table { width: 100%; border-collapse: collapse; background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; font-size: 0.9rem; }
+  .gp-table th, .gp-table td { text-align: left; padding: 0.8rem 1rem; vertical-align: top; }
+  .gp-table thead th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-slate); background: var(--color-cream); }
+  .gp-table tbody tr + tr { border-top: 1px solid rgba(11, 36, 46, 0.08); }
+  .gp-table tbody th a { font-weight: 700; color: var(--color-navy); font-size: 1rem; }
+  .gp-table a { color: var(--color-navy); overflow-wrap: anywhere; }
+  .row-sub { display: block; font-weight: 400; font-size: 0.8rem; color: var(--color-slate); margin-top: 0.2rem; }
+
+  .map-letter {
+    display: inline-grid; place-items: center;
+    width: 1.6rem; height: 1.6rem; border-radius: 50%;
+    background: #B5543C; color: #FFFFFF; font-weight: 700; font-size: 0.8rem;
+    margin-left: 0.4rem; vertical-align: middle;
   }
 
-  .section-alt {
-    background: var(--color-cream, #f7f4ee);
-  }
+  .map-layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+  .gpmap-figure { margin: 0; }
+  .gpmap { position: relative; overflow: hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); background: #F3F0E4; }
+  .gpmap-base { position: absolute; max-width: none; height: auto; }
+  .gpmap-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .gpmap-marker circle { fill: #B5543C; stroke: #FFFFFF; }
+  .gpmap-marker text { fill: #FFFFFF; font-weight: 700; font-family: var(--font-body); }
+  .gpmap-marker:focus { outline: none; }
+  .gpmap-marker:focus-visible circle, .gpmap-marker:hover circle { fill: var(--color-navy); }
+  .gpmap-figure figcaption { font-size: 0.8rem; color: var(--color-slate); margin-top: 0.5rem; }
+  .gpmap-figure figcaption a { color: var(--color-slate); }
 
-  .info-card {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: 1.75rem;
-    box-shadow: var(--shadow-card);
-    max-width: 60ch;
+  .premises-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+  .premises-list > li {
+    display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.5rem;
+    background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-card);
+    padding: 0.8rem 1rem; scroll-margin-top: calc(var(--nav-height) + 1rem);
   }
+  .premises-list > li:target { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+  .premises-list .map-letter { margin: 0; }
+  .premises-list ul { margin: 0.35rem 0 0; padding-left: 1.1rem; font-size: 0.9rem; }
+  .premises-list a { color: var(--color-navy); }
 
-  .info-card h2 {
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
-  }
+  .prose { max-width: 75ch; }
+  .related-links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+  .related-links a { color: var(--color-navy); }
 
-  .related-links {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-  }
-
-  .related-links a {
-    font-size: 0.9rem;
-    color: var(--color-navy);
+  @media (max-width: 900px) {
+    .map-layout { grid-template-columns: 1fr; }
+    .gp-table thead { display: none; }
+    .gp-table, .gp-table tbody, .gp-table tr, .gp-table th, .gp-table td { display: block; width: 100%; }
+    .gp-table tbody tr { padding: 0.5rem 0; }
+    .gp-table th, .gp-table td { padding: 0.35rem 1rem; }
+    .gp-table td::before { content: attr(data-label); display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-slate); }
   }
 </style>

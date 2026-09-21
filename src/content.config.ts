@@ -3,6 +3,118 @@ import { glob } from 'astro/loaders';
 import { fixturesLoader } from './loaders/fixtures-loader';
 import { planningLoader } from './loaders/planning-loader';
 
+// Healthcare fields, used by the GP practice profiles and the nearby-pharmacy
+// module. Everything is optional so the rest of the directory is unaffected.
+// See docs/gp-directory.md for the editorial rules behind each field.
+
+// Where a fact came from. `basis` separates what a practice or the NHS
+// publishes from what our editor saw on site, so the page never presents an
+// observation as a confirmed service, or a confirmed service as an
+// observation. `practice-confirmed` means the practice told us directly;
+// publishing a page is not confirmation.
+const factBasis = z.enum([
+  'practice-website',
+  'nhs-profile',
+  'official-data',
+  'editor-observation',
+  'practice-confirmed',
+  'openstreetmap',
+]);
+
+const checkedSource = z.object({
+  label: z.string(),
+  url: z.string().url().optional(),
+  basis: factBasis,
+  checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+});
+
+// A point with the reason we believe it. `basis` says how it was derived
+// (e.g. "practice website map pin"), so a routing snap is never passed off as
+// a surveyed entrance.
+const sourcedPoint = z.object({
+  lat: z.number(),
+  lng: z.number(),
+  basis: z.string(),
+  checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+});
+
+const officialLink = z.object({
+  url: z.string().url(),
+  label: z.string(),
+  source: checkedSource,
+});
+
+const gpPractice = z.object({
+  ods_code: z.string(),
+  nhs_url: z.string().url(),
+  // Distinct from the listing name: under 60 characters so it survives
+  // Google's truncation. BaseLayout adds no suffix to a title this long.
+  meta_title: z.string().max(60),
+  premises: z.object({
+    name: z.string(),
+    // Slugs of other practices in the same building. Separate practices,
+    // separate records: this only drives the "shares the building with" note.
+    shared_with: z.array(z.string()).default([]),
+    note: z.string().optional(),
+  }),
+  // Where the listing's top-level lat/lng came from. That point is the
+  // building; the entrance is separate and stays empty until observed or
+  // confirmed, because a building centroid is not a door.
+  building_point_source: checkedSource,
+  entrance: sourcedPoint.optional(),
+  // Where a car leaves the practice, for the pharmacy route matrix.
+  vehicle_departure: sourcedPoint.optional(),
+  hours_source: checkedSource,
+  hours_label: z.string().default('Opening hours'),
+  // Where the NHS profile and the practice's own site disagree, both are
+  // shown rather than one picked silently (Content Verification Protocol,
+  // Rule 4).
+  hours_conflict: z.string().optional(),
+  appointment_notes: z.array(z.object({ text: z.string(), source: checkedSource })).default([]),
+  new_patients: z.object({ statement: z.string(), source: checkedSource }).optional(),
+  registration_note: z.object({ text: z.string(), source: checkedSource }).optional(),
+  links: z.object({
+    registration: officialLink.optional(),
+    // The NHS online registration service for this practice, linked from its
+    // NHS profile. Official, but not the practice's own site.
+    register_online: officialLink.optional(),
+    catchment: officialLink.optional(),
+    appointments: officialLink.optional(),
+    repeat_prescriptions: officialLink.optional(),
+  }),
+  // The facility list on the practice's NHS profile, with the date the NHS
+  // says the practice last confirmed it.
+  nhs_facilities: z.object({
+    items: z.array(z.string()),
+    nhs_last_confirmed: z.string(),
+    source: checkedSource,
+  }).optional(),
+  visiting: z.array(z.object({
+    topic: z.enum(['entrance', 'signage', 'parking', 'accessible-parking', 'step-free-route', 'public-parking', 'bus', 'cycle', 'relocation', 'other']),
+    text: z.string(),
+    source: checkedSource,
+  })).default([]),
+  bus_stops: z.array(z.object({
+    name: z.string(),
+    indicator: z.string(),
+    street: z.string(),
+    atco: z.string(),
+    distance_m: z.number(),
+  })).default([]),
+  bus_stops_source: checkedSource.optional(),
+  prescription_notes: z.array(z.object({ text: z.string(), source: checkedSource })).default([]),
+  prescription_box: z.object({
+    statement: z.string(),
+    source: checkedSource,
+    // Filled from an observation or the practice, never inferred from the
+    // statement above: a box existing somewhere says nothing about where it
+    // is or when it can be reached.
+    location: z.string().optional(),
+    access: z.string().optional(),
+    location_source: checkedSource.optional(),
+  }).optional(),
+});
+
 const businesses = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/businesses' }),
   schema: z.object({
@@ -25,12 +137,36 @@ const businesses = defineCollection({
       src: z.string(),
       alt: z.string(),
       caption: z.string().optional(),
+      // Optional metadata used by the GP profiles. `role` says what the
+      // picture helps a visitor find; `captured` is a real date or absent,
+      // never a guess. Width and height reserve layout space.
+      role: z.enum(['exterior', 'entrance', 'signage', 'parking', 'step-free-route', 'prescription-box', 'reception', 'other']).optional(),
+      credit: z.string().optional(),
+      captured: z.string().regex(/^\d{4}(-\d{2}){0,2}$/).optional(),
+      width: z.number().int().optional(),
+      height: z.number().int().optional(),
     })).default([]),
     // Shown once beneath the gallery, e.g. "Photographs supplied by X".
     image_credit: z.string().optional(),
     featured: z.boolean().default(false),
     verified_date: z.string().optional(),
     source: z.string().optional(),
+    // NHS service profile, for GP practices and pharmacies. Kept apart from
+    // `website`, which is the organisation's own site.
+    nhs_url: z.string().url().optional(),
+    ods_code: z.string().optional(),
+    // Pharmacies: where a car can legally stop to reach the pharmacy, kept
+    // apart from the pedestrian entrance so a vehicle route never ends at a
+    // door only reachable on foot.
+    vehicle_arrival: sourcedPoint.optional(),
+    pedestrian_entrance: sourcedPoint.optional(),
+    // Field-level checks: which fields, which source, when. A record is not
+    // "verified" as a whole because one field was checked.
+    checks: z.array(z.object({
+      fields: z.array(z.string()),
+      source: checkedSource,
+    })).default([]),
+    gp: gpPractice.optional(),
   }),
 });
 

@@ -1,0 +1,383 @@
+---
+// The shared template for every GP practice profile at /directory/<slug>/.
+// All facts come from the listing's frontmatter (the `gp` block and its
+// sources); nothing practice-specific is written here. See
+// docs/gp-directory.md for the editorial rules each section follows.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { formatPlaceName } from '../../utils/format';
+import PracticeLocalMap from './PracticeLocalMap.astro';
+import NearbyPharmacies from './NearbyPharmacies.astro';
+
+interface Props { biz: CollectionEntry<'businesses'> }
+const { biz } = Astro.props;
+const d = biz.data;
+const gp: Gp = d.gp!;
+const { Content } = await render(biz);
+
+type Biz = CollectionEntry<'businesses'>;
+type Gp = NonNullable<Biz['data']['gp']>;
+type Link = { url: string; label: string; source: Source };
+type Img = Biz['data']['images'][number];
+type Source = { label: string; url?: string; basis: string; checked: string };
+const businesses: Biz[] = await getCollection('businesses');
+const pharmacies = businesses.filter((b: Biz) => b.data.subcategories.includes('pharmacy'));
+const sharedWith = gp.premises.shared_with
+  .map((slug: string) => businesses.find((b: Biz) => b.data.slug === slug))
+  .filter((b: Biz | undefined): b is Biz => !!b);
+
+const SITE = 'https://walton-on-thames.org';
+const pageUrl = `${SITE}/directory/${d.slug}/`;
+const locality = formatPlaceName(d.neighbourhood);
+const postcode = d.address.match(/[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/)?.[0] ?? '';
+const street = postcode ? d.address.slice(0, -postcode.length).replace(/,\s*$/, '') : d.address;
+const tel = d.phone?.replace(/\s/g, '');
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${d.name}, ${d.address}`)}`;
+const registerLink = gp.links.register_online ?? gp.links.registration;
+
+const longDate = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/London' });
+
+const dayNames: Record<string, string> = { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' };
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const [heroImage, ...galleryImages] = d.images;
+
+// Every source the page relies on, once each, for the sources list.
+const allSources: Source[] = [
+  ...d.checks.map((c: { source: Source }) => c.source),
+  gp.building_point_source, gp.hours_source,
+  ...gp.appointment_notes.map((n: { source: Source }) => n.source),
+  ...(gp.new_patients ? [gp.new_patients.source] : []),
+  ...(gp.registration_note ? [gp.registration_note.source] : []),
+  ...(Object.values(gp.links) as (Link | undefined)[]).filter((l): l is Link => !!l).map((l) => l.source),
+  ...(gp.nhs_facilities ? [gp.nhs_facilities.source] : []),
+  ...gp.visiting.map((v: { source: Source }) => v.source),
+  ...(gp.bus_stops_source ? [gp.bus_stops_source] : []),
+  ...gp.prescription_notes.map((n: { source: Source }) => n.source),
+  ...(gp.prescription_box ? [gp.prescription_box.source, ...(gp.prescription_box.location_source ? [gp.prescription_box.location_source] : [])] : []),
+];
+const sources = [...new Map(allSources.map((s) => [`${s.url ?? ''}|${s.label}`, s])).values()]
+  .sort((a, b) => a.label.localeCompare(b.label));
+const BASIS_LABEL: Record<string, string> = {
+  'practice-website': 'practice website',
+  'nhs-profile': 'NHS website',
+  'official-data': 'official data',
+  'editor-observation': 'our own visit',
+  'practice-confirmed': 'confirmed by the practice',
+  'openstreetmap': 'OpenStreetMap',
+};
+const lastChecked = allSources.map((s) => s.checked).sort().at(-1)!;
+
+// Opening hours for structured data, parsed only from the verified table.
+function parseTimeRange(range: string) {
+  const m = range.match(/^(\d{1,2})(?::(\d{2}))?(am|pm)\s*[–-]\s*(\d{1,2})(?::(\d{2}))?(am|pm)$/i);
+  if (!m) return null;
+  const to24 = (h: string, min: string | undefined, ap: string) => {
+    let hour = parseInt(h, 10) % 12;
+    if (ap.toLowerCase() === 'pm') hour += 12;
+    return `${String(hour).padStart(2, '0')}:${min ?? '00'}`;
+  };
+  return { opens: to24(m[1], m[2], m[3]), closes: to24(m[4], m[5], m[6]) };
+}
+const openingHours = days.flatMap((day) => {
+  const parsed = d.hours?.[day] ? parseTimeRange(d.hours[day]) : null;
+  return parsed ? [{ '@type': 'OpeningHoursSpecification', dayOfWeek: `https://schema.org/${dayNames[day]}`, ...parsed }] : [];
+});
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: gp.meta_title,
+      description: d.description,
+      isPartOf: { '@id': `${SITE}/#website` },
+      about: { '@id': `${pageUrl}#practice` },
+      publisher: { '@type': 'Organization', name: 'Walton-on-Thames.org', url: `${SITE}/` },
+      dateModified: lastChecked,
+      breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+    },
+    {
+      '@type': 'MedicalClinic',
+      '@id': `${pageUrl}#practice`,
+      name: d.name,
+      url: d.website,
+      telephone: d.phone,
+      medicalSpecialty: 'https://schema.org/PrimaryCare',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: street,
+        addressLocality: locality,
+        addressRegion: 'Surrey',
+        postalCode: postcode,
+        addressCountry: 'GB',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: d.lat, longitude: d.lng },
+      sameAs: [gp.nhs_url],
+      ...(openingHours.length ? { openingHoursSpecification: openingHours } : {}),
+      ...(d.images.length ? { image: d.images.map((img: Img) => new URL(img.src, SITE).href) } : {}),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Moving & living here', item: `${SITE}/living/` },
+        { '@type': 'ListItem', position: 3, name: 'GP surgeries', item: `${SITE}/living/gp-surgeries/` },
+        { '@type': 'ListItem', position: 4, name: d.name, item: pageUrl },
+      ],
+    },
+  ],
+};
+const ext = ' (external site, opens in a new tab)';
+---
+
+<BaseLayout title={gp.meta_title} description={d.description} image={heroImage?.src}>
+  <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </slot>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/living/">Moving &amp; living here</a></li>
+          <li><a href="/living/gp-surgeries/">GP surgeries</a></li>
+          <li aria-current="page">{d.name}</li>
+        </ol>
+      </nav>
+      <div class="hero-meta">
+        <span class="badge badge-accent">NHS GP practice</span>
+        <span class="badge">{locality}</span>
+      </div>
+      <h1>{d.name}<span class="sr-only">, </span><span class="h1-sub">{locality}: contact, registration and visiting information</span></h1>
+      <p class="independent">An independent community guide from Walton-on-Thames.org, not the practice's own website. To register, book or order medicines, use the practice's official services linked on this page. Please don't send health information through this site.</p>
+    </div>
+  </div>
+
+  <section class="section gp-top">
+    <div class="container gp-top-grid">
+      <div class="key-facts">
+        <h2 class="sr-only">Contact details</h2>
+        <dl>
+          <div><dt>Address</dt><dd><address>{street}</address></dd></div>
+          {postcode && <div><dt>Postcode</dt><dd>{postcode}</dd></div>}
+          {d.phone && <div><dt>Telephone</dt><dd><a href={`tel:${tel}`}>{d.phone}</a></dd></div>}
+          {d.website && <div><dt>Official website</dt><dd><a href={d.website} rel="noopener noreferrer" target="_blank">{d.website}<span class="sr-only">{ext}</span></a></dd></div>}
+          <div><dt>NHS profile</dt><dd><a href={gp.nhs_url} rel="noopener noreferrer" target="_blank">{gp.nhs_url}<span class="sr-only">{ext}</span></a></dd></div>
+        </dl>
+        <div class="actions">
+          {d.phone && <a class="btn btn-primary" href={`tel:${tel}`}>Call {d.phone}</a>}
+          <a class="btn btn-outline" href={directionsUrl} rel="noopener noreferrer" target="_blank">Directions<span class="sr-only"> in Google Maps{ext}</span></a>
+          {d.website && <a class="btn btn-outline" href={d.website} rel="noopener noreferrer" target="_blank">Practice website<span class="sr-only">{ext}</span></a>}
+          {registerLink && <a class="btn btn-outline" href={registerLink.url} rel="noopener noreferrer" target="_blank">{gp.links.register_online ? 'Register with the NHS' : 'How to register'}<span class="sr-only">{ext}</span></a>}
+        </div>
+      </div>
+      {heroImage && (
+        <figure class="gp-photo">
+          <img src={heroImage.src} alt={heroImage.alt} width={heroImage.width ?? 1200} height={heroImage.height ?? 900} fetchpriority="high" decoding="async" />
+          {(heroImage.caption || heroImage.credit || heroImage.captured) && (
+            <figcaption>{heroImage.caption}{heroImage.credit && ` ${heroImage.credit}.`}{heroImage.captured && ` Taken ${heroImage.captured}.`}</figcaption>
+          )}
+        </figure>
+      )}
+    </div>
+  </section>
+
+  <section class="section gp-body">
+    <div class="container gp-columns">
+      <div class="gp-main prose">
+        <nav class="gp-contents" aria-label="On this page">
+          <h2>On this page</h2>
+          <ul>
+            <li><a href="#registration">Registration and appointments</a></li>
+            <li><a href="#hours">Opening hours</a></li>
+            <li><a href="#visiting">Before you visit</a></li>
+            <li><a href="#prescriptions">Repeat prescriptions</a></li>
+            <li><a href="#map">Map</a></li>
+            <li><a href="#nearby-pharmacies">Nearby pharmacies</a></li>
+            <li><a href="#sources">Sources and checks</a></li>
+          </ul>
+        </nav>
+
+        <Content />
+
+        <h2 id="registration">Registration and appointments</h2>
+        {gp.new_patients && <p>{gp.new_patients.statement.replace(/\.$/, '')} (checked {longDate(gp.new_patients.source.checked)}). Lists can close at short notice, so confirm with the practice.</p>}
+        {gp.registration_note && <p>{gp.registration_note.text}</p>}
+        <p>Registration depends on where you live, not just on distance: most practices only register people inside their catchment area. The NHS website lets you check a postcode against this practice's catchment.</p>
+        <ul class="link-list">
+          {gp.links.catchment && <li><a href={gp.links.catchment.url} rel="noopener noreferrer" target="_blank">{gp.links.catchment.label}<span class="sr-only">{ext}</span></a></li>}
+          {gp.links.registration && <li><a href={gp.links.registration.url} rel="noopener noreferrer" target="_blank">{gp.links.registration.label}<span class="sr-only">{ext}</span></a></li>}
+          {gp.links.register_online && <li><a href={gp.links.register_online.url} rel="noopener noreferrer" target="_blank">{gp.links.register_online.label}<span class="sr-only">{ext}</span></a></li>}
+          {gp.links.appointments && <li><a href={gp.links.appointments.url} rel="noopener noreferrer" target="_blank">{gp.links.appointments.label}<span class="sr-only">{ext}</span></a></li>}
+        </ul>
+        {gp.appointment_notes.map((n: { text: string }) => <p>{n.text}</p>)}
+        <p class="aside-note">For urgent help when the practice is closed, use <a href="https://111.nhs.uk/" rel="noopener noreferrer" target="_blank">NHS 111 online<span class="sr-only">{ext}</span></a> or call 111. In an emergency, call 999.</p>
+
+        <h2 id="hours">Opening hours</h2>
+        {d.hours && (
+          <table class="hours-table">
+            <caption>{gp.hours_label}, from the {BASIS_LABEL[gp.hours_source.basis]} (checked {longDate(gp.hours_source.checked)})</caption>
+            <tbody>
+              {days.filter((day) => d.hours?.[day]).map((day) => (
+                <tr><th scope="row">{dayNames[day]}</th><td>{d.hours?.[day]}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <p>These are the times the practice publishes for the building{gp.hours_label.toLowerCase().includes('reception') ? ' and reception' : ''}. They are not a promise of appointments or of when the phone lines are answered: see the practice's appointments page for that. Hours can change around bank holidays.</p>
+        {gp.hours_conflict && <p class="aside-note">{gp.hours_conflict}</p>}
+
+        <h2 id="visiting">Before you visit</h2>
+        {gp.premises.note && <p>{gp.premises.note}</p>}
+        {sharedWith.length > 0 && (
+          <p>{d.name} shares {gp.premises.name} with {sharedWith.map((s: Biz, i: number) => <>{i > 0 && (i === sharedWith.length - 1 ? ' and ' : ', ')}<a href={`/directory/${s.data.slug}/`}>{s.data.name}</a></>)}. They are separate practices with their own phone numbers and patient lists, so make sure you contact the one you're registered with.</p>
+        )}
+        {gp.visiting.map((v: { text: string }) => <p>{v.text}</p>)}
+
+        {gp.bus_stops.length > 0 && (
+          <>
+            <h3>Nearest bus stops</h3>
+            <ul>
+              {gp.bus_stops.map((s: Gp['bus_stops'][number]) => <li>{s.name}, {s.street} ({s.indicator}): about {s.distance_m} m in a straight line</li>)}
+            </ul>
+            <p class="aside-note">Stop names and positions from the Department for Transport's NaPTAN data, checked {gp.bus_stops_source && longDate(gp.bus_stops_source.checked)}. Distances are straight-line from the building point, not walking routes. Check routes and times with <a href="https://www.surreycc.gov.uk/roads-and-transport/buses-and-other-transport" rel="noopener noreferrer" target="_blank">Surrey County Council<span class="sr-only">{ext}</span></a> or the operator.</p>
+          </>
+        )}
+
+        {gp.nhs_facilities && (
+          <>
+            <h3>Facilities listed on the NHS website</h3>
+            <p>The practice's NHS profile lists the following. The practice last confirmed the list to the NHS on {gp.nhs_facilities.nhs_last_confirmed}. It is the practice's own description, not something we have checked in person, and it doesn't describe routes, door types or where things are.</p>
+            <ul class="facility-list">{gp.nhs_facilities.items.map((f: string) => <li>{f}</li>)}</ul>
+          </>
+        )}
+
+        {galleryImages.length > 0 && (
+          <>
+            <h3>Photographs</h3>
+            <div class="gp-gallery">
+              {galleryImages.map((img: Img) => (
+                <figure>
+                  <img src={img.src} alt={img.alt} loading="lazy" decoding="async" width={img.width ?? 800} height={img.height ?? 600} />
+                  {(img.caption || img.credit || img.captured) && <figcaption>{img.caption}{img.credit && ` ${img.credit}.`}{img.captured && ` Taken ${img.captured}.`}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          </>
+        )}
+
+        <h2 id="prescriptions">Repeat prescriptions</h2>
+        {gp.prescription_notes.map((n: { text: string }) => <p>{n.text}</p>)}
+        {gp.prescription_box && (
+          <>
+            <h3>Prescription drop-in box</h3>
+            <p>{gp.prescription_box.statement}</p>
+            {gp.prescription_box.location && <p>{gp.prescription_box.location}</p>}
+            {gp.prescription_box.access && <p>{gp.prescription_box.access}</p>}
+          </>
+        )}
+        {gp.links.repeat_prescriptions && (
+          <p><a href={gp.links.repeat_prescriptions.url} rel="noopener noreferrer" target="_blank">{gp.links.repeat_prescriptions.label}<span class="sr-only">{ext}</span></a></p>
+        )}
+
+        <h2 id="map">Map</h2>
+        <PracticeLocalMap practice={biz} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <NearbyPharmacies practice={biz} pharmacies={pharmacies} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container gp-columns">
+      <div class="gp-main prose">
+        <h2 id="sources">Sources and checks</h2>
+        <p>Walton-on-Thames.org is an independent local guide. We are not connected to the practice or the NHS, and nothing here is medical advice. This page was compiled by the Walton-on-Thames.org editor from the sources below, each checked on the date shown. Where a fact comes from the practice's own website or its NHS profile, the page says so; nothing on it has been confirmed to us directly by the practice.</p>
+        <ul class="source-list">
+          {sources.map((s) => (
+            <li>{s.url ? <a href={s.url} rel="noopener noreferrer" target="_blank">{s.label}<span class="sr-only">{ext}</span></a> : s.label} <span class="source-meta">({BASIS_LABEL[s.basis]}, checked {longDate(s.checked)})</span></li>
+          ))}
+        </ul>
+        <p>Spotted something out of date? <a href={`/contact/?subject=${encodeURIComponent(`Correction: ${d.name}`)}`}>Send us a correction</a>. Please don't include any personal or medical details.</p>
+        <p><a href="/living/gp-surgeries/">All GP surgeries in Walton-on-Thames and Hersham</a> · <a href="/living/pharmacies/">Pharmacies</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-meta { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+  .h1-sub { display: block; font-size: 0.5em; font-family: var(--font-body); font-weight: 500; margin-top: 0.5rem; opacity: 0.85; }
+  .independent { font-size: 0.9rem; max-width: 70ch; }
+
+  .gp-top { padding-bottom: 0; }
+  .gp-top-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 2rem; align-items: start; }
+  .gp-top-grid:not(:has(.gp-photo)) { grid-template-columns: minmax(0, 1fr); }
+  .key-facts {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+  }
+  .key-facts dl { display: grid; gap: 0.6rem; margin: 0 0 1.25rem; }
+  .key-facts dl > div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0.75rem; }
+  .key-facts dt { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-slate); padding-top: 0.15rem; }
+  .key-facts dd { margin: 0; color: var(--color-navy); overflow-wrap: anywhere; }
+  .key-facts address { font-style: normal; }
+  .key-facts a { color: var(--color-navy); }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .actions .btn { min-height: 44px; }
+
+  .gp-photo { margin: 0; }
+  .gp-photo img { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+  .gp-photo figcaption { font-size: 0.8rem; color: var(--color-slate); margin-top: 0.5rem; }
+
+  .gp-columns { max-width: 820px; }
+  .gp-contents {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .gp-contents h2 { font-size: 0.8rem !important; font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-slate); margin: 0 0 0.5rem !important; }
+  .gp-contents ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+  .gp-contents a { display: inline-block; padding: 0.35rem 0; }
+
+  .gp-main h2 { scroll-margin-top: calc(var(--nav-height) + 1rem); }
+  .link-list li { margin-bottom: 0.35rem; }
+  .aside-note { font-size: 0.9rem; color: var(--color-slate); }
+
+  .hours-table { width: 100%; max-width: 420px; border-collapse: collapse; margin: 0.5rem 0 1rem; }
+  .hours-table caption { text-align: left; font-size: 0.85rem; color: var(--color-slate); margin-bottom: 0.5rem; }
+  .hours-table tr + tr { border-top: 1px solid rgba(11, 36, 46, 0.08); }
+  .hours-table th, .hours-table td { padding: 0.4rem 0; text-align: left; font-size: 0.95rem; }
+  .hours-table th { font-weight: 500; color: var(--color-slate); width: 50%; }
+
+  .facility-list { columns: 2 16rem; column-gap: 2rem; }
+  .facility-list li { break-inside: avoid; }
+
+  .gp-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .gp-gallery figure { margin: 0; }
+  .gp-gallery img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-md); }
+  .gp-gallery figcaption { font-size: 0.8rem; color: var(--color-slate); margin-top: 0.35rem; }
+
+  .section-alt { background: var(--color-cream, #f7f4ee); }
+  .source-list li { margin-bottom: 0.4rem; }
+  .source-meta { font-size: 0.85rem; color: var(--color-slate); }
+
+  @media (max-width: 900px) {
+    .gp-top-grid { grid-template-columns: 1fr; }
+    .key-facts dl > div { grid-template-columns: 1fr; gap: 0.1rem; }
+  }
+</style>

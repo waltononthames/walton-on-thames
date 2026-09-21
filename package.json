@@ -16,7 +16,10 @@
     "content:em-dashes": "node scripts/check-em-dashes.mjs",
     "seo:lastmod": "node scripts/generate-lastmod.mjs",
     "map:areas": "node scripts/build-areas-map.mjs",
-    "map:breweries": "node scripts/build-brewery-map.mjs"
+    "map:breweries": "node scripts/build-brewery-map.mjs",
+    "map:gp": "node scripts/build-gp-maps.mjs",
+    "routes:pharmacies": "node scripts/build-pharmacy-routes.mjs",
+    "test:pharmacies": "node --test scripts/test-pharmacy-ranking.mjs"
   },
   "keywords": [],
   "author": "",

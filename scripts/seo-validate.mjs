@@ -156,6 +156,9 @@ for (const file of files) {
     const localBusinessTypes = [
       'LocalBusiness', 'Restaurant', 'FastFoodRestaurant', 'CafeOrCoffeeShop', 'EntertainmentBusiness',
       'BarOrPub', 'LodgingBusiness', 'SportsActivityLocation', 'Store',
+      // GP practices (src/components/gp/GpPracticeProfile.astro). MedicalClinic
+      // is a LocalBusiness subtype by way of MedicalBusiness.
+      'MedicalClinic',
     ];
     const biz = blocks.flatMap((b) => b['@graph'] ?? [b]).find((n) => localBusinessTypes.includes(n['@type']));
     if (!biz) {

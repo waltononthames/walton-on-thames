@@ -1,0 +1,56 @@
+{
+  "area": {
+    "src": "/images/maps/gp-area-base.svg",
+    "frame": {
+      "south": 51.3601,
+      "north": 51.410999999999994,
+      "west": -0.4522,
+      "east": -0.357
+    },
+    "width": 1600,
+    "height": 1371
+  },
+  "local": {
+    "ashley-medical-practice": {
+      "src": "/images/maps/gp-local-ashley-medical-practice.svg",
+      "frame": {
+        "south": 51.37836229095486,
+        "north": 51.383037709045134,
+        "west": -0.41835638634836086,
+        "east": -0.40824361365163914
+      },
+      "width": 1200,
+      "height": 889
+    },
+    "rodney-road": {
+      "src": "/images/maps/gp-local-rodney-road.svg",
+      "frame": {
+        "south": 51.37844979095486,
+        "north": 51.38312520904513,
+        "west": -0.4110563960147957,
+        "east": -0.40094360398520434
+      },
+      "width": 1200,
+      "height": 889
+    },
+    "hersham-surgery": {
+      "src": "/images/maps/gp-local-hersham-surgery.svg",
+      "frame": {
+        "south": 51.361762290954864,
+        "north": 51.36643770904514,
+        "west": -0.40505455336916457,
+        "east": -0.3949454466308355
+      },
+      "width": 1200,
+      "height": 889
+    }
+  },
+  "practiceLocal": {
+    "ashley-medical-practice": "ashley-medical-practice",
+    "fort-house-surgery": "rodney-road",
+    "red-practice-walton": "rodney-road",
+    "white-practice-walton": "rodney-road",
+    "yellow-practice-walton": "rodney-road",
+    "hersham-surgery": "hersham-surgery"
+  }
+}

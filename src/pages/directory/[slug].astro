@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatPlaceName } from '../../utils/format';
+import GpPracticeProfile from '../../components/gp/GpPracticeProfile.astro';
 
 // Without this, Astro.props infers as `never` and every biz.data.* reference
 // below reports ts(2339). Typing the props clears all of them.
@@ -81,6 +82,10 @@ const openingHoursSpecification = biz.data.hours
   : [];
 ---
 
+{biz.data.gp ? (
+  // GP practices have their own template: same URL, fuller page.
+  <GpPracticeProfile biz={biz} />
+) : (
 <BaseLayout
   title={`${biz.data.name}: ${categoryLabel} in ${neighbourhoodLabel}`}
   description={biz.data.description}
@@ -191,6 +196,11 @@ const openingHoursSpecification = biz.data.hours
               🌐 Visit website ↗
             </a>
           )}
+          {biz.data.nhs_url && (
+            <a href={biz.data.nhs_url} target="_blank" rel="noopener noreferrer" class="contact-link">
+              NHS website listing ↗
+            </a>
+          )}
         </div>
 
         <!-- Opening hours -->
@@ -238,6 +248,7 @@ const openingHoursSpecification = biz.data.hours
     </div>
   </section>
 </BaseLayout>
+)}
 
 <style>
   /* Photo hero, used only when the listing supplies images. Without them the
