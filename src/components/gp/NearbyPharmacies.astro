@@ -12,6 +12,7 @@ import type { CollectionEntry } from 'astro:content';
 import routeData from '../../data/pharmacy-routes.json';
 import { candidatesFor, rankPharmacies, formatDuration, formatDistance, DEFAULT_VISIBLE, type RouteMatrix, type TravelMode } from '../../utils/pharmacyRanking';
 import { summariseHours } from '../../utils/hoursSummary';
+import { nameWithAddress } from '../../utils/format';
 import { areaBase, project, cropAround, baseImageStyle, spreadMarkers, MAP_VERSION } from './mapProjection';
 
 interface Props {
@@ -48,7 +49,7 @@ const dateFmt = (iso: string | null) => iso
   : null;
 
 const directions = (to: string, mode: string) =>
-  `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(`${p.name}, ${p.address}`)}&destination=${encodeURIComponent(to)}&travelmode=${mode}`;
+  `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(nameWithAddress(p.name, p.address))}&destination=${encodeURIComponent(to)}&travelmode=${mode}`;
 
 // The map crop covers the practice and every listed pharmacy.
 const crop = cropAround(areaBase, [origin, ...candidates], 60);

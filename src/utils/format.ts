@@ -19,3 +19,17 @@ export function formatPlaceName(slug: string): string {
   }
   return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 }
+
+/**
+ * "Name, address", without repeating the name when the address already
+ * starts with it (e.g. Fort House Surgery's address begins "Fort House
+ * Surgery, Walton Community Hospital").
+ */
+export function nameWithAddress(name: string, address: string): string {
+  return address.startsWith(name) ? address : `${name}, ${address}`;
+}
+
+/** The address with a leading copy of the name removed, for schema streetAddress. */
+export function addressWithoutName(name: string, address: string): string {
+  return address.startsWith(name) ? address.slice(name.length).replace(/^,\s*/, '') : address;
+}
