@@ -1,14 +1,14 @@
 {
   "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source: the rest of this file was deliberately left untouched rather than overwritten with a guess.",
-  "status": "on",
-  "headline": "On this Sunday, 20 September 2026",
-  "detail": "Apps Court Farm's car boot page carries the banner \"THE CAR BOOT IS OPEN THIS SUNDAY\". We read that on the afternoon of Friday 18 September, so it refers to the coming Sunday, 20 September. It replaces the \"NOT OPEN\" notice posted for Sunday 13 September. There is no postponement or cancellation notice anywhere on the page. The farm posts its dates at the top of that page weekly and says any weather postponement will be posted in the same place, so a notice can still appear at short notice between now and Sunday morning. Gates open at 7am and the sale closes at 1pm. Check the banner on the official page or call 01932 244 822 for the recorded status before travelling.",
-  "nextConfirmedDateISO": "2026-09-20",
-  "nextConfirmedDateLabel": "Sunday 20 September 2026",
-  "checkedDateISO": "2026-09-18",
-  "checkedDateLabel": "18 September 2026",
+  "status": "unconfirmed",
+  "headline": "No date confirmed yet for the coming Sunday",
+  "detail": "Apps Court Farm's car boot page still carries the banner \"THE CAR BOOT IS OPEN THIS SUNDAY\", unchanged from the check on Friday 18 September, when it confirmed Sunday 20 September. That date has now passed and the farm has not yet posted a notice for the coming Sunday, so we are not treating any specific date as confirmed. There is no postponement or cancellation notice on the page. The farm states its car boot sales are held every Sunday and on all Spring, Summer and early Winter Bank Holiday Mondays, weather dependent, but it does not publish a fixed calendar: dates are posted at the top of that page weekly, usually by Friday. Gates open at 7am for sellers and the sale closes at 1pm. Check the banner on the official page or call 01932 244 822 for the recorded status before travelling.",
+  "nextConfirmedDateISO": null,
+  "nextConfirmedDateLabel": null,
+  "checkedDateISO": "2026-09-21",
+  "checkedDateLabel": "21 September 2026",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Automated check, source read successfully at 15:41 BST on Friday 18 September 2026. The in-page banner changed from \"THE CAR BOOT IS NOT OPEN THIS SUNDAY\" (first read 00:14 BST Sunday 13 September, still unchanged on 14 and 15 September) to \"THE CAR BOOT IS OPEN THIS SUNDAY\". Read on a Friday, the wording points forward to Sunday 20 September, so the status moves from off to on and the confirmed date is set. Verified in the DOM that this is the in-page block inside <main> (a plain span, no outbound link), not the site-wide section.announcement strip, which carries identical wording while still linking to a Christmas trees 2025 shop product and was not relied on. The 1pm close is stated on the page (\"The car boot is closed from 1pm\"). The only mentions of postponement or calling off are the standing explanatory and FAQ text, not an actual notice. No cancellation, postponement or festival-clash notice present."
+  "lastCheckNote": "Automated check, source read successfully at 00:52 BST on Monday 21 September 2026 through the Browser pane (WebFetch is Cloudflare-challenged on this domain). The in-page block inside <main> is unchanged from the 18 September check and still reads \"THE CAR BOOT IS OPEN THIS SUNDAY\": that notice was posted for Sunday 20 September, which has now passed, and a leftover banner read on a Monday cannot be taken as confirmation of Sunday 27 September. Status therefore moves from on to unconfirmed and the confirmed date is cleared rather than rolled forward to a date the source does not state, which also drops the now-past subEvent from the EventSeries JSON-LD. The site-wide section.announcement strip carries identical wording and was again not relied on. No cancellation, postponement or festival-clash notice anywhere on the page."
 }
