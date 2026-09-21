@@ -9,6 +9,7 @@ import type { CollectionEntry } from 'astro:content';
 import { formatPlaceName } from '../../utils/format';
 import PracticeLocalMap from './PracticeLocalMap.astro';
 import NearbyPharmacies from './NearbyPharmacies.astro';
+import PhotoLightbox from '../PhotoLightbox.astro';
 
 interface Props { biz: CollectionEntry<'businesses'> }
 const { biz } = Astro.props;
@@ -42,6 +43,19 @@ const dayNames: Record<string, string> = { mon: 'Monday', tue: 'Tuesday', wed: '
 const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 const [heroImage, ...galleryImages] = d.images;
+
+// "Photograph: Darren Bayley / Walton-on-Thames.org, 6 September 2026."
+// A partial date (2026-09 or 2026) prints only what is known.
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+function photoDate(captured?: string) {
+  if (!captured) return '';
+  const [y, m, day] = captured.split('-');
+  return [day && String(Number(day)), m && MONTHS[Number(m) - 1], y].filter(Boolean).join(' ');
+}
+function photoCredit(img: Img) {
+  if (!img.credit && !img.captured) return '';
+  return `Photograph${img.credit ? `: ${img.credit}` : ''}${img.captured ? `, ${photoDate(img.captured)}` : ''}.`;
+}
 
 // Every source the page relies on, once each, for the sources list.
 const allSources: Source[] = [
@@ -179,9 +193,12 @@ const ext = ' (external site, opens in a new tab)';
       </div>
       {heroImage && (
         <figure class="gp-photo">
-          <img src={heroImage.src} alt={heroImage.alt} width={heroImage.width ?? 1200} height={heroImage.height ?? 900} fetchpriority="high" decoding="async" />
-          {(heroImage.caption || heroImage.credit || heroImage.captured) && (
-            <figcaption>{heroImage.caption}{heroImage.credit && ` ${heroImage.credit}.`}{heroImage.captured && ` Taken ${heroImage.captured}.`}</figcaption>
+          <a href={heroImage.src} class="photo-link" data-lightbox data-caption={heroImage.caption ?? ''}>
+            <img src={heroImage.src} alt={heroImage.alt} width={heroImage.width ?? 1200} height={heroImage.height ?? 900} fetchpriority="high" decoding="async" />
+            <span class="sr-only"> (opens a larger view)</span>
+          </a>
+          {(heroImage.caption || photoCredit(heroImage)) && (
+            <figcaption>{heroImage.caption} <span class="photo-credit">{photoCredit(heroImage)}</span></figcaption>
           )}
         </figure>
       )}
@@ -264,8 +281,11 @@ const ext = ' (external site, opens in a new tab)';
             <div class="gp-gallery">
               {galleryImages.map((img: Img) => (
                 <figure>
-                  <img src={img.src} alt={img.alt} loading="lazy" decoding="async" width={img.width ?? 800} height={img.height ?? 600} />
-                  {(img.caption || img.credit || img.captured) && <figcaption>{img.caption}{img.credit && ` ${img.credit}.`}{img.captured && ` Taken ${img.captured}.`}</figcaption>}
+                  <a href={img.src} class="photo-link" data-lightbox data-caption={img.caption ?? ''}>
+                    <img src={img.src} alt={img.alt} loading="lazy" decoding="async" width={img.width ?? 800} height={img.height ?? 600} />
+                    <span class="sr-only"> (opens a larger view)</span>
+                  </a>
+                  {(img.caption || photoCredit(img)) && <figcaption>{img.caption} <span class="photo-credit">{photoCredit(img)}</span></figcaption>}
                 </figure>
               ))}
             </div>
@@ -313,6 +333,7 @@ const ext = ' (external site, opens in a new tab)';
       </div>
     </div>
   </section>
+  {d.images.length > 0 && <PhotoLightbox />}
 </BaseLayout>
 
 <style>
@@ -371,6 +392,9 @@ const ext = ' (external site, opens in a new tab)';
   .gp-gallery figure { margin: 0; }
   .gp-gallery img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-md); }
   .gp-gallery figcaption { font-size: 0.8rem; color: var(--color-slate); margin-top: 0.35rem; }
+  .photo-link { display: block; border-radius: var(--radius-lg); cursor: zoom-in; }
+  .photo-link:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
+  .photo-credit { color: var(--color-slate-soft); }
 
   .section-alt { background: var(--color-cream, #f7f4ee); }
   .source-list li { margin-bottom: 0.4rem; }

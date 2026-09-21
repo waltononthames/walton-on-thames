@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatPlaceName } from '../../utils/format';
 import GpPracticeProfile from '../../components/gp/GpPracticeProfile.astro';
+import PhotoLightbox from '../../components/PhotoLightbox.astro';
 
 // Without this, Astro.props infers as `never` and every biz.data.* reference
 // below reports ts(2339). Typing the props clears all of them.
@@ -164,14 +165,14 @@ const openingHoursSpecification = biz.data.hours
         {/* Every photograph appears here, including the hero: behind the
             title it is darkened and mostly covered, so this is the only
             place it can actually be seen. Each links to the full image,
-            and the script below opens that link in a lightbox instead. */}
+            and PhotoLightbox opens it in a lightbox instead. */}
         {biz.data.images.length > 0 && (
           <>
             <h2>Photographs</h2>
             <div class="biz-gallery">
               {biz.data.images.map((img: ListingImage) => (
                 <figure class="biz-gallery-item">
-                  <a href={img.src} class="biz-gallery-link" data-caption={img.caption ?? ''}>
+                  <a href={img.src} class="biz-gallery-link" data-lightbox data-caption={img.caption ?? ''}>
                     <img src={img.src} alt={img.alt} loading="lazy" />
                     <span class="sr-only"> (opens a larger view)</span>
                   </a>
@@ -181,35 +182,7 @@ const openingHoursSpecification = biz.data.hours
             </div>
             {biz.data.image_credit && <p class="biz-image-credit">{biz.data.image_credit}</p>}
 
-            <dialog class="biz-lightbox" aria-label="Enlarged photograph">
-              <button type="button" class="biz-lightbox-close" aria-label="Close">×</button>
-              <figure>
-                <img alt="" />
-                <figcaption></figcaption>
-              </figure>
-            </dialog>
-            <script is:inline>
-              (() => {
-                const dialog = document.querySelector('.biz-lightbox');
-                if (!dialog || typeof dialog.showModal !== 'function') return; // falls back to opening the image
-                const img = dialog.querySelector('img');
-                const caption = dialog.querySelector('figcaption');
-                document.querySelectorAll('.biz-gallery-link').forEach((link) => {
-                  link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const thumb = link.querySelector('img');
-                    img.src = link.getAttribute('href');
-                    img.alt = thumb ? thumb.alt : '';
-                    caption.textContent = link.dataset.caption || '';
-                    caption.hidden = !caption.textContent;
-                    dialog.showModal();
-                  });
-                });
-                dialog.querySelector('.biz-lightbox-close').addEventListener('click', () => dialog.close());
-                // A click on the dimmed backdrop lands on the dialog itself.
-                dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
-              })();
-            </script>
+            <PhotoLightbox />
           </>
         )}
       </article>
@@ -375,58 +348,6 @@ const openingHoursSpecification = biz.data.hours
   }
 
   .biz-gallery-link:hover img { box-shadow: var(--shadow-card-hover); }
-
-  .biz-lightbox {
-    /* The global reset zeroes margins, which is what normally centres a
-       modal dialog, so centre it explicitly. */
-    margin: auto;
-    inset: 0;
-    border: none;
-    padding: 0;
-    background: transparent;
-    max-width: min(96vw, 1600px);
-    max-height: 94vh;
-    overflow: visible;
-  }
-
-  .biz-lightbox::backdrop { background: rgba(1, 32, 44, 0.88); }
-
-  .biz-lightbox figure { margin: 0; }
-
-  .biz-lightbox img {
-    display: block;
-    max-width: 100%;
-    max-height: 86vh;
-    width: auto;
-    height: auto;
-    margin: 0 auto;
-    border-radius: var(--radius-md);
-  }
-
-  .biz-lightbox figcaption {
-    color: var(--color-white);
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 0.6rem;
-  }
-
-  .biz-lightbox-close {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 2px solid var(--color-white);
-    background: var(--color-navy);
-    color: var(--color-white);
-    font-size: 1.6rem;
-    line-height: 1;
-    cursor: pointer;
-    z-index: 1;
-  }
-
-  .biz-lightbox-close:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
 
   .hero-meta {
     display: flex;
