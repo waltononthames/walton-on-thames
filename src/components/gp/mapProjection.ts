@@ -3,7 +3,7 @@
 import mapMeta from '../../data/gp-maps.json';
 
 // Bump after rebuilding the base maps: /images/* is cached for 7 days.
-export const MAP_VERSION = '2026-09-21';
+export const MAP_VERSION = '2026-09-21-2';
 
 export interface Frame { south: number; north: number; west: number; east: number }
 export interface BaseMap { src: string; frame: Frame; width: number; height: number }

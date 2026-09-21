@@ -26,6 +26,8 @@ All six GP listings existed before this work. Each keeps its URL, slug and recor
 ### Corrections made during the audit
 
 - **Ashley Medical Practice's pin was about 300 m out** (51.3830, -0.4092, near the north-east end of Crutchfield Lane). The practice's own map pin (51.380685, -0.413297) and its NHS pin (about 50 m away) both put it at the western end near Hersham Road. Now 51.3807, -0.4133.
+- **Fort House Surgery's pin** (corrected 21 September 2026, after Darren spotted it) was the NHS profile pin, which sits at the eastern tip of the Walton Community Hospital building. It is now the centre of the building outline on OpenStreetMap (51.3799, -0.4064). Neither the practice nor the NHS says which part of the building the surgery occupies, and the page says so.
+- **Walton Community Hospital and Walton Health Centre were missing from the local base map.** OpenStreetMap maps both as multipolygon relations, which the first map build ignored, so the pins sat on blank ground. `scripts/build-gp-maps.mjs` now draws building relations, with courtyards cut out.
 - **Townsend Chemist's pin was about 200 m out.** Now the NHS pin, which matches the KT12 3LJ postcode centroid.
 - **The White Practice's hours** showed its appointment times as its opening hours. Its site gives reception 8am to 6:30pm and appointments from 8:30am; both are now shown, labelled.
 - **Ashley Medical Practice** had no hours; the practice's own figures are now shown, with the NHS profile's different figures noted.
