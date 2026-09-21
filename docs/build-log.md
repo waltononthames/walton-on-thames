@@ -1740,7 +1740,7 @@ Darren reported the Fort House pin slightly out of position. There were two caus
 
 ## 2026-09-21: /history/lost-inns-and-taverns-walton-hersham/
 
-Status: built from Darren's draft (`lost-inns-taverns-walton-hersham-whiteley-updated.md`), not yet committed. Historical content, so the Research and Editorial Standards govern. Long-form layout (grouped APA references, linked citations: 85 linked, 0 unmatched). Added to the Georgian era list on `/history/`. `metaTitle` 50 characters, `metaDescription` 148.
+Status: built from Darren's draft (`lost-inns-taverns-walton-hersham-whiteley-updated.md`), committed 21 September 2026. Title shortened to "The Lost Inns and Taverns of Walton-on-Thames and Hersham" at Darren's request: Whiteley Village had no lost inn, so naming it overstated the body. Historical content, so the Research and Editorial Standards govern. Long-form layout (grouped APA references, linked citations: 85 linked, 0 unmatched). Added to the Georgian era list on `/history/`. `metaTitle` 50 characters, `metaDescription` 148.
 
 Print sources (Martin 1999, Hughes 2003, Tarplee, Whiteley Homes Trust 1949) used as supplied. Every web source opened on 21 September 2026; the BBC article could not be fetched (bbc.co.uk blocks automated access) and was confirmed from its LDRS syndicated copy.
 
