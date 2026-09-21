@@ -6,7 +6,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { formatPlaceName } from '../../utils/format';
+import { formatPlaceName, nameWithAddress, addressWithoutName } from '../../utils/format';
 import PracticeLocalMap from './PracticeLocalMap.astro';
 import NearbyPharmacies from './NearbyPharmacies.astro';
 import PhotoLightbox from '../PhotoLightbox.astro';
@@ -34,7 +34,7 @@ const locality = formatPlaceName(d.neighbourhood);
 const postcode = d.address.match(/[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/)?.[0] ?? '';
 const street = postcode ? d.address.slice(0, -postcode.length).replace(/,\s*$/, '') : d.address;
 const tel = d.phone?.replace(/\s/g, '');
-const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${d.name}, ${d.address}`)}`;
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(nameWithAddress(d.name, d.address))}`;
 const registerLink = gp.links.register_online ?? gp.links.registration;
 
 const longDate = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/London' });
@@ -123,7 +123,7 @@ const structuredData = {
       medicalSpecialty: 'https://schema.org/PrimaryCare',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: street,
+        streetAddress: addressWithoutName(d.name, street),
         addressLocality: locality,
         addressRegion: 'Surrey',
         postalCode: postcode,

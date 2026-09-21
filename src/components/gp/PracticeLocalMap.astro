@@ -4,6 +4,7 @@
 // or confirmed (gp.entrance in the listing). The address and a directions
 // link sit outside the map, so they work when the image doesn't.
 import type { CollectionEntry } from 'astro:content';
+import { nameWithAddress } from '../../utils/format';
 import { localBaseFor, project, cropAround, baseImageStyle, MAP_VERSION } from './mapProjection';
 
 interface Props { practice: CollectionEntry<'businesses'> }
@@ -16,14 +17,14 @@ const crop = base ? cropAround(base, entrance ? [building, entrance] : [building
 const R = crop ? crop.w * 0.022 : 0;
 const b = base ? project(base, building) : null;
 const e = base && entrance ? project(base, entrance) : null;
-const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${d.name}, ${d.address}`)}`;
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(nameWithAddress(d.name, d.address))}`;
 ---
 
 <figure class="localmap">
   {base && crop && b && (
     <div class="gpmap" style={`aspect-ratio:${crop.w} / ${crop.h}`}>
       <img class="gpmap-base" src={`${base.src}?v=${MAP_VERSION}`} alt="" loading="lazy" decoding="async" width={base.width} height={base.height} style={baseImageStyle(base, crop)} />
-      <svg class="gpmap-overlay" viewBox={`${crop.x} ${crop.y} ${crop.w} ${crop.h}`} role="img" aria-label={`Street map around ${d.name}, ${d.address}${entrance ? ', with its entrance marked' : ''}`}>
+      <svg class="gpmap-overlay" viewBox={`${crop.x} ${crop.y} ${crop.w} ${crop.h}`} role="img" aria-label={`Street map around ${nameWithAddress(d.name, d.address)}${entrance ? ', with its entrance marked' : ''}`}>
         <g class="localmap-building">
           <path d={`M${b.x} ${b.y}c${-R * 0.25} ${-R * 0.55} ${-R} ${-R * 1.1} ${-R} ${-R * 1.85}a${R} ${R} 0 1 1 ${R * 2} 0c0 ${R * 0.75} ${-R * 0.75} ${R * 1.3} ${-R} ${R * 1.85}z`} stroke-width={R * 0.14} />
           <circle cx={b.x} cy={b.y - R * 1.85} r={R * 0.38} />
@@ -38,7 +39,7 @@ const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
     </div>
   )}
   <figcaption>
-    <p><strong>{d.name}</strong>, {d.address}.</p>
+    <p>{d.address.startsWith(d.name) ? <><strong>{d.name}</strong>{d.address.slice(d.name.length)}</> : <><strong>{d.name}</strong>, {d.address}</>}.</p>
     <p><a href={directionsUrl} rel="noopener noreferrer" target="_blank">Get directions (Google Maps)<span class="sr-only"> (external site, opens in a new tab)</span></a></p>
     <p class="localmap-credit">Base map © <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer" target="_blank">OpenStreetMap contributors</a> (ODbL). <a href="https://www.openstreetmap.org/fixthemap" rel="noopener noreferrer" target="_blank">Report a map error</a>.</p>
   </figcaption>

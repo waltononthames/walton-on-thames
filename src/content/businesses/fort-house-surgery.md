@@ -4,7 +4,7 @@ slug: "fort-house-surgery"
 category: "healthcare"
 subcategories: ["gp-surgery"]
 neighbourhood: "walton-on-thames"
-address: "Walton Community Hospital, Rodney Road, Walton-on-Thames, Surrey, KT12 3LD"
+address: "Fort House Surgery, Walton Community Hospital, Rodney Road, Walton-on-Thames, Surrey, KT12 3LD"
 lat: 51.3799
 lng: -0.4064
 phone: "01932 253055"
