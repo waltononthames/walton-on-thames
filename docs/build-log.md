@@ -1712,3 +1712,24 @@ Darren supplied the account, `bsky.app/profile/walton-on-thames.org`. A 200 from
 - `BaseLayout.astro`: appended to the Organization node's `sameAs`, which now lists all five profiles.
 
 **The handle depends on DNS, not on this repo.** `walton-on-thames.org` is a domain handle, and Bluesky verifies it through the TXT record `_atproto.walton-on-thames.org` = `did=did:plc:d7lydwjkdj5xox7gmavgsutc`. The alternative method, a file at `/.well-known/atproto-did`, is not used: the live site returns 404 there and the repo has no `public/.well-known/`. So no deploy can break the handle, but deleting that TXT record in the Cloudflare DNS dashboard would, and the account would drop back to a `.bsky.social` handle.
+
+## 2026-09-21: GP directory and practice profiles upgraded, nearby-pharmacy module added
+
+Implemented from Darren's GP directory brief. Full detail, inventory and the review cycle are in `docs/gp-directory.md`.
+
+**All six existing GP listings were upgraded in place**: Ashley Medical Practice, Fort House Surgery, Hersham Surgery, and The Red, White and Yellow Practices. URLs, slugs and records are unchanged, and no redirects were needed. Each `/directory/<slug>/` page for a practice now uses a shared template (`src/components/gp/GpPracticeProfile.astro`) with contact actions, registration and catchment links, opening hours with their source, the NHS facility list with its "last confirmed" date, NaPTAN bus stops, repeat-prescription arrangements, a focused map, nearby pharmacies, and field-level sources. `/living/gp-surgeries/` was rebuilt in place as the comparison page, with a table, a lettered map by building, a CSS-only location filter, catchment guidance and the Whiteley Village note.
+
+**Verified this session** against each practice's own site and NHS profile, NHS Find a GP and Find a Pharmacy, postcodes.io, and DfT NaPTAN. Corrected: Ashley Medical Practice's coordinates (about 300 m out), Townsend Chemist's (about 200 m), The White Practice's hours (appointment times shown as opening hours), the old claim that Fort House shares Walton Health Centre, and "currently accepting new patients" stated as a permanent fact. Where a practice's site and its NHS profile disagree on hours (Red Practice, Ashley), both are shown.
+
+**Pharmacies**: seven existing records now carry `nhs_url`, `ods_code` and their own websites where they have one. Five were added just outside the area (Oatlands Park, Church Pharmacy Weybridge, Central Pharmacy Esher, Boots Esher, Nebel Sunbury) and appear on `/living/pharmacies/` as a separate group.
+
+**Maps** are static OpenStreetMap SVGs (`npm run map:gp`), with markers placed at build time.
+
+Verified: build clean at 471 pages, `seo:validate` passes (the validator now accepts `MedicalClinic`), `seo:links` reports zero broken internal links, the verification and em-dash gates pass, `test:pharmacies` passes 10 of 10, no horizontal scroll at 375 px, and map markers take keyboard focus. The travel-mode switch, ranking order, missing-route handling and list/marker numbering were checked in the browser against a temporary fixture file, which was then removed.
+
+## Still open
+- **Journey times are not published.** `src/data/pharmacy-routes.json` is empty until a routing provider is chosen (options and terms in `docs/gp-directory.md`). Until then the pharmacy lists are ordered by straight-line distance and say so.
+- **No photographs yet** of any practice, entrance, car park or prescription box. The slots are documented; nothing renders until they are supplied.
+- **Entrances, vehicle access points and prescription-box locations** need an on-site visit or practice confirmation.
+- **Whiteley Homes Trust handbook**: the Hersham Surgery note rests on the 18 July 2026 reading; its text could not be extracted this session. Re-read it.
+- **`astro check`** reports 153 errors site-wide, the same as the 15 September baseline, all from the pre-existing untyped `getCollection` results. The new GP and pharmacy code is explicitly typed; the remaining errors in `/living/pharmacies/` and `[slug].astro` are on lines that predate this work.
