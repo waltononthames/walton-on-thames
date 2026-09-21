@@ -38,7 +38,7 @@ const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
     </div>
   )}
   <figcaption>
-    <p><strong>{d.name}</strong>, {d.address}. The pin is placed from: {d.gp?.building_point_source.label.replace(/\.$/, '')}.{!entrance && ' It marks the location, not a particular door.'}</p>
+    <p><strong>{d.name}</strong>, {d.address}.</p>
     <p><a href={directionsUrl} rel="noopener noreferrer" target="_blank">Get directions (Google Maps)<span class="sr-only"> (external site, opens in a new tab)</span></a></p>
     <p class="localmap-credit">Base map © <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer" target="_blank">OpenStreetMap contributors</a> (ODbL). <a href="https://www.openstreetmap.org/fixthemap" rel="noopener noreferrer" target="_blank">Report a map error</a>.</p>
   </figcaption>
