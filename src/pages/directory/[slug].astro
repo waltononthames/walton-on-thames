@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatPlaceName } from '../../utils/format';
 import GpPracticeProfile from '../../components/gp/GpPracticeProfile.astro';
+import PhotoLightbox from '../../components/PhotoLightbox.astro';
 
 // Without this, Astro.props infers as `never` and every biz.data.* reference
 // below reports ts(2339). Typing the props clears all of them.
@@ -23,9 +24,9 @@ export async function getStaticPaths() {
 const { biz } = Astro.props;
 const { Content } = await render(biz);
 
-// First image is the hero, the rest form the gallery. Listings with no
-// images keep the plain navy .page-hero and render no gallery at all.
-const [heroImage, ...galleryImages] = biz.data.images;
+// The first image is also the hero background. Listings with no images keep
+// the plain navy .page-hero and render no gallery at all.
+const heroImage = biz.data.images[0];
 
 
 const categoryLabel = biz.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
@@ -161,25 +162,28 @@ const openingHoursSpecification = biz.data.hours
       <article class="prose">
         <Content />
 
-        {galleryImages.length > 0 && (
+        {/* Every photograph appears here, including the hero: behind the
+            title it is darkened and mostly covered, so this is the only
+            place it can actually be seen. Each links to the full image,
+            and PhotoLightbox opens it in a lightbox instead. */}
+        {biz.data.images.length > 0 && (
           <>
             <h2>Photographs</h2>
             <div class="biz-gallery">
-              {galleryImages.map((img: ListingImage) => (
+              {biz.data.images.map((img: ListingImage) => (
                 <figure class="biz-gallery-item">
-                  <img src={img.src} alt={img.alt} loading="lazy" />
+                  <a href={img.src} class="biz-gallery-link" data-lightbox data-caption={img.caption ?? ''}>
+                    <img src={img.src} alt={img.alt} loading="lazy" />
+                    <span class="sr-only"> (opens a larger view)</span>
+                  </a>
                   {img.caption && <figcaption>{img.caption}</figcaption>}
                 </figure>
               ))}
             </div>
-          </>
-        )}
+            {biz.data.image_credit && <p class="biz-image-credit">{biz.data.image_credit}</p>}
 
-        {/* Outside the gallery block on purpose: a listing with a single
-            photograph has a hero but no gallery, and its credit still has
-            to appear somewhere. */}
-        {biz.data.image_credit && biz.data.images.length > 0 && (
-          <p class="biz-image-credit">{biz.data.image_credit}</p>
+            <PhotoLightbox />
+          </>
         )}
       </article>
 
@@ -331,6 +335,19 @@ const openingHoursSpecification = biz.data.hours
     font-size: 0.8rem;
     color: var(--color-slate-soft);
   }
+
+  .biz-gallery-link {
+    display: block;
+    border-radius: var(--radius-lg);
+    cursor: zoom-in;
+  }
+
+  .biz-gallery-link:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .biz-gallery-link:hover img { box-shadow: var(--shadow-card-hover); }
 
   .hero-meta {
     display: flex;

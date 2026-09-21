@@ -18,7 +18,47 @@ hours:
   sat: "Closed"
   sun: "Closed"
 description: "NHS GP practice at Walton Community Hospital on Rodney Road: address, phone, registration and repeat prescription links, bus stops and nearby pharmacies."
-images: []
+images:
+  - src: "/images/directory/fort-house-surgery/fort-house-surgery-walton-on-thames-front.webp"
+    alt: "Fort House Surgery's single-storey red-brick wing at Walton Community Hospital, with the FHS Fort House Surgery sign above the windows and a GP Surgery Parking Only sign by the hedge on the right"
+    caption: "Fort House Surgery's own wing on the hospital site."
+    role: exterior
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
+  - src: "/images/directory/fort-house-surgery/fort-house-surgery-walton-on-thames-entrance.webp"
+    alt: "Close view of the Fort House Surgery sign on the brick wall, with the glazed entrance door to its left and a No Entry sign in the hedge to the right"
+    caption: "The glazed door to the left of the Fort House Surgery sign."
+    role: entrance
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
+  - src: "/images/directory/fort-house-surgery/fort-house-surgery-walton-on-thames-forecourt.webp"
+    alt: "The block-paved forecourt and turning circle in front of the hospital buildings, with marked parking bays on the right"
+    caption: "The forecourt in front of the hospital buildings."
+    role: parking
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
+  - src: "/images/directory/fort-house-surgery/fort-house-surgery-walton-community-hospital-from-road.webp"
+    alt: "Walton Community Hospital seen from the road, with a canopied entrance on the left and the Fort House Surgery wing and its sign on the right"
+    caption: "From the road: a canopied entrance on the left, and the Fort House Surgery wing on the right."
+    role: exterior
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
+  - src: "/images/directory/fort-house-surgery/walton-community-hospital-site-sign.webp"
+    alt: "Blue and white NHS sign at the site entrance reading Thames Medical Locality Hub, Walton Community Hospital, with a red post box beside it"
+    caption: "The sign at the site entrance."
+    role: signage
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
 featured: false
 verified_date: "2026-09-21"
 source: "Practice website (forthousesurgery.nhs.uk) and NHS profile (nhs.uk/services/gp-surgery/fort-house-surgery/H81020), both checked 21 September 2026"
@@ -106,6 +146,15 @@ gp:
       basis: nhs-profile
       checked: "2026-09-21"
   visiting:
+    - topic: entrance
+      text: "Fort House Surgery has its own signed wing on the hospital site. Our photographs from 6 September 2026 show the FHS Fort House Surgery sign on the wall above the windows, with the glazed entrance door to its left. Seen from the road, the surgery wing is on the right, and a separate canopied entrance is on the left."
+      source: &photos
+        label: "Walton-on-Thames.org photographs of the site, 6 September 2026"
+        basis: editor-observation
+        checked: "2026-09-06"
+    - topic: signage
+      text: "A sign reading \"GP Surgery Parking Only\" stands by the hedge in front of the surgery wing (seen 6 September 2026). The sign at the site entrance names the site \"Thames Medical Locality Hub, Walton Community Hospital\" and says there are no accident and emergency services there, giving the nearest A&E as St Peter's Hospital, Chertsey."
+      source: *photos
     - topic: accessible-parking
       text: "The practice says a designated disabled parking bay is next to the surgery entrance, and that the surgery has a ramp and wide doors for wheelchair access. It doesn't say where on the hospital site the entrance is."
       source: &access
