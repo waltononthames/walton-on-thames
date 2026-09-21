@@ -85,10 +85,19 @@ gp:
     name: "Walton Community Hospital"
     note: "Fort House Surgery is based at Walton Community Hospital. It is a separate site from Walton Health Centre, which is also on Rodney Road: the NHS gives the two different postcodes, KT12 3LD for Fort House and KT12 3LB for the health centre."
   building_point_source:
-    label: "Centre of the Walton Community Hospital building outline on OpenStreetMap. The NHS profile pin sits at the building's eastern tip, and neither source says which part of the building the surgery occupies"
+    label: "Centre of the Walton Community Hospital building outline on OpenStreetMap"
     url: "https://www.openstreetmap.org/relation/1241000"
     basis: openstreetmap
     checked: "2026-09-21"
+  # Darren marked the surgery entrance on a map on 22 September 2026; the
+  # point was placed by matching the building's four tips in his screenshot
+  # to the OpenStreetMap outline (fit within about 2 m). It sits in the
+  # recessed corner where his photographs show the glazed entrance door.
+  entrance:
+    lat: 51.38000
+    lng: -0.40664
+    basis: "Surgery entrance marked by the Walton-on-Thames.org editor, who has visited the site, and placed against the OpenStreetMap building outline"
+    checked: "2026-09-22"
   hours_source: *contact
   hours_label: "Reception opening times"
   appointment_notes:
@@ -147,7 +156,7 @@ gp:
       checked: "2026-09-21"
   visiting:
     - topic: entrance
-      text: "Fort House Surgery has its own signed wing on the hospital site. Our photographs from 6 September 2026 show the FHS Fort House Surgery sign on the wall above the windows, with the glazed entrance door to its left. Seen from the road, the surgery wing is on the right, and a separate canopied entrance is on the left."
+      text: "Fort House Surgery has its own signed wing on the hospital site. Our photographs from 6 September 2026 show the FHS Fort House Surgery sign on the wall above the windows, with the glazed entrance door to its left. Seen from the road, the surgery wing is on the right, and a separate canopied entrance is on the left. The entrance is marked on the map below, in a recessed corner on the Rodney Road side of the hospital building."
       source: &photos
         label: "Walton-on-Thames.org photographs of the site, 6 September 2026"
         basis: editor-observation

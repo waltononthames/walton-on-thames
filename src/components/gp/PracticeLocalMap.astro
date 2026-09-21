@@ -13,10 +13,13 @@ const d = practice.data;
 const base = localBaseFor(d.slug);
 const building = { lat: d.lat!, lng: d.lng! };
 const entrance = d.gp?.entrance;
-const crop = base ? cropAround(base, entrance ? [building, entrance] : [building], 330, 1.4) : null;
+// Once an entrance is known the pin marks the door, not the building
+// centre, and is labelled; a second marker a few metres away would only
+// overlap it.
+const pinPoint = entrance ?? building;
+const crop = base ? cropAround(base, [pinPoint], 330, 1.4) : null;
 const R = crop ? crop.w * 0.022 : 0;
-const b = base ? project(base, building) : null;
-const e = base && entrance ? project(base, entrance) : null;
+const b = base ? project(base, pinPoint) : null;
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(nameWithAddress(d.name, d.address))}`;
 ---
 
@@ -29,11 +32,8 @@ const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
           <path d={`M${b.x} ${b.y}c${-R * 0.25} ${-R * 0.55} ${-R} ${-R * 1.1} ${-R} ${-R * 1.85}a${R} ${R} 0 1 1 ${R * 2} 0c0 ${R * 0.75} ${-R * 0.75} ${R * 1.3} ${-R} ${R * 1.85}z`} stroke-width={R * 0.14} />
           <circle cx={b.x} cy={b.y - R * 1.85} r={R * 0.38} />
         </g>
-        {e && (
-          <g class="localmap-entrance">
-            <rect x={e.x - R * 0.6} y={e.y - R * 0.6} width={R * 1.2} height={R * 1.2} stroke-width={R * 0.14} />
-            <text x={e.x + R * 0.9} y={e.y} font-size={R * 0.9} dominant-baseline="central">Entrance</text>
-          </g>
+        {entrance && (
+          <text class="localmap-entrance-label" x={b.x + R * 1.25} y={b.y - R * 1.85} font-size={R * 0.95} dominant-baseline="central">Surgery entrance</text>
         )}
       </svg>
     </div>
@@ -58,8 +58,7 @@ const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
   .gpmap-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
   .localmap-building path { fill: #B5543C; stroke: #FFFFFF; }
   .localmap-building circle { fill: #FFFFFF; }
-  .localmap-entrance rect { fill: var(--color-navy); stroke: #FFFFFF; }
-  .localmap-entrance text { fill: var(--color-navy); font-weight: 700; font-family: var(--font-body); paint-order: stroke; stroke: #F3F0E4; stroke-width: 4px; }
+  .localmap-entrance-label { fill: var(--color-navy); font-weight: 700; font-family: var(--font-body); paint-order: stroke; stroke: #F3F0E4; stroke-width: 4px; }
   .localmap figcaption { font-size: 0.875rem; color: var(--color-slate); margin-top: 0.6rem; }
   .localmap figcaption p { margin: 0 0 0.35rem; }
   .localmap figcaption a { color: var(--color-navy); }
