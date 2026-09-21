@@ -74,7 +74,7 @@ const QUERY = `[out:json][timeout:240];(
   way["waterway"="river"](${bbox(AREA)});
   way["natural"="water"](${bbox(AREA)});
   node["place"~"^(town|village|suburb)$"](${bbox(AREA)});
-  ${LOCALS.map((l) => `way["highway"](${bbox(l.frame, 0.001)});way["building"](${bbox(l.frame, 0.001)});way["amenity"="parking"](${bbox(l.frame, 0.001)});way["leisure"~"^(park|garden|common)$"](${bbox(l.frame, 0.001)});way["landuse"="grass"](${bbox(l.frame, 0.001)});`).join('\n  ')}
+  ${LOCALS.map((l) => `way["highway"](${bbox(l.frame, 0.001)});way["building"](${bbox(l.frame, 0.001)});relation["building"](${bbox(l.frame, 0.001)});way["amenity"="parking"](${bbox(l.frame, 0.001)});way["leisure"~"^(park|garden|common)$"](${bbox(l.frame, 0.001)});way["landuse"="grass"](${bbox(l.frame, 0.001)});`).join('\n  ')}
 );out geom;`;
 
 async function fetchOverpass() {
@@ -207,7 +207,13 @@ function localSvg(elements, local) {
   const f = local.frame;
   const ways = elements.filter((e) => e.type === 'way' && e.geometry && inFrame(e, f));
   const hw = (re) => ways.filter((w) => re.test(w.tags?.highway ?? ''));
-  const buildings = pathsOf(ways.filter((w) => w.tags?.building), P, true);
+  // Large buildings such as Walton Community Hospital are mapped as
+  // multipolygon relations, with courtyards as inner rings. Each member way is
+  // drawn as its own ring and the even-odd fill cuts the courtyards out.
+  // Without this the hospital is missing and its pin sits on blank ground.
+  const buildingRelations = elements.filter((e) => e.type === 'relation' && e.tags?.building && e.members?.some((m) => m.geometry && inFrame(m, f)));
+  const buildings = pathsOf(ways.filter((w) => w.tags?.building), P, true)
+    + pathsOf(buildingRelations.flatMap((r) => r.members.filter((m) => m.type === 'way' && m.geometry)), P, true);
   const parking = pathsOf(ways.filter((w) => w.tags?.amenity === 'parking'), P, true);
   const green = pathsOf(ways.filter((w) => /^(park|garden|common)$/.test(w.tags?.leisure ?? '') || w.tags?.landuse === 'grass'), P, true);
   const major = pathsOf(hw(/^(primary|secondary|tertiary|unclassified)$/), P);
@@ -220,7 +226,7 @@ function localSvg(elements, local) {
 <rect width="${P.width}" height="${P.height}" fill="#F3F0E4"/>
 <path d="${green}" fill="#DCE5CF"/>
 <path d="${parking}" fill="#E9E4D6" stroke="#D2C8B0" stroke-width="1"/>
-<path d="${buildings}" fill="#E2DAC6" stroke="#D2C8B0" stroke-width="1"/>
+<path d="${buildings}" fill="#E2DAC6" fill-rule="evenodd" stroke="#D2C8B0" stroke-width="1"/>
 <path d="${paths}" fill="none" stroke="#C9BFA6" stroke-width="2" stroke-dasharray="5 4"/>
 <path d="${service}" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="${minor}" fill="none" stroke="#D8CFB8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>

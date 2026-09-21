@@ -5,8 +5,8 @@ category: "healthcare"
 subcategories: ["gp-surgery"]
 neighbourhood: "walton-on-thames"
 address: "Walton Community Hospital, Rodney Road, Walton-on-Thames, Surrey, KT12 3LD"
-lat: 51.3800
-lng: -0.4060
+lat: 51.3799
+lng: -0.4064
 phone: "01932 253055"
 website: "https://www.forthousesurgery.nhs.uk/"
 hours:
@@ -45,9 +45,9 @@ gp:
     name: "Walton Community Hospital"
     note: "Fort House Surgery is based at Walton Community Hospital. It is a separate site from Walton Health Centre, which is also on Rodney Road: the NHS gives the two different postcodes, KT12 3LD for Fort House and KT12 3LB for the health centre."
   building_point_source:
-    label: "Map pin on the Fort House Surgery NHS profile, for the Walton Community Hospital site"
-    url: "https://www.nhs.uk/services/gp-surgery/fort-house-surgery/H81020/contact-details-and-opening-times"
-    basis: nhs-profile
+    label: "Centre of the Walton Community Hospital building outline on OpenStreetMap. The NHS profile pin sits at the building's eastern tip, and neither source says which part of the building the surgery occupies"
+    url: "https://www.openstreetmap.org/relation/1241000"
+    basis: openstreetmap
     checked: "2026-09-21"
   hours_source: *contact
   hours_label: "Reception opening times"
@@ -106,6 +106,13 @@ gp:
       basis: nhs-profile
       checked: "2026-09-21"
   visiting:
+    - topic: accessible-parking
+      text: "The practice says a designated disabled parking bay is next to the surgery entrance, and that the surgery has a ramp and wide doors for wheelchair access. It doesn't say where on the hospital site the entrance is."
+      source: &access
+        label: "Fort House Surgery website, Disabled access"
+        url: "https://www.forthousesurgery.nhs.uk/about-section/disabled-access/"
+        basis: practice-website
+        checked: "2026-09-21"
     - topic: parking
       text: "The practice's contact page lists car parking, cycle parking and disabled parking. It gives no charges, time limits or directions to the spaces."
       source: *contact

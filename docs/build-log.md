@@ -1733,3 +1733,36 @@ Verified: build clean at 471 pages, `seo:validate` passes (the validator now acc
 - **Entrances, vehicle access points and prescription-box locations** need an on-site visit or practice confirmation.
 - **Whiteley Homes Trust handbook**: the Hersham Surgery note rests on the 18 July 2026 reading; its text could not be extracted this session. Re-read it.
 - **`astro check`** reports 153 errors site-wide, the same as the 15 September baseline, all from the pre-existing untyped `getCollection` results. The new GP and pharmacy code is explicitly typed; the remaining errors in `/living/pharmacies/` and `[slug].astro` are on lines that predate this work.
+
+## 2026-09-21: Fort House Surgery pin and missing buildings on the Rodney Road map
+
+Darren reported the Fort House pin slightly out of position. There were two causes. The pin was the NHS profile's, at the eastern tip of the Walton Community Hospital building, and it now sits at the centre of the building outline on OpenStreetMap. And the local base map drew no building for either the hospital or Walton Health Centre, because OpenStreetMap maps both as multipolygon relations. The map build now draws building relations (courtyards cut out with an even-odd fill), and `MAP_VERSION` is bumped so browsers fetch the redrawn map. The Fort House profile also gains the practice's own statement, from its Disabled access page (updated 8 July 2026), that a designated disabled bay is next to the surgery entrance, which has a ramp and wide doors. Bus stop distances were re-measured from the new point and still round to the published figures.
+
+## 2026-09-21: /history/lost-inns-and-taverns-walton-hersham/
+
+Status: built from Darren's draft (`lost-inns-taverns-walton-hersham-whiteley-updated.md`), not yet committed. Historical content, so the Research and Editorial Standards govern. Long-form layout (grouped APA references, linked citations: 85 linked, 0 unmatched). Added to the Georgian era list on `/history/`. `metaTitle` 50 characters, `metaDescription` 148.
+
+Print sources (Martin 1999, Hughes 2003, Tarplee, Whiteley Homes Trust 1949) used as supplied. Every web source opened on 21 September 2026; the BBC article could not be fetched (bbc.co.uk blocks automated access) and was confirmed from its LDRS syndicated copy.
+
+### Corrections made against the sources
+
+- White Hart: the council appraisal gives the group as Nos 21–27 Church Street, not 23–27. Closure date conflict now shown openly: Martin and the appraisal give c.1905, Pulford (2019) gives about 1902.
+- Tarplee dated 1998 (matching the SIHG record and the breweries article), not 1997.
+- Castle: "Easter 1972" not supported by the cited Pulford article; now "1972".
+- Duke's Head: CAMRA files the 2005 closure under Hungry Horse, which sits awkwardly with Martin's 1998 reversion to Duke's Head; both stated.
+- Mort's Wine Bar: no Tier 1/2 source for Mort's own live music (its site is gone); section reframed on CAMRA's record of 29 Bridge Street.
+- Grove: planning status cited to Elmbridge's own register (Under Consideration) instead of PlanIndex; BBC headline corrected; developer's words paraphrased, not quoted.
+- Draft's editorial-action notes resolved with verified URLs (CAMRA Ashley Arms, Hungry Horse, Whiteley Social Club; Elmbridge Museum "Back to School"; WHT 2024 annual report pp. 7, 10; Craft Union Regent).
+
+### Removed (unverifiable this session)
+
+- Crown: 1931 Crown Hotel advertisement (Pulford 2019a): no such article found in the Walton Matters archive.
+- Whiteley: "The Clubhouse became an important part of this provision" (uncited).
+
+## Still open
+
+- Whiteley Homes Trust 1949: confirm edition and imprint against the scan's title page.
+- Martin's exact title (ampersands vs "and"): used the form already on the breweries page.
+- Hughes 2003 page number for the Kiwi.
+- Crown 1931 advertisement: restore if Darren can supply the article.
+- Grove: re-check 2026/1977 when a decision is issued (target 6 November 2026).
