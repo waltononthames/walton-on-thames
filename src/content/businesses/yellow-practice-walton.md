@@ -18,7 +18,47 @@ hours:
   sat: "Closed"
   sun: "Closed"
 description: "The Yellow Practice is one of three separate NHS GP practices in Walton Health Centre on Rodney Road: opening times, registration links, bus stops and nearby pharmacies."
-images: []
+images:
+  - src: "/images/directory/walton-health-centre/walton-health-centre-main-entrance.webp"
+    alt: "The main entrance to Walton Health Centre: glazed doors in a brick and white-panelled front, with NHS notice boards on the wall to the left"
+    caption: "The main entrance to Walton Health Centre."
+    role: entrance
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
+  - src: "/images/directory/walton-health-centre/walton-health-centre-entrance-path.webp"
+    alt: "A paved path leading between shrubs and a tall conifer to the glazed entrance of Walton Health Centre, with a blue handrail on the right"
+    caption: "The path up to the entrance."
+    role: step-free-route
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
+  - src: "/images/directory/walton-health-centre/walton-health-centre-from-pavement.webp"
+    alt: "The low brick Walton Health Centre building seen from the pavement across a grass verge, with a cycle stand in the foreground"
+    caption: "Walton Health Centre from the pavement."
+    role: exterior
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
+  - src: "/images/directory/walton-health-centre/walton-health-centre-direction-sign.webp"
+    alt: "A white sign with a blue arrow and the words Health Centre, standing in a planted verge beside the road"
+    caption: "A Health Centre direction sign by the road."
+    role: signage
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1000
+    height: 750
+  - src: "/images/directory/fort-house-surgery/walton-health-centre-car-park.webp"
+    alt: "A wide, block-paved car park, empty apart from one car at the far left, edged by hedges with houses beyond"
+    caption: "The Walton Health Centre car park, off Rodney Road."
+    role: parking
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
 featured: false
 verified_date: "2026-09-21"
 source: "Practice website (yellowpracticewalton.nhs.uk) and NHS profile (nhs.uk/services/gp-surgery/the-yellow-practice/H81095), both checked 21 September 2026"
@@ -107,6 +147,12 @@ gp:
       basis: nhs-profile
       checked: "2026-09-21"
   visiting:
+    - topic: entrance
+      text: "Our photographs from 6 September 2026 show the health centre's main entrance: glazed doors at the end of a short paved path, with notice boards on the brick wall to their left. A white Health Centre sign with an arrow points the way from the road."
+      source: &photos
+        label: "Walton-on-Thames.org photographs of Walton Health Centre, 6 September 2026"
+        basis: editor-observation
+        checked: "2026-09-06"
     - topic: parking
       text: "The practice's website lists car parking, cycle parking and disabled parking. It gives no charges, time limits or directions to the spaces."
       source: *surgery
