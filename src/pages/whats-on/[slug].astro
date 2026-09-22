@@ -99,9 +99,10 @@ const isFreeEvent = /^free/i.test(price);
           { "@type": "SportsTeam", "name": Astro.props.fixture.data.awayTeam }
         ],
         "organizer": { "@type": "SportsOrganization", "name": "Walton & Hersham Football Club" }
-      } : {
-        "organizer": { "@type": "Organization", "name": "Walton-on-Thames.org", "url": "https://walton-on-thames.org/" }
-      }),
+      } : {}),
+      // Other listings carry no organizer: we publish the listing but do not
+      // run the event, and omitting an unknown organizer is better than
+      // naming the wrong one (audit M7, 22 September 2026).
       ...(image ? { "image": `https://walton-on-thames.org${image}` } : {}),
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({

@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["georgian", "twentieth-century", "contemporary"]
 entityType: "overview"
 publishDate: 2026-07-02
-reviewedDate: 2026-07-02
+reviewedDate: 2026-09-22
 sources:
   - author: "Wikipedia"
     year: "n.d."
@@ -28,6 +28,11 @@ sources:
     date: "25 March"
     url: "https://au.variety.com/?p=34625"
     accessed: "14 September 2026"
+  - author: "Royal Variety Charity"
+    year: "n.d."
+    title: "Royal Variety Performance: 1948, London Palladium"
+    url: "https://www.royalvarietycharity.org/royal-variety-performance/archive/detail/1948-london-palladium-"
+    accessed: "22 September 2026"
 related: ["film-studios", "walton-bridge"]
 ---
 
@@ -37,7 +42,7 @@ related: ["film-studios", "walton-bridge"]
 
 ## Julie Andrews
 
-Dame Julie Andrews, actress, singer and author, was born Julia Elizabeth Wells at Rodney House maternity home on Rodney Road, Walton-on-Thames, on 1 October 1935. Her mother, Barbara Morris Wells, was a piano teacher, and her father, Ted Wells, taught woodwork; after her parents separated, her mother remarried the tenor Ted Andrews, and Julie grew up performing alongside her stepfather from a young age. She became the youngest solo performer to appear at a Royal Variety Performance in 1948, aged twelve, and went on to a career spanning stage, film and television across more than seven decades. Walton's connection to Andrews is one of the town's most consistently cited claims to fame, and the site of her birth is still marked locally.
+Dame Julie Andrews, actress, singer and author, was born Julia Elizabeth Wells at Rodney House maternity home on Rodney Road, Walton-on-Thames, on 1 October 1935. Her mother, Barbara Morris Wells, was a piano teacher, and her father, Ted Wells, taught woodwork; after her parents separated, her mother remarried the tenor Ted Andrews, and Julie grew up performing alongside her stepfather from a young age. On 1 November 1948, aged thirteen, she performed at the Royal Variety Performance at the London Palladium (Royal Variety Charity, n.d.), and went on to a career spanning stage, film and television across more than seven decades. Walton's connection to Andrews is one of the town's most consistently cited claims to fame, and the site of her birth is still marked locally.
 
 ## Madeleine Albright
 

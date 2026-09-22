@@ -7,7 +7,7 @@ cluster: "walton-history"
 era: ["edwardian", "wartime", "interwar", "postwar"]
 entityType: "institution"
 publishDate: 2026-07-02
-reviewedDate: 2026-09-14
+reviewedDate: 2026-09-22
 sources:
   - author: "BFI Screenonline"
     year: "n.d."
@@ -32,7 +32,7 @@ sources:
 related: ["famous-residents", "walton-bridge"]
 ---
 
-For a town best known today for its river and its railway station, Walton-on-Thames has an outsized claim on the early history of British cinema. Between 1899 and 1961, a single site on Hurst Grove operated, under three different names, as one of the country's most important film studios, and for a period during the First World War it stood alongside only two other British studios of comparable scale. The story ends badly, in a bankruptcy that destroyed most of what the studio had made, but the studio itself shaped the earliest years of a British film industry that barely existed before it arrived.
+For a town best known today for its river and its railway station, Walton-on-Thames has an outsized claim on the early history of British cinema. Between 1899 and 1961, a single site on Hurst Grove operated, under three different names, as one of the country's most important film studios, and during the First World War it was among Britain's leading producers. The story ends badly, in a bankruptcy that destroyed most of what the studio had made, but the studio itself shaped the earliest years of a British film industry that barely existed before it arrived.
 
 <!-- IMAGE: hepworth-playhouse-exterior.jpg, alt: "The Cecil Hepworth Playhouse, the surviving power house of the original Walton film studio" -->
 

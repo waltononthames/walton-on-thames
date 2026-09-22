@@ -99,9 +99,7 @@ const uid = p.slug;
             <address>{d.address}</address>
             <ul class="pharm-facts">
               {d.phone && <li>Phone: <a href={`tel:${d.phone.replace(/\s/g, '')}`}>{d.phone}</a></li>}
-              {d.website
-                ? <li>Website: <a href={d.website} rel="noopener noreferrer" target="_blank">{d.website}<span class="sr-only"> (external site, opens in a new tab)</span></a></li>
-                : <li>No website of its own is listed on its NHS profile.</li>}
+              {d.website && <li>Website: <a href={d.website} rel="noopener noreferrer" target="_blank">{d.website}<span class="sr-only"> (external site, opens in a new tab)</span></a></li>}
               {hours.length > 0 && <li>Usual hours: {hours.join(' · ')}</li>}
               {d.nhs_url && <li><a href={`${d.nhs_url}/contact-details-and-opening-times`} rel="noopener noreferrer" target="_blank">Check today's opening on its NHS listing<span class="sr-only"> (external site, opens in a new tab)</span></a></li>}
               <li><a href={directions(`${d.name}, ${d.address}`, r.google)} rel="noopener noreferrer" target="_blank">{r.word === 'driving' ? 'Driving' : 'Walking'} directions from {p.name} (Google Maps)<span class="sr-only"> (external site, opens in a new tab)</span></a></li>

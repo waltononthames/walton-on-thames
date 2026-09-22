@@ -1766,3 +1766,23 @@ Print sources (Martin 1999, Hughes 2003, Tarplee, Whiteley Homes Trust 1949) use
 - Hughes 2003 page number for the Kiwi.
 - Crown 1931 advertisement: restore if Darren can supply the article.
 - Grove: re-check 2026/1977 when a decision is issued (target 6 November 2026).
+
+## 2026-09-22: Quick fixes from the 22 September factual accuracy audit
+
+Darren supplied an external audit (`walton-on-thames-factual-accuracy-audit-2026-09-22.md`, 10 findings). All ten were checked against the code and, where cited, the sources. Seven quick fixes made:
+
+- **M8** `/history/famous-residents/`: Julie Andrews was thirteen, not twelve, at the Royal Variety Performance of 1 November 1948 (Royal Variety Charity archive, checked 22 September). "Youngest solo performer" removed: the archive does not support it.
+- **M1** `/history/`: "Walton's name is older than England" removed; the place-name meaning is now stated as a possibility, not a dating, matching `/history/domesday-and-origins/`.
+- **M2** `/hersham/parakeets/`: closing paragraph no longer asserts present-day scale; the 2006 count is the only published figure found.
+- **M6** `/history/film-studios/` and `/things-to-do/walton-trail/`: "alongside only two other British studios of comparable scale" replaced; no source names the comparison set.
+- **M7** `whats-on/[slug].astro`: non-fixture events no longer name Walton-on-Thames.org as `organizer` in JSON-LD (was 101 pages). Fixtures keep the club.
+- **L1** `/hersham/parakeets/`: `entityType` changed from `place` to `overview`, so it no longer emits `LandmarksOrHistoricalBuildings`.
+- **L2** `NearbyPharmacies.astro`: removed the fallback "No website of its own is listed on its NHS profile". Nebel's NHS profile does link a site (currently "Coming Soon"), and the line made an unchecked negative claim for every pharmacy without a website on our record.
+
+## Still open (from the same audit)
+
+- **M3** Famous Residents: person-by-person evidence register; Rodney's connection especially.
+- **M4** Cowey Stakes: trace the stake details to antiquarian passages (start with VCH Surrey vol. 3) or shorten.
+- **M5** Wikipedia cited on 24 history/Hersham pages: replace with underlying sources, priority pages as listed in the audit.
+- Events: consider an optional `organizer` field so known organisers can be backfilled.
+- River Mole walks still emits `LandmarksOrHistoricalBuildings`; review individually.

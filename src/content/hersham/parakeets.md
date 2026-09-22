@@ -5,9 +5,9 @@ metaDescription: "Ring-necked parakeets roost near Hersham: what was counted in 
 slug: "parakeets"
 cluster: "hersham"
 era: ["contemporary"]
-entityType: "place"
+entityType: "overview"
 publishDate: 2026-07-02
-reviewedDate: 2026-09-14
+reviewedDate: 2026-09-22
 sources:
   - author: "Wikipedia"
     year: "n.d."
@@ -47,4 +47,4 @@ The most reliable time to see the birds is at dusk, when they return to roost fr
 
 ## The wider south east spread
 
-Hersham's colony is a genuinely large and long-established example, but it sits within a much broader spread of feral ring-necked parakeets across the south east of England, with major populations recorded across London and the Thames valley more widely. What makes the Hersham roost notable locally is simply its scale and its consistency: a genuinely large, wild, self-sustaining colony of a bright green, distinctly un-British bird, established firmly enough on the edge of the village that most long-term residents now barely look up when a flock passes overhead.
+The Hersham roost sits within a much broader spread of feral ring-necked parakeets across the south east of England, with major populations recorded across London and the Thames valley more widely. The mid-2000s reporting described a large roost here. No comparable recent count has been found, so its present size, and how it compares with other roosts, remain uncertain.
