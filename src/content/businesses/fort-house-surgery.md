@@ -59,6 +59,30 @@ images:
     captured: "2026-09-06"
     width: 1200
     height: 900
+  - src: "/images/directory/fort-house-surgery/walton-health-centre-car-park.webp"
+    alt: "A wide, block-paved car park, empty apart from one car at the far left, edged by hedges with houses beyond"
+    caption: "The Walton Health Centre car park, off Rodney Road."
+    role: parking
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1200
+    height: 900
+  - src: "/images/directory/fort-house-surgery/walton-health-centre-car-park-rodney-road-corner.webp"
+    alt: "A Rodney Road street sign on a low wooden rail at a grass corner, with the block-paved health centre car park behind the hedge"
+    caption: "The health centre car park at the corner of Rodney Road."
+    role: parking
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1000
+    height: 750
+  - src: "/images/directory/fort-house-surgery/rodney-road-street-sign-walton-on-thames.webp"
+    alt: "Close view of a black and white Rodney Road street sign with the Elmbridge crest, fixed to a wooden rail in front of a hedge"
+    caption: "Rodney Road street sign."
+    role: signage
+    credit: "Darren Bayley / Walton-on-Thames.org"
+    captured: "2026-09-06"
+    width: 1000
+    height: 750
 featured: false
 verified_date: "2026-09-21"
 source: "Practice website (forthousesurgery.nhs.uk) and NHS profile (nhs.uk/services/gp-surgery/fort-house-surgery/H81020), both checked 21 September 2026"
