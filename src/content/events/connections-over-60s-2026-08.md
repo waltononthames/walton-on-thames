@@ -14,4 +14,4 @@ source_url: "https://www.achurchnearyou.com/church/8235/service-and-events/event
 
 Connections is a relaxed monthly get-together for retired men and women at St Mary's Church Hall, offering tea and cake alongside games, music, history, craft and hand massage. Held every second Saturday of the month from noon to 1.30pm.
 
-*Source: [Love Walton](https://lovewalton.co.uk/whats-on/) and [A Church Near You](https://www.achurchnearyou.com/church/8235/service-and-events/events/912783/). Always verify details directly with the organiser before attending.*
+*Source: [A Church Near You](https://www.achurchnearyou.com/church/8235/service-and-events/events/912783/). Always verify details directly with the organiser before attending.*

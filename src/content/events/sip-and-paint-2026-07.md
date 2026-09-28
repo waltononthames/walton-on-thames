@@ -3,17 +3,17 @@ title: "Sip & Paint"
 slug: "sip-and-paint-2026-07"
 start: "2026-10-01T18:30:00"
 end: "2026-10-01T20:30:00"
-venue: "42 The Heart Shopping Mall, Walton-on-Thames, KT12 1GH"
+venue: "Crafty Pots Cafe, 42 The Heart Shopping Mall, Walton-on-Thames, KT12 1GH"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: true
 price: "Ticketed: see venue"
-description: "A weekly guided painting class with a drink in hand, held in The Heart shopping mall."
-source_url: "https://lovewalton.co.uk/whats-on/"
+description: "A weekly guided painting evening with a drink in hand at Crafty Pots Cafe in The Heart shopping mall."
+source_url: "https://www.craftypotscafe.com/"
 ---
 
-Sip & Paint runs a weekly guided painting session for all abilities, with all materials supplied and a drink included, in a relaxed studio setting inside The Heart shopping mall.
+Crafty Pots Cafe, the pottery painting cafe at 42 The Heart Shopping Mall, opens on Thursday evenings for its Sip & Paint session, a relaxed guided painting evening for all abilities with a drink included.
 
-Held every Thursday, 6:30pm to 8:30pm. Booking recommended.
+The cafe lists its Thursday evening opening as 6:30pm to 9pm. Booking is recommended.
 
-*Source: [Love Walton](https://lovewalton.co.uk/whats-on/). Always verify details directly with the organiser before attending.*
+*Sources: [Crafty Pots Cafe](https://www.craftypotscafe.com/) for the session, venue and evening opening; [Love Walton](https://lovewalton.co.uk/whats-on/) for the 8:30pm finish to the class itself. Always verify details directly with the organiser before attending.*

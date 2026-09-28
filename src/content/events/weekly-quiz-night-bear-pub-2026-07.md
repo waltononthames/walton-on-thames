@@ -3,7 +3,7 @@ title: "Weekly Quiz Night at The Bear"
 slug: "weekly-quiz-night-bear-pub-2026-07"
 start: "2026-10-05T19:30:00"
 end: "2026-10-05T22:00:00"
-venue: "The Bear Pub, Walton-on-Thames, KT12 1AH"
+venue: "The Bear, 30 Bridge Street, Walton-on-Thames, KT12 1AH"
 neighbourhood: "walton-on-thames"
 category: "community"
 recurring: true
@@ -16,4 +16,4 @@ The Bear Pub runs a weekly quiz night, open to teams and individuals looking for
 
 Held every Monday, 7:30pm to 10pm.
 
-*Source: [Love Walton](https://lovewalton.co.uk/whats-on/). Always verify details directly with the organiser before attending.*
+*Source: [Love Walton](https://lovewalton.co.uk/whats-on/). The Bear publishes no public listing of its own, so no organiser source is available. Always verify details directly with the organiser before attending.*

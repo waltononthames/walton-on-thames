@@ -16,4 +16,4 @@ Empty Chairs is a simple idea: a table is booked with a few chairs left empty, s
 
 The Walton-on-Thames meet-up runs on the first Monday of each month from 7pm at The Walton Village on the High Street. The organiser's own listing names 7 September, 5 October and 2 November 2026. Look out for the orange t-shirt.
 
-*Sources: the organiser's [Empty Chairs Walton-on-Thames event listing](https://www.facebook.com/events/2026769924615964/) and [Love Walton](https://lovewalton.co.uk/whats-on/); see also [Empty Chairs](https://emptychairs.org.uk/). Always verify details directly with the organiser before attending.*
+*Sources: the organiser's [Empty Chairs Walton-on-Thames event listing](https://www.facebook.com/events/2026769924615964/); see also [Empty Chairs](https://emptychairs.org.uk/). Always verify details directly with the organiser before attending.*

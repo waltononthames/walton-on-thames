@@ -1,19 +1,19 @@
 ---
-title: "Thursday Quiz Night"
+title: "Thursday Quiz Night at The Walton Village"
 slug: "thursday-quiz-night-2026-07"
 start: "2026-10-01T19:45:00"
 end: "2026-10-01T22:00:00"
-venue: "29 High Street, Walton-on-Thames, KT12 1DG"
+venue: "The Walton Village, 29 High Street, Walton-on-Thames, KT12 1DG"
 neighbourhood: "walton-on-thames"
 category: "community"
 recurring: true
-price: "Free entry"
-description: "A weekly Thursday quiz night at 29 High Street in Walton town centre."
-source_url: "https://lovewalton.co.uk/whats-on/"
+price: "£3 per person, plus £1 per bingo card"
+description: "A weekly Thursday pub quiz at The Walton Village on Walton High Street, with cash prizes and a bingo round."
+source_url: "https://thewaltonvillage.com/thursdays-quiz-night"
 ---
 
-29 High Street hosts a Thursday evening quiz open to all, a regular fixture on the town centre's weekly calendar.
+The Walton Village runs a traditional pub quiz every Thursday, presented by quizmaster Duncan. Rounds range from quickfire general knowledge to a bingo round, and there are cash prizes plus a bingo jackpot of up to £100.
 
-Held every Thursday, 7:45pm to 10pm.
+The pub states that entry is £3 per person, with £1 extra per card for the bingo round, and that the quiz starts at 7:45pm. Teams can book a table through the pub in advance.
 
-*Source: [Love Walton](https://lovewalton.co.uk/whats-on/). Always verify details directly with the organiser before attending.*
+*Source: [The Walton Village](https://thewaltonvillage.com/thursdays-quiz-night). Always verify details directly with the organiser before attending.*
