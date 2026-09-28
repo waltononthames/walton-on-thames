@@ -1,8 +1,8 @@
 ---
 title: "Woodcarvers Autumn Term at Riverhouse Barn"
 slug: "woodcarvers-autumn-term-riverhouse-barn-2026-09"
-start: "2026-09-26T10:00:00"
-end: "2026-09-26T12:30:00"
+start: "2026-10-10T10:00:00"
+end: "2026-10-10T12:30:00"
 venue: "Toshiba Craft Studio, Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"

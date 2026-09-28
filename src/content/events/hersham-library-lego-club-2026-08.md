@@ -1,8 +1,8 @@
 ---
 title: "LEGO Club at Hersham Library"
 slug: "hersham-library-lego-club-2026-08"
-start: "2026-09-26T14:30:00"
-end: "2026-09-26T15:30:00"
+start: "2026-10-10T14:30:00"
+end: "2026-10-10T15:30:00"
 venue: "Hersham Library, Molesey Road, Hersham, Surrey KT12 4RF"
 neighbourhood: "hersham"
 category: "family"
