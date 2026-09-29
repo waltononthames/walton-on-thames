@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { formatEventDate, formatEventTime, isMultiDay } from '../../utils/eventDates';
+import { buildMetaDescription } from '../../utils/metaDescription';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -60,12 +61,27 @@ const dateStr = formatEventDate(startRaw, endRaw);
 // Google will actually show; the page keeps the long form above.
 const titleDateStr = formatEventDate(startRaw, endRaw, 'compact');
 const timeStr = formatEventTime(startRaw, endRaw);
+// The page body keeps the short description; the <meta> tag adds the date,
+// time, venue and price shown in the hero and sidebar. Fixtures give the
+// kick-off only, the time supporters plan around.
+const isRecurring = kind === 'event' && Astro.props.event.data.recurring;
+const datePrefix = isRecurring ? 'Next date: ' : '';
+const metaTime = kind === 'fixture' && timeStr ? `kick-off ${timeStr.split(' – ')[0]}` : timeStr;
+const metaDescription = buildMetaDescription(description ?? `${title}, ${venue}`, [
+  [
+    `${datePrefix}${dateStr}${metaTime ? `, ${metaTime}` : ''}, ${venue}`,
+    `${datePrefix}${dateStr}, ${venue}`,
+    `${datePrefix}${dateStr}${metaTime ? `, ${metaTime}` : ''}`,
+    `${datePrefix}${dateStr}`,
+  ],
+  kind === 'event' && price ? `Price: ${price}` : null,
+]);
 const isFreeEvent = /^free/i.test(price);
 ---
 
 <BaseLayout
   title={`${title}: ${titleDateStr}`}
-  description={description ?? `${title}, ${venue}`}
+  description={metaDescription}
   image={image}
 >
   <slot name="structured-data">

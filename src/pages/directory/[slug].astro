@@ -3,7 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { formatPlaceName } from '../../utils/format';
+import { formatPlaceName, nameWithAddress } from '../../utils/format';
+import { buildMetaDescription, listingContents } from '../../utils/metaDescription';
 import GpPracticeProfile from '../../components/gp/GpPracticeProfile.astro';
 import PhotoLightbox from '../../components/PhotoLightbox.astro';
 
@@ -31,6 +32,18 @@ const heroImage = biz.data.images[0];
 
 const categoryLabel = biz.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
 const neighbourhoodLabel = formatPlaceName(biz.data.neighbourhood);
+
+const listingAddress = biz.data.address.replace(/,\s*United Kingdom/i, '');
+const listingExtras = listingContents([
+  [!!biz.data.hours, 'opening hours'],
+  [!!biz.data.phone, 'phone number'],
+  [!!biz.data.website, 'website'],
+  [!!(biz.data.lat && biz.data.lng), 'map'],
+]);
+const metaDescription = buildMetaDescription(biz.data.description, [
+  [nameWithAddress(biz.data.name, listingAddress), listingAddress],
+  listingExtras && [`${listingExtras} on this page`, listingExtras],
+]);
 
 const SCHEMA_TYPE_BY_CATEGORY: Record<string, string> = {
   'restaurants': 'Restaurant',
@@ -89,7 +102,7 @@ const openingHoursSpecification = biz.data.hours
 ) : (
 <BaseLayout
   title={`${biz.data.name}: ${categoryLabel} in ${neighbourhoodLabel}`}
-  description={biz.data.description}
+  description={metaDescription}
   image={heroImage?.src}
 >
   <slot name="structured-data">
