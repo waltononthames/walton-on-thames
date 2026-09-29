@@ -51,6 +51,7 @@ export function awayGuideCollections(checkedSource: z.ZodTypeAny) {
       disabledSupporters: text,
       parking: text,
       accessibleParking: text,
+      councilCarParks: text,
       pitch: text,
       coveredSeating: text,
       segregation: text,
@@ -160,7 +161,7 @@ export function awayGuideCollections(checkedSource: z.ZodTypeAny) {
     schema: z.object({
       name: z.string(),
       business: z.string().optional(),
-      type: z.enum(['pub', 'grab-and-go', 'sit-down', 'supermarket', 'hotel']),
+      type: z.enum(['pub', 'grab-and-go', 'sit-down', 'supermarket', 'hotel', 'petrol']),
       // Walking routes the venue is on, and its order along them.
       routes: z.array(z.enum(['road', 'towpath'])).default([]),
       order: z.number().default(99),

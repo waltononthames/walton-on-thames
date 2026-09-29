@@ -142,9 +142,15 @@ The club's own page gives "approximately 10 minutes by car or 50-minute walk" fr
 | Venue positions on the maps | OpenStreetMap, element recorded in each venue file | High for position |
 | Hub outline and pitches on the site plan | OpenStreetMap way 44207919 and the pitch ways within it | High for shape; which pitch is the stadium pitch is a club question |
 
+| BP HKS Halfway, Hersham Road KT12 5NR: Mon to Sat 6am to 11pm, Sun 7am to 11pm | [BP station finder](https://map.bp.com/en-GB/GB/petrol-station/walton-on-thames/hks-halfway/14261), read in the browser pane (30 Sep 2026) | High |
+| BP Molesey Road Service Station, Molesey Road KT12 3PW: Mon to Sat 6am to 10pm, Sun 7am to 10pm | [BP station finder](https://map.bp.com/en-GB/GB/petrol-station/walton-on-thames/molesey-road-service-station/1953746048), read in the browser pane (30 Sep 2026) | High |
+| Council town centre car parks include Ashley Park (off Ashley Park Avenue, KT12 1EP) and Drewitts Court (Bridge Street and Hepworth Way, KT12 1AE) | [Elmbridge Borough Council, Find a car park](https://www.elmbridge.gov.uk/parking-and-roads/car-parks/find-car-park) (30 Sep 2026) | High |
+
+Other fuel stations mapped in OpenStreetMap near Walton (Texaco on Hersham Road and Esher Road, Esso at Walton Bridge crossroads, Shell on Oatlands Drive) are leads only; add any the operators confirm.
+
 **Walton Casuals.** The brief mentions "the merger with Walton Casuals". No primary source found describes a merger: the club's history page does not mention Walton Casuals, and secondary sources (Wikipedia, a lead only) describe the two clubs sharing the Sports Hub until Walton Casuals folded in 2022. The guide says nothing about Walton Casuals until Darren decides what to say and a primary source supports it.
 
-**Not yet researched:** petrol stations on the way to the A3 and M25, late-opening pharmacies (the guide links our pharmacies page), programme prices and the club shop (club questions).
+**Not yet researched:** late-opening pharmacies (the guide links our pharmacies page), programme prices and the club shop (club questions).
 
 ## 4. Corrections needed elsewhere on the site (outside this guide's scope)
 
@@ -158,4 +164,4 @@ The club's own page gives "approximately 10 minutes by car or 50-minute walk" fr
 
 ## 5. Still to research
 
-Petrol stations, other car parks within walking distance of the Hub and any restricted streets, programme and club shop details (club), and price bands for hotels (dropped: no source gives stable prices).
+Any restricted streets around the Hub (council), programme and club shop details (club), and price bands for hotels (dropped: no source gives stable prices).

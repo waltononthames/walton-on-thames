@@ -41,7 +41,7 @@ export const ASK_LABEL = {
 type Text = Fact<string>;
 export interface GroundData {
   name: string; address: Text; postcode: Text; officialSite: Text; kickOffSaturday: Text; kickOffMidweek: Text;
-  turnstilesOpen: Text; tickets: Text; prices: Text; disabledSupporters: Text; parking: Text; accessibleParking: Text;
+  turnstilesOpen: Text; tickets: Text; prices: Text; disabledSupporters: Text; parking: Text; accessibleParking: Text; councilCarParks: Text;
   pitch: Text; coveredSeating: Text; segregation: Text; awayEnd: Text;
 }
 export interface RouteStep { id: string; title: string; text: string; lat: number; lng: number; photo?: string; history?: { href: string; label: string }; pubs?: { name: string; href?: string }[] }

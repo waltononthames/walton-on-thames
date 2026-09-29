@@ -1,0 +1,36 @@
+# For drivers heading home. Confirmed on BP's own station page, 30 September 2026.
+name: "BP HKS Halfway"
+type: petrol
+order: 99
+area: town-centre
+lat: 51.3733
+lng: -0.40587
+pointBasis: "OpenStreetMap way 1379310370"
+address:
+  value: "Hersham Road, Walton-on-Thames KT12 5NR"
+  source:
+    label: "BP station finder, BP HKS Halfway"
+    url: https://map.bp.com/en-GB/GB/petrol-station/walton-on-thames/hks-halfway/14261
+    basis: organisation-website
+    checked: "2026-09-30"
+url:
+  value: "https://map.bp.com/en-GB/GB/petrol-station/walton-on-thames/hks-halfway/14261"
+  source:
+    label: "BP station finder, BP HKS Halfway"
+    url: https://map.bp.com/en-GB/GB/petrol-station/walton-on-thames/hks-halfway/14261
+    basis: organisation-website
+    checked: "2026-09-30"
+hours:
+  value:
+    mon: "06:00-23:00"
+    tue: "06:00-23:00"
+    wed: "06:00-23:00"
+    thu: "06:00-23:00"
+    fri: "06:00-23:00"
+    sat: "06:00-23:00"
+    sun: "07:00-23:00"
+  source:
+    label: "BP station finder, BP HKS Halfway"
+    url: https://map.bp.com/en-GB/GB/petrol-station/walton-on-thames/hks-halfway/14261
+    basis: organisation-website
+    checked: "2026-09-30"

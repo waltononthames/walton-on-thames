@@ -70,6 +70,15 @@ const driveMins = awayBase.drive.minutes;
 const rideHailing = taxis.rideHailing.filter((r) => 'value' in r.note).map((r) => r.name);
 const taxiLabel = ['Taxi', ...rideHailing].join(' or ');
 const busWalks = awayBase.bus;
+// How the two walks compare, in words. Computed here rather than in the
+// template: a comparison operator inside template markup confuses the
+// type-checker's parser (it reads "<" as the start of a tag).
+const walkGap = walkTow.minutes - walkRoad.minutes;
+const routeComparison = Math.abs(walkGap) <= 3
+  ? 'The two take about the same time.'
+  : walkGap > 0
+    ? `The river route adds about ${walkGap} minutes.`
+    : `The river route is about ${-walkGap} minutes quicker.`;
 
 // Last Saturday and midweek departures to Waterloo, for the quick answers card.
 const lastTo = (day: 'saturday' | 'weekday', direction: string) => {
@@ -121,6 +130,7 @@ const grab = withBadges(venues.filter((v) => v.type === 'grab-and-go').sort(byOr
 const sitDown = withBadges(venues.filter((v) => v.type === 'sit-down').sort(byOrder), `F`).map((v, i) => ({ ...v, badge: `F${grab.length + i + 1}` }));
 const shops = withBadges(venues.filter((v) => v.type === 'supermarket').sort(byOrder), 'S');
 const hotels = withBadges(venues.filter((v) => v.type === 'hotel').sort(byOrder), 'H');
+const petrol = venues.filter((v) => v.type === 'petrol').sort(byOrder);
 
 const station = awayBase.points.station;
 const groundPoint = awayBase.points.ground;
@@ -363,7 +373,7 @@ const url = `${SITE}${GUIDE_PATH}`;
 
         <h3 class="sub">The walking routes</h3>
         <p class="measure">
-          Both walks start at the station and follow Station Avenue, Ashley Road and the High Street into the town centre. The road route then takes Church Street, Terrace Road and Waterside Drive. The river route turns down Bridge Street and Manor Road to the Thames and follows the towpath for about {(walkTow.towpathMetres / 1000).toFixed(1)} km before coming up Waterside Drive. {Math.abs(walkTow.minutes - walkRoad.minutes) <= 3 ? 'The two take about the same time.' : walkTow.minutes > walkRoad.minutes ? `The river route adds about ${walkTow.minutes - walkRoad.minutes} minutes.` : `The river route is about ${walkRoad.minutes - walkTow.minutes} minutes quicker.`}
+          Both walks start at the station and follow Station Avenue, Ashley Road and the High Street into the town centre. The road route then takes Church Street, Terrace Road and Waterside Drive. The river route turns down Bridge Street and Manor Road to the Thames and follows the towpath for about {(walkTow.towpathMetres / 1000).toFixed(1)} km before coming up Waterside Drive. {routeComparison}
         </p>
         <RouteStory routes={routes} />
 
@@ -498,7 +508,7 @@ const url = `${SITE}${GUIDE_PATH}`;
           <NeedToKnowRow icon="pin" label="Sat-nav" f={ground.postcode}><Fact f={ground.postcode} /></NeedToKnowRow>
         </NeedToKnow>
         <p class="measure note">
-          For the town centre car parks and their charges, see our <a href="/getting-here/parking/">guide to parking in Walton-on-Thames</a>. If the Hub car park is full, please park considerately in the streets nearby.
+          If the Hub car park is full, Elmbridge Borough Council's town centre car parks include <Fact f={ground.councilCarParks} />. From the town centre, follow the walking directions above. For charges, see our <a href="/getting-here/parking/">guide to parking in Walton-on-Thames</a>. Please park considerately in the streets around the Hub.
         </p>
       </div>
     </section>
@@ -516,6 +526,8 @@ const url = `${SITE}${GUIDE_PATH}`;
         <VenueList venues={sitDown} />
         <h3 class="sub">Supermarkets on the routes</h3>
         <VenueList venues={shops} filters={false} />
+        <h3 class="sub">Petrol for the drive home</h3>
+        <VenueList venues={petrol} filters={false} />
       </div>
     </section>
 
@@ -633,12 +645,7 @@ const url = `${SITE}${GUIDE_PATH}`;
 </BaseLayout>
 
 <script>
-  // "Save matchday card": the browser's print dialog, which can also save a
-  // PDF. Hidden without JavaScript, where the reader can print from the menu.
-  for (const b of document.querySelectorAll('[data-print]') as NodeListOf<HTMLButtonElement>) {
-    b.hidden = false;
-    b.addEventListener('click', () => window.print());
-  }
+  import '../../scripts/away-guide/save-card';
 </script>
 
 <style>

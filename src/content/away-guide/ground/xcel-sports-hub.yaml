@@ -69,6 +69,13 @@ parking:
     url: https://www.elmbridge.gov.uk/sports-and-health/sports-venues/xcel-leisure-complex-and-sports-hub
     basis: official-data
     checked: "2026-09-29"
+councilCarParks:
+  value: Ashley Park car park, off Ashley Park Avenue KT12 1EP, and Drewitts Court car park, Bridge Street and Hepworth Way KT12 1AE
+  source:
+    label: Elmbridge Borough Council, Find a car park
+    url: https://www.elmbridge.gov.uk/parking-and-roads/car-parks/find-car-park
+    basis: official-data
+    checked: "2026-09-30"
 accessibleParking:
   value: Accessible parking is available
   source:

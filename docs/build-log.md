@@ -1844,3 +1844,9 @@ All eleven chapters are built: getting here (train, car, the four ways from the 
 **Research this phase** is in the sources file. Two findings for Darren: the brief's "merger with Walton Casuals" has no primary source (nothing is said about it); and three Directory websites are dead or redirected (The George Inn, The Souvlaki, The Mogul).
 
 **Verified:** build passes all prebuild checks; guide HTML 35 KB gzipped; about 6 KB of script on first load; Lighthouse mobile Performance 99, Accessibility 96, Best Practices 100, SEO 69 (noindex prototype only), LCP 1.9 s, CLS 0.04; desktop 100/96/100/69. Remaining accessibility failures are the shared site footer. Print card fits one A4 page. No horizontal scroll at 390 or 1440 px; no console errors; every internal link resolves.
+
+## 2026-09-30: Away fans' guide, Phase 4 finished
+
+**Type-check clean.** `astro check` is back to 149 errors, exactly main's count, with none in the guide's files. The 160 extra errors were one parser problem: a `<=` comparison inside the page template, which the checker's TSX conversion reads as the start of a tag, so everything after it (including the page's style block) was parsed as code. The comparison now lives in the frontmatter as `routeComparison`; the print button's script moved to `src/scripts/away-guide/save-card.ts` like the others. The build was never affected.
+
+**Research added:** two BP petrol stations on the way out of Walton (Hersham Road and Molesey Road, hours from BP's station finder, read in the browser pane because the pages render with JavaScript), and the council's town centre car parks (Ashley Park, Drewitts Court) as the fallback if the Hub car park is full.
