@@ -6,6 +6,11 @@ import { getCollection } from 'astro:content';
 const businesses = await getCollection('businesses');
 type Biz = (typeof businesses)[number];
 
+// The centre's own Directory listing supplies the address, phone and map pin.
+// It has no directory page (its `hub_page` points here), so this page carries
+// its details and its structured data.
+const centre = businesses.find((b: Biz) => b.data.slug === 'the-heart-shopping-centre')!.data;
+
 // Every shop whose address is in the centre, pharmacies included, taken from
 // the Directory so this page and /shopping/ can never disagree.
 const heartShops = businesses
@@ -20,6 +25,26 @@ const heartShops = businesses
   description="The Heart is Walton's main covered shopping centre: high-street shops, restaurants and cafes, plus a library and gym, in the town centre."
 >
   <slot name="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ShoppingCenter",
+      "@id": "https://walton-on-thames.org/shopping/the-heart/#place",
+      "name": centre.name,
+      "description": centre.description,
+      "url": "https://walton-on-thames.org/shopping/the-heart/",
+      ...(centre.website ? { "sameAs": [centre.website] } : {}),
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": centre.address,
+        "addressLocality": "Walton-on-Thames",
+        "addressRegion": "Surrey",
+        "addressCountry": "GB"
+      },
+      ...(centre.phone ? { "telephone": centre.phone } : {}),
+      ...(centre.lat && centre.lng ? {
+        "geo": { "@type": "GeoCoordinates", "latitude": centre.lat, "longitude": centre.lng }
+      } : {}),
+    })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -66,7 +91,23 @@ const heartShops = businesses
         <h2>Getting there</h2>
         <p>The Heart is in Walton-on-Thames town centre, approximately a 20 to 25 minute walk from Walton-on-Thames railway station. Parking is available within the centre. <a href="/getting-here/">Full transport information →</a></p>
 
+        <h2>Address and contact</h2>
+        <address class="heart-address">{centre.address}</address>
+        {centre.phone && <p>Phone: <a href={`tel:${centre.phone}`}>{centre.phone}</a></p>}
+
         <p><a href="https://heartshopping.co.uk/" target="_blank" rel="noopener noreferrer">Visit the official Heart Shopping Centre website ↗</a></p>
+
+        {centre.lat && centre.lng && (
+          <iframe
+            class="heart-map"
+            title="Map showing The Heart Shopping Centre"
+            src={`https://www.openstreetmap.org/export/embed.html?bbox=${centre.lng - 0.008},${centre.lat - 0.005},${centre.lng + 0.008},${centre.lat + 0.005}&layer=mapnik&marker=${centre.lat},${centre.lng}`}
+            loading="lazy"
+            width="100%"
+            height="300"
+          ></iframe>
+        )}
+        {centre.verified_date && <p class="heart-verified">Details last verified: {centre.verified_date}</p>}
       </div>
     </div>
   </section>
@@ -83,6 +124,7 @@ const heartShops = businesses
             <BusinessCard
               name={biz.data.name}
               slug={biz.data.slug}
+              hubPage={biz.data.hub_page}
               category={biz.data.category}
               neighbourhood={biz.data.neighbourhood}
               description={biz.data.description}
@@ -95,3 +137,22 @@ const heartShops = businesses
     </section>
   )}
 </BaseLayout>
+
+<style>
+  .heart-address {
+    font-style: normal;
+    margin-bottom: 0.75rem;
+  }
+
+  .heart-map {
+    display: block;
+    border: none;
+    border-radius: var(--radius-lg);
+    margin-top: 1.5rem;
+  }
+
+  .heart-verified {
+    font-size: 0.8rem;
+    color: var(--color-slate-soft);
+  }
+</style>

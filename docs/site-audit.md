@@ -125,6 +125,7 @@ Biggest gap: the entire `/history/` section per blueprint Section 3/4.7 and exte
 | Existing page | Spec target | Class | Notes |
 |---|---|---|---|
 | `src/pages/shopping/index.astro`, `independent-shops.astro`, `the-heart.astro` | Not covered by either doc | KEEP | Blueprint folds The Heart into food-and-drink/homepage narrative rather than giving Shopping its own hub, but doesn't forbid one. No conflict, no redirect required. |
+| `src/content/businesses/the-heart-shopping-centre.md` (`/directory/the-heart-shopping-centre/`) | `/shopping/the-heart/` | **MERGED** (2026-09-29) | The directory page repeated the guide page's text and was outranking it. The listing now carries `hub_page: "/shopping/the-heart/"`: no directory page is built, cards link to the guide, the old URL 301s in `public/_redirects`, and the guide carries the listing's address, phone, map and `ShoppingCenter` schema. Shops whose address names the centre link to the guide from their own directory pages. |
 
 ## 11. Utility and legal pages (no blueprint equivalent — all KEEP)
 

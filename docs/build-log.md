@@ -1786,3 +1786,12 @@ Darren supplied an external audit (`walton-on-thames-factual-accuracy-audit-2026
 - **M5** Wikipedia cited on 24 history/Hersham pages: replace with underlying sources, priority pages as listed in the audit.
 - Events: consider an optional `organizer` field so known organisers can be backfilled.
 - River Mole walks still emits `LandmarksOrHistoricalBuildings`; review individually.
+
+## 2026-09-29: The Heart's directory page merged into /shopping/the-heart/
+
+Darren noticed `/directory/the-heart-shopping-centre/` was ranking but did not connect to `/shopping/the-heart/`. The two pages opened with nearly the same text and never linked to each other. The guide page even filtered the centre's own listing out of its shop list, so the two competed for the same searches and the thinner one won. It was the only one carrying the address, phone, map and place schema.
+
+**The guide page is now the only page.** A new optional `hub_page` field on business listings marks a listing that has its own guide page. Such a listing gets no `/directory/<slug>/` page, and every `BusinessCard` links to the guide instead. `public/_redirects` 301s the old URL, with and without a trailing slash. `/shopping/the-heart/` now shows the address, phone number and map from the listing, verified 16 July 2026 against heartshopping.co.uk, and emits `ShoppingCenter` JSON-LD. No new facts were added.
+
+**Shops inside the centre now link to it.** A directory page whose address contains a hub listing's name shows "Inside The Heart Shopping Centre →" under the address, giving the guide internal links from the 22 tenants and Brightlife Chemist.
+

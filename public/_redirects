@@ -51,6 +51,12 @@
 /neighbourhoods/whiteley-village/ /hersham/whiteley-village/ 301
 /neighbourhoods/ / 301
 
+# The Heart consolidation, 29 September 2026: the listing's directory page was
+# a near-copy of the guide page and outranked it. Its `hub_page` field stops
+# the page being built; this sends its links and rankings to the guide.
+/directory/the-heart-shopping-centre/ /shopping/the-heart/ 301
+/directory/the-heart-shopping-centre /shopping/the-heart/ 301
+
 # Legacy encoded Elmbridge Xcel URL (factual audit, 5 August 2026): was 404ing, no rule existed
 /elmbridge-xcel%2Fsports-hub /directory/elmbridge-xcel/ 301
 /elmbridge-xcel/sports-hub /directory/elmbridge-xcel/ 301
