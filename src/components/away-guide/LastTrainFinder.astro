@@ -1,67 +1,66 @@
 ---
-// Last-train finder (brief 7.5). Walton-on-Thames station only, because
-// "leave the ground by" depends on the walking routes (plan D9).
+// Last-train finder (brief 7.5). Walton-on-Thames station only, because the
+// leave-by times depend on the walking routes (plan D9).
 //
-// The HTML is a plain table per day, complete without JavaScript. The script
-// adds a choice of day and of how you are getting back to the station, and
-// works out when to leave the ground for each train.
+// Shows the trains a fan can actually catch after full time, plus the last
+// train each way, for the chosen day and way of getting back to the station.
+// The HTML is a plain table per day (walking by road), complete without
+// JavaScript; the script adds the choice of day and mode. Both use the same
+// arithmetic, in src/utils/trainTimes.ts.
 //
 // Timetables change, usually in May and December. Each record carries the
 // period it was checked against; once that period ends the finder is not
 // rendered in a production build, and only the National Rail links remain.
-import { clock12, londonToday, longDate, minusMinutes, valueOf, PLATFORM_ALLOWANCE_MINS, type Fact } from '../../utils/awayGuide';
+import { londonToday, longDate, valueOf, PLATFORM_ALLOWANCE_MINS, type Fact, type TrainData } from '../../utils/awayGuide';
+import { clockFromMinutes, plan, serviceMinutes, type FinderData } from '../../utils/trainTimes';
 
-type Day = 'saturday' | 'weekday';
-interface TrainRecord {
-  direction: string;
-  dayType: Day;
-  departures: { times: string[]; timetableValidFrom: string; timetableValidTo: string } & ({ placeholder: true } | { source: { checked: string; label: string } });
-}
 interface Props {
-  trains: TrainRecord[];
+  trains: TrainData[];
+  kickOff: { saturday: number | null; weekday: number | null };
   walk: { road: number; towpath: number };
   towpathAfterDark?: string;
   driveMins: number;
   bus: {
     route?: string;
-    journeyMins?: number;
-    walkFromStopMins?: number;
-    lastFromGround: { saturday: Fact<string[]>; weekday: Fact<string[]> };
+    fromGround: { saturday: Fact<string[]>; weekday: Fact<string[]> };
+    fromGroundMins?: number;
+    groundToStop: number;
+    stopToStation: number;
   };
   taxiLabel: string;
 }
-const { trains, walk, towpathAfterDark, driveMins, bus, taxiLabel } = Astro.props;
+const { trains, kickOff, walk, towpathAfterDark, driveMins, bus, taxiLabel } = Astro.props;
 
 const today = londonToday();
 const live = trains.filter((t) => t.departures.timetableValidTo >= today);
-const show = import.meta.env.DEV ? trains.length > 0 : live.length > 0;
 const records = import.meta.env.DEV ? trains : live;
+const show = records.length > 0;
 const sample = records.some((t) => 'placeholder' in t.departures);
 const validTo = records.map((t) => t.departures.timetableValidTo).sort()[0];
 const checked = records.flatMap((t) => ('source' in t.departures ? [t.departures.source.checked] : [])).sort()[0];
 
-const days: { key: Day; label: string }[] = [
+const days = [
   { key: 'saturday', label: 'Saturday' },
   { key: 'weekday', label: 'Midweek' },
-];
-const rowsFor = (day: Day) => records
-  .filter((t) => t.dayType === day)
-  .flatMap((t) => t.departures.times.map((time) => ({ time, direction: t.direction })))
-  .sort((a, b) => a.time.localeCompare(b.time));
+] as const;
 
-const data = {
+const data: FinderData = {
   allowance: PLATFORM_ALLOWANCE_MINS,
+  kickOff,
   walk,
   driveMins,
-  towpathAfterDark: towpathAfterDark ?? null,
   bus: {
-    route: bus.route ?? null,
-    journeyMins: bus.journeyMins ?? null,
-    walkFromStopMins: bus.walkFromStopMins ?? null,
-    last: { saturday: valueOf(bus.lastFromGround.saturday) ?? [], weekday: valueOf(bus.lastFromGround.weekday) ?? [] },
+    fromGround: { saturday: valueOf(bus.fromGround.saturday) ?? [], weekday: valueOf(bus.fromGround.weekday) ?? [] },
+    fromGroundMins: bus.fromGroundMins ?? null,
+    groundToStop: bus.groundToStop,
+    stopToStation: bus.stopToStation,
   },
-  trains: Object.fromEntries(days.map((d) => [d.key, rowsFor(d.key)])),
+  trains: Object.fromEntries(days.map((d) => [
+    d.key,
+    records.filter((t) => t.dayType === d.key).flatMap((t) => t.departures.times.map((time) => ({ time, direction: t.direction }))),
+  ])),
 };
+const busRuns = data.bus.fromGround.saturday.length + data.bus.fromGround.weekday.length > 0 && data.bus.fromGroundMins != null;
 ---
 
 {show && (
@@ -69,7 +68,7 @@ const data = {
     <p class="finder-meta">
       {sample
         ? <><span class="finder-sample">Sample times</span> These are not real departures.</>
-        : <>Checked {checked && longDate(checked)} against the published timetable, which runs until {longDate(validTo)}.</>}
+        : <>Train times from Realtime Trains, checked {checked && longDate(checked)} against the timetable that runs until {longDate(validTo)}. Engineering work can change them on the day.</>}
       {' '}Always check live times before you set off.
     </p>
 
@@ -85,9 +84,7 @@ const data = {
           <legend>Getting back to the station</legend>
           <label><input type="radio" name="finder-mode" value="road" checked /> Walk by road</label>
           <label><input type="radio" name="finder-mode" value="towpath" /> Walk by the river</label>
-          {data.bus.last.saturday.length + data.bus.last.weekday.length > 0 && data.bus.journeyMins && (
-            <label><input type="radio" name="finder-mode" value="bus" /> Bus{data.bus.route && ` ${data.bus.route}`}</label>
-          )}
+          {busRuns && <label><input type="radio" name="finder-mode" value="bus" /> Bus{bus.route && ` ${bus.route}`}</label>}
           <label><input type="radio" name="finder-mode" value="taxi" /> {taxiLabel}</label>
         </fieldset>
       </form>
@@ -97,25 +94,26 @@ const data = {
 
     <div class="finder-static">
       {days.map((d) => {
-        const rows = rowsFor(d.key);
+        const { fullTime, rows } = plan(data, d.key, 'road');
         return rows.length > 0 && (
           <table>
-            <caption>{d.label}: last trains from Walton-on-Thames</caption>
+            <caption>
+              {d.label}: trains after the match, walking back by road
+              {fullTime != null && <span class="caption-sub">Full time is usually around {clockFromMinutes(fullTime)}</span>}
+            </caption>
             <thead>
               <tr>
+                <th scope="col">Leave the ground by</th>
                 <th scope="col">Train departs</th>
                 <th scope="col">Towards</th>
-                <th scope="col">Leave the ground by, walking by road</th>
-                <th scope="col">Leave the ground by, {taxiLabel.toLowerCase().replace('uber', 'Uber')}</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((r) => (
                 <tr>
-                  <td>{clock12(r.time)}</td>
-                  <td>{r.direction}</td>
-                  <td>{clock12(minusMinutes(r.time, walk.road + PLATFORM_ALLOWANCE_MINS))}</td>
-                  <td>{clock12(minusMinutes(r.time, driveMins + PLATFORM_ALLOWANCE_MINS))}</td>
+                  <td>{clockFromMinutes(r.leaveBy)}</td>
+                  <td>{clockFromMinutes(serviceMinutes(r.train.time))}{r.last && <span class="last"> last train</span>}</td>
+                  <td>{r.train.direction}</td>
                 </tr>
               ))}
             </tbody>
@@ -123,11 +121,11 @@ const data = {
         );
       })}
       <p class="finder-foot">
-        Leave-by times allow about {walk.road} minutes to walk by road or {driveMins} minutes by car, plus {PLATFORM_ALLOWANCE_MINS} minutes to reach the platform. A car can take longer to arrive after an evening match.
+        Leave-by times allow about {walk.road} minutes to walk by road and {PLATFORM_ALLOWANCE_MINS} minutes to reach the platform. With JavaScript on, you can choose the river walk, the bus or a car instead.
       </p>
     </div>
 
-    <script is:inline type="application/json" data-finder-data set:html={JSON.stringify(data)} />
+    <script is:inline type="application/json" data-finder-data set:html={JSON.stringify({ ...data, towpathAfterDark: towpathAfterDark ?? null, busRoute: bus.route ?? null })} />
   </div>
 )}
 
@@ -165,6 +163,7 @@ const data = {
     text-align: left;
     font-weight: 600;
   }
+  .caption-sub { display: block; font-weight: 400; font-size: 0.85rem; color: var(--color-slate); }
   th, td {
     padding: 0.5rem 0.4rem;
     border-bottom: 1px solid rgba(11, 36, 46, 0.08);
@@ -173,6 +172,7 @@ const data = {
   }
   th { color: var(--color-slate); font-size: 0.75rem; font-weight: 600; }
   td:first-child { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .last { color: var(--color-slate); font-size: 0.8rem; font-weight: 600; }
   .finder-foot { font-size: 0.85rem; color: var(--color-slate); }
 
   .finder-form {

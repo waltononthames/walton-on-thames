@@ -1,7 +1,14 @@
 rankAtStation:
+  value: Walton-on-Thames station has a taxi rank
+  source:
+    label: South Western Railway, Walton-on-Thames station
+    url: https://www.southwesternrailway.com/travelling-with-us/at-the-station/walton-on-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+rankLocation:
   unconfirmed:
     ask: site-visit
-    question: Is there a taxi rank at Walton-on-Thames station, and on which side?
+    question: Where exactly is the taxi rank at Walton-on-Thames station (Station Avenue forecourt?), and is it usually staffed by cars in the evening?
 pickupAtGround:
   unconfirmed:
     ask: club
@@ -9,9 +16,10 @@ pickupAtGround:
 rideHailing:
   - name: Uber
     note:
-      value: Uber operates in Walton-on-Thames
+      value: UberX is available in Walton-on-Thames, booked in the Uber app
       source:
-        label: Confirmed by Darren Bayley, editor
-        basis: editor-observation
-        checked: "2026-09-28"
+        label: Uber, Getting around Walton-on-Thames; confirmed by Darren Bayley, editor
+        url: https://www.uber.com/global/en/r/cities/walton-on-thames-eng-gb/
+        basis: organisation-website
+        checked: "2026-09-29"
 firms: []

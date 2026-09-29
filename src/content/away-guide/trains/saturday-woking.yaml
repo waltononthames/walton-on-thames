@@ -1,8 +1,16 @@
-# Phase 2 sample times. Not a timetable: replaced from National Rail in Phase 3.
+# Departures from Walton-on-Thames after the match, from Realtime Trains for 2026-10-03
+# (a Tier 1 source under the Content Verification Protocol). Times after
+# midnight belong to the same evening. Trains towards Woking include the
+# Basingstoke and Guildford services, all confirmed to call at Woking.
+# Re-check before the timetable changes on 13 December 2026.
 direction: Woking
 dayType: saturday
 departures:
-  placeholder: true
-  times: ["21:52", "22:22", "22:52", "23:22"]
+  times: ["16:37", "16:54", "17:02", "17:25", "17:37", "17:54", "18:02", "18:25", "18:37", "18:54", "19:02", "19:25", "19:37", "19:54", "20:02", "20:25", "20:37", "20:54", "21:02", "21:25", "21:37", "21:54", "22:02", "22:25", "22:37", "22:54", "23:02", "23:24", "23:45", "23:54", "00:02", "00:25", "00:40"]
   timetableValidFrom: "2026-05-17"
   timetableValidTo: "2026-12-12"
+  source:
+    label: Realtime Trains, departures from Walton-on-Thames, Saturday 3 October 2026, trains calling at Woking; timetable period from National Rail
+    url: https://www.realtimetrains.co.uk/search/simple/gb-nr:WAL/to/gb-nr:WOK/2026-10-03/1630-0200
+    basis: timetable
+    checked: "2026-09-29"

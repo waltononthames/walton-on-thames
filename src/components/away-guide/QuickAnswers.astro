@@ -5,7 +5,8 @@
 // down the page; this card only summarises and links.
 import Fact from './Fact.astro';
 import Icon from './Icon.astro';
-import { clock12, shows, valueOf, type Fact as FactT } from '../../utils/awayGuide';
+import { clockFromMinutes, serviceMinutes } from '../../utils/trainTimes';
+import { shows, valueOf, type Fact as FactT } from '../../utils/awayGuide';
 
 interface Props {
   ground: {
@@ -17,6 +18,7 @@ interface Props {
     kickOffMidweek: FactT<string>;
     turnstilesOpen: FactT<string>;
     tickets: FactT<string>;
+    prices: FactT<string>;
     parking: FactT<string>;
     segregation: FactT<string>;
   };
@@ -66,6 +68,7 @@ const googleMaps = `https://www.google.com/maps/search/?api=1&query=${point.lat}
         <div class="quick-row">
           <dt><Icon name="ticket" /> Tickets</dt>
           <dd>
+            <Fact f={ground.prices} />.<br />
             <Fact f={ground.tickets} />.
             {official && <> Book on the <a href={official} rel="noopener">club's website</a>.</>}
           </dd>
@@ -74,7 +77,7 @@ const googleMaps = `https://www.google.com/maps/search/?api=1&query=${point.lat}
         <div class="quick-row">
           <dt><Icon name="walk" /> From Walton-on-Thames station</dt>
           <dd>
-            About {walkMins} minutes on foot, {driveMins} minutes by taxi or Uber, or the <Fact f={busRoute}>{(v: string) => `${v} bus`}</Fact>.
+            About {walkMins} minutes on foot or {driveMins} minutes by taxi or Uber. The <Fact f={busRoute}>{(v: string) => `${v} bus`}</Fact> runs from the town centre in the daytime only.
             <a href="#station-to-ground">Compare the options</a>
           </dd>
         </div>
@@ -85,7 +88,7 @@ const googleMaps = `https://www.google.com/maps/search/?api=1&query=${point.lat}
             {lastTrains.map((t, i) => (
               <>
                 {i > 0 && <br />}
-                {t.label}: {t.sample ? <span class="fact--placeholder-inline">{clock12(t.time)} <span class="sample-flag">Sample</span></span> : clock12(t.time)}
+                {t.label}: {t.sample ? <span class="fact--placeholder-inline">{clockFromMinutes(serviceMinutes(t.time))} <span class="sample-flag">Sample</span></span> : clockFromMinutes(serviceMinutes(t.time))}
               </>
             ))}
             <br /><a href="#getting-home">Plan your journey home</a>

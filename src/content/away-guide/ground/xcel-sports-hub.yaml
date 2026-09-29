@@ -1,36 +1,95 @@
-# The ground and the quick answers. Phase 2 prototype: values marked
-# placeholder come from the brief or the club's 2024-25 supporter notice and
-# are re-confirmed in Phase 3 (docs/away-fans-guide-plan.md, R2 and R8).
+# The ground and the quick answers. Researched 29 September 2026; every
+# source is logged in docs/away-fans-guide-sources.md. Questions for the club
+# are listed at the top of that file.
 name: Elmbridge Xcel Sports Hub
 address:
   value: Waterside Drive, Walton-on-Thames, Surrey
-  placeholder: true
+  source:
+    label: Walton & Hersham FC, How to find us
+    url: https://waltonhershamfc.com/club/how-to-find-us/
+    basis: organisation-website
+    checked: "2026-09-29"
 postcode:
   value: KT12 2JP
-  placeholder: true
+  source:
+    label: Walton & Hersham FC, How to find us; Places Leisure, Elmbridge Xcel Sports Hub
+    url: https://waltonhershamfc.com/club/how-to-find-us/
+    basis: organisation-website
+    checked: "2026-09-29"
 officialSite:
   value: https://waltonhershamfc.com/
   source:
     label: Walton & Hersham Football Club, official website
     url: https://waltonhershamfc.com/
     basis: organisation-website
-    checked: "2026-09-28"
+    checked: "2026-09-29"
 kickOffSaturday:
   value: 3pm
-  placeholder: true
+  source:
+    label: Walton & Hersham FC official fixtures calendar (ECAL feed), 2026-27 home league fixtures (13 of 14 Saturday home matches at 3pm; one at 5.30pm)
+    url: https://ics.ecal.com/ecal-sub/6a590c1f9d270a000297ec85/Enterprise%20National%20League.ics
+    basis: organisation-website
+    checked: "2026-09-29"
 kickOffMidweek:
   value: 7.45pm
-  placeholder: true
+  source:
+    label: Walton & Hersham FC official fixtures calendar (ECAL feed), 2026-27 home league fixtures (all four Tuesday home matches at 7.45pm)
+    url: https://ics.ecal.com/ecal-sub/6a590c1f9d270a000297ec85/Enterprise%20National%20League.ics
+    basis: organisation-website
+    checked: "2026-09-29"
 turnstilesOpen:
   unconfirmed:
     ask: club
     question: What time do the turnstiles open for Saturday and midweek matches?
 tickets:
-  value: Pay on the gate by cash or card, or buy online in advance
-  placeholder: true
+  value: Pay on the gate by cash, card or contactless, or buy in advance on the Fanbase app
+  source:
+    label: Walton & Hersham FC, Admission prices 2026/27
+    url: https://waltonhershamfc.com/club/admission-prices/
+    basis: organisation-website
+    checked: "2026-09-29"
+prices:
+  value: Adults £16, seniors (65 and over) and concessions £13, ages 13 to 17 £8, ages 12 and under £3
+  source:
+    label: Walton & Hersham FC, Admission prices 2026/27 (men's first team)
+    url: https://waltonhershamfc.com/club/admission-prices/
+    basis: organisation-website
+    checked: "2026-09-29"
+disabledSupporters:
+  value: Disabled supporters pay the concession price, with up to one free carer ticket
+  source:
+    label: Walton & Hersham FC, Admission prices 2026/27
+    url: https://waltonhershamfc.com/club/admission-prices/
+    basis: organisation-website
+    checked: "2026-09-29"
 parking:
-  value: The Sports Hub and leisure centre car parks fill quickly on matchdays
-  placeholder: true
+  value: Free car park on site
+  source:
+    label: Elmbridge Borough Council, The Xcel Leisure Complex and Sports Hub; Walton & Hersham FC, How to find us
+    url: https://www.elmbridge.gov.uk/sports-and-health/sports-venues/xcel-leisure-complex-and-sports-hub
+    basis: official-data
+    checked: "2026-09-29"
+accessibleParking:
+  value: Accessible parking is available
+  source:
+    label: Places Leisure, Elmbridge Xcel Sports Hub
+    url: https://www.placesleisure.org/centres/elmbridge-xcel-sports-hub/
+    basis: organisation-website
+    checked: "2026-09-29"
+pitch:
+  value: Floodlit 3G artificial turf
+  source:
+    label: Elmbridge Borough Council, The Xcel Leisure Complex and Sports Hub
+    url: https://www.elmbridge.gov.uk/sports-and-health/sports-venues/xcel-leisure-complex-and-sports-hub
+    basis: official-data
+    checked: "2026-09-29"
+coveredSeating:
+  value: Covered seating for over 500 spectators
+  source:
+    label: Elmbridge Borough Council, The Xcel Leisure Complex and Sports Hub
+    url: https://www.elmbridge.gov.uk/sports-and-health/sports-venues/xcel-leisure-complex-and-sports-hub
+    basis: official-data
+    checked: "2026-09-29"
 segregation:
   unconfirmed:
     ask: club

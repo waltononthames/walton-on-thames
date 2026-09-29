@@ -4,7 +4,7 @@ import mapData from '../data/away-guide-map.json';
 import { project, type BaseMap, type LatLng } from '../components/gp/mapProjection';
 
 // Bump after rebuilding the base map: /images/* is cached for 7 days.
-export const AWAY_MAP_VERSION = '2026-09-29-3';
+export const AWAY_MAP_VERSION = '2026-09-29-4';
 
 export const GUIDE_PATH = '/walton-hersham-fc-away-fans-guide/';
 
@@ -41,7 +41,8 @@ export const ASK_LABEL = {
 type Text = Fact<string>;
 export interface GroundData {
   name: string; address: Text; postcode: Text; officialSite: Text; kickOffSaturday: Text; kickOffMidweek: Text;
-  turnstilesOpen: Text; tickets: Text; parking: Text; segregation: Text; awayEnd: Text;
+  turnstilesOpen: Text; tickets: Text; prices: Text; disabledSupporters: Text; parking: Text; accessibleParking: Text;
+  pitch: Text; coveredSeating: Text; segregation: Text; awayEnd: Text;
 }
 export interface RouteStep { id: string; title: string; text: string; lat: number; lng: number; photo?: string; history?: { href: string; label: string }; pubs?: { name: string; href?: string }[] }
 export interface RouteData {
@@ -52,12 +53,14 @@ export interface TrainData {
   direction: string; dayType: 'saturday' | 'weekday';
   departures: { times: string[]; timetableValidFrom: string; timetableValidTo: string } & ({ placeholder: true } | { source: Source });
 }
+type Times = { saturday: Fact<string[]>; weekday: Fact<string[]> };
 export interface BusData {
-  route: Text; operator: Text; boardAt: Text; alightAt: Text; journeyMins: Fact<number>; walkFromStopMins: Fact<number>;
-  frequency: Text; lastFromGround: { saturday: Fact<string[]>; weekday: Fact<string[]> }; timetableValidTo?: string; operatorUrl: Text;
+  route: Text; operator: Text; townStop: Text; groundStop: Text;
+  toGround: Times; fromGround: Times; toGroundMins: Fact<number>; fromGroundMins: Fact<number>;
+  frequency: Text; noService: Text; timetableValidFrom?: string; timetableValidTo?: string; operatorUrl: Text;
 }
 export interface TaxiData {
-  rankAtStation: Text; pickupAtGround: Text;
+  rankAtStation: Text; rankLocation: Text; pickupAtGround: Text;
   rideHailing: { name: string; note: Text }[];
   firms: { name: string; phone: string; url?: string; source: Source }[];
 }

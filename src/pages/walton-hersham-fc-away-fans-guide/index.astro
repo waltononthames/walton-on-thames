@@ -26,6 +26,7 @@ import {
   awayBase, clock12, containsPlaceholder, latestChecked, longDate, valueOf, GUIDE_PATH,
   type GroundData, type RouteData, type TrainData, type BusData, type TaxiData, type RouteKey,
 } from '../../utils/awayGuide';
+import { parseClock12, serviceMinutes } from '../../utils/trainTimes';
 
 const SITE = 'https://walton-on-thames.org';
 const AUTHOR = 'Darren Bayley';
@@ -57,12 +58,25 @@ const taxiLabel = ['Taxi', ...rideHailing].join(' or ');
 // Last Saturday and midweek departures to Waterloo, for the quick answers card.
 const lastTo = (day: 'saturday' | 'weekday', direction: string) => {
   const t = trains.find((r) => r.dayType === day && r.direction === direction);
-  return t ? { time: [...t.departures.times].sort().at(-1)!, sample: 'placeholder' in t.departures } : null;
+  if (!t) return null;
+  const time = [...t.departures.times].sort((a, b) => serviceMinutes(a) - serviceMinutes(b)).at(-1)!;
+  return { time, sample: 'placeholder' in t.departures };
 };
 const lastTrains = [
   { label: 'Saturday to London Waterloo', ...lastTo('saturday', 'London Waterloo') },
   { label: 'Midweek to London Waterloo', ...lastTo('weekday', 'London Waterloo') },
 ].filter((t): t is { label: string; time: string; sample: boolean } => Boolean(t.time));
+const kickOff = {
+  saturday: parseClock12(valueOf(ground.kickOffSaturday) ?? ''),
+  weekday: parseClock12(valueOf(ground.kickOffMidweek) ?? ''),
+};
+const busWalks = awayBase.bus;
+// "Every hour at 13 minutes past, 9.13am to 6.13pm" when the minutes agree.
+const hourly = (times: string[]) => {
+  const mins = new Set(times.map((t) => t.slice(3)));
+  const span = `${clock12(times[0])} to ${clock12(times.at(-1)!)}`;
+  return mins.size === 1 ? `Every hour at ${Number([...mins][0])} minutes past, ${span}` : times.map(clock12).join(', ');
+};
 
 const chapters = [
   { id: 'station-to-ground', label: 'Station to ground' },
@@ -159,6 +173,7 @@ const url = `${SITE}${GUIDE_PATH}`;
             afterDark: r.afterDark,
           }))}
           bus={bus}
+          busWalks={busWalks}
           driveMins={driveMins}
           rideHailing={rideHailing}
         />
@@ -172,16 +187,16 @@ const url = `${SITE}${GUIDE_PATH}`;
         <h3 class="sub" id="by-bus">By bus</h3>
         <NeedToKnow>
           <NeedToKnowRow icon="bus" label="Route" f={bus.route}><Fact f={bus.route} />, run by <Fact f={bus.operator} /></NeedToKnowRow>
-          <NeedToKnowRow icon="pin" label="Get on at" f={bus.boardAt}><Fact f={bus.boardAt} /></NeedToKnowRow>
-          <NeedToKnowRow icon="pin" label="Get off at" f={bus.alightAt}><Fact f={bus.alightAt} /></NeedToKnowRow>
-          <NeedToKnowRow icon="clock" label="Journey" f={bus.journeyMins}>
-            <Fact f={bus.journeyMins}>{(v: number) => `About ${v} minutes`}</Fact>, then <Fact f={bus.walkFromStopMins}>{(v: number) => `${v} minutes`}</Fact> on foot
+          <NeedToKnowRow icon="walk" label="From the station">No bus runs from Walton-on-Thames station to the ground. Walk about {busWalks.churchStreetToStation.minutes} minutes to Church Street in the town centre for the 564.</NeedToKnowRow>
+          <NeedToKnowRow icon="pin" label="Get on at" f={bus.townStop}><Fact f={bus.townStop} /></NeedToKnowRow>
+          <NeedToKnowRow icon="pin" label="Get off at" f={bus.groundStop}><Fact f={bus.groundStop} />, about {busWalks.groundToStop.minutes} minutes' walk from the ground</NeedToKnowRow>
+          <NeedToKnowRow icon="clock" label="To the ground" f={bus.toGround.saturday}>
+            <Fact f={bus.toGround.saturday}>{(v: string[]) => hourly(v)}</Fact>, taking <Fact f={bus.toGroundMins}>{(v: number) => `${v} minutes`}</Fact>
           </NeedToKnowRow>
-          <NeedToKnowRow icon="clock" label="How often" f={bus.frequency}><Fact f={bus.frequency} /></NeedToKnowRow>
-          <NeedToKnowRow icon="moon" label="Last buses back" f={bus.lastFromGround.saturday}>
-            Saturday <Fact f={bus.lastFromGround.saturday}>{(v: string[]) => v.map(clock12).join(', ')}</Fact><br />
-            Midweek <Fact f={bus.lastFromGround.weekday}>{(v: string[]) => v.map(clock12).join(', ')}</Fact>
+          <NeedToKnowRow icon="clock" label="Back to town" f={bus.fromGround.saturday}>
+            <Fact f={bus.fromGround.saturday}>{(v: string[]) => hourly(v)}</Fact>, taking <Fact f={bus.fromGroundMins}>{(v: number) => `${v} minutes`}</Fact>
           </NeedToKnowRow>
+          <NeedToKnowRow icon="moon" label="Evenings and Sundays" f={bus.noService}><Fact f={bus.noService} /></NeedToKnowRow>
           <NeedToKnowRow icon="info" label="Timetable" f={bus.operatorUrl}>
             <Fact f={bus.operatorUrl}>{(v: string) => `<a href="${v}" rel="noopener">Operator's timetable</a>`}</Fact>
           </NeedToKnowRow>
@@ -225,11 +240,13 @@ const url = `${SITE}${GUIDE_PATH}`;
           walk={{ road: walkRoad.minutes, towpath: walkTow.minutes }}
           towpathAfterDark={towpathAfterDark}
           driveMins={driveMins}
+          kickOff={kickOff}
           bus={{
             route: valueOf(bus.route),
-            journeyMins: valueOf(bus.journeyMins),
-            walkFromStopMins: valueOf(bus.walkFromStopMins),
-            lastFromGround: bus.lastFromGround,
+            fromGround: bus.fromGround,
+            fromGroundMins: valueOf(bus.fromGroundMins),
+            groundToStop: busWalks.groundToStop.minutes,
+            stopToStation: busWalks.churchStreetToStation.minutes,
           }}
           taxiLabel={taxiLabel}
         />

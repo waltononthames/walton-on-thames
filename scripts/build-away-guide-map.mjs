@@ -11,7 +11,7 @@
 //    walking routes and the taxi drive time. The provider is configured, as in
 //    scripts/build-pharmacy-routes.mjs; the default is the public FOSSGIS
 //    server, whose terms ask for one request a second, a user agent naming the
-//    application and the OpenStreetMap attribution. This script makes four
+//    application and the OpenStreetMap attribution. This script makes six
 //    routing requests per run.
 //
 // Both walking routes follow the streets Darren chose on 29 September 2026,
@@ -80,6 +80,14 @@ const VIA = {
 const TOWPATH_JOIN = { lat: 51.3900, lng: -0.4228 };
 const TOWPATH_LEAVE = { lat: 51.3982, lng: -0.4141 };
 const THAMES_PATH_RELATION = 14519665;
+// Bus 564 stops, for timing the bus option end to end. Both from OpenStreetMap
+// with their NaPTAN codes. The 564 does not serve the station, so the page
+// needs the walk from Church Street to the station as well as the walk from
+// the ground to the Xcel stop.
+const BUS_STOPS = {
+  churchStreet: { lat: 51.3866502, lng: -0.4194132, basis: 'OpenStreetMap node 565756263, Church Street Stop A (NaPTAN 40004405087B)' },
+  xcel: { lat: 51.398099, lng: -0.4126946, basis: 'OpenStreetMap node 565756837, Xcel Leisure Centre (NaPTAN 40004405264A)' },
+};
 
 const M_PER_DEG_LAT = 111_220;
 // Map pixels per metre. The output width follows from the frame.
@@ -263,7 +271,9 @@ if (process.argv.includes('--fetch')) {
   const towIn = await route(ROUTER.foot, [STATION, VIA.stationAvenue, VIA.ashleyRoadSouth, VIA.ashleyRoad, VIA.highStreet, VIA.manorRoad, joinPoint]);
   const towOut = await route(ROUTER.foot, [leavePoint, VIA.watersideDriveUp, GROUND]);
   const drive = await route(ROUTER.car, [STATION, GROUND]);
-  writeFileSync(join(CACHE, 'routes.json'), JSON.stringify({ provider: ROUTER.name, fetched: new Date().toISOString(), road, towIn, towOut, drive }));
+  const stopToStation = await route(ROUTER.foot, [BUS_STOPS.churchStreet, STATION]);
+  const groundToStop = await route(ROUTER.foot, [GROUND, BUS_STOPS.xcel]);
+  writeFileSync(join(CACHE, 'routes.json'), JSON.stringify({ provider: ROUTER.name, fetched: new Date().toISOString(), road, towIn, towOut, drive, stopToStation, groundToStop }));
 
   // Frame: every routed point plus a margin, so the base covers both routes.
   const all = [road, towIn, towOut].flatMap((r) => fromGeoJson(r.routes[0].geometry.coordinates));
@@ -420,6 +430,17 @@ const data = {
     metres: Math.round(routes.drive.routes[0].distance),
     minutes: minutes(routes.drive.routes[0].duration),
   },
+  bus: {
+    stops: BUS_STOPS,
+    churchStreetToStation: {
+      metres: Math.round(routes.stopToStation.routes[0].distance),
+      minutes: minutes(routes.stopToStation.routes[0].duration),
+    },
+    groundToStop: {
+      metres: Math.round(routes.groundToStop.routes[0].distance),
+      minutes: Math.max(1, minutes(routes.groundToStop.routes[0].duration)),
+    },
+  },
 };
 writeFileSync(OUT_JSON, JSON.stringify(data) + '\n');
 
@@ -427,4 +448,5 @@ console.log(`Wrote away-guide-base.svg (${P.width}x${P.height}, ${Math.round(svg
 console.log(`Road: ${data.routes.road.metres} m, ${data.routes.road.minutes} min`);
 console.log(`Towpath: ${data.routes.towpath.metres} m, ${data.routes.towpath.minutes} min (${data.routes.towpath.towpathMetres} m on the Thames Path)`);
 console.log(`Drive: ${data.drive.metres} m, ${data.drive.minutes} min free-flow`);
+console.log(`Bus: Church Street to station ${data.bus.churchStreetToStation.metres} m, ${data.bus.churchStreetToStation.minutes} min; ground to Xcel stop ${data.bus.groundToStop.metres} m, ${data.bus.groundToStop.minutes} min`);
 console.log(`Wrote ${OUT_JSON}`);

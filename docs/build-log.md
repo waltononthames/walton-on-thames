@@ -1817,3 +1817,18 @@ Darren set both walking routes. **By road:** Ashley Road, the High Street past T
 ## Still open (routes)
 - ~~**Old Manor House or Old Manor Inn?**~~ Settled the same day: Darren confirmed the pub is the Old Manor Inn, matching OpenStreetMap. It is now listed on the Manor Road step, before The Swan, without a link, as it has no Directory listing. The step still links the Old Manor House history page. A Directory listing for the Old Manor Inn is a candidate for Phase 3.
 - The Swan and The Anglers Directory records rest on the owner-supplied spreadsheet only; confirm both on their own sites in Phase 3.
+
+## 2026-09-29: Away fans' guide, Phase 3 research (built chapters)
+
+Research log and open questions: `docs/away-fans-guide-sources.md`. Placeholders down from 27 to 9; the nine left are route details that need Darren to walk both routes.
+
+**Now sourced:** ground address and postcode (KT12 2JP, from the club and Places Leisure, which settles plan R2), kick-off times (from the club's own fixtures feed: 3pm Saturdays, 7.45pm Tuesdays), 2026/27 prices, carer policy, payment, free car park and accessible parking, pitch and covered seating (Elmbridge Borough Council), taxi rank (South Western Railway), UberX (Uber), and every train after full time on a sample Saturday and Tuesday (Realtime Trains, read in the browser pane rather than scripted around its browser check; timetable period from National Rail).
+
+**The bus option changed.** No bus runs from Walton-on-Thames station to the ground. The 564 runs from Church Street in the town centre, hourly in the daytime only, last back from the Xcel at 6.23pm, no evenings or Sundays. The guide now says so, and times the bus option with the generated walk between Church Street and the station (23 minutes). The finder offers the bus on Saturdays and says plainly that it cannot help after a midweek match.
+
+**Finder rebuilt around full time.** It lists the trains you can catch after full time (kick-off plus about 110 minutes, from the Laws of the Game), plus the last train each way. Times after midnight now count as the same evening. Shared arithmetic in `src/utils/trainTimes.ts`, so the no-JavaScript table and the finder agree.
+
+## Still open (Phase 3)
+- Twelve questions for the club and six for a site visit, listed at the top of the sources file.
+- Research for the chapters not yet built (food, hotels, parking alternatives, day out, safety, FAQs).
+- Directory corrections found on the way: The Weir Hotel's location, The Swan's website, no listing for the Old Manor Inn.

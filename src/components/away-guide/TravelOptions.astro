@@ -20,17 +20,19 @@ interface Props {
   walks: WalkRoute[];
   bus: {
     route: FactT<string>;
-    journeyMins: FactT<number>;
-    walkFromStopMins: FactT<number>;
+    toGroundMins: FactT<number>;
     frequency: FactT<string>;
+    noService: FactT<string>;
   };
+  busWalks: { churchStreetToStation: { minutes: number }; groundToStop: { minutes: number } };
   driveMins: number;
   rideHailing: string[];
 }
-const { walks, bus, driveMins, rideHailing } = Astro.props;
+const { walks, bus, busWalks, driveMins, rideHailing } = Astro.props;
 const km = (m: number) => (m / 1000).toFixed(1);
-const busMins = (valueOf(bus.journeyMins) ?? 0) + (valueOf(bus.walkFromStopMins) ?? 0);
-const busSample = 'placeholder' in bus.journeyMins || 'placeholder' in bus.walkFromStopMins;
+const busRide = valueOf(bus.toGroundMins);
+const busMins = busRide == null ? 0 : busWalks.churchStreetToStation.minutes + busRide + busWalks.groundToStop.minutes;
+const busSample = 'placeholder' in bus.toGroundMins;
 const taxiLabel = ['Taxi', ...rideHailing].join(' or ');
 ---
 
@@ -56,10 +58,11 @@ const taxiLabel = ['Taxi', ...rideHailing].join(' or ');
         About {busMins} minutes{busSample && <span class="option-sample">Sample</span>}
       </p>
     )}
-    <p class="option-sub">Route <Fact f={bus.route} /></p>
+    <p class="option-sub">Route <Fact f={bus.route} /> from the town centre</p>
     <dl>
+      <div><dt>From the station</dt><dd>No direct bus. The time includes a {busWalks.churchStreetToStation.minutes} minute walk to Church Street, but not the wait</dd></div>
       {shows(bus.frequency) && <div><dt>How often</dt><dd><Fact f={bus.frequency} /></dd></div>}
-      <div><dt>Includes</dt><dd>The walk from the bus stop to the ground</dd></div>
+      {shows(bus.noService) && <div><dt>After the match</dt><dd><Fact f={bus.noService} /></dd></div>}
     </dl>
     <a class="option-link" href="#by-bus">Bus details</a>
   </li>
