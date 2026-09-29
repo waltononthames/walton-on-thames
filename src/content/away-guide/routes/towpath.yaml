@@ -1,21 +1,22 @@
 # Walk by the river from Walton-on-Thames station, on the streets Darren chose
 # on 29 September 2026: Ashley Road, the High Street past The Walton Village,
-# Bridge Street, Manor Road past the Old Manor House, The Swan and The Anglers,
+# Bridge Street, Manor Road past the Old Manor Inn, The Swan and The Anglers,
 # the Thames towpath, and up Waterside Drive. The towpath section is the
 # Thames Path National Trail's mapped route (OpenStreetMap relation 14519665)
 # between the river end of Manor Road and the river end of Waterside Drive.
 # Most of those ways are tagged lit=no in OpenStreetMap; lighting, surface and
 # flooding are confirmed on a site visit before anything is stated (plan R6).
 #
-# Open question for Darren: OpenStreetMap maps a pub called the "Old Manor
-# Inn" on Manor Road. Its trading name is confirmed before it is listed as a
-# pub; until then the step names the historic Old Manor House only.
+# The pub on Manor Road is the Old Manor Inn: named by Darren, 29 September
+# 2026, and mapped under that name in OpenStreetMap. It has no Directory
+# listing yet, so it is named without a link. It is a different thing from
+# the medieval Old Manor House, which the same step links for its history.
 variant: towpath
 title: By the river
 order: 2
 placeholder: true
 bestFor:
-  value: A riverside walk past three pubs before a Saturday afternoon match
+  value: A riverside walk past four pubs before a Saturday afternoon match
   placeholder: true
 surface:
   value: Compacted path along the river, pavements in town
@@ -66,6 +67,7 @@ steps:
     lng: -0.42345
     photo: af-walk-river-step05-landscape
     pubs:
+      - name: Old Manor Inn
       - name: The Swan
         href: /directory/the-swan/
     history:
