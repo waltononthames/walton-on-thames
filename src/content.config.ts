@@ -151,6 +151,12 @@ const businesses = defineCollection({
     featured: z.boolean().default(false),
     verified_date: z.string().optional(),
     source: z.string().optional(),
+    // A listing that has its own guide page elsewhere on the site (e.g. The
+    // Heart at /shopping/the-heart/). Cards link there instead, no
+    // /directory/<slug>/ page is built, and public/_redirects 301s the old URL,
+    // so the two pages never compete in search. Listings whose address names
+    // this one link to the guide page as the place they are inside.
+    hub_page: z.string().regex(/^\/.+\/$/, 'hub_page must be a site path like /shopping/the-heart/').optional(),
     // NHS service profile, for GP practices and pharmacies. Kept apart from
     // `website`, which is the organisation's own site.
     nhs_url: z.string().url().optional(),

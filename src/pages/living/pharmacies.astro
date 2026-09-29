@@ -54,6 +54,7 @@ const nearby = pharmacies.filter((b: CollectionEntry<'businesses'>) => !LOCAL.in
           <BusinessCard
             name={biz.data.name}
             slug={biz.data.slug}
+            hubPage={biz.data.hub_page}
             category={biz.data.category}
             neighbourhood={biz.data.neighbourhood}
             description={biz.data.description}
@@ -72,6 +73,7 @@ const nearby = pharmacies.filter((b: CollectionEntry<'businesses'>) => !LOCAL.in
               <BusinessCard
                 name={biz.data.name}
                 slug={biz.data.slug}
+                hubPage={biz.data.hub_page}
                 category={biz.data.category}
                 neighbourhood={biz.data.neighbourhood}
                 description={biz.data.description}
