@@ -165,7 +165,7 @@ const url = `${SITE}${GUIDE_PATH}`;
 
         <h3 class="sub">The walking routes</h3>
         <p class="measure">
-          Both walks start at the station and pass through the town centre. The road route is the quicker of the two. The towpath route follows the Thames Path from Walton Bridge, about {(walkTow.towpathMetres / 1000).toFixed(1)} km along the river, and adds around {walkTow.minutes - walkRoad.minutes} minutes.
+          Both walks start at the station and follow Ashley Road and the High Street into the town centre. The road route then takes Church Street, Terrace Road and Waterside Drive. The river route turns down Bridge Street and Manor Road to the Thames and follows the towpath for about {(walkTow.towpathMetres / 1000).toFixed(1)} km before coming up Waterside Drive. {Math.abs(walkTow.minutes - walkRoad.minutes) <= 3 ? 'The two take about the same time.' : walkTow.minutes > walkRoad.minutes ? `The river route adds about ${walkTow.minutes - walkRoad.minutes} minutes.` : `The river route is about ${walkRoad.minutes - walkTow.minutes} minutes quicker.`}
         </p>
         <RouteStory routes={routes} />
 

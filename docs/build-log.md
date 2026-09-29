@@ -1807,3 +1807,13 @@ Brief: `away-fans-guide-brief.md` (Darren, 28 September 2026). Plan and decision
 - Phase 3 research: every placeholder, and the club questions (segregation, away end, turnstile times, taxi pickup point).
 - Leads recorded in OpenStreetMap only, to confirm from primary sources: bus route 564 (Falcon Coaches) to the Xcel Leisure Centre stop; the towpath ways between Walton Bridge and the Sports Hub are mostly tagged `lit=no`.
 - Push the branch for a Cloudflare preview once Darren agrees.
+
+## 2026-09-29: Away fans' guide, routes redrawn to Darren's streets
+
+Darren set both walking routes. **By road:** Ashley Road, the High Street past The Walton Village, Church Street, Terrace Road, Waterside Drive: 4.4 km, about 58 minutes. **By the river** (renamed from "towpath"): Ashley Road, the High Street, Bridge Street, Manor Road past the Old Manor House, The Swan and The Anglers, the Thames Path, then up Waterside Drive: 4.3 km, about 57 minutes, 1.1 km on the Thames Path. Both now reach Ashley Road along Station Avenue rather than cutting through on Ashley Park Road.
+
+`scripts/build-away-guide-map.mjs` now takes named waypoints on each street, placed so the router passes through without doubling back (checked: no U-turns in any leg). The Thames Path is fetched first and the join and leave points snapped to it, so the road and towpath sections meet exactly. Steps carry a new optional `pubs` list, shown in walking order and linked where the pub has a Directory listing. The copy comparing the two routes' times is now computed from the data.
+
+## Still open (routes)
+- **Old Manor House or Old Manor Inn?** Darren called it "the old manor house pub". Our history page describes the Old Manor House on Manor Road as a medieval timber-framed house; OpenStreetMap maps a pub named "Old Manor Inn" there. The step names the house and links its history page, and does not call it a pub until the trading name is confirmed.
+- The Swan and The Anglers Directory records rest on the owner-supplied spreadsheet only; confirm both on their own sites in Phase 3.

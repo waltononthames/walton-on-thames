@@ -4,7 +4,7 @@ import mapData from '../data/away-guide-map.json';
 import { project, type BaseMap, type LatLng } from '../components/gp/mapProjection';
 
 // Bump after rebuilding the base map: /images/* is cached for 7 days.
-export const AWAY_MAP_VERSION = '2026-09-29-2';
+export const AWAY_MAP_VERSION = '2026-09-29-3';
 
 export const GUIDE_PATH = '/walton-hersham-fc-away-fans-guide/';
 
@@ -43,7 +43,7 @@ export interface GroundData {
   name: string; address: Text; postcode: Text; officialSite: Text; kickOffSaturday: Text; kickOffMidweek: Text;
   turnstilesOpen: Text; tickets: Text; parking: Text; segregation: Text; awayEnd: Text;
 }
-export interface RouteStep { id: string; title: string; text: string; lat: number; lng: number; photo?: string; history?: { href: string; label: string } }
+export interface RouteStep { id: string; title: string; text: string; lat: number; lng: number; photo?: string; history?: { href: string; label: string }; pubs?: { name: string; href?: string }[] }
 export interface RouteData {
   variant: 'road' | 'towpath'; title: string; order: number; placeholder: boolean;
   bestFor: Text; surface: Text; lighting: Text; stepFree: Text; afterDark: Text; steps: RouteStep[];

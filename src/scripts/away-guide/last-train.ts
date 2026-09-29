@@ -37,7 +37,7 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-finder]')) {
 
     const notes: Record<string, string> = {
       road: `Allows ${data.walk.road} minutes to walk by road and ${data.allowance} minutes to reach the platform.`,
-      towpath: `Allows ${data.walk.towpath} minutes to walk by the towpath and ${data.allowance} minutes to reach the platform.${data.towpathAfterDark ? ` ${data.towpathAfterDark}.` : ''}`,
+      towpath: `Allows ${data.walk.towpath} minutes to walk by the river and ${data.allowance} minutes to reach the platform.${data.towpathAfterDark ? ` ${data.towpathAfterDark}.` : ''}`,
       taxi: `Allows ${data.driveMins} minutes by car and ${data.allowance} minutes to reach the platform. Add the time it takes a car to arrive, which can be longer after an evening match.`,
       bus: `Uses the last buses from the ground, allowing ${data.bus.walkFromStopMins ?? 0} minutes to walk to the stop and ${data.allowance} minutes to reach the platform.`,
     };

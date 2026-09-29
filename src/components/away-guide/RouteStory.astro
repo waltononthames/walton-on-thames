@@ -22,7 +22,7 @@ import {
   type Fact as FactT, type RouteKey,
 } from '../../utils/awayGuide';
 
-interface Step { id: string; title: string; text: string; lat: number; lng: number; photo?: string; history?: { href: string; label: string } }
+interface Step { id: string; title: string; text: string; lat: number; lng: number; photo?: string; history?: { href: string; label: string }; pubs?: { name: string; href?: string }[] }
 interface Route {
   variant: RouteKey;
   title: string;
@@ -145,6 +145,14 @@ const description = prepared
                 <p class="step-num" aria-hidden="true">{s.n}</p>
                 <h4>{s.title}{r.placeholder && <span class="step-sample">Sample</span>}</h4>
                 <p>{s.text}</p>
+                {s.pubs && s.pubs.length > 0 && (
+                  <p class="step-history">
+                    {s.pubs.length === 1 ? 'Pub on this stretch' : 'Pubs on this stretch'}:{' '}
+                    {s.pubs.map((p, i) => (
+                      <>{i > 0 && (i === s.pubs!.length - 1 ? ' and ' : ', ')}{p.href ? <a href={p.href}>{p.name}</a> : p.name}</>
+                    ))}
+                  </p>
+                )}
                 {s.history && (
                   <p class="step-history">Local history: <a href={s.history.href}>{s.history.label}</a></p>
                 )}

@@ -75,6 +75,9 @@ export function awayGuideCollections(checkedSource: z.ZodTypeAny) {
         // Photo slot name, af-<chapter>-<subject>-<orientation>, from the shot list.
         photo: z.string().optional(),
         history: z.object({ href: z.string(), label: z.string() }).optional(),
+        // Pubs passed on this stretch, in walking order. A link only where the
+        // pub has a Directory listing.
+        pubs: z.array(z.object({ name: z.string(), href: z.string().optional() })).default([]),
       })).min(2),
     }),
   });

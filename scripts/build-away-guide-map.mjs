@@ -12,13 +12,19 @@
 //    scripts/build-pharmacy-routes.mjs; the default is the public FOSSGIS
 //    server, whose terms ask for one request a second, a user agent naming the
 //    application and the OpenStreetMap attribution. This script makes four
-//    requests per run.
+//    routing requests per run.
 //
-// The towpath route is not left to the router. A foot router prefers the
-// shortest path, and between Walton Bridge and the Sports Hub it leaves the
-// river for Weir Road and Sunbury Lane. So the towpath section is the Thames
-// Path relation's own mapped ways, chained end to end, with routed road
-// sections from the station to the path and from the path to the ground.
+// Both walking routes follow the streets Darren chose on 29 September 2026,
+// given below as waypoints in order. Each waypoint is a point on the named
+// street, taken from that street's OpenStreetMap geometry, so the router has
+// no choice but to use it.
+//
+// The towpath section is not left to the router. A foot router prefers the
+// shortest path and leaves the river for Weir Road and Sunbury Lane, so the
+// towpath is the Thames Path relation's own mapped ways between the join and
+// leave points, with routed road sections either side. The join and leave
+// points are snapped to the path before routing, so the three sections meet
+// exactly.
 //
 // Figures are typical walking estimates from the router, not measured times.
 // The page labels them that way, and a route stays marked as a placeholder in
@@ -55,11 +61,24 @@ const ROUTER = {
 // entrance: entrances and turnstiles come from the club or a site visit.
 const STATION = { lat: 51.3728758, lng: -0.4143083, basis: 'OpenStreetMap node 638645, Walton-on-Thames station' };
 const GROUND = { lat: 51.3991774, lng: -0.4108226, basis: 'OpenStreetMap way 44207919 centre, Xcel Sports Hub' };
-// Where the towpath route joins and leaves the Thames Path. Both are vertices
-// of the relation's ways: the Walton Bridge end of way 157071360, and the
-// Sports Hub end of way 552453374.
-const TOWPATH_JOIN = { lat: 51.3863, lng: -0.4312 };
-const TOWPATH_LEAVE = { lat: 51.4009, lng: -0.4123 };
+// Route waypoints, in walking order.
+const VIA = {
+  stationAvenue: { lat: 51.37250, lng: -0.42020, note: 'Station Avenue, west of the station' },
+  ashleyRoadSouth: { lat: 51.37294, lng: -0.42216, note: 'Ashley Road, from its Station Avenue end' },
+  ashleyRoad: { lat: 51.3780, lng: -0.4200, note: 'Ashley Road, north of Ashley Drive' },
+  highStreet: { lat: 51.3853, lng: -0.4186, note: 'High Street, by The Walton Village' },
+  churchStreet: { lat: 51.3870, lng: -0.4189, note: 'Church Street' },
+  terraceRoad: { lat: 51.3909, lng: -0.4133, note: 'Terrace Road' },
+  terraceRoadEast: { lat: 51.3935, lng: -0.4084, note: 'Terrace Road, approaching Waterside Drive' },
+  watersideDrive: { lat: 51.3955, lng: -0.4080, note: 'Waterside Drive, from the Terrace Road end' },
+  manorRoad: { lat: 51.3876, lng: -0.4234, note: 'Manor Road, from its Bridge Street end, by the Old Manor Inn' },
+  watersideDriveUp: { lat: 51.39807, lng: -0.41376, note: 'Waterside Drive, walking up from the river end' },
+};
+// Where the towpath route joins and leaves the Thames Path, before snapping:
+// the river end of Manor Road by The Anglers, and the Thames Path beside the
+// river end of Waterside Drive.
+const TOWPATH_JOIN = { lat: 51.3900, lng: -0.4228 };
+const TOWPATH_LEAVE = { lat: 51.3982, lng: -0.4141 };
 const THAMES_PATH_RELATION = 14519665;
 
 const M_PER_DEG_LAT = 111_220;
@@ -132,7 +151,7 @@ function chainTowpath(relation, start, end) {
   // more than 30 m, which would mean the point is not on the path at all.
   const snap = (p) => {
     const best = [...nodes.values()].reduce((b, v) => (haversine(v, p) < haversine(b, p) ? v : b));
-    if (haversine(best, p) > 30) throw new Error(`No Thames Path vertex within 30 m of ${p.lat},${p.lng}`);
+    if (haversine(best, p) > 80) throw new Error(`No Thames Path vertex within 80 m of ${p.lat},${p.lng}`);
     return key(best);
   };
   const from = snap(start), to = snap(end);
@@ -232,10 +251,17 @@ function scaleBar(P, metres, y) {
 if (process.argv.includes('--fetch')) {
   mkdirSync(CACHE, { recursive: true });
 
+  // The Thames Path first, so the towpath route's road sections can be
+  // routed to the exact path vertices the towpath section starts and ends at.
+  console.log('Fetching the Thames Path');
+  const pathData = JSON.parse(await overpass(`[out:json][timeout:120];relation(${THAMES_PATH_RELATION});out geom;`));
+  const pathLine = chainTowpath(pathData.elements[0], TOWPATH_JOIN, TOWPATH_LEAVE);
+  const joinPoint = pathLine[0], leavePoint = pathLine.at(-1);
+
   console.log(`Routing with ${ROUTER.name}`);
-  const road = await route(ROUTER.foot, [STATION, GROUND]);
-  const towIn = await route(ROUTER.foot, [STATION, TOWPATH_JOIN]);
-  const towOut = await route(ROUTER.foot, [TOWPATH_LEAVE, GROUND]);
+  const road = await route(ROUTER.foot, [STATION, VIA.stationAvenue, VIA.ashleyRoadSouth, VIA.ashleyRoad, VIA.highStreet, VIA.churchStreet, VIA.terraceRoad, VIA.terraceRoadEast, VIA.watersideDrive, GROUND]);
+  const towIn = await route(ROUTER.foot, [STATION, VIA.stationAvenue, VIA.ashleyRoadSouth, VIA.ashleyRoad, VIA.highStreet, VIA.manorRoad, joinPoint]);
+  const towOut = await route(ROUTER.foot, [leavePoint, VIA.watersideDriveUp, GROUND]);
   const drive = await route(ROUTER.car, [STATION, GROUND]);
   writeFileSync(join(CACHE, 'routes.json'), JSON.stringify({ provider: ROUTER.name, fetched: new Date().toISOString(), road, towIn, towOut, drive }));
 

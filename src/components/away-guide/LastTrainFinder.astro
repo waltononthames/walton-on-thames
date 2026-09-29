@@ -84,7 +84,7 @@ const data = {
         <fieldset>
           <legend>Getting back to the station</legend>
           <label><input type="radio" name="finder-mode" value="road" checked /> Walk by road</label>
-          <label><input type="radio" name="finder-mode" value="towpath" /> Walk by the towpath</label>
+          <label><input type="radio" name="finder-mode" value="towpath" /> Walk by the river</label>
           {data.bus.last.saturday.length + data.bus.last.weekday.length > 0 && data.bus.journeyMins && (
             <label><input type="radio" name="finder-mode" value="bus" /> Bus{data.bus.route && ` ${data.bus.route}`}</label>
           )}

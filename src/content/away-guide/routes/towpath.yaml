@@ -1,14 +1,21 @@
-# Walk by the Thames towpath from Walton-on-Thames station. The towpath
-# section is the Thames Path National Trail's mapped route between Walton
-# Bridge and the Sports Hub (OpenStreetMap relation 14519665). Most of those
-# ways are tagged lit=no in OpenStreetMap; lighting, surface and flooding are
-# confirmed on a site visit before anything is stated (plan R6).
+# Walk by the river from Walton-on-Thames station, on the streets Darren chose
+# on 29 September 2026: Ashley Road, the High Street past The Walton Village,
+# Bridge Street, Manor Road past the Old Manor House, The Swan and The Anglers,
+# the Thames towpath, and up Waterside Drive. The towpath section is the
+# Thames Path National Trail's mapped route (OpenStreetMap relation 14519665)
+# between the river end of Manor Road and the river end of Waterside Drive.
+# Most of those ways are tagged lit=no in OpenStreetMap; lighting, surface and
+# flooding are confirmed on a site visit before anything is stated (plan R6).
+#
+# Open question for Darren: OpenStreetMap maps a pub called the "Old Manor
+# Inn" on Manor Road. Its trading name is confirmed before it is listed as a
+# pub; until then the step names the historic Old Manor House only.
 variant: towpath
-title: By the Thames towpath
+title: By the river
 order: 2
 placeholder: true
 bestFor:
-  value: A riverside walk before a Saturday afternoon match
+  value: A riverside walk past three pubs before a Saturday afternoon match
   placeholder: true
 surface:
   value: Compacted path along the river, pavements in town
@@ -16,66 +23,81 @@ surface:
 lighting:
   unconfirmed:
     ask: site-visit
-    question: Which parts of the towpath between Walton Bridge and the Sports Hub are lit?
+    question: Which parts of the towpath between Manor Road and Waterside Drive are lit?
 stepFree:
   unconfirmed:
     ask: site-visit
-    question: Are there steps or gates on the towpath route, including the footbridge section?
+    question: Are there steps or gates between Manor Road and the towpath, or between the towpath and Waterside Drive?
 afterDark:
   value: Not recommended after dark
   placeholder: true
 steps:
   - id: station
     title: Walton-on-Thames station
-    text: Leave the station and turn left towards Ashley Park Road.
+    text: Leave the station and turn left along Station Avenue.
     lat: 51.37282
     lng: -0.41456
-    photo: af-walk-towpath-step01-landscape
+    photo: af-walk-river-step01-landscape
   - id: ashley-road
-    title: Ashley Park Road and Ashley Road
-    text: Follow Ashley Park Road and Ashley Road north into the town centre.
-    lat: 51.37959
-    lng: -0.41903
-    photo: af-walk-towpath-step02-landscape
-  - id: the-heart
-    title: Through The Heart
-    text: Walk through The Heart towards Bridge Street.
-    lat: 51.38438
-    lng: -0.42018
-    photo: af-walk-towpath-step03-landscape
+    title: Ashley Road
+    text: At the end of Station Avenue, turn right into Ashley Road and follow it for about a kilometre towards the town centre.
+    lat: 51.37294
+    lng: -0.42216
+    photo: af-walk-river-step02-landscape
+  - id: high-street
+    title: High Street
+    text: Turn left onto the High Street and follow it through the town centre.
+    lat: 51.38527
+    lng: -0.41865
+    photo: af-walk-river-step03-landscape
+    pubs:
+      - name: The Walton Village
+        href: /directory/the-walton-village/
   - id: bridge-street
-    title: Bridge Street and Walton Lane
-    text: Follow Bridge Street towards the river, then turn left onto Walton Lane.
-    lat: 51.38586
-    lng: -0.42696
-    photo: af-walk-towpath-step04-landscape
-  - id: walton-bridge
-    title: Walton Bridge
-    text: Join the Thames Path beside Walton Bridge and turn right along the river.
-    lat: 51.3863
-    lng: -0.4312
-    photo: af-walk-towpath-step05-landscape
+    title: Bridge Street
+    text: Carry straight on from the High Street into Bridge Street.
+    lat: 51.38631
+    lng: -0.41983
+    photo: af-walk-river-step04-landscape
+  - id: manor-road
+    title: Manor Road
+    text: Turn right into Manor Road and follow it down to the river.
+    lat: 51.38712
+    lng: -0.42345
+    photo: af-walk-river-step05-landscape
+    pubs:
+      - name: The Swan
+        href: /directory/the-swan/
     history:
-      href: /history/walton-bridge/
-      label: Walton Bridge
+      href: /history/old-manor-house/
+      label: The Old Manor House
+  - id: the-anglers
+    title: The Anglers and the Thames Path
+    text: Manor Road ends at the river beside The Anglers. Turn right onto the Thames Path.
+    lat: 51.3900
+    lng: -0.4228
+    photo: af-walk-river-step06-landscape
+    pubs:
+      - name: The Anglers
+        href: /directory/the-anglers/
   - id: towpath
     title: Along the towpath
-    text: Follow the towpath downstream for a little over two kilometres.
+    text: Follow the towpath downstream for about a kilometre.
     lat: 51.3928
     lng: -0.4199
-    photo: af-walk-towpath-step06-landscape
+    photo: af-walk-river-step07-landscape
     history:
       href: /history/river-thames-at-walton/
       label: The River Thames at Walton
-  - id: leave-towpath
-    title: Leave the towpath
-    text: Leave the river path at Sunbury Lane for the Sports Hub.
-    lat: 51.4009
-    lng: -0.4123
-    photo: af-walk-towpath-step07-landscape
+  - id: waterside-drive
+    title: Up Waterside Drive
+    text: Leave the river at the end of Waterside Drive and walk up Waterside Drive.
+    lat: 51.39843
+    lng: -0.41471
+    photo: af-walk-river-step08-landscape
   - id: ground
     title: Elmbridge Xcel Sports Hub
-    text: Follow the signs to the turnstiles.
+    text: Turn right for the Sports Hub and follow the signs to the turnstiles.
     lat: 51.39914
     lng: -0.41086
-    photo: af-walk-towpath-step08-landscape
+    photo: af-walk-river-step09-landscape
