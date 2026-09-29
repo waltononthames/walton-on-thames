@@ -402,6 +402,23 @@ ${scaleBar(P, 500, P.height - 28)}
 mkdirSync(join(ROOT, 'public', 'images', 'maps'), { recursive: true });
 writeFileSync(OUT_SVG, svg);
 
+// The Sports Hub site for the ground plan: the Hub outline and the pitches
+// inside or beside it, as OpenStreetMap maps them. OpenStreetMap does not say
+// which pitch is the stadium pitch, or where the stand and turnstiles are, so
+// the page labels none of those until the club confirms them.
+const HUB_ID = 44207919;
+const hubWay = ways.find((w) => w.id === HUB_ID);
+const nearHub = (w) => {
+  const la = w.geometry.reduce((a, p) => a + p.lat, 0) / w.geometry.length;
+  const lo = w.geometry.reduce((a, p) => a + p.lon, 0) / w.geometry.length;
+  return la > 51.3960 && la < 51.4030 && lo > -0.4180 && lo < -0.4060;
+};
+const hubPitches = ways.filter((w) => w.tags?.leisure === 'pitch' && w.tags?.sport === 'soccer' && closed(w) && nearHub(w));
+const groundPlan = {
+  hub: hubWay ? pathsOf([hubWay], P, true) : '',
+  pitches: hubPitches.map((w) => ({ d: pathsOf([w], P, true), surface: w.tags.surface ?? null, osm: `way ${w.id}` })),
+};
+
 const minutes = (s) => Math.round(s / 60);
 const data = {
   src: '/images/maps/away-guide-base.svg',
@@ -430,6 +447,7 @@ const data = {
     metres: Math.round(routes.drive.routes[0].distance),
     minutes: minutes(routes.drive.routes[0].duration),
   },
+  groundPlan,
   bus: {
     stops: BUS_STOPS,
     churchStreetToStation: {

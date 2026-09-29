@@ -1,0 +1,15 @@
+# No website of its own found. Name confirmed by Darren and OpenStreetMap.
+# CAMRA WhatPub gives 113 Manor Road, KT12 2NZ: a lead, not a source on its
+# own, so the address waits for a site visit. No hours or features stated.
+name: "Old Manor Inn"
+type: pub
+routes: [towpath]
+order: 5
+area: route
+lat: 51.38865
+lng: -0.42281
+pointBasis: "OpenStreetMap node 21980919"
+address:
+  unconfirmed:
+    ask: site-visit
+    question: "What is the street address of this venue?"

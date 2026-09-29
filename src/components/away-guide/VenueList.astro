@@ -1,0 +1,144 @@
+---
+// Venue cards for the pubs, food and hotel chapters. The HTML carries each
+// venue's sourced hours as text; the script (open-now.ts) adds an "Open now"
+// label worked out in Europe/London time, and two filters. A venue whose hours
+// are not sourced shows no open or closed label, ever.
+import Fact from './Fact.astro';
+import { valueOf, type Fact as FactT } from '../../utils/awayGuide';
+import { hoursText, isOpenAt, type Hours } from '../../utils/openingHours';
+
+export interface Venue {
+  slug: string;
+  name: string;
+  business?: string;
+  type: string;
+  routes: string[];
+  order: number;
+  address: FactT<string>;
+  url?: FactT<string>;
+  phone?: FactT<string>;
+  hours?: FactT<Hours>;
+  hoursLabel: string;
+  features: { label: string; f: FactT<string> }[];
+  badge?: string;
+}
+interface Props {
+  venues: Venue[];
+  filters?: boolean;
+  routeLabels?: Record<string, string>;
+  /** The venue name's heading level: one below the heading the list sits under. */
+  level?: 3 | 4;
+}
+const { venues, filters = true, routeLabels = { road: 'road route', towpath: 'river route' }, level = 4 } = Astro.props;
+const H = level === 3 ? 'h3' : 'h4';
+
+// "Open after an evening match": still open at 10.30pm on a Tuesday, about
+// when fans walking back from a 7.45pm kick-off reach the town centre.
+const EVENING = { day: 'tue' as const, mins: 22 * 60 + 30 };
+---
+
+{filters && (
+  <div class="venue-filters" hidden data-venue-filters>
+    <label><input type="checkbox" data-filter="now" /> Open now</label>
+    <label><input type="checkbox" data-filter="evening" /> Open at 10.30pm on a Tuesday</label>
+  </div>
+)}
+<ul class="venues" data-venues>
+  {venues.map((v) => {
+    const hours = v.hours ? valueOf(v.hours) : undefined;
+    const evening = hours ? isOpenAt(hours, EVENING.day, EVENING.mins) : false;
+    const url = v.url ? valueOf(v.url) : undefined;
+    return (
+      <li class="venue" data-hours={hours ? JSON.stringify(hours) : undefined} data-evening={hours ? String(evening) : undefined} id={`venue-${v.slug}`}>
+        <div class="venue-head">
+          {v.badge && <span class={`venue-badge venue-badge--${v.type}`} aria-hidden="true">{v.badge}</span>}
+          <H class="venue-name">{url ? <a href={url} rel="noopener">{v.name}</a> : v.name}</H>
+          <span class="venue-open" data-open-label hidden></span>
+        </div>
+        {v.routes.length > 0 && (
+          <p class="venue-route">On the {v.routes.map((r) => routeLabels[r]).join(' and the ')}</p>
+        )}
+        <p class="venue-address"><Fact f={v.address} /></p>
+        {v.hours && (
+          <p class="venue-hours"><span class="venue-hours-label">{v.hoursLabel}:</span> <Fact f={v.hours}>{(h: Hours) => hoursText(h)}</Fact></p>
+        )}
+        {v.features.length > 0 && (
+          <dl class="venue-features">
+            {v.features.map((f) => <div><dt>{f.label}</dt><dd><Fact f={f.f} /></dd></div>)}
+          </dl>
+        )}
+        {v.phone && <p class="venue-phone"><Fact f={v.phone}>{(p: string) => `<a href="tel:${p.replace(/\s/g, '')}">${p}</a>`}</Fact></p>}
+        {v.business && <p class="venue-dir"><a href={`/directory/${v.business}/`}>Directory listing</a></p>}
+      </li>
+    );
+  })}
+</ul>
+
+<script>
+  import '../../scripts/away-guide/open-now';
+</script>
+
+<style>
+  .venue-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 1rem; }
+  .venue-filters[hidden] { display: none; }
+  .venue-filters label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0 0.9rem;
+    border: 1.5px solid rgba(11, 36, 46, 0.2);
+    border-radius: 999px;
+    background: var(--color-white);
+    font-size: 0.88rem;
+    cursor: pointer;
+  }
+  .venue-filters label:has(input:checked) { border-color: var(--color-navy); background: var(--color-navy); color: #FFFFFF; }
+  .venue-filters label:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .venues {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1rem;
+    list-style: none;
+  }
+  .venue {
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+    font-size: 0.92rem;
+  }
+  .venue[hidden] { display: none; }
+  .venue-head { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+  .venue-name { font-size: 1.15rem; margin: 0; }
+  .venue-badge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.6rem;
+    height: 1.6rem;
+    padding: 0 0.3rem;
+    border-radius: 999px;
+    color: #FFFFFF;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .venue-badge--pub { background: #7A3E1D; }
+  .venue-badge--grab-and-go, .venue-badge--sit-down { background: #B8862E; color: #0B242E; }
+  .venue-badge--supermarket { background: #3E6B3A; }
+  .venue-badge--hotel { background: #4B4F8C; }
+  .venue-open {
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .venue-open[data-state="open"] { background: #DDEFD9; color: #1E5B2A; }
+  .venue-open[data-state="closed"] { background: #EEE; color: #555; }
+  .venue-route { color: var(--color-slate); font-size: 0.85rem; margin-bottom: 0.3rem; }
+  .venue-address { margin-bottom: 0.4rem; }
+  .venue-hours { margin-bottom: 0.4rem; }
+  .venue-hours-label { font-weight: 600; }
+  .venue-features div { padding: 0.3rem 0; border-top: 1px solid rgba(11, 36, 46, 0.07); }
+  .venue-features dt { color: var(--color-slate); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .venue-phone, .venue-dir { margin-top: 0.4rem; font-size: 0.88rem; }
+</style>

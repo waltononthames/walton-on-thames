@@ -1,0 +1,32 @@
+name: "Khyber Pass"
+business: khyber-pass
+type: sit-down
+routes: [road]
+order: 5
+area: route
+lat: 51.39131
+lng: -0.41207
+pointBasis: "OpenStreetMap node 12770500808"
+address:
+  value: "Terrace Road, Walton-on-Thames KT12 2SA"
+  source:
+    label: "Khyber Pass, official website (postcode); street from OpenStreetMap"
+    url: https://www.khyberpassinwalton.co.uk/
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.khyberpassinwalton.co.uk/"
+  source:
+    label: "Khyber Pass, official website (postcode); street from OpenStreetMap"
+    url: https://www.khyberpassinwalton.co.uk/
+    basis: organisation-website
+    checked: "2026-09-29"
+features:
+  - label: "Takeaway"
+    f:
+      value: "Eat in, takeaway and online ordering"
+      source:
+        label: "Khyber Pass, official website (postcode); street from OpenStreetMap"
+        url: https://www.khyberpassinwalton.co.uk/
+        basis: organisation-website
+        checked: "2026-09-29"

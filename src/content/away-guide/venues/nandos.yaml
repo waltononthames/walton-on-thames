@@ -1,0 +1,53 @@
+name: "Nando's"
+business: nandos
+type: sit-down
+order: 99
+area: town-centre
+lat: 51.38457
+lng: -0.42059
+pointBasis: "OpenStreetMap way 68894819"
+address:
+  value: "Unit 7, The Heart, New Zealand Avenue, Walton-on-Thames KT12 1GH"
+  source:
+    label: "Nando's Walton-on-Thames, restaurant page"
+    url: https://www.nandos.co.uk/restaurants/walton-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.nandos.co.uk/restaurants/walton-thames"
+  source:
+    label: "Nando's Walton-on-Thames, restaurant page"
+    url: https://www.nandos.co.uk/restaurants/walton-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+phone:
+  value: "01932 223610"
+  source:
+    label: "Nando's Walton-on-Thames, restaurant page"
+    url: https://www.nandos.co.uk/restaurants/walton-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+hours:
+  value:
+    mon: "11:30-22:00"
+    tue: "11:30-22:00"
+    wed: "11:30-22:00"
+    thu: "11:30-22:30"
+    fri: "11:30-22:30"
+    sat: "11:30-22:30"
+    sun: "11:30-22:00"
+  source:
+    label: "Nando's Walton-on-Thames, restaurant page"
+    url: https://www.nandos.co.uk/restaurants/walton-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+hoursLabel: "Opening hours"
+features:
+  - label: "Takeaway"
+    f:
+      value: "Collection and delivery"
+      source:
+        label: "Nando's Walton-on-Thames, restaurant page"
+        url: https://www.nandos.co.uk/restaurants/walton-thames
+        basis: organisation-website
+        checked: "2026-09-29"

@@ -46,7 +46,7 @@ export interface GroundData {
 }
 export interface RouteStep { id: string; title: string; text: string; lat: number; lng: number; photo?: string; history?: { href: string; label: string }; pubs?: { name: string; href?: string }[] }
 export interface RouteData {
-  variant: 'road' | 'towpath'; title: string; order: number; placeholder: boolean;
+  variant: 'road' | 'towpath'; title: string; order: number; streets: string; placeholder: boolean;
   bestFor: Text; surface: Text; lighting: Text; stepFree: Text; afterDark: Text; steps: RouteStep[];
 }
 export interface TrainData {

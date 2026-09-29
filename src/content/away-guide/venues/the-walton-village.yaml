@@ -1,0 +1,62 @@
+name: "The Walton Village"
+business: the-walton-village
+type: pub
+routes: [road, towpath]
+order: 3
+area: route
+lat: 51.38534
+lng: -0.41847
+pointBasis: "OpenStreetMap way 431427674"
+address:
+  value: "29 High Street, Walton-on-Thames KT12 1DG"
+  source:
+    label: "The Walton Village, official website"
+    url: https://thewaltonvillage.com/
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://thewaltonvillage.com/"
+  source:
+    label: "The Walton Village, official website"
+    url: https://thewaltonvillage.com/
+    basis: organisation-website
+    checked: "2026-09-29"
+phone:
+  value: "01932 254431"
+  source:
+    label: "The Walton Village, official website"
+    url: https://thewaltonvillage.com/
+    basis: organisation-website
+    checked: "2026-09-29"
+hours:
+  value:
+    mon: "12:00-23:00"
+    tue: "12:00-23:00"
+    wed: "12:00-23:00"
+    thu: "12:00-23:00"
+    fri: "12:00-24:00"
+    sat: "10:00-24:00"
+    sun: "10:00-23:00"
+  source:
+    label: "The Walton Village, official website"
+    url: https://thewaltonvillage.com/
+    basis: organisation-website
+    checked: "2026-09-29"
+hoursLabel: "Bar hours"
+features:
+  - label: "Food"
+    f:
+      value: "Kitchen open until 9pm Monday to Thursday and Sunday, 10pm Friday and Saturday"
+      source:
+        label: "The Walton Village, official website"
+        url: https://thewaltonvillage.com/
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Live sport"
+    f:
+      value: "TNT Sports on the TVs"
+      source:
+        label: "The Walton Village, official website"
+        url: https://thewaltonvillage.com/
+        basis: organisation-website
+        checked: "2026-09-29"

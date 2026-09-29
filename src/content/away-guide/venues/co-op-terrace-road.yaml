@@ -1,0 +1,23 @@
+name: "Co-op"
+business: co-op-terrace-road-walton-on-thames
+type: supermarket
+routes: [road]
+order: 5
+area: route
+lat: 51.39136
+lng: -0.41192
+pointBasis: "OpenStreetMap node 12770500761"
+address:
+  value: "Terrace Road, Walton-on-Thames"
+  source:
+    label: "Co-op store finder, 56-62 Terrace Road"
+    url: https://www.coop.co.uk/store-finder/KT12-2SD/56-62-terrace-road
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.coop.co.uk/store-finder/KT12-2SD/56-62-terrace-road"
+  source:
+    label: "Co-op store finder, 56-62 Terrace Road"
+    url: https://www.coop.co.uk/store-finder/KT12-2SD/56-62-terrace-road
+    basis: organisation-website
+    checked: "2026-09-29"

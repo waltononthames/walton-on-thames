@@ -122,13 +122,40 @@ The club's own page gives "approximately 10 minutes by car or 50-minute walk" fr
 
 ---
 
+### Phase 4 additions (29 September 2026)
+
+| Fact | Source | Confidence |
+|---|---|---|
+| The Regent, 19 Church Street KT12 2QP; hours Mon to Wed 9am to 11pm, Thu 9am to midnight, Fri and Sat 9am to 1am, Sun 9am to 12.30am; Sky Sports and TNT Sports; outside area; children welcome; dog friendly | [Craft Union Pubs, Regent Walton Upon Thames](https://www.craftunionpubs.com/regent-walton-on-thames) | High |
+| Nando's, Unit 7, The Heart KT12 1GH, 01932 223610; Mon to Wed 11.30am to 10pm, Thu to Sat 11.30am to 10.30pm, Sun 11.30am to 10pm | [Nando's Walton-on-Thames](https://www.nandos.co.uk/restaurants/walton-thames) | High |
+| Wagamama, The Heart KT12 1GH, 01932 260664; Mon to Thu 11am to 10pm, Fri and Sat 11am to 11pm, Sun 11am to 10pm | [Wagamama Walton-on-Thames](https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames) | High |
+| Five Guys, Unit 8a, The Heart KT12 1GH, 01932 320992 (no hours shown) | [Five Guys, Walton on Thames](https://restaurants.fiveguys.co.uk/greater-london/unit-8a) | High |
+| McDonald's, 5-7 High Street KT12 1DG (hours not stated: the official page refused an automated read; aggregator hours not used) | [McDonald's location page](https://www.mcdonalds.com/gb/en-gb/location/walton-on-thames/walton-on-thames/57-high-street/8260149.html) | High for existence |
+| Khyber Pass, Terrace Road KT12 2SA: eat in, takeaway, online ordering (hours not shown) | [khyberpassinwalton.co.uk](https://www.khyberpassinwalton.co.uk/) | High |
+| Co-op, 56-62 Terrace Road; Aldi, 1-3 Bridge Street | Co-op and Aldi store finders, as linked from the Directory | High |
+| Travelodge Walton-on-Thames Central, 20-32 Church Street KT12 2QS: limited free parking, double, family and accessible rooms | [Travelodge](https://www.travelodge.co.uk/hotels/692/Walton-on-Thames-Central-hotel) | High |
+| Travelodge Walton-on-Thames, Ashley Park Road KT12 1JP: directly across from the station; limited free parking for guests | [Travelodge](https://www.travelodge.co.uk/hotels/488/Walton-On-Thames-hotel) | High |
+| Club founded 1895 as Walton FC; amalgamated with Hersham FC in 1945; FA Amateur Cup at Wembley on 14 April 1973, 41,000 crowd, Roger Connell's late goal against Slough Town; left Stompond Lane at the end of September 2017 for the Sports Hub; nickname the Swans | [Walton & Hersham FC, History](https://waltonhershamfc.com/club/history/) | High |
+| First team in the Enterprise National League South, 2026-27 | [Club, first team fixtures](https://waltonhershamfc.com/fixtures/first-team/) | High |
+| St Peter's Hospital, Guildford Road, Chertsey KT16 0PZ: 24-hour A&E | [Ashford and St Peter's Hospitals NHS FT](https://www.ashfordstpeters.nhs.uk/accident-and-emergency) | High |
+| 999 for emergencies, 101 for non-emergencies | [Surrey Police, Contact us](https://www.surrey.police.uk/contact/af/contact-us-beta/contact-us/) | High |
+| Venue positions on the maps | OpenStreetMap, element recorded in each venue file | High for position |
+| Hub outline and pitches on the site plan | OpenStreetMap way 44207919 and the pitch ways within it | High for shape; which pitch is the stadium pitch is a club question |
+
+**Walton Casuals.** The brief mentions "the merger with Walton Casuals". No primary source found describes a merger: the club's history page does not mention Walton Casuals, and secondary sources (Wikipedia, a lead only) describe the two clubs sharing the Sports Hub until Walton Casuals folded in 2022. The guide says nothing about Walton Casuals until Darren decides what to say and a primary source supports it.
+
+**Not yet researched:** petrol stations on the way to the A3 and M25, late-opening pharmacies (the guide links our pharmacies page), programme prices and the club shop (club questions).
+
 ## 4. Corrections needed elsewhere on the site (outside this guide's scope)
 
 - **The Weir Hotel** Directory listing places it "beside Walton Bridge" and "a 10 to 15 minute walk" from the station; it is beside the Sports Hub, about 4 km from the station. A separate task has been offered.
 - **The Swan** Directory record gives www.theswanwalton.co.uk, which no longer resolves; its site is now https://www.swanwalton.com/.
 - **The Swan and The Anglers** Directory records rest on the owner-supplied spreadsheet only.
 - **Old Manor Inn** has no Directory listing.
+- **The George Inn** Directory record gives www.georgeinnwaltononthames.co.uk, and **The Souvlaki** gives thesouvlaki.uk: neither domain resolves. Check both are still trading.
+- **The Mogul**'s website now redirects to Just Eat.
+- **The Watch Walton and Hersham FC attraction card** (Things to Do) repeats unsourced claims about the stand, bars and car park; the earlier task on the FC page should cover it too.
 
-## 5. Still to research (Phase 4 chapters)
+## 5. Still to research
 
-Food before and after the match (grab-and-go and sit-down, late opening), supermarkets and petrol stations, hotels by price band, other car parks and restricted streets, the day-out suggestions (most already sourced in the Things to Do data), hospitals with A&E and a late pharmacy (the site's pharmacy pages hold sourced data), the club's history and the merger with Walton Casuals, and the FAQs.
+Petrol stations, other car parks within walking distance of the Hub and any restricted streets, programme and club shop details (club), and price bands for hotels (dropped: no source gives stable prices).

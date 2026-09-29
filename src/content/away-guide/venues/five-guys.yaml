@@ -1,0 +1,29 @@
+name: "Five Guys"
+business: five-guys
+type: grab-and-go
+order: 99
+area: town-centre
+lat: 51.38457
+lng: -0.42069
+pointBasis: "OpenStreetMap way 68894830"
+address:
+  value: "Unit 8a, The Heart Shopping Centre, New Zealand Avenue, Walton-on-Thames KT12 1GH"
+  source:
+    label: "Five Guys, Walton on Thames restaurant page"
+    url: https://restaurants.fiveguys.co.uk/greater-london/unit-8a
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://restaurants.fiveguys.co.uk/greater-london/unit-8a"
+  source:
+    label: "Five Guys, Walton on Thames restaurant page"
+    url: https://restaurants.fiveguys.co.uk/greater-london/unit-8a
+    basis: organisation-website
+    checked: "2026-09-29"
+phone:
+  value: "01932 320992"
+  source:
+    label: "Five Guys, Walton on Thames restaurant page"
+    url: https://restaurants.fiveguys.co.uk/greater-london/unit-8a
+    basis: organisation-website
+    checked: "2026-09-29"

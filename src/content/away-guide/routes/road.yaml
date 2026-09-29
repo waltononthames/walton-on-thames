@@ -7,6 +7,7 @@
 variant: road
 title: By road
 order: 1
+streets: Station Avenue, Ashley Road, High Street, Church Street, Terrace Road, Waterside Drive
 placeholder: true
 bestFor:
   value: The route to take after an evening match

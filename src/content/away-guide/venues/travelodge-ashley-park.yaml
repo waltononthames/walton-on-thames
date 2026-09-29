@@ -1,0 +1,39 @@
+name: "Travelodge Walton-on-Thames"
+business: travelodge-walton-ashley-park
+type: hotel
+order: 99
+area: station
+lat: 51.37355
+lng: -0.41544
+pointBasis: "OpenStreetMap node 253267548"
+address:
+  value: "Ashley Park Road, Walton-on-Thames KT12 1JP"
+  source:
+    label: "Travelodge, Walton-On-Thames hotel page"
+    url: https://www.travelodge.co.uk/hotels/488/Walton-On-Thames-hotel
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.travelodge.co.uk/hotels/488/Walton-On-Thames-hotel"
+  source:
+    label: "Travelodge, Walton-On-Thames hotel page"
+    url: https://www.travelodge.co.uk/hotels/488/Walton-On-Thames-hotel
+    basis: organisation-website
+    checked: "2026-09-29"
+features:
+  - label: "Station"
+    f:
+      value: "Directly across from Walton-on-Thames station"
+      source:
+        label: "Travelodge, Walton-On-Thames hotel page"
+        url: https://www.travelodge.co.uk/hotels/488/Walton-On-Thames-hotel
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Parking"
+    f:
+      value: "Limited free parking for guests, first come, first served"
+      source:
+        label: "Travelodge, Walton-On-Thames hotel page"
+        url: https://www.travelodge.co.uk/hotels/488/Walton-On-Thames-hotel
+        basis: organisation-website
+        checked: "2026-09-29"

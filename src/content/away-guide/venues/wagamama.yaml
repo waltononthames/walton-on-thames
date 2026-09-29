@@ -1,0 +1,44 @@
+name: "Wagamama"
+business: wagamama
+type: sit-down
+order: 99
+area: town-centre
+lat: 51.38449
+lng: -0.41974
+pointBasis: "OpenStreetMap way 68894865"
+address:
+  value: "New Zealand Avenue, The Heart, Walton-on-Thames KT12 1GH"
+  source:
+    label: "Wagamama Walton-on-Thames, restaurant page"
+    url: https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames"
+  source:
+    label: "Wagamama Walton-on-Thames, restaurant page"
+    url: https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+phone:
+  value: "01932 260664"
+  source:
+    label: "Wagamama Walton-on-Thames, restaurant page"
+    url: https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+hours:
+  value:
+    mon: "11:00-22:00"
+    tue: "11:00-22:00"
+    wed: "11:00-22:00"
+    thu: "11:00-22:00"
+    fri: "11:00-23:00"
+    sat: "11:00-23:00"
+    sun: "11:00-22:00"
+  source:
+    label: "Wagamama Walton-on-Thames, restaurant page"
+    url: https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+hoursLabel: "Opening hours"

@@ -14,6 +14,7 @@
 variant: towpath
 title: By the river
 order: 2
+streets: Station Avenue, Ashley Road, High Street, Bridge Street, Manor Road, the Thames Path, Waterside Drive
 placeholder: true
 bestFor:
   value: A riverside walk past four pubs before a Saturday afternoon match

@@ -64,6 +64,8 @@ export function awayGuideCollections(checkedSource: z.ZodTypeAny) {
       variant: z.enum(['road', 'towpath']),
       title: z.string(),
       order: z.number().int(),
+      // One line of street names, for the print card.
+      streets: z.string(),
       // Route-level: the step points and wording have not been walked yet.
       placeholder: z.boolean().default(false),
       bestFor: text,
@@ -148,7 +150,61 @@ export function awayGuideCollections(checkedSource: z.ZodTypeAny) {
     }),
   });
 
+  // Pubs, food, supermarkets and hotels. Identity (name, address) is also in
+  // the Directory where a listing exists; `business` links the two. Hours are
+  // structured per day so the page can show "open now"; a venue whose hours
+  // are not sourced shows no open or closed label.
+  const day = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d-([01]\d|2[0-4]):[0-5]\d$/);
+  const venues = defineCollection({
+    loader: glob({ pattern: '*.{yaml,yml}', base: './src/content/away-guide/venues' }),
+    schema: z.object({
+      name: z.string(),
+      business: z.string().optional(),
+      type: z.enum(['pub', 'grab-and-go', 'sit-down', 'supermarket', 'hotel']),
+      // Walking routes the venue is on, and its order along them.
+      routes: z.array(z.enum(['road', 'towpath'])).default([]),
+      order: z.number().default(99),
+      area: z.enum(['route', 'town-centre', 'ground', 'station']),
+      lat: z.number(),
+      lng: z.number(),
+      pointBasis: z.string(),
+      address: text,
+      url: fact(z.string().url()).optional(),
+      phone: text.optional(),
+      hours: fact(z.object({
+        mon: day, tue: day, wed: day, thu: day, fri: day, sat: day, sun: day,
+      })).optional(),
+      hoursLabel: z.string().default('Opening hours'),
+      features: z.array(z.object({ label: z.string(), f: text })).default([]),
+      featured: z.boolean().default(false),
+    }),
+  });
+
+  // Club history for groundhoppers, and the practical and safety block.
+  const info = defineCollection({
+    loader: glob({ pattern: '*.{yaml,yml}', base: './src/content/away-guide/info' }),
+    schema: z.object({
+      history: z.array(z.object({ year: z.string(), f: text })),
+      nickname: text,
+      aAndE: text,
+      police: text,
+    }),
+  });
+
+  // FAQs. Answers may contain {{tokens}} filled from the guide's sourced data
+  // when the page builds, so an answer cannot drift from the page. A question
+  // whose token has no confirmed value is left out in production.
+  const faqs = defineCollection({
+    loader: glob({ pattern: '*.{yaml,yml}', base: './src/content/away-guide/faqs' }),
+    schema: z.object({
+      items: z.array(z.object({ q: z.string(), a: z.string() })).min(1),
+    }),
+  });
+
   return {
+    'away-info': info,
+    'away-faqs': faqs,
+    'away-venues': venues,
     'away-ground': ground,
     'away-routes': routes,
     'away-trains': trains,

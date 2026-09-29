@@ -1,0 +1,23 @@
+name: "Aldi"
+business: aldi-walton-on-thames
+type: supermarket
+routes: [towpath]
+order: 4
+area: route
+lat: 51.3864
+lng: -0.42066
+pointBasis: "OpenStreetMap way 81748552"
+address:
+  value: "1-3 Bridge Street, Walton-on-Thames KT12 1AE"
+  source:
+    label: "Aldi store finder, Walton-on-Thames"
+    url: https://www.aldi.co.uk/store-finder/l/walton-on-thames/1-3-bridge-street/k162
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.aldi.co.uk/store-finder/l/walton-on-thames/1-3-bridge-street/k162"
+  source:
+    label: "Aldi store finder, Walton-on-Thames"
+    url: https://www.aldi.co.uk/store-finder/l/walton-on-thames/1-3-bridge-street/k162
+    basis: organisation-website
+    checked: "2026-09-29"

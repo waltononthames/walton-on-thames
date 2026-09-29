@@ -147,6 +147,9 @@ const isFreeEvent = /^free/i.test(price);
         {kind === 'fixture' && (
           <p><a href="https://waltonhershamfc.com/fixtures/first-team/" target="_blank" rel="noopener noreferrer">Full fixture list on the official Walton & Hersham FC site ↗</a></p>
         )}
+        {kind === 'fixture' && !isAwayFixture && (
+          <p>Travelling to watch? Read our <a href="/walton-hersham-fc-away-fans-guide/">away fans' guide to Walton &amp; Hersham FC</a>: the ground, parking, pubs and trains home.</p>
+        )}
       </article>
 
       <aside>

@@ -1,0 +1,40 @@
+name: "Travelodge Walton-on-Thames Central"
+business: travelodge-walton-central
+type: hotel
+routes: [road]
+order: 99
+area: town-centre
+lat: 51.38667
+lng: -0.41894
+pointBasis: "OpenStreetMap node 12770500849"
+address:
+  value: "20-32 Church Street, Walton-on-Thames KT12 2QS"
+  source:
+    label: "Travelodge, Walton-on-Thames Central hotel page"
+    url: https://www.travelodge.co.uk/hotels/692/Walton-on-Thames-Central-hotel
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.travelodge.co.uk/hotels/692/Walton-on-Thames-Central-hotel"
+  source:
+    label: "Travelodge, Walton-on-Thames Central hotel page"
+    url: https://www.travelodge.co.uk/hotels/692/Walton-on-Thames-Central-hotel
+    basis: organisation-website
+    checked: "2026-09-29"
+features:
+  - label: "Parking"
+    f:
+      value: "Limited free parking, first come, first served"
+      source:
+        label: "Travelodge, Walton-on-Thames Central hotel page"
+        url: https://www.travelodge.co.uk/hotels/692/Walton-on-Thames-Central-hotel
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Rooms"
+    f:
+      value: "Double, family and accessible rooms"
+      source:
+        label: "Travelodge, Walton-on-Thames Central hotel page"
+        url: https://www.travelodge.co.uk/hotels/692/Walton-on-Thames-Central-hotel
+        basis: organisation-website
+        checked: "2026-09-29"

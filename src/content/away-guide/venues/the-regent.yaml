@@ -1,0 +1,71 @@
+name: "The Regent"
+business: the-regent
+type: pub
+routes: [road]
+order: 4
+area: route
+lat: 51.38705
+lng: -0.41926
+pointBasis: "OpenStreetMap way 84599924"
+address:
+  value: "19 Church Street, Walton-on-Thames KT12 2QP"
+  source:
+    label: "Craft Union Pubs, Regent Walton Upon Thames"
+    url: https://www.craftunionpubs.com/regent-walton-on-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.craftunionpubs.com/regent-walton-on-thames"
+  source:
+    label: "Craft Union Pubs, Regent Walton Upon Thames"
+    url: https://www.craftunionpubs.com/regent-walton-on-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+hours:
+  value:
+    mon: "09:00-23:00"
+    tue: "09:00-23:00"
+    wed: "09:00-23:00"
+    thu: "09:00-24:00"
+    fri: "09:00-01:00"
+    sat: "09:00-01:00"
+    sun: "09:00-00:30"
+  source:
+    label: "Craft Union Pubs, Regent Walton Upon Thames"
+    url: https://www.craftunionpubs.com/regent-walton-on-thames
+    basis: organisation-website
+    checked: "2026-09-29"
+hoursLabel: "Opening hours"
+features:
+  - label: "Live sport"
+    f:
+      value: "Sky Sports and TNT Sports"
+      source:
+        label: "Craft Union Pubs, Regent Walton Upon Thames"
+        url: https://www.craftunionpubs.com/regent-walton-on-thames
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Outside area"
+    f:
+      value: "Yes"
+      source:
+        label: "Craft Union Pubs, Regent Walton Upon Thames"
+        url: https://www.craftunionpubs.com/regent-walton-on-thames
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Families"
+    f:
+      value: "Children welcome"
+      source:
+        label: "Craft Union Pubs, Regent Walton Upon Thames"
+        url: https://www.craftunionpubs.com/regent-walton-on-thames
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Dogs"
+    f:
+      value: "Dog friendly"
+      source:
+        label: "Craft Union Pubs, Regent Walton Upon Thames"
+        url: https://www.craftunionpubs.com/regent-walton-on-thames
+        basis: organisation-website
+        checked: "2026-09-29"

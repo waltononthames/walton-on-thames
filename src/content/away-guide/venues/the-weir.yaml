@@ -1,0 +1,64 @@
+# The club recommends it: "a welcoming place to have a pre-match drink or food",
+# "a short walk from our ground" (club, How to find us, checked 29 September 2026).
+name: "The Weir"
+business: the-weir-hotel
+type: pub
+order: 1
+area: ground
+lat: 51.4016
+lng: -0.41104
+pointBasis: "OpenStreetMap way 186266729"
+address:
+  value: "Towpath, Waterside Drive, Walton-on-Thames KT12 2JB"
+  source:
+    label: "The Weir Hotel, official website"
+    url: https://www.weirhotel.co.uk
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.weirhotel.co.uk"
+  source:
+    label: "The Weir Hotel, official website"
+    url: https://www.weirhotel.co.uk
+    basis: organisation-website
+    checked: "2026-09-29"
+phone:
+  value: "01932 784530"
+  source:
+    label: "The Weir Hotel, official website"
+    url: https://www.weirhotel.co.uk
+    basis: organisation-website
+    checked: "2026-09-29"
+hours:
+  value:
+    mon: "12:00-23:00"
+    tue: "12:00-23:00"
+    wed: "12:00-23:00"
+    thu: "12:00-23:00"
+    fri: "12:00-23:00"
+    sat: "12:00-23:00"
+    sun: "12:00-22:30"
+  source:
+    label: "The Weir Hotel, official website"
+    url: https://www.weirhotel.co.uk
+    basis: organisation-website
+    checked: "2026-09-29"
+hoursLabel: "Opening hours"
+features:
+  - label: "Food"
+    f:
+      value: "Monday to Saturday 12pm to 9.30pm, Sunday 12.30pm to 7.30pm"
+      source:
+        label: "The Weir Hotel, official website"
+        url: https://www.weirhotel.co.uk
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Rooms"
+    f:
+      value: "Six rooms, with free parking for guests"
+      source:
+        label: "The Weir Hotel, official website"
+        url: https://www.weirhotel.co.uk
+        basis: organisation-website
+        checked: "2026-09-29"
+featured: true

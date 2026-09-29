@@ -1,15 +1,14 @@
 ---
 // The away fans' guide to Walton & Hersham FC. Brief: away-fans-guide-brief.md;
-// plan and decisions: docs/away-fans-guide-plan.md.
+// plan and decisions: docs/away-fans-guide-plan.md; sources and open
+// questions: docs/away-fans-guide-sources.md.
 //
-// Phase 2 prototype: the opening, quick answers, chapter navigation, the
-// station-to-ground chapter and getting home are built; the other chapters
-// are headings only. While any fact in src/content/away-guide/ is still a
-// placeholder the page is noindex (and so outside site search), and
-// scripts/check-away-guide.mjs refuses a production build on main.
-//
-// All practical information comes from the away-guide collections, never
-// from this file, so a time or a price changes without touching layout.
+// All practical information comes from the away-guide collections in
+// src/content/away-guide/, never from this file, so a time or a price changes
+// without touching layout. Walking, driving and bus-walk times come from
+// scripts/build-away-guide-map.mjs. While any fact is still a placeholder the
+// page is noindex (and so outside site search), and scripts/check-away-guide.mjs
+// refuses a production build on main.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Opening from '../../components/away-guide/Opening.astro';
 import QuickAnswers from '../../components/away-guide/QuickAnswers.astro';
@@ -18,15 +17,23 @@ import ChapterBreak from '../../components/away-guide/ChapterBreak.astro';
 import TravelOptions from '../../components/away-guide/TravelOptions.astro';
 import RouteStory from '../../components/away-guide/RouteStory.astro';
 import LastTrainFinder from '../../components/away-guide/LastTrainFinder.astro';
+import MatchdayTimeline from '../../components/away-guide/MatchdayTimeline.astro';
+import PlacesMap, { type MapMarker } from '../../components/away-guide/PlacesMap.astro';
+import VenueList, { type Venue } from '../../components/away-guide/VenueList.astro';
+import PrintCard from '../../components/away-guide/PrintCard.astro';
+import LiveMap from '../../components/away-guide/LiveMap.astro';
 import NeedToKnow from '../../components/away-guide/NeedToKnow.astro';
 import NeedToKnowRow from '../../components/away-guide/NeedToKnowRow.astro';
 import Fact from '../../components/away-guide/Fact.astro';
+import AttractionCard from '../../components/AttractionCard.astro';
+import { attractionCardProps } from '../../utils/attractionCardProps';
 import { getCollection } from 'astro:content';
 import {
-  awayBase, clock12, containsPlaceholder, latestChecked, longDate, valueOf, GUIDE_PATH,
-  type GroundData, type RouteData, type TrainData, type BusData, type TaxiData, type RouteKey,
+  awayBase, clock12, containsPlaceholder, latestChecked, longDate, shows, valueOf, GUIDE_PATH,
+  PLATFORM_ALLOWANCE_MINS,
+  type Fact as FactT, type GroundData, type RouteData, type TrainData, type BusData, type TaxiData, type RouteKey,
 } from '../../utils/awayGuide';
-import { parseClock12, serviceMinutes } from '../../utils/trainTimes';
+import { clockFromMinutes, parseClock12, serviceMinutes, type FinderData } from '../../utils/trainTimes';
 
 const SITE = 'https://walton-on-thames.org';
 const AUTHOR = 'Darren Bayley';
@@ -34,15 +41,23 @@ const AUTHOR = 'Darren Bayley';
 // Typed here rather than inferred: the collection types the rest of the
 // site relies on do not resolve under `astro check` (149 errors on main of
 // this kind), and this page should add none.
-type Entry<T> = { data: T };
-const data = async <T,>(name: Parameters<typeof getCollection>[0]) => ((await getCollection(name)) as Entry<T>[]).map((e) => e.data);
+type Entry<T> = { id: string; data: T };
+const entries = async <T,>(name: Parameters<typeof getCollection>[0]) => (await getCollection(name)) as Entry<T>[];
+const data = async <T,>(name: Parameters<typeof getCollection>[0]) => (await entries<T>(name)).map((e) => e.data);
+
+type VenueData = Omit<Venue, 'slug' | 'badge'> & { lat: number; lng: number; area: string; featured: boolean };
+type InfoData = { history: { year: string; f: FactT<string> }[]; nickname: FactT<string>; aAndE: FactT<string>; police: FactT<string> };
+
 const [ground] = await data<GroundData>('away-ground');
 const routes = (await data<RouteData>('away-routes')).sort((a, b) => a.order - b.order);
 const trains = await data<TrainData>('away-trains');
 const [bus] = await data<BusData>('away-buses');
 const [taxis] = await data<TaxiData>('away-taxis');
+const [info] = await data<InfoData>('away-info');
+const [faqData] = await data<{ items: { q: string; a: string }[] }>('away-faqs');
+const venues = (await entries<VenueData>('away-venues')).map((e) => ({ ...e.data, slug: e.id }));
 
-const everything = [ground, routes, trains, bus, taxis];
+const everything = [ground, routes, trains, bus, taxis, info, venues];
 const prototype = containsPlaceholder(everything);
 const lastChecked = latestChecked(everything);
 const official = valueOf(ground.officialSite) ?? 'https://waltonhershamfc.com/';
@@ -54,6 +69,7 @@ const walkTow = awayBase.routes.towpath;
 const driveMins = awayBase.drive.minutes;
 const rideHailing = taxis.rideHailing.filter((r) => 'value' in r.note).map((r) => r.name);
 const taxiLabel = ['Taxi', ...rideHailing].join(' or ');
+const busWalks = awayBase.bus;
 
 // Last Saturday and midweek departures to Waterloo, for the quick answers card.
 const lastTo = (day: 'saturday' | 'weekday', direction: string) => {
@@ -70,29 +86,120 @@ const kickOff = {
   saturday: parseClock12(valueOf(ground.kickOffSaturday) ?? ''),
   weekday: parseClock12(valueOf(ground.kickOffMidweek) ?? ''),
 };
-const busWalks = awayBase.bus;
 // "Every hour at 13 minutes past, 9.13am to 6.13pm" when the minutes agree.
 const hourly = (times: string[]) => {
   const mins = new Set(times.map((t) => t.slice(3)));
   const span = `${clock12(times[0])} to ${clock12(times.at(-1)!)}`;
-  return mins.size === 1 ? `Every hour at ${Number([...mins][0])} minutes past, ${span}` : times.map(clock12).join(', ');
+  return mins.size === 1 ? `every hour at ${Number([...mins][0])} minutes past, ${span}` : times.map(clock12).join(', ');
 };
 
+// The finder's data, shared by the timeline and the print card.
+const finderData: FinderData = {
+  allowance: PLATFORM_ALLOWANCE_MINS,
+  kickOff,
+  walk: { road: walkRoad.minutes, towpath: walkTow.minutes },
+  driveMins,
+  bus: {
+    fromGround: { saturday: valueOf(bus.fromGround.saturday) ?? [], weekday: valueOf(bus.fromGround.weekday) ?? [] },
+    fromGroundMins: valueOf(bus.fromGroundMins) ?? null,
+    groundToStop: busWalks.groundToStop.minutes,
+    stopToStation: busWalks.churchStreetToStation.minutes,
+  },
+  trains: Object.fromEntries(['saturday', 'weekday'].map((d) => [
+    d,
+    trains.filter((t) => t.dayType === d).flatMap((t) => t.departures.times.map((time) => ({ time, direction: t.direction }))),
+  ])),
+};
+
+// ---------------------------------------------------------------- venues
+
+const byOrder = (a: { order: number; name: string }, b: { order: number; name: string }) => a.order - b.order || a.name.localeCompare(b.name);
+const withBadges = <T extends { slug: string },>(list: T[], prefix: string) => list.map((v, i) => ({ ...v, badge: `${prefix}${i + 1}` }));
+const pubs = withBadges(venues.filter((v) => v.type === 'pub' && !v.featured).sort(byOrder), 'P');
+const weir = venues.find((v) => v.featured);
+const grab = withBadges(venues.filter((v) => v.type === 'grab-and-go').sort(byOrder), 'F');
+const sitDown = withBadges(venues.filter((v) => v.type === 'sit-down').sort(byOrder), `F`).map((v, i) => ({ ...v, badge: `F${grab.length + i + 1}` }));
+const shops = withBadges(venues.filter((v) => v.type === 'supermarket').sort(byOrder), 'S');
+const hotels = withBadges(venues.filter((v) => v.type === 'hotel').sort(byOrder), 'H');
+
+const station = awayBase.points.station;
+const groundPoint = awayBase.points.ground;
+const overviewMarkers: MapMarker[] = [
+  { id: 'station', lat: station.lat, lng: station.lng, category: 'place', badge: 'R', name: 'Walton-on-Thames station' },
+  { id: 'ground', lat: groundPoint.lat, lng: groundPoint.lng, category: 'place', badge: 'G', name: 'Elmbridge Xcel Sports Hub' },
+  ...(weir ? [{ id: weir.slug, lat: weir.lat, lng: weir.lng, category: 'pub', badge: 'W', name: weir.name }] : []),
+  ...pubs.map((v) => ({ id: v.slug, lat: v.lat, lng: v.lng, category: 'pub', badge: v.badge, name: v.name })),
+  ...[...grab, ...sitDown].map((v) => ({ id: v.slug, lat: v.lat, lng: v.lng, category: 'food', badge: v.badge, name: v.name })),
+  ...shops.map((v) => ({ id: v.slug, lat: v.lat, lng: v.lng, category: 'shop', badge: v.badge, name: v.name })),
+  ...hotels.map((v) => ({ id: v.slug, lat: v.lat, lng: v.lng, category: 'hotel', badge: v.badge, name: v.name })),
+  { id: 'bus-church-street', lat: busWalks.stops.churchStreet.lat, lng: busWalks.stops.churchStreet.lng, category: 'bus', badge: 'B', name: 'Church Street bus stop (564)' },
+  { id: 'bus-xcel', lat: busWalks.stops.xcel.lat, lng: busWalks.stops.xcel.lng, category: 'bus', badge: 'B', name: 'Xcel Leisure Centre bus stop (564)' },
+];
+const siteMarkers: MapMarker[] = [
+  { id: 'ground', lat: groundPoint.lat, lng: groundPoint.lng, category: 'place', badge: 'G', name: 'Elmbridge Xcel Sports Hub' },
+  ...(weir ? [{ id: weir.slug, lat: weir.lat, lng: weir.lng, category: 'pub', badge: 'W', name: weir.name }] : []),
+  { id: 'bus-xcel', lat: busWalks.stops.xcel.lat, lng: busWalks.stops.xcel.lng, category: 'bus', badge: 'B', name: 'Xcel Leisure Centre bus stop (564)' },
+];
+
+// ---------------------------------------------------------------- day out
+
+const attractions = (await getCollection('attractions')) as { data: Parameters<typeof attractionCardProps>[0] & { slug: string } }[];
+const DAY_OUT = ['hampton-court-palace', 'brooklands-museum', 'claremont-landscape-garden', 'walk-the-thames-path', 'walton-bridge', 'st-marys-church'];
+const dayOut = DAY_OUT.map((s) => attractions.find((a) => a.data.slug === s)?.data).filter((a): a is NonNullable<typeof a> => Boolean(a));
+
+// ---------------------------------------------------------------- FAQs
+
+const tokens: Record<string, string | undefined> = {
+  postcode: valueOf(ground.postcode),
+  walkRoad: String(walkRoad.minutes),
+  walkRiver: String(walkTow.minutes),
+  towpathKm: (walkTow.towpathMetres / 1000).toFixed(1),
+  drive: String(driveMins),
+  parking: valueOf(ground.parking)?.toLowerCase(),
+  accessibleParking: valueOf(ground.accessibleParking),
+  prices: valueOf(ground.prices)?.replace(/^A/, 'a'),
+  tickets: valueOf(ground.tickets),
+  disabledSupporters: valueOf(ground.disabledSupporters),
+  kickSat: valueOf(ground.kickOffSaturday),
+  kickMid: valueOf(ground.kickOffMidweek),
+  turnstiles: valueOf(ground.turnstilesOpen),
+  busRoute: valueOf(bus.route) && `${valueOf(bus.route)} bus`,
+  busFrequency: valueOf(bus.toGround.saturday) && hourly(valueOf(bus.toGround.saturday)!).replace(/^every/, 'every'),
+  busLast: valueOf(bus.fromGround.saturday)?.at(-1) && clock12(valueOf(bus.fromGround.saturday)!.at(-1)!),
+  lastSat: lastTrains[0] && clockFromMinutes(serviceMinutes(lastTrains[0].time)),
+  lastMid: lastTrains[1] && clockFromMinutes(serviceMinutes(lastTrains[1].time)),
+  timetableTo: trains[0] && longDate(trains[0].departures.timetableValidTo),
+};
+const faqs = faqData.items.map((item) => {
+  let missing = false;
+  const a = item.a.replace(/\{\{(\w+)\}\}/g, (_, k) => {
+    const v = tokens[k];
+    if (v == null) { missing = true; return `[${k}]`; }
+    return v;
+  });
+  return { q: item.q, a, missing };
+}).filter((f) => !f.missing || import.meta.env.DEV);
+
+// ---------------------------------------------------------------- structured data
+
+const fixtures = (await getCollection('fixtures')) as { data: { homeTeam: string; awayTeam: string; homeAway: string; competition: string; start: string; slug: string } }[];
+const nowIso = new Date().toISOString().slice(0, 19);
+const nextHome = fixtures.map((f) => f.data).filter((f) => f.homeAway === 'home' && f.start >= nowIso).sort((a, b) => a.start.localeCompare(b.start)).slice(0, 3);
+
 const chapters = [
-  { id: 'station-to-ground', label: 'Station to ground' },
+  { id: 'getting-here', label: 'Getting here' },
   { id: 'pubs', label: 'Pubs' },
   { id: 'the-ground', label: 'The ground' },
   { id: 'parking', label: 'Parking' },
   { id: 'food', label: 'Food' },
   { id: 'getting-home', label: 'Getting home' },
+  { id: 'staying', label: 'Staying over' },
+  { id: 'day-out', label: 'Day out' },
+  { id: 'history', label: 'Club history' },
+  { id: 'safety', label: 'Safety' },
+  { id: 'faqs', label: 'FAQs' },
 ];
-// Chapters still to be built in Phase 4, shown as headings only.
-const stubs: Record<string, { title: string; photo: string }> = {
-  pubs: { title: 'Pubs near Walton & Hersham FC', photo: 'af-pubs-the-weir' },
-  'the-ground': { title: 'The ground and the away end', photo: 'af-ground-main-stand' },
-  parking: { title: 'Parking at the Xcel Sports Hub', photo: 'af-parking-hub-car-park' },
-  food: { title: 'Food before and after the match', photo: 'af-food-high-street' },
-};
+const n = (id: string) => chapters.findIndex((c) => c.id === id) + 1;
 
 const title = "Walton & Hersham FC Away Fans' Guide | Xcel Sports Hub";
 const description = 'Getting to Walton & Hersham FC from Walton-on-Thames station on foot, by bus or by taxi, with parking, pubs, food and the last trains home.';
@@ -121,16 +228,79 @@ const url = `${SITE}${GUIDE_PATH}`;
           url,
           author: { '@type': 'Person', name: AUTHOR },
           publisher: { '@id': `${SITE}/#organization` },
+          about: [{ '@id': `${url}#team` }, { '@id': `${url}#stadium` }],
           ...(lastChecked && { dateModified: lastChecked }),
         },
+        {
+          '@type': 'StadiumOrArena',
+          '@id': `${url}#stadium`,
+          name: ground.name,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Waterside Drive',
+            addressLocality: 'Walton-on-Thames',
+            addressRegion: 'Surrey',
+            ...(valueOf(ground.postcode) && { postalCode: valueOf(ground.postcode) }),
+            addressCountry: 'GB',
+          },
+          geo: { '@type': 'GeoCoordinates', latitude: groundPoint.lat, longitude: groundPoint.lng },
+        },
+        {
+          '@type': 'SportsTeam',
+          '@id': `${url}#team`,
+          name: 'Walton & Hersham FC',
+          sport: 'Association football',
+          url: official,
+          location: { '@id': `${url}#stadium` },
+        },
+        ...nextHome.map((f) => ({
+          '@type': 'SportsEvent',
+          name: `${f.homeTeam} v ${f.awayTeam}`,
+          startDate: f.start,
+          eventStatus: 'https://schema.org/EventScheduled',
+          location: { '@id': `${url}#stadium` },
+          homeTeam: { '@id': `${url}#team` },
+          awayTeam: { '@type': 'SportsTeam', name: f.awayTeam },
+          url: `${SITE}/whats-on/${f.slug}/`,
+        })),
+        ...(faqs.length ? [{
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+        }] : []),
       ],
     })} />
   </slot>
 
+  <PrintCard
+    address={valueOf(ground.address) ?? ''}
+    postcode={valueOf(ground.postcode)}
+    kickOffs={[
+      valueOf(ground.kickOffSaturday) && `Saturday kick-off ${valueOf(ground.kickOffSaturday)}`,
+      valueOf(ground.kickOffMidweek) && `Tuesday kick-off ${valueOf(ground.kickOffMidweek)}`,
+      valueOf(ground.prices),
+    ].filter((x): x is string => Boolean(x))}
+    routes={routes.map((r) => ({
+      title: `Walk ${r.title.replace(/^By/, 'by')}`,
+      streets: r.streets,
+      minutes: awayBase.routes[r.variant as RouteKey].minutes,
+      km: (awayBase.routes[r.variant as RouteKey].metres / 1000).toFixed(1),
+      pubs: pubs.filter((p) => p.routes.includes(r.variant)).map((p) => p.name),
+    }))}
+    finder={finderData}
+    taxi={[
+      `${taxiLabel}: about ${driveMins} minutes from the station.`,
+      ...(valueOf(taxis.rankAtStation) ? [`${valueOf(taxis.rankAtStation)}.`] : []),
+    ]}
+    bus={valueOf(bus.route) && tokens.busLast ? `No bus from the station. The ${valueOf(bus.route)} runs from Church Street in the town centre, daytime only; last back from the Xcel ${tokens.busLast}.` : undefined}
+    safety={[valueOf(info.aAndE), valueOf(info.police)].filter((x): x is string => Boolean(x)).map((s) => `${s}.`)}
+    officialSite={official}
+    checked={lastChecked && longDate(lastChecked)}
+  />
+
   {prototype && (
     <div class="prototype-banner" role="note">
       <div class="container">
-        <strong>Prototype.</strong> Anything marked <span class="banner-flag">Sample</span> is placeholder data, not a real time, stop or position. This page is hidden from search engines until every fact is checked.
+        <strong>Prototype.</strong> Anything marked <span class="banner-flag">Sample</span> is placeholder data waiting for a site visit. This page is hidden from search engines until every fact is checked.
       </div>
     </div>
   )}
@@ -145,7 +315,7 @@ const url = `${SITE}${GUIDE_PATH}`;
 
   <QuickAnswers
     ground={ground}
-    point={awayBase.points.ground}
+    point={groundPoint}
     walkMins={walkRoad.minutes}
     driveMins={driveMins}
     busRoute={bus.route}
@@ -155,13 +325,26 @@ const url = `${SITE}${GUIDE_PATH}`;
   <div class="guide-body">
     <ChapterNav chapters={chapters} />
 
-    <section class="chapter" id="station-to-ground" aria-labelledby="station-to-ground-title">
-      <ChapterBreak id="station-to-ground" number={1} title="Getting from Walton-on-Thames station to the ground" photo="af-walk-station-exit" />
+    {/* Chapter 1: Getting here */}
+    <section class="chapter" id="getting-here" aria-labelledby="getting-here-title">
+      <ChapterBreak id="getting-here" number={n('getting-here')} title="How to get to Walton & Hersham FC" photo="af-arrive-station" />
       <div class="container chapter-body">
         <p class="lede">
-          Every route in this guide starts at Walton-on-Thames station. The Sports Hub is north of the town centre, beside the river, and the walk is a long one: about {walkRoad.minutes} minutes by road. A bus or a taxi is much quicker. Here are all four options side by side.
+          Walton-on-Thames station is the start of every route in this guide. The Sports Hub is north of the town centre, beside the river, and the walk is a long one: about {walkRoad.minutes} minutes by road. A taxi is much quicker.
         </p>
 
+        <h3 class="sub">By train</h3>
+        <p class="measure">
+          South Western Railway trains run to Walton-on-Thames from London Waterloo and from the Woking direction. Our <a href="/walton-on-thames-railway-station/">guide to Walton-on-Thames station</a> has journey times, platforms and step-free access. From the station, choose one of the four ways below.
+        </p>
+
+        <h3 class="sub">By car</h3>
+        <NeedToKnow>
+          <NeedToKnowRow icon="pin" label="Sat-nav" f={ground.postcode}><Fact f={ground.postcode} /></NeedToKnowRow>
+          <NeedToKnowRow icon="car" label="Parking" f={ground.parking}><Fact f={ground.parking} />. <a href="#parking">More on parking</a></NeedToKnowRow>
+        </NeedToKnow>
+
+        <h3 class="sub" id="station-to-ground">From Walton-on-Thames station to the ground</h3>
         <TravelOptions
           walks={routes.map((r) => ({
             variant: r.variant,
@@ -180,7 +363,7 @@ const url = `${SITE}${GUIDE_PATH}`;
 
         <h3 class="sub">The walking routes</h3>
         <p class="measure">
-          Both walks start at the station and follow Ashley Road and the High Street into the town centre. The road route then takes Church Street, Terrace Road and Waterside Drive. The river route turns down Bridge Street and Manor Road to the Thames and follows the towpath for about {(walkTow.towpathMetres / 1000).toFixed(1)} km before coming up Waterside Drive. {Math.abs(walkTow.minutes - walkRoad.minutes) <= 3 ? 'The two take about the same time.' : walkTow.minutes > walkRoad.minutes ? `The river route adds about ${walkTow.minutes - walkRoad.minutes} minutes.` : `The river route is about ${walkRoad.minutes - walkTow.minutes} minutes quicker.`}
+          Both walks start at the station and follow Station Avenue, Ashley Road and the High Street into the town centre. The road route then takes Church Street, Terrace Road and Waterside Drive. The river route turns down Bridge Street and Manor Road to the Thames and follows the towpath for about {(walkTow.towpathMetres / 1000).toFixed(1)} km before coming up Waterside Drive. {Math.abs(walkTow.minutes - walkRoad.minutes) <= 3 ? 'The two take about the same time.' : walkTow.minutes > walkRoad.minutes ? `The river route adds about ${walkTow.minutes - walkRoad.minutes} minutes.` : `The river route is about ${walkRoad.minutes - walkTow.minutes} minutes quicker.`}
         </p>
         <RouteStory routes={routes} />
 
@@ -191,10 +374,10 @@ const url = `${SITE}${GUIDE_PATH}`;
           <NeedToKnowRow icon="pin" label="Get on at" f={bus.townStop}><Fact f={bus.townStop} /></NeedToKnowRow>
           <NeedToKnowRow icon="pin" label="Get off at" f={bus.groundStop}><Fact f={bus.groundStop} />, about {busWalks.groundToStop.minutes} minutes' walk from the ground</NeedToKnowRow>
           <NeedToKnowRow icon="clock" label="To the ground" f={bus.toGround.saturday}>
-            <Fact f={bus.toGround.saturday}>{(v: string[]) => hourly(v)}</Fact>, taking <Fact f={bus.toGroundMins}>{(v: number) => `${v} minutes`}</Fact>
+            <Fact f={bus.toGround.saturday}>{(v: string[]) => hourly(v).replace(/^e/, 'E')}</Fact>, taking <Fact f={bus.toGroundMins}>{(v: number) => `${v} minutes`}</Fact>
           </NeedToKnowRow>
           <NeedToKnowRow icon="clock" label="Back to town" f={bus.fromGround.saturday}>
-            <Fact f={bus.fromGround.saturday}>{(v: string[]) => hourly(v)}</Fact>, taking <Fact f={bus.fromGroundMins}>{(v: number) => `${v} minutes`}</Fact>
+            <Fact f={bus.fromGround.saturday}>{(v: string[]) => hourly(v).replace(/^e/, 'E')}</Fact>, taking <Fact f={bus.fromGroundMins}>{(v: number) => `${v} minutes`}</Fact>
           </NeedToKnowRow>
           <NeedToKnowRow icon="moon" label="Evenings and Sundays" f={bus.noService}><Fact f={bus.noService} /></NeedToKnowRow>
           <NeedToKnowRow icon="info" label="Timetable" f={bus.operatorUrl}>
@@ -212,28 +395,136 @@ const url = `${SITE}${GUIDE_PATH}`;
             <NeedToKnowRow icon="taxi" label={r.name} f={r.note}><Fact f={r.note} /></NeedToKnowRow>
           ))}
           <NeedToKnowRow icon="pin" label="Taxi rank" f={taxis.rankAtStation}><Fact f={taxis.rankAtStation} /></NeedToKnowRow>
+          <NeedToKnowRow icon="pin" label="Where the rank is" f={taxis.rankLocation}><Fact f={taxis.rankLocation} /></NeedToKnowRow>
           <NeedToKnowRow icon="pin" label="Pickup at the ground" f={taxis.pickupAtGround}><Fact f={taxis.pickupAtGround} /></NeedToKnowRow>
           {taxis.firms.map((firm) => (
             <NeedToKnowRow icon="taxi" label={firm.name}><a href={`tel:${firm.phone.replace(/\s/g, '')}`}>{firm.phone}</a></NeedToKnowRow>
           ))}
         </NeedToKnow>
+
+        <h3 class="sub" id="plan-your-day">Plan your matchday</h3>
+        <MatchdayTimeline data={finderData} settleMins={20} pubMins={60} />
       </div>
     </section>
 
-    {Object.entries(stubs).map(([id, s]) => (
-      <section class="chapter" id={id} aria-labelledby={`${id}-title`}>
-        <ChapterBreak id={id} number={chapters.findIndex((c) => c.id === id) + 1} title={s.title} photo={s.photo} />
-        <div class="container chapter-body">
-          <p class="stub">This chapter is part of the full build.</p>
-        </div>
-      </section>
-    ))}
-
-    <section class="chapter" id="getting-home" aria-labelledby="getting-home-title">
-      <ChapterBreak id="getting-home" number={6} title="Getting home: last trains from Walton-on-Thames" photo="af-home-station-night" />
+    {/* Chapter 2: Pubs */}
+    <section class="chapter" id="pubs" aria-labelledby="pubs-title">
+      <ChapterBreak id="pubs" number={n('pubs')} title="Pubs near Walton & Hersham FC" photo="af-pubs-the-weir" />
       <div class="container chapter-body">
         <p class="lede">
-          Trains from Walton-on-Thames run to London Waterloo and towards Woking. Pick the day and how you are getting back to the station, and we will show when to leave the ground for each of the last trains.
+          The club recommends The Weir, a short walk from the ground on the towpath. Both walking routes from the station also pass pubs, listed here in walking order.
+        </p>
+        {weir && (
+          <div class="feature" id="the-weir">
+            <p class="feature-kicker">Nearest the ground</p>
+            <h3>The Weir</h3>
+            <p class="measure">
+              Walton &amp; Hersham FC describes The Weir as "a welcoming place to have a pre-match drink or food", a short walk from the ground. It sits on the Thames towpath at the river end of Waterside Drive, beside the Sports Hub.
+            </p>
+            <VenueList venues={[{ ...weir, badge: 'W' }]} filters={false} />
+          </div>
+        )}
+        <h3 class="sub">Pubs on the walking routes</h3>
+        <VenueList venues={pubs} />
+
+        <h3 class="sub" id="map">Map of pubs, food, hotels and bus stops</h3>
+        <PlacesMap
+          id="overview-map"
+          title="Pubs, food, supermarkets, hotels and bus stops between Walton-on-Thames station and the Sports Hub"
+          description={`Map showing Walton-on-Thames station at the south and the Elmbridge Xcel Sports Hub by the river to the north, with both walking routes. Marked: ${overviewMarkers.map((m) => `${m.badge}, ${m.name}`).join('; ')}.`}
+          markers={overviewMarkers}
+          showRoutes
+          padM={200}
+          aspect={1}
+          categories={[
+            { key: 'pub', label: 'Pubs' },
+            { key: 'food', label: 'Food' },
+            { key: 'shop', label: 'Supermarkets' },
+            { key: 'hotel', label: 'Hotels' },
+            { key: 'bus', label: 'Bus stops' },
+          ]}
+        >
+          <LiveMap slot="after-map" markers={overviewMarkers} />
+          <ol slot="list" class="map-key">
+            {overviewMarkers.map((m) => <li><span class={`key-badge key-badge--${m.category}`}>{m.badge}</span> {m.name}</li>)}
+          </ol>
+        </PlacesMap>
+      </div>
+    </section>
+
+    {/* Chapter 3: The ground */}
+    <section class="chapter" id="the-ground" aria-labelledby="the-ground-title">
+      <ChapterBreak id="the-ground" number={n('the-ground')} title="The ground: the Elmbridge Xcel Sports Hub" photo="af-ground-main-stand" />
+      <div class="container chapter-body">
+        <p class="lede">
+          Walton &amp; Hersham play at the Elmbridge Xcel Sports Hub on Waterside Drive, run by Places Leisure with Elmbridge Borough Council.
+        </p>
+        <NeedToKnow>
+          <NeedToKnowRow icon="ticket" label="Prices" f={ground.prices}><Fact f={ground.prices} /></NeedToKnowRow>
+          <NeedToKnowRow icon="ticket" label="Paying" f={ground.tickets}><Fact f={ground.tickets} />. <a href={official} rel="noopener">Club website</a></NeedToKnowRow>
+          <NeedToKnowRow icon="walk" label="Disabled supporters" f={ground.disabledSupporters}><Fact f={ground.disabledSupporters} /></NeedToKnowRow>
+          <NeedToKnowRow icon="clock" label="Turnstiles open" f={ground.turnstilesOpen}><Fact f={ground.turnstilesOpen} /></NeedToKnowRow>
+          <NeedToKnowRow icon="shield" label="Segregation" f={ground.segregation}><Fact f={ground.segregation} /></NeedToKnowRow>
+          <NeedToKnowRow icon="pin" label="The away end" f={ground.awayEnd}><Fact f={ground.awayEnd} /></NeedToKnowRow>
+          <NeedToKnowRow icon="info" label="Seating" f={ground.coveredSeating}><Fact f={ground.coveredSeating} /></NeedToKnowRow>
+          <NeedToKnowRow icon="info" label="Pitch" f={ground.pitch}><Fact f={ground.pitch} /></NeedToKnowRow>
+          <NeedToKnowRow icon="car" label="Accessible parking" f={ground.accessibleParking}><Fact f={ground.accessibleParking} /></NeedToKnowRow>
+        </NeedToKnow>
+        <h3 class="sub">The Sports Hub site</h3>
+        <PlacesMap
+          id="site-map"
+          title="The Elmbridge Xcel Sports Hub site"
+          description="Map of the Sports Hub site on Waterside Drive, with the Hub outlined, its football pitches, The Weir on the towpath to the north, and the Xcel Leisure Centre bus stop."
+          markers={siteMarkers}
+          groundPlan
+          padM={170}
+          aspect={1.5}
+        >
+          <ol slot="list" class="map-key">
+            {siteMarkers.map((m) => <li><span class={`key-badge key-badge--${m.category}`}>{m.badge}</span> {m.name}</li>)}
+          </ol>
+        </PlacesMap>
+        <p class="measure note">The shaded outline is the Sports Hub and the green areas are its football pitches, as OpenStreetMap maps them. We will mark the main stand, the turnstiles and the away end once the club has confirmed them.</p>
+      </div>
+    </section>
+
+    {/* Chapter 4: Parking */}
+    <section class="chapter" id="parking" aria-labelledby="parking-title">
+      <ChapterBreak id="parking" number={n('parking')} title="Parking at the Xcel Sports Hub" photo="af-parking-hub-car-park" />
+      <div class="container chapter-body">
+        <NeedToKnow>
+          <NeedToKnowRow icon="car" label="At the Hub" f={ground.parking}><Fact f={ground.parking} /></NeedToKnowRow>
+          <NeedToKnowRow icon="walk" label="Accessible bays" f={ground.accessibleParking}><Fact f={ground.accessibleParking} /></NeedToKnowRow>
+          <NeedToKnowRow icon="pin" label="Sat-nav" f={ground.postcode}><Fact f={ground.postcode} /></NeedToKnowRow>
+        </NeedToKnow>
+        <p class="measure note">
+          For the town centre car parks and their charges, see our <a href="/getting-here/parking/">guide to parking in Walton-on-Thames</a>. If the Hub car park is full, please park considerately in the streets nearby.
+        </p>
+      </div>
+    </section>
+
+    {/* Chapter 5: Food */}
+    <section class="chapter" id="food" aria-labelledby="food-title">
+      <ChapterBreak id="food" number={n('food')} title="Food before and after the match" photo="af-food-high-street" />
+      <div class="container chapter-body">
+        <p class="lede">
+          The town centre, on both walking routes, has the most choice. The Weir serves food near the ground, and the pubs on the routes list their kitchen hours above.
+        </p>
+        <h3 class="sub">Grab and go</h3>
+        <VenueList venues={grab} />
+        <h3 class="sub">Sit down</h3>
+        <VenueList venues={sitDown} />
+        <h3 class="sub">Supermarkets on the routes</h3>
+        <VenueList venues={shops} filters={false} />
+      </div>
+    </section>
+
+    {/* Chapter 6: Getting home */}
+    <section class="chapter" id="getting-home" aria-labelledby="getting-home-title">
+      <ChapterBreak id="getting-home" number={n('getting-home')} title="Getting home: trains from Walton-on-Thames" photo="af-home-station-night" />
+      <div class="container chapter-body">
+        <p class="lede">
+          Trains from Walton-on-Thames run to London Waterloo and towards Woking. Pick the day and how you are getting back to the station, and we will show the trains you can catch after full time.
         </p>
         <LastTrainFinder
           trains={trains}
@@ -250,11 +541,78 @@ const url = `${SITE}${GUIDE_PATH}`;
           }}
           taxiLabel={taxiLabel}
         />
+        <p class="save-card"><button type="button" class="btn-save" data-print hidden>Save matchday card</button> <span class="save-hint">A one-page card with the postcode, routes, trains home and key numbers, to print or save as a PDF.</span></p>
         <ul class="links">
           <li><a href="https://www.nationalrail.co.uk/live-trains/departures/walton-on-thames/" rel="noopener">Live departures from Walton-on-Thames (National Rail)</a></li>
           <li><a href="https://www.southwesternrailway.com/" rel="noopener">South Western Railway</a>, for engineering work and disruption</li>
           <li><a href="/walton-on-thames-railway-station/">Our guide to Walton-on-Thames station</a>: platforms, step-free access and facilities</li>
         </ul>
+      </div>
+    </section>
+
+    {/* Chapter 7: Staying over */}
+    <section class="chapter" id="staying" aria-labelledby="staying-title">
+      <ChapterBreak id="staying" number={n('staying')} title="Staying over" photo="af-staying-town-centre" />
+      <div class="container chapter-body">
+        <p class="lede">
+          Two Travelodge hotels are in Walton itself, one opposite the station and one in the town centre on the road route. The Weir, by the ground, also has rooms.
+        </p>
+        <VenueList venues={[...hotels, ...(weir ? [{ ...weir, badge: 'W' }] : [])]} filters={false} level={3} />
+        <p class="measure note">More hotels, B&amp;Bs and inns nearby are in our <a href="/places-to-stay/">guide to places to stay</a>.</p>
+      </div>
+    </section>
+
+    {/* Chapter 8: Make a day of it */}
+    <section class="chapter" id="day-out" aria-labelledby="day-out-title">
+      <ChapterBreak id="day-out" number={n('day-out')} title="Make a day of it" photo="af-dayout-thames" />
+      <div class="container chapter-body">
+        <p class="lede">
+          If you are making a weekend of it, these are within reach of Walton, from the town's own riverside to Hampton Court. More ideas are in our <a href="/things-to-do/">Things to Do guide</a>.
+        </p>
+        <div class="dayout-grid">
+          {dayOut.map((a) => <AttractionCard {...attractionCardProps(a as any)} />)}
+        </div>
+      </div>
+    </section>
+
+    {/* Chapter 9: Club history */}
+    <section class="chapter" id="history" aria-labelledby="history-title">
+      <ChapterBreak id="history" number={n('history')} title="For groundhoppers: the Swans' story" photo="af-history-sports-hub" />
+      <div class="container chapter-body">
+        <p class="lede">
+          Walton &amp; Hersham are known as <Fact f={info.nickname} />. The club's own history page tells the full story; here are the milestones.
+        </p>
+        <ol class="history">
+          {info.history.filter((h) => shows(h.f)).map((h) => <li><span class="history-year">{h.year}</span> <span><Fact f={h.f} />.</span></li>)}
+        </ol>
+        <p class="measure note">The club's history page: <a href="https://waltonhershamfc.com/club/history/" rel="noopener">waltonhershamfc.com/club/history</a>. Our <a href="/history/">local history section</a> covers the town the club grew up in.</p>
+      </div>
+    </section>
+
+    {/* Chapter 10: Safety */}
+    <section class="chapter" id="safety" aria-labelledby="safety-title">
+      <ChapterBreak id="safety" number={n('safety')} title="Practical and safety" photo="af-safety-station" />
+      <div class="container chapter-body">
+        <NeedToKnow>
+          <NeedToKnowRow icon="shield" label="Emergency and police" f={info.police}><Fact f={info.police} /></NeedToKnowRow>
+          <NeedToKnowRow icon="info" label="Nearest A&amp;E" f={info.aAndE}><Fact f={info.aAndE} /></NeedToKnowRow>
+          <NeedToKnowRow icon="info" label="Pharmacies"><a href="/living/pharmacies/">Pharmacies in Walton-on-Thames and Hersham</a></NeedToKnowRow>
+        </NeedToKnow>
+      </div>
+    </section>
+
+    {/* Chapter 11: FAQs */}
+    <section class="chapter" id="faqs" aria-labelledby="faqs-title">
+      <ChapterBreak id="faqs" number={n('faqs')} title="Frequently asked questions" photo="af-faqs-floodlights" />
+      <div class="container chapter-body">
+        <div class="faqs">
+          {faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.missing ? <span class="fact fact--unconfirmed">Unconfirmed: {f.a}</span> : f.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -273,6 +631,15 @@ const url = `${SITE}${GUIDE_PATH}`;
     </footer>
   </div>
 </BaseLayout>
+
+<script>
+  // "Save matchday card": the browser's print dialog, which can also save a
+  // PDF. Hidden without JavaScript, where the reader can print from the menu.
+  for (const b of document.querySelectorAll('[data-print]') as NodeListOf<HTMLButtonElement>) {
+    b.hidden = false;
+    b.addEventListener('click', () => window.print());
+  }
+</script>
 
 <style>
   .prototype-banner {
@@ -306,17 +673,75 @@ const url = `${SITE}${GUIDE_PATH}`;
     line-height: 1.6;
   }
   .measure { max-width: 68ch; margin-bottom: 1rem; }
+  .note { margin-top: 1rem; color: var(--color-slate); font-size: 0.92rem; }
   .sub {
     margin: 2.5rem 0 0.75rem;
     font-size: clamp(1.35rem, 3vw, 1.75rem);
     scroll-margin-top: calc(var(--nav-height) + 64px);
   }
-  .stub {
-    padding: 1.25rem;
-    border: 2px dashed rgba(11, 36, 46, 0.2);
-    border-radius: var(--radius-md);
-    color: var(--color-slate);
+  .feature {
+    margin: 1.5rem 0 1rem;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: #F2EBDA;
   }
+  .feature h3 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .feature-kicker { color: #7A5518; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+  .map-key {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.35rem 1rem;
+    list-style: none;
+    font-size: 0.9rem;
+  }
+  .key-badge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 0.35rem;
+    padding: 0 0.3rem;
+    border-radius: 999px;
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .key-badge--pub { background: #7A3E1D; }
+  .key-badge--food { background: #B8862E; color: #0B242E; }
+  .key-badge--shop { background: #3E6B3A; }
+  .key-badge--hotel { background: #4B4F8C; }
+  .key-badge--bus { background: #B3261E; }
+  .key-badge--place { background: var(--color-navy); }
+  .dayout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1rem;
+  }
+  /* The shared attraction card's muted text and gold badges fall short of AA
+     on white; darker shades here, as for links (site-wide fix pending). */
+  .dayout-grid :global(.attraction-verified) { color: var(--color-slate); }
+  .dayout-grid :global(.attraction-badge--check) { color: #6B4A10; }
+  .dayout-grid :global(.band-local) { background: #7A5518; }
+  .history { list-style: none; display: grid; gap: 0.75rem; max-width: 68ch; }
+  .history li { display: grid; grid-template-columns: 4rem 1fr; gap: 1rem; }
+  .history-year { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: #7A5518; }
+  .faqs { max-width: 68ch; display: grid; gap: 0.5rem; }
+  .faqs details { padding: 0.9rem 1.1rem; border-radius: var(--radius-md); background: var(--color-white); box-shadow: var(--shadow-card); }
+  .faqs summary { cursor: pointer; font-weight: 600; min-height: 28px; }
+  .faqs p { margin-top: 0.5rem; }
+  .save-card { margin-top: 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .btn-save {
+    min-height: 44px;
+    padding: 0 1.1rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-navy);
+    color: #FFFFFF;
+    font: 600 0.9rem var(--font-body);
+    cursor: pointer;
+  }
+  .btn-save[hidden] { display: none; }
+  .save-hint { color: var(--color-slate); font-size: 0.88rem; }
   .links {
     margin-top: 1.25rem;
     padding-left: 1.2rem;

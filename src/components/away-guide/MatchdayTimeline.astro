@@ -1,0 +1,109 @@
+---
+// Matchday timeline (brief 7.6). Works back from kick-off to when to be at the
+// station, and forward to full time and the first trains home. The Saturday
+// 3pm and midweek 7.45pm plans are plain HTML; the script lets a reader enter
+// any kick-off. Every figure comes from the guide's data: walking time from
+// the map build, kick-offs from the club, trains from the finder's data.
+import { clockFromMinutes, plan, MATCH_LENGTH_MINS, type FinderData } from '../../utils/trainTimes';
+
+interface Props {
+  data: FinderData;
+  /** Minutes before kick-off to be at the ground: buying a ticket, finding a place. */
+  settleMins: number;
+  pubMins: number;
+}
+const { data, settleMins, pubMins } = Astro.props;
+
+const build = (day: string, ko: number) => {
+  const walk = data.walk.road;
+  const trains = plan({ ...data, kickOff: { ...data.kickOff, [day]: ko } }, day, 'road', 2).rows;
+  return [
+    { t: ko - walk - settleMins - pubMins, text: `At Walton-on-Thames station, if you want about an hour in a pub on the way` },
+    { t: ko - walk - settleMins, text: `At Walton-on-Thames station at the latest, to walk to the ground by road` },
+    { t: ko - settleMins, text: `Reach the ground, with ${settleMins} minutes to pay and find your place` },
+    { t: ko, text: 'Kick-off' },
+    { t: ko + MATCH_LENGTH_MINS, text: 'Full time, around now' },
+    ...trains.filter((r) => !r.last).slice(0, 1).map((r) => ({ t: r.leaveBy + walk + data.allowance, text: `First train home you can make on foot: towards ${r.train.direction}` })),
+  ];
+};
+const plans = [
+  { day: 'saturday', label: 'Saturday', ko: data.kickOff.saturday },
+  { day: 'weekday', label: 'Midweek', ko: data.kickOff.weekday },
+].filter((p): p is { day: string; label: string; ko: number } => p.ko != null);
+---
+
+<div class="timeline" data-timeline>
+  <div class="timeline-cols">
+    {plans.map((p) => (
+      <section class="timeline-col" aria-label={`${p.label}, ${clockFromMinutes(p.ko)} kick-off`}>
+        <h4>{p.label}, {clockFromMinutes(p.ko)} kick-off</h4>
+        <ol>
+          {build(p.day, p.ko).map((s) => <li><span class="tl-time">{clockFromMinutes(s.t)}</span> <span>{s.text}</span></li>)}
+        </ol>
+      </section>
+    ))}
+  </div>
+  <form class="timeline-custom" hidden onsubmit="return false">
+    <label>Another kick-off time <input type="time" value="15:00" step="300" data-tl-ko /></label>
+    <label>Day
+      <select data-tl-day><option value="saturday">Saturday</option><option value="weekday">Midweek</option></select>
+    </label>
+    <ol class="timeline-out" data-tl-out aria-live="polite"></ol>
+  </form>
+  <p class="timeline-note">Walking times are by road. Allows {settleMins} minutes at the ground before kick-off, and about {MATCH_LENGTH_MINS} minutes from kick-off to full time.</p>
+  <script is:inline type="application/json" data-tl-data set:html={JSON.stringify({ data, settleMins, pubMins })} />
+</div>
+
+<script>
+  import { clockFromMinutes, plan, MATCH_LENGTH_MINS, type FinderData } from '../../utils/trainTimes';
+  for (const root of document.querySelectorAll<HTMLElement>('[data-timeline]')) {
+    const raw = root.querySelector('[data-tl-data]')?.textContent;
+    const form = root.querySelector<HTMLFormElement>('.timeline-custom');
+    const out = root.querySelector<HTMLOListElement>('[data-tl-out]');
+    const koInput = root.querySelector<HTMLInputElement>('[data-tl-ko]');
+    const dayInput = root.querySelector<HTMLSelectElement>('[data-tl-day]');
+    if (!raw || !form || !out || !koInput || !dayInput) continue;
+    const { data, settleMins, pubMins } = JSON.parse(raw) as { data: FinderData; settleMins: number; pubMins: number };
+    const render = () => {
+      const [h, m] = koInput.value.split(':').map(Number);
+      if (Number.isNaN(h)) return;
+      const ko = h * 60 + m, day = dayInput.value, walk = data.walk.road;
+      const first = plan({ ...data, kickOff: { ...data.kickOff, [day]: ko } }, day, 'road', 1).rows.find((r) => !r.last);
+      const steps: [number, string][] = [
+        [ko - walk - settleMins - pubMins, 'At the station, with about an hour for a pub on the way'],
+        [ko - walk - settleMins, 'At the station at the latest'],
+        [ko, 'Kick-off'],
+        [ko + MATCH_LENGTH_MINS, 'Full time, around now'],
+      ];
+      if (first) steps.push([first.leaveBy + walk + data.allowance, `First train home on foot: towards ${first.train.direction}`]);
+      out.replaceChildren(...steps.map(([t, text]) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="tl-time">${clockFromMinutes(t)}</span> <span>${text}</span>`;
+        return li;
+      }));
+    };
+    form.hidden = false;
+    form.addEventListener('input', render);
+    render();
+  }
+</script>
+
+<style>
+  .timeline-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+  .timeline-col, .timeline-custom {
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+  }
+  .timeline-col h4 { margin-bottom: 0.6rem; font-size: 1.1rem; }
+  ol { list-style: none; display: grid; gap: 0.45rem; }
+  li { display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.6rem; font-size: 0.92rem; }
+  :global(.tl-time) { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .timeline-custom { margin-top: 1rem; display: grid; gap: 0.75rem; }
+  .timeline-custom[hidden] { display: none; }
+  .timeline-custom label { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; font-size: 0.9rem; }
+  .timeline-custom input, .timeline-custom select { min-height: 44px; padding: 0 0.6rem; border: 1.5px solid rgba(11, 36, 46, 0.25); border-radius: var(--radius-sm); font: inherit; }
+  .timeline-out :global(li) { display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.6rem; font-size: 0.92rem; }
+  .timeline-note { margin-top: 0.75rem; color: var(--color-slate); font-size: 0.85rem; }
+</style>

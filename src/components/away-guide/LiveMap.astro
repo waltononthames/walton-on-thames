@@ -1,0 +1,55 @@
+---
+// "Explore the live map" (plan D2). A button under the overview map that, when
+// tapped, loads MapLibre GL JS and OpenFreeMap vector tiles and shows the same
+// places and routes on a map the reader can pan and zoom. Nothing is
+// downloaded until the tap, so it costs nothing on first load. Without
+// JavaScript the button never appears; the static map above it is complete.
+import { awayBase } from '../../utils/awayGuide';
+import type { MapMarker } from './PlacesMap.astro';
+
+interface Props { markers: MapMarker[] }
+const { markers } = Astro.props;
+
+// Route lines back from map pixels to longitude and latitude, for MapLibre.
+const { frame, width } = awayBase;
+const M_PER_DEG_LAT = 111_220;
+const mPerDegLon = M_PER_DEG_LAT * Math.cos(((frame.north + frame.south) / 2) * Math.PI / 180);
+const pxPerM = width / ((frame.east - frame.west) * mPerDegLon);
+const toLngLat = ([x, y]: number[]) => [
+  Number((frame.west + x / (mPerDegLon * pxPerM)).toFixed(6)),
+  Number((frame.north - y / (M_PER_DEG_LAT * pxPerM)).toFixed(6)),
+];
+const lines = {
+  road: awayBase.routes.road.samples.map(toLngLat),
+  towpath: awayBase.routes.towpath.samples.map(toLngLat),
+};
+---
+
+<div class="live-map" data-live-map>
+  <button type="button" class="live-btn" hidden data-live-open>Explore the live map</button>
+  <p class="live-note" hidden data-live-note>Loads an interactive map from OpenFreeMap: about 280 KB, plus map tiles.</p>
+  <div class="live-canvas" hidden data-live-canvas role="region" aria-label="Interactive map of the same places"></div>
+  <script is:inline type="application/json" data-live-data set:html={JSON.stringify({ markers, lines })} />
+</div>
+
+<script>
+  import '../../scripts/away-guide/live-map';
+</script>
+
+<style>
+  .live-map { margin-top: 0.75rem; }
+  .live-btn {
+    min-height: 44px;
+    padding: 0 1.1rem;
+    border: 1.5px solid var(--color-navy);
+    border-radius: 999px;
+    background: var(--color-white);
+    color: var(--color-navy);
+    font: 600 0.9rem var(--font-body);
+    cursor: pointer;
+  }
+  .live-btn:hover { background: var(--color-navy); color: #FFFFFF; }
+  .live-btn[hidden], .live-note[hidden], .live-canvas[hidden] { display: none; }
+  .live-note { margin-top: 0.4rem; color: var(--color-slate); font-size: 0.82rem; }
+  .live-canvas { height: min(70vh, 560px); margin-top: 0.75rem; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+</style>

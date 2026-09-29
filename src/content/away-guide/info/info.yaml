@@ -1,0 +1,71 @@
+# Club history for the groundhoppers chapter, and the practical and safety
+# block. Researched 29 September 2026; see docs/away-fans-guide-sources.md.
+#
+# The brief mentions "the merger with Walton Casuals". No source found this
+# session describes a merger: the club's own history page does not mention
+# Walton Casuals, and secondary sources describe the two clubs sharing the
+# Sports Hub until Walton Casuals folded. Nothing about Walton Casuals is
+# published until Darren confirms what he wants said and a primary source
+# supports it.
+history:
+  - year: "1895"
+    f:
+      value: Walton FC was formed
+      source:
+        label: Walton & Hersham FC, History
+        url: https://waltonhershamfc.com/club/history/
+        basis: organisation-website
+        checked: "2026-09-29"
+  - year: "1945"
+    f:
+      value: After the Second World War, Walton FC amalgamated with Hersham FC to form Walton & Hersham FC
+      source:
+        label: Walton & Hersham FC, History
+        url: https://waltonhershamfc.com/club/history/
+        basis: organisation-website
+        checked: "2026-09-29"
+  - year: "1973"
+    f:
+      value: On 14 April 1973 the club won the FA Amateur Cup at Wembley, in front of 41,000, with a late goal by Roger Connell against Slough Town
+      source:
+        label: Walton & Hersham FC, History
+        url: https://waltonhershamfc.com/club/history/
+        basis: organisation-website
+        checked: "2026-09-29"
+  - year: "2017"
+    f:
+      value: At the end of September 2017 the club left Stompond Lane, its home for eight decades, when the ground was sold for development, and moved to the new Sports Hub on Waterside Drive
+      source:
+        label: Walton & Hersham FC, History
+        url: https://waltonhershamfc.com/club/history/
+        basis: organisation-website
+        checked: "2026-09-29"
+  - year: "2026"
+    f:
+      value: The first team plays in the National League South in 2026-27
+      source:
+        label: Walton & Hersham FC, first team fixtures (Enterprise National League South)
+        url: https://waltonhershamfc.com/fixtures/first-team/
+        basis: organisation-website
+        checked: "2026-09-29"
+nickname:
+  value: The Swans
+  source:
+    label: Walton & Hersham FC, History ("Swans were forced to leave their home")
+    url: https://waltonhershamfc.com/club/history/
+    basis: organisation-website
+    checked: "2026-09-29"
+aAndE:
+  value: "St Peter's Hospital, Guildford Road, Chertsey KT16 0PZ, has a 24-hour A&E"
+  source:
+    label: Ashford and St Peter's Hospitals NHS Foundation Trust, Accident and Emergency
+    url: https://www.ashfordstpeters.nhs.uk/accident-and-emergency
+    basis: official-data
+    checked: "2026-09-29"
+police:
+  value: Call 999 in an emergency, and 101 for Surrey Police when it is not an emergency
+  source:
+    label: Surrey Police, Contact us
+    url: https://www.surrey.police.uk/contact/af/contact-us-beta/contact-us/
+    basis: official-data
+    checked: "2026-09-29"

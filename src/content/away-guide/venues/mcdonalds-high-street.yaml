@@ -1,0 +1,18 @@
+# The official location page confirms the restaurant; it refused an automated
+# read, so hours are not stated.
+name: "McDonald's"
+business: mcdonalds
+type: grab-and-go
+routes: [road, towpath]
+order: 3
+area: route
+lat: 51.38595
+lng: -0.41928
+pointBasis: "OpenStreetMap node 12770661889"
+address:
+  value: "5-7 High Street, Walton-on-Thames KT12 1DG"
+  source:
+    label: "McDonald's, Walton on Thames 5/7 High Street location page"
+    url: https://www.mcdonalds.com/gb/en-gb/location/walton-on-thames/walton-on-thames/57-high-street/8260149.html
+    basis: organisation-website
+    checked: "2026-09-29"

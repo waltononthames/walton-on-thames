@@ -1,0 +1,164 @@
+---
+// A static map of places, drawn over the away guide's base map (plan 7.3).
+// Used twice: the overview of every pub, food stop, hotel and car park with
+// category toggles, and the site plan of the Sports Hub.
+//
+// Without JavaScript it is complete: category toggles are checkboxes read by
+// CSS :has(), and every marker is numbered and listed in text beneath the map
+// (the `list` slot), which is also the accessible alternative. The SVG holds no
+// links, so nothing focusable is hidden inside it.
+import { awayBase, projectAway, AWAY_MAP_VERSION } from '../../utils/awayGuide';
+import { spreadMarkers } from '../gp/mapProjection';
+
+export interface MapMarker {
+  id: string;
+  lat: number;
+  lng: number;
+  category: string;
+  /** Short text inside the marker: a number or a letter. */
+  badge: string;
+  name: string;
+}
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  markers: MapMarker[];
+  categories?: { key: string; label: string }[];
+  /** Extra margin around the markers, in metres. */
+  padM?: number;
+  showRoutes?: boolean;
+  groundPlan?: boolean;
+  aspect?: number;
+}
+const { id, title, description, markers, categories = [], padM = 250, showRoutes = false, groundPlan = false, aspect = 1.4 } = Astro.props;
+const { width: W, height: H, src, routes, groundPlan: plan } = awayBase;
+
+const pts = markers.map((m) => ({ ...m, ...projectAway(m) }));
+const pxPerM = projectAway(awayBase.points.station).pxPerM;
+const pad = padM * pxPerM;
+let x0 = Math.min(...pts.map((p) => p.x)) - pad, x1 = Math.max(...pts.map((p) => p.x)) + pad;
+let y0 = Math.min(...pts.map((p) => p.y)) - pad, y1 = Math.max(...pts.map((p) => p.y)) + pad;
+// Widen or heighten to the requested aspect, then keep inside the base map.
+if ((x1 - x0) / (y1 - y0) < aspect) { const g = ((y1 - y0) * aspect - (x1 - x0)) / 2; x0 -= g; x1 += g; }
+else { const g = ((x1 - x0) / aspect - (y1 - y0)) / 2; y0 -= g; y1 += g; }
+const w = Math.min(x1 - x0, W), h = Math.min(y1 - y0, H);
+x0 = Math.max(0, Math.min(x0, W - w)); y0 = Math.max(0, Math.min(y0, H - h));
+const k = w / 900; // marker size in map pixels, so markers read the same at any crop
+const r = 11 * k;
+const spread = spreadMarkers(pts, r * 1.05);
+---
+
+<figure class="places-map" id={id}>
+  {categories.length > 0 && (
+    <fieldset class="places-toggles">
+      <legend>Show on the map</legend>
+      {categories.map((c) => (
+        <label>
+          <input type="checkbox" checked data-cat={c.key} id={`${id}-${c.key}`} />
+          <span class={`swatch swatch--${c.key}`} aria-hidden="true"></span>
+          {c.label}
+        </label>
+      ))}
+    </fieldset>
+  )}
+  <div class="places-canvas" style={`aspect-ratio: ${w.toFixed(1)} / ${h.toFixed(1)}`}>
+    <svg viewBox={`${x0.toFixed(1)} ${y0.toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`} role="img" aria-labelledby={`${id}-t ${id}-d`}>
+      <title id={`${id}-t`}>{title}</title>
+      <desc id={`${id}-d`}>{description}</desc>
+      <image href={`${src}?v=${AWAY_MAP_VERSION}`} x="0" y="0" width={W} height={H} />
+      {groundPlan && plan && (
+        <g class="plan">
+          {plan.pitches.map((p) => <path d={p.d} class="plan-pitch" />)}
+          <path d={plan.hub} class="plan-hub" style={`stroke-width:${2.5 * k}`} />
+        </g>
+      )}
+      {showRoutes && (
+        <g class="routes" style={`stroke-width:${3 * k}`}>
+          <path d={routes.road.d} class="route-road" />
+          <path d={routes.towpath.d} class="route-river" style={`stroke-dasharray:${6 * k} ${4 * k}`} />
+        </g>
+      )}
+      {spread.map((m) => (
+        <g class={`pm pm--${m.category}`} data-cat={m.category}>
+          {(Math.abs(m.bx - m.x) > 0.5 || Math.abs(m.by - m.y) > 0.5) && (
+            <path d={`M${m.x.toFixed(1)} ${m.y.toFixed(1)}L${m.bx.toFixed(1)} ${m.by.toFixed(1)}`} class="pm-leader" style={`stroke-width:${1.2 * k}`} />
+          )}
+          <circle cx={m.bx.toFixed(1)} cy={m.by.toFixed(1)} r={r.toFixed(1)} style={`stroke-width:${2 * k}`} />
+          <text x={m.bx.toFixed(1)} y={m.by.toFixed(1)} dy="0.35em" style={`font-size:${11 * k}px`}>{m.badge}</text>
+          <title>{m.name}</title>
+        </g>
+      ))}
+    </svg>
+  </div>
+  <figcaption class="places-caption">
+    Map data © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap contributors</a>.
+  </figcaption>
+  <slot name="after-map" />
+  <div class="places-list"><slot name="list" /></div>
+</figure>
+
+<style>
+  .places-map { margin: 1.5rem 0; }
+  .places-toggles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    margin-bottom: 0.75rem;
+    border: 0;
+  }
+  .places-toggles legend {
+    width: 100%;
+    margin-bottom: 0.3rem;
+    color: var(--color-slate);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .places-toggles label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0 0.85rem;
+    border: 1.5px solid rgba(11, 36, 46, 0.2);
+    border-radius: 999px;
+    background: var(--color-white);
+    font-size: 0.88rem;
+    cursor: pointer;
+  }
+  .places-toggles label:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .places-toggles input { accent-color: var(--color-navy); }
+  .swatch { width: 0.8rem; height: 0.8rem; border-radius: 50%; border: 2px solid #FFFFFF; box-shadow: 0 0 0 1px rgba(11, 36, 46, 0.3); }
+  .places-canvas {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: #F3F0E4;
+    box-shadow: var(--shadow-card);
+  }
+  .places-canvas svg { display: block; width: 100%; height: 100%; }
+  .plan-pitch { fill: #BFD5A8; stroke: #8FB077; stroke-width: 1; }
+  .plan-hub { fill: rgba(184, 134, 46, 0.12); stroke: var(--color-accent); }
+  .routes path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .route-road { stroke: var(--color-navy); opacity: 0.55; }
+  .route-river { stroke: #2F7A8C; opacity: 0.7; }
+  .pm circle { stroke: #FFFFFF; }
+  .pm text { fill: #FFFFFF; font-family: var(--font-body); font-weight: 700; text-anchor: middle; }
+  .pm-leader { stroke: rgba(11, 36, 46, 0.5); }
+  .pm--pub circle, .swatch--pub { fill: #7A3E1D; background: #7A3E1D; }
+  .pm--food circle, .swatch--food { fill: #B8862E; background: #B8862E; }
+  .pm--food text { fill: #0B242E; }
+  .pm--shop circle, .swatch--shop { fill: #3E6B3A; background: #3E6B3A; }
+  .pm--hotel circle, .swatch--hotel { fill: #4B4F8C; background: #4B4F8C; }
+  .pm--place circle, .swatch--place { fill: var(--color-navy); background: var(--color-navy); }
+  .pm--bus circle, .swatch--bus { fill: #B3261E; background: #B3261E; }
+  /* Category toggles, without JavaScript. */
+  .places-map:has(input[data-cat="pub"]:not(:checked)) .pm--pub,
+  .places-map:has(input[data-cat="food"]:not(:checked)) .pm--food,
+  .places-map:has(input[data-cat="shop"]:not(:checked)) .pm--shop,
+  .places-map:has(input[data-cat="hotel"]:not(:checked)) .pm--hotel,
+  .places-map:has(input[data-cat="bus"]:not(:checked)) .pm--bus { display: none; }
+  .places-caption { margin-top: 0.5rem; color: var(--color-slate); font-size: 0.78rem; }
+  .places-list { margin-top: 1rem; }
+</style>

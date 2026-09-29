@@ -1,0 +1,30 @@
+# FAQs, phrased as people search. Answers use {{tokens}}, filled from the
+# guide's sourced data when the page builds (see the tokens list in
+# src/pages/walton-hersham-fc-away-fans-guide/index.astro). A question whose
+# token has no confirmed value is left out in production, so an unanswered
+# question never reaches the page.
+items:
+  - q: What is the postcode for Walton & Hersham FC?
+    a: The Elmbridge Xcel Sports Hub is on Waterside Drive, Walton-on-Thames, Surrey {{postcode}}. Use that postcode for your sat-nav.
+  - q: What is the nearest station to Walton & Hersham FC?
+    a: Walton-on-Thames. The ground is on the far side of town, beside the river, so the walk takes about {{walkRoad}} minutes by road. A taxi or Uber takes about {{drive}} minutes.
+  - q: Is there parking at the Xcel Sports Hub?
+    a: "Yes: {{parking}}. {{accessibleParking}}."
+  - q: How much are tickets at Walton & Hersham FC?
+    a: "For 2026-27: {{prices}}. {{tickets}}. {{disabledSupporters}}."
+  - q: What time do matches kick off?
+    a: Saturday home league matches kick off at {{kickSat}} and Tuesday evening matches at {{kickMid}}. A few kick off at other times, so check the club's fixture list.
+  - q: What time do the turnstiles open?
+    a: "{{turnstiles}}."
+  - q: Is there a bus from Walton-on-Thames station to the ground?
+    a: No. The {{busRoute}} runs from Church Street in the town centre to the Xcel Leisure Centre stop, {{busFrequency}}. The last bus back from the Xcel leaves at {{busLast}}, and there are no buses in the evening or on Sundays.
+  - q: What time is the last train from Walton-on-Thames to London Waterloo?
+    a: About {{lastSat}} on Saturdays and {{lastMid}} on weekday evenings, in the timetable that runs until {{timetableTo}}. Engineering work can change this, so check live times before you travel.
+  - q: Where can away fans drink before the match?
+    a: The club recommends The Weir, on the towpath a short walk from the ground. Both walking routes from the station also pass pubs, listed in walking order in our pubs chapter.
+  - q: Can I walk along the river to the ground?
+    a: Yes. Our river route follows the Thames Path for about {{towpathKm}} km and takes about {{walkRiver}} minutes from the station, against about {{walkRoad}} minutes by road.
+  - q: Is the ground accessible for disabled supporters?
+    a: "{{disabledSupporters}}. {{accessibleParking}}."
+  - q: Can away fans use the bar at Walton & Hersham?
+    a: "{{bar}}."

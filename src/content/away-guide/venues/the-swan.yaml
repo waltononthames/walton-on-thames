@@ -1,0 +1,70 @@
+name: "The Swan"
+business: the-swan
+type: pub
+routes: [towpath]
+order: 6
+area: route
+lat: 51.38977
+lng: -0.42215
+pointBasis: "OpenStreetMap way 58603914"
+address:
+  value: "50 Manor Road, Walton-on-Thames KT12 2PF"
+  source:
+    label: "The Swan Walton-on-Thames, official website"
+    url: https://www.swanwalton.com/
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.swanwalton.com/"
+  source:
+    label: "The Swan Walton-on-Thames, official website"
+    url: https://www.swanwalton.com/
+    basis: organisation-website
+    checked: "2026-09-29"
+phone:
+  value: "01932 225964"
+  source:
+    label: "The Swan Walton-on-Thames, official website"
+    url: https://www.swanwalton.com/
+    basis: organisation-website
+    checked: "2026-09-29"
+hours:
+  value:
+    mon: "11:00-23:00"
+    tue: "11:00-23:00"
+    wed: "11:00-23:00"
+    thu: "11:00-23:00"
+    fri: "11:00-24:00"
+    sat: "11:00-24:00"
+    sun: "11:00-23:00"
+  source:
+    label: "The Swan Walton-on-Thames, official website"
+    url: https://www.swanwalton.com/
+    basis: organisation-website
+    checked: "2026-09-29"
+hoursLabel: "Opening hours"
+features:
+  - label: "Food"
+    f:
+      value: "Monday to Saturday 12pm to 9.30pm, Sunday 12pm to 9pm"
+      source:
+        label: "The Swan Walton-on-Thames, official website"
+        url: https://www.swanwalton.com/
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Riverside"
+    f:
+      value: "River terrace and garden huts"
+      source:
+        label: "The Swan Walton-on-Thames, official website"
+        url: https://www.swanwalton.com/
+        basis: organisation-website
+        checked: "2026-09-29"
+  - label: "Dogs"
+    f:
+      value: "Dog friendly"
+      source:
+        label: "The Swan Walton-on-Thames, official website"
+        url: https://www.swanwalton.com/
+        basis: organisation-website
+        checked: "2026-09-29"

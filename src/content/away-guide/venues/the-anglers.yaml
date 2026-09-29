@@ -1,0 +1,34 @@
+# The pub site confirms the name and riverside setting but gives no address or
+# hours. The address is the Directory record; hours are not stated.
+name: "The Anglers"
+business: the-anglers
+type: pub
+routes: [towpath]
+order: 7
+area: route
+lat: 51.39022
+lng: -0.42247
+pointBasis: "OpenStreetMap way 58603900"
+address:
+  value: "Manor Road, Walton-on-Thames"
+  source:
+    label: "The Anglers, official website (riverside setting); street from OpenStreetMap"
+    url: https://www.anglerswalton.co.uk/
+    basis: organisation-website
+    checked: "2026-09-29"
+url:
+  value: "https://www.anglerswalton.co.uk/"
+  source:
+    label: "The Anglers, official website (riverside setting); street from OpenStreetMap"
+    url: https://www.anglerswalton.co.uk/
+    basis: organisation-website
+    checked: "2026-09-29"
+features:
+  - label: "Riverside"
+    f:
+      value: "Beside the Thames, where Manor Road meets the towpath"
+      source:
+        label: "The Anglers, official website (riverside setting); street from OpenStreetMap"
+        url: https://www.anglerswalton.co.uk/
+        basis: organisation-website
+        checked: "2026-09-29"

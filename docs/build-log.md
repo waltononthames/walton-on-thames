@@ -1832,3 +1832,15 @@ Research log and open questions: `docs/away-fans-guide-sources.md`. Placeholders
 - Twelve questions for the club and six for a site visit, listed at the top of the sources file.
 - Research for the chapters not yet built (food, hotels, parking alternatives, day out, safety, FAQs).
 - Directory corrections found on the way: The Weir Hotel's location, The Swan's website, no listing for the Old Manor Inn.
+
+## 2026-09-29: Away fans' guide, Phase 4 full build
+
+All eleven chapters are built: getting here (train, car, the four ways from the station, a matchday timeline), pubs (The Weir feature, then pubs on the routes in walking order), the ground, parking, food (grab and go, sit down, supermarkets), getting home, staying over, a day out (reusing the Things to Do attraction cards), club history, safety and FAQs.
+
+**New pieces.** A venues collection (15 venues, each checked on its own site, positioned from OpenStreetMap, structured hours where published); "open now" labels and "open at 10.30pm on a Tuesday" filters worked out in Europe/London time; an overview map of every venue, bus stop and both routes with CSS-only category toggles and a numbered key; a Sports Hub site plan from OpenStreetMap (outline and pitches only; stand, turnstiles and away end wait for the club); a live map on tap (MapLibre and OpenFreeMap, 280 KB, not loaded until tapped, stylesheet loaded on demand so it cannot block first render); a matchday timeline; a one-page A4 print card; FAQs whose answers are filled from the data and dropped in production when unconfirmed; JSON-LD for the article, stadium, team, next three home fixtures (from the club's feed) and FAQs.
+
+**Links in** from the homepage, the Things to Do card (plan D4), sport and active, the residents' FC page, the station guide and home-fixture pages on What's On.
+
+**Research this phase** is in the sources file. Two findings for Darren: the brief's "merger with Walton Casuals" has no primary source (nothing is said about it); and three Directory websites are dead or redirected (The George Inn, The Souvlaki, The Mogul).
+
+**Verified:** build passes all prebuild checks; guide HTML 35 KB gzipped; about 6 KB of script on first load; Lighthouse mobile Performance 99, Accessibility 96, Best Practices 100, SEO 69 (noindex prototype only), LCP 1.9 s, CLS 0.04; desktop 100/96/100/69. Remaining accessibility failures are the shared site footer. Print card fits one A4 page. No horizontal scroll at 390 or 1440 px; no console errors; every internal link resolves.
