@@ -1,0 +1,243 @@
+---
+// The quick answers card, directly under the opening image. Success criterion
+// 1 in the brief: postcode, how to get here, the last train home and the pubs
+// within ten seconds on a phone. Everything here is repeated in full further
+// down the page; this card only summarises and links.
+import Fact from './Fact.astro';
+import Icon from './Icon.astro';
+import { clock12, shows, valueOf, type Fact as FactT } from '../../utils/awayGuide';
+
+interface Props {
+  ground: {
+    name: string;
+    address: FactT<string>;
+    postcode: FactT<string>;
+    officialSite: FactT<string>;
+    kickOffSaturday: FactT<string>;
+    kickOffMidweek: FactT<string>;
+    turnstilesOpen: FactT<string>;
+    tickets: FactT<string>;
+    parking: FactT<string>;
+    segregation: FactT<string>;
+  };
+  point: { lat: number; lng: number };
+  walkMins: number;
+  driveMins: number;
+  busRoute: FactT<string>;
+  lastTrains: { label: string; time: string; sample: boolean }[];
+}
+const { ground, point, walkMins, driveMins, busRoute, lastTrains } = Astro.props;
+const postcode = valueOf(ground.postcode);
+const official = valueOf(ground.officialSite);
+const q = encodeURIComponent(ground.name);
+const appleMaps = `https://maps.apple.com/?q=${q}&ll=${point.lat},${point.lng}`;
+const googleMaps = `https://www.google.com/maps/search/?api=1&query=${point.lat}%2C${point.lng}`;
+---
+
+<section class="quick" aria-labelledby="quick-answers-title" id="quick-answers">
+  <div class="container">
+    <div class="quick-card">
+      <h2 id="quick-answers-title">Quick answers</h2>
+      <dl class="quick-list">
+        <div class="quick-row quick-row--wide">
+          <dt><Icon name="pin" /> Address and postcode</dt>
+          <dd>
+            <span class="quick-strong">{ground.name}</span><br />
+            <Fact f={ground.address} />, <Fact f={ground.postcode} />
+            <span class="quick-actions">
+              {postcode && (
+                <button type="button" class="quick-btn" data-copy-postcode={postcode} hidden>Copy postcode</button>
+              )}
+              <a class="quick-btn" href={appleMaps} rel="noopener">Open in Apple Maps</a>
+              <a class="quick-btn" href={googleMaps} rel="noopener">Open in Google Maps</a>
+              <span class="quick-copied" role="status" aria-live="polite"></span>
+            </span>
+          </dd>
+        </div>
+
+        <div class="quick-row">
+          <dt><Icon name="clock" /> Kick-off</dt>
+          <dd>
+            Saturday <Fact f={ground.kickOffSaturday} />, midweek <Fact f={ground.kickOffMidweek} />
+            {shows(ground.turnstilesOpen) && <><br />Turnstiles open <Fact f={ground.turnstilesOpen} /></>}
+          </dd>
+        </div>
+
+        <div class="quick-row">
+          <dt><Icon name="ticket" /> Tickets</dt>
+          <dd>
+            <Fact f={ground.tickets} />.
+            {official && <> Book on the <a href={official} rel="noopener">club's website</a>.</>}
+          </dd>
+        </div>
+
+        <div class="quick-row">
+          <dt><Icon name="walk" /> From Walton-on-Thames station</dt>
+          <dd>
+            About {walkMins} minutes on foot, {driveMins} minutes by taxi or Uber, or the <Fact f={busRoute}>{(v: string) => `${v} bus`}</Fact>.
+            <a href="#station-to-ground">Compare the options</a>
+          </dd>
+        </div>
+
+        <div class="quick-row">
+          <dt><Icon name="train" /> Last trains</dt>
+          <dd>
+            {lastTrains.map((t, i) => (
+              <>
+                {i > 0 && <br />}
+                {t.label}: {t.sample ? <span class="fact--placeholder-inline">{clock12(t.time)} <span class="sample-flag">Sample</span></span> : clock12(t.time)}
+              </>
+            ))}
+            <br /><a href="#getting-home">Plan your journey home</a>
+          </dd>
+        </div>
+
+        <div class="quick-row">
+          <dt><Icon name="car" /> Parking</dt>
+          <dd><Fact f={ground.parking} />. <a href="#parking">Parking options</a></dd>
+        </div>
+
+        {shows(ground.segregation) && (
+          <div class="quick-row">
+            <dt><Icon name="shield" /> Segregation</dt>
+            <dd><Fact f={ground.segregation} /></dd>
+          </div>
+        )}
+
+        <div class="quick-row">
+          <dt><Icon name="pint" /> Pubs and food</dt>
+          <dd><a href="#pubs">Where to eat and drink before the match</a></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Copy postcode, with a visible confirmation. Without JavaScript the button
+  // stays hidden and the postcode is ordinary selectable text.
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-copy-postcode]')) {
+    if (!navigator.clipboard) continue;
+    btn.hidden = false;
+    const status = btn.parentElement?.querySelector('.quick-copied');
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copyPostcode ?? '');
+        if (status) status.textContent = `Copied ${btn.dataset.copyPostcode}`;
+      } catch {
+        if (status) status.textContent = 'Could not copy: select the postcode instead';
+      }
+    });
+  }
+</script>
+
+<style>
+  .quick {
+    position: relative;
+    z-index: 2;
+    padding-top: 1rem;
+  }
+  @media (min-width: 900px) {
+    .quick { margin-top: -5rem; padding-top: 0; }
+  }
+  .quick-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card-hover);
+  }
+  @media (min-width: 900px) {
+    .quick-card { padding: 1.75rem 2rem; }
+  }
+  h2 {
+    margin-bottom: 0.75rem;
+    color: var(--color-slate);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .quick-list {
+    display: grid;
+    gap: 0;
+  }
+  @media (min-width: 720px) {
+    .quick-list { grid-template-columns: 1fr 1fr; column-gap: 2rem; }
+    .quick-row--wide { grid-column: 1 / -1; }
+  }
+  @media (min-width: 1100px) {
+    .quick-list { grid-template-columns: repeat(3, 1fr); }
+  }
+  .quick-row {
+    padding: 0.8rem 0;
+    border-top: 1px solid rgba(11, 36, 46, 0.08);
+  }
+  dt {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.2rem;
+    color: var(--color-slate);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  dt :global(.icon) { color: var(--color-accent); flex: none; }
+  dd {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  /* Darker than the site's link gold, which is short of AA on white. */
+  dd a:not(.quick-btn) { color: #7A5518; }
+  dd a:not(.quick-btn):hover { color: var(--color-navy); }
+  .quick-strong {
+    font-weight: 600;
+  }
+  .quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+  .quick-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 0.9rem;
+    border: 1.5px solid var(--color-navy);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-navy);
+    font: 600 0.85rem var(--font-body);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .quick-btn:hover {
+    background: var(--color-navy);
+    color: #FFFFFF;
+  }
+  .quick-btn[hidden] { display: none; }
+  .quick-copied {
+    color: #1E6B3A;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .fact--placeholder-inline {
+    text-decoration: underline dotted rgba(184, 134, 46, 0.8);
+    text-underline-offset: 3px;
+  }
+  .sample-flag {
+    display: inline-block;
+    padding: 0 0.4em;
+    border-radius: 999px;
+    background: #FCE9C2;
+    color: #6B4A10;
+    font-size: 0.68em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>

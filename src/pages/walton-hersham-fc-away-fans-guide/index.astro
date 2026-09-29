@@ -1,0 +1,335 @@
+---
+// The away fans' guide to Walton & Hersham FC. Brief: away-fans-guide-brief.md;
+// plan and decisions: docs/away-fans-guide-plan.md.
+//
+// Phase 2 prototype: the opening, quick answers, chapter navigation, the
+// station-to-ground chapter and getting home are built; the other chapters
+// are headings only. While any fact in src/content/away-guide/ is still a
+// placeholder the page is noindex (and so outside site search), and
+// scripts/check-away-guide.mjs refuses a production build on main.
+//
+// All practical information comes from the away-guide collections, never
+// from this file, so a time or a price changes without touching layout.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Opening from '../../components/away-guide/Opening.astro';
+import QuickAnswers from '../../components/away-guide/QuickAnswers.astro';
+import ChapterNav from '../../components/away-guide/ChapterNav.astro';
+import ChapterBreak from '../../components/away-guide/ChapterBreak.astro';
+import TravelOptions from '../../components/away-guide/TravelOptions.astro';
+import RouteStory from '../../components/away-guide/RouteStory.astro';
+import LastTrainFinder from '../../components/away-guide/LastTrainFinder.astro';
+import NeedToKnow from '../../components/away-guide/NeedToKnow.astro';
+import NeedToKnowRow from '../../components/away-guide/NeedToKnowRow.astro';
+import Fact from '../../components/away-guide/Fact.astro';
+import { getCollection } from 'astro:content';
+import {
+  awayBase, clock12, containsPlaceholder, latestChecked, longDate, valueOf, GUIDE_PATH,
+  type GroundData, type RouteData, type TrainData, type BusData, type TaxiData, type RouteKey,
+} from '../../utils/awayGuide';
+
+const SITE = 'https://walton-on-thames.org';
+const AUTHOR = 'Darren Bayley';
+
+// Typed here rather than inferred: the collection types the rest of the
+// site relies on do not resolve under `astro check` (149 errors on main of
+// this kind), and this page should add none.
+type Entry<T> = { data: T };
+const data = async <T,>(name: Parameters<typeof getCollection>[0]) => ((await getCollection(name)) as Entry<T>[]).map((e) => e.data);
+const [ground] = await data<GroundData>('away-ground');
+const routes = (await data<RouteData>('away-routes')).sort((a, b) => a.order - b.order);
+const trains = await data<TrainData>('away-trains');
+const [bus] = await data<BusData>('away-buses');
+const [taxis] = await data<TaxiData>('away-taxis');
+
+const everything = [ground, routes, trains, bus, taxis];
+const prototype = containsPlaceholder(everything);
+const lastChecked = latestChecked(everything);
+const official = valueOf(ground.officialSite) ?? 'https://waltonhershamfc.com/';
+
+const towpathRoute = routes.find((r) => r.variant === 'towpath');
+const towpathAfterDark = towpathRoute ? valueOf(towpathRoute.afterDark) : undefined;
+const walkRoad = awayBase.routes.road;
+const walkTow = awayBase.routes.towpath;
+const driveMins = awayBase.drive.minutes;
+const rideHailing = taxis.rideHailing.filter((r) => 'value' in r.note).map((r) => r.name);
+const taxiLabel = ['Taxi', ...rideHailing].join(' or ');
+
+// Last Saturday and midweek departures to Waterloo, for the quick answers card.
+const lastTo = (day: 'saturday' | 'weekday', direction: string) => {
+  const t = trains.find((r) => r.dayType === day && r.direction === direction);
+  return t ? { time: [...t.departures.times].sort().at(-1)!, sample: 'placeholder' in t.departures } : null;
+};
+const lastTrains = [
+  { label: 'Saturday to London Waterloo', ...lastTo('saturday', 'London Waterloo') },
+  { label: 'Midweek to London Waterloo', ...lastTo('weekday', 'London Waterloo') },
+].filter((t): t is { label: string; time: string; sample: boolean } => Boolean(t.time));
+
+const chapters = [
+  { id: 'station-to-ground', label: 'Station to ground' },
+  { id: 'pubs', label: 'Pubs' },
+  { id: 'the-ground', label: 'The ground' },
+  { id: 'parking', label: 'Parking' },
+  { id: 'food', label: 'Food' },
+  { id: 'getting-home', label: 'Getting home' },
+];
+// Chapters still to be built in Phase 4, shown as headings only.
+const stubs: Record<string, { title: string; photo: string }> = {
+  pubs: { title: 'Pubs near Walton & Hersham FC', photo: 'af-pubs-the-weir' },
+  'the-ground': { title: 'The ground and the away end', photo: 'af-ground-main-stand' },
+  parking: { title: 'Parking at the Xcel Sports Hub', photo: 'af-parking-hub-car-park' },
+  food: { title: 'Food before and after the match', photo: 'af-food-high-street' },
+};
+
+const title = "Walton & Hersham FC Away Fans' Guide | Xcel Sports Hub";
+const description = 'Getting to Walton & Hersham FC from Walton-on-Thames station on foot, by bus or by taxi, with parking, pubs, food and the last trains home.';
+const h1 = "The away fans' guide to Walton & Hersham FC";
+const url = `${SITE}${GUIDE_PATH}`;
+---
+
+<BaseLayout title={title} description={description} type="article" noIndex={prototype}>
+  <slot name="structured-data">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+            { '@type': 'ListItem', position: 2, name: 'Things to Do', item: `${SITE}/things-to-do/` },
+            { '@type': 'ListItem', position: 3, name: "Walton & Hersham FC away fans' guide", item: url },
+          ],
+        },
+        {
+          '@type': 'Article',
+          '@id': `${url}#article`,
+          headline: h1,
+          description,
+          url,
+          author: { '@type': 'Person', name: AUTHOR },
+          publisher: { '@id': `${SITE}/#organization` },
+          ...(lastChecked && { dateModified: lastChecked }),
+        },
+      ],
+    })} />
+  </slot>
+
+  {prototype && (
+    <div class="prototype-banner" role="note">
+      <div class="container">
+        <strong>Prototype.</strong> Anything marked <span class="banner-flag">Sample</span> is placeholder data, not a real time, stop or position. This page is hidden from search engines until every fact is checked.
+      </div>
+    </div>
+  )}
+
+  <Opening
+    title={h1}
+    standfirst="Everything a visiting supporter needs for a matchday at the Elmbridge Xcel Sports Hub: getting here from Walton-on-Thames station, where to eat and drink, and how to get home."
+    author={AUTHOR}
+    lastChecked={lastChecked}
+    officialSite={official}
+  />
+
+  <QuickAnswers
+    ground={ground}
+    point={awayBase.points.ground}
+    walkMins={walkRoad.minutes}
+    driveMins={driveMins}
+    busRoute={bus.route}
+    lastTrains={lastTrains}
+  />
+
+  <div class="guide-body">
+    <ChapterNav chapters={chapters} />
+
+    <section class="chapter" id="station-to-ground" aria-labelledby="station-to-ground-title">
+      <ChapterBreak id="station-to-ground" number={1} title="Getting from Walton-on-Thames station to the ground" photo="af-walk-station-exit" />
+      <div class="container chapter-body">
+        <p class="lede">
+          Every route in this guide starts at Walton-on-Thames station. The Sports Hub is north of the town centre, beside the river, and the walk is a long one: about {walkRoad.minutes} minutes by road. A bus or a taxi is much quicker. Here are all four options side by side.
+        </p>
+
+        <TravelOptions
+          walks={routes.map((r) => ({
+            variant: r.variant,
+            title: r.title,
+            metres: awayBase.routes[r.variant as RouteKey].metres,
+            minutes: awayBase.routes[r.variant as RouteKey].minutes,
+            bestFor: r.bestFor,
+            lighting: r.lighting,
+            afterDark: r.afterDark,
+          }))}
+          bus={bus}
+          driveMins={driveMins}
+          rideHailing={rideHailing}
+        />
+
+        <h3 class="sub">The walking routes</h3>
+        <p class="measure">
+          Both walks start at the station and pass through the town centre. The road route is the quicker of the two. The towpath route follows the Thames Path from Walton Bridge, about {(walkTow.towpathMetres / 1000).toFixed(1)} km along the river, and adds around {walkTow.minutes - walkRoad.minutes} minutes.
+        </p>
+        <RouteStory routes={routes} />
+
+        <h3 class="sub" id="by-bus">By bus</h3>
+        <NeedToKnow>
+          <NeedToKnowRow icon="bus" label="Route" f={bus.route}><Fact f={bus.route} />, run by <Fact f={bus.operator} /></NeedToKnowRow>
+          <NeedToKnowRow icon="pin" label="Get on at" f={bus.boardAt}><Fact f={bus.boardAt} /></NeedToKnowRow>
+          <NeedToKnowRow icon="pin" label="Get off at" f={bus.alightAt}><Fact f={bus.alightAt} /></NeedToKnowRow>
+          <NeedToKnowRow icon="clock" label="Journey" f={bus.journeyMins}>
+            <Fact f={bus.journeyMins}>{(v: number) => `About ${v} minutes`}</Fact>, then <Fact f={bus.walkFromStopMins}>{(v: number) => `${v} minutes`}</Fact> on foot
+          </NeedToKnowRow>
+          <NeedToKnowRow icon="clock" label="How often" f={bus.frequency}><Fact f={bus.frequency} /></NeedToKnowRow>
+          <NeedToKnowRow icon="moon" label="Last buses back" f={bus.lastFromGround.saturday}>
+            Saturday <Fact f={bus.lastFromGround.saturday}>{(v: string[]) => v.map(clock12).join(', ')}</Fact><br />
+            Midweek <Fact f={bus.lastFromGround.weekday}>{(v: string[]) => v.map(clock12).join(', ')}</Fact>
+          </NeedToKnowRow>
+          <NeedToKnowRow icon="info" label="Timetable" f={bus.operatorUrl}>
+            <Fact f={bus.operatorUrl}>{(v: string) => `<a href="${v}" rel="noopener">Operator's timetable</a>`}</Fact>
+          </NeedToKnowRow>
+        </NeedToKnow>
+
+        <h3 class="sub" id="by-taxi">By {taxiLabel.toLowerCase().replace('uber', 'Uber')}</h3>
+        <p class="measure">
+          The drive from the station to the Sports Hub takes about {driveMins} minutes with light traffic. After an evening match many people want a car at the same moment, so book a taxi or request an Uber before the final whistle, or be ready to wait.
+        </p>
+        <NeedToKnow>
+          <NeedToKnowRow icon="car" label="Drive time">About {driveMins} minutes, {(awayBase.drive.metres / 1000).toFixed(1)} km</NeedToKnowRow>
+          {taxis.rideHailing.map((r) => (
+            <NeedToKnowRow icon="taxi" label={r.name} f={r.note}><Fact f={r.note} /></NeedToKnowRow>
+          ))}
+          <NeedToKnowRow icon="pin" label="Taxi rank" f={taxis.rankAtStation}><Fact f={taxis.rankAtStation} /></NeedToKnowRow>
+          <NeedToKnowRow icon="pin" label="Pickup at the ground" f={taxis.pickupAtGround}><Fact f={taxis.pickupAtGround} /></NeedToKnowRow>
+          {taxis.firms.map((firm) => (
+            <NeedToKnowRow icon="taxi" label={firm.name}><a href={`tel:${firm.phone.replace(/\s/g, '')}`}>{firm.phone}</a></NeedToKnowRow>
+          ))}
+        </NeedToKnow>
+      </div>
+    </section>
+
+    {Object.entries(stubs).map(([id, s]) => (
+      <section class="chapter" id={id} aria-labelledby={`${id}-title`}>
+        <ChapterBreak id={id} number={chapters.findIndex((c) => c.id === id) + 1} title={s.title} photo={s.photo} />
+        <div class="container chapter-body">
+          <p class="stub">This chapter is part of the full build.</p>
+        </div>
+      </section>
+    ))}
+
+    <section class="chapter" id="getting-home" aria-labelledby="getting-home-title">
+      <ChapterBreak id="getting-home" number={6} title="Getting home: last trains from Walton-on-Thames" photo="af-home-station-night" />
+      <div class="container chapter-body">
+        <p class="lede">
+          Trains from Walton-on-Thames run to London Waterloo and towards Woking. Pick the day and how you are getting back to the station, and we will show when to leave the ground for each of the last trains.
+        </p>
+        <LastTrainFinder
+          trains={trains}
+          walk={{ road: walkRoad.minutes, towpath: walkTow.minutes }}
+          towpathAfterDark={towpathAfterDark}
+          driveMins={driveMins}
+          bus={{
+            route: valueOf(bus.route),
+            journeyMins: valueOf(bus.journeyMins),
+            walkFromStopMins: valueOf(bus.walkFromStopMins),
+            lastFromGround: bus.lastFromGround,
+          }}
+          taxiLabel={taxiLabel}
+        />
+        <ul class="links">
+          <li><a href="https://www.nationalrail.co.uk/live-trains/departures/walton-on-thames/" rel="noopener">Live departures from Walton-on-Thames (National Rail)</a></li>
+          <li><a href="https://www.southwesternrailway.com/" rel="noopener">South Western Railway</a>, for engineering work and disruption</li>
+          <li><a href="/walton-on-thames-railway-station/">Our guide to Walton-on-Thames station</a>: platforms, step-free access and facilities</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="guide-foot container">
+      <div class="guide-foot-card">
+        <p>
+          <strong>About this guide.</strong> Written by {AUTHOR}{lastChecked && <>, last checked {longDate(lastChecked)}</>}. Walking and driving times are typical estimates from OpenStreetMap routing. Every other practical fact is checked against the club, the operator or the venue, and dated.
+        </p>
+        <p>
+          Something changed? <a href="/contact/?subject=away-guide">Report a change to this guide</a>.
+        </p>
+        <p>
+          We are an independent community website with no connection to Walton &amp; Hersham FC. For tickets and matchday announcements, see the <a href={official} rel="noopener">club's official website</a>.
+        </p>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  .prototype-banner {
+    padding: 0.65rem 0;
+    background: #FCE9C2;
+    color: #4A3308;
+    font-size: 0.88rem;
+    border-bottom: 1px solid #E8C77E;
+  }
+  .banner-flag {
+    padding: 0 0.4em;
+    border-radius: 999px;
+    background: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .guide-body { position: relative; }
+  .chapter {
+    scroll-margin-top: calc(var(--nav-height) + 48px);
+    padding-bottom: 3rem;
+  }
+  @media (max-width: 899px) {
+    .chapter { scroll-margin-top: var(--nav-height); }
+  }
+  .chapter-body { padding-top: 2rem; }
+  .lede {
+    max-width: 68ch;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  .measure { max-width: 68ch; margin-bottom: 1rem; }
+  .sub {
+    margin: 2.5rem 0 0.75rem;
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    scroll-margin-top: calc(var(--nav-height) + 64px);
+  }
+  .stub {
+    padding: 1.25rem;
+    border: 2px dashed rgba(11, 36, 46, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--color-slate);
+  }
+  .links {
+    margin-top: 1.25rem;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .guide-foot { padding-bottom: 3rem; }
+  .guide-foot-card {
+    max-width: 68ch;
+    padding: 1.25rem 1.5rem;
+    border-top: 3px solid var(--color-navy);
+    background: var(--color-white);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-size: 0.92rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+  /* The site's gold link colour (#B8862E) is 3.2:1 on white, short of WCAG
+     AA. In this page's light content areas links use a darker shade of the
+     same gold (6.6:1). Links on dark backgrounds keep their own colours. */
+  .chapter-body :global(a),
+  .guide-foot :global(a) {
+    color: #7A5518;
+  }
+  .chapter-body :global(a:hover),
+  .guide-foot :global(a:hover) {
+    color: var(--color-navy);
+  }
+  /* Room for the phone bar at the foot of the screen. */
+  @media (max-width: 899px) {
+    :global(body) { padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+  }
+</style>

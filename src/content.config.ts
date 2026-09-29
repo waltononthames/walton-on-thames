@@ -2,6 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { fixturesLoader } from './loaders/fixtures-loader';
 import { planningLoader } from './loaders/planning-loader';
+import { awayGuideCollections } from './content/schemas/away-guide';
 
 // Healthcare fields, used by the GP practice profiles and the nearby-pharmacy
 // module. Everything is optional so the rest of the directory is unaffected.
@@ -19,6 +20,13 @@ const factBasis = z.enum([
   'editor-observation',
   'practice-confirmed',
   'openstreetmap',
+  // Added for the away fans' guide. `organisation-confirmed` means the club
+  // or venue told us directly, as `practice-confirmed` does for a practice;
+  // `routing-estimate` is a router's typical figure, never a measured one.
+  'organisation-website',
+  'organisation-confirmed',
+  'timetable',
+  'routing-estimate',
 ]);
 
 const checkedSource = z.object({
@@ -596,4 +604,5 @@ export const collections = {
   attractions, 'annual-events': annualEvents,
   'hersham-planning': hershamPlanning,
   'walton-planning': waltonPlanning,
+  ...awayGuideCollections(checkedSource),
 };

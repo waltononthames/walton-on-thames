@@ -1,0 +1,36 @@
+# OpenStreetMap lists a route 564 serving the Xcel Leisure Centre stop. That is
+# a lead only: route, stops and times are confirmed from the operator or
+# Surrey County Council in Phase 3.
+route:
+  value: "564"
+  placeholder: true
+operator:
+  value: Falcon Coaches
+  placeholder: true
+boardAt:
+  unconfirmed:
+    ask: operator
+    question: Which stop nearest Walton-on-Thames station does the 564 use towards the Xcel, and which stop is used for the return?
+alightAt:
+  value: Xcel Leisure Centre
+  placeholder: true
+journeyMins:
+  value: 15
+  placeholder: true
+walkFromStopMins:
+  value: 3
+  placeholder: true
+frequency:
+  value: About every 30 minutes on Saturdays
+  placeholder: true
+lastFromGround:
+  saturday:
+    value: ["17:40", "18:10", "18:40"]
+    placeholder: true
+  weekday:
+    value: ["21:40", "22:10"]
+    placeholder: true
+operatorUrl:
+  unconfirmed:
+    ask: operator
+    question: What is the operator's current timetable page for route 564?

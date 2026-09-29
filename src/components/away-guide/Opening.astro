@@ -1,0 +1,119 @@
+---
+// The opening of the away guide: photograph, title, standfirst, byline and the
+// independence line. On phones the image takes about 55% of the viewport so
+// the quick answers card starts above the fold (plan D3); on desktop it fills
+// the screen below the site header.
+import PhotoSlot from './PhotoSlot.astro';
+
+interface Props {
+  title: string;
+  standfirst: string;
+  author: string;
+  lastChecked?: string;
+  officialSite: string;
+}
+const { title, standfirst, author, lastChecked, officialSite } = Astro.props;
+---
+
+<header class="opening">
+  <div class="opening-media">
+    <PhotoSlot slot="af-opening-floodlights" fit="fill" tone="dark" />
+  </div>
+  <div class="opening-scrim"></div>
+  <div class="opening-text container">
+    <p class="opening-kicker">Away fans' guide</p>
+    <h1>{title}</h1>
+    <p class="opening-standfirst">{standfirst}</p>
+    <p class="opening-byline">
+      By {author}{lastChecked && <> · Last checked <time datetime={lastChecked}>{new Date(`${lastChecked}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time></>}
+    </p>
+    <p class="opening-independence">
+      We are an independent community website with no connection to Walton &amp; Hersham FC. For tickets and matchday announcements, see the <a href={officialSite} rel="noopener">club's official website</a>.
+    </p>
+  </div>
+</header>
+
+<style>
+  .opening {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: max(18rem, 48svh);
+    overflow: hidden;
+    background: var(--color-navy);
+    color: #FFFFFF;
+  }
+  @media (min-width: 900px) {
+    .opening { min-height: calc(100svh - var(--nav-height)); }
+  }
+  .opening-media {
+    position: absolute;
+    inset: 0;
+    animation: opening-zoom 24s ease-out both;
+    transform-origin: 60% 40%;
+  }
+  @keyframes opening-zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .opening-media { animation: none; }
+  }
+  .opening-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(1, 32, 44, 0.92) 0%, rgba(1, 32, 44, 0.7) 38%, rgba(1, 32, 44, 0.1) 75%);
+  }
+  .opening-text {
+    position: relative;
+    width: 100%;
+    padding-top: 2.5rem;
+    padding-bottom: 1.25rem;
+  }
+  @media (max-width: 480px) {
+    .opening-standfirst { font-size: 1rem; }
+    .opening-independence { font-size: 0.75rem; }
+  }
+  @media (min-width: 900px) {
+    .opening-text { padding-bottom: 7rem; }
+  }
+  .opening-kicker {
+    margin-bottom: 0.5rem;
+    color: #F2D29A;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  h1 {
+    max-width: 16ch;
+    color: #FFFFFF;
+    font-size: clamp(2rem, 7.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .opening-standfirst {
+    max-width: 38rem;
+    margin-top: 0.9rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(1rem, 2.4vw, 1.3rem);
+    line-height: 1.5;
+  }
+  .opening-byline {
+    margin-top: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+  }
+  .opening-independence {
+    max-width: 38rem;
+    margin-top: 0.4rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+  }
+  .opening-independence a {
+    color: #F2D29A;
+  }
+  .opening-independence a:hover {
+    color: #FFFFFF;
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+// Renders one fact from the away guide's data. A sourced value renders as
+// plain text; a placeholder renders with a visible "Sample" flag; an
+// unconfirmed fact renders as a question in `astro dev` and as nothing at all
+// in a production build. Pass a slot to format the value; `value` is exposed
+// to it through the render function form: <Fact f={x}>{(v) => ...}</Fact>.
+import { ASK_LABEL, isPlaceholder, isUnconfirmed, type Fact } from '../../utils/awayGuide';
+
+interface Props {
+  f: Fact<unknown>;
+}
+
+const { f } = Astro.props;
+const dev = import.meta.env.DEV;
+const formatted = 'value' in f && Astro.slots.has('default')
+  ? await Astro.slots.render('default', [f.value])
+  : undefined;
+---
+
+{isUnconfirmed(f) ? (
+  dev && (
+    <span class="fact fact--unconfirmed" title={f.unconfirmed.question}>
+      Unconfirmed ({ASK_LABEL[f.unconfirmed.ask]})
+    </span>
+  )
+) : isPlaceholder(f) ? (
+  <span class="fact fact--placeholder">
+    {formatted ? <Fragment set:html={formatted} /> : String(f.value)}
+    <span class="fact-flag">Sample</span>
+  </span>
+) : (
+  formatted ? <Fragment set:html={formatted} /> : <>{String(f.value)}</>
+)}
+
+<style>
+  .fact--placeholder {
+    text-decoration: underline dotted rgba(184, 134, 46, 0.8);
+    text-underline-offset: 3px;
+  }
+  .fact-flag {
+    display: inline-block;
+    margin-left: 0.35em;
+    padding: 0 0.4em;
+    border-radius: 999px;
+    background: #FCE9C2;
+    color: #6B4A10;
+    font-family: var(--font-body);
+    font-size: 0.68em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    vertical-align: 0.15em;
+    text-decoration: none;
+  }
+  .fact--unconfirmed {
+    display: inline-block;
+    padding: 0.1em 0.5em;
+    border: 1.5px dashed #B3261E;
+    border-radius: 4px;
+    color: #B3261E;
+    font-size: 0.85em;
+    font-weight: 600;
+  }
+</style>

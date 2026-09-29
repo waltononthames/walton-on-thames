@@ -1786,3 +1786,24 @@ Darren supplied an external audit (`walton-on-thames-factual-accuracy-audit-2026
 - **M5** Wikipedia cited on 24 history/Hersham pages: replace with underlying sources, priority pages as listed in the audit.
 - Events: consider an optional `organizer` field so known organisers can be backfilled.
 - River Mole walks still emits `LandmarksOrHistoricalBuildings`; review individually.
+
+## 2026-09-29: Away fans' guide, Phase 2 prototype
+
+Brief: `away-fans-guide-brief.md` (Darren, 28 September 2026). Plan and decisions: `docs/away-fans-guide-plan.md`. Branch `feature/away-fans-guide`, not merged. The page is `/walton-hersham-fc-away-fans-guide/` and is noindex while any placeholder remains.
+
+**Built:** the opening, the quick answers card, chapter navigation (sticky bar on desktop, Route, Pubs, Food and Home bar on phones, reading progress), the station-to-ground chapter and getting home. Pubs, the ground, parking and food are headings only.
+
+**Four ways from the station, as decided on 28 September:** walk by road, walk by the towpath, bus, and taxi or Uber, side by side on one comparison card. Every route starts at Walton-on-Thames station; Hersham station is omitted.
+
+**The route map is built from open data, not drawn.** `npm run map:away-guide -- --fetch` fetches OpenStreetMap through Overpass and routes with OSRM (FOSSGIS public server, four requests per run). By road: 3.8 km, about 51 minutes. By the towpath: 5.2 km, about 69 minutes, 2.2 km of it on the Thames Path. By car: 3.7 km, about 7 minutes free-flow. The router will not follow the towpath (it prefers Weir Road and Sunbury Lane), so the towpath section is the shortest path through the Thames Path relation's own ways (OSM relation 14519665), joined to routed road sections at each end. The scroll story draws the chosen route up to the step being read and moves the map to it; without JavaScript the full map, both routes and every step are in the HTML.
+
+**Unconfirmed facts use a data shape, not a marker string.** Each fact is sourced, a placeholder, or an unconfirmed question for the club, operator, venue or a site visit. Unconfirmed facts render nothing in production. `scripts/check-away-guide.mjs` (prebuild) fails a production build on `main` while any placeholder remains and warns as timetables approach expiry. 27 placeholders remain, by design.
+
+**Other changes:** `factBasis` gains `organisation-website`, `organisation-confirmed`, `timetable` and `routing-estimate`; `/contact/` gains a "Report a change to the away fans' guide" subject (approved by Darren).
+
+**Verified:** build passes all prebuild checks; guide HTML 18 KB gzipped; no script loads before interaction beyond small inlined modules; base map 125 KB gzipped, loaded lazily. Lighthouse against `npm run preview`, mobile: Performance 99, Accessibility 96, Best Practices 100, SEO 69 (LCP 1.6 s, CLS 0.021, TBT 0 ms); desktop: 100, 96, 100, 69 (LCP 0.4 s). SEO is 69 only because the prototype is deliberately noindex. The remaining accessibility failures are site-wide (footer contrast, header logo alt), not the guide's; the guide's own links were darkened to #7A5518 because the site's gold link colour is 3.2:1 on white. `astro check`: no errors in the guide's files; the 149 on main are unchanged. No horizontal scroll at 390 or 1440 px.
+
+## Still open (away fans' guide)
+- Phase 3 research: every placeholder, and the club questions (segregation, away end, turnstile times, taxi pickup point).
+- Leads recorded in OpenStreetMap only, to confirm from primary sources: bus route 564 (Falcon Coaches) to the Xcel Leisure Centre stop; the towpath ways between Walton Bridge and the Sports Hub are mostly tagged `lit=no`.
+- Push the branch for a Cloudflare preview once Darren agrees.

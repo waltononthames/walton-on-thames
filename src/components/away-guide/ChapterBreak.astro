@@ -1,0 +1,61 @@
+---
+// Full-bleed photographic chapter opener, carrying the chapter's H2. The
+// photograph is decorative; the heading is the chapter's real title.
+import PhotoSlot from './PhotoSlot.astro';
+
+interface Props {
+  id: string;
+  number: number;
+  title: string;
+  photo: string;
+}
+const { id, number, title, photo } = Astro.props;
+---
+
+<div class="chapter-break">
+  <PhotoSlot slot={photo} fit="fill" tone="dark" />
+  <div class="chapter-break-scrim"></div>
+  <div class="container chapter-break-text">
+    <p class="chapter-break-num">Chapter {number}</p>
+    <h2 id={`${id}-title`}>{title}</h2>
+  </div>
+</div>
+
+<style>
+  .chapter-break {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 34svh;
+    overflow: hidden;
+    background: var(--color-navy);
+  }
+  @media (min-width: 900px) {
+    .chapter-break { min-height: 52svh; }
+  }
+  .chapter-break-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(1, 32, 44, 0.88), rgba(1, 32, 44, 0.05) 70%);
+  }
+  .chapter-break-text {
+    position: relative;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 1.75rem;
+  }
+  .chapter-break-num {
+    color: #F2D29A;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  h2 {
+    max-width: 22ch;
+    margin-top: 0.3rem;
+    color: #FFFFFF;
+    font-size: clamp(1.75rem, 5vw, 3.25rem);
+    line-height: 1.1;
+  }
+</style>

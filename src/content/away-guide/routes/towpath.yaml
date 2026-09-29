@@ -1,0 +1,81 @@
+# Walk by the Thames towpath from Walton-on-Thames station. The towpath
+# section is the Thames Path National Trail's mapped route between Walton
+# Bridge and the Sports Hub (OpenStreetMap relation 14519665). Most of those
+# ways are tagged lit=no in OpenStreetMap; lighting, surface and flooding are
+# confirmed on a site visit before anything is stated (plan R6).
+variant: towpath
+title: By the Thames towpath
+order: 2
+placeholder: true
+bestFor:
+  value: A riverside walk before a Saturday afternoon match
+  placeholder: true
+surface:
+  value: Compacted path along the river, pavements in town
+  placeholder: true
+lighting:
+  unconfirmed:
+    ask: site-visit
+    question: Which parts of the towpath between Walton Bridge and the Sports Hub are lit?
+stepFree:
+  unconfirmed:
+    ask: site-visit
+    question: Are there steps or gates on the towpath route, including the footbridge section?
+afterDark:
+  value: Not recommended after dark
+  placeholder: true
+steps:
+  - id: station
+    title: Walton-on-Thames station
+    text: Leave the station and turn left towards Ashley Park Road.
+    lat: 51.37282
+    lng: -0.41456
+    photo: af-walk-towpath-step01-landscape
+  - id: ashley-road
+    title: Ashley Park Road and Ashley Road
+    text: Follow Ashley Park Road and Ashley Road north into the town centre.
+    lat: 51.37959
+    lng: -0.41903
+    photo: af-walk-towpath-step02-landscape
+  - id: the-heart
+    title: Through The Heart
+    text: Walk through The Heart towards Bridge Street.
+    lat: 51.38438
+    lng: -0.42018
+    photo: af-walk-towpath-step03-landscape
+  - id: bridge-street
+    title: Bridge Street and Walton Lane
+    text: Follow Bridge Street towards the river, then turn left onto Walton Lane.
+    lat: 51.38586
+    lng: -0.42696
+    photo: af-walk-towpath-step04-landscape
+  - id: walton-bridge
+    title: Walton Bridge
+    text: Join the Thames Path beside Walton Bridge and turn right along the river.
+    lat: 51.3863
+    lng: -0.4312
+    photo: af-walk-towpath-step05-landscape
+    history:
+      href: /history/walton-bridge/
+      label: Walton Bridge
+  - id: towpath
+    title: Along the towpath
+    text: Follow the towpath downstream for a little over two kilometres.
+    lat: 51.3928
+    lng: -0.4199
+    photo: af-walk-towpath-step06-landscape
+    history:
+      href: /history/river-thames-at-walton/
+      label: The River Thames at Walton
+  - id: leave-towpath
+    title: Leave the towpath
+    text: Leave the river path at Sunbury Lane for the Sports Hub.
+    lat: 51.4009
+    lng: -0.4123
+    photo: af-walk-towpath-step07-landscape
+  - id: ground
+    title: Elmbridge Xcel Sports Hub
+    text: Follow the signs to the turnstiles.
+    lat: 51.39914
+    lng: -0.41086
+    photo: af-walk-towpath-step08-landscape

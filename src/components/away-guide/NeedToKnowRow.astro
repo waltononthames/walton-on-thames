@@ -1,0 +1,46 @@
+---
+// One icon, label and value row in a Need to know panel. Pass `f` to have the
+// row disappear in production when that fact is unconfirmed, so a panel never
+// shows a label with nothing beside it.
+import Icon from './Icon.astro';
+import { shows, type Fact } from '../../utils/awayGuide';
+
+interface Props {
+  icon: Parameters<typeof Icon>[0]['name'];
+  label: string;
+  f?: Fact<unknown>;
+}
+const { icon, label, f } = Astro.props;
+const render = !f || shows(f);
+---
+
+{render && (
+  <div class="ntk-row">
+    <dt><Icon name={icon} size={20} /><span>{label}</span></dt>
+    <dd><slot /></dd>
+  </div>
+)}
+
+<style>
+  .ntk-row {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 11rem) 1fr;
+    gap: 0.25rem 1rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid rgba(11, 36, 46, 0.07);
+  }
+  .ntk-row:first-child { border-top: 0; }
+  dt {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    color: var(--color-slate);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  dt :global(.icon) { flex: none; color: var(--color-accent); margin-top: 0.05rem; }
+  dd { font-size: 0.95rem; line-height: 1.5; }
+  @media (max-width: 480px) {
+    .ntk-row { grid-template-columns: 1fr; }
+  }
+</style>

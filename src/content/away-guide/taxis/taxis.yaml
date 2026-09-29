@@ -1,0 +1,17 @@
+rankAtStation:
+  unconfirmed:
+    ask: site-visit
+    question: Is there a taxi rank at Walton-on-Thames station, and on which side?
+pickupAtGround:
+  unconfirmed:
+    ask: club
+    question: Where should taxis and Uber pick up at the Sports Hub after a match?
+rideHailing:
+  - name: Uber
+    note:
+      value: Uber operates in Walton-on-Thames
+      source:
+        label: Confirmed by Darren Bayley, editor
+        basis: editor-observation
+        checked: "2026-09-28"
+firms: []

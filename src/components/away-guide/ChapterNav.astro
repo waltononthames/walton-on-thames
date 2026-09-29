@@ -1,0 +1,172 @@
+---
+// Chapter navigation for the away guide. Plain anchor links, so it works
+// without JavaScript. On desktop it is a sticky bar under the site header; on
+// phones it becomes a four-button bar fixed to the bottom of the screen
+// (Route, Pubs, Food, Home). The script adds the reading progress line and
+// highlights the chapter being read.
+//
+// Must sit inside the element that holds every chapter, or sticky positioning
+// ends at its parent.
+import Icon from './Icon.astro';
+
+interface Props {
+  chapters: { id: string; label: string }[];
+}
+const { chapters } = Astro.props;
+const phone = [
+  { href: '#station-to-ground', label: 'Route', icon: 'walk' },
+  { href: '#pubs', label: 'Pubs', icon: 'pint' },
+  { href: '#food', label: 'Food', icon: 'food' },
+  { href: '#getting-home', label: 'Home', icon: 'train', title: 'Getting home' },
+] as const;
+---
+
+<nav class="chapter-nav" aria-label="Chapters">
+  <div class="chapter-progress" aria-hidden="true"><span></span></div>
+  <ol class="chapter-list container">
+    {chapters.map((c) => (
+      <li><a href={`#${c.id}`} data-chapter-link={c.id}>{c.label}</a></li>
+    ))}
+  </ol>
+</nav>
+
+<nav class="phone-bar" aria-label="Jump to">
+  <ul>
+    {phone.map((p) => (
+      <li>
+        <a href={p.href} data-chapter-link={p.href.slice(1)} aria-label={'title' in p ? `${p.label}: ${p.title}` : undefined}>
+          <Icon name={p.icon} size={20} />
+          <span>{p.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('.chapter-progress span');
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]')];
+  const sections = [...new Set(links.map((a) => a.dataset.chapterLink))]
+    .map((id) => document.getElementById(id ?? ''))
+    .filter((el): el is HTMLElement => Boolean(el));
+
+  // Reading progress: one transform per frame at most.
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+  };
+  window.addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+
+  // Current chapter: the last section whose top has passed the upper third.
+  const setCurrent = (id: string | null) => {
+    for (const a of links) {
+      if (a.dataset.chapterLink === id) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    }
+  };
+  const visible = new Set<string>();
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) visible.add(e.target.id);
+      else visible.delete(e.target.id);
+    }
+    const current = sections.filter((s) => visible.has(s.id)).at(0);
+    setCurrent(current?.id ?? null);
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach((s) => io.observe(s));
+</script>
+
+<style>
+  .chapter-nav {
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 50;
+    background: rgba(255, 254, 244, 0.96);
+    border-bottom: 1px solid rgba(11, 36, 46, 0.08);
+    backdrop-filter: blur(6px);
+  }
+  .chapter-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+  }
+  .chapter-progress span {
+    display: block;
+    height: 100%;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+  }
+  .chapter-list {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    list-style: none;
+    scrollbar-width: none;
+  }
+  .chapter-list a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 0.8rem;
+    color: var(--color-slate);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  .chapter-list a:hover { color: var(--color-navy); }
+  .chapter-list a[aria-current] {
+    color: var(--color-navy);
+    border-bottom-color: var(--color-navy);
+  }
+
+  /* Phones: the sticky bar keeps only the progress line; the chapters move to
+     the bottom bar, where a thumb can reach them. */
+  .phone-bar { display: none; }
+  @media (max-width: 899px) {
+    .chapter-nav {
+      height: 3px;
+      background: transparent;
+      border: 0;
+      backdrop-filter: none;
+    }
+    .chapter-list { display: none; }
+    .phone-bar {
+      display: block;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 90;
+      padding-bottom: env(safe-area-inset-bottom);
+      background: var(--color-navy);
+      box-shadow: 0 -4px 16px rgba(11, 36, 46, 0.18);
+    }
+    .phone-bar ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      list-style: none;
+    }
+    .phone-bar a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      min-height: 56px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .phone-bar a[aria-current] { color: #F2D29A; }
+    .phone-bar a:focus-visible { outline-color: #F2D29A; outline-offset: -3px; }
+  }
+</style>

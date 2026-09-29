@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/generate-lastmod.mjs && node scripts/check-verification-markers.mjs && node scripts/check-annual-events-dates.mjs && node scripts/check-em-dashes.mjs",
+    "prebuild": "node scripts/generate-lastmod.mjs && node scripts/check-verification-markers.mjs && node scripts/check-annual-events-dates.mjs && node scripts/check-em-dashes.mjs && node scripts/check-away-guide.mjs",
     "build": "astro build",
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
@@ -19,7 +19,8 @@
     "map:breweries": "node scripts/build-brewery-map.mjs",
     "map:gp": "node scripts/build-gp-maps.mjs",
     "routes:pharmacies": "node scripts/build-pharmacy-routes.mjs",
-    "test:pharmacies": "node --test scripts/test-pharmacy-ranking.mjs"
+    "test:pharmacies": "node --test scripts/test-pharmacy-ranking.mjs",
+    "map:away-guide": "node scripts/build-away-guide-map.mjs"
   },
   "keywords": [],
   "author": "",

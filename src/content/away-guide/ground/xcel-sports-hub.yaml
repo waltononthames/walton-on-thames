@@ -1,0 +1,41 @@
+# The ground and the quick answers. Phase 2 prototype: values marked
+# placeholder come from the brief or the club's 2024-25 supporter notice and
+# are re-confirmed in Phase 3 (docs/away-fans-guide-plan.md, R2 and R8).
+name: Elmbridge Xcel Sports Hub
+address:
+  value: Waterside Drive, Walton-on-Thames, Surrey
+  placeholder: true
+postcode:
+  value: KT12 2JP
+  placeholder: true
+officialSite:
+  value: https://waltonhershamfc.com/
+  source:
+    label: Walton & Hersham Football Club, official website
+    url: https://waltonhershamfc.com/
+    basis: organisation-website
+    checked: "2026-09-28"
+kickOffSaturday:
+  value: 3pm
+  placeholder: true
+kickOffMidweek:
+  value: 7.45pm
+  placeholder: true
+turnstilesOpen:
+  unconfirmed:
+    ask: club
+    question: What time do the turnstiles open for Saturday and midweek matches?
+tickets:
+  value: Pay on the gate by cash or card, or buy online in advance
+  placeholder: true
+parking:
+  value: The Sports Hub and leisure centre car parks fill quickly on matchdays
+  placeholder: true
+segregation:
+  unconfirmed:
+    ask: club
+    question: Which matches are segregated this season, and how do visiting fans find out before travelling?
+awayEnd:
+  unconfirmed:
+    ask: club
+    question: Where is the away end this season, which turnstiles serve it, and is it covered?

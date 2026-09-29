@@ -1,0 +1,228 @@
+---
+// Last-train finder (brief 7.5). Walton-on-Thames station only, because
+// "leave the ground by" depends on the walking routes (plan D9).
+//
+// The HTML is a plain table per day, complete without JavaScript. The script
+// adds a choice of day and of how you are getting back to the station, and
+// works out when to leave the ground for each train.
+//
+// Timetables change, usually in May and December. Each record carries the
+// period it was checked against; once that period ends the finder is not
+// rendered in a production build, and only the National Rail links remain.
+import { clock12, londonToday, longDate, minusMinutes, valueOf, PLATFORM_ALLOWANCE_MINS, type Fact } from '../../utils/awayGuide';
+
+type Day = 'saturday' | 'weekday';
+interface TrainRecord {
+  direction: string;
+  dayType: Day;
+  departures: { times: string[]; timetableValidFrom: string; timetableValidTo: string } & ({ placeholder: true } | { source: { checked: string; label: string } });
+}
+interface Props {
+  trains: TrainRecord[];
+  walk: { road: number; towpath: number };
+  towpathAfterDark?: string;
+  driveMins: number;
+  bus: {
+    route?: string;
+    journeyMins?: number;
+    walkFromStopMins?: number;
+    lastFromGround: { saturday: Fact<string[]>; weekday: Fact<string[]> };
+  };
+  taxiLabel: string;
+}
+const { trains, walk, towpathAfterDark, driveMins, bus, taxiLabel } = Astro.props;
+
+const today = londonToday();
+const live = trains.filter((t) => t.departures.timetableValidTo >= today);
+const show = import.meta.env.DEV ? trains.length > 0 : live.length > 0;
+const records = import.meta.env.DEV ? trains : live;
+const sample = records.some((t) => 'placeholder' in t.departures);
+const validTo = records.map((t) => t.departures.timetableValidTo).sort()[0];
+const checked = records.flatMap((t) => ('source' in t.departures ? [t.departures.source.checked] : [])).sort()[0];
+
+const days: { key: Day; label: string }[] = [
+  { key: 'saturday', label: 'Saturday' },
+  { key: 'weekday', label: 'Midweek' },
+];
+const rowsFor = (day: Day) => records
+  .filter((t) => t.dayType === day)
+  .flatMap((t) => t.departures.times.map((time) => ({ time, direction: t.direction })))
+  .sort((a, b) => a.time.localeCompare(b.time));
+
+const data = {
+  allowance: PLATFORM_ALLOWANCE_MINS,
+  walk,
+  driveMins,
+  towpathAfterDark: towpathAfterDark ?? null,
+  bus: {
+    route: bus.route ?? null,
+    journeyMins: bus.journeyMins ?? null,
+    walkFromStopMins: bus.walkFromStopMins ?? null,
+    last: { saturday: valueOf(bus.lastFromGround.saturday) ?? [], weekday: valueOf(bus.lastFromGround.weekday) ?? [] },
+  },
+  trains: Object.fromEntries(days.map((d) => [d.key, rowsFor(d.key)])),
+};
+---
+
+{show && (
+  <div class="finder" data-finder>
+    <p class="finder-meta">
+      {sample
+        ? <><span class="finder-sample">Sample times</span> These are not real departures.</>
+        : <>Checked {checked && longDate(checked)} against the published timetable, which runs until {longDate(validTo)}.</>}
+      {' '}Always check live times before you set off.
+    </p>
+
+    <div class="finder-tool" hidden>
+      <form class="finder-form" onsubmit="return false">
+        <fieldset>
+          <legend>Day</legend>
+          {days.map((d, i) => (
+            <label><input type="radio" name="finder-day" value={d.key} checked={i === 0} /> {d.label}</label>
+          ))}
+        </fieldset>
+        <fieldset>
+          <legend>Getting back to the station</legend>
+          <label><input type="radio" name="finder-mode" value="road" checked /> Walk by road</label>
+          <label><input type="radio" name="finder-mode" value="towpath" /> Walk by the towpath</label>
+          {data.bus.last.saturday.length + data.bus.last.weekday.length > 0 && data.bus.journeyMins && (
+            <label><input type="radio" name="finder-mode" value="bus" /> Bus{data.bus.route && ` ${data.bus.route}`}</label>
+          )}
+          <label><input type="radio" name="finder-mode" value="taxi" /> {taxiLabel}</label>
+        </fieldset>
+      </form>
+      <p class="finder-note" data-finder-note></p>
+      <ol class="finder-results" data-finder-results aria-live="polite"></ol>
+    </div>
+
+    <div class="finder-static">
+      {days.map((d) => {
+        const rows = rowsFor(d.key);
+        return rows.length > 0 && (
+          <table>
+            <caption>{d.label}: last trains from Walton-on-Thames</caption>
+            <thead>
+              <tr>
+                <th scope="col">Train departs</th>
+                <th scope="col">Towards</th>
+                <th scope="col">Leave the ground by, walking by road</th>
+                <th scope="col">Leave the ground by, {taxiLabel.toLowerCase().replace('uber', 'Uber')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr>
+                  <td>{clock12(r.time)}</td>
+                  <td>{r.direction}</td>
+                  <td>{clock12(minusMinutes(r.time, walk.road + PLATFORM_ALLOWANCE_MINS))}</td>
+                  <td>{clock12(minusMinutes(r.time, driveMins + PLATFORM_ALLOWANCE_MINS))}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+      })}
+      <p class="finder-foot">
+        Leave-by times allow about {walk.road} minutes to walk by road or {driveMins} minutes by car, plus {PLATFORM_ALLOWANCE_MINS} minutes to reach the platform. A car can take longer to arrive after an evening match.
+      </p>
+    </div>
+
+    <script is:inline type="application/json" data-finder-data set:html={JSON.stringify(data)} />
+  </div>
+)}
+
+<script>
+  import '../../scripts/away-guide/last-train';
+</script>
+
+<style>
+  .finder {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+  }
+  .finder-meta { margin-bottom: 1rem; font-size: 0.9rem; color: var(--color-slate); }
+  .finder-sample {
+    margin-right: 0.35rem;
+    padding: 0.05rem 0.5rem;
+    border-radius: 999px;
+    background: #FCE9C2;
+    color: #6B4A10;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  table {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  caption {
+    margin-bottom: 0.4rem;
+    text-align: left;
+    font-weight: 600;
+  }
+  th, td {
+    padding: 0.5rem 0.4rem;
+    border-bottom: 1px solid rgba(11, 36, 46, 0.08);
+    text-align: left;
+    vertical-align: top;
+  }
+  th { color: var(--color-slate); font-size: 0.75rem; font-weight: 600; }
+  td:first-child { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .finder-foot { font-size: 0.85rem; color: var(--color-slate); }
+
+  .finder-form {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 700px) {
+    .finder-form { grid-template-columns: auto 1fr; gap: 2rem; }
+  }
+  fieldset { border: 0; }
+  legend {
+    margin-bottom: 0.4rem;
+    color: var(--color-slate);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  fieldset label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    margin: 0 0.35rem 0.35rem 0;
+    padding: 0 0.9rem;
+    border: 1.5px solid rgba(11, 36, 46, 0.2);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  fieldset label:has(input:checked) {
+    border-color: var(--color-navy);
+    background: var(--color-navy);
+    color: #FFFFFF;
+  }
+  fieldset label:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  fieldset input { accent-color: var(--color-accent); }
+  .finder-note { margin-bottom: 0.75rem; font-size: 0.88rem; color: var(--color-slate); }
+  .finder-note:empty { display: none; }
+  .finder-results { list-style: none; display: grid; gap: 0.5rem; }
+  .finder-results :global(li) {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.2rem 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    background: #FBF8EE;
+  }
+  .finder-results :global(.leave) { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; }
+  .finder-results :global(.train) { align-self: center; }
+  .finder-results :global(.none) { grid-column: 1 / -1; color: var(--color-slate); }
+</style>

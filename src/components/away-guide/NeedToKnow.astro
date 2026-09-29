@@ -1,0 +1,36 @@
+---
+// The Need to know panel: the same look in every chapter, so a reader learns
+// it once. Holds NeedToKnowRow children.
+interface Props {
+  title?: string;
+  compact?: boolean;
+}
+const { title = 'Need to know', compact = false } = Astro.props;
+---
+
+<aside class:list={['ntk', { 'ntk--compact': compact }]} aria-label={title}>
+  <p class="ntk-title">{title}</p>
+  <dl class="ntk-list"><slot /></dl>
+</aside>
+
+<style>
+  .ntk {
+    padding: 1.1rem 1.25rem;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+  }
+  .ntk-title {
+    margin-bottom: 0.35rem;
+    color: #7A5518;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ntk-list {
+    display: grid;
+  }
+  .ntk--compact { padding: 0.9rem 1rem; box-shadow: none; background: #FBF8EE; }
+</style>

@@ -1,0 +1,422 @@
+---
+// The walking routes from Walton-on-Thames station, told as a scroll story
+// over one map (plan section 6).
+//
+// Without JavaScript: the whole map with both routes drawn and every step
+// numbered, a radio choice between the two routes that works through CSS
+// :has(), and the written steps. Complete on its own.
+//
+// With JavaScript (src/scripts/away-guide/route-story.ts): the map pins while
+// the steps scroll, the chosen route draws itself up to the step being read,
+// and the map moves to frame that step. Under prefers-reduced-motion the map
+// jumps between states instead of moving.
+//
+// Base map and route lines: scripts/build-away-guide-map.mjs. Step points and
+// wording: src/content/away-guide/routes/*.yaml.
+import Fact from './Fact.astro';
+import NeedToKnow from './NeedToKnow.astro';
+import NeedToKnowRow from './NeedToKnowRow.astro';
+import PhotoSlot from './PhotoSlot.astro';
+import {
+  awayBase, projectAway, progressAlong, routeBox, AWAY_MAP_VERSION,
+  type Fact as FactT, type RouteKey,
+} from '../../utils/awayGuide';
+
+interface Step { id: string; title: string; text: string; lat: number; lng: number; photo?: string; history?: { href: string; label: string } }
+interface Route {
+  variant: RouteKey;
+  title: string;
+  order: number;
+  placeholder: boolean;
+  bestFor: FactT<string>;
+  surface: FactT<string>;
+  lighting: FactT<string>;
+  stepFree: FactT<string>;
+  afterDark: FactT<string>;
+  steps: Step[];
+}
+interface Props { routes: Route[] }
+
+const { routes } = Astro.props;
+const { width: W, height: H, src, routes: lines, points } = awayBase;
+const km = (m: number) => (m / 1000).toFixed(1);
+
+const prepared = routes.map((r) => {
+  const box = routeBox(r.variant);
+  return {
+    ...r,
+    line: lines[r.variant],
+    box: [box.x0, box.y0, box.x1, box.y1].map((n) => Math.round(n)).join(','),
+    steps: r.steps.map((s, i) => {
+      const { x, y } = projectAway(s);
+      return { ...s, n: i + 1, x: Math.round(x), y: Math.round(y), progress: i === 0 ? 0 : progressAlong(r.variant, s) };
+    }),
+  };
+});
+const station = projectAway(points.station);
+const ground = projectAway(points.ground);
+const first = prepared[0].variant;
+const description = prepared
+  .map((r) => `${r.title}: ${km(r.line.metres)} km, about ${r.line.minutes} minutes. ${r.steps.map((s) => `${s.n}, ${s.title}`).join('; ')}.`)
+  .join(' ');
+---
+
+<div class="route-story" data-map-width={W} data-map-height={H} data-px-per-m={station.pxPerM.toFixed(4)}>
+  <fieldset class="route-choice" id="route-choice">
+    <legend>Choose a walking route</legend>
+    {prepared.map((r) => (
+      <label class="route-option">
+        <input type="radio" name="walk-route" value={r.variant} id={`route-${r.variant}`} checked={r.variant === first} />
+        <span class="route-option-title">{r.title}</span>
+        <span class="route-option-meta">{km(r.line.metres)} km · about {r.line.minutes} minutes</span>
+      </label>
+    ))}
+  </fieldset>
+
+  <div class="story">
+    <div class="story-map">
+      <figure class="map-frame">
+        <div class="map-viewport">
+          <div class="map-stage" style={`aspect-ratio: ${W} / ${H}`}>
+            <img src={`${src}?v=${AWAY_MAP_VERSION}`} alt="" width={W} height={H} loading="lazy" decoding="async" />
+            <svg class="map-overlay" viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby="route-map-title route-map-desc">
+              <title id="route-map-title">Walking routes from Walton-on-Thames station to the Elmbridge Xcel Sports Hub</title>
+              <desc id="route-map-desc">{description}</desc>
+              {prepared.map((r) => (
+                <g class={`route route--${r.variant}`}>
+                  <path class="route-track" d={r.line.d} />
+                  <path class="route-draw" d={r.line.d} pathLength="1000" data-route-line={r.variant} />
+                </g>
+              ))}
+              {prepared.map((r) => (
+                <g class={`marks marks--${r.variant}`}>
+                  {r.steps.slice(1, -1).map((s) => (
+                    <g class="step-mark" transform={`translate(${s.x} ${s.y})`} data-mark={`${r.variant}-${s.n}`}>
+                      <g class="mark-scale">
+                        <circle r="9" />
+                        <text dy="0.35em">{s.n}</text>
+                      </g>
+                    </g>
+                  ))}
+                </g>
+              ))}
+              <g class="place-mark place-mark--station" transform={`translate(${station.x} ${station.y})`}>
+                <g class="mark-scale">
+                  <rect x="-10" y="-10" width="20" height="20" rx="4" />
+                  <text x="-15" dy="0.35em" text-anchor="end">Walton-on-Thames station</text>
+                </g>
+              </g>
+              <g class="place-mark place-mark--ground" transform={`translate(${ground.x} ${ground.y})`}>
+                <g class="mark-scale">
+                  <circle r="11" />
+                  <text x="16" dy="0.35em">Xcel Sports Hub</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <figcaption class="map-caption">
+          <span class="key key--route">Your chosen route</span>
+          <span class="key key--other">The other route</span>
+          <span class="map-credit">Map data © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap contributors</a>. Walking times are typical estimates from OSRM routing.</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="story-steps">
+      {prepared.map((r) => (
+        <ol class={`steps steps--${r.variant}`} data-route={r.variant} data-box={r.box}>
+          <li class="step step--overview" data-progress="1" data-focus="overview">
+            <div class="step-card">
+              <h3>Walk {r.title.replace(/^By/, 'by')}</h3>
+              <p class="step-lede">{km(r.line.metres)} km from Walton-on-Thames station, about {r.line.minutes} minutes at a steady pace.{r.variant === 'towpath' && ` About ${km((r.line as { towpathMetres?: number }).towpathMetres ?? 0)} km of it is on the Thames Path.`}</p>
+              <NeedToKnow compact>
+                <NeedToKnowRow icon="info" label="Best for" f={r.bestFor}><Fact f={r.bestFor} /></NeedToKnowRow>
+                <NeedToKnowRow icon="step" label="Surface" f={r.surface}><Fact f={r.surface} /></NeedToKnowRow>
+                <NeedToKnowRow icon="moon" label="Lighting" f={r.lighting}><Fact f={r.lighting} /></NeedToKnowRow>
+                <NeedToKnowRow icon="walk" label="Step-free" f={r.stepFree}><Fact f={r.stepFree} /></NeedToKnowRow>
+                <NeedToKnowRow icon="moon" label="After dark" f={r.afterDark}><Fact f={r.afterDark} /></NeedToKnowRow>
+              </NeedToKnow>
+            </div>
+          </li>
+          {r.steps.map((s) => (
+            <li class="step" id={`walk-${r.variant}-${s.id}`} data-progress={s.progress.toFixed(4)} data-x={s.x} data-y={s.y} data-n={s.n}>
+              <div class="step-card">
+                <p class="step-num" aria-hidden="true">{s.n}</p>
+                <h4>{s.title}{r.placeholder && <span class="step-sample">Sample</span>}</h4>
+                <p>{s.text}</p>
+                {s.history && (
+                  <p class="step-history">Local history: <a href={s.history.href}>{s.history.label}</a></p>
+                )}
+                {s.photo && <PhotoSlot slot={s.photo.replace(/-(landscape|portrait)$/, '')} />}
+              </div>
+            </li>
+          ))}
+        </ol>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  import '../../scripts/away-guide/route-story';
+</script>
+
+<style>
+  .route-choice {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    border: 0;
+  }
+  .route-choice legend {
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+  .route-option {
+    position: relative;
+    display: grid;
+    gap: 0.1rem;
+    padding: 0.85rem 1rem 0.85rem 2.75rem;
+    border: 2px solid rgba(11, 36, 46, 0.15);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    cursor: pointer;
+  }
+  .route-option input {
+    position: absolute;
+    left: 1rem;
+    top: 1.05rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--color-navy);
+  }
+  .route-option:has(input:checked) {
+    border-color: var(--color-navy);
+    box-shadow: inset 0 0 0 1px var(--color-navy);
+  }
+  .route-option:has(input:focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  .route-option-title { font-weight: 600; }
+  .route-option-meta { color: var(--color-slate); font-size: 0.875rem; }
+
+  /* Route choice, without JavaScript. */
+  .route-story:has(#route-towpath:checked) .steps--road,
+  .route-story:has(#route-road:checked) .steps--towpath,
+  .route-story:has(#route-towpath:checked) .marks--road,
+  .route-story:has(#route-road:checked) .marks--towpath { display: none; }
+
+  .map-frame { margin: 0; }
+  .map-viewport {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: #F3F0E4;
+    box-shadow: var(--shadow-card);
+  }
+  /* When zoomed out to a whole route, the base map can stop short of the
+     viewport's edge. The edges fade into the paper colour so it never ends in
+     a hard line. */
+  .route-story.is-enhanced .map-viewport::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 18px 10px #F3F0E4;
+  }
+  .map-stage {
+    position: relative;
+    width: 100%;
+    /* Screen-size multiplier for lines and markers. The script sets it to the
+       inverse of the map's zoom; without the script the map is drawn at about
+       0.4x, so 2.5 keeps lines and markers readable. */
+    --inv: 2.5;
+  }
+  .map-stage img,
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .route-track {
+    fill: none;
+    stroke: #8A979D;
+    stroke-width: calc(3px * var(--inv));
+    stroke-dasharray: calc(6px * var(--inv)) calc(5px * var(--inv));
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.75;
+  }
+  .route-draw {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: calc(5px * var(--inv));
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    display: none;
+  }
+  .route-story:has(#route-road:checked) .route--road .route-draw,
+  .route-story:has(#route-towpath:checked) .route--towpath .route-draw { display: inline; }
+  .route-story:has(#route-road:checked) .route--road .route-track,
+  .route-story:has(#route-towpath:checked) .route--towpath .route-track {
+    stroke: var(--color-navy);
+    stroke-dasharray: none;
+    stroke-width: calc(8px * var(--inv));
+    opacity: 0.18;
+  }
+
+  .mark-scale { transform: scale(var(--inv)); }
+  .step-mark circle { fill: var(--color-navy); stroke: #FFFFFF; stroke-width: 2; }
+  .step-mark text {
+    fill: #FFFFFF;
+    font: 700 10px var(--font-body);
+    text-anchor: middle;
+  }
+  .place-mark rect { fill: var(--color-navy); stroke: #FFFFFF; stroke-width: 2.5; }
+  .place-mark--ground circle { fill: var(--color-accent); stroke: #FFFFFF; stroke-width: 3; }
+  .place-mark text {
+    fill: var(--color-navy);
+    font: 700 12px var(--font-body);
+    paint-order: stroke;
+    stroke: #F3F0E4;
+    stroke-width: 4px;
+    stroke-linejoin: round;
+  }
+
+  .map-caption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    margin-top: 0.6rem;
+    color: var(--color-slate);
+    font-size: 0.78rem;
+  }
+  .key::before {
+    content: '';
+    display: inline-block;
+    width: 1.4rem;
+    height: 0;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+    border-top: 4px solid var(--color-accent);
+  }
+  .key--other::before { border-top: 3px dashed #8A979D; }
+  .map-credit { flex-basis: 100%; }
+
+  .steps { list-style: none; }
+  .step { padding: 0.5rem 0; }
+  .step-card {
+    position: relative;
+    padding: 1.1rem 1.25rem;
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+  }
+  .step h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .step h4 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.35rem;
+  }
+  .step-num {
+    float: left;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    margin: -0.1rem 0.75rem 0 0;
+    border-radius: 50%;
+    background: var(--color-navy);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .step-lede { margin-bottom: 0.9rem; }
+  .step p { margin-bottom: 0.6rem; }
+  .step-history {
+    font-size: 0.9rem;
+    color: var(--color-slate);
+  }
+  .step :global(.photo-slot) { margin-top: 0.5rem; clear: both; }
+  .step-sample {
+    padding: 0 0.4em;
+    border-radius: 999px;
+    background: #FCE9C2;
+    color: #6B4A10;
+    font: 600 0.62rem var(--font-body);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ---- Enhanced: pinned map, steps scrolling past it. ---- */
+  .route-story.is-enhanced .map-viewport {
+    height: var(--map-h);
+  }
+  .route-story.is-enhanced .map-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--map-w-px);
+    aspect-ratio: auto;
+    height: var(--map-h-px);
+    transform-origin: 0 0;
+    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  .route-story.is-enhanced .route-draw {
+    transition: stroke-dashoffset 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .route-story.is-enhanced .step-mark { opacity: 0.35; transition: opacity 0.4s; }
+  .route-story.is-enhanced .step-mark.is-reached { opacity: 1; }
+  .route-story.is-enhanced .step-mark.is-current circle { fill: var(--color-accent); }
+  .route-story.is-enhanced .step { min-height: 55vh; display: flex; align-items: center; }
+  .route-story.is-enhanced .step:last-child { min-height: 70vh; }
+  .route-story.is-enhanced .step-card { width: 100%; transition: box-shadow 0.3s; }
+  .route-story.is-enhanced .step.is-current .step-card { box-shadow: 0 0 0 2px var(--color-accent), var(--shadow-card-hover); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .route-story.is-enhanced .map-stage,
+    .route-story.is-enhanced .route-draw,
+    .route-story.is-enhanced .step-mark { transition: none; }
+  }
+
+  /* Phones: map pinned in the top part of the screen, steps scroll beneath. */
+  @media (max-width: 899px) {
+    .route-story { --map-h: 42svh; }
+    .route-story.is-enhanced .story-map {
+      position: sticky;
+      top: calc(var(--nav-height) + 3px);
+      z-index: 5;
+      margin: 0 -1.5rem;
+      padding: 0 0.75rem 0.5rem;
+      background: var(--color-cream);
+    }
+    .route-story.is-enhanced .map-caption { display: none; }
+    .route-story.is-enhanced .story-steps { position: relative; z-index: 1; }
+  }
+
+  /* Desktop: steps on the left, map pinned on the right. */
+  @media (min-width: 900px) {
+    .route-story { --map-h: calc(100vh - var(--nav-height) - 48px - 3rem); }
+    .story {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .story-map { order: 2; }
+    .story-steps { order: 1; }
+    .route-story.is-enhanced .story-map {
+      position: sticky;
+      top: calc(var(--nav-height) + 48px + 1.5rem);
+    }
+  }
+</style>

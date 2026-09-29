@@ -1,0 +1,8 @@
+# Phase 2 sample times. Not a timetable: replaced from National Rail in Phase 3.
+direction: Woking
+dayType: saturday
+departures:
+  placeholder: true
+  times: ["21:52", "22:22", "22:52", "23:22"]
+  timetableValidFrom: "2026-05-17"
+  timetableValidTo: "2026-12-12"
