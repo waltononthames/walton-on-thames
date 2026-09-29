@@ -9,7 +9,7 @@ lat: 51.3845
 lng: -0.4188
 phone: "01932 221424"
 website: "https://www.hoopsvelo.com/blog/stores/walton-on-thames-store/"
-description: "Bike shop in Brassey House on New Zealand Avenue offering bike fitting, servicing and repairs, one of the Hoops stores alongside Farnham, Petersfield and Winchester."
+description: "Bike shop in Brassey House, New Zealand Avenue, for bike fitting, servicing and repairs; one of the Hoops stores with Farnham, Petersfield and Winchester."
 images: []
 featured: false
 verified_date: "2026-09-15"

@@ -6,7 +6,7 @@ subcategories: ["convenience"]
 neighbourhood: "walton-on-thames"
 address: "Terrace Road, Walton-on-Thames"
 website: "https://www.coop.co.uk/store-finder/KT12-2SD/56-62-terrace-road"
-description: "Co-op food shop on Terrace Road."
+description: "Co-op convenience food shop on Terrace Road, Walton-on-Thames, with a link to the Co-op store finder for current opening hours and services."
 images: []
 featured: false
 verified_date: "2026-09-15"
