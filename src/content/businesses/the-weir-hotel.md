@@ -9,19 +9,19 @@ lat: 51.4016
 lng: -0.411
 phone: "01932 784530"
 website: "https://www.weirhotel.co.uk"
-description: "A riverside hotel and pub on the Thames towpath at Walton Bridge, one of the most atmospheric places to stay in the area, with rooms overlooking the river."
+description: "A riverside pub with six en-suite rooms on the Thames Path off Waterside Drive, a short walk from Walton & Hersham FC's ground at the Elmbridge Xcel Sports Hub."
 images: []
 featured: true
-verified_date: "2026-07-08"
-source: "Operator website and restaurant directory spreadsheet (owner-supplied)"
+verified_date: "2026-09-29"
+source: "Hotel website weirhotel.co.uk (home, /rooms/, /about-the-weir/ and /pub-food/ pages; address, phone, rooms, garden and FC offer), checked 29 September 2026. Walton & Hersham FC, How to find us (waltonhershamfc.com/club/how-to-find-us/; 'a short walk from our ground'), checked 29 September 2026. Coordinates: OpenStreetMap building for The Weir (way 186266729, centred 51.40160, -0.41101), checked 29 September 2026."
 ---
 
-The Weir Hotel occupies one of the finest positions on the River Thames in the Walton area. Sitting directly on the towpath beside Walton Bridge, it combines hotel accommodation with a popular riverside pub and restaurant, which means your stay can begin and end with a drink on the water's edge.
+The Weir Hotel is a pub with rooms on the banks of the River Thames, on the Thames Path off Waterside Drive, north-east of Walton town centre. The hotel's own site describes a large riverside garden.
 
-Guest rooms are comfortable and well-appointed; several have direct river views, making this a genuinely memorable place to wake up. The hotel is a popular choice for couples and for visitors attending festivals and events at Apps Court Farm, which is a short walk along the towpath.
+There are six en-suite rooms, three of them with balconies looking out over the river. The hotel says breakfast, on-site parking, WiFi, Freeview TV and tea and coffee facilities are included, and that all rooms are dog-friendly for an extra £10 cleaning fee. Rooms can be booked [online through the hotel's website](https://www.weirhotel.co.uk/rooms/) or by phone.
 
-The pub serves food throughout the day, with a riverside terrace that fills quickly on warm summer evenings. Booking ahead for the restaurant at weekends is recommended.
+The pub serves traditional British food, with vegetarian, vegan and gluten-free options; see the [menus and kitchen times on the hotel's site](https://www.weirhotel.co.uk/pub-food/).
 
-**Location:** A 10–15 minute walk from Walton-on-Thames town centre and railway station. The Thames Path runs right past the front door.
+**Location:** On the towpath beside the Elmbridge Xcel Sports Hub, home of Walton & Hersham FC. The club describes The Weir as a short walk from its ground, and the hotel offers 10% off food and drink to Supporters Club members.
 
-[More about Walton Bridge and the River Thames →](/things-to-do/walton-bridge/)
+[Walton & Hersham FC: ground, fixtures and getting there →](/things-to-do/walton-and-hersham-fc/)
