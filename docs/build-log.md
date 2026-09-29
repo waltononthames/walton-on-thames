@@ -1795,3 +1795,17 @@ Darren noticed `/directory/the-heart-shopping-centre/` was ranking but did not c
 
 **Shops inside the centre now link to it.** A directory page whose address contains a hub listing's name shows "Inside The Heart Shopping Centre →" under the address, giving the guide internal links from the 22 tenants and Brightlife Chemist.
 
+
+## 2026-09-29: The Weir Hotel listing re-verified and relocated
+
+`src/content/businesses/the-weir-hotel.md` placed the hotel "directly on the towpath beside Walton Bridge" and "a 10–15 minute walk" from the town centre and station. Its own address and coordinates put it beside the Elmbridge Xcel Sports Hub, about 2 km downstream of Walton Bridge; OpenStreetMap routing from the station is about 4 km. The body also carried unsourced colour ("one of the finest positions", "popular choice for couples", a terrace that "fills quickly", booking advice, Apps Court Farm "a short walk along the towpath") inherited from the owner-supplied spreadsheet.
+
+Rewritten against weirhotel.co.uk (home, `/rooms/`, `/about-the-weir/`, `/pub-food/`) and Walton & Hersham FC's How to find us page, all checked 29 September 2026:
+
+- **Location:** now "on the towpath beside the Elmbridge Xcel Sports Hub"; the FC calls it "a short walk from our ground" and the hotel says five minutes. The Walton Bridge link is replaced with `/things-to-do/walton-and-hersham-fc/`.
+- **Rooms:** six en-suite, three with balconies over the river (was "several have direct river views"); inclusions and the £10 dog cleaning fee from `/rooms/`.
+- **Removed:** every claim in the list above, plus "food throughout the day" (menus and kitchen times now linked, not stated). The site's "built circa 1830" was left out: that is a historical claim needing a historical source.
+- **Phone** 01932 784530 matches the site. **Coordinates** 51.4016, -0.411 match the OSM building for The Weir (way 186266729) and the KT12 2JB postcode centroid; unchanged.
+- `verified_date` 2026-09-29; `source` now names each page checked.
+
+Still open: `docs/walton-seo-blueprint.md` line 173 has the hotel "overlooking the weir itself" with a "popular Sunday roast". Neither is on the hotel's site. It's a planning doc, not a live page, but don't copy it into content.
