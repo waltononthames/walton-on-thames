@@ -5,7 +5,7 @@ category: "park"
 neighbourhood: "walton-on-thames"
 lat: 51.3734
 lng: -0.4153
-description: "A former private estate now offering pleasant parkland walks through mature trees, close to the town centre."
+description: "Tree-lined parkland walks along Ashley Park Road, once the private grounds of Ashley House, close to Walton-on-Thames town centre."
 images: []
 featured: false
 ---

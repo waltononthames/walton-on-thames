@@ -5,7 +5,7 @@ date: "2026-09-06"
 author: "Walton-on-Thames.org"
 category: "local-news"
 neighbourhood: "hersham"
-description: "As of September 2026, four schemes proposing new homes in Hersham are registered with Elmbridge Borough Council and undecided. What each one proposes, and where it stands."
+description: "Four schemes for new homes in Hersham were registered with Elmbridge Borough Council and undecided in September 2026: what each proposes and where it stands."
 featured: false
 ---
 
