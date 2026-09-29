@@ -48,6 +48,7 @@ const EVENING = { day: 'tue' as const, mins: 22 * 60 + 30 };
     const hours = v.hours ? valueOf(v.hours) : undefined;
     const evening = hours ? isOpenAt(hours, EVENING.day, EVENING.mins) : false;
     const url = v.url ? valueOf(v.url) : undefined;
+    const phone = v.phone ? valueOf(v.phone) : undefined;
     return (
       <li class="venue" data-hours={hours ? JSON.stringify(hours) : undefined} data-evening={hours ? String(evening) : undefined} id={`venue-${v.slug}`}>
         <div class="venue-head">
@@ -67,7 +68,7 @@ const EVENING = { day: 'tue' as const, mins: 22 * 60 + 30 };
             {v.features.map((f) => <div><dt>{f.label}</dt><dd><Fact f={f.f} /></dd></div>)}
           </dl>
         )}
-        {v.phone && <p class="venue-phone"><Fact f={v.phone}>{(p: string) => `<a href="tel:${p.replace(/\s/g, '')}">${p}</a>`}</Fact></p>}
+        {phone && <p class="venue-phone"><a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a></p>}
         {v.business && <p class="venue-dir"><a href={`/directory/${v.business}/`}>Directory listing</a></p>}
       </li>
     );

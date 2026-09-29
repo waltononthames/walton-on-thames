@@ -1850,3 +1850,9 @@ All eleven chapters are built: getting here (train, car, the four ways from the 
 **Type-check clean.** `astro check` is back to 149 errors, exactly main's count, with none in the guide's files. The 160 extra errors were one parser problem: a `<=` comparison inside the page template, which the checker's TSX conversion reads as the start of a tag, so everything after it (including the page's style block) was parsed as code. The comparison now lives in the frontmatter as `routeComparison`; the print button's script moved to `src/scripts/away-guide/save-card.ts` like the others. The build was never affected.
 
 **Research added:** two BP petrol stations on the way out of Walton (Hersham Road and Molesey Road, hours from BP's station finder, read in the browser pane because the pages render with JavaScript), and the council's town centre car parks (Ashley Park, Drewitts Court) as the fallback if the Hub car park is full.
+
+## 2026-09-30: Away fans' guide, Phase 5 copy pass
+
+Read the built page end to end as a visitor would and fixed what it showed: phone numbers and the bus timetable link were rendering as literal `<a href=...>` text (HTML returned from a Fact formatting function is escaped; those links are now rendered directly), "Nearest A&amp;E" was double-escaped, a missing space before "Compare the options", two-day hours groups now read "Friday and Saturday", "the Swans" mid-sentence, "Full time, roughly", a smoother parking FAQ, and a food introduction that no longer makes an unsourced "most choice" judgement.
+
+No em dashes, en dashes or exclamation marks anywhere in the reader text. The full copy, with the choices worth Darren's eye, is in `docs/away-fans-guide-copy.md` for review before publication.

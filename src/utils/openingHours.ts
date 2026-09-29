@@ -52,7 +52,8 @@ export function hoursText(hours: Hours): string {
   }
   return groups.map((g) => {
     const [o, c] = range(g.value);
-    const days = g.from === g.to ? DAY_NAMES[g.from] : `${DAY_NAMES[g.from]} to ${DAY_NAMES[g.to]}`;
+    const span = DAYS.indexOf(g.to) - DAYS.indexOf(g.from);
+    const days = span === 0 ? DAY_NAMES[g.from] : `${DAY_NAMES[g.from]} ${span === 1 ? 'and' : 'to'} ${DAY_NAMES[g.to]}`;
     return `${days} ${clock(o)} to ${clock(c)}`;
   }).join('; ');
 }

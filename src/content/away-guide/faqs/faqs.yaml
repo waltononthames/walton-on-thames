@@ -9,7 +9,7 @@ items:
   - q: What is the nearest station to Walton & Hersham FC?
     a: Walton-on-Thames. The ground is on the far side of town, beside the river, so the walk takes about {{walkRoad}} minutes by road. A taxi or Uber takes about {{drive}} minutes.
   - q: Is there parking at the Xcel Sports Hub?
-    a: "Yes: {{parking}}. {{accessibleParking}}."
+    a: "Yes, there is a {{parking}}. {{accessibleParking}}."
   - q: How much are tickets at Walton & Hersham FC?
     a: "For 2026-27: {{prices}}. {{tickets}}. {{disabledSupporters}}."
   - q: What time do matches kick off?

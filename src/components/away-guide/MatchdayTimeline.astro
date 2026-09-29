@@ -22,7 +22,7 @@ const build = (day: string, ko: number) => {
     { t: ko - walk - settleMins, text: `At Walton-on-Thames station at the latest, to walk to the ground by road` },
     { t: ko - settleMins, text: `Reach the ground, with ${settleMins} minutes to pay and find your place` },
     { t: ko, text: 'Kick-off' },
-    { t: ko + MATCH_LENGTH_MINS, text: 'Full time, around now' },
+    { t: ko + MATCH_LENGTH_MINS, text: 'Full time, roughly' },
     ...trains.filter((r) => !r.last).slice(0, 1).map((r) => ({ t: r.leaveBy + walk + data.allowance, text: `First train home you can make on foot: towards ${r.train.direction}` })),
   ];
 };
@@ -73,7 +73,7 @@ const plans = [
         [ko - walk - settleMins - pubMins, 'At the station, with about an hour for a pub on the way'],
         [ko - walk - settleMins, 'At the station at the latest'],
         [ko, 'Kick-off'],
-        [ko + MATCH_LENGTH_MINS, 'Full time, around now'],
+        [ko + MATCH_LENGTH_MINS, 'Full time, roughly'],
       ];
       if (first) steps.push([first.leaveBy + walk + data.allowance, `First train home on foot: towards ${first.train.direction}`]);
       out.replaceChildren(...steps.map(([t, text]) => {

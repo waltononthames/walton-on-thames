@@ -391,7 +391,7 @@ const url = `${SITE}${GUIDE_PATH}`;
           </NeedToKnowRow>
           <NeedToKnowRow icon="moon" label="Evenings and Sundays" f={bus.noService}><Fact f={bus.noService} /></NeedToKnowRow>
           <NeedToKnowRow icon="info" label="Timetable" f={bus.operatorUrl}>
-            <Fact f={bus.operatorUrl}>{(v: string) => `<a href="${v}" rel="noopener">Operator's timetable</a>`}</Fact>
+            {valueOf(bus.operatorUrl) && <a href={valueOf(bus.operatorUrl)} rel="noopener">Falcon Buses timetable for the 564</a>}
           </NeedToKnowRow>
         </NeedToKnow>
 
@@ -518,7 +518,7 @@ const url = `${SITE}${GUIDE_PATH}`;
       <ChapterBreak id="food" number={n('food')} title="Food before and after the match" photo="af-food-high-street" />
       <div class="container chapter-body">
         <p class="lede">
-          The town centre, on both walking routes, has the most choice. The Weir serves food near the ground, and the pubs on the routes list their kitchen hours above.
+          Both walking routes pass through the town centre, where most of these are. Near the ground, The Weir serves food, and the pubs on the routes list their kitchen hours above.
         </p>
         <h3 class="sub">Grab and go</h3>
         <VenueList venues={grab} />
@@ -607,7 +607,7 @@ const url = `${SITE}${GUIDE_PATH}`;
       <div class="container chapter-body">
         <NeedToKnow>
           <NeedToKnowRow icon="shield" label="Emergency and police" f={info.police}><Fact f={info.police} /></NeedToKnowRow>
-          <NeedToKnowRow icon="info" label="Nearest A&amp;E" f={info.aAndE}><Fact f={info.aAndE} /></NeedToKnowRow>
+          <NeedToKnowRow icon="info" label="Nearest A&E" f={info.aAndE}><Fact f={info.aAndE} /></NeedToKnowRow>
           <NeedToKnowRow icon="info" label="Pharmacies"><a href="/living/pharmacies/">Pharmacies in Walton-on-Thames and Hersham</a></NeedToKnowRow>
         </NeedToKnow>
       </div>

@@ -78,7 +78,7 @@ const googleMaps = `https://www.google.com/maps/search/?api=1&query=${point.lat}
           <dt><Icon name="walk" /> From Walton-on-Thames station</dt>
           <dd>
             About {walkMins} minutes on foot or {driveMins} minutes by taxi or Uber. The <Fact f={busRoute}>{(v: string) => `${v} bus`}</Fact> runs from the town centre in the daytime only.
-            <a href="#station-to-ground">Compare the options</a>
+            {' '}<a href="#station-to-ground">Compare the options</a>
           </dd>
         </div>
 
