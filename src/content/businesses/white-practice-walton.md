@@ -17,7 +17,7 @@ hours:
   fri: "8am–6:30pm"
   sat: "Closed"
   sun: "Closed"
-description: "The White Practice is one of three separate NHS GP practices in Walton Health Centre on Rodney Road: reception hours, registration links, parking, bus stops and nearby pharmacies."
+description: "The White Practice, one of three NHS GP practices in Walton Health Centre, Rodney Road: reception hours, registration, parking, bus stops and nearby pharmacies."
 images:
   - src: "/images/directory/walton-health-centre/walton-health-centre-main-entrance.webp"
     alt: "The main entrance to Walton Health Centre: glazed doors in a brick and white-panelled front, with NHS notice boards on the wall to the left"

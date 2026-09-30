@@ -13,6 +13,7 @@ npm run build    # production build → dist/ (prebuild fails the build if any [
 npm run preview  # serve dist/ locally: required to test search; astro dev has no Pagefind index, /search/ shows a graceful "not available in preview" message instead
 npm run check    # Astro type-check (run before pushing)
 npm run content:stale-events  # advisory: flags recurring events whose date has lapsed (see Content-type requirements > Events listings below)
+npm run seo:meta-descriptions # advisory: lists indexable pages whose meta description is outside 110-160 characters (also runs after every build; reads dist/)
 ```
 
 ## Architecture
@@ -73,6 +74,8 @@ All content files are Markdown with YAML frontmatter. Match the schema in `src/c
 - **New article:** `src/content/news/<slug>.md`: required: `title`, `slug`, `date`, `category`, `description`
 - **New history/Hersham article:** `src/content/history/<slug>.md` or `src/content/hersham/<slug>.md`: required: `title`, `metaTitle` (≤60), `metaDescription` (≤155), `slug`, `cluster`, `entityType`, `publishDate`, `reviewedDate`, `sources` (array of label+URL, required by the Content Verification Protocol below), `related`
 - **FC fixtures:** never add manually: they come from the live feed via `src/loaders/fixtures-loader.ts`
+
+**Meta descriptions:** aim for 110–160 characters on every indexable page (Bing flags short ones, Google truncates long ones). Listing and event pages top up a short `description` from page data (`src/utils/metaDescription.ts`), so those only need to stay under 160; hand-written `description` props on static pages and news articles must hit the range themselves. `postbuild` runs `scripts/check-meta-descriptions.mjs`, which lists any page outside the range without failing the build; re-run it alone with `npm run seo:meta-descriptions`.
 
 ## SEO and structured data
 

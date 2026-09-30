@@ -47,13 +47,13 @@ const faqs = [
 
 <BaseLayout
   title="Hersham Development and Planning"
-  description="What is being built in Hersham: current planning applications, the Green Belt, and how to have your say."
+  description="What is being built in Hersham: major planning applications, what stage each has reached, the Green Belt, and how to comment to Elmbridge Borough Council."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify(hershamWebPage({
       path: '/hersham/development-and-planning/',
       name: 'Hersham Development and Planning',
-      description: 'What is being built in Hersham: current planning applications, the Green Belt, and how to have your say.',
+      description: 'What is being built in Hersham: major planning applications, what stage each has reached, the Green Belt, and how to comment to Elmbridge Borough Council.',
     }))} />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
