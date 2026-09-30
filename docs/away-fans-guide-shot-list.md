@@ -61,3 +61,16 @@ Stand at the point each step describes, facing the direction of travel, so the p
 ## While you are there
 
 The site visit can also settle the open questions in `docs/away-fans-guide-sources.md`, section 2: lighting on each route after dark, steps or gates, the towpath surface and flooding, the taxi rank's position, and the Old Manor Inn's address.
+
+## Photos already supplied (1 October 2026)
+
+From `OneDrive\Walton-on-Thames and Hersham photos\clubs-and-societies\walton-and-hersham-fc`, reviewed but not yet placed; they go in with the rest in Phase 7.
+
+| File | Slot | Notes |
+|---|---|---|
+| walton-and-hersham-fc-sept-26-corner.JPG | af-opening-floodlights | Corner-flag view, warm-up, evening sky; calm turf in the bottom half |
+| walton-and-hersham-fc-sept-26-stand.HEIC | af-ground-main-stand | Spectators on the left are identifiable: crop them out of the portrait version; Darren to decide blur or accept for landscape |
+| walton-and-hersham-fc-match.HEIC | af-faqs-floodlights | Floodlight against dusk sky, 31 January 2026 |
+| walton-and-hersham-fc-match-2.HEIC | Spare (chapter 3 alternative) | Crop out the flat cap at the bottom edge |
+
+Not used: `pitch` (children's faces), `sept-26-1` and `sept-26` (player close-ups, little of the ground).
