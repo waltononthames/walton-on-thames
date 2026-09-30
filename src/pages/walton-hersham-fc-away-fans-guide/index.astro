@@ -215,9 +215,11 @@ const title = "Walton & Hersham FC Away Fans' Guide | Xcel Sports Hub";
 const description = 'Getting to Walton & Hersham FC from Walton-on-Thames station on foot, by bus or by taxi, with parking, pubs, food and the last trains home.';
 const h1 = "The away fans' guide to Walton & Hersham FC";
 const url = `${SITE}${GUIDE_PATH}`;
+// Cut from the opening photograph at 1200 by 630 (plan section 10).
+const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
 ---
 
-<BaseLayout title={title} description={description} type="article" noIndex={prototype}>
+<BaseLayout title={title} description={description} image={ogImage} type="article" noIndex={prototype}>
   <slot name="structured-data">
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
@@ -236,6 +238,7 @@ const url = `${SITE}${GUIDE_PATH}`;
           headline: h1,
           description,
           url,
+          image: `${SITE}${ogImage}`,
           author: { '@type': 'Person', name: AUTHOR },
           publisher: { '@id': `${SITE}/#organization` },
           about: [{ '@id': `${url}#team` }, { '@id': `${url}#stadium` }],

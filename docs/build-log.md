@@ -1864,3 +1864,7 @@ Darren changed the river route: from the bend in Bridge Street it now carries st
 ### 1 October 2026: away fans' guide, Darren's copy edits
 
 From Darren's reviewed copy: removed "A taxi is much quicker." from the Getting here introduction and the station guide sentence under "By train" (the station guide stays linked in the chapter's further reading); the taxi card's after-the-match line now reads "Book or request a car, or use the taxi rank at the station." (the rank is sourced to South Western Railway); full stops added to the bus card's after-the-match line and, for consistency, its from-the-station line.
+
+### 1 October 2026: away fans' guide, first photographs
+
+Four of Darren's FC photos placed (opening, the ground, club history, FAQs); crops and reasons in the shot list. PhotoSlot now renders a slot with a photo as a <picture>: AVIF and WebP from 640 to 2400 wide, a JPEG fallback, the portrait crop for phones on the opening image, and sizes that allow for cover-cropping in full-bleed frames. The opening image loads eagerly with fetchpriority high and decodes async (sync decoding held back first paint); it is encoded lighter (AVIF 42) as the largest contentful paint. Social image and Article image: a 1200 by 630 cut of the opening photo. Lighthouse after: mobile performance 97 (median of 3; LCP 2.4 s, CLS 0.04), desktop 100; accessibility 96 as before (the site-wide footer contrast and logo alt items).

@@ -62,15 +62,15 @@ Stand at the point each step describes, facing the direction of travel, so the p
 
 The site visit can also settle the open questions in `docs/away-fans-guide-sources.md`, section 2: lighting on each route after dark, steps or gates, the towpath surface and flooding, the taxi rank's position, and the Old Manor Inn's address.
 
-## Photos already supplied (1 October 2026)
+## Photos in place (1 October 2026)
 
-From `OneDrive\Walton-on-Thames and Hersham photos\clubs-and-societies\walton-and-hersham-fc`, reviewed but not yet placed; they go in with the rest in Phase 7.
+From `OneDriveWalton-on-Thames and Hersham photosclubs-and-societieswalton-and-hersham-fc`. Cut with sharp (metadata, including GPS, stripped) into `src/assets/away-guide/`, and listed with alt text and framing in `src/data/away-guide-photos.ts`. A slot listed there shows its photo; every other slot keeps its placeholder.
 
-| File | Slot | Notes |
+| File | Slot | Crop |
 |---|---|---|
-| walton-and-hersham-fc-sept-26-corner.JPG | af-opening-floodlights | Corner-flag view, warm-up, evening sky; calm turf in the bottom half |
-| walton-and-hersham-fc-sept-26-stand.HEIC | af-ground-main-stand | Spectators on the left are identifiable: crop them out of the portrait version; Darren to decide blur or accept for landscape |
-| walton-and-hersham-fc-match.HEIC | af-faqs-floodlights | Floodlight against dusk sky, 31 January 2026 |
-| walton-and-hersham-fc-match-2.HEIC | Spare (chapter 3 alternative) | Crop out the flat cap at the bottom edge |
+| walton-and-hersham-fc-sept-26-corner.JPG | af-opening-floodlights | Landscape: whole frame. Portrait (phones): the right-hand 2400 by 3000, stand and players. Also the 1200 by 630 social image, `public/images/og/walton-hersham-fc-away-fans-guide.jpg` |
+| walton-and-hersham-fc-sept-26-stand.HEIC | af-ground-main-stand | A wide strip (5712 by 1730 from the top) ending above the spectators at the pitchside rail, whose faces are recognisable. The seated crowd in the stand is too distant to identify |
+| walton-and-hersham-fc-match-2.HEIC | af-history-sports-hub | Bottom edge trimmed to lose a spectator's cap |
+| walton-and-hersham-fc-match.HEIC | af-faqs-floodlights | Whole frame, framed from the top so the floodlight head shows |
 
-Not used: `pitch` (children's faces), `sept-26-1` and `sept-26` (player close-ups, little of the ground).
+Not used: `pitch` (children's faces behind the goal), `sept-26-1` and `sept-26` (player close-ups that show little of the ground).

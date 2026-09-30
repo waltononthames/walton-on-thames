@@ -1,6 +1,6 @@
 ---
 // Full-bleed photographic chapter opener, carrying the chapter's H2. The
-// photograph is decorative; the heading is the chapter's real title.
+// heading is the chapter's real title; the photograph carries its own alt text.
 import PhotoSlot from './PhotoSlot.astro';
 
 interface Props {
@@ -13,7 +13,7 @@ const { id, number, title, photo } = Astro.props;
 ---
 
 <div class="chapter-break">
-  <PhotoSlot slot={photo} fit="fill" tone="dark" />
+  <PhotoSlot slot={photo} fit="fill" tone="dark" heights={{ phone: '34vh', desktop: '52vh' }} />
   <div class="chapter-break-scrim"></div>
   <div class="container chapter-break-text">
     <p class="chapter-break-num">Chapter {number}</p>
