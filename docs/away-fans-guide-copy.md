@@ -15,7 +15,7 @@ How edits get made: most practical wording (hours, prices, pub details, FAQ answ
 ## Lines worth your eye
 
 1. **"The Sports Hub is north of the town centre, beside the river, and the walk is a long one."** Accurate from the map, and it sets expectations honestly. Say if you would rather soften "a long one".
-2. **"A taxi is much quicker."** Seven minutes against about 58 on foot.
+2. **"A taxi is much quicker."** Removed by Darren, 1 October 2026, with the station guide sentence under "By train". Darren also rewrote the taxi card's after-the-match line.
 3. **The Weir feature** quotes the club directly ("a welcoming place to have a pre-match drink or food"). Quoting the club rather than describing the pub ourselves keeps us to verifiable words.
 4. **The history chapter** has five milestones from the club's history page and says nothing about Walton Casuals (see the sources file).
 5. **"Full time, roughly"** in the matchday timeline: full time is worked out as kick-off plus about 110 minutes.
@@ -64,11 +64,11 @@ Where to eat and drink before the match
 
 ## 1. How to get to Walton & Hersham FC
 
-Walton-on-Thames station is the start of every route in this guide. The Sports Hub is north of the town centre, beside the river, and the walk is a long one: about 58 minutes by road. A taxi is much quicker.
+Walton-on-Thames station is the start of every route in this guide. The Sports Hub is north of the town centre, beside the river, and the walk is a long one: about 58 minutes by road.
 
 By train
 
-South Western Railway trains run to Walton-on-Thames from London Waterloo and from the Woking direction. Our guide to Walton-on-Thames station has journey times, platforms and step-free access. From the station, choose one of the four ways below.
+South Western Railway trains run to Walton-on-Thames from London Waterloo and from the Woking direction.
 
 By car
 
@@ -113,11 +113,11 @@ About 36 minutes
 Route 564 from the town centre
 
 FROM THE STATION
-No direct bus. The time includes a 23 minute walk to Church Street, but not the wait
+No direct bus. The time includes a 23 minute walk to Church Street, but not the wait.
 HOW OFTEN
 Hourly, Monday to Saturday, daytime only
 AFTER THE MATCH
-No buses in the evening or on Sundays, so the 564 is no help after a midweek match
+No buses in the evening or on Sundays, so the 564 is no help after a midweek match.
 Bus details
 
 TAXI OR UBER
@@ -127,7 +127,7 @@ About 7 minutes
 Typical drive time with light traffic
 
 AFTER THE MATCH
-Book or request a car early, as many people leave at once
+Book or request a car, or use the taxi rank at the station.
 Taxi and Uber details
 The walking routes
 

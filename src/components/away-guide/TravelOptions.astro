@@ -60,9 +60,9 @@ const taxiLabel = ['Taxi', ...rideHailing].join(' or ');
     )}
     <p class="option-sub">Route <Fact f={bus.route} /> from the town centre</p>
     <dl>
-      <div><dt>From the station</dt><dd>No direct bus. The time includes a {busWalks.churchStreetToStation.minutes} minute walk to Church Street, but not the wait</dd></div>
+      <div><dt>From the station</dt><dd>No direct bus. The time includes a {busWalks.churchStreetToStation.minutes} minute walk to Church Street, but not the wait.</dd></div>
       {shows(bus.frequency) && <div><dt>How often</dt><dd><Fact f={bus.frequency} /></dd></div>}
-      {shows(bus.noService) && <div><dt>After the match</dt><dd><Fact f={bus.noService} /></dd></div>}
+      {shows(bus.noService) && <div><dt>After the match</dt><dd><Fact f={bus.noService} />.</dd></div>}
     </dl>
     <a class="option-link" href="#by-bus">Bus details</a>
   </li>
@@ -72,7 +72,7 @@ const taxiLabel = ['Taxi', ...rideHailing].join(' or ');
     <p class="option-time">About {driveMins} minutes</p>
     <p class="option-sub">Typical drive time with light traffic</p>
     <dl>
-      <div><dt>After the match</dt><dd>Book or request a car early, as many people leave at once</dd></div>
+      <div><dt>After the match</dt><dd>Book or request a car, or use the taxi rank at the station.</dd></div>
     </dl>
     <a class="option-link" href="#by-taxi">Taxi and {rideHailing.join(' and ') || 'car'} details</a>
   </li>

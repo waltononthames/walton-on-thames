@@ -1860,3 +1860,7 @@ No em dashes, en dashes or exclamation marks anywhere in the reader text. The fu
 ### 1 October 2026: away fans' guide, river route via Thames Street
 
 Darren changed the river route: from the bend in Bridge Street it now carries straight on up Thames Street to Manor Road, in place of the dog-leg to the foot of Manor Road. The map build's Manor Road waypoint became a Thames Street one (OpenStreetMap way 159312096) and the routes were refetched: river route now 4,231 m, about 56 minutes (was 4,326 m, 57). The Old Manor Inn, the Old Manor House, The Swan and The Anglers are all still passed. New step "Thames Street" and photo slot af-walk-river-step05; later river slots renumbered to step10 (shot list now 29 slots). Map version 2026-10-01-1.
+
+### 1 October 2026: away fans' guide, Darren's copy edits
+
+From Darren's reviewed copy: removed "A taxi is much quicker." from the Getting here introduction and the station guide sentence under "By train" (the station guide stays linked in the chapter's further reading); the taxi card's after-the-match line now reads "Book or request a car, or use the taxi rank at the station." (the rank is sourced to South Western Railway); full stops added to the bus card's after-the-match line and, for consistency, its from-the-station line.
