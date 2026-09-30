@@ -76,7 +76,7 @@ From `scripts/build-away-guide-map.mjs`, OSRM routing over OpenStreetMap, fetche
 | Figure | Value |
 |---|---|
 | Walk by road (Station Avenue, Ashley Road, High Street, Church Street, Terrace Road, Waterside Drive) | 4.4 km, about 58 minutes |
-| Walk by the river (Station Avenue, Ashley Road, High Street, Bridge Street, Manor Road, Thames Path, Waterside Drive) | 4.3 km, about 57 minutes; 1.1 km on the Thames Path |
+| Walk by the river (Station Avenue, Ashley Road, High Street, Bridge Street, Thames Street, Manor Road, Thames Path, Waterside Drive; Thames Street from 1 October 2026) | 4.2 km, about 56 minutes; 1.1 km on the Thames Path |
 | Drive, station to ground | 3.7 km, about 7 minutes free-flow |
 | Walk, Church Street bus stop to the station | 1.7 km, about 23 minutes |
 | Walk, ground to the Xcel bus stop | 0.2 km, about 3 minutes |

@@ -96,9 +96,9 @@ See the route
 
 WALK BY THE RIVER
 
-About 57 minutes
+About 56 minutes
 
-4.3 km on foot
+4.2 km on foot
 
 AFTER DARK
 Not recommended after darkSAMPLE
@@ -131,13 +131,13 @@ Book or request a car early, as many people leave at once
 Taxi and Uber details
 The walking routes
 
-Both walks start at the station and follow Station Avenue, Ashley Road and the High Street into the town centre. The road route then takes Church Street, Terrace Road and Waterside Drive. The river route turns down Bridge Street and Manor Road to the Thames and follows the towpath for about 1.1 km before coming up Waterside Drive. The two take about the same time.
+Both walks start at the station and follow Station Avenue, Ashley Road and the High Street into the town centre. The road route then takes Church Street, Terrace Road and Waterside Drive. The river route turns down Bridge Street, Thames Street and Manor Road to the Thames and follows the towpath for about 1.1 km before coming up Waterside Drive. The two take about the same time.
 
 Choose a walking route
 By road
 4.4 km · about 58 minutes
 By the river
-4.3 km · about 57 minutes
+4.2 km · about 56 minutes
 Your chosen route
 The other route
 Map data © OpenStreetMap contributors. Walking times are typical estimates from OSRM routing.
@@ -792,7 +792,7 @@ The club recommends The Weir, on the towpath a short walk from the ground. Both 
 
 Can I walk along the river to the ground?
 
-Yes. Our river route follows the Thames Path for about 1.1 km and takes about 57 minutes from the station, against about 58 minutes by road.
+Yes. Our river route follows the Thames Path for about 1.1 km and takes about 56 minutes from the station, against about 58 minutes by road.
 
 Is the ground accessible for disabled supporters?
 

@@ -1856,3 +1856,7 @@ All eleven chapters are built: getting here (train, car, the four ways from the 
 Read the built page end to end as a visitor would and fixed what it showed: phone numbers and the bus timetable link were rendering as literal `<a href=...>` text (HTML returned from a Fact formatting function is escaped; those links are now rendered directly), "Nearest A&amp;E" was double-escaped, a missing space before "Compare the options", two-day hours groups now read "Friday and Saturday", "the Swans" mid-sentence, "Full time, roughly", a smoother parking FAQ, and a food introduction that no longer makes an unsourced "most choice" judgement.
 
 No em dashes, en dashes or exclamation marks anywhere in the reader text. The full copy, with the choices worth Darren's eye, is in `docs/away-fans-guide-copy.md` for review before publication.
+
+### 1 October 2026: away fans' guide, river route via Thames Street
+
+Darren changed the river route: from the bend in Bridge Street it now carries straight on up Thames Street to Manor Road, in place of the dog-leg to the foot of Manor Road. The map build's Manor Road waypoint became a Thames Street one (OpenStreetMap way 159312096) and the routes were refetched: river route now 4,231 m, about 56 minutes (was 4,326 m, 57). The Old Manor Inn, the Old Manor House, The Swan and The Anglers are all still passed. New step "Thames Street" and photo slot af-walk-river-step05; later river slots renumbered to step10 (shot list now 29 slots). Map version 2026-10-01-1.

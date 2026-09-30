@@ -71,7 +71,7 @@ const VIA = {
   terraceRoad: { lat: 51.3909, lng: -0.4133, note: 'Terrace Road' },
   terraceRoadEast: { lat: 51.3935, lng: -0.4084, note: 'Terrace Road, approaching Waterside Drive' },
   watersideDrive: { lat: 51.3955, lng: -0.4080, note: 'Waterside Drive, from the Terrace Road end' },
-  manorRoad: { lat: 51.3876, lng: -0.4234, note: 'Manor Road, from its Bridge Street end, by the Old Manor Inn' },
+  thamesStreet: { lat: 51.38768, lng: -0.42226, note: 'Thames Street, from the bend in Bridge Street up to Manor Road (OpenStreetMap way 159312096)' },
   watersideDriveUp: { lat: 51.39807, lng: -0.41376, note: 'Waterside Drive, walking up from the river end' },
 };
 // Where the towpath route joins and leaves the Thames Path, before snapping:
@@ -268,7 +268,7 @@ if (process.argv.includes('--fetch')) {
 
   console.log(`Routing with ${ROUTER.name}`);
   const road = await route(ROUTER.foot, [STATION, VIA.stationAvenue, VIA.ashleyRoadSouth, VIA.ashleyRoad, VIA.highStreet, VIA.churchStreet, VIA.terraceRoad, VIA.terraceRoadEast, VIA.watersideDrive, GROUND]);
-  const towIn = await route(ROUTER.foot, [STATION, VIA.stationAvenue, VIA.ashleyRoadSouth, VIA.ashleyRoad, VIA.highStreet, VIA.manorRoad, joinPoint]);
+  const towIn = await route(ROUTER.foot, [STATION, VIA.stationAvenue, VIA.ashleyRoadSouth, VIA.ashleyRoad, VIA.highStreet, VIA.thamesStreet, joinPoint]);
   const towOut = await route(ROUTER.foot, [leavePoint, VIA.watersideDriveUp, GROUND]);
   const drive = await route(ROUTER.car, [STATION, GROUND]);
   const stopToStation = await route(ROUTER.foot, [BUS_STOPS.churchStreet, STATION]);

@@ -1,6 +1,8 @@
 # Walk by the river from Walton-on-Thames station, on the streets Darren chose
 # on 29 September 2026: Ashley Road, the High Street past The Walton Village,
-# Bridge Street, Manor Road past the Old Manor Inn, The Swan and The Anglers,
+# Bridge Street, Thames Street (Darren's change of 1 October 2026: a short cut
+# from the bend in Bridge Street, in place of the foot of Manor Road), Manor
+# Road past the Old Manor Inn, The Swan and The Anglers,
 # the Thames towpath, and up Waterside Drive. The towpath section is the
 # Thames Path National Trail's mapped route (OpenStreetMap relation 14519665)
 # between the river end of Manor Road and the river end of Waterside Drive.
@@ -14,7 +16,7 @@
 variant: towpath
 title: By the river
 order: 2
-streets: Station Avenue, Ashley Road, High Street, Bridge Street, Manor Road, the Thames Path, Waterside Drive
+streets: Station Avenue, Ashley Road, High Street, Bridge Street, Thames Street, Manor Road, the Thames Path, Waterside Drive
 placeholder: true
 bestFor:
   value: A riverside walk past four pubs before a Saturday afternoon match
@@ -61,12 +63,18 @@ steps:
     lat: 51.38631
     lng: -0.41983
     photo: af-walk-river-step04-landscape
+  - id: thames-street
+    title: Thames Street
+    text: Where Bridge Street bends left, carry straight on into Thames Street.
+    lat: 51.38694
+    lng: -0.42108
+    photo: af-walk-river-step05-landscape
   - id: manor-road
     title: Manor Road
-    text: Turn right into Manor Road and follow it down to the river.
-    lat: 51.38712
-    lng: -0.42345
-    photo: af-walk-river-step05-landscape
+    text: At the end of Thames Street, turn right into Manor Road and follow it down to the river.
+    lat: 51.38827
+    lng: -0.42306
+    photo: af-walk-river-step06-landscape
     pubs:
       - name: Old Manor Inn
       - name: The Swan
@@ -79,7 +87,7 @@ steps:
     text: Manor Road ends at the river beside The Anglers. Turn right onto the Thames Path.
     lat: 51.3900
     lng: -0.4228
-    photo: af-walk-river-step06-landscape
+    photo: af-walk-river-step07-landscape
     pubs:
       - name: The Anglers
         href: /directory/the-anglers/
@@ -88,7 +96,7 @@ steps:
     text: Follow the towpath downstream for about a kilometre.
     lat: 51.3928
     lng: -0.4199
-    photo: af-walk-river-step07-landscape
+    photo: af-walk-river-step08-landscape
     history:
       href: /history/river-thames-at-walton/
       label: The River Thames at Walton
@@ -97,10 +105,10 @@ steps:
     text: Leave the river at the end of Waterside Drive and walk up Waterside Drive.
     lat: 51.39843
     lng: -0.41471
-    photo: af-walk-river-step08-landscape
+    photo: af-walk-river-step09-landscape
   - id: ground
     title: Elmbridge Xcel Sports Hub
     text: Turn right for the Sports Hub and follow the signs to the turnstiles.
     lat: 51.39914
     lng: -0.41086
-    photo: af-walk-river-step09-landscape
+    photo: af-walk-river-step10-landscape

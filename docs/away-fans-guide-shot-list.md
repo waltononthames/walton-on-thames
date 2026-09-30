@@ -1,6 +1,6 @@
 # Away fans' guide: shot list
 
-Every photograph slot on `/walton-hersham-fc-away-fans-guide/`, 28 in all. Each slot currently shows a labelled placeholder at the right shape.
+Every photograph slot on `/walton-hersham-fc-away-fans-guide/`, 29 in all. Each slot currently shows a labelled placeholder at the right shape.
 
 **How the files are used.** Slot names follow `af-<chapter>-<subject>-<orientation>`. Full-width images (the opening and the chapter breaks) need **two crops**: `-landscape` (3:2 or wider, for desktop) and `-portrait` (4:5, served to phones). Step photos need **landscape only** (3:2). Supply originals at least 2400 px on the long edge; the build makes AVIF and WebP at every size and strips GPS and camera data. iPhone HEIC is fine (it is converted first).
 
@@ -51,11 +51,12 @@ Stand at the point each step describes, facing the direction of travel, so the p
 | af-walk-river-step02 | Ashley Road | As road step 2 |
 | af-walk-river-step03 | High Street | As road step 3 |
 | af-walk-river-step04 | Bridge Street | Carrying on from the High Street into Bridge Street |
-| af-walk-river-step05 | Manor Road | The turn into Manor Road; the Old Manor Inn or the Old Manor House in frame |
-| af-walk-river-step06 | The Anglers and the Thames Path | Where Manor Road meets the river, The Anglers beside you |
-| af-walk-river-step07 | Along the towpath | A typical stretch, downstream, showing the surface and any lighting |
-| af-walk-river-step08 | Up Waterside Drive | Where the towpath meets the river end of Waterside Drive |
-| af-walk-river-step09 | Elmbridge Xcel Sports Hub | As road step 7, or the approach from the river side |
+| af-walk-river-step05 | Thames Street | The bend in Bridge Street, looking up Thames Street |
+| af-walk-river-step06 | Manor Road | The top of Thames Street, turning into Manor Road; the Old Manor Inn or the Old Manor House in frame |
+| af-walk-river-step07 | The Anglers and the Thames Path | Where Manor Road meets the river, The Anglers beside you |
+| af-walk-river-step08 | Along the towpath | A typical stretch, downstream, showing the surface and any lighting |
+| af-walk-river-step09 | Up Waterside Drive | Where the towpath meets the river end of Waterside Drive |
+| af-walk-river-step10 | Elmbridge Xcel Sports Hub | As road step 7, or the approach from the river side |
 
 ## While you are there
 

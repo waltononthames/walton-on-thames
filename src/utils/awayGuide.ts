@@ -4,7 +4,7 @@ import mapData from '../data/away-guide-map.json';
 import { project, type BaseMap, type LatLng } from '../components/gp/mapProjection';
 
 // Bump after rebuilding the base map: /images/* is cached for 7 days.
-export const AWAY_MAP_VERSION = '2026-09-29-4';
+export const AWAY_MAP_VERSION = '2026-10-01-1';
 
 export const GUIDE_PATH = '/walton-hersham-fc-away-fans-guide/';
 
