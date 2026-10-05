@@ -352,7 +352,7 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
         </p>
 
         <h3 class="sub">By car</h3>
-        <NeedToKnow>
+        <NeedToKnow about="by car">
           <NeedToKnowRow icon="pin" label="Sat-nav" f={ground.postcode}><Fact f={ground.postcode} /></NeedToKnowRow>
           <NeedToKnowRow icon="car" label="Parking" f={ground.parking}><Fact f={ground.parking} />. <a href="#parking">More on parking</a></NeedToKnowRow>
         </NeedToKnow>
@@ -381,7 +381,7 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
         <RouteStory routes={routes} />
 
         <h3 class="sub" id="by-bus">By bus</h3>
-        <NeedToKnow>
+        <NeedToKnow about="by bus">
           <NeedToKnowRow icon="bus" label="Route" f={bus.route}><Fact f={bus.route} />, run by <Fact f={bus.operator} /></NeedToKnowRow>
           <NeedToKnowRow icon="walk" label="From the station">No bus runs from Walton-on-Thames station to the ground. Walk about {busWalks.churchStreetToStation.minutes} minutes to Church Street in the town centre for the 564.</NeedToKnowRow>
           <NeedToKnowRow icon="pin" label="Get on at" f={bus.townStop}><Fact f={bus.townStop} /></NeedToKnowRow>
@@ -402,7 +402,7 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
         <p class="measure">
           The drive from the station to the Sports Hub takes about {driveMins} minutes with light traffic. After an evening match many people want a car at the same moment, so book a taxi or request an Uber before the final whistle, or be ready to wait.
         </p>
-        <NeedToKnow>
+        <NeedToKnow about="by taxi">
           <NeedToKnowRow icon="car" label="Drive time">About {driveMins} minutes, {(awayBase.drive.metres / 1000).toFixed(1)} km</NeedToKnowRow>
           {taxis.rideHailing.map((r) => (
             <NeedToKnowRow icon="taxi" label={r.name} f={r.note}><Fact f={r.note} /></NeedToKnowRow>
@@ -472,7 +472,7 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
         <p class="lede">
           Walton &amp; Hersham play at the Elmbridge Xcel Sports Hub on Waterside Drive, run by Places Leisure with Elmbridge Borough Council.
         </p>
-        <NeedToKnow>
+        <NeedToKnow about="the ground">
           <NeedToKnowRow icon="ticket" label="Prices" f={ground.prices}><Fact f={ground.prices} /></NeedToKnowRow>
           <NeedToKnowRow icon="ticket" label="Paying" f={ground.tickets}><Fact f={ground.tickets} />. <a href={official} rel="noopener">Club website</a></NeedToKnowRow>
           <NeedToKnowRow icon="walk" label="Disabled supporters" f={ground.disabledSupporters}><Fact f={ground.disabledSupporters} /></NeedToKnowRow>
@@ -505,7 +505,7 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
     <section class="chapter" id="parking" aria-labelledby="parking-title">
       <ChapterBreak id="parking" number={n('parking')} title="Parking at the Xcel Sports Hub" photo="af-parking-hub-car-park" />
       <div class="container chapter-body">
-        <NeedToKnow>
+        <NeedToKnow about="parking">
           <NeedToKnowRow icon="car" label="At the Hub" f={ground.parking}><Fact f={ground.parking} /></NeedToKnowRow>
           <NeedToKnowRow icon="walk" label="Accessible bays" f={ground.accessibleParking}><Fact f={ground.accessibleParking} /></NeedToKnowRow>
           <NeedToKnowRow icon="pin" label="Sat-nav" f={ground.postcode}><Fact f={ground.postcode} /></NeedToKnowRow>
@@ -608,7 +608,7 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
     <section class="chapter" id="safety" aria-labelledby="safety-title">
       <ChapterBreak id="safety" number={n('safety')} title="Practical and safety" photo="af-safety-station" />
       <div class="container chapter-body">
-        <NeedToKnow>
+        <NeedToKnow about="safety">
           <NeedToKnowRow icon="shield" label="Emergency and police" f={info.police}><Fact f={info.police} /></NeedToKnowRow>
           <NeedToKnowRow icon="info" label="Nearest A&E" f={info.aAndE}><Fact f={info.aAndE} /></NeedToKnowRow>
           <NeedToKnowRow icon="info" label="Pharmacies"><a href="/living/pharmacies/">Pharmacies in Walton-on-Thames and Hersham</a></NeedToKnowRow>
@@ -652,6 +652,20 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
 </script>
 
 <style>
+  /* The site scrolls smoothly to anchors; this page's chapter menu and bottom
+     bar jump instead for readers who ask for reduced motion (brief 11). */
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) { scroll-behavior: auto; }
+  }
+  /* Keep anchor targets and keyboard focus clear of the sticky header and
+     chapter menu, and on phones of the fixed bottom bar (WCAG 2.4.11). */
+  :global(html) { scroll-padding-top: calc(var(--nav-height) + 56px); }
+  @media (max-width: 899px) {
+    :global(html) {
+      scroll-padding-top: calc(var(--nav-height) + 8px);
+      scroll-padding-bottom: calc(64px + env(safe-area-inset-bottom));
+    }
+  }
   .prototype-banner {
     padding: 0.65rem 0;
     background: #FCE9C2;
@@ -669,13 +683,7 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
     text-transform: uppercase;
   }
   .guide-body { position: relative; }
-  .chapter {
-    scroll-margin-top: calc(var(--nav-height) + 48px);
-    padding-bottom: 3rem;
-  }
-  @media (max-width: 899px) {
-    .chapter { scroll-margin-top: var(--nav-height); }
-  }
+  .chapter { padding-bottom: 3rem; }
   .chapter-body { padding-top: 2rem; }
   .lede {
     max-width: 68ch;
@@ -687,7 +695,6 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
   .sub {
     margin: 2.5rem 0 0.75rem;
     font-size: clamp(1.35rem, 3vw, 1.75rem);
-    scroll-margin-top: calc(var(--nav-height) + 64px);
   }
   .feature {
     margin: 1.5rem 0 1rem;

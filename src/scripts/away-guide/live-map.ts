@@ -51,6 +51,9 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-live-map]')) {
         cooperativeGestures: true,
       });
       map.addControl(new maplibregl.NavigationControl({ showCompass: false }));
+      // The button that had focus is now hidden: hand focus to the map, which
+      // pans with the arrow keys and zooms with + and -.
+      map.getCanvas().focus();
       map.on('load', () => {
         for (const [id, colour, dash] of [['road', '#0B242E', undefined], ['towpath', '#2F7A8C', [2, 1.5]]] as const) {
           map.addSource(`route-${id}`, { type: 'geojson', data: { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: data.lines[id] } } });

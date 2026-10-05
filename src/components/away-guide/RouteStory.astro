@@ -61,7 +61,12 @@ const description = prepared
   .join(' ');
 ---
 
-<div class="route-story" data-map-width={W} data-map-height={H} data-px-per-m={station.pxPerM.toFixed(4)}>
+<div class="route-story" data-map-width={W} data-map-height={H} data-px-per-m={station.pxPerM.toFixed(4)} style={`--map-w-px: ${W}px; --map-h-px: ${H}px`}>
+  {/* The enhanced layout is taller than the plain one. Switching to it here,
+      while the page is still being read in, means nothing below the story
+      moves later, so links to later chapters land where they should. The
+      script that moves the map still waits until the story is near. */}
+  <script is:inline>document.currentScript.parentElement.classList.add('is-enhanced');</script>
   <fieldset class="route-choice" id="route-choice">
     <legend>Choose a walking route</legend>
     {prepared.map((r) => (
@@ -130,7 +135,7 @@ const description = prepared
             <div class="step-card">
               <h3>Walk {r.title.replace(/^By/, 'by')}</h3>
               <p class="step-lede">{km(r.line.metres)} km from Walton-on-Thames station, about {r.line.minutes} minutes at a steady pace.{r.variant === 'towpath' && ` About ${km((r.line as { towpathMetres?: number }).towpathMetres ?? 0)} km of it is on the Thames Path.`}</p>
-              <NeedToKnow compact>
+              <NeedToKnow compact about={`walk ${r.title.replace(/^By/, 'by')}`}>
                 <NeedToKnowRow icon="info" label="Best for" f={r.bestFor}><Fact f={r.bestFor} /></NeedToKnowRow>
                 <NeedToKnowRow icon="step" label="Surface" f={r.surface}><Fact f={r.surface} /></NeedToKnowRow>
                 <NeedToKnowRow icon="moon" label="Lighting" f={r.lighting}><Fact f={r.lighting} /></NeedToKnowRow>
@@ -409,11 +414,20 @@ const description = prepared
     }
     .route-story.is-enhanced .map-caption { display: none; }
     .route-story.is-enhanced .story-steps { position: relative; z-index: 1; }
+    /* Anything focused or linked to in a step lands below the pinned map. */
+    .route-story.is-enhanced .story-steps * { scroll-margin-top: calc(42svh + 1rem); }
+  }
+  /* The site's container padding drops to 1rem at 768px and below; the map's
+     bleed matches it, or the page would scroll sideways. */
+  @media (max-width: 768px) {
+    .route-story.is-enhanced .story-map { margin: 0 -1rem; padding: 0 0.5rem 0.5rem; }
   }
 
   /* Desktop: steps on the left, map pinned on the right. */
   @media (min-width: 900px) {
-    .route-story { --map-h: calc(100vh - var(--nav-height) - 48px - 3rem); }
+    /* Leaves room for the key and credit under the map, so the whole pinned
+       frame fits in the window and its credit link can take focus in view. */
+    .route-story { --map-h: calc(100vh - var(--nav-height) - 48px - 3rem - 4rem); }
     .story {
       display: grid;
       grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);

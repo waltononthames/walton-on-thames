@@ -1,14 +1,17 @@
 ---
 // The Need to know panel: the same look in every chapter, so a reader learns
-// it once. Holds NeedToKnowRow children.
+// it once. Holds NeedToKnowRow children. `about` names the panel for screen
+// readers ("Need to know: parking"), so the page's several panels can be told
+// apart in a landmark list.
 interface Props {
   title?: string;
+  about: string;
   compact?: boolean;
 }
-const { title = 'Need to know', compact = false } = Astro.props;
+const { title = 'Need to know', about, compact = false } = Astro.props;
 ---
 
-<aside class:list={['ntk', { 'ntk--compact': compact }]} aria-label={title}>
+<aside class:list={['ntk', { 'ntk--compact': compact }]} aria-label={`${title}: ${about}`}>
   <p class="ntk-title">{title}</p>
   <dl class="ntk-list"><slot /></dl>
 </aside>

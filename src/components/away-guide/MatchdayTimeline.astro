@@ -104,6 +104,9 @@ const plans = [
   .timeline-custom[hidden] { display: none; }
   .timeline-custom label { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; font-size: 0.9rem; }
   .timeline-custom input, .timeline-custom select { min-height: 44px; padding: 0 0.6rem; border: 1.5px solid rgba(11, 36, 46, 0.25); border-radius: var(--radius-sm); font: inherit; }
+  /* A time input takes focus in its hour and minute fields, which the site's
+     :focus-visible ring does not reach. */
+  .timeline-custom input:focus-within { outline: 2px solid var(--color-accent); outline-offset: 3px; }
   .timeline-out :global(li) { display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.6rem; font-size: 0.92rem; }
   .timeline-note { margin-top: 0.75rem; color: var(--color-slate); font-size: 0.85rem; }
 </style>

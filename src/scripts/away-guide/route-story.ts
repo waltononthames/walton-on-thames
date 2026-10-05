@@ -17,6 +17,8 @@ function init(root: HTMLElement) {
   const stage = root.querySelector<HTMLElement>('.map-stage');
   if (!viewport || !stage || !W || !H) return;
 
+  // RouteStory.astro sets these and the class while the page loads; repeated
+  // here so the script also works on its own.
   root.style.setProperty('--map-w-px', `${W}px`);
   root.style.setProperty('--map-h-px', `${H}px`);
   root.classList.add('is-enhanced');
