@@ -9,9 +9,9 @@ category: "market"
 recurring: true
 price: "Free admission"
 description: "A weekly Friday morning market at All Saints Church Hall in Hersham, with home-cooked food, local honey, preserves and free-range eggs."
-source_url: "https://yourelmbridge.co.uk/whats-on-in-elmbridge/"
+source_url: "https://www.facebook.com/hershamvillagemarket"
 ---
 
 Hersham Village Market runs a weekly Friday morning market at All Saints Church Hall on Queens Road, selling home-cooked food, local honey and preserves, and free-range eggs. Free admission and parking.
 
-*The current listing gives 11 and 25 September; no market is listed for 18 September. Source: [Your Elmbridge Magazine](https://yourelmbridge.co.uk/whats-on-in-elmbridge/). Always verify details directly with the organiser before attending.*
+*Sources: the organiser's own [Hersham Village Market page](https://www.facebook.com/hershamvillagemarket), which gives the Friday 10.30am to 12pm opening, free parking and free entry, and says card payments are welcomed; [Your Elmbridge Magazine](https://yourelmbridge.co.uk/whats-on-in-elmbridge/) for the October dates of 2, 9, 16, 23 and 30 October. Always verify details directly with the organiser before attending.*

@@ -14,6 +14,7 @@ images: []
 featured: true
 verified_date: "2026-07-16"
 source: "Business official website (heartshopping.co.uk)"
+hub_page: "/shopping/the-heart/"
 ---
 
 The Heart Shopping Centre is the main covered shopping destination in Walton-on-Thames town centre, offering a modern retail environment under one roof.

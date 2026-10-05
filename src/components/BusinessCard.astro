@@ -14,9 +14,13 @@ interface Props {
   description: string;
   images?: CardImage[];
   featured?: boolean;
+  // Set when the listing has its own guide page (the `hub_page` field), which
+  // replaces its directory page.
+  hubPage?: string;
 }
 
-const { name, slug, category, neighbourhood, description, images = [], featured = false } = Astro.props;
+const { name, slug, category, neighbourhood, description, images = [], featured = false, hubPage } = Astro.props;
+const href = hubPage ?? `/directory/${slug}/`;
 
 const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 const neighbourhoodLabel = formatPlaceName(neighbourhood);
@@ -28,7 +32,7 @@ const thumbUrl = typeof firstImage === 'string' ? firstImage : firstImage?.src ?
 const thumbAlt = typeof firstImage === 'string' ? name : firstImage?.alt ?? name;
 ---
 
-<a href={`/directory/${slug}/`} class="card business-card">
+<a href={href} class="card business-card">
   {thumbUrl
     ? <img class="card-image" src={thumbUrl} alt={thumbAlt} loading="lazy" />
     : <div class="card-image-placeholder" aria-hidden="true">🏪</div>

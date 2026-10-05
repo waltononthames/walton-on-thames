@@ -1,8 +1,8 @@
 ---
 title: "Dance Happy: Adult Ballet Classes"
 slug: "dance-happy-adult-ballet-riverhouse-barn-2026-09"
-start: "2026-09-29T17:30:00"
-end: "2026-09-29T19:40:00"
+start: "2026-10-06T17:30:00"
+end: "2026-10-06T19:40:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"

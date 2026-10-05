@@ -3,25 +3,38 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { formatPlaceName } from '../../utils/format';
+import { formatPlaceName, nameWithAddress } from '../../utils/format';
+import { buildMetaDescription, listingContents } from '../../utils/metaDescription';
 import GpPracticeProfile from '../../components/gp/GpPracticeProfile.astro';
 import PhotoLightbox from '../../components/PhotoLightbox.astro';
 
 // Without this, Astro.props infers as `never` and every biz.data.* reference
 // below reports ts(2339). Typing the props clears all of them.
-type Props = { biz: CollectionEntry<'businesses'> };
+type Props = {
+  biz: CollectionEntry<'businesses'>;
+  // The listing this one sits inside, when that listing has a guide page.
+  hub?: { name: string; href: string };
+};
 
 type ListingImage = { src: string; alt: string; caption?: string };
 
 export async function getStaticPaths() {
   const businesses = await getCollection('businesses');
-  return businesses.map(biz => ({
-    params: { slug: biz.data.slug },
-    props: { biz },
-  }));
+  // A listing with a guide page gets no directory page of its own: the old
+  // URL 301s to the guide in public/_redirects.
+  const hubs = businesses.filter((b: CollectionEntry<'businesses'>) => b.data.hub_page);
+  return businesses
+    .filter((biz: CollectionEntry<'businesses'>) => !biz.data.hub_page)
+    .map((biz: CollectionEntry<'businesses'>) => {
+      const hub = hubs.find((h: CollectionEntry<'businesses'>) => biz.data.address.includes(h.data.name));
+      return {
+        params: { slug: biz.data.slug },
+        props: { biz, hub: hub ? { name: hub.data.name, href: hub.data.hub_page! } : undefined },
+      };
+    });
 }
 
-const { biz } = Astro.props;
+const { biz, hub } = Astro.props;
 const { Content } = await render(biz);
 
 // The first image is also the hero background. Listings with no images keep
@@ -31,6 +44,18 @@ const heroImage = biz.data.images[0];
 
 const categoryLabel = biz.data.category.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
 const neighbourhoodLabel = formatPlaceName(biz.data.neighbourhood);
+
+const listingAddress = biz.data.address.replace(/,\s*United Kingdom/i, '');
+const listingExtras = listingContents([
+  [!!biz.data.hours, 'opening hours'],
+  [!!biz.data.phone, 'phone number'],
+  [!!biz.data.website, 'website'],
+  [!!(biz.data.lat && biz.data.lng), 'map'],
+]);
+const metaDescription = buildMetaDescription(biz.data.description, [
+  [nameWithAddress(biz.data.name, listingAddress), listingAddress],
+  listingExtras && [`${listingExtras} on this page`, listingExtras],
+]);
 
 const SCHEMA_TYPE_BY_CATEGORY: Record<string, string> = {
   'restaurants': 'Restaurant',
@@ -89,7 +114,7 @@ const openingHoursSpecification = biz.data.hours
 ) : (
 <BaseLayout
   title={`${biz.data.name}: ${categoryLabel} in ${neighbourhoodLabel}`}
-  description={biz.data.description}
+  description={metaDescription}
   image={heroImage?.src}
 >
   <slot name="structured-data">
@@ -192,6 +217,9 @@ const openingHoursSpecification = biz.data.hours
         <div class="info-card">
           <h2>Address</h2>
           <address class="biz-address">{biz.data.address}</address>
+          {hub && (
+            <a href={hub.href} class="contact-link">🏬 Inside {hub.name} →</a>
+          )}
           {biz.data.phone && (
             <a href={`tel:${biz.data.phone}`} class="contact-link">📞 {biz.data.phone}</a>
           )}
