@@ -182,9 +182,13 @@ export function awayGuideCollections(checkedSource: z.ZodTypeAny) {
   });
 
   // Club history for groundhoppers, and the practical and safety block.
+  // `published` is the date the guide first goes live, for the Article's
+  // datePublished; scripts/check-away-guide.mjs blocks a production build
+  // until it is set.
   const info = defineCollection({
     loader: glob({ pattern: '*.{yaml,yml}', base: './src/content/away-guide/info' }),
     schema: z.object({
+      published: isoDate.optional(),
       history: z.array(z.object({ year: z.string(), f: text })),
       nickname: text,
       aAndE: text,

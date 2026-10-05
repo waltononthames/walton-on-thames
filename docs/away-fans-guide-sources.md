@@ -82,6 +82,18 @@ From `scripts/build-away-guide-map.mjs`, OSRM routing over OpenStreetMap, fetche
 | Walk, ground to the Xcel bus stop | 0.2 km, about 3 minutes |
 | Full time after kick-off | About 110 minutes: two 45-minute halves, half-time of up to 15 minutes (IFAB Laws of the Game, Law 7), plus added time. Shown as "around" |
 
+### Where things are (from the map data)
+
+Statements of position in the page's own wording, from the OpenStreetMap data the map build uses (fetched 1 October 2026). Recorded in the Phase 6 check, 5 October 2026.
+
+| Statement | Basis |
+|---|---|
+| The Sports Hub is north of the town centre, beside the river | Hub outline, way 44207919, against the High Street and Church Street; the Thames along its north side |
+| The Weir sits on the Thames towpath at the river end of Waterside Drive, beside the Sports Hub | The Weir, way 186266729; Waterside Drive; Thames Path relation 14519665. Its own address, "Towpath, Waterside Drive", is in The Weir table below |
+| The road route passes the Travelodge in the town centre (Church Street) | Travelodge Walton-on-Thames Central, 20-32 Church Street (Phase 4 table); Church Street is on the road route |
+
+The "Make a day of it" cards (Hampton Court Palace, Brooklands Museum, Claremont Landscape Garden) are the site's existing attraction listings in `src/content/attractions/`, each with its official website and last verified on 22 August 2026.
+
 The club's own page gives "approximately 10 minutes by car or 50-minute walk" from Walton-on-Thames station. Our routed times follow Darren's chosen streets, which are longer than the shortest walk.
 
 ### Bus

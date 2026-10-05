@@ -46,7 +46,7 @@ const entries = async <T,>(name: Parameters<typeof getCollection>[0]) => (await 
 const data = async <T,>(name: Parameters<typeof getCollection>[0]) => (await entries<T>(name)).map((e) => e.data);
 
 type VenueData = Omit<Venue, 'slug' | 'badge'> & { lat: number; lng: number; area: string; featured: boolean };
-type InfoData = { history: { year: string; f: FactT<string> }[]; nickname: FactT<string>; aAndE: FactT<string>; police: FactT<string> };
+type InfoData = { published?: string; history: { year: string; f: FactT<string> }[]; nickname: FactT<string>; aAndE: FactT<string>; police: FactT<string> };
 
 const [ground] = await data<GroundData>('away-ground');
 const routes = (await data<RouteData>('away-routes')).sort((a, b) => a.order - b.order);
@@ -239,9 +239,10 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
           description,
           url,
           image: `${SITE}${ogImage}`,
-          author: { '@type': 'Person', name: AUTHOR },
+          author: { '@type': 'Person', name: AUTHOR, url: `${SITE}/about/` },
           publisher: { '@id': `${SITE}/#organization` },
           about: [{ '@id': `${url}#team` }, { '@id': `${url}#stadium` }],
+          ...(info.published && { datePublished: info.published }),
           ...(lastChecked && { dateModified: lastChecked }),
         },
         {
@@ -257,6 +258,7 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
             addressCountry: 'GB',
           },
           geo: { '@type': 'GeoCoordinates', latitude: groundPoint.lat, longitude: groundPoint.lng },
+          image: `${SITE}${ogImage}`,
         },
         {
           '@type': 'SportsTeam',
@@ -269,11 +271,15 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
         ...nextHome.map((f) => ({
           '@type': 'SportsEvent',
           name: `${f.homeTeam} v ${f.awayTeam}`,
+          description: `${f.homeTeam} at home to ${f.awayTeam} at the ${ground.name}, Walton-on-Thames.`,
           startDate: f.start,
+          image: `${SITE}${ogImage}`,
           eventStatus: 'https://schema.org/EventScheduled',
           location: { '@id': `${url}#stadium` },
           homeTeam: { '@id': `${url}#team` },
           awayTeam: { '@type': 'SportsTeam', name: f.awayTeam },
+          performer: [{ '@id': `${url}#team` }, { '@type': 'SportsTeam', name: f.awayTeam }],
+          organizer: { '@id': `${url}#team` },
           url: `${SITE}/whats-on/${f.slug}/`,
         })),
         ...(faqs.length ? [{

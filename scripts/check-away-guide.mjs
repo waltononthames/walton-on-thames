@@ -7,7 +7,10 @@
 //    the page itself is noindex while any placeholder remains.
 //    Set AWAY_GUIDE_STRICT=1 to apply the production rule locally.
 //
-// 2. Timetables expire. Train and bus records carry the timetable period they
+// 2. The guide's first publication date (info `published`, the Article's
+//    datePublished) must be set before production, under the same rule.
+//
+// 3. Timetables expire. Train and bus records carry the timetable period they
 //    were checked against. An expired period does not fail the build (the
 //    page hides the finder by itself), but it is reported, with a warning two
 //    weeks ahead, so the times can be re-checked before they vanish.
@@ -42,6 +45,15 @@ for (const file of walk(DIR)) {
     const m = line.match(/timetableValidTo:\s*"?(\d{4}-\d{2}-\d{2})"?/);
     if (m && m[1] < soon) expiring.push(`${rel}:${i + 1}  timetable ${m[1] < today ? 'expired' : 'expires'} ${m[1]}`);
   });
+}
+
+const infoFile = join(DIR, 'info', 'info.yaml');
+const published = /^published:s*"?d{4}-d{2}-d{2}"?s*$/m.test(readFileSync(infoFile, 'utf8'));
+if (!published && production) {
+  console.error(`
+BUILD BLOCKED: set the guide's first publication date as published: "YYYY-MM-DD" in ${relative(ROOT, infoFile)} (the Article's datePublished).
+`);
+  process.exit(1);
 }
 
 for (const e of expiring) console.warn(`check-away-guide: ${e}. Re-check against the current timetable.`);

@@ -1890,3 +1890,7 @@ Rewritten against weirhotel.co.uk (home, `/rooms/`, `/about-the-weir/`, `/pub-fo
 - `verified_date` 2026-09-29; `source` now names each page checked.
 
 Still open: `docs/walton-seo-blueprint.md` line 173 has the hotel "overlooking the weir itself" with a "popular Sunday roast". Neither is on the hotel's site. It's a planning doc, not a live page, but don't copy it into content.
+
+### 5 October 2026: away fans' guide, QA (Phase 6)
+
+Merged `main` into the branch, then ran the brief's section 14 checks; results and the launch checklist are in `docs/away-fans-guide-qa.md`. Lighthouse mobile 97 / 96 / 100 / 69 (SEO 100 without the deliberate noindex), desktop 100 / 96 / 100 / 69; LCP 2.4 s, CLS 0.02, 6 KB of JavaScript on first load. Schema.org validator 0 errors, 0 warnings; Google Rich Results Test all items valid. Print card one A4 page. Fixes: Need to know panels named for screen readers; focus and anchor jumps kept clear of the sticky header, phone bottom bar and pinned route map; pinned desktop map fits the window; route story switches layout at load so chapter links land correctly; phone map no longer overflows by 8px; live map takes focus when loaded; focus ring on the time input; no smooth scroll under reduced motion; richer Article, SportsEvent and stadium structured data; empty photo slots lose their labels in production; The Regent's link updated. New gate: `published` in info.yaml must be set before production. Outstanding outside the guide: footer text contrast and logo alt text (site-wide).
