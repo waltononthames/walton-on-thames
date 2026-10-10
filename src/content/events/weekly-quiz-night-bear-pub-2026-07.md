@@ -1,8 +1,8 @@
 ---
 title: "Weekly Quiz Night at The Bear"
 slug: "weekly-quiz-night-bear-pub-2026-07"
-start: "2026-10-05T19:30:00"
-end: "2026-10-05T22:00:00"
+start: "2026-10-12T19:30:00"
+end: "2026-10-12T22:00:00"
 venue: "The Bear, 30 Bridge Street, Walton-on-Thames, KT12 1AH"
 neighbourhood: "walton-on-thames"
 category: "community"

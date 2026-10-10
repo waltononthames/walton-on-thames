@@ -1,8 +1,8 @@
 ---
 title: "Life Drawing Classes at Riverhouse Barn"
 slug: "life-drawing-classes-riverhouse-barn-2026-08"
-start: "2026-10-05T18:30:00"
-end: "2026-10-05T20:30:00"
+start: "2026-10-12T18:30:00"
+end: "2026-10-12T20:30:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"

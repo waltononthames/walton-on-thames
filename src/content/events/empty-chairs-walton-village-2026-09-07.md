@@ -1,8 +1,8 @@
 ---
 title: "Empty Chairs: Walton-on-Thames"
 slug: "empty-chairs-walton-village-2026-09-07"
-start: "2026-10-05T19:00:00"
-end: "2026-10-05T21:00:00"
+start: "2026-11-02T19:00:00"
+end: "2026-11-02T21:00:00"
 venue: "The Walton Village, 29 High Street, Walton-on-Thames, KT12 1DG"
 neighbourhood: "walton-on-thames"
 category: "community"

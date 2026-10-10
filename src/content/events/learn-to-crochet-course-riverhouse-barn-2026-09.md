@@ -1,8 +1,8 @@
 ---
 title: "Learn to Crochet Course at Riverhouse Barn"
 slug: "learn-to-crochet-course-riverhouse-barn-2026-09"
-start: "2026-10-06T19:30:00"
-end: "2026-10-06T21:30:00"
+start: "2026-10-13T19:30:00"
+end: "2026-10-13T21:30:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"
