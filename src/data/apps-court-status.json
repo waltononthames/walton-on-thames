@@ -1,14 +1,14 @@
 {
   "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source: the rest of this file was deliberately left untouched rather than overwritten with a guess.",
-  "status": "unconfirmed",
-  "headline": "No date confirmed yet for the coming Sunday",
-  "detail": "Apps Court Farm's car boot page still carries the banner \"THE CAR BOOT IS OPEN THIS SUNDAY\", unchanged from the check on Friday 18 September, when it confirmed Sunday 20 September. That date has now passed and the farm has not yet posted a notice for the coming Sunday, so we are not treating any specific date as confirmed. There is no postponement or cancellation notice on the page. The farm states its car boot sales are held every Sunday and on all Spring, Summer and early Winter Bank Holiday Mondays, weather dependent, but it does not publish a fixed calendar: dates are posted at the top of that page weekly, usually by Friday. Gates open at 7am for sellers and the sale closes at 1pm. Check the banner on the official page or call 01932 244 822 for the recorded status before travelling.",
-  "nextConfirmedDateISO": null,
-  "nextConfirmedDateLabel": null,
-  "checkedDateISO": "2026-09-21",
-  "checkedDateLabel": "21 September 2026",
+  "status": "on",
+  "headline": "On this Sunday, 11 October 2026",
+  "detail": "Apps Court Farm's car boot page says \"THE CAR BOOT IS OPEN THIS SUNDAY\", so the sale is going ahead on Sunday 11 October 2026. Gates open at 7am for both sellers and buyers and the sale closes at 1pm. Sellers just turn up and are directed where to set up, with the pitch fee collected afterwards; buyers pay £2 per vehicle to park, collected on the way out to keep the entrance clear. Sales are weather dependent and the farm posts any bad-weather postponement at the top of its own car boot page, so it is worth a last look before you set off; you can also call 01932 244 822 for a recorded message confirming whether the sale is taking place.",
+  "nextConfirmedDateISO": "2026-10-11",
+  "nextConfirmedDateLabel": "Sunday 11 October 2026",
+  "checkedDateISO": "2026-10-10",
+  "checkedDateLabel": "10 October 2026",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Automated check, source read successfully at 00:52 BST on Monday 21 September 2026 through the Browser pane (WebFetch is Cloudflare-challenged on this domain). The in-page block inside <main> is unchanged from the 18 September check and still reads \"THE CAR BOOT IS OPEN THIS SUNDAY\": that notice was posted for Sunday 20 September, which has now passed, and a leftover banner read on a Monday cannot be taken as confirmation of Sunday 27 September. Status therefore moves from on to unconfirmed and the confirmed date is cleared rather than rolled forward to a date the source does not state, which also drops the now-past subEvent from the EventSeries JSON-LD. The site-wide section.announcement strip carries identical wording and was again not relied on. No cancellation, postponement or festival-clash notice anywhere on the page."
+  "lastCheckNote": "Source read successfully at 11:52 BST on Saturday 10 October 2026 through the Browser pane (WebFetch is Cloudflare-challenged on this domain). The in-page notice block inside <main> reads \"THE CAR BOOT IS OPEN THIS SUNDAY\", and on a Saturday that names Sunday 11 October, so status is set to on for that date. Recorded for the audit trail: that banner text has been byte-identical since the farm posted it on Friday 18 September for Sunday 20 September, and the automated runs of 1 and 10 October both declined to roll it forward on the grounds that a notice which has outlived three Sundays confirms none of them. Set to on here on Darren's explicit instruction, taking the farm's own page at face value. There is no postponement or cancellation notice anywhere on the page. The site-wide section.announcement strip carries identical wording and was not relied on: it still links to a Christmas trees 2025 shop product, so it remains a stale reusable element. The farm's Facebook page renders only a single post without a login, so it could not corroborate either way."
 }
