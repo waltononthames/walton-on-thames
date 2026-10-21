@@ -1,8 +1,8 @@
 ---
 title: "Introduction to Jewellery Making"
 slug: "introduction-to-jewellery-making-riverhouse-barn-2026-09"
-start: "2026-10-02T10:00:00"
-end: "2026-10-02T12:00:00"
+start: "2026-10-12T10:00:00"
+end: "2026-10-12T12:30:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"

@@ -1,5 +1,5 @@
 ---
-title: "Lunchtime Concert: Stephen Devine (Harpsichord)"
+title: "Lunchtime Concert: Steven Devine (Harpsichord)"
 slug: "lunchtime-concert-stephen-devine-riverhouse-barn-2026-10-14"
 start: "2026-10-14T13:00:00"
 end: "2026-10-14T14:00:00"
@@ -16,6 +16,6 @@ An hour-long lunchtime harpsichord recital at Riverhouse Barn, running from 1pm 
 
 The venue describes the performer as a conductor, director, harpsichordist and fortepianist who is Conductor and Artistic Advisor of The English Haydn Festival, Music Director of New Chamber Opera in Oxford, and director of the Orchestra of the Age of Enlightenment's "Bach, the Universe and Everything" series.
 
-Riverhouse Barn's own page is inconsistent about the spelling of his first name: the event title reads Stephen Devine and the description below it reads Steven Devine. The earlier version of this listing also billed the concert as a flute and harpsichord duo with Ashley Solomon; the venue's current listing names only the harpsichordist.
+Riverhouse Barn's own page is inconsistent about the spelling of his first name: the listing heading and the description both read Steven Devine, while the page title tag still reads Stephen Devine. The earlier version of this listing also billed the concert as a flute and harpsichord duo with Ashley Solomon; the venue's current listing names only the harpsichordist.
 
 *Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/163952). Always verify details directly with the organiser before attending.*

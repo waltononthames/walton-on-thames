@@ -1,8 +1,8 @@
 ---
 title: "Thursday Creative Stitch at Riverhouse Barn"
 slug: "thursday-creative-stitch-riverhouse-barn-2026-09"
-start: "2026-10-01T10:30:00"
-end: "2026-10-01T12:30:00"
+start: "2026-10-15T10:30:00"
+end: "2026-10-15T12:30:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"

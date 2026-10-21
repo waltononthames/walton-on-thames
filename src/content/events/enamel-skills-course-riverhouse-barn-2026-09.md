@@ -1,8 +1,8 @@
 ---
 title: "Enamel Skills for Beginners and Improvers"
 slug: "enamel-skills-course-riverhouse-barn-2026-09"
-start: "2026-10-01T13:00:00"
-end: "2026-10-01T16:00:00"
+start: "2026-10-15T13:00:00"
+end: "2026-10-15T16:00:00"
 venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "arts"

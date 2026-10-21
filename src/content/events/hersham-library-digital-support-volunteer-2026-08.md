@@ -1,8 +1,8 @@
 ---
 title: "Digital Support Volunteer at Hersham Library"
 slug: "hersham-library-digital-support-volunteer-2026-08"
-start: "2026-10-06T14:30:00"
-end: "2026-10-06T16:30:00"
+start: "2026-10-13T14:30:00"
+end: "2026-10-13T16:30:00"
 venue: "Hersham Library, Molesey Road, Hersham, Surrey KT12 4RF"
 neighbourhood: "hersham"
 category: "community"

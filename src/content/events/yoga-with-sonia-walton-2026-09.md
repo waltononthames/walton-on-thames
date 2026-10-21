@@ -1,7 +1,7 @@
 ---
 title: "Yoga with Sonia"
 slug: "yoga-with-sonia-walton-2026-09"
-start: "2026-09-30T20:00:00"
+start: "2026-10-14T20:00:00"
 venue: "With Ease Wellness, New Zealand Avenue, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "community"
