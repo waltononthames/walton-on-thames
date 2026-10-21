@@ -9,6 +9,10 @@
 # Most of those ways are tagged lit=no in OpenStreetMap; lighting, surface and
 # flooding are confirmed on a site visit before anything is stated (plan R6).
 #
+# Published 21 October 2026 before the site visit, at Darren's request: the
+# directions follow the streets Darren specified and were checked against the
+# OpenStreetMap geometry; the walk-quality facts below stay unconfirmed.
+#
 # The pub on Manor Road is the Old Manor Inn: named by Darren, 29 September
 # 2026, and mapped under that name in OpenStreetMap. It has no Directory
 # listing yet, so it is named without a link. It is a different thing from
@@ -17,13 +21,14 @@ variant: towpath
 title: By the river
 order: 2
 streets: Station Avenue, Ashley Road, High Street, Bridge Street, Thames Street, Manor Road, the Thames Path, Waterside Drive
-placeholder: true
 bestFor:
-  value: A riverside walk past four pubs before a Saturday afternoon match
-  placeholder: true
+  unconfirmed:
+    ask: site-visit
+    question: Is the river route best kept for a daytime walk past the riverside pubs before a Saturday afternoon match?
 surface:
-  value: Compacted path along the river, pavements in town
-  placeholder: true
+  unconfirmed:
+    ask: site-visit
+    question: What is the towpath surface between Manor Road and Waterside Drive, and does it flood or get muddy?
 lighting:
   unconfirmed:
     ask: site-visit
@@ -33,8 +38,9 @@ stepFree:
     ask: site-visit
     question: Are there steps or gates between Manor Road and the towpath, or between the towpath and Waterside Drive?
 afterDark:
-  value: Not recommended after dark
-  placeholder: true
+  unconfirmed:
+    ask: site-visit
+    question: Should we advise against the river route after dark?
 steps:
   - id: station
     title: Walton-on-Thames station

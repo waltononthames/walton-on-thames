@@ -38,11 +38,19 @@ The guide is still a prototype: 9 placeholder values wait on the site visit, so 
 - Empty photo slots lose their labels in a production build (the labels stay on previews).
 - Structured data: author linked to the About page; each fixture has a description, image, organiser and teams; the stadium has an image.
 
-## Before the guide goes live
+## Launch, 21 October 2026
 
-1. Site visit: walk both routes and replace the 9 placeholder values (lighting, surface, steps, after dark, best for), the taxi rank's position and the Old Manor Inn's address.
-2. Club answers to the questions in the sources file (section 1). These do not block publication: unanswered ones simply do not show.
-3. Set `published: "YYYY-MM-DD"` in `src/content/away-guide/info/info.yaml` to the launch date (the Article's `datePublished`). The build blocks `main` until it is set.
-4. Remaining photographs from the shot list (25 slots). These do not block publication: in a production build an empty chapter header keeps a plain dark background and an empty step photo is left out, with no slot labels (checked with `AWAY_GUIDE_STRICT=1`). The page is much better with them.
-5. Fix the site-wide footer contrast and logo alt text, so the accessibility check passes with no serious issues and Lighthouse accessibility rises.
-6. After launch: re-run Lighthouse and the Rich Results Test on the live URL, and request indexing in Search Console.
+Published at Darren's request before the site visit and before the remaining photographs.
+
+- The 9 placeholder values became unconfirmed site-visit questions, so production shows none of them: the routes' best for, surface, lighting and after-dark notes. A route's "Need to know" panel is left out while it has nothing confirmed to show.
+- The walking directions are published: they follow the streets Darren specified on 29 September and 1 October, checked against the OpenStreetMap geometry. The "Sample" tags are gone.
+- `published: "2026-10-21"` set in `info.yaml` (the Article's `datePublished`).
+- Production build checked with `CF_PAGES_BRANCH=main`: no noindex, no prototype banner, no Sample tags, no slot labels, no unconfirmed questions; in the sitemap and the site search. No horizontal scrolling at five widths, print card one page, axe clean apart from the site-wide footer. Lighthouse mobile SEO 100, Best Practices 100, Accessibility 96; Performance 94 to 95 with LCP 2.9 to 3.0 s, measured while this machine benchmarked at about half its 5 October speed (same page weight as then, when LCP was 2.4 s). Re-measure on the live URL.
+
+## Still to do
+
+1. Site visit: answer the route questions (lighting, surface, steps, after dark, best for), the taxi rank's position and the Old Manor Inn's address. Each answer shows on the page as soon as it is recorded with its source.
+2. Club answers to the questions in the sources file (section 1). Unanswered ones do not show.
+3. Remaining photographs from the shot list (25 slots). An empty chapter header keeps a plain dark background and an empty step photo is left out.
+4. Fix the site-wide footer contrast and logo alt text.
+5. After launch: PageSpeed Insights and the Rich Results Test on the live URL, then request indexing in Search Console.

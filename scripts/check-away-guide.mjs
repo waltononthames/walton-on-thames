@@ -48,11 +48,9 @@ for (const file of walk(DIR)) {
 }
 
 const infoFile = join(DIR, 'info', 'info.yaml');
-const published = /^published:s*"?d{4}-d{2}-d{2}"?s*$/m.test(readFileSync(infoFile, 'utf8'));
+const published = /^published:\s*"?\d{4}-\d{2}-\d{2}"?\s*$/m.test(readFileSync(infoFile, 'utf8'));
 if (!published && production) {
-  console.error(`
-BUILD BLOCKED: set the guide's first publication date as published: "YYYY-MM-DD" in ${relative(ROOT, infoFile)} (the Article's datePublished).
-`);
+  console.error(`\nBUILD BLOCKED: set the guide's first publication date as published: "YYYY-MM-DD" in ${relative(ROOT, infoFile)} (the Article's datePublished).\n`);
   process.exit(1);
 }
 

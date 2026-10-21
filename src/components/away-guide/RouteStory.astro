@@ -18,7 +18,7 @@ import NeedToKnow from './NeedToKnow.astro';
 import NeedToKnowRow from './NeedToKnowRow.astro';
 import PhotoSlot from './PhotoSlot.astro';
 import {
-  awayBase, projectAway, progressAlong, routeBox, AWAY_MAP_VERSION,
+  awayBase, projectAway, progressAlong, routeBox, AWAY_MAP_VERSION, shows,
   type Fact as FactT, type RouteKey,
 } from '../../utils/awayGuide';
 
@@ -135,13 +135,13 @@ const description = prepared
             <div class="step-card">
               <h3>Walk {r.title.replace(/^By/, 'by')}</h3>
               <p class="step-lede">{km(r.line.metres)} km from Walton-on-Thames station, about {r.line.minutes} minutes at a steady pace.{r.variant === 'towpath' && ` About ${km((r.line as { towpathMetres?: number }).towpathMetres ?? 0)} km of it is on the Thames Path.`}</p>
-              <NeedToKnow compact about={`walk ${r.title.replace(/^By/, 'by')}`}>
+              {[r.bestFor, r.surface, r.lighting, r.stepFree, r.afterDark].some(shows) && <NeedToKnow compact about={`walk ${r.title.replace(/^By/, 'by')}`}>
                 <NeedToKnowRow icon="info" label="Best for" f={r.bestFor}><Fact f={r.bestFor} /></NeedToKnowRow>
                 <NeedToKnowRow icon="step" label="Surface" f={r.surface}><Fact f={r.surface} /></NeedToKnowRow>
                 <NeedToKnowRow icon="moon" label="Lighting" f={r.lighting}><Fact f={r.lighting} /></NeedToKnowRow>
                 <NeedToKnowRow icon="walk" label="Step-free" f={r.stepFree}><Fact f={r.stepFree} /></NeedToKnowRow>
                 <NeedToKnowRow icon="moon" label="After dark" f={r.afterDark}><Fact f={r.afterDark} /></NeedToKnowRow>
-              </NeedToKnow>
+              </NeedToKnow>}
             </div>
           </li>
           {r.steps.map((s) => (
