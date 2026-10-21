@@ -1,14 +1,14 @@
 {
   "$schema": "Fields written and read by the Hersham Village Market page and the Thursday status-check routine (hersham-village-market-status). Same shape as apps-court-status.json so EventStatusPanel can be reused. status is only ever 'on' or 'off' for a date the market itself has stated in a post or Facebook event; otherwise 'unconfirmed'. lastCheckSucceeded=false means the previous check could not confidently read the sources: the rest of this file was deliberately left untouched rather than overwritten with a guess.",
-  "status": "unconfirmed",
-  "headline": "Not yet confirmed for Friday 16 October",
-  "detail": "The market has not yet posted about Friday 16 October. It usually creates a Facebook event a few days ahead, so check its Facebook page before you set off.",
-  "nextConfirmedDateISO": null,
-  "nextConfirmedDateLabel": null,
-  "checkedDateISO": "2026-10-10",
-  "checkedDateLabel": "10 October 2026",
-  "sourceLabel": "Hersham Village Market on Facebook",
-  "sourceUrl": "https://www.facebook.com/hershamvillagemarket/upcoming_hosted_events",
+  "status": "on",
+  "headline": "On this Friday, 23 October, 10:30am to 12 noon",
+  "detail": "The market has posted a Facebook event for Friday 23 October, 10:30am to 12 noon, at All Saints Church Hall, Queens Road. It has not posted any cancellation.",
+  "nextConfirmedDateISO": "2026-10-23",
+  "nextConfirmedDateLabel": "Friday 23 October",
+  "checkedDateISO": "2026-10-21",
+  "checkedDateLabel": "21 October 2026",
+  "sourceLabel": "Hersham Village Market on Facebook: event for Friday 23 October",
+  "sourceUrl": "https://www.facebook.com/events/1467939315523459/",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Checked Saturday 10 October 2026 at about 11:30 BST through the in-app browser, logged out, optional cookies declined. Facebook upcoming events (https://www.facebook.com/hershamvillagemarket/upcoming_hosted_events): \"No events to show\". Facebook past events (https://www.facebook.com/hershamvillagemarket/past_hosted_events) lists Fri 9 Oct (twice: events 2094289211458280 and 1861092805306317), Fri 2 Oct (983200108141707), then Fri 28 Aug back to 31 Jul. Newest Instagram post, 8 October (https://www.instagram.com/hershamvillagemarket/p/DePfQ4duW_n/): \"The Hersham Village Market is back open tomorrow, Friday 9th October, at our regular time of 10:30am – 12:00noon.\" Reel of 7 October (https://www.instagram.com/hershamvillagemarket/reel/DeNSIeQuDoz/): \"We're open again on Friday 9th October from 10.30am.\" Nothing posted yet about Friday 16 October, and no cancellation, closure, weather or car park notice."
+  "lastCheckNote": "Checked Wednesday 21 October 2026 at about 19:30 BST through the in-app browser, logged out, optional cookies declined. Facebook upcoming events (https://www.facebook.com/hershamvillagemarket/upcoming_hosted_events) lists one event: \"Fri, 23 Oct at 10:30 BST, Hersham Village Market, All Saints Church Hall, 13 Queens Road, Hersham, KT12 5LU\". The event page (https://www.facebook.com/events/1467939315523459/) reads \"Friday 23 October 2026 from 10:30-12:00 BST\", event by Hersham Village Market; its description is the market's standard welcome text, with no cancellation, closure, weather, car park or hall notice. Newest Instagram posts (https://www.instagram.com/hershamvillagemarket/): reel of 16 October (https://www.instagram.com/hershamvillagemarket/reel/DejekCiu_nx/): \"Our winning entries at this year's West End Village Show\"; product photos of 15 October; nothing about cancellation or closure."
 }
