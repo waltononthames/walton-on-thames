@@ -34,12 +34,21 @@ const PAGE_VERIFIED_DATE = '23 July 2026';
 // Only emit an Event for a specific Sunday when Apps Court Farm's own site has
 // confirmed it (nextConfirmedDateISO) and the status isn't itself in doubt, 
 // never generate schema for a guessed or unconfirmed future date.
+// Gates open 7am and the sale closes 1pm in *local* time, so the UTC offset
+// has to follow British Summer Time rather than be hardcoded: the clocks go
+// back on the last Sunday of October, which is itself a car boot Sunday.
+const londonOffset = (iso: string) =>
+  new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', timeZoneName: 'longOffset' })
+    .formatToParts(new Date(`${iso}T12:00:00Z`))
+    .find((part) => part.type === 'timeZoneName')!.value
+    .replace('GMT', '');
+
 const confirmedSubEvent = (nextConfirmedDateISO && (STATUS === 'on' || STATUS === 'off'))
   ? [{
       "@type": "Event",
       "name": `Apps Court Car Boot Sale: Sunday ${new Date(nextConfirmedDateISO).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`,
-      "startDate": `${nextConfirmedDateISO}T07:00:00+01:00`,
-      "endDate": `${nextConfirmedDateISO}T13:00:00+01:00`,
+      "startDate": `${nextConfirmedDateISO}T07:00:00${londonOffset(nextConfirmedDateISO)}`,
+      "endDate": `${nextConfirmedDateISO}T13:00:00${londonOffset(nextConfirmedDateISO)}`,
       "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "url": STATUS_SOURCE_URL,
