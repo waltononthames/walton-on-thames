@@ -4,8 +4,11 @@ Reads the car boot notice on `appscourtfarm.com/carboot` twice a day, so
 `/things-to-do/apps-court-car-boot-sale/` can say whether this Sunday's sale is
 on or off without anyone checking by hand.
 
-**This version writes nothing.** It reads, parses and reports. The write path
-is a separate change, held back until the question below is answered.
+**This version writes nothing**, and the host it was written for turned out not
+to work. Keep this directory for `parse-notice.mjs` and its tests, which are
+pure and host-agnostic; `worker.mjs` and `wrangler.deploy.toml` are kept only
+as the record of a ruled-out option. See the result below before reaching for
+them again.
 
 ## The question this exists to answer
 
@@ -21,13 +24,34 @@ Even `robots.txt` is challenged from a datacentre IP, so there is no published
 crawl policy to consult either way: the protection is blanket, not aimed at
 this.
 
-So GitHub Actions cannot host the read. A Cloudflare Worker is the next
-candidate because its requests originate inside Cloudflare's own network, and
-it needs no hardware and no third party. Whether that network is trusted by
-another Cloudflare zone's bot management is genuinely uncertain, which is why
-this is a prover rather than the finished job.
+So GitHub Actions cannot host the read. A Cloudflare Worker was the next
+candidate, because its requests originate inside Cloudflare's own network and
+it needs no hardware and no third party.
 
-## Deploying it
+## The answer: a Worker is blocked too
+
+Tested 24 October 2026 by deploying this Worker to a temporary preview account
+and calling `/?ua=both`:
+
+| User-agent | Result |
+| --- | --- |
+| `WaltonOnThamesBot/1.0` (honest) | HTTP 403, challenge interstitial, 46ms |
+| Chrome 131 (browser string) | HTTP 403, challenge interstitial, 3ms |
+
+Both rejected identically, and the browser string in 3ms — Cloudflare is not
+evaluating the agent at all, it is refusing the network. Being inside
+Cloudflare's own network confers nothing against another zone's bot
+management.
+
+**Do not retry this route.** Three hosts have now been tested and the pattern
+is consistent: residential egress works, datacentre egress does not,
+regardless of browser or user-agent.
+
+The remaining options are a machine on a residential connection (where a bare
+`curl` already works), a cloud job routed through a residential-proxy fetch
+service, or asking the farm for a feed or an allowance.
+
+## Deploying it (for the record: this route is ruled out)
 
 Needs `wrangler` authenticated against the Cloudflare account that hosts the
 site (`npx wrangler login`).
@@ -41,7 +65,7 @@ Note the explicit `--config`: the file is deliberately not called
 build the site in Workers mode and fail. See the comments in
 `wrangler.deploy.toml`.
 
-## Answering the question
+## How the question was answered
 
 The deploy prints a `*.workers.dev` URL. Then, in one request:
 
