@@ -1,0 +1,105 @@
+name: Apps Court car boot probe (report only)
+
+# A one-off diagnostic, not the scheduled check. It answers two questions that
+# have to be settled before a twice-daily job can be trusted:
+#
+#   1. Can a GitHub-hosted runner read appscourtfarm.com/carboot at all? The
+#      domain sits behind a Cloudflare challenge, and datacentre IPs are
+#      challenged far more readily than a residential browser. If this comes
+#      back challenged, the check needs to run somewhere else (a Cloudflare
+#      Worker cron is the likely plan B) and no amount of workflow polish here
+#      will help.
+#   2. Does the parser pick the right notice? The wording appears both in the
+#      weekly <main> block and in a stale site-wide announcement strip, and
+#      only the first counts.
+#
+# It writes NOTHING to main and never touches src/data/apps-court-status.json.
+# Results are force-pushed to the orphan branch `ci/apps-court-probe` so they
+# can be read with a plain `git fetch` (Cloudflare Pages only builds `main`,
+# so that branch cannot trigger a deploy).
+#
+# Delete this workflow and that branch once the real scheduled check is in.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apps-court-probe.yml'
+      - 'scripts/check-apps-court-status.mjs'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apps-court-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Installed ad hoc rather than added to package.json: the site build does
+      # not need Playwright, and the probe should not change the dependency
+      # tree of a repo that Cloudflare builds on every push.
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.49.1
+          npx playwright install --with-deps chromium
+
+      - name: Read the car boot page
+        id: read
+        run: |
+          set -o pipefail
+          node scripts/check-apps-court-status.mjs 2>&1 | tee probe-result.json
+        continue-on-error: true
+
+      - name: Summarise
+        if: always()
+        run: |
+          {
+            echo '## Apps Court car boot probe'
+            echo
+            if [ -s probe-result.json ]; then
+              echo '```json'
+              cat probe-result.json
+              echo '```'
+            else
+              echo 'The probe produced no output: the step itself failed. See the job log.'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Published to a branch because `gh` is not authenticated on the machine
+      # that needs to read this, and Actions artifacts cannot be downloaded
+      # without an authenticated API call. A branch is readable with git alone.
+      - name: Publish result to ci/apps-court-probe
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p /tmp/probe-out
+          cp probe-result.json /tmp/probe-out/ 2>/dev/null || echo 'probe produced no output' > /tmp/probe-out/probe-result.json
+          {
+            echo "run_id:      ${GITHUB_RUN_ID}"
+            echo "run_attempt: ${GITHUB_RUN_ATTEMPT}"
+            echo "commit:      ${GITHUB_SHA}"
+            echo "finished:    $(date -u +%Y-%m-%dT%H:%M:%SZ) (UTC)"
+            echo "london:      $(TZ=Europe/London date +'%Y-%m-%d %H:%M:%S %Z')"
+            echo "read_step:   ${{ steps.read.outcome }}"
+          } > /tmp/probe-out/run-metadata.txt
+
+          cd /tmp/probe-out
+          git init -q -b ci/apps-court-probe
+          git add -A
+          git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -q -m "Apps Court probe result (run ${GITHUB_RUN_ID})"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+              HEAD:refs/heads/ci/apps-court-probe
