@@ -1,0 +1,10 @@
+probe run:  2026-10-24T23:02:29Z UTC
+runner:     Linux / 68.154.116.115
+curl:       curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10
+
+http2-bot              http=403          bytes=5613     challenge=yes  notice=(none)
+http2-chrome           http=403          bytes=5657     challenge=yes  notice=(none)
+http11-bot             http=403          bytes=5613     challenge=yes  notice=(none)
+tls13-bot              http=403          bytes=5571     challenge=yes  notice=(none)
+plain-no-ua            http=403          bytes=5379     challenge=yes  notice=(none)
+with-browser-hdrs      http=403          bytes=5806     challenge=yes  notice=(none)
