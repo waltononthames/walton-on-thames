@@ -1,0 +1,18 @@
+{
+  "checkedAtISO": "2026-10-24T22:07:07.765Z",
+  "checkedLondon": "Saturday, 24 October 2026 at 23:07",
+  "sourceUrl": "https://www.appscourtfarm.com/carboot",
+  "fetchOk": true,
+  "httpStatus": 403,
+  "challenged": false,
+  "pageTitle": "Just a moment...",
+  "mainNotices": [],
+  "announcementNotices": [],
+  "verdict": "unrecognised",
+  "bannerDayOfMonth": null,
+  "bannerMonth": null,
+  "notes": [
+    "No <main> element appeared within 20s of load.",
+    "No notice matched inside <main>; verdict left unrecognised."
+  ]
+}
