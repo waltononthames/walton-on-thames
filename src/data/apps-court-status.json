@@ -1,14 +1,14 @@
 {
   "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source: the rest of this file was deliberately left untouched rather than overwritten with a guess.",
-  "status": "on",
-  "headline": "On this Sunday, 25 October 2026",
-  "detail": "Apps Court Farm's car boot page says \"THE CAR BOOT IS OPEN THIS SUNDAY\", so the sale is going ahead on Sunday 25 October 2026. Gates open at 7am for both sellers and buyers and the sale closes at 1pm; note that the clocks go back at 2am that morning, so set off by the new time. Sellers just turn up and are directed where to set up, with the pitch fee collected afterwards; buyers pay £2 per vehicle to park, collected on the way out to keep the entrance clear. Sales are weather dependent and the farm posts any bad-weather postponement at the top of its own car boot page, so it is worth a last look before you set off; you can also call 01932 244 822 for a recorded message confirming whether the sale is taking place.",
-  "nextConfirmedDateISO": "2026-10-25",
-  "nextConfirmedDateLabel": "Sunday 25 October 2026",
-  "checkedDateISO": "2026-10-21",
-  "checkedDateLabel": "21 October 2026",
+  "status": "off",
+  "headline": "Not on this Sunday, 25 October 2026",
+  "detail": "Apps Court Farm's car boot page says \"THE CAR BOOT IS CLOSED THIS SUNDAY THE 25TH\", so there is no sale on Sunday 25 October 2026. The farm gives no reason for the call-off and has not said anything about the Sundays after it, so do not assume the sale is either off or on beyond this date. Sales are weather dependent and the farm posts each week's notice at the top of its own car boot page, so check there before setting off; you can also call 01932 244 822 for a recorded message confirming whether a sale is taking place. Note too that the farm's own FAQ limits the season to \"every Sunday from early March, through to the Autumn\", so late-autumn and winter Sundays are not guaranteed even in good weather.",
+  "nextConfirmedDateISO": null,
+  "nextConfirmedDateLabel": null,
+  "checkedDateISO": "2026-10-24",
+  "checkedDateLabel": "24 October 2026",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Source read successfully on Wednesday 21 October 2026 through the Browser pane (WebFetch is Cloudflare-challenged on this domain). The in-page notice block inside <main> reads \"THE CAR BOOT IS OPEN THIS SUNDAY\", which from a Wednesday names Sunday 25 October, and the previously advertised date of 11 October has passed. There is no postponement or cancellation notice anywhere on the page, and the FAQ repeats that a sale is held every Sunday, weather permitting. Recorded for the audit trail: that banner text has been byte-identical since the farm posted it on Friday 18 September, so it carries no evidence of having been reposted for this week; it is taken at face value here on Darren's instruction, following the same decision made on 10 October. The site-wide section.announcement strip carries identical wording and was not relied on: it is a stale reusable element. The farm's Facebook page renders only a single post without a login, so it could not corroborate either way."
+  "lastCheckNote": "Source read successfully on Saturday 24 October 2026 through the Browser pane (WebFetch is Cloudflare-challenged on this domain). The in-page notice block inside <main> now reads \"THE CAR BOOT IS CLOSED THIS SUNDAY THE 25TH\". This is a real change and an unusually clear one: the previous \"THE CAR BOOT IS OPEN THIS SUNDAY\" text had been byte-identical since the farm posted it on Friday 18 September, and the new wording explicitly names the 25th, so the date it refers to is stated rather than inferred. No reason for the call-off is given anywhere on the page, and nothing on the page names any later date. On this occasion the site-wide section.announcement strip carries identical wording to the in-page block; the in-page block is what was relied on, as that strip is a stale reusable element that has in the past advertised an open sale while linking to a 2025 Christmas product. nextConfirmedDateISO and nextConfirmedDateLabel were deliberately cleared: the page's structured-data sub-Event hardcodes eventStatus EventScheduled, so keeping the 25th here would publish a cancelled sale as a scheduled one."
 }

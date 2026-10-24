@@ -528,7 +528,7 @@
   "src/data/away-guide-map.json": "2026-10-01T00:11:59+01:00",
   "src/data/away-guide-photos.ts": "2026-10-01T00:51:34+01:00",
   "src/data/gp-maps.json": "2026-09-21T22:32:38+01:00",
-  "src/data/hersham-market-status.json": "2026-10-10T12:57:44+01:00",
+  "src/data/hersham-market-status.json": "2026-10-21T23:30:13+01:00",
   "src/data/pharmacy-routes.json": "2026-09-21T14:52:41+01:00",
   "src/data/walton-areas-map.json": "2026-09-16T13:06:23+01:00",
   "src/layouts/BaseLayout.astro": "2026-09-21T01:27:13+01:00",
