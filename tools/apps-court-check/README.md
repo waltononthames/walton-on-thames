@@ -43,13 +43,38 @@ evaluating the agent at all, it is refusing the network. Being inside
 Cloudflare's own network confers nothing against another zone's bot
 management.
 
-**Do not retry this route.** Three hosts have now been tested and the pattern
-is consistent: residential egress works, datacentre egress does not,
-regardless of browser or user-agent.
+## What the zone actually weighs
 
-The remaining options are a machine on a residential connection (where a bare
-`curl` already works), a cloud job routed through a residential-proxy fetch
-service, or asking the farm for a feed or an allowance.
+Both the egress IP and the client's TLS/HTTP fingerprint. Measured, same URL,
+minutes apart:
+
+| From | Client | Result |
+| --- | --- | --- |
+| Residential | `curl`, honest `WaltonOnThamesBot/1.0` UA | **200, full page** |
+| Residential | `curl`, Chrome UA | 200, full page |
+| Residential | `curl`, **no** user-agent | 403 |
+| Residential | Node `fetch` (undici), either UA | 403, challenge |
+| GitHub runner | `curl` x6: HTTP/2, HTTP/1.1, TLS 1.3, browser headers, no UA | 403, every one |
+| GitHub runner | Real Playwright Chromium | 403 |
+| Cloudflare Worker | `fetch`, honest and browser UA | 403 |
+
+Three readings follow, and the middle one corrects an earlier note here that
+said the block was "purely IP reputation":
+
+1. **A datacentre address is refused whatever the client.** The same `curl`
+   8.5.0 build that gets 200 from a home connection gets 403 from a GitHub
+   runner. So no cloud runner can read this page directly.
+2. **The client is fingerprinted too.** Node's `fetch` is refused from the very
+   machine where `curl` succeeds, so the fetch must shell out to `curl`.
+   `fetch-page.mjs` does.
+3. **The honest user-agent is fine.** `WaltonOnThamesBot/1.0` gets 200 where an
+   absent user-agent gets 403, so nothing here needs to pretend to be a
+   browser. Keep it honest: it lets the farm allow or refuse this deliberately.
+
+**Do not retry GitHub Actions or Cloudflare Workers for the read.** What
+remains is a machine on a residential connection (where `curl` already works
+and no account is needed), a cloud job routed through a fetch service that
+egresses residentially, or asking the farm for a feed or an allowance.
 
 ## Deploying it (for the record: this route is ruled out)
 
