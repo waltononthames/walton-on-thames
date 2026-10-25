@@ -7,9 +7,7 @@
 //
 // Configuration, all optional, from the environment:
 //
-//   CARBOOT_FETCH_STRATEGY   "direct" (default) or "template"
-//   CARBOOT_FETCH_TEMPLATE   for "template": a URL with {url} and {key}
-//   CARBOOT_FETCH_KEY        the fetch service's API key
+//   CARBOOT_FETCH_STRATEGY   only "direct" is supported
 //
 // Exit codes, which is how the scheduled job decides whether to shout:
 //   0  read and understood; the status file was written or needed no change
@@ -33,7 +31,6 @@ const here = dirname(fileURLToPath(import.meta.url));
 const STATUS_PATH = resolve(here, '../../src/data/apps-court-status.json');
 
 const write = process.argv.includes('--write');
-const apiKey = process.env.CARBOOT_FETCH_KEY || '';
 
 const say = (obj) => console.log(JSON.stringify(obj, null, 2));
 
@@ -47,16 +44,15 @@ try {
 
 const fetched = await fetchPage({
   strategy: process.env.CARBOOT_FETCH_STRATEGY || 'direct',
-  template: process.env.CARBOOT_FETCH_TEMPLATE,
-  apiKey,
 });
 
 // A failed fetch is reported and stops here. The status file is left exactly
 // as it is: overwriting it with "could not check" would throw away a correct
 // conclusion in favour of no conclusion.
-if (!fetched.html) {
+if (!fetched.ok || !fetched.html) {
   say({
     result: 'unreadable',
+    attemptedAt: new Date().toISOString(),
     wrote: false,
     httpStatus: fetched.httpStatus,
     readVia: fetched.readVia,
@@ -75,11 +71,11 @@ const decision = decide({
 });
 
 const report = {
+  attemptedAt: new Date().toISOString(),
   httpStatus: fetched.httpStatus,
   bytes: fetched.bytes,
   readVia: fetched.readVia,
   verdict: parsed.verdict,
-  bannerDayOfMonth: parsed.bannerDayOfMonth,
   mainNotice: parsed.mainNotices?.[0]?.text ?? null,
   announcementNotice: parsed.announcementNotices?.[0]?.text ?? null,
   parserNotes: parsed.notes,
@@ -101,7 +97,7 @@ try {
   // Trailing newline, matching the file as committed.
   writeFileSync(STATUS_PATH, `${JSON.stringify(decision.status, null, 2)}\n`, 'utf8');
 } catch (error) {
-  say({ result: 'error', wrote: false, ...report, message: redact(error.message, apiKey) });
+  say({ result: 'error', wrote: false, ...report, message: redact(error.message) });
   process.exit(2);
 }
 

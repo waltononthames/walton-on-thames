@@ -152,6 +152,10 @@ export function resolveSourceFile(urlPath) {
 
 export function lastmodFor(fullUrl) {
   const urlPath = fullUrl.replace(/^https?:\/\/[^/]+/, '');
+  if (urlPath === '/things-to-do/apps-court-car-boot-sale/') {
+    return [gitLastModified('src/pages/things-to-do/apps-court-car-boot-sale.astro'),
+      gitLastModified('src/data/apps-court-status.json')].sort().at(-1);
+  }
   const file = resolveSourceFile(urlPath);
   if (!file) return HEAD_DATE || BUILD_DATE;
   return gitLastModified(file);

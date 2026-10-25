@@ -16,9 +16,12 @@ interface Props {
   /** Label for the source link, e.g. "Apps Court Farm, Car Boot page" */
   sourceLabel: string;
   sourceUrl: string;
+  label?: string;
+  checkedLabel?: string;
+  verifiedAt?: string;
 }
 
-const { status, headline, detail, checkedDate, sourceLabel, sourceUrl } = Astro.props;
+const { status, headline, detail, checkedDate, sourceLabel, sourceUrl, label, checkedLabel = "Checked", verifiedAt } = Astro.props;
 
 const statusMeta: Record<Props['status'], { label: string; className: string }> = {
   on: { label: 'Confirmed on', className: 'status-on' },
@@ -31,12 +34,12 @@ const statusMeta: Record<Props['status'], { label: string; className: string }> 
 const meta = statusMeta[status];
 ---
 
-<div class={`status-panel ${meta.className}`} role="note" aria-label="Latest sale status">
-  <p class="status-label">{meta.label}</p>
+<div class={`status-panel ${meta.className}`} role="note" aria-label={label ?? "Latest sale status"} data-verified-at={verifiedAt}>
+  <p class="status-label">{label ?? meta.label}</p>
   <p class="status-headline">{headline}</p>
   <p class="status-detail">{detail}</p>
   <p class="status-checked">
-    Checked {checkedDate} against <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{sourceLabel} ↗</a>
+    {checkedLabel} {checkedDate} against <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{sourceLabel} ↗</a>
   </p>
 </div>
 
