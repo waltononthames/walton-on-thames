@@ -1898,3 +1898,23 @@ Merged `main` into the branch, then ran the brief's section 14 checks; results a
 ### 21 October 2026: away fans' guide published
 
 `/walton-hersham-fc-away-fans-guide/` goes live at Darren's request, before the site visit and the remaining photographs. The routes' unwalked notes (best for, surface, lighting, after dark) became unconfirmed site-visit questions, which production hides; the directions on Darren's chosen streets are published without Sample tags. `published: "2026-10-21"` set. Fixed the publication-date regex in `check-away-guide.mjs` (it lost its escapes in Phase 6 and could never pass). Production build verified; details and the remaining checklist in `docs/away-fans-guide-qa.md`.
+
+## 25 October 2026: Apps Court automation safety work (draft, not deployed)
+
+Replaced inferred Sunday dates with an exact full-date decision rule. Added DOM
+parsing, direct-only identified fetching, rejection of HTTP failures and stale
+responses, verification timestamps separate from attempt reports, and tests
+that failed CLI checks leave the status JSON byte-for-byte unchanged. Existing
+status data was not changed or re-verified. Legacy records now render as
+unconfirmed rather than promoting an inferred date. Removed dated sub-event
+JSON-LD and labelled the panel as the last verified notice. Historical content,
+prices and venue details were not changed or claimed to be rechecked.
+
+The workflow uses Europe/London scheduling, tests and builds before writing,
+generates the sitemap manifest after its content commit, and checks the canonical
+public page after pushing. The Apps Court sitemap date now includes its status
+JSON. The implementation has not established live source access or a successful
+end-to-end publication. Cloud environment network configuration excludes the
+source and canonical site hosts; GitHub runner access remains unverified. The
+Cloudflare HTML cache rule and actual notification delivery still need checking.
+See tools/apps-court-check/README.md for activation conditions.

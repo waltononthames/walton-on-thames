@@ -4,76 +4,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import EventStatusPanel from '../../components/EventStatusPanel.astro';
 import statusData from '../../data/apps-court-status.json';
 
-// The on/off status, next confirmed date, and "checked" date below come from
-// src/data/apps-court-status.json, a daily scheduled check reads and rewrites
-// that file (never this page) so the status stays current without a code
-// change. See docs/build-log.md for how the daily check is wired up.
-const {
-  status: STATUS,
-  headline: STATUS_HEADLINE,
-  detail: STATUS_DETAIL,
-  checkedDateLabel: STATUS_CHECKED_DATE,
-  nextConfirmedDateISO,
-  sourceLabel: STATUS_SOURCE_LABEL,
-  sourceUrl: STATUS_SOURCE_URL,
-} = statusData as {
-  status: 'on' | 'off' | 'unconfirmed' | 'unavailable' | 'conflicting';
-  headline: string;
-  detail: string;
-  checkedDateLabel: string;
-  nextConfirmedDateISO: string | null;
-  sourceLabel: string;
-  sourceUrl: string;
-};
-
-// PAGE_VERIFIED_DATE covers the page's permanent editorial content (prices,
-// rules, history, contact details): it only changes on a full manual
-// re-check, unlike the daily-updated status data above.
+// Only the practical status panel is changed here; historical content keeps
+// its separate verification date. Failed checks never refresh this record.
+const record = statusData as typeof statusData & { verifiedAt?: string; eventDateISO?: string };
+const verified = Boolean(record.verifiedAt && record.eventDateISO);
+const STATUS = verified ? record.status as 'on' | 'off' : 'unconfirmed';
+const STATUS_HEADLINE = verified ? record.headline : 'Current sale date not confirmed';
+const STATUS_DETAIL = verified ? record.detail : 'Check Apps Court Farm’s official car boot page before travelling. The previous record does not contain a fully dated notice suitable for automatic confirmation.';
+const STATUS_CHECKED_DATE = record.checkedDateLabel;
+const STATUS_SOURCE_LABEL = record.sourceLabel;
+const STATUS_SOURCE_URL = record.sourceUrl;
 const PAGE_VERIFIED_DATE = '23 July 2026';
-
-// Only emit an Event for a specific Sunday when Apps Court Farm's own site has
-// confirmed it (nextConfirmedDateISO) and the status isn't itself in doubt, 
-// never generate schema for a guessed or unconfirmed future date.
-// Gates open 7am and the sale closes 1pm in *local* time, so the UTC offset
-// has to follow British Summer Time rather than be hardcoded: the clocks go
-// back on the last Sunday of October, which is itself a car boot Sunday.
-const londonOffset = (iso: string) =>
-  new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', timeZoneName: 'longOffset' })
-    .formatToParts(new Date(`${iso}T12:00:00Z`))
-    .find((part) => part.type === 'timeZoneName')!.value
-    .replace('GMT', '');
-
-const confirmedSubEvent = (nextConfirmedDateISO && (STATUS === 'on' || STATUS === 'off'))
-  ? [{
-      "@type": "Event",
-      "name": `Apps Court Car Boot Sale: Sunday ${new Date(nextConfirmedDateISO).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}`,
-      "startDate": `${nextConfirmedDateISO}T07:00:00${londonOffset(nextConfirmedDateISO)}`,
-      "endDate": `${nextConfirmedDateISO}T13:00:00${londonOffset(nextConfirmedDateISO)}`,
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "url": STATUS_SOURCE_URL,
-      "location": {
-        "@type": "Place",
-        "name": "Apps Court Farm",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Hurst Road",
-          "addressLocality": "Walton-on-Thames",
-          "addressRegion": "Surrey",
-          "postalCode": "KT12 2EG",
-          "addressCountry": "GB"
-        }
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "2",
-        "priceCurrency": "GBP",
-        "url": STATUS_SOURCE_URL,
-        "availability": "https://schema.org/InStock",
-        "validFrom": statusData.checkedDateISO
-      }
-    }]
-  : [];
+// No dated sub-event: a static build cannot reliably expire EventScheduled
+// markup when a source check or subsequent deployment fails.
 
 // Coordinates for the sidebar map embed come from the attraction record's
 // `geo` field rather than being repeated here, so the content layer stays the
@@ -188,8 +131,7 @@ const faqs = [
           "addressCountry": "GB"
         }
       },
-      "organizer": { "@type": "Organization", "name": "Apps Court Farm", "url": "https://www.appscourtfarm.com/" },
-      "subEvent": confirmedSubEvent
+      "organizer": { "@type": "Organization", "name": "Apps Court Farm", "url": "https://www.appscourtfarm.com/" }
     })} />
 
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -227,6 +169,9 @@ const faqs = [
         <p>Apps Court Car Boot Sale is one of Surrey's largest and longest-running outdoor car boot sales, held at Apps Court Farm on Hurst Road, Walton-on-Thames. It regularly attracts hundreds of sellers and thousands of buyers looking for second-hand goods, bric-a-brac and bargains, and is one of the most searched-for car boot sales near Hampton Court, Molesey and Sunbury as well as Walton itself.</p>
 
         <EventStatusPanel
+          label="Last verified notice"
+          checkedLabel={verified ? "Last successfully verified" : "Previous recorded check"}
+          verifiedAt={record.verifiedAt}
           status={STATUS}
           headline={STATUS_HEADLINE}
           detail={STATUS_DETAIL}
@@ -407,9 +352,9 @@ const faqs = [
 
         <div class="sources-block">
           <h2>Sources and last-checked information</h2>
-          <p class="table-source" style="margin-bottom: 1rem;">This page's prices, rules, contact details and history were compiled and fact-checked on {PAGE_VERIFIED_DATE}. The on/off status panel above is checked separately, automatically, once a day: see its own "Checked [date]" line for how current that specific detail is. Always confirm directly with Apps Court Farm before travelling.</p>
+          <p class="table-source" style="margin-bottom: 1rem;">This page's prices, rules, contact details and history were compiled and fact-checked on {PAGE_VERIFIED_DATE}. The status panel records a separate check of the farm’s notice. Its timestamp shows the last successful verification, not the last attempted check. Always confirm directly with Apps Court Farm before travelling.</p>
           <ul>
-            <li>Apps Court Farm (n.d.) 'Car Boot'. Available at: <a href="https://www.appscourtfarm.com/carboot" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/carboot ↗</a> (Accessed: {PAGE_VERIFIED_DATE}): times, prices, rules, FAQ; on/off status re-checked daily (see status panel).</li>
+            <li>Apps Court Farm (n.d.) 'Car Boot'. Available at: <a href="https://www.appscourtfarm.com/carboot" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/carboot ↗</a> (Accessed: {PAGE_VERIFIED_DATE}): times, prices, rules, FAQ; on/off notice checked separately (see status panel).</li>
             <li>Apps Court Farm (n.d.) 'Contact'. Available at: <a href="https://www.appscourtfarm.com/contact" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/contact ↗</a> (Accessed: {PAGE_VERIFIED_DATE}), phone and email.</li>
             <li>Apps Court Farm (n.d.) 'About'. Available at: <a href="https://www.appscourtfarm.com/about" target="_blank" rel="noopener noreferrer">https://www.appscourtfarm.com/about ↗</a> (Accessed: {PAGE_VERIFIED_DATE}), venue's own history and acreage claims.</li>
             <li>Malden, H.E. (ed.) (1911) 'Parishes: Walton on Thames', in <em>A History of the County of Surrey, Volume 3</em>. Victoria County History. Available at: <a href="https://www.british-history.ac.uk/vch/surrey/vol3/pp467-475" target="_blank" rel="noopener noreferrer">https://www.british-history.ac.uk/vch/surrey/vol3/pp467-475 ↗</a> (Accessed: {PAGE_VERIFIED_DATE}): manor history, ownership succession, 1898–99 demolition, and the 1900 urn find.</li>
