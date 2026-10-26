@@ -108,8 +108,11 @@ last reading so readers are not misled meanwhile.
 
 ## The workflow
 
-Four cron firings at 03:05, 04:05, 18:05 and 19:05 UTC; the first step keeps
-the two that are 4am and 7pm in London and discards the rest. GitHub cron is
+Two cron entries, `5 3,18` (BST) and `5 4,19` (GMT) UTC; the first step keeps
+whichever entry matches London's current offset, identified by
+`github.event.schedule` rather than by the clock when the job starts. GitHub
+delays scheduled runs, sometimes by hours: on 26 October 2026 the 19:05 firing
+started at 22:35 and an hour-of-day test discarded it as a duplicate. GitHub cron is
 UTC-only — an earlier version used a `timezone:` key on the schedule entry,
 which is not documented GitHub workflow syntax and would silently drift an hour
 every summer if ignored.
