@@ -172,12 +172,34 @@ jobs:
             node tools/apps-court-check/run-check.mjs --write | tee carboot-report.json
           fi
 
+      # On the run's own page, so a failure explains itself without anyone
+      # downloading and unzipping an artifact to find out what happened.
+      - name: Show what was read
+        if: always() && steps.config.outputs.proceed == 'true'
+        run: |
+          {
+            echo '### What the check read'
+            echo
+            if [ -s carboot-report.json ]; then
+              echo '```json'
+              cat carboot-report.json
+              echo '```'
+            else
+              echo 'The read step produced no report at all, so it failed before reaching the source.'
+              echo 'Look at the step above this one in the log.'
+            fi
+            echo
+            echo "Test suite: \`${{ steps.tests.outcome }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
       # Publishing additionally requires the tests to have passed: a read is
       # harmless, a publish from unverified code is not.
       - name: Validate the built page, then publish
+        id: publish
         if: steps.config.outputs.proceed == 'true' && inputs.dry_run != true && github.ref == 'refs/heads/main' && steps.tests.outcome == 'success'
         run: |
           set -euo pipefail
+          echo 'published=false' >> "$GITHUB_OUTPUT"
           if git diff --quiet -- src/data/apps-court-status.json; then
             echo 'The reading did not change the record; nothing to publish.'
             exit 0
@@ -201,9 +223,15 @@ jobs:
           # A concurrent change to main rejects this push. Never rebase a
           # verdict onto unseen content or force-push: a later check reads again.
           git push origin HEAD:main
+          echo 'published=true' >> "$GITHUB_OUTPUT"
 
+      # ONLY when something was actually published. Previously this ran on
+      # every non-dry run, so a correct refusal -- the farm not having posted
+      # for the coming Sunday yet, which is most weekdays -- failed the job
+      # because there was no new timestamp to look for. It would have reported
+      # a fault twice a day for the ordinary course of business.
       - name: Verify the public deployment
-        if: steps.config.outputs.proceed == 'true' && inputs.dry_run != true && github.ref == 'refs/heads/main' && steps.tests.outcome == 'success'
+        if: steps.publish.outputs.published == 'true'
         run: node tools/apps-court-check/verify-live.mjs
 
       - name: Retain the check report
