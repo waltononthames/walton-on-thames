@@ -127,9 +127,31 @@ jobs:
       - run: npm ci
         if: steps.config.outputs.proceed == 'true'
 
+      # Not allowed to abort the run. These tests guard the PUBLISH path, and
+      # a fault in them should not stop the check finding out what the farm
+      # says: on 26 October a test that asserted a now-quiet refusal still
+      # exited non-zero took down the whole scheduled job before it ever
+      # reached the source. The job still ends red (see the last step) and
+      # publishing is blocked below, but the read and its report still happen,
+      # which is what makes the failure diagnosable.
       - name: Test the refusal and publication rules
+        id: tests
         if: steps.config.outputs.proceed == 'true'
+        continue-on-error: true
         run: node --test tools/apps-court-check/*.test.mjs
+
+      # The CLI tests exercise the real run-check against a stubbed curl, so
+      # they write the status file and restore it. If that restore ever failed,
+      # the publish step below would commit a test fixture to the live site.
+      # Cheap insurance: start the real check from a pristine record.
+      - name: Discard any test writes to the status record
+        if: steps.config.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- src/data/apps-court-status.json; then
+            echo 'Status file was modified by the test run; restoring it before the real check.'
+            git checkout -- src/data/apps-court-status.json
+          fi
 
       - name: Read the official notice
         if: steps.config.outputs.proceed == 'true'
@@ -150,8 +172,10 @@ jobs:
             node tools/apps-court-check/run-check.mjs --write | tee carboot-report.json
           fi
 
+      # Publishing additionally requires the tests to have passed: a read is
+      # harmless, a publish from unverified code is not.
       - name: Validate the built page, then publish
-        if: steps.config.outputs.proceed == 'true' && inputs.dry_run != true && github.ref == 'refs/heads/main'
+        if: steps.config.outputs.proceed == 'true' && inputs.dry_run != true && github.ref == 'refs/heads/main' && steps.tests.outcome == 'success'
         run: |
           set -euo pipefail
           if git diff --quiet -- src/data/apps-court-status.json; then
@@ -179,7 +203,7 @@ jobs:
           git push origin HEAD:main
 
       - name: Verify the public deployment
-        if: steps.config.outputs.proceed == 'true' && inputs.dry_run != true && github.ref == 'refs/heads/main'
+        if: steps.config.outputs.proceed == 'true' && inputs.dry_run != true && github.ref == 'refs/heads/main' && steps.tests.outcome == 'success'
         run: node tools/apps-court-check/verify-live.mjs
 
       - name: Retain the check report
@@ -189,6 +213,13 @@ jobs:
           name: apps-court-check-${{ github.run_id }}
           path: carboot-report.json
           retention-days: 14
+
+      - name: Fail the run if the tests failed
+        if: steps.tests.outcome == 'failure'
+        run: |
+          echo 'The test suite failed. The source was still read and its report retained above,'
+          echo 'but nothing was published. Fix the tests before trusting the next publish.'
+          exit 1
 
       - name: Explain the failure
         if: failure()

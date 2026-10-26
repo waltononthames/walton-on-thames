@@ -59,9 +59,17 @@ const invoke = (temp, args = []) => spawnSync(
 );
 
 // The guarantee the whole design rests on: when the check cannot reach a sound
-// conclusion it exits non-zero AND leaves the published record byte-for-byte
-// as it was. A stale page is recoverable; telling people a cancelled sale is
-// going ahead is not.
+// conclusion it leaves the published record byte-for-byte as it was. A stale
+// page is recoverable; telling people a cancelled sale is going ahead is not.
+//
+// Note what is NOT asserted per case here: the exit code. Whether a refusal
+// also raises an alert depends on how long it has been since anything verified
+// (see decide.mjs), which is a property of the committed record's age, not of
+// the notice. Asserting an exit code for every case would make this suite fail
+// by the passage of time alone -- which it did: a stale-notice case asserted
+// exit 1, that refusal became quiet, and the suite then broke the scheduled
+// job before it could even reach the source. Exit codes are asserted below,
+// only for refusals whose alerting does not depend on the clock.
 test('failed and inconclusive checks leave published data byte-for-byte unchanged', { skip: POSIX_ONLY }, () => {
   const original = readFileSync(STATUS_PATH);
   for (const [label, http, text, exitCode] of [
@@ -73,11 +81,28 @@ test('failed and inconclusive checks leave published data byte-for-byte unchange
   ]) {
     withFakeCurl(respond(http, text), exitCode, (temp) => {
       const result = invoke(temp, ['--write']);
-      assert.equal(result.status, 1, `${label}: ${result.stderr || result.stdout}`);
       const report = JSON.parse(result.stdout);
       if (http === 200 && exitCode === 0) assertStubWasUsed(report, label);
       assert.equal(report.wrote, false, label);
+      assert.equal(report.result === 'written', false, label);
       assert.deepEqual(readFileSync(STATUS_PATH), original, `${label} must not touch the record`);
+    });
+  }
+});
+
+// An unreadable source, or one whose notice cannot be understood at all, means
+// something has broken or changed and is worth an email whatever the record's
+// age. These must always exit non-zero.
+test('unreadable and incomprehensible sources always exit non-zero', { skip: POSIX_ONLY }, () => {
+  for (const [label, http, text, exitCode] of [
+    ['source refuses the request', 403, 'THE CAR BOOT IS OPEN THIS SUNDAY', 0],
+    ['curl itself fails', 200, 'THE CAR BOOT IS OPEN THIS SUNDAY', 28],
+    ['notice carries an unknown qualification', 200, 'THE CAR BOOT IS OPEN THIS SUNDAY UNLESS WET', 0],
+    ['no notice at all', 200, 'Welcome to the farm', 0],
+  ]) {
+    withFakeCurl(respond(http, text), exitCode, (temp) => {
+      const result = invoke(temp, ['--write']);
+      assert.equal(result.status, 1, `${label}: ${result.stderr || result.stdout}`);
     });
   }
 });
