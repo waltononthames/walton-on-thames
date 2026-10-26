@@ -6,17 +6,134 @@ import statusData from '../../data/apps-court-status.json';
 
 // Only the practical status panel is changed here; historical content keeps
 // its separate verification date. Failed checks never refresh this record.
-const record = statusData as typeof statusData & { verifiedAt?: string; eventDateISO?: string };
-const verified = Boolean(record.verifiedAt && record.eventDateISO);
-const STATUS = verified ? record.status as 'on' | 'off' : 'unconfirmed';
-const STATUS_HEADLINE = verified ? record.headline : 'Current sale date not confirmed';
-const STATUS_DETAIL = verified ? record.detail : 'Check Apps Court Farm’s official car boot page before travelling. The previous record does not contain a fully dated notice suitable for automatic confirmation.';
+const record = statusData as typeof statusData & {
+  verifiedAt?: string;
+  eventDateISO?: string | null;
+  dateConfirmed?: boolean;
+  noticeText?: string;
+};
+
+// Two separate questions, which an earlier version conflated into one.
+//
+//   Did the farm give a date we could confirm?  -> record.dateConfirmed
+//   Is what we last read still worth showing?   -> how old is it
+//
+// A reading with no date from the farm is still the farm's live position and
+// worth showing; it just cannot support a date claim. Treating it as "nothing
+// known" published a sentence about our own verification pipeline instead of
+// anything a resident could use.
+// verifiedAt is the precise timestamp written by the automated check.
+// checkedDateISO is the older field, a day at a time, and is used only to age
+// the reading: a record written before verifiedAt existed should still say
+// honestly when it was last looked at rather than "not checked recently".
+const verifiedAt = record.verifiedAt ? new Date(record.verifiedAt) : null;
+const readingAt = verifiedAt && !Number.isNaN(verifiedAt.getTime())
+  ? verifiedAt
+  : (record.checkedDateISO ? new Date(`${record.checkedDateISO}T12:00:00Z`) : null);
+
+// A record from before the current schema cannot be shown as the current
+// position: it has no dateConfirmed flag, so there is no way to tell whether
+// its headline rests on a date the farm actually stated. It ages out through
+// the honest "not confirmed" presentation instead, and the first successful
+// check under the new schema replaces it.
+const currentSchema = Boolean(verifiedAt && !Number.isNaN(verifiedAt.getTime()));
+const dateConfirmed = Boolean(record.dateConfirmed && record.eventDateISO);
+
+// Age is computed at build time. The 01:00 UTC daily rebuild means this is at
+// most a day behind, which is enough to stop a long-dead check looking fresh.
+const ageDays = readingAt && !Number.isNaN(readingAt.getTime())
+  ? Math.max(0, Math.floor((Date.now() - readingAt.getTime()) / 86_400_000))
+  : null;
+
+// Eight days guarantees at least one Sunday has passed since the reading, so
+// whatever it said about "this Sunday" is certainly spent.
+const STALE_AFTER_DAYS = 8;
+const isStale = ageDays === null || ageDays >= STALE_AFTER_DAYS;
+
+// A confirmed date that has itself passed is spent regardless of age.
+const londonToday = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit',
+}).format(new Date());
+const datePassed = dateConfirmed && record.eventDateISO! < londonToday;
+
+const showAsCurrent = currentSchema && !isStale && !datePassed;
+
+const STATUS = showAsCurrent ? (record.status as 'on' | 'off') : 'unconfirmed';
+const STATUS_LABEL = showAsCurrent
+  ? (dateConfirmed
+    ? (record.status === 'on' ? 'Confirmed on' : 'Not taking place')
+    : 'Reported by the farm')
+  : 'Not confirmed for this Sunday';
+
+const agePhrase = ageDays === null
+  ? 'has not been checked recently'
+  : ageDays === 0 ? 'was checked today'
+  : ageDays === 1 ? 'was checked yesterday'
+  : `was last checked ${ageDays} days ago`;
+
+const STATUS_HEADLINE = showAsCurrent
+  ? record.headline
+  : 'Check with Apps Court Farm before you travel';
+
+// Two different reasons the position is not confirmed, and a reader deserves
+// to be told which. Either the farm has not yet said anything about the coming
+// Sunday, or nobody has managed to look for a while.
+const STATUS_DETAIL = showAsCurrent
+  ? record.detail
+  : (isStale
+    ? `This page ${agePhrase}, so nothing here can be relied on for the coming Sunday.`
+    : `Apps Court Farm has not yet posted a notice for the coming Sunday. This page ${agePhrase}.`)
+    + (record.noticeText
+      ? ` At that point the farm's page said "${record.noticeText}".`
+      : '')
+    + ' The farm posts each week’s notice at the top of its own car boot page, and 01932 244 822 has a recorded message saying whether the sale is on.';
+
 const STATUS_CHECKED_DATE = record.checkedDateLabel;
 const STATUS_SOURCE_LABEL = record.sourceLabel;
 const STATUS_SOURCE_URL = record.sourceUrl;
 const PAGE_VERIFIED_DATE = '23 July 2026';
-// No dated sub-event: a static build cannot reliably expire EventScheduled
-// markup when a source check or subsequent deployment fails.
+
+// A dated sub-event is emitted ONLY when the farm itself stated the date, the
+// check confirmed it against the calendar, and that date has not yet passed.
+// eventStatus follows the actual position rather than being hardcoded, so a
+// called-off sale is published as cancelled rather than as scheduled. An
+// undated reading emits nothing: there is no date to attach it to.
+const londonOffset = (iso: string) =>
+  new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', timeZoneName: 'longOffset' })
+    .formatToParts(new Date(`${iso}T12:00:00Z`))
+    .find((part) => part.type === 'timeZoneName')!.value
+    .replace('GMT', '') || '+00:00';
+
+const confirmedSubEvent = (showAsCurrent && dateConfirmed)
+  ? [{
+      "@type": "Event",
+      // Formatted from the date itself, not from nextConfirmedDateLabel:
+      // that field is deliberately null when the sale is off, which would
+      // otherwise publish a raw ISO date as the event's name.
+      "name": `Apps Court Car Boot Sale: ${new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+      }).format(new Date(`${record.eventDateISO}T12:00:00Z`)).replace(',', '')}`,
+      "startDate": `${record.eventDateISO}T07:00:00${londonOffset(record.eventDateISO!)}`,
+      "endDate": `${record.eventDateISO}T13:00:00${londonOffset(record.eventDateISO!)}`,
+      "eventStatus": record.status === 'on'
+        ? "https://schema.org/EventScheduled"
+        : "https://schema.org/EventCancelled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "url": record.sourceUrl,
+      "location": {
+        "@type": "Place",
+        "name": "Apps Court Farm",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Hurst Road",
+          "addressLocality": "Walton-on-Thames",
+          "addressRegion": "Surrey",
+          "postalCode": "KT12 2EG",
+          "addressCountry": "GB"
+        }
+      }
+    }]
+  : [];
 
 // Coordinates for the sidebar map embed come from the attraction record's
 // `geo` field rather than being repeated here, so the content layer stays the
@@ -131,7 +248,8 @@ const faqs = [
           "addressCountry": "GB"
         }
       },
-      "organizer": { "@type": "Organization", "name": "Apps Court Farm", "url": "https://www.appscourtfarm.com/" }
+      "organizer": { "@type": "Organization", "name": "Apps Court Farm", "url": "https://www.appscourtfarm.com/" },
+      "subEvent": confirmedSubEvent
     })} />
 
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -169,8 +287,8 @@ const faqs = [
         <p>Apps Court Car Boot Sale is one of Surrey's largest and longest-running outdoor car boot sales, held at Apps Court Farm on Hurst Road, Walton-on-Thames. It regularly attracts hundreds of sellers and thousands of buyers looking for second-hand goods, bric-a-brac and bargains, and is one of the most searched-for car boot sales near Hampton Court, Molesey and Sunbury as well as Walton itself.</p>
 
         <EventStatusPanel
-          label="Last verified notice"
-          checkedLabel={verified ? "Last successfully verified" : "Previous recorded check"}
+          label={STATUS_LABEL}
+          checkedLabel={showAsCurrent ? "Checked" : "Last checked"}
           verifiedAt={record.verifiedAt}
           status={STATUS}
           headline={STATUS_HEADLINE}

@@ -7,7 +7,9 @@
 //
 // Configuration, all optional, from the environment:
 //
-//   CARBOOT_FETCH_STRATEGY   only "direct" is supported
+//   CARBOOT_FETCH_STRATEGY   "direct" (default) or "template"
+//   CARBOOT_FETCH_TEMPLATE   for "template": a URL with {url} and {key}
+//   CARBOOT_FETCH_KEY        the fetch service's API key
 //
 // Exit codes, which is how the scheduled job decides whether to shout:
 //   0  read and understood; the status file was written or needed no change
@@ -42,8 +44,11 @@ try {
   process.exit(2);
 }
 
+const apiKey = process.env.CARBOOT_FETCH_KEY || '';
 const fetched = await fetchPage({
   strategy: process.env.CARBOOT_FETCH_STRATEGY || 'direct',
+  template: process.env.CARBOOT_FETCH_TEMPLATE,
+  apiKey,
 });
 
 // A failed fetch is reported and stops here. The status file is left exactly
@@ -77,7 +82,7 @@ const report = {
   readVia: fetched.readVia,
   verdict: parsed.verdict,
   mainNotice: parsed.mainNotices?.[0]?.text ?? null,
-  announcementNotice: parsed.announcementNotices?.[0]?.text ?? null,
+  cacheStatus: fetched.cacheStatus ?? null,
   parserNotes: parsed.notes,
   action: decision.action,
   reason: decision.reason,
@@ -97,7 +102,7 @@ try {
   // Trailing newline, matching the file as committed.
   writeFileSync(STATUS_PATH, `${JSON.stringify(decision.status, null, 2)}\n`, 'utf8');
 } catch (error) {
-  say({ result: 'error', wrote: false, ...report, message: redact(error.message) });
+  say({ result: 'error', wrote: false, ...report, message: redact(error.message, apiKey) });
   process.exit(2);
 }
 

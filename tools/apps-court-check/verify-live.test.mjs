@@ -12,7 +12,9 @@ test('deployment succeeds only when the canonical page shows this verification',
   await verifyDeployment(stamp, options(html));
   await assert.rejects(verifyDeployment(stamp, options('old cached page')));
   await assert.rejects(verifyDeployment(stamp, options(html, false)));
-  await assert.rejects(verifyDeployment(stamp, options(html + 'https://schema.org/EventScheduled')));
+  // A correctly published open Sunday legitimately carries EventScheduled;
+  // whether that markup is right is verify-built.mjs's job, before the push.
+  await verifyDeployment(stamp, options(html + 'https://schema.org/EventScheduled'));
 });
 test('failed deployment requests exhaust retries and fail visibly', async () => {
   let calls = 0;

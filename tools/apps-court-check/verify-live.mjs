@@ -13,7 +13,11 @@ export async function verifyDeployment(verifiedAt, { request = fetch, pause = se
         headers: { 'User-Agent': 'WaltonOnThamesBot/1.0 (+https://walton-on-thames.org/about/)' },
       });
       const html = await response.text();
-      if (response.ok && html.includes(expected) && !html.includes('https://schema.org/EventScheduled')) return;
+      // Only the timestamp is checked here. Whether the structured data is
+      // correct was already settled against the built HTML by
+      // verify-built.mjs before the push; a blanket ban on EventScheduled
+      // at this stage would fail every correctly published open Sunday.
+      if (response.ok && html.includes(expected)) return;
     } catch { /* bounded retry, then visible failure */ }
     if (attempt < attempts - 1) await pause(30000);
   }

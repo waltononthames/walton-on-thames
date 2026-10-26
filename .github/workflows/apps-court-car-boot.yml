@@ -1,15 +1,42 @@
 name: Apps Court car boot status
 
+# Checks whether this Sunday's car boot sale is on and commits the answer to
+# src/data/apps-court-status.json, which triggers the Pages deploy.
+#
+# IT IS DORMANT UNTIL CONFIGURED, and will say so in its own log. The farm's
+# site refuses this runner: six curl variants (HTTP/2, HTTP/1.1, TLS 1.3, full
+# browser headers, no user-agent) and a real headless Chromium were all served
+# a Cloudflare challenge from GitHub's address range, as was a Cloudflare
+# Worker. The same curl build returns 200 from a domestic connection, so the
+# zone weighs the address as well as the client fingerprint.
+#
+# Rather than fail twice a day forever, the job exits cleanly with setup
+# instructions until a fetch route is configured. The page meanwhile shows how
+# old its reading is and tells readers to check the farm's own page, so a
+# dormant job degrades honestly instead of going quiet.
+#
+# Everything here also runs unchanged from any machine on a domestic
+# connection, with no account and no third party: leave CARBOOT_FETCH_STRATEGY
+# unset and cron `node tools/apps-court-check/run-check.mjs --write`.
+
 on:
   schedule:
-    - cron: '5 4,19 * * *'
-      timezone: Europe/London
+    # GitHub cron is UTC. 4am and 7pm London are 03:00/18:00 UTC under BST and
+    # 04:00/19:00 under GMT, so all four fire and the first step discards the
+    # two that are not 4am or 7pm in London. An earlier version used a
+    # `timezone:` key on the schedule entry, which is not documented GitHub
+    # workflow syntax; if it is ignored the check drifts an hour every summer.
+    - cron: '5 3,4,18,19 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
         description: 'Read and report without publishing'
         type: boolean
         default: true
+      force_direct:
+        description: 'Try reading the source directly from the runner (expected to be refused; use to re-test whether that has changed)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -23,57 +50,156 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Is this 4am or 7pm in London?
+        id: when
+        run: |
+          set -euo pipefail
+          HOUR=$(TZ=Europe/London date +%-H)
+          echo "London time is $(TZ=Europe/London date +'%Y-%m-%d %H:%M %Z')"
+          if [ "${{ github.event_name }}" = 'workflow_dispatch' ]; then
+            echo 'Manual run: proceeding whatever the hour.'
+            echo 'proceed=true' >> "$GITHUB_OUTPUT"
+          elif [ "$HOUR" = '4' ] || [ "$HOUR" = '19' ]; then
+            echo 'proceed=true' >> "$GITHUB_OUTPUT"
+          else
+            echo "Hour is ${HOUR}: this firing is the clock-change duplicate and is skipped."
+            echo 'proceed=false' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Is a usable fetch route configured?
+        id: config
+        if: steps.when.outputs.proceed == 'true'
+        env:
+          TEMPLATE: ${{ secrets.CARBOOT_FETCH_TEMPLATE }}
+          FORCE_DIRECT: ${{ inputs.force_direct }}
+        run: |
+          set -euo pipefail
+          if [ -n "$TEMPLATE" ]; then
+            echo 'strategy=template' >> "$GITHUB_OUTPUT"
+            echo 'proceed=true' >> "$GITHUB_OUTPUT"
+          elif [ "$FORCE_DIRECT" = 'true' ]; then
+            echo 'Forcing a direct read. This is expected to be refused by Cloudflare.'
+            echo 'strategy=direct' >> "$GITHUB_OUTPUT"
+            echo 'proceed=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'proceed=false' >> "$GITHUB_OUTPUT"
+            cat <<'NOTE'
+          Not configured, so nothing was checked and nothing was published.
+
+          This runner cannot read appscourtfarm.com directly: Cloudflare serves
+          it a challenge. Measured from a GitHub runner, all of these were
+          refused -- curl over HTTP/2, HTTP/1.1 and TLS 1.3, with browser
+          headers and with none, and a real headless Chromium -- while the same
+          curl build returns 200 from a domestic connection.
+
+          Two ways to finish this off:
+
+          1. A machine on a domestic connection (a Raspberry Pi, a NAS, any
+             always-on box). No account, no third party, no monthly cost. Cron
+             `node tools/apps-court-check/run-check.mjs --write` twice a day.
+             The code needs no changes: direct is the default.
+
+          2. A fetch service that egresses residentially. Set two repository
+             secrets under Settings > Secrets and variables > Actions:
+               CARBOOT_FETCH_TEMPLATE  e.g. https://api.example.com/?api_key={key}&url={url}
+               CARBOOT_FETCH_KEY       your API key
+             {url} is required; {key} is filled from the second secret. Note
+             that this deliberately routes around protection the farm enabled.
+
+          Exiting 0: an unconfigured job should not email a failure twice a day.
+          The page itself shows how old its reading is, so readers are not
+          misled while this waits.
+          NOTE
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.config.outputs.proceed == 'true'
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
+
       - uses: actions/setup-node@v4
+        if: steps.config.outputs.proceed == 'true'
         with:
           node-version: '24'
           cache: npm
+
       - run: npm ci
-      - name: Test refusal and publication rules
+        if: steps.config.outputs.proceed == 'true'
+
+      - name: Test the refusal and publication rules
+        if: steps.config.outputs.proceed == 'true'
         run: node --test tools/apps-court-check/*.test.mjs
-      - name: Read the official notice directly
+
+      - name: Read the official notice
+        if: steps.config.outputs.proceed == 'true'
         env:
           DRY_RUN: ${{ inputs.dry_run }}
+          CARBOOT_FETCH_STRATEGY: ${{ steps.config.outputs.strategy }}
+          CARBOOT_FETCH_TEMPLATE: ${{ secrets.CARBOOT_FETCH_TEMPLATE }}
+          CARBOOT_FETCH_KEY: ${{ secrets.CARBOOT_FETCH_KEY }}
         run: |
           set -euo pipefail
+          # Exit 1 means the source could not be read or could not be
+          # understood, and that NOTHING was changed. Letting that fail the job
+          # is deliberate: the page is then older than it looks. It is never a
+          # reason to write a guess.
           if [ "$DRY_RUN" = 'true' ]; then
             node tools/apps-court-check/run-check.mjs | tee carboot-report.json
           else
             node tools/apps-court-check/run-check.mjs --write | tee carboot-report.json
           fi
-      - name: Validate and publish
-        if: inputs.dry_run != true && github.ref == 'refs/heads/main'
+
+      - name: Validate the built page, then publish
+        if: steps.config.outputs.proceed == 'true' && inputs.dry_run != true && github.ref == 'refs/heads/main'
         run: |
           set -euo pipefail
+          if git diff --quiet -- src/data/apps-court-status.json; then
+            echo 'The reading did not change the record; nothing to publish.'
+            exit 0
+          fi
+
+          # Build and check the rendered page BEFORE committing, so a bad
+          # record can never reach readers: no date the farm did not state, and
+          # no cancelled sale published as scheduled.
           npm run build
           node tools/apps-court-check/verify-built.mjs
+
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add src/data/apps-court-status.json
-          git commit -m 'Verify Apps Court official dated notice'
-          # Generate AFTER the content commit so its new date is in history.
+          git commit -m 'Update Apps Court car boot status from the official notice'
+          # Generated AFTER the content commit so its own date is in history.
           # Both commits travel in the same push; never continue on failure.
           node scripts/generate-lastmod.mjs
           git add src/data/lastmod.json
-          git diff --cached --quiet || git commit -m 'Update sitemap dates for Apps Court verification'
-          # A concurrent main change rejects this push. Never rebase a verdict
-          # onto unseen content or force-push; a later check must read again.
+          git diff --cached --quiet || git commit -m 'Update sitemap dates for Apps Court status'
+          # A concurrent change to main rejects this push. Never rebase a
+          # verdict onto unseen content or force-push: a later check reads again.
           git push origin HEAD:main
+
       - name: Verify the public deployment
-        if: inputs.dry_run != true && github.ref == 'refs/heads/main'
+        if: steps.config.outputs.proceed == 'true' && inputs.dry_run != true && github.ref == 'refs/heads/main'
         run: node tools/apps-court-check/verify-live.mjs
+
       - name: Retain the check report
-        if: always()
+        if: always() && steps.config.outputs.proceed == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: apps-court-check-${{ github.run_id }}
           path: carboot-report.json
           retention-days: 14
-      - name: Explain failure
+
+      - name: Explain the failure
         if: failure()
         run: |
-          echo '### Apps Court verification failed' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Inspect the report/logs. A failed source read publishes nothing. A failed deployment check means the public site has not been verified. Do not treat the last success timestamp as a new check.' >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo '### Apps Court check failed'
+            echo
+            echo 'Nothing was published. The status file is untouched and the page still shows its previous reading, with its age.'
+            echo
+            echo 'Download the `carboot-report.json` artifact for the exact reason. Common ones:'
+            echo '- `"result": "unreadable"` with HTTP 403 — the fetch route was refused by Cloudflare.'
+            echo '- `"action": "none"` with a reason about the date — the farm left a notice up past its Sunday. Correct behaviour; no action needed unless it persists.'
+            echo '- A failed deployment check — the commit landed but the public page has not shown it yet. Check the Pages deploy and the Cloudflare HTML cache rule.'
+          } >> "$GITHUB_STEP_SUMMARY"
