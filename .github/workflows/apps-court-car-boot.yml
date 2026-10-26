@@ -22,11 +22,18 @@ name: Apps Court car boot status
 on:
   schedule:
     # GitHub cron is UTC. 4am and 7pm London are 03:00/18:00 UTC under BST and
-    # 04:00/19:00 under GMT, so all four fire and the first step discards the
-    # two that are not 4am or 7pm in London. An earlier version used a
+    # 04:00/19:00 under GMT, so both pairs fire and the first step keeps the
+    # pair that matches London's current offset. An earlier version used a
     # `timezone:` key on the schedule entry, which is not documented GitHub
     # workflow syntax; if it is ignored the check drifts an hour every summer.
-    - cron: '5 3,4,18,19 * * *'
+    #
+    # Keep these as two separate entries: the first step tells them apart by
+    # github.event.schedule, NOT by the clock when the job starts. GitHub
+    # delays scheduled runs, sometimes by hours: on 26 October 2026 the 19:05
+    # UTC firing started at 22:35, and the old wall-clock test (hour must be 4
+    # or 19) threw it away as a duplicate, so the evening check never ran.
+    - cron: '5 3,18 * * *'   # 4am and 7pm under BST
+    - cron: '5 4,19 * * *'   # 4am and 7pm under GMT
   workflow_dispatch:
     inputs:
       dry_run:
@@ -50,19 +57,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Is this 4am or 7pm in London?
+      - name: Is this the 4am or 7pm London firing?
         id: when
+        env:
+          SCHEDULE: ${{ github.event.schedule }}
         run: |
           set -euo pipefail
-          HOUR=$(TZ=Europe/London date +%-H)
           echo "London time is $(TZ=Europe/London date +'%Y-%m-%d %H:%M %Z')"
+          # The offset decides which schedule entry is the real one, so a run
+          # GitHub started late is still kept. Only the BST/GMT pairing matters.
+          if [ "$(TZ=Europe/London date +%z)" = '+0100' ]; then WANT='5 3,18 * * *'; else WANT='5 4,19 * * *'; fi
           if [ "${{ github.event_name }}" = 'workflow_dispatch' ]; then
             echo 'Manual run: proceeding whatever the hour.'
             echo 'proceed=true' >> "$GITHUB_OUTPUT"
-          elif [ "$HOUR" = '4' ] || [ "$HOUR" = '19' ]; then
+          elif [ "$SCHEDULE" = "$WANT" ]; then
+            echo "Fired by '${SCHEDULE}', the entry for London's current offset."
             echo 'proceed=true' >> "$GITHUB_OUTPUT"
           else
-            echo "Hour is ${HOUR}: this firing is the clock-change duplicate and is skipped."
+            echo "Fired by '${SCHEDULE}', the entry for the other half of the year: skipped."
             echo 'proceed=false' >> "$GITHUB_OUTPUT"
           fi
 
