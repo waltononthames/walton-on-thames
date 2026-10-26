@@ -258,7 +258,7 @@ jobs:
             echo 'Nothing was published. The status file is untouched and the page still shows its previous reading, with its age.'
             echo
             echo 'Download the `carboot-report.json` artifact for the exact reason. Common ones:'
-            echo '- `"result": "unreadable"` with HTTP 403 — the fetch route was refused by Cloudflare.'
-            echo '- `"action": "none"` with a reason about the date — the farm left a notice up past its Sunday. Correct behaviour; no action needed unless it persists.'
-            echo '- A failed deployment check — the commit landed but the public page has not shown it yet. Check the Pages deploy and the Cloudflare HTML cache rule.'
+            echo '- `"result": "unreadable"` with HTTP 403: the fetch route was refused by Cloudflare.'
+            echo '- `"action": "none"` with a reason about the date: the farm left a notice up past its Sunday. Correct behaviour; no action needed unless it persists.'
+            echo '- A failed deployment check: the commit landed but the public page has not shown it yet. Check the Pages deploy and the Cloudflare HTML cache rule.'
           } >> "$GITHUB_STEP_SUMMARY"
