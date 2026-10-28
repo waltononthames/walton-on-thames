@@ -13,6 +13,7 @@
     "seo:validate": "node scripts/seo-validate.mjs",
     "seo:links": "node scripts/seo-links.mjs",
     "content:stale-events": "node scripts/check-stale-events.mjs",
+    "content:past-events": "node scripts/check-stale-events.mjs --all",
     "content:em-dashes": "node scripts/check-em-dashes.mjs",
     "seo:lastmod": "node scripts/generate-lastmod.mjs",
     "map:areas": "node scripts/build-areas-map.mjs",

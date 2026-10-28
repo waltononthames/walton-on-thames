@@ -13,6 +13,7 @@ npm run build    # production build → dist/ (prebuild fails the build if any [
 npm run preview  # serve dist/ locally: required to test search; astro dev has no Pagefind index, /search/ shows a graceful "not available in preview" message instead
 npm run check    # Astro type-check (run before pushing)
 npm run content:stale-events  # advisory: flags recurring events whose date has lapsed (see Content-type requirements > Events listings below)
+npm run content:past-events   # the same, plus one-off events that have finished and should be deleted
 ```
 
 ## Architecture
@@ -182,9 +183,10 @@ When a fact cannot be verified:
 **Events listings:**
 
 - Only from the automated iCal feeds or the organiser's official page
+- Every source the events refresh checks, how to fetch it, and the house policies (Love Walton-only events, courses under way, end times) are in `docs/events-sources.md`. Add new sources there. The scheduled refresh's prompt is kept in `docs/events-refresh-prompt.md`.
 - Never extrapolate recurring events ("the market runs every Saturday") without confirmation for the current period
 - **Love Walton (`lovewalton.co.uk`) is a secondary source: prefer the organiser's own page and link to Love Walton only where no primary exists.** It is an excellent discovery tool and often the only place a small event surfaces, so keep using it to *find* events, then go to the venue or organiser for the `source_url`. Where Love Walton supplies a detail the organiser's page omits (commonly a finish time), cite both and say which gave what. Two standing exceptions: Love Walton is run by Walton BID, so for events the BID itself organises (Walton Fayre, Festival of Light, Flavours of Bridge Street, the Walton Trail, Make Music Day, the Heritage Festival) it *is* the primary source; and where an organiser has no public listing at all (The Bear's quiz night, Ashley Park School's public cafe), Love Walton stays, with a sentence in the source line saying why. On which Love Walton URL to use: a **named** per-event page (`/event/flavours-of-bridge-street-2026/`) is stable and preferable, but a **numbered** one (`/event/weekly-quiz-night-28/`, `/event/baby-brunch-club-20/`) is a single occurrence of a recurring series and 302s to the site's home page once that date passes, so for recurring events link the generic `/whats-on/` instead. Check the link resolves before committing it.
-- `recurring: true` events carry one hardcoded `start`/`end` date, not a rule: once it lapses the build-time filter (correctly) drops it from "Coming Up" rather than showing anything wrong, but the listing then just goes silently invisible until a human re-dates it. Run `npm run content:stale-events` at the start of any content session to see which ones need re-checking. When you do, re-verify against the live source before bumping the date: don't just add 7 days. A term-time-only session (school library storytimes etc.) can lapse into a school holiday; check school term dates before assuming "same day next week" still holds.
+- `recurring: true` events carry one hardcoded `start`/`end` date, not a rule: once it lapses the build-time filter (correctly) drops it from "Coming Up" rather than showing anything wrong, but the listing then just goes silently invisible until a human re-dates it. Run `npm run content:stale-events` at the start of any content session to see which ones need re-checking (`npm run content:past-events` also lists finished one-off events to delete). When you do, re-verify against the live source before bumping the date: don't just add 7 days. A term-time-only session (school library storytimes etc.) can lapse into a school holiday; check school term dates before assuming "same day next week" still holds.
 
 **Practical information (transport, parking, amenities):**
 
