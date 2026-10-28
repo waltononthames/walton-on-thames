@@ -55,7 +55,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Is this the 4am or 7pm London firing?
         id: when
@@ -267,7 +267,11 @@ jobs:
           {
             echo '### Apps Court check failed'
             echo
-            echo 'Nothing was published. The status file is untouched and the page still shows its previous reading, with its age.'
+            if [ "${{ steps.publish.outputs.published }}" = 'true' ]; then
+              echo 'The new reading WAS published to main, but the public page did not show it within about 10 minutes. Check the Pages deploy and the Cloudflare HTML cache rule before assuming anything is wrong with the reading.'
+            else
+              echo 'Nothing was published. The status file is untouched and the page still shows its previous reading, with its age.'
+            fi
             echo
             echo 'Download the `carboot-report.json` artifact for the exact reason. Common ones:'
             echo '- `"result": "unreadable"` with HTTP 403: the fetch route was refused by Cloudflare.'
