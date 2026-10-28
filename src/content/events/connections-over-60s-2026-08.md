@@ -1,8 +1,8 @@
 ---
 title: "Connections: Over-60s Social"
 slug: "connections-over-60s-2026-08"
-start: "2026-10-10T12:00:00"
-end: "2026-10-10T13:30:00"
+start: "2026-11-14T12:00:00"
+end: "2026-11-14T13:30:00"
 venue: "St Mary's Church Hall, Church Street, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "community"
