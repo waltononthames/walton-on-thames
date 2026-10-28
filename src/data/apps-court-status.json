@@ -1,14 +1,18 @@
 {
-  "$schema": "Fields written and read by src/pages/things-to-do/apps-court-car-boot-sale.astro and the daily status-check routine. lastCheckSucceeded=false means the previous automated run could not confidently read the source: the rest of this file was deliberately left untouched rather than overwritten with a guess.",
-  "status": "unconfirmed",
-  "headline": "Not confirmed for Sunday 1 November 2026",
-  "detail": "Apps Court Farm's car boot page has not yet said whether there is a sale on Sunday 1 November 2026. Its notice still reads \"THE CAR BOOT IS CLOSED THIS SUNDAY THE 25TH\", which refers to last Sunday, 25 October. Sales are weather dependent and the farm posts each week's notice at the top of its own car boot page, so check Apps Court Farm's car boot page or call 01932 244 822 for the recorded message before travelling. When a sale is on, gates open at 7am for sellers and buyers, it closes at 1pm, sellers just turn up, and buyer parking is £2, collected on the way out. The farm's own FAQ limits the season to \"every Sunday from early March, through to the Autumn\", so late-autumn and winter Sundays are not guaranteed even in good weather.",
+  "$schema": "Last successfully verified notice. Failed attempts are reported outside this file and never advance verifiedAt.",
+  "status": "on",
+  "headline": "Apps Court Farm says the sale is on this Sunday",
+  "detail": "Apps Court Farm's car boot page says \"THE CAR BOOT IS OPEN THIS SUNDAY\". Gates open at 7am for sellers and buyers and the sale closes at 1pm. Sellers turn up without booking; buyers pay £2 per vehicle to park, collected on the way out. The farm's notice does not say which Sunday it refers to, and it has in the past been left unchanged for several weeks, so please confirm on the farm's own page or by calling 01932 244 822 before travelling.",
   "nextConfirmedDateISO": null,
   "nextConfirmedDateLabel": null,
-  "checkedDateISO": "2026-10-27",
-  "checkedDateLabel": "27 October 2026",
+  "checkedDateISO": "2026-10-28",
+  "checkedDateLabel": "28 October 2026 at 17:51 GMT",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Source read successfully on Tuesday 27 October 2026 via WebFetch (HTTP 200, not a challenge page), on a manual retry after the 04:05 scheduled attempt failed because the fetch permission request was not answered in time. The in-page notice still reads \"THE CAR BOOT IS CLOSED THIS SUNDAY THE 25TH\", unchanged since 24 October; it names the 25th explicitly, so it refers to Sunday 25 October 2026, which has passed. Nothing on the page names Sunday 1 November or any later date, and there is no season-end or winter-break announcement. The confirmed date having passed, status was set to unconfirmed and visitors are pointed to the farm's own page and recorded message. The site-wide announcement strip carries the same wording and was not relied on."
+  "lastCheckNote": "Verified 2026-10-28T17:51:45.560Z via a configured fetch service. The notice carries no date, so no date is published and no dated structured data is emitted. Authoritative notice: THE CAR BOOT IS OPEN THIS SUNDAY",
+  "noticeText": "THE CAR BOOT IS OPEN THIS SUNDAY",
+  "dateConfirmed": false,
+  "eventDateISO": null,
+  "verifiedAt": "2026-10-28T17:51:45.560Z"
 }
