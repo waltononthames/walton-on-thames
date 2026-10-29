@@ -10,14 +10,14 @@
 //
 // Runs after every build (postbuild) and on demand with
 // `npm run seo:meta-descriptions` (build first: this reads dist/). It never
-// fails the build: a 105-character description is not worth blocking the
+// fails the build: a 130-character description is not worth blocking the
 // 01:00 rebuild over. Pages marked noindex are skipped, since search engines
 // never show them.
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const DIST = 'dist';
-const MIN = 110;
+const MIN = 140;
 const MAX = 160;
 
 if (!existsSync(DIST)) {

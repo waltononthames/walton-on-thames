@@ -8,7 +8,7 @@ neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: false
 price: "Free admission"
-description: "Thames Valley Contemporary Textiles show mixed media and textile work inspired by personal and cultural connections to an artefact, in the Robert Phillips Gallery."
+description: "Thames Valley Contemporary Textiles show mixed media and textile work inspired by personal and cultural connections to an artefact."
 source_url: "https://www.riverhousebarn.co.uk/events/175079"
 ---
 
