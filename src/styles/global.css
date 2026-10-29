@@ -261,6 +261,65 @@ img {
   overflow: hidden;
 }
 
+/* Event category accents (EventRow, EventCard): all dark enough for label
+   text to pass AA on white. Unlisted categories fall back to slate. */
+.cat-arts       { --cat: #7A3E8E; }
+.cat-music      { --cat: #A23B5A; }
+.cat-family     { --cat: #1F6F62; }
+.cat-community  { --cat: #2F5D8A; }
+.cat-market     { --cat: #85561C; }
+.cat-food-drink { --cat: #A0461F; }
+.cat-festival   { --cat: var(--color-accent-dark); }
+.cat-sport      { --cat: #2E6B2E; }
+
+/* Event date tile: stands in for the photo events never have */
+.date-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;
+  width: 4.25rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-cream);
+  border: 1px solid rgba(11, 36, 46, 0.1);
+  line-height: 1;
+  text-align: center;
+}
+
+.date-tile .tile-top {
+  width: 100%;
+  padding: 0.3rem 0;
+  background: var(--cat, var(--color-slate));
+  color: var(--color-white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.date-tile .tile-day {
+  padding-top: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.date-tile .tile-month {
+  padding: 0.15rem 0 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-slate);
+}
+
+.badge-free {
+  background: rgba(31, 111, 98, 0.12);
+  color: #1F6F62;
+}
+
 /* Badge */
 .badge {
   display: inline-block;

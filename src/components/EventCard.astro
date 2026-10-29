@@ -1,5 +1,6 @@
 ---
-import { formatEventDate, formatEventTime } from '../utils/eventDates';
+import { formatEventDate, formatEventTime, isMultiDay } from '../utils/eventDates';
+import { dateTile, shortVenue, isFreePrice, showPrice, categoryLabel } from '../utils/eventDisplay';
 
 interface Props {
   title: string;
@@ -15,32 +16,69 @@ interface Props {
 
 const { title, slug, start, end, venue, category, price, image, description } = Astro.props;
 
-const dateStr = formatEventDate(start, end, 'short');
+const multiDay = isMultiDay(start, end);
+// A run already under way at build time is better described by when it ends.
+const now = new Date();
+const todayKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+const ongoing = multiDay && start.slice(0, 10) <= todayKey;
+const tile = dateTile(ongoing ? end! : start, ongoing);
+
 const timeStr = formatEventTime(start, end);
-const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+const whenStr = multiDay
+  ? (ongoing ? `Until ${formatEventDate(end!, null, 'short')}` : formatEventDate(start, end, 'short'))
+  : timeStr;
 ---
 
-<a href={`/whats-on/${slug}/`} class="card event-card">
-  {image
-    ? <img class="card-image" src={image} alt={title} loading="lazy" />
-    : <div class="card-image-placeholder" aria-hidden="true">📅</div>
-  }
+<a href={`/whats-on/${slug}/`} class={`card event-card cat-${category}`}>
+  {image && <img class="card-image" src={image} alt={title} loading="lazy" />}
   <div class="card-body">
-    <span class="card-category">{categoryLabel}</span>
-    <h3 class="card-title">{title}</h3>
+    <div class="event-card-head">
+      <div class="date-tile" aria-hidden="true">
+        <span class="tile-top">{tile.top}</span>
+        <span class="tile-day">{tile.day}</span>
+        <span class="tile-month">{tile.month}</span>
+      </div>
+      <div class="event-card-heading">
+        <span class="card-category">{categoryLabel(category)}</span>
+        <h3 class="card-title">{title}</h3>
+      </div>
+    </div>
     {description && <p class="card-description">{description}</p>}
     <div class="event-meta">
-      <span class="event-date">{dateStr}{timeStr ? ` · ${timeStr}` : ''}</span>
-      <span class="event-venue">{venue}</span>
-      <span class="badge badge-accent">{price}</span>
+      <span class="sr-only">{formatEventDate(start, end, 'long')}{timeStr && !multiDay ? `, ${timeStr}` : ''}. </span>
+      {whenStr && <span class="event-date" aria-hidden="true">{whenStr}</span>}
+      <span class="event-venue">{shortVenue(venue)}</span>
+      {showPrice(price) && <span class:list={['badge', isFreePrice(price) ? 'badge-free' : 'badge-accent']}>{price}</span>}
     </div>
   </div>
 </a>
 
 <style>
+  .event-card {
+    border-top: 4px solid var(--cat, var(--color-slate));
+  }
+
+  .event-card-head {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .event-card-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+  }
+
+  .event-card .card-category {
+    color: var(--cat, var(--color-slate));
+  }
+
   .event-meta {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.25rem;
     margin-top: auto;
   }
@@ -54,5 +92,9 @@ const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUppe
   .event-venue {
     font-size: 0.8rem;
     color: var(--color-slate);
+  }
+
+  .event-meta .badge {
+    margin-top: 0.25rem;
   }
 </style>
