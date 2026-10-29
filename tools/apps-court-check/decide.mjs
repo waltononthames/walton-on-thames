@@ -200,7 +200,7 @@ export function decide({ parsed, now, current, readVia = 'a direct fetch' }) {
 
   const caution = dateConfirmed
     ? 'Sales are weather dependent and can be called off at short notice, so it is worth a last look at the farm\'s page before you set off. You can also call 01932 244 822 for a recorded message.'
-    : 'The farm\'s notice does not say which Sunday it refers to, and it has in the past been left unchanged for several weeks, so please confirm on the farm\'s own page or by calling 01932 244 822 before travelling.';
+    : 'Please confirm on the Apps Court page or by calling 01932 244822 before travelling.';
 
   const status = {
     ...current,
