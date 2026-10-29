@@ -1,0 +1,201 @@
+---
+// One row of the What's On listing. Events never have photos, so the date
+// tile does the work an image would: it is what people scan for, and each
+// row's tile differs, so the list never looks like a wall of placeholders.
+import { formatEventDate, formatEventTime, isMultiDay } from '../utils/eventDates';
+import { dateTile, shortVenue, isFreePrice, showPrice, categoryLabel } from '../utils/eventDisplay';
+
+interface Props {
+  title: string;
+  slug: string;
+  start: string;
+  end?: string;
+  venue: string;
+  category: string;
+  price: string;
+  description?: string;
+  recurring?: boolean;
+  /** Football fixtures: one line, no description */
+  compact?: boolean;
+  /** Already running at build time: the tile shows when it ends, not when it began */
+  ongoing?: boolean;
+}
+
+const { title, slug, start, end, venue, category, price, description, recurring, compact, ongoing } = Astro.props;
+
+const multiDay = isMultiDay(start, end);
+const tile = dateTile(ongoing && end ? end : start, ongoing);
+
+const timeStr = formatEventTime(start, end);
+const whenStr = multiDay
+  ? (ongoing ? `Until ${formatEventDate(end!, null, 'short')}` : formatEventDate(start, end, 'short'))
+  : timeStr;
+
+const isFree = isFreePrice(price);
+---
+
+<a
+  href={`/whats-on/${slug}/`}
+  class:list={['event-row', `cat-${category}`, { 'is-compact': compact }]}
+  data-event-row
+  data-start={start.slice(0, 10)}
+  data-end={(end ?? start).slice(0, 10)}
+  data-category={category}
+  data-free={isFree ? 'true' : undefined}
+>
+  <div class="date-tile" aria-hidden="true">
+    <span class="tile-top">{tile.top}</span>
+    <span class="tile-day">{tile.day}</span>
+    <span class="tile-month">{tile.month}</span>
+  </div>
+  <div class="row-body">
+    <div class="row-tags">
+      <span class="row-category">{categoryLabel(category)}</span>
+      {recurring && <span class="row-pill">Regular</span>}
+      <span class="row-pill row-pill-soon" data-soon hidden></span>
+    </div>
+    <h3 class="row-title">{title}</h3>
+    <p class="row-meta">
+      <span class="sr-only">{formatEventDate(start, end, 'long')}{timeStr && !multiDay ? `, ${timeStr}` : ''}. </span>
+      {whenStr && <span class="row-when" aria-hidden="true">{whenStr}</span>}
+      <span class="row-venue">{shortVenue(venue)}</span>
+    </p>
+    {!compact && description && <p class="row-description">{description}</p>}
+  </div>
+  {showPrice(price) && <span class:list={['row-price', { 'is-free': isFree }]}>{price}</span>}
+</a>
+
+<style>
+  .event-row {
+    display: grid;
+    grid-template-columns: 4.25rem 1fr auto;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.1rem 1.25rem 1.1rem 1rem;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--cat, var(--color-slate));
+    box-shadow: var(--shadow-card);
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .event-row:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-1px);
+    color: inherit;
+  }
+
+  .event-row:hover .row-title { text-decoration: underline; text-underline-offset: 3px; }
+
+  .event-row:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .row-body {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .row-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .row-category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cat, var(--color-slate));
+  }
+
+  .row-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(11, 36, 46, 0.07);
+    color: var(--color-slate);
+  }
+
+  .row-pill-soon {
+    background: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  .row-pill[hidden] { display: none; }
+
+  .row-title {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .row-meta {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-slate);
+  }
+
+  .row-when {
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .row-description {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: 70ch;
+  }
+
+  .row-price {
+    align-self: center;
+    max-width: 14rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    background: rgba(11, 36, 46, 0.06);
+    color: var(--color-navy);
+  }
+
+  .row-price.is-free {
+    background: rgba(31, 111, 98, 0.12);
+    color: #1F6F62;
+  }
+
+  .is-compact { padding-block: 0.75rem; }
+  .is-compact .date-tile { transform: scale(0.85); transform-origin: top center; }
+  .is-compact .row-title { font-size: 1.05rem; }
+
+  @media (max-width: 640px) {
+    .event-row {
+      grid-template-columns: 3.5rem 1fr;
+      gap: 0.9rem;
+      padding: 0.9rem 0.9rem 0.9rem 0.75rem;
+    }
+
+    .date-tile { width: 3.5rem; }
+    .date-tile .tile-day { font-size: 1.4rem; }
+    .row-title { font-size: 1.05rem; }
+
+    .row-price {
+      grid-column: 2;
+      justify-self: start;
+      margin-top: -0.6rem;
+    }
+  }
+</style>
