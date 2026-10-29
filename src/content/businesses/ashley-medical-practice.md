@@ -17,7 +17,7 @@ hours:
   fri: "8:30am–6pm"
   sat: "Closed"
   sun: "Closed"
-description: "NHS GP practice on Crutchfield Lane, Walton-on-Thames: opening times, how appointments and repeat prescriptions work, registration links, bus stops and nearby pharmacies."
+description: "NHS GP practice on Crutchfield Lane, Walton-on-Thames: opening times, appointments, repeat prescriptions, registration, bus stops and nearby pharmacies."
 images: []
 featured: false
 verified_date: "2026-09-21"

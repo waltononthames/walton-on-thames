@@ -2,9 +2,9 @@
 // September 2026 report: 50 listing and event URLs), and Google truncates
 // anything much past 160 characters. Many listing and event descriptions are
 // a single short sentence written for the page body, so the <meta> tag tops
-// them up with facts the page already shows (address, date, venue), never
+// them up to 140-160 characters with facts the page already shows (address, date, venue), never
 // with new claims.
-const TARGET_MIN = 120;
+const TARGET_MIN = 140;
 const MAX = 160;
 
 function asSentence(text: string): string {
@@ -16,7 +16,7 @@ type Extra = string | null | undefined | false;
 
 /**
  * Appends each extra sentence in order while the result stays within 160
- * characters, stopping once it reaches 120. An extra given as an array is a
+ * characters, stopping once it reaches 140. An extra given as an array is a
  * list of fallbacks, longest first: the first one that fits is used. An extra
  * that cannot fit at all is skipped, so a later, shorter one still can. A
  * base that is already long enough is returned unchanged.

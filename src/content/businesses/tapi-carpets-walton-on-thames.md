@@ -9,7 +9,7 @@ lat: 51.3851
 lng: -0.4201
 phone: "01932 687670"
 website: "https://www.tapi.co.uk/"
-description: "Tapi Carpets & Floors showroom in The Heart Shopping Centre, selling carpet, vinyl, laminate, luxury vinyl tiles and engineered wood flooring, with home measuring and fitting."
+description: "Tapi Carpets & Floors in The Heart Shopping Centre: carpet, vinyl, laminate, luxury vinyl tiles and engineered wood flooring, with home measuring and fitting."
 images: []
 featured: false
 verified_date: "2026-09-15"

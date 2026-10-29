@@ -17,7 +17,7 @@ hours:
   fri: "8am–6:30pm"
   sat: "Closed"
   sun: "Closed"
-description: "NHS GP practice on Pleasant Place, Hersham, near Hersham Green: opening times, registration links, parking as listed by the NHS, bus stops and nearby pharmacies."
+description: "NHS GP practice on Pleasant Place, Hersham, near Hersham Green: opening times, registration links, NHS-listed parking, bus stops and nearby pharmacies."
 images: []
 featured: false
 verified_date: "2026-09-21"

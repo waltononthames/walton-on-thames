@@ -8,7 +8,7 @@ neighbourhood: "walton-on-thames"
 category: "family"
 recurring: false
 price: "Free admission"
-description: "Bell Farm Primary School's first public art exhibition, showing work by pupils from every year group in the Robert Phillips Gallery over Christmas and the new year."
+description: "Bell Farm Primary School's first public art exhibition, with work by pupils from every year group, in the Robert Phillips Gallery over Christmas and new year."
 source_url: "https://www.riverhousebarn.co.uk/events/179359"
 ---
 
