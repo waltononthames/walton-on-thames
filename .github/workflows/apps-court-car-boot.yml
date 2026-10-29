@@ -55,7 +55,8 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Room for the ~20-minute live deployment check on top of the read and build.
+    timeout-minutes: 35
     steps:
       - name: Is this the 4am or 7pm London firing?
         id: when
@@ -268,7 +269,7 @@ jobs:
             echo '### Apps Court check failed'
             echo
             if [ "${{ steps.publish.outputs.published }}" = 'true' ]; then
-              echo 'The new reading WAS published to main, but the public page did not show it within about 10 minutes. Check the Pages deploy and the Cloudflare HTML cache rule before assuming anything is wrong with the reading.'
+              echo 'The new reading WAS published to main, but the public page did not show it within about 20 minutes. Check the Pages deploy and the Cloudflare HTML cache rule before assuming anything is wrong with the reading.'
             else
               echo 'Nothing was published. The status file is untouched and the page still shows its previous reading, with its age.'
             fi

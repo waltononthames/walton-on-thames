@@ -3,10 +3,11 @@
 import { readFileSync } from 'node:fs';
 import { setTimeout } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
-// 20 tries 30s apart, about 10 minutes. 10 was not enough: on 28 October 2026
-// the Pages deploy reached readers just after a 4.5-minute window closed, and
-// a correct publish was reported as a failure.
-export async function verifyDeployment(verifiedAt, { request = fetch, pause = setTimeout, attempts = 20 } = {}) {
+// 40 tries 30s apart, about 20 minutes. Shorter windows kept failing correct
+// publishes: on 28 October 2026 the Pages deploy reached readers just after a
+// 4.5-minute window closed, and on 29 October a 23:09 UTC push was still not
+// live when a 10-minute window closed but was by 23:25.
+export async function verifyDeployment(verifiedAt, { request = fetch, pause = setTimeout, attempts = 40 } = {}) {
   if (!verifiedAt) throw new Error('No successful verification timestamp to verify.');
   const expected = `data-verified-at="${verifiedAt}"`;
   for (let attempt = 0; attempt < attempts; attempt++) {
