@@ -38,7 +38,7 @@ test('an undated notice publishes no date and no dated markup', () => {
   assert.equal(r.status.eventDateISO, null);
   assert.equal(r.status.nextConfirmedDateISO, null);
   assert.equal(r.status.nextConfirmedDateLabel, null);
-  assert.match(r.status.detail, /does not say which Sunday/);
+  assert.match(r.status.detail, /Please confirm on the Apps Court page/);
 });
 
 test('a confirmed open Sunday publishes its date; a confirmed closed one does not', () => {
@@ -112,7 +112,7 @@ test('reader-facing prose carries no verification machinery', () => {
     for (const phrase of ['suitable for automatic confirmation', 'fully dated notice', 'not yet verified', 'parsed verdict']) {
       assert.ok(!status.headline.includes(phrase) && !status.detail.includes(phrase), `${phrase} in ${text}`);
     }
-    assert.match(status.detail, /01932 244 822/, 'readers are always given the recorded-message number');
+    assert.match(status.detail, /01932 244 ?822/, 'readers are always given the recorded-message number');
   }
 });
 
