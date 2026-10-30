@@ -1918,3 +1918,7 @@ end-to-end publication. Cloud environment network configuration excludes the
 source and canonical site hosts; GitHub runner access remains unverified. The
 Cloudflare HTML cache rule and actual notification delivery still need checking.
 See tools/apps-court-check/README.md for activation conditions.
+
+## 30 October 2026: Hersham station, first photographs
+
+Two of Darren's photographs, taken 29 October 2026, added to /hersham-railway-station/: the street-level entrance at night (below the introduction, also the page's social image) and the covered stairs up to the platform (Accessibility section, beside the no-lift statement). Resized to WebP (1400 by 1050 and 1000 by 1333) to match the Walton-on-Thames station page; the parked car's number plate is pixelated in both. Captions and alt text describe only what is visible; the photographs don't establish which road or platform they show, so neither is named.
