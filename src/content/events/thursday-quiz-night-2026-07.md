@@ -1,8 +1,7 @@
 ---
 title: "Thursday Quiz Night at The Walton Village"
 slug: "thursday-quiz-night-2026-07"
-start: "2026-10-29T19:45:00"
-end: "2026-10-29T22:00:00"
+start: "2026-11-05T19:45:00"
 venue: "The Walton Village, 29 High Street, Walton-on-Thames, KT12 1DG"
 neighbourhood: "walton-on-thames"
 category: "community"
