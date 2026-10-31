@@ -13,6 +13,7 @@ import groundStand from '../assets/away-guide/af-ground-main-stand-landscape.jpg
 import faqsFloodlights from '../assets/away-guide/af-faqs-floodlights-landscape.jpg';
 import historyHub from '../assets/away-guide/af-history-sports-hub-landscape.jpg';
 import venueSwan from '../assets/away-guide/af-venue-the-swan-landscape.jpg';
+import venueAnglers from '../assets/away-guide/af-venue-the-anglers-landscape.jpg';
 import riverManorRoad from '../assets/away-guide/af-walk-river-step06-landscape.jpg';
 
 export interface AwayPhoto {
@@ -58,5 +59,20 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
   'af-venue-the-swan': {
     landscape: venueSwan,
     alt: 'The Swan on Manor Road, a long cream-painted pub with timber framing, a tiled turret and its hanging sign, cars parked along the front',
+  },
+  'af-venue-the-anglers': {
+    landscape: venueAnglers,
+    alt: 'The Anglers, a white-painted riverside pub, with picnic tables either side of the Thames towpath and the river on the left',
+  },
+  // The same photograph: the shot list asks for the spot where Manor Road
+  // meets the river with The Anglers beside you, which is this view.
+  'af-walk-river-step07': {
+    landscape: venueAnglers,
+    alt: 'The Thames towpath running past The Anglers, with the river on the left and the path heading downstream',
+  },
+  // The same photograph as the river walk's Manor Road step.
+  'af-venue-old-manor-inn': {
+    landscape: riverManorRoad,
+    alt: 'The Old Manor Inn on Manor Road, a white-painted corner pub with picnic tables on the paved forecourt',
   },
 };

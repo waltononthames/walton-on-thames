@@ -81,6 +81,7 @@ Supplied in chat by Darren, cut with Pillow (metadata stripped, GPS included). P
 
 | File | Slot | Crop |
 |---|---|---|
-| Old Manor Inn, Manor Road (chat upload, 2576 by 1932) | af-walk-river-step06 | 3:2 strip, 150 px off the top and 65 px off the bottom. The Audi's number plate on the right is blurred. A Halloween board dated Sat 31 Oct stands on the forecourt |
+| Old Manor Inn, Manor Road (chat upload, 2576 by 1932) | af-walk-river-step06 and af-venue-old-manor-inn | 3:2 strip, 150 px off the top and 65 px off the bottom. The Audi's number plate on the right is blurred. A Halloween board dated Sat 31 Oct stands on the forecourt |
 | The Swan, Manor Road (chat upload, 2576 by 1932) | af-venue-the-swan | 3:2 strip, 120 px off the top and 95 px off the bottom. Three readable number plates blurred |
+| The Anglers (chat upload, 2576 by 1932) | af-venue-the-anglers and af-walk-river-step07 | 3:2 strip, 215 px of sky off the top. No plates or recognisable people. One file serves both slots |
 
