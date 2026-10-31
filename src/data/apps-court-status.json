@@ -5,14 +5,14 @@
   "detail": "Apps Court Farm's car boot page says \"THE CAR BOOT IS OPEN THIS SUNDAY\". Gates open at 7am for sellers and buyers and the sale closes at 1pm. Sellers turn up without booking; buyers pay £2 per vehicle to park, collected on the way out. Please confirm on the Apps Court page or by calling 01932 244822 before travelling.",
   "nextConfirmedDateISO": null,
   "nextConfirmedDateLabel": null,
-  "checkedDateISO": "2026-10-30",
-  "checkedDateLabel": "30 October 2026 at 22:50 GMT",
+  "checkedDateISO": "2026-10-31",
+  "checkedDateLabel": "31 October 2026 at 10:15 GMT",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Verified 2026-10-30T22:50:54.838Z via a configured fetch service. The notice carries no date, so no date is published and no dated structured data is emitted. Authoritative notice: THE CAR BOOT IS OPEN THIS SUNDAY",
+  "lastCheckNote": "Verified 2026-10-31T10:15:02.634Z via a configured fetch service. The notice carries no date, so no date is published and no dated structured data is emitted. Authoritative notice: THE CAR BOOT IS OPEN THIS SUNDAY",
   "noticeText": "THE CAR BOOT IS OPEN THIS SUNDAY",
   "dateConfirmed": false,
   "eventDateISO": null,
-  "verifiedAt": "2026-10-30T22:50:54.838Z"
+  "verifiedAt": "2026-10-31T10:15:02.634Z"
 }
