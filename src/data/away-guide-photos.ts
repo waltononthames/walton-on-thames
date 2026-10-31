@@ -12,6 +12,7 @@ import openingPortrait from '../assets/away-guide/af-opening-floodlights-portrai
 import groundStand from '../assets/away-guide/af-ground-main-stand-landscape.jpg';
 import faqsFloodlights from '../assets/away-guide/af-faqs-floodlights-landscape.jpg';
 import historyHub from '../assets/away-guide/af-history-sports-hub-landscape.jpg';
+import venueSwan from '../assets/away-guide/af-venue-the-swan-landscape.jpg';
 import riverManorRoad from '../assets/away-guide/af-walk-river-step06-landscape.jpg';
 
 export interface AwayPhoto {
@@ -53,5 +54,9 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
   'af-walk-river-step06': {
     landscape: riverManorRoad,
     alt: 'The Old Manor Inn on Manor Road, a white-painted corner pub with picnic tables on the paved forecourt',
+  },
+  'af-venue-the-swan': {
+    landscape: venueSwan,
+    alt: 'The Swan on Manor Road, a long cream-painted pub with timber framing, a tiled turret and its hanging sign, cars parked along the front',
   },
 };

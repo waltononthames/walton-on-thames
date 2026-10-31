@@ -77,9 +77,10 @@ Not used: `pitch` (children's faces behind the goal), `sept-26-1` and `sept-26` 
 
 ## Photos in place (31 October 2026)
 
-Supplied in chat by Darren, cut with Pillow (metadata stripped, GPS included).
+Supplied in chat by Darren, cut with Pillow (metadata stripped, GPS included). Pub photos use a new slot type, `af-venue-<venue slug>` (venue file name in `src/content/away-guide/venues/`), shown at the top of that venue's card; a venue without one shows no photo and no placeholder.
 
 | File | Slot | Crop |
 |---|---|---|
 | Old Manor Inn, Manor Road (chat upload, 2576 by 1932) | af-walk-river-step06 | 3:2 strip, 150 px off the top and 65 px off the bottom. The Audi's number plate on the right is blurred. A Halloween board dated Sat 31 Oct stands on the forecourt |
+| The Swan, Manor Road (chat upload, 2576 by 1932) | af-venue-the-swan | 3:2 strip, 120 px off the top and 95 px off the bottom. Three readable number plates blurred |
 
