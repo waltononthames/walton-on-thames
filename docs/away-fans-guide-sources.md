@@ -27,8 +27,8 @@ Ask Walton & Hersham FC, for example through ticketing@waltonhershamfc.com (the 
 
 1. **Walk both routes** and confirm each step's wording and position, then set `placeholder: false` in `src/content/away-guide/routes/road.yaml` and `towpath.yaml`.
 2. **Lighting.** Which parts of each route are lit after dark? OpenStreetMap tags most of the Thames Path between Manor Road and Waterside Drive `lit=no`; that is a lead, not a fact. *Towpath answered 31 October 2026 (Darren, site visit): no lighting. The road route is still open.*
-3. **Surface and steps.** Surface on each route, and any steps, gates or ramps, especially between Manor Road and the towpath and between the towpath and Waterside Drive. *Towpath surface answered 31 October 2026 (Darren, site visit): relatively flat, compact hard surface. Steps, gates and ramps, and the road route's surface, are still open.*
-4. **Flooding.** Does the towpath stretch flood, and is it signed when closed?
+3. **Surface and steps.** Surface on each route, and any steps, gates or ramps, especially between Manor Road and the towpath and between the towpath and Waterside Drive. *Towpath surface answered 31 October 2026 (Darren, site visit): relatively flat, compact hard surface; the odd puddle but it does not get muddy; no steps or gates. The road route's surface and steps are still open.*
+4. **Flooding.** Does the towpath stretch flood, and is it signed when closed? *Mud answered 31 October 2026 (odd puddle, not muddy); flooding from the river is still open.*
 5. **Taxi rank.** Where exactly is the rank at Walton-on-Thames station?
 6. **Photographs** for each step (shot list in Phase 4).
 
