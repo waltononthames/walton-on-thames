@@ -16,6 +16,7 @@ import venueSwan from '../assets/away-guide/af-venue-the-swan-landscape.jpg';
 import venueAnglers from '../assets/away-guide/af-venue-the-anglers-landscape.jpg';
 import riverTowpath from '../assets/away-guide/af-walk-river-step08-landscape.jpg';
 import riverManorRoad from '../assets/away-guide/af-walk-river-step06-landscape.jpg';
+import venueOldManor from '../assets/away-guide/af-venue-old-manor-inn-landscape.jpg';
 
 export interface AwayPhoto {
   landscape: ImageMetadata;
@@ -55,7 +56,7 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
   },
   'af-walk-river-step06': {
     landscape: riverManorRoad,
-    alt: 'The Old Manor Inn on Manor Road, a white-painted corner pub with picnic tables on the paved forecourt',
+    alt: 'A blue fingerpost on Manor Road near The Swan, with arms pointing to Bridge Street, the High Street, Walton Bridge and, on the lowest arm, Riverside Pubs 1 min, Xcel Sports Centre & Hub 18 mins and Sunbury Lock 25 mins',
   },
   'af-venue-the-swan': {
     landscape: venueSwan,
@@ -71,9 +72,8 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
     landscape: venueAnglers,
     alt: 'The Thames towpath running past The Anglers, with the river on the left and the path heading downstream',
   },
-  // The same photograph as the river walk's Manor Road step.
   'af-venue-old-manor-inn': {
-    landscape: riverManorRoad,
+    landscape: venueOldManor,
     alt: 'The Old Manor Inn on Manor Road, a white-painted corner pub with picnic tables on the paved forecourt',
   },
   'af-walk-river-step08': {

@@ -80,6 +80,8 @@ From `scripts/build-away-guide-map.mjs`, OSRM routing over OpenStreetMap, fetche
 | Drive, station to ground | 3.7 km, about 7 minutes free-flow |
 | Walk, Church Street bus stop to the station | 1.7 km, about 23 minutes |
 | Walk, ground to the Xcel bus stop | 0.2 km, about 3 minutes |
+
+**Fingerpost on Manor Road, near The Swan.** Seen and photographed by Darren Bayley on his site visit of 31 October 2026 (photo in the river walk's step 6). Its lowest arm reads "Riverside Pubs 1 min, Xcel Sports Centre & Hub 18 mins, Sunbury Lock 25 mins". The page quotes the 18 minutes as the sign's own figure, in step 6 only. It is measured from the sign, not the station, so it does not replace the routing estimate above. Who put the sign up is not recorded.
 | Full time after kick-off | About 110 minutes: two 45-minute halves, half-time of up to 15 minutes (IFAB Laws of the Game, Law 7), plus added time. Shown as "around" |
 
 ### Where things are (from the map data)
