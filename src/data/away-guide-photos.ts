@@ -12,6 +12,7 @@ import openingPortrait from '../assets/away-guide/af-opening-floodlights-portrai
 import groundStand from '../assets/away-guide/af-ground-main-stand-landscape.jpg';
 import faqsFloodlights from '../assets/away-guide/af-faqs-floodlights-landscape.jpg';
 import historyHub from '../assets/away-guide/af-history-sports-hub-landscape.jpg';
+import riverManorRoad from '../assets/away-guide/af-walk-river-step06-landscape.jpg';
 
 export interface AwayPhoto {
   landscape: ImageMetadata;
@@ -48,5 +49,9 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
     landscape: faqsFloodlights,
     alt: 'A floodlight tower against the evening sky during a match at the Elmbridge Xcel Sports Hub',
     position: '50% 8%',
+  },
+  'af-walk-river-step06': {
+    landscape: riverManorRoad,
+    alt: 'The Old Manor Inn on Manor Road, a white-painted corner pub with picnic tables on the paved forecourt',
   },
 };

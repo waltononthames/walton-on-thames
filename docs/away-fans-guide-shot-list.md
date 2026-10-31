@@ -74,3 +74,12 @@ From `OneDriveWalton-on-Thames and Hersham photosclubs-and-societieswalton-and-h
 | walton-and-hersham-fc-match.HEIC | af-faqs-floodlights | Whole frame, framed from the top so the floodlight head shows |
 
 Not used: `pitch` (children's faces behind the goal), `sept-26-1` and `sept-26` (player close-ups that show little of the ground).
+
+## Photos in place (31 October 2026)
+
+Supplied in chat by Darren, cut with Pillow (metadata stripped, GPS included).
+
+| File | Slot | Crop |
+|---|---|---|
+| Old Manor Inn, Manor Road (chat upload, 2576 by 1932) | af-walk-river-step06 | 3:2 strip, 150 px off the top and 65 px off the bottom. The Audi's number plate on the right is blurred. A Halloween board dated Sat 31 Oct stands on the forecourt |
+
