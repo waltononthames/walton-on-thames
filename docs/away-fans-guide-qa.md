@@ -49,7 +49,7 @@ Published at Darren's request before the site visit and before the remaining pho
 
 ## Still to do
 
-1. Site visit: answer the route questions (lighting, surface, steps, after dark, best for), the taxi rank's position and the Old Manor Inn's address. Each answer shows on the page as soon as it is recorded with its source.
+1. Site visit: answer the route questions (lighting, surface, steps, after dark, best for), and the taxi rank's position. (Old Manor Inn's address: done, 31 October 2026.) Each answer shows on the page as soon as it is recorded with its source.
 2. Club answers to the questions in the sources file (section 1). Unanswered ones do not show.
 3. Remaining photographs from the shot list (25 slots). An empty chapter header keeps a plain dark background and an empty step photo is left out.
 4. Fix the site-wide footer contrast and logo alt text.

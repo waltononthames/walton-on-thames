@@ -119,7 +119,7 @@ The club's own page gives "approximately 10 minutes by car or 50-minute walk" fr
 | Pub | Source | Checked | Details confirmed |
 |---|---|---|---|
 | The Walton Village, 29 High Street, KT12 1DG, 01932 254431 | [thewaltonvillage.com](https://thewaltonvillage.com/) | 29 Sep 2026 | Hours: bar Mon to Thu 12pm to 11pm, Fri 12pm to 12am, Sat 10am to 12am, Sun 10am to 11pm; kitchen to 9pm or 10pm. Shows TNT Sports |
-| Old Manor Inn, 113 Manor Road, KT12 2NZ | Darren Bayley; OpenStreetMap; [CAMRA WhatPub](https://camra.org.uk/pubs/old-manor-inn-walton-on-thames-179844) | 29 Sep 2026 | Name and address only. No website of its own found. CAMRA mentions Sky Sports and TNT Sports: lead only |
+| Old Manor Inn, 113 Manor Road, KT12 2NZ | Darren Bayley (site visit); OpenStreetMap; [CAMRA WhatPub](https://camra.org.uk/pubs/old-manor-inn-walton-on-thames-179844) | 29 Sep 2026; address 31 Oct 2026 | Name and address only. Address given by Darren after his site visit of 31 October 2026, matching CAMRA. No website of its own found. CAMRA mentions Sky Sports and TNT Sports: lead only |
 | The Swan, 50 Manor Road, KT12 2PF, 01932 225964 | [swanwalton.com](https://www.swanwalton.com/) | 29 Sep 2026 | Open Mon to Thu 11am to 11pm, Fri and Sat 11am to 12am, Sun 11am to 11pm; food Mon to Sat 12pm to 9.30pm, Sun 12pm to 9pm; river terrace and garden huts; dog-friendly |
 | The Anglers, Riverside Cottages, Manor Road, KT12 2PF | [anglerswalton.co.uk](https://www.anglerswalton.co.uk/) | 29 Sep 2026 | Name and riverside setting only; the site gives no address, hours or phone. Address from our Directory record |
 

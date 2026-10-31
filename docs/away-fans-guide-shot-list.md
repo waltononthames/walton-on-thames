@@ -60,7 +60,7 @@ Stand at the point each step describes, facing the direction of travel, so the p
 
 ## While you are there
 
-The site visit can also settle the open questions in `docs/away-fans-guide-sources.md`, section 2: lighting on each route after dark, steps or gates, the towpath surface and flooding, the taxi rank's position, and the Old Manor Inn's address.
+The site visit can also settle the open questions in `docs/away-fans-guide-sources.md`, section 2: lighting on each route after dark, steps or gates, the towpath surface and flooding and the taxi rank's position. (The Old Manor Inn's address was settled on 31 October 2026.)
 
 ## Photos in place (1 October 2026)
 

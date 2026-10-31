@@ -1,6 +1,7 @@
 # No website of its own found. Name confirmed by Darren and OpenStreetMap.
-# CAMRA WhatPub gives 113 Manor Road, KT12 2NZ: a lead, not a source on its
-# own, so the address waits for a site visit. No hours or features stated.
+# Address given by Darren after his site visit of 31 October 2026, matching
+# the CAMRA WhatPub lead (113 Manor Road, KT12 2NZ). No hours or features
+# stated.
 name: "Old Manor Inn"
 type: pub
 routes: [towpath]
@@ -10,6 +11,9 @@ lat: 51.38865
 lng: -0.42281
 pointBasis: "OpenStreetMap node 21980919"
 address:
-  unconfirmed:
-    ask: site-visit
-    question: "What is the street address of this venue?"
+  value: "113 Manor Road, Walton-on-Thames KT12 2NZ"
+  source:
+    label: "Site visit by Darren Bayley, corroborated by CAMRA WhatPub"
+    url: https://camra.org.uk/pubs/old-manor-inn-walton-on-thames-179844
+    basis: editor-observation
+    checked: "2026-10-31"
