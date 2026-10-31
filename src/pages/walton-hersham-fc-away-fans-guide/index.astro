@@ -493,17 +493,25 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
         <PlacesMap
           id="site-map"
           title="The Elmbridge Xcel Sports Hub site"
-          description="Map of the Sports Hub site on Waterside Drive, with the Hub outlined, its football pitches, The Weir on the towpath to the north, and the Xcel Leisure Centre bus stop."
+          description="Map of the Sports Hub site on Waterside Drive, with the Hub outlined, its football pitches, the match pitch with its main stand and standing, The Weir on the towpath to the north, and the Xcel Leisure Centre bus stop."
           markers={siteMarkers}
           groundPlan
+          matchPitch="way 732640113"
           padM={170}
           aspect={1.5}
         >
           <ol slot="list" class="map-key">
             {siteMarkers.map((m) => <li><span class={`key-badge key-badge--${m.category}`}>{m.badge}</span> {m.name}</li>)}
+            <li><span class="key-swatch key-swatch--pitch" aria-hidden="true"></span> The match pitch</li>
+            <li><span class="key-swatch key-swatch--stand" aria-hidden="true"></span> Main stand</li>
+            <li><span class="key-swatch key-swatch--standing" aria-hidden="true"></span> Standing</li>
           </ol>
         </PlacesMap>
-        <p class="measure note">The shaded outline is the Sports Hub and the green areas are its football pitches, as OpenStreetMap maps them. We will mark the main stand, the turnstiles and the away end once the club has confirmed them.</p>
+        {/* Match pitch, stand and standing: marked by Darren Bayley on the
+            site plan after his site visit of 31 October 2026. The pitch is
+            OpenStreetMap way 732640113; the stand and standing are drawn
+            beside its touchlines, so they show which side, not exact size. */}
+        <p class="measure note">The shaded outline is the Sports Hub and the green areas are its football pitches, as OpenStreetMap maps them. The darker pitch is the match pitch, with the main stand along one long side and standing round the other three; the lines show which side is which, not their exact size. We will mark the turnstiles and the away end once the club has confirmed them.</p>
       </div>
     </section>
 
@@ -735,6 +743,17 @@ const ogImage = '/images/og/walton-hersham-fc-away-fans-guide.jpg';
   .key-badge--hotel { background: #4B4F8C; }
   .key-badge--bus { background: #B3261E; }
   .key-badge--place { background: var(--color-navy); }
+  .key-swatch {
+    display: inline-block;
+    width: 1.6rem;
+    height: 0.5rem;
+    margin-right: 0.35rem;
+    border-radius: 999px;
+    vertical-align: middle;
+  }
+  .key-swatch--pitch { height: 1rem; border-radius: 3px; background: #8FB86A; border: 1px solid #5E8A45; }
+  .key-swatch--stand { background: #1F5FBF; }
+  .key-swatch--standing { background: #E07A1F; }
   .dayout-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
