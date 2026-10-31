@@ -14,6 +14,7 @@ import faqsFloodlights from '../assets/away-guide/af-faqs-floodlights-landscape.
 import historyHub from '../assets/away-guide/af-history-sports-hub-landscape.jpg';
 import venueSwan from '../assets/away-guide/af-venue-the-swan-landscape.jpg';
 import venueAnglers from '../assets/away-guide/af-venue-the-anglers-landscape.jpg';
+import riverTowpath from '../assets/away-guide/af-walk-river-step08-landscape.jpg';
 import riverManorRoad from '../assets/away-guide/af-walk-river-step06-landscape.jpg';
 
 export interface AwayPhoto {
@@ -74,5 +75,9 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
   'af-venue-old-manor-inn': {
     landscape: riverManorRoad,
     alt: 'The Old Manor Inn on Manor Road, a white-painted corner pub with picnic tables on the paved forecourt',
+  },
+  'af-walk-river-step08': {
+    landscape: riverTowpath,
+    alt: 'The Thames towpath just past The Anglers, looking downstream, with moored boats on the left and trees on the right',
   },
 };
