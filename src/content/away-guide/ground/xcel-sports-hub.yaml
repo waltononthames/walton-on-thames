@@ -97,21 +97,3 @@ coveredSeating:
     url: https://www.elmbridge.gov.uk/sports-and-health/sports-venues/xcel-leisure-complex-and-sports-hub
     basis: official-data
     checked: "2026-09-29"
-# Segregation: from Darren, 31 October 2026. Which matches are segregated,
-# and how visiting fans hear about it, are still for the club.
-segregation:
-  value: Only at some matches. When a match is segregated, the club sets aside a turnstile for away fans
-  source:
-    label: Darren Bayley, editor
-    basis: editor-observation
-    checked: "2026-10-31"
-# Darren, 31 October 2026: no away end; at segregated matches the club has
-# closed off different sections. The club's March 2025 supporter notice
-# (away fans behind the car-park-end goal, far-end turnstiles) is one such
-# arrangement, so the two agree: the section is not fixed.
-awayEnd:
-  value: There is no fixed away end. When a match is segregated, the club closes off a section of the ground, and it has used different sections at different matches
-  source:
-    label: Darren Bayley, editor
-    basis: editor-observation
-    checked: "2026-10-31"

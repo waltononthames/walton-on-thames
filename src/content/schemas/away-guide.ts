@@ -54,8 +54,6 @@ export function awayGuideCollections(checkedSource: z.ZodTypeAny) {
       councilCarParks: text,
       pitch: text,
       coveredSeating: text,
-      segregation: text,
-      awayEnd: text,
     }),
   });
 
