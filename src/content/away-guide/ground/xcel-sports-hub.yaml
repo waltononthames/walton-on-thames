@@ -105,10 +105,13 @@ segregation:
     label: Darren Bayley, editor
     basis: editor-observation
     checked: "2026-10-31"
-# Darren, 31 October 2026: "There is no away end." Held back: the club's
-# March 2025 supporter notice put away fans behind the car-park-end goal at
-# segregated matches, served by the far-end turnstiles. Waiting on Darren.
+# Darren, 31 October 2026: no away end; at segregated matches the club has
+# closed off different sections. The club's March 2025 supporter notice
+# (away fans behind the car-park-end goal, far-end turnstiles) is one such
+# arrangement, so the two agree: the section is not fixed.
 awayEnd:
-  unconfirmed:
-    ask: club
-    question: At a segregated match, do away fans have their own area (the March 2025 notice put them behind the car-park-end goal), or only their own turnstile?
+  value: There is no fixed away end. When a match is segregated, the club closes off a section of the ground, and it has used different sections at different matches
+  source:
+    label: Darren Bayley, editor
+    basis: editor-observation
+    checked: "2026-10-31"
