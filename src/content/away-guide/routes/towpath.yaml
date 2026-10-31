@@ -25,14 +25,20 @@ bestFor:
   unconfirmed:
     ask: site-visit
     question: Is the river route best kept for a daytime walk past the riverside pubs before a Saturday afternoon match?
+# Surface and lighting from Darren's site visit of 31 October 2026. Whether
+# the towpath floods or gets muddy is still open (sources doc, section 2).
 surface:
-  unconfirmed:
-    ask: site-visit
-    question: What is the towpath surface between Manor Road and Waterside Drive, and does it flood or get muddy?
+  value: "The towpath is relatively flat, with a compact, hard surface"
+  source:
+    label: "Site visit by Darren Bayley"
+    basis: editor-observation
+    checked: "2026-10-31"
 lighting:
-  unconfirmed:
-    ask: site-visit
-    question: Which parts of the towpath between Manor Road and Waterside Drive are lit?
+  value: "No lighting on the towpath"
+  source:
+    label: "Site visit by Darren Bayley"
+    basis: editor-observation
+    checked: "2026-10-31"
 stepFree:
   unconfirmed:
     ask: site-visit
