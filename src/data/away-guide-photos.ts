@@ -15,6 +15,7 @@ import historyHub from '../assets/away-guide/af-history-sports-hub-landscape.jpg
 import venueSwan from '../assets/away-guide/af-venue-the-swan-landscape.jpg';
 import venueAnglers from '../assets/away-guide/af-venue-the-anglers-landscape.jpg';
 import riverTowpath from '../assets/away-guide/af-walk-river-step08-landscape.jpg';
+import venueGeorge from '../assets/away-guide/af-venue-the-george-inn-landscape.jpg';
 import riverManorRoad from '../assets/away-guide/af-walk-river-step06-landscape.jpg';
 import venueOldManor from '../assets/away-guide/af-venue-old-manor-inn-landscape.jpg';
 
@@ -79,5 +80,9 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
   'af-walk-river-step08': {
     landscape: riverTowpath,
     alt: 'The Thames towpath just past The Anglers, looking downstream, with moored boats on the left and trees on the right',
+  },
+  'af-venue-the-george-inn': {
+    landscape: venueGeorge,
+    alt: 'The George Inn, a red-brick pub with two gables, white bay windows and a Shepherd Neame sign, with cars parked in front',
   },
 };

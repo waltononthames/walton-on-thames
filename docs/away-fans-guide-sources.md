@@ -128,6 +128,7 @@ The club's own page gives "approximately 10 minutes by car or 50-minute walk" fr
 | Old Manor Inn, 113 Manor Road, KT12 2NZ | Darren Bayley (site visit); OpenStreetMap; [CAMRA WhatPub](https://camra.org.uk/pubs/old-manor-inn-walton-on-thames-179844) | 29 Sep 2026; address 31 Oct 2026 | Name and address only. Address given by Darren after his site visit of 31 October 2026, matching CAMRA. No website of its own found. CAMRA mentions Sky Sports and TNT Sports: lead only |
 | The Swan, 50 Manor Road, KT12 2PF, 01932 225964 | [swanwalton.com](https://www.swanwalton.com/) | 29 Sep 2026 | Open Mon to Thu 11am to 11pm, Fri and Sat 11am to 12am, Sun 11am to 11pm; food Mon to Sat 12pm to 9.30pm, Sun 12pm to 9pm; river terrace and garden huts; dog-friendly |
 | The Anglers, Riverside Cottages, Manor Road, KT12 2PF | [anglerswalton.co.uk](https://www.anglerswalton.co.uk/) | 29 Sep 2026 | Name and riverside setting only; the site gives no address, hours or phone. Address from our Directory record |
+| The George Inn, 24 Bridge Street, KT12 1AH | Directory record; street confirmed by Darren Bayley (site visit) | 31 Oct 2026 | Name, address and photo only. Darren gives the website as georgeinnwalton.co.uk (the Directory's georgeinnwaltononthames.co.uk link may be out of date); neither could be read from this session, so hours, phone and features wait for a check. No map position |
 
 ### The Weir (pubs chapter feature, Phase 4)
 

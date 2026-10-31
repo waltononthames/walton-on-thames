@@ -164,9 +164,11 @@ export function awayGuideCollections(checkedSource: z.ZodTypeAny) {
       routes: z.array(z.enum(['road', 'towpath'])).default([]),
       order: z.number().default(99),
       area: z.enum(['route', 'town-centre', 'ground', 'station']),
-      lat: z.number(),
-      lng: z.number(),
-      pointBasis: z.string(),
+      // A venue without a sourced position gets a card but no map marker
+      // (and so no map number). Never estimate one.
+      lat: z.number().optional(),
+      lng: z.number().optional(),
+      pointBasis: z.string().optional(),
       address: text,
       url: fact(z.string().url()).optional(),
       phone: text.optional(),

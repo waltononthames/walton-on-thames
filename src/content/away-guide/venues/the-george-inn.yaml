@@ -1,0 +1,17 @@
+# Added 31 October 2026 at Darren's request, from his site visit and photo.
+# The pub's own website (georgeinnwalton.co.uk, named by Darren) could not
+# be read from this session, so no hours, phone, website or features are
+# stated, and it has no map position (no sourced point: OpenStreetMap could
+# not be reached either), so it gets a card but no marker. Not placed on a
+# walking route until someone confirms it is on one.
+name: "The George Inn"
+business: the-george-inn
+type: pub
+order: 99
+area: town-centre
+address:
+  value: "24 Bridge Street, Walton-on-Thames KT12 1AH"
+  source:
+    label: "Directory record, street confirmed by Darren Bayley after his site visit"
+    basis: editor-observation
+    checked: "2026-10-31"
