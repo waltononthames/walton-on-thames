@@ -97,11 +97,3 @@ coveredSeating:
     url: https://www.elmbridge.gov.uk/sports-and-health/sports-venues/xcel-leisure-complex-and-sports-hub
     basis: official-data
     checked: "2026-09-29"
-segregation:
-  unconfirmed:
-    ask: club
-    question: Which matches are segregated this season, and how do visiting fans find out before travelling?
-awayEnd:
-  unconfirmed:
-    ask: club
-    question: Where is the away end this season, which turnstiles serve it, and is it covered?

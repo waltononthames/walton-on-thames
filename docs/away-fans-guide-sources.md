@@ -11,8 +11,8 @@ Researched 29 September 2026 by Claude for Darren Bayley.
 Ask Walton & Hersham FC, for example through ticketing@waltonhershamfc.com (the club's published ticketing contact). Each answer is recorded as `organisation-confirmed` with who confirmed it and when.
 
 1. **Turnstiles.** What time do the turnstiles open for Saturday 3pm and Tuesday 7.45pm matches?
-2. **Segregation.** Which matches are segregated this season, and where do visiting fans find out before travelling? (The admission prices page says away fans at segregated fixtures must buy tickets for admission; the last supporter notice we found is from March 2025.)
-3. **The away end.** When segregated, where is the away end, which turnstiles serve it, is it covered, and which toilets and refreshments can away fans use? (March 2025 notice: behind the car-park-end goal, far-end turnstiles, own toilets, non-alcoholic refreshments. Needs re-confirming for 2026-27.)
+2. ~~**Segregation.**~~ *Dropped 31 October 2026: Darren decided the guide does not cover segregation or an away end.* Which matches are segregated this season, and where do visiting fans find out before travelling? (The admission prices page says away fans at segregated fixtures must buy tickets for admission; the last supporter notice we found is from March 2025.)
+3. ~~**The away end.**~~ *Dropped 31 October 2026, as item 2.* When segregated, where is the away end, which turnstiles serve it, is it covered, and which toilets and refreshments can away fans use? (March 2025 notice: behind the car-park-end goal, far-end turnstiles, own toilets, non-alcoholic refreshments. Needs re-confirming for 2026-27.)
 4. **The bar.** Can away fans use the clubhouse bar before and after the match, and on segregated days?
 5. **Ground rules.** Bags, flags and banners, drums, pyrotechnics, smoking and vaping, dogs, glass and alcohol brought in. (The codes of conduct page covers behaviour only. The March 2025 notice banned glass bottles, alcohol and pyrotechnics.)
 6. **Children.** Is the under-13s-must-be-accompanied rule from the 2025 notice still in force?
@@ -26,9 +26,9 @@ Ask Walton & Hersham FC, for example through ticketing@waltonhershamfc.com (the 
 ## 2. Questions for a site visit (Darren)
 
 1. **Walk both routes** and confirm each step's wording and position, then set `placeholder: false` in `src/content/away-guide/routes/road.yaml` and `towpath.yaml`.
-2. **Lighting.** Which parts of each route are lit after dark? OpenStreetMap tags most of the Thames Path between Manor Road and Waterside Drive `lit=no`; that is a lead, not a fact.
-3. **Surface and steps.** Surface on each route, and any steps, gates or ramps, especially between Manor Road and the towpath and between the towpath and Waterside Drive.
-4. **Flooding.** Does the towpath stretch flood, and is it signed when closed?
+2. **Lighting.** Which parts of each route are lit after dark? OpenStreetMap tags most of the Thames Path between Manor Road and Waterside Drive `lit=no`; that is a lead, not a fact. *Towpath answered 31 October 2026 (Darren, site visit): no lighting. The road route is still open.*
+3. **Surface and steps.** Surface on each route, and any steps, gates or ramps, especially between Manor Road and the towpath and between the towpath and Waterside Drive. *Towpath surface answered 31 October 2026 (Darren, site visit): relatively flat, compact hard surface; the odd puddle but it does not get muddy; no steps or gates. The road route's surface and steps are still open.*
+4. **Flooding.** Does the towpath stretch flood, and is it signed when closed? *Mud answered 31 October 2026 (odd puddle, not muddy); flooding from the river is still open.*
 5. **Taxi rank.** Where exactly is the rank at Walton-on-Thames station?
 6. **Photographs** for each step (shot list in Phase 4).
 
@@ -80,6 +80,12 @@ From `scripts/build-away-guide-map.mjs`, OSRM routing over OpenStreetMap, fetche
 | Drive, station to ground | 3.7 km, about 7 minutes free-flow |
 | Walk, Church Street bus stop to the station | 1.7 km, about 23 minutes |
 | Walk, ground to the Xcel bus stop | 0.2 km, about 3 minutes |
+
+**Match pitch, main stand and standing.** Marked by Darren Bayley on a screenshot of the site plan, 31 October 2026, after his site visit: the match pitch is OpenStreetMap way 732640113, the main stand runs along its long side nearest the Hub building, and standing runs round the other three sides. The page draws these as lines beside the touchlines (blue for the stand; orange, not Darren's red, so they are not confused with the red bus-stop marker) and says they show which side is which, not exact size. Turnstile positions are still for the club to confirm.
+
+**Segregation and the away end.** Not covered: Darren decided on 31 October 2026 that the guide does not mention them, and the rows were removed from the page, the quick answers and the schema.
+
+**Fingerpost on Manor Road, near The Swan.** Seen and photographed by Darren Bayley on his site visit of 31 October 2026 (photo in the river walk's step 6). Its lowest arm reads "Riverside Pubs 1 min, Xcel Sports Centre & Hub 18 mins, Sunbury Lock 25 mins". The page quotes the 18 minutes as the sign's own figure, in step 6 only. It is measured from the sign, not the station, so it does not replace the routing estimate above. Who put the sign up is not recorded.
 | Full time after kick-off | About 110 minutes: two 45-minute halves, half-time of up to 15 minutes (IFAB Laws of the Game, Law 7), plus added time. Shown as "around" |
 
 ### Where things are (from the map data)
@@ -119,9 +125,10 @@ The club's own page gives "approximately 10 minutes by car or 50-minute walk" fr
 | Pub | Source | Checked | Details confirmed |
 |---|---|---|---|
 | The Walton Village, 29 High Street, KT12 1DG, 01932 254431 | [thewaltonvillage.com](https://thewaltonvillage.com/) | 29 Sep 2026 | Hours: bar Mon to Thu 12pm to 11pm, Fri 12pm to 12am, Sat 10am to 12am, Sun 10am to 11pm; kitchen to 9pm or 10pm. Shows TNT Sports |
-| Old Manor Inn, 113 Manor Road, KT12 2NZ | Darren Bayley; OpenStreetMap; [CAMRA WhatPub](https://camra.org.uk/pubs/old-manor-inn-walton-on-thames-179844) | 29 Sep 2026 | Name and address only. No website of its own found. CAMRA mentions Sky Sports and TNT Sports: lead only |
+| Old Manor Inn, 113 Manor Road, KT12 2NZ | Darren Bayley (site visit); OpenStreetMap; [CAMRA WhatPub](https://camra.org.uk/pubs/old-manor-inn-walton-on-thames-179844) | 29 Sep 2026; address 31 Oct 2026 | Name and address only. Address given by Darren after his site visit of 31 October 2026, matching CAMRA. No website of its own found. CAMRA mentions Sky Sports and TNT Sports: lead only |
 | The Swan, 50 Manor Road, KT12 2PF, 01932 225964 | [swanwalton.com](https://www.swanwalton.com/) | 29 Sep 2026 | Open Mon to Thu 11am to 11pm, Fri and Sat 11am to 12am, Sun 11am to 11pm; food Mon to Sat 12pm to 9.30pm, Sun 12pm to 9pm; river terrace and garden huts; dog-friendly |
 | The Anglers, Riverside Cottages, Manor Road, KT12 2PF | [anglerswalton.co.uk](https://www.anglerswalton.co.uk/) | 29 Sep 2026 | Name and riverside setting only; the site gives no address, hours or phone. Address from our Directory record |
+| The George Inn, 24 Bridge Street, KT12 1AH | Directory record; street confirmed by Darren Bayley (site visit) | 31 Oct 2026 | Name, address and photo only. Darren gives the website as georgeinnwalton.co.uk (the Directory's georgeinnwaltononthames.co.uk link may be out of date); neither could be read from this session, so hours, phone and features wait for a check. No map position |
 
 ### The Weir (pubs chapter feature, Phase 4)
 

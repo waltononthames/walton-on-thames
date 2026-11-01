@@ -20,7 +20,6 @@ interface Props {
     tickets: FactT<string>;
     prices: FactT<string>;
     parking: FactT<string>;
-    segregation: FactT<string>;
   };
   point: { lat: number; lng: number };
   walkMins: number;
@@ -99,13 +98,6 @@ const googleMaps = `https://www.google.com/maps/search/?api=1&query=${point.lat}
           <dt><Icon name="car" /> Parking</dt>
           <dd><Fact f={ground.parking} />. <a href="#parking">Parking options</a></dd>
         </div>
-
-        {shows(ground.segregation) && (
-          <div class="quick-row">
-            <dt><Icon name="shield" /> Segregation</dt>
-            <dd><Fact f={ground.segregation} /></dd>
-          </div>
-        )}
 
         <div class="quick-row">
           <dt><Icon name="pint" /> Pubs and food</dt>

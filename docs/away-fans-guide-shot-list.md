@@ -60,7 +60,7 @@ Stand at the point each step describes, facing the direction of travel, so the p
 
 ## While you are there
 
-The site visit can also settle the open questions in `docs/away-fans-guide-sources.md`, section 2: lighting on each route after dark, steps or gates, the towpath surface and flooding, the taxi rank's position, and the Old Manor Inn's address.
+The site visit can also settle the open questions in `docs/away-fans-guide-sources.md`, section 2: lighting on each route after dark, steps or gates, the towpath surface and flooding and the taxi rank's position. (The Old Manor Inn's address was settled on 31 October 2026.)
 
 ## Photos in place (1 October 2026)
 
@@ -74,3 +74,17 @@ From `OneDriveWalton-on-Thames and Hersham photosclubs-and-societieswalton-and-h
 | walton-and-hersham-fc-match.HEIC | af-faqs-floodlights | Whole frame, framed from the top so the floodlight head shows |
 
 Not used: `pitch` (children's faces behind the goal), `sept-26-1` and `sept-26` (player close-ups that show little of the ground).
+
+## Photos in place (31 October 2026)
+
+Supplied in chat by Darren, cut with Pillow (metadata stripped, GPS included). Pub photos use a new slot type, `af-venue-<venue slug>` (venue file name in `src/content/away-guide/venues/`), shown at the top of that venue's card; a venue without one shows no photo and no placeholder.
+
+| File | Slot | Crop |
+|---|---|---|
+| Old Manor Inn, Manor Road (chat upload, 2576 by 1932) | af-venue-old-manor-inn (was also step 6 until the fingerpost replaced it) | 3:2 strip, 150 px off the top and 65 px off the bottom. The Audi's number plate on the right is blurred. A Halloween board dated Sat 31 Oct stands on the forecourt |
+| The Swan, Manor Road (chat upload, 2576 by 1932) | af-venue-the-swan | 3:2 strip, 120 px off the top and 95 px off the bottom. Three readable number plates blurred |
+| The Anglers (chat upload, 2576 by 1932) | af-venue-the-anglers and af-walk-river-step07 | 3:2 strip, 215 px of sky off the top. No plates or recognisable people. One file serves both slots |
+| The George Inn, Bridge Street (chat upload, 2576 by 1932) | af-venue-the-george-inn | 3:2 strip, 170 px off the top and 45 px off the bottom. Two number plates blurred |
+| Towpath beside The Anglers, looking downstream towards the Sports Hub (chat upload, 2576 by 1932) | af-walk-river-step08 | 3:2 strip, 215 px of sky off the top. No plates or people |
+| Fingerpost on Manor Road near The Swan, close-up (chat upload, 2016 by 1512) | af-walk-river-step06 | 3:2 strip, 84 px off the top and bottom. No plates or people. Chosen over the full-height shot of the same post, whose boards are too small to read at step size |
+

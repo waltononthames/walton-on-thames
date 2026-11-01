@@ -3,7 +3,13 @@
 // venue's sourced hours as text; the script (open-now.ts) adds an "Open now"
 // label worked out in Europe/London time, and two filters. A venue whose hours
 // are not sourced shows no open or closed label, ever.
+//
+// A venue with a photograph in src/data/away-guide-photos.ts, under the slot
+// name af-venue-<slug>, shows it at the top of its card. Venues without one
+// show no photo and no placeholder.
 import Fact from './Fact.astro';
+import PhotoSlot from './PhotoSlot.astro';
+import { AWAY_PHOTOS } from '../../data/away-guide-photos';
 import { valueOf, type Fact as FactT } from '../../utils/awayGuide';
 import { hoursText, isOpenAt, type Hours } from '../../utils/openingHours';
 
@@ -51,6 +57,7 @@ const EVENING = { day: 'tue' as const, mins: 22 * 60 + 30 };
     const phone = v.phone ? valueOf(v.phone) : undefined;
     return (
       <li class="venue" data-hours={hours ? JSON.stringify(hours) : undefined} data-evening={hours ? String(evening) : undefined} id={`venue-${v.slug}`}>
+        {AWAY_PHOTOS[`af-venue-${v.slug}`] && <div class="venue-photo"><PhotoSlot slot={`af-venue-${v.slug}`} /></div>}
         <div class="venue-head">
           {v.badge && <span class={`venue-badge venue-badge--${v.type}`} aria-hidden="true">{v.badge}</span>}
           <H class="venue-name">{url ? <a href={url} rel="noopener">{v.name}</a> : v.name}</H>
@@ -110,6 +117,7 @@ const EVENING = { day: 'tue' as const, mins: 22 * 60 + 30 };
     font-size: 0.92rem;
   }
   .venue[hidden] { display: none; }
+  .venue-photo { margin: -0.4rem -0.5rem 0.75rem; }
   .venue-head { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
   .venue-name { font-size: 1.15rem; margin: 0; }
   .venue-badge {
