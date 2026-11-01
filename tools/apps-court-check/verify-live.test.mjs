@@ -21,3 +21,10 @@ test('failed deployment requests exhaust retries and fail visibly', async () => 
   await assert.rejects(verifyDeployment(stamp, { attempts: 2, pause: async () => {}, request: async () => { calls++; throw Error('network'); } }));
   assert.equal(calls, 2);
 });
+test('a failure says what the last attempt saw', async () => {
+  const quiet = console.log; console.log = () => {};
+  try {
+    await assert.rejects(verifyDeployment(stamp, options('<div data-verified-at="2026-10-01T00:00:00.000Z">')), /older reading \(2026-10-01/);
+    await assert.rejects(verifyDeployment(stamp, options('Just a moment', false)), /no reading on the page/);
+  } finally { console.log = quiet; }
+});
