@@ -16,6 +16,7 @@ import venueSwan from '../assets/away-guide/af-venue-the-swan-landscape.jpg';
 import venueAnglers from '../assets/away-guide/af-venue-the-anglers-landscape.jpg';
 import riverTowpath from '../assets/away-guide/af-walk-river-step08-landscape.jpg';
 import venueGeorge from '../assets/away-guide/af-venue-the-george-inn-landscape.jpg';
+import venueRegent from '../assets/away-guide/af-venue-the-regent-landscape.jpg';
 import riverManorRoad from '../assets/away-guide/af-walk-river-step06-landscape.jpg';
 import venueOldManor from '../assets/away-guide/af-venue-old-manor-inn-landscape.jpg';
 
@@ -84,5 +85,9 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
   'af-venue-the-george-inn': {
     landscape: venueGeorge,
     alt: 'The George Inn, a red-brick pub with two gables, white bay windows and a Shepherd Neame sign, with cars parked in front',
+  },
+  'af-venue-the-regent': {
+    landscape: venueRegent,
+    alt: 'The Regent on Church Street, a cream frontage with an arched top, its name in gold letters, and awnings over a railed front terrace',
   },
 };
