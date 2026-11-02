@@ -47,6 +47,7 @@ on:
 
 permissions:
   contents: write
+  checks: read
 
 concurrency:
   group: apps-court-car-boot
@@ -243,9 +244,14 @@ jobs:
       # for the coming Sunday yet, which is most weekdays -- failed the job
       # because there was no new timestamp to look for. It would have reported
       # a fault twice a day for the ordinary course of business.
+      # Falls back to Cloudflare Pages' own deploy check on the pushed commit
+      # when the site's Bot Fight Mode challenges this runner (see the comment
+      # at the top of verify-live.mjs).
       - name: Verify the public deployment
         if: steps.publish.outputs.published == 'true'
-        run: node tools/apps-court-check/verify-live.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: GITHUB_SHA_PUBLISHED="$(git rev-parse HEAD)" node tools/apps-court-check/verify-live.mjs
 
       - name: Retain the check report
         if: always() && steps.config.outputs.proceed == 'true'
