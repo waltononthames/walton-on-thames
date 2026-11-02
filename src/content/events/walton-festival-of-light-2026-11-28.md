@@ -16,4 +16,4 @@ Love Walton's Festival of Light marks the start of Christmas in Walton-on-Thames
 
 For 2026 the traditional lantern parade and light switch-on return. The event runs on Saturday 28 November 2026 from 11am to 7pm.
 
-*Source: the organiser's [Love Walton event listing](https://www.facebook.com/events/1436351235056532/). Always verify details directly with the organiser before attending.*
+*Sources: the organiser's [Love Walton event listing](https://www.facebook.com/events/1436351235056532/); [Your Elmbridge Magazine](https://yourelmbridge.co.uk/whats-on-in-elmbridge/), which also gives 28 November, 11am to 7pm, the parade ahead of the light switch-on, and a Christmas market on the High Street. Always verify details directly with the organiser before attending.*
