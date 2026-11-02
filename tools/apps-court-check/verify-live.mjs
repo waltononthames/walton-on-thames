@@ -1,6 +1,6 @@
 // Check the canonical URL without cache-busting: readers may receive old HTML
 // even after a successful deployment. Dependencies are injectable for tests.
-import { readFileSync } from 'node:fs';
+import { appendFileSync, readFileSync } from 'node:fs';
 import { setTimeout } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
 // 40 tries 30s apart, about 20 minutes. Shorter windows kept failing correct
@@ -41,6 +41,19 @@ export async function verifyDeployment(verifiedAt, { request = fetch, pause = se
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const status = JSON.parse(readFileSync('src/data/apps-court-status.json', 'utf8'));
-  await verifyDeployment(status.verifiedAt);
+  try {
+    await verifyDeployment(status.verifiedAt);
+  } catch (error) {
+    // Also onto the run's summary page: the step log is 40 attempts long and
+    // hard to find, and the summary is what a failure email links to.
+    if (process.env.GITHUB_STEP_SUMMARY) {
+      appendFileSync(process.env.GITHUB_STEP_SUMMARY, `
+### Why the live-page check failed
+
+${error.message}
+`);
+    }
+    throw error;
+  }
   console.log('Canonical public page contains the expected verification timestamp.');
 }
