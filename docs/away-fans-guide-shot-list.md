@@ -86,6 +86,7 @@ Supplied in chat by Darren, cut with Pillow (metadata stripped, GPS included). P
 | The Anglers (chat upload, 2576 by 1932) | af-venue-the-anglers and af-walk-river-step07 | 3:2 strip, 215 px of sky off the top. No plates or recognisable people. One file serves both slots |
 | The George Inn, Bridge Street (chat upload, 2576 by 1932) | af-venue-the-george-inn | 3:2 strip, 170 px off the top and 45 px off the bottom. Two number plates blurred |
 | The Regent, Church Street (chat upload, 2576 by 1932, 2 November 2026) | af-venue-the-regent | 3:2 strip, 138 px off the top and 77 px off the bottom. One number plate blurred |
+| The Walton Village, High Street (chat upload, 2576 by 1932, 2 November 2026) | af-venue-the-walton-village | 3:2 strip, 215 px of sky off the top. Five faces blurred (diners outside, a person at the door, a delivery rider, a car passenger) and one partly visible number plate on the left edge |
 | Towpath beside The Anglers, looking downstream towards the Sports Hub (chat upload, 2576 by 1932) | af-walk-river-step08 | 3:2 strip, 215 px of sky off the top. No plates or people |
 | Fingerpost on Manor Road near The Swan, close-up (chat upload, 2016 by 1512) | af-walk-river-step06 | 3:2 strip, 84 px off the top and bottom. No plates or people. Chosen over the full-height shot of the same post, whose boards are too small to read at step size |
 

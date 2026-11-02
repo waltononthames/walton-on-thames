@@ -17,6 +17,7 @@ import venueAnglers from '../assets/away-guide/af-venue-the-anglers-landscape.jp
 import riverTowpath from '../assets/away-guide/af-walk-river-step08-landscape.jpg';
 import venueGeorge from '../assets/away-guide/af-venue-the-george-inn-landscape.jpg';
 import venueRegent from '../assets/away-guide/af-venue-the-regent-landscape.jpg';
+import venueWaltonVillage from '../assets/away-guide/af-venue-the-walton-village-landscape.jpg';
 import riverManorRoad from '../assets/away-guide/af-walk-river-step06-landscape.jpg';
 import venueOldManor from '../assets/away-guide/af-venue-old-manor-inn-landscape.jpg';
 
@@ -89,5 +90,9 @@ export const AWAY_PHOTOS: Record<string, AwayPhoto> = {
   'af-venue-the-regent': {
     landscape: venueRegent,
     alt: 'The Regent on Church Street, a cream frontage with an arched top, its name in gold letters, and awnings over a railed front terrace',
+  },
+  'af-venue-the-walton-village': {
+    landscape: venueWaltonVillage,
+    alt: 'The Walton Village on the High Street, a white-painted building with bay windows above a dark shopfront signed No 29 High St, with tables outside on the pavement',
   },
 };
