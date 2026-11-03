@@ -31,6 +31,11 @@ sources:
     title: "St Mary's Self-Guided Tour"
     url: "https://waltonparish.org.uk/tour/"
     accessed: "3 September 2026"
+  - author: "Te Papa's Blog"
+    year: "n.d."
+    title: "Stories from the First World War: Soldiers commemorated at Walton-on-Thames"
+    url: "https://blog.tepapa.govt.nz/2011/09/05/stories-from-the-first-world-war-soldiers-commemorated-at-walton-on-thames/"
+    accessed: "3 November 2026"
 related: ["diggers", "walton-bridge", "famous-residents", "mount-felix-memorial-banner", "mount-felix"]
 ---
 
@@ -64,7 +69,7 @@ St Mary's has one more claim that has nothing to do with the medieval period at 
 
 ## The New Zealand memorial
 
-St Mary's carries one more layer, this one from the twentieth century. During the First World War, the New Zealand military hospital based at [Mount Felix](/history/mount-felix/), together with the associated hospital at Oatlands Park, treated around 27,000 men, and those who died there are buried in the churchyard and cemetery nearby. A [memorial banner](/history/mount-felix-memorial-banner/) embroidered by a recovering patient was installed at the church in January 1920 and carried to the graveside every Anzac Day for over a decade, before a brass memorial tablet took over as the church's permanent memorial in 1932. The connection is still marked with an annual remembrance service, which means the church remains, in a very direct sense, a place where Walton's history and New Zealand's history intersect every year rather than only in the archives.
+St Mary's carries one more layer, this one from the twentieth century. During the First World War, the New Zealand military hospital based at [Mount Felix](/history/mount-felix/), together with the associated hospital at Oatlands Park, treated around 27,000 men, and those who died there are buried in the churchyard and cemetery nearby. A [memorial banner](/history/mount-felix-memorial-banner/) embroidered by a recovering patient was installed at the church in January 1920 and carried to the graveside every Anzac Day for over a decade, before a brass memorial tablet, proposed in 1932 and installed some time afterwards, took over as the church's permanent memorial. The connection is still marked with an annual remembrance service, which means the church remains, in a very direct sense, a place where Walton's history and New Zealand's history intersect every year rather than only in the archives.
 
 ## Visiting
 

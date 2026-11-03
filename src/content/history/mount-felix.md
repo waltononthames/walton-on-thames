@@ -21,6 +21,11 @@ sources:
     title: "The Mount Felix War Hospital"
     url: "https://elmbridgemuseum.org.uk/online-exhibitions/the-mount-felix-war-hospital/"
     accessed: "12 July 2026"
+  - author: "Te Papa's Blog"
+    year: "n.d."
+    title: "Stories from the First World War: Soldiers commemorated at Walton-on-Thames"
+    url: "https://blog.tepapa.govt.nz/2011/09/05/stories-from-the-first-world-war-soldiers-commemorated-at-walton-on-thames/"
+    accessed: "3 November 2026"
 related: ["walton-in-wartime", "st-marys-church", "arthur-white", "mount-felix-tapestry", "mount-felix-memorial-banner"]
 ---
 
@@ -47,7 +52,7 @@ Behind the treatment figures are individual stories, kept alive by families on t
 
 ## Remembrance today
 
-That connection has been kept alive rather than simply archived. St Mary's Church, a short distance from the Mount Felix site, holds a memorial to the New Zealand soldiers who died here and hosts an annual remembrance service, meaning the link between Walton and New Zealand is renewed every year rather than left to fade. A patient-made [memorial banner](/history/mount-felix-memorial-banner/), now held by New Zealand's national museum, was carried to the graveside every Anzac Day before a permanent brass tablet took over in 1932. Read more about the [church itself](/history/st-marys-church/), which carries this alongside its own much older history.
+That connection has been kept alive rather than simply archived. St Mary's Church, a short distance from the Mount Felix site, holds a memorial to the New Zealand soldiers who died here and hosts an annual remembrance service, meaning the link between Walton and New Zealand is renewed every year rather than left to fade. A patient-made [memorial banner](/history/mount-felix-memorial-banner/), now held by New Zealand's national museum, was carried to the graveside every Anzac Day until a permanent brass tablet, proposed in 1932, took over. Read more about the [church itself](/history/st-marys-church/), which carries this alongside its own much older history.
 
 ## New Zealand Avenue
 

@@ -22,11 +22,11 @@ The Surrey years were foundational. It was here, in these quiet commuter-belt st
 
 ## Stage and screen
 
-Julie Andrews made her professional stage debut in the West End pantomime *Cinderella* in 1947: she was just twelve years old. By her early twenties she was a Broadway sensation, originating the role of Eliza Doolittle in *My Fair Lady* (1956) and Guinevere in *Camelot* (1960).
+At twelve, Julie Andrews appeared in the *Starlight Roof* revue at the London Hippodrome, and she went on to appear in *Cinderella* at the London Palladium. By her early twenties she was a Broadway sensation, originating the role of Eliza Doolittle in *My Fair Lady* (1956) and Guinevere in *Camelot* (1960).
 
 Hollywood came calling with *Mary Poppins* (1964), for which she won the Academy Award for Best Actress, a remarkable debut in a film career that would span decades. The following year, *The Sound of Music* (1965) cemented her status as a global icon. Her performance as Maria von Trapp, twirling on an Austrian hillside, became one of cinema's most enduring images.
 
-Later films such as *Victor/Victoria* (1982), *The Princess Diaries* (2001) and *Enchanted* (2022) showed the range and longevity of a performer who never seemed to age out of relevance.
+Later films such as *Victor/Victoria* (1982), *The Princess Diaries* (2001) and *Enchanted* (2007), which she narrated, showed the range and longevity of a performer who never seemed to age out of relevance.
 
 ## A voice silenced, then returned
 
@@ -36,7 +36,7 @@ With extraordinary resilience, she redirected her energies into writing (authori
 
 ## Her legacy
 
-Dame Julie Andrews was made a Dame Commander of the Order of the British Empire in 2000. She holds an Honorary Academy Award for lifetime achievement and has received virtually every major entertainment accolade there is to receive.
+Dame Julie Andrews was made a Dame Commander of the Order of the British Empire in 2000. Alongside her Best Actress Oscar for *Mary Poppins*, presented at the 1965 ceremony, she received the American Film Institute's Life Achievement Award in 2022.
 
 For Walton-on-Thames, the connection is a quiet source of pride. There is no monument, no heritage plaque, no tourist trail. Just the knowledge that on an October morning in 1935, in a Surrey town on the banks of the Thames, something rather remarkable began.
 
@@ -46,4 +46,6 @@ If you're visiting with Julie Andrews in mind, the town itself is the destinatio
 
 The wider Surrey Hills, visible from higher ground around the town, provided the kind of English pastoral backdrop that runs through so much of her public persona, even when she was singing in Austrian meadows.
 
-*"I have a slight Dick Van Dyke problem. I have a tendency to go over the top."*: Julie Andrews, on her own perfectionism. A very Walton-on-Thames kind of understatement.
+## Sources
+
+Stage appearances and *Enchanted* narration: [Disney D23, Julie Andrews](https://d23.com/walt-disney-legend/julie-andrews/) and [D23, *Enchanted*](https://d23.com/a-to-z/enchanted-film/) (released 21 November 2007). Best Actress for *Mary Poppins*: [Academy of Motion Picture Arts and Sciences, 37th Academy Awards (1965)](https://www.oscars.org/oscars/ceremonies/1965). Life Achievement Award: [American Film Institute, Julie Andrews](https://www.afi.com/laa/julie-andrews/), presented 9 June 2022. All accessed 3 November 2026.

@@ -1922,3 +1922,16 @@ See tools/apps-court-check/README.md for activation conditions.
 ## 30 October 2026: Hersham station, first photographs
 
 Two of Darren's photographs, taken 29 October 2026, added to /hersham-railway-station/: the street-level entrance at night (below the introduction, also the page's social image) and the covered stairs up to the platform (Accessibility section, beside the no-lift statement). Resized to WebP (1400 by 1050 and 1000 by 1333) to match the Walton-on-Thames station page; the parked car's number plate is pixelated in both. Captions and alt text describe only what is visible; the photographs don't establish which road or platform they show, so neither is named.
+
+## 3 November 2026: corrections from the 2 November factual accuracy audit
+
+Acted on seven findings from the external audit of 2 November 2026; sources checked this session.
+
+- **H1 / M15, Julie Andrews feature:** the age-12 appearance is now the *Starlight Roof* revue at the London Hippodrome, with *Cinderella* at the London Palladium afterwards (D23, which gives no years, so none are stated); *Enchanted* is 2007 and she narrated it (D23); the "Honorary Academy Award" is replaced by the 2022 AFI Life Achievement Award (AFI) alongside the competitive *Mary Poppins* Oscar (Oscars.org, 37th ceremony). The untraceable "Dick Van Dyke problem" quotation is removed. Added a Sources section. The rest of the feature (DBE year, early-life detail, 1997 surgery, film years) was **not** rechecked and still needs a claim-by-claim pass.
+- **M9, memorial tablet:** four pages (banner, Mount Felix, St Mary's history, St Mary's visit guide) now say the tablet was *proposed* in 1932 and installed afterwards, per Te Papa's blog. The audit's April 1933 Papers Past fundraising report could not be loaded this session, so it is not cited. Installation/dedication date still open.
+- **M10, Walton Trail:** no longer says Hepworth ran the studio for most of 1899 to 1961; gives Hepworth to 1923, Nettlefold from 1926, then Walton Studios, matching /history/film-studios/.
+- **M11, Hersham journey time:** "every service takes the same 33 minutes" and "no faster option... every train" softened to "about 33 minutes", with a note that services vary, on the station page, /hersham/, /living/ and /getting-here/. SWR's journey planner returned no times this session, so no new range is stated.
+- **M16, away guide towpath:** surface and steps rewritten as a dated 31 October 2026 observation with a wet-weather caveat and an explicit "not accessibility-assessed"; the row label is now "Steps and gates" rather than "Step-free".
+- **M14, rankings:** removed "most searched-for"/"longest-running" (Apps Court, now attributing "one of the largest and oldest" and "more than 500 sellers" to the farm's own page), "most popular"/"most sought-after" (Origin Pilates), "most well-regarded" (The Bear Esher) and "most active" (Walton Rowing Club).
+
+Still open from the audit: M3 Famous Residents evidence register, M4 Cowey Stakes source chain, M5 Wikipedia-led citations, and a site-wide sweep for other superlatives.

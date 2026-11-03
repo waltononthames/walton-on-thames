@@ -41,7 +41,7 @@ If the tide is right and the light is good, look north from the meadow to the st
 
 ### The rowing club and Desborough Island
 
-At the western end of Cowey Sale, the path passes **Walton Rowing Club**: one of the most active clubs in the region, with eights and fours out on the water most mornings. If you're walking on a weekend, there will likely be coaching sessions underway, the coxswains calling rhythm across the water.
+At the western end of Cowey Sale, the path passes **Walton Rowing Club**, where you may see crews out on the water. If you're walking on a weekend, there will likely be coaching sessions underway, the coxswains calling rhythm across the water.
 
 Beyond the club, the river widens and **Desborough Island** comes into view on the north bank, a large, semi-natural island created by the Desborough Cut, dug between 1930 and 1935 to straighten and deepen the navigation channel. Ownership is split between the Environment Agency, Surrey County Council and Elmbridge Borough Council, with Elmbridge's commons management team caring for it as a site of nature conservation importance. Two footbridges from Walton Lane provide access, one towards Weybridge and one towards Walton-on-Thames.
 
