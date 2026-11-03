@@ -65,7 +65,7 @@ Private James Porter, one of the men named, had worked as a moulder before enlis
 
 ## Anzac Day at St Mary's Church
 
-The banner was installed at St Mary's Church, Walton-on-Thames, in January 1920, and for over a decade it was carried out from the church to the graveside every 25 April as part of the parish's Anzac Day service. In 1932, a brass memorial tablet, funded by the Returned Soldiers' Association, took over as the permanent memorial at [St Mary's Church](/history/st-marys-church/), and the original banner's working role came to an end.
+The banner was installed at St Mary's Church, Walton-on-Thames, in January 1920, and for over a decade it was carried out from the church to the graveside every 25 April as part of the parish's Anzac Day service. In 1932 a brass tablet was proposed to replace the ageing banner. The Returned Soldiers' Association of New Zealand raised money from its members to pay for it, and the tablet was installed inside [St Mary's Church](/history/st-marys-church/), where it can still be seen; the exact date it was installed or dedicated has not yet been established. With the tablet in place, the original banner's working role came to an end.
 
 ## The banner today
 

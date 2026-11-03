@@ -25,10 +25,12 @@ bestFor:
   unconfirmed:
     ask: site-visit
     question: Is the river route best kept for a daytime walk past the riverside pubs before a Saturday afternoon match?
-# Surface, lighting and steps from Darren's site visit of 31 October 2026.
+# Surface, lighting and steps from Darren's site visit of 31 October 2026. Worded as
+# one dated observation (2 November 2026 audit, M16): a single visit can't support
+# an all-weather surface claim or a bare "step-free: yes".
 # Whether the river floods the towpath is still open (sources doc, section 2).
 surface:
-  value: "The towpath is relatively flat, with a compact, hard surface. There may be the odd puddle, but it does not get muddy"
+  value: "Relatively flat, with a compact, hard surface and the odd puddle when we walked it on 31 October 2026. Conditions can change after heavy rain, so expect puddles or soft patches in wet weather"
   source:
     label: "Site visit by Darren Bayley"
     basis: editor-observation
@@ -40,7 +42,7 @@ lighting:
     basis: editor-observation
     checked: "2026-10-31"
 stepFree:
-  value: "Yes: no steps or gates on the towpath"
+  value: "We saw no steps or gates on the towpath on 31 October 2026. The route has not been formally assessed for accessibility, so we have not checked kerbs, gradients, path width or crossings"
   source:
     label: "Site visit by Darren Bayley"
     basis: editor-observation

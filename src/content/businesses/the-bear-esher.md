@@ -15,7 +15,7 @@ verified_date: "2026-06-26"
 source: "Operator website and address records"
 ---
 
-The Bear Esher is one of the most well-regarded pub hotels in Surrey. The rooms lean genuinely boutique (bold wallpapers, roll-top baths, carefully chosen furniture), and the pub downstairs pulls a loyal local crowd who appreciate a well-run kitchen and good drinks.
+The Bear Esher is a pub with rooms on Esher High Street. The rooms lean genuinely boutique (bold wallpapers, roll-top baths, carefully chosen furniture), and the pub downstairs pulls a loyal local crowd who appreciate a well-run kitchen and good drinks.
 
 Esher High Street is an attractive one, with independent shops, restaurants, and a cinema, and Sandown Park Racecourse is a short walk away. The Common, a large area of heathland and woodland, is nearby for morning walks.
 
