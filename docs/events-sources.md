@@ -60,6 +60,16 @@ CLAUDE.md's Content Verification Protocol (Rule 4, Events listings) still govern
 - **Men's Group (SPAM):** https://stpetershersham.com/church-life384695/mens-group/ (second Monday of the month, from 8pm, at The Royal George)
 - Each page shows a "Page last updated" date. Re-date from the stated pattern only while the page still states it.
 
+### The Heart Shopping Centre
+- **Listing:** https://heartshopping.co.uk/whats-on/
+- **Good for:** family events the centre runs itself (workshops, author visits, seasonal events such as Halloween and Christmas). It is the organiser's own page, so it beats Love Walton for these. Added 8 November 2026.
+- **Quirks:**
+  - It is a news feed of announcements, not a calendar. Each item links to a post at a relative path, `whats-on/YYYY/MM/DD/<slug>/`, which `events:fetch` keeps in the saved `the-heart.html` (the text file drops links). Open the posts that are new since the last run to find the event's own date, time and price.
+  - Neither the date shown on the listing nor the date in the post's path is the event date, and the two can differ (Win a Shop: 14 September shown, 23 September in the path). Only publish the event date the post itself states.
+  - Some posts are competitions or announcements, not events: skip them. Others cover events run by a shop in the centre (Rock Up's Mini Movers Club); cite the shop's own page where it has one.
+  - Older posts run to `?page=41`; only the first page needs reading.
+- **Venue string:** `The Heart Shopping Centre, New Zealand Ave, Walton-on-Thames, KT12 1GH`, as the centre's footer gives it.
+
 ### Other organiser pages cited by current listings
 | Source | Listing | Notes |
 |---|---|---|

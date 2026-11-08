@@ -27,6 +27,7 @@
     { "id": "surrey-markets", "name": "Surrey Markets: Walton Farmers' Market", "url": "https://www.surreymarkets.co.uk/walton-on-thames-market/" },
     { "id": "mezzacraft", "name": "Mezzacraft crochet courses", "url": "https://mezzacraft.newzenler.com/" },
     { "id": "dramacube", "name": "Dramacube workshops", "url": "https://dramacube.co.uk/workshops/" },
+    { "id": "the-heart", "name": "The Heart Shopping Centre what's on (news feed)", "url": "https://heartshopping.co.uk/whats-on/" },
     { "id": "love-walton", "name": "Love Walton what's on (secondary)", "url": "https://lovewalton.co.uk/whats-on/" },
     { "id": "your-elmbridge", "name": "Your Elmbridge what's on (secondary)", "url": "https://yourelmbridge.co.uk/whats-on-in-elmbridge/" }
   ]
