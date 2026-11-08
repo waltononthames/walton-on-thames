@@ -12,6 +12,11 @@
 // When it shows (all must hold):
 //   - at build: status is "on", the last check succeeded, and the reading is
 //     under 7 days old;
+//   - unless the farm has confirmed a date, the "on" reading was taken on a
+//     Thursday, Friday, Saturday or Sunday (London date of the check). The
+//     notice is undated, so one left up after a sale still reads "on" early
+//     the following week; a Monday to Wednesday reading would otherwise
+//     advertise the next Sunday before the farm has announced it;
 //   - in the browser (the edge cache can serve this HTML for days): today is
 //     no later than `showUntil`, the Sunday the notice refers to. That is the
 //     confirmed event date when there is one, otherwise the first Sunday on or
@@ -33,10 +38,20 @@ const showUntil = status.dateConfirmed && status.eventDateISO
   ? String(status.eventDateISO).slice(0, 10)
   : status.checkedDateISO ? sundayOnOrAfter(status.checkedDateISO) : null;
 
+// 0 = Sunday ... 4 = Thursday, from the check's own London date.
+function weekdayOf(isoDay: string): number {
+  const [y, m, d] = isoDay.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+}
+const SALE_WEEK_DAYS = [4, 5, 6, 0];
+const dateConfirmed = Boolean(status.dateConfirmed && status.eventDateISO);
+const readInSaleWeek = dateConfirmed
+  || (status.checkedDateISO ? SALE_WEEK_DAYS.includes(weekdayOf(status.checkedDateISO)) : false);
+
 const today = new Date();
 const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
-const show = status.status === 'on' && status.lastCheckSucceeded === true && fresh && showUntil !== null && showUntil >= todayKey;
+const show = status.status === 'on' && status.lastCheckSucceeded === true && fresh && readInSaleWeek && showUntil !== null && showUntil >= todayKey;
 ---
 
 {show && (
