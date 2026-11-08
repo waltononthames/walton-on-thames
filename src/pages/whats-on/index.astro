@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EventRow from '../../components/EventRow.astro';
+import CarBootStatusCard from '../../components/CarBootStatusCard.astro';
 import { getCollection } from 'astro:content';
 import { isMultiDay } from '../../utils/eventDates';
 
@@ -184,6 +185,8 @@ function eventSchema(item: UpcomingItem) {
             <p class="filter-count" data-count aria-live="polite"></p>
           </div>
 
+          <CarBootStatusCard />
+
           {onNow.length > 0 && (
             <div class="event-group" data-group>
               <h2 class="group-heading">On now</h2>
@@ -229,6 +232,10 @@ function eventSchema(item: UpcomingItem) {
     var groups = Array.prototype.slice.call(document.querySelectorAll('[data-group]'));
     var count = filters.querySelector('[data-count]');
     var noResults = document.querySelector('[data-no-results]');
+    // The Apps Court car boot card (CarBootStatusCard): no published date, but
+    // data-until is the Sunday the farm's notice refers to, used only to hide
+    // it on a cached page and to match the date filters.
+    var statusCard = document.querySelector('[data-status-card]');
     var state = { when: 'all', type: 'all' };
 
     function key(d) {
@@ -262,6 +269,16 @@ function eventSchema(item: UpcomingItem) {
       else if (row.dataset.start === tomorrow) { soon.textContent = 'Tomorrow'; soon.hidden = false; }
     });
 
+    function cardMatches(card) {
+      var until = card.dataset.until;
+      if (until < today) return false;
+      if (state.when === 'today' && until !== today) return false;
+      if (state.when === 'weekend' && !(until >= weekendFrom && until <= weekendTo)) return false;
+      if (state.when === 'week' && until > weekEnd) return false;
+      if (state.type !== 'all' && state.type !== card.dataset.category) return false;
+      return true;
+    }
+
     function matches(row) {
       if (row.dataset.past) return false;
       if (state.when === 'today' && !overlaps(row, today, today)) return false;
@@ -288,8 +305,13 @@ function eventSchema(item: UpcomingItem) {
       filters.querySelectorAll('[data-type]').forEach(function (b) {
         b.setAttribute('aria-pressed', String(b.dataset.type === state.type));
       });
+      var cardShown = false;
+      if (statusCard) {
+        cardShown = cardMatches(statusCard);
+        statusCard.hidden = !cardShown;
+      }
       count.textContent = shown === 1 ? '1 event' : shown + ' events';
-      noResults.hidden = shown > 0;
+      noResults.hidden = shown > 0 || cardShown;
     }
 
     filters.addEventListener('click', function (e) {

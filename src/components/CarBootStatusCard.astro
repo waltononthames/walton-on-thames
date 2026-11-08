@@ -1,0 +1,154 @@
+---
+// The Apps Court car boot sale on the What's On page, as a live status card
+// rather than a dated listing.
+//
+// Why not an event file: the farm's notice ("THE CAR BOOT IS OPEN THIS
+// SUNDAY") never carries a date, the site deliberately publishes no date from
+// it (see apps-court-status.json, dateConfirmed), and the cloud events refresh
+// can't read the farm's site at all (it challenges data-centre addresses). The
+// existing status check is the only reliable source, so this card simply
+// mirrors it and links to the car boot page, which shows the full reading.
+//
+// When it shows (all must hold):
+//   - at build: status is "on", the last check succeeded, and the reading is
+//     under 7 days old;
+//   - in the browser (the edge cache can serve this HTML for days): today is
+//     no later than `showUntil`, the Sunday the notice refers to. That is the
+//     confirmed event date when there is one, otherwise the first Sunday on or
+//     after the day of the check. It is only used to hide the card, never shown.
+import status from '../data/apps-court-status.json';
+
+const MAX_AGE_DAYS = 7;
+
+function sundayOnOrAfter(isoDay: string): string {
+  const [y, m, d] = isoDay.split('-').map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  date.setUTCDate(date.getUTCDate() + ((7 - date.getUTCDay()) % 7));
+  return date.toISOString().slice(0, 10);
+}
+
+const verifiedAt = status.verifiedAt ? new Date(status.verifiedAt) : null;
+const fresh = verifiedAt !== null && (Date.now() - verifiedAt.getTime()) / 86400000 <= MAX_AGE_DAYS;
+const showUntil = status.dateConfirmed && status.eventDateISO
+  ? String(status.eventDateISO).slice(0, 10)
+  : status.checkedDateISO ? sundayOnOrAfter(status.checkedDateISO) : null;
+
+const today = new Date();
+const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+const show = status.status === 'on' && status.lastCheckSucceeded === true && fresh && showUntil !== null && showUntil >= todayKey;
+---
+
+{show && (
+  <a
+    href="/things-to-do/apps-court-car-boot-sale/"
+    class="status-card cat-market"
+    data-status-card
+    data-until={showUntil}
+    data-category="market"
+  >
+    <div class="date-tile" aria-hidden="true">
+      <span class="tile-top">Status</span>
+      <span class="tile-day status-on">On</span>
+      <span class="tile-month">Sunday</span>
+    </div>
+    <div class="status-body">
+      <div class="status-tags">
+        <span class="status-category">Market</span>
+        <span class="status-pill">Check before you go</span>
+      </div>
+      <h3 class="status-title">Apps Court Car Boot Sale</h3>
+      <p class="status-headline">{status.headline}</p>
+      <p class="status-meta">Checked {status.checkedDateLabel} against {status.sourceLabel}. Please confirm on the farm's page before travelling.</p>
+    </div>
+  </a>
+)}
+
+<style>
+  .status-card {
+    display: grid;
+    grid-template-columns: 4.25rem 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    margin-bottom: 2rem;
+    padding: 1.1rem 1.25rem 1.1rem 1rem;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--cat, var(--color-slate));
+    box-shadow: var(--shadow-card);
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .status-card[hidden] { display: none; }
+
+  .status-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-1px);
+    color: inherit;
+  }
+
+  .status-card:hover .status-title { text-decoration: underline; text-underline-offset: 3px; }
+
+  .status-card:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .status-on { font-size: 1.35rem; }
+
+  .status-body {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .status-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .status-category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cat, var(--color-slate));
+  }
+
+  .status-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(11, 36, 46, 0.07);
+    color: var(--color-slate);
+  }
+
+  .status-title {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    color: var(--color-navy);
+  }
+
+  .status-headline {
+    margin: 0;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .status-meta {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-slate);
+  }
+
+  @media (max-width: 640px) {
+    .status-card { gap: 0.9rem; padding: 0.9rem; }
+  }
+</style>
