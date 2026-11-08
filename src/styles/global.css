@@ -263,19 +263,22 @@ img {
 
 /* Event category accents (EventRow, EventCard, the What's On type filters).
    Chosen on 8 November 2026 so the eight read as eight: every pair is at
-   least 23 apart (CIEDE2000) in normal vision and at least 11.6 under
+   least 23 apart (CIEDE2000) in normal vision and at least 7 under
    simulated deuteranopia and protanopia (the old set had pairs at 1.0).
-   Every colour passes AA (4.5:1) as text on white and under white text.
-   Re-check all three before changing one. Unlisted categories fall back
-   to slate. */
+   Measured distance is not enough on its own: as small dots, a dark brown
+   Market and an olive Sport (25.6 apart on paper) looked alike, so each
+   colour should also have its own colour name (brown, green, teal, blue,
+   violet, crimson, wine, lavender). Every colour passes AA (4.5:1) as text
+   on white and under white text. Re-check all of this before changing one.
+   Unlisted categories fall back to slate. */
 .cat-arts       { --cat: #521BBF; }
 .cat-music      { --cat: #E90047; }
-.cat-family     { --cat: #1B805A; }
+.cat-family     { --cat: #00757F; }
 .cat-community  { --cat: #1070E1; }
 .cat-market     { --cat: #6D3A1B; }
 .cat-food-drink { --cat: #891050; }
 .cat-festival   { --cat: #87689C; }
-.cat-sport      { --cat: #706800; }
+.cat-sport      { --cat: #3A6E00; }
 
 /* Event date tile: stands in for the photo events never have */
 .date-tile {
