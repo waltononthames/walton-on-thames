@@ -178,7 +178,7 @@ function eventSchema(item: UpcomingItem) {
               <button type="button" class="chip" data-type="all" aria-pressed="true">Everything</button>
               <button type="button" class="chip" data-type="free" aria-pressed="false">Free</button>
               {categories.map(c => (
-                <button type="button" class="chip" data-type={c} aria-pressed="false">{categoryLabel(c)}</button>
+                <button type="button" class={`chip chip-cat cat-${c}`} data-type={c} aria-pressed="false"><span class="chip-swatch" aria-hidden="true"></span>{categoryLabel(c)}</button>
               ))}
             </div>
             <p class="filter-count" data-count aria-live="polite"></p>
@@ -357,6 +357,35 @@ function eventSchema(item: UpcomingItem) {
     background: var(--color-navy);
     border-color: var(--color-navy);
     color: var(--color-white);
+  }
+
+  /* Category chips carry the same colour as the listings' left border, date
+     tile and category label (the .cat-* classes in global.css set --cat), so
+     the buttons double as the colour key. Selected, the chip fills with its
+     colour: every --cat passes AA against white text. */
+  .chip-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .chip-swatch {
+    flex: none;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--cat, var(--color-slate));
+  }
+
+  .chip-cat:hover { border-color: var(--cat, var(--color-navy)); }
+
+  .chip-cat[aria-pressed="true"] {
+    background: var(--cat, var(--color-navy));
+    border-color: var(--cat, var(--color-navy));
+  }
+
+  .chip-cat[aria-pressed="true"] .chip-swatch {
+    background: var(--color-white);
   }
 
   .chip:focus-visible {
