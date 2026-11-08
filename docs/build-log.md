@@ -2,6 +2,10 @@
 
 Log of pages built against `walton-seo-blueprint.md` / `walton-history-hersham-extension.md`, in build order. One entry per page. Append only.
 
+## 2026-11-08: Melin listing removed (shop closed)
+
+Darren reported that Melin, the jewellery shop in The Heart Shopping Centre, has closed. `src/content/businesses/melin-walton-on-thames.md` is deleted, so it drops out of the Directory, `/shopping/` and The Heart's shop list at the next build. `/directory/melin-walton-on-thames/` now 301s to `/shopping/the-heart/`, the page the listing linked to, rather than returning a 404. The Heart's own store directory (heartshopping.co.uk) could not be reached from this session to corroborate the closure; Darren's first-hand report is the source.
+
 ## 2026-09-15: 34 verified shops for the Directory, and /shopping/ lists all of them
 
 Darren asked why `/shopping/` showed only two shops, then asked for verified shop listings with pharmacies included. The page filtered on `category === 'shopping'`, which two of 131 listings carried, and the Directory had barely any shops to find, having grown from a restaurant spreadsheet plus the NHS pharmacy and Post Office lists.

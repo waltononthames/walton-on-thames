@@ -57,6 +57,11 @@
 /directory/the-heart-shopping-centre/ /shopping/the-heart/ 301
 /directory/the-heart-shopping-centre /shopping/the-heart/ 301
 
+# Melin (jewellery, The Heart) closed: reported by Darren, 8 November 2026.
+# Listing removed; its links go to The Heart guide it pointed readers to.
+/directory/melin-walton-on-thames/ /shopping/the-heart/ 301
+/directory/melin-walton-on-thames /shopping/the-heart/ 301
+
 # Legacy encoded Elmbridge Xcel URL (factual audit, 5 August 2026): was 404ing, no rule existed
 /elmbridge-xcel%2Fsports-hub /directory/elmbridge-xcel/ 301
 /elmbridge-xcel/sports-hub /directory/elmbridge-xcel/ 301
