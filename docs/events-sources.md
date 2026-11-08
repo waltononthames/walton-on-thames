@@ -70,6 +70,12 @@ CLAUDE.md's Content Verification Protocol (Rule 4, Events listings) still govern
   - Older posts run to `?page=41`; only the first page needs reading.
 - **Venue string:** `The Heart Shopping Centre, New Zealand Ave, Walton-on-Thames, KT12 1GH`, as the centre's footer gives it.
 
+### Walton Voices
+- **Listing:** https://www.waltonvoices.co.uk/events.html ("Future Concerts and Events")
+- **Good for:** the community choir's concerts and workshop days. Added 8 November 2026.
+- **Walton-on-Thames and Hersham only.** The choir often performs outside the area. List an event only when its venue is in Walton-on-Thames or in Hersham (both are covered), and skip the rest without mentioning them in the report. This is the owner's decision of 8 November 2026: the 28 November 2026 concert at St Mary's Church, Sunbury-on-Thames was left out under it.
+- **Quirks:** bookings go through TicketSource (www.ticketsource.co.uk/waltonvoices), which returns 403 to automated fetches, so this page is the source to cite. It gives dates and venues; state a time or price only where the page or a readable linked page publishes one.
+
 ### Other organiser pages cited by current listings
 | Source | Listing | Notes |
 |---|---|---|
