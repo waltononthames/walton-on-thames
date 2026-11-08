@@ -14,7 +14,9 @@ CLAUDE.md's Content Verification Protocol (Rule 4, Events listings) still govern
 
 - Fetch one page at a time from any single site, with a pause of a few seconds between requests. Never fire parallel requests at one host.
 - A login wall, a 403, a Cloudflare challenge or a ticketing waiting room is a block. Record it in the run report and move on. Do not work round it with other user agents, mirrors, caches or scripts.
-- If a host does not resolve because the session's network policy blocks it, list it in the report as needing to be allowed.
+- A connection fault is not a block. An HTTP/2 protocol error (curl error 92), a reset or a timeout gets one retry with `curl --http1.1`; if that fails too, record the source as unreadable. Love Walton and Dramacube both failed this way on 8 November 2026.
+- If a host does not resolve because the session's network policy blocks it, list it in the report as needing to be allowed. Don't investigate the sandbox's network or proxy.
+- A source marked **intermittent** below sometimes blocks a run and reads fine the next day. Record the block in the report and in the commit message; notify only when it was also blocked on the previous run.
 
 ## Primary sources
 
@@ -23,6 +25,7 @@ CLAUDE.md's Content Verification Protocol (Rule 4, Events listings) still govern
 - **Event pages:** `https://www.riverhousebarn.co.uk/events/<id>?language=en`
 - **Good for:** most concerts, comedy, talks, exhibitions and termly classes in Walton. This is the largest single source, with about half of all listings.
 - **Quirks:**
+  - **Intermittent 403.** The what's on page returned a plain nginx 403 to the runs on 1 and 8 November 2026 and read normally in between. Treat a 403 here as intermittent (see Fetching etiquette): don't retry it in the same run.
   - **Rate limit.** Fetching event pages in parallel puts you in the venue's ticketing waiting room ("Position ... in the queue"). On 28 October 2026, 33 pages were queued, and clearing them took four rounds of slow retries. Fetch event pages one at a time, about 6 to 10 seconds apart. If a page still shows the queue, come back to it at the end of the run.
   - **Dates and prices.** The visible text often omits the date, time and price. Read them from the page's JSON-LD: `startDate`, `endDate`, and `offers` (`price`, or `lowPrice`/`highPrice` for an `AggregateOffer`). An `AggregateOffer` with `lowPrice` 0 usually means under-2s go free; the text says so.
   - **Classes and courses.** The visible text holds the term dates. A page's `startDate` is often the first session of the term, not the next one. Some classes have one page per block or per date (Our ArtClub, Riverhouse Poets, the Hummingbird sound baths); cite the page that carries the next date.

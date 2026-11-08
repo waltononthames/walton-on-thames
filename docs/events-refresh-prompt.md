@@ -1,21 +1,22 @@
 # Events refresh: scheduled routine prompt
 
-This is the prompt for the daily events refresh routine (9pm UK time). The routine's configuration holds the copy that actually runs, so after editing this file, paste the text below the line into the routine. Keep the two in step.
+This is the prompt for the daily events refresh cloud routine, "Events listing refresh" (`trig_01Q1V9bAqbFqBMYkTDthaxdV`, 05:00 Europe/London). The routine's configuration holds the copy that actually runs, so after editing this file, paste only the text below the line into the routine; this header is for maintainers, not the run. Keep the two in step.
 
-The routine must be set to work on `main`. If its session settings name a feature branch, change them to `main` so the session's instructions and this prompt agree.
+The routine's repository branch setting must be `main`, so the session's instructions and this prompt agree.
 
 ---
 
-Refresh the local events listings for walton-on-thames.org. You run unattended in the cloud at 9pm UK time every day. Nobody is watching, so be conservative.
+Refresh the local events listings for walton-on-thames.org. You run unattended in the cloud at 5am UK time every day. Nobody is watching, so be conservative.
 
 1. **Setup.** Work on the `main` branch of https://github.com/waltononthames/walton-on-thames; this prompt is the explicit instruction to commit and push there. Make sure you have full git history (`git fetch --unshallow` if the checkout is shallow) so `scripts/generate-lastmod.mjs` can write `src/data/lastmod.json` correctly. Read CLAUDE.md first and follow it exactly: the Content Verification Protocol (especially Rule 4, Events listings), British spelling, no em dashes, and the Rule 6 pre-commit checklist. Then read `docs/events-sources.md`, which lists every source to check, how to fetch each one, and the house policies below in full.
 
-2. **Baseline.** Run `npm ci`, then `npm run check` once before editing anything, and note its error count as the baseline. Main has about 150 pre-existing type errors that are not yours to fix. Then run `npm run content:past-events` to list lapsed recurring events and finished one-off events. Read the most recent "Refresh events listings" commits and follow their conventions.
+2. **Baseline.** Run `npm ci`, then `npm run check` once before editing anything, and note its error count as the baseline. Main has pre-existing type errors (151 on 8 November 2026) that are not yours to fix. Then run `npm run content:past-events` to list lapsed recurring events and finished one-off events. Read the most recent "Refresh events listings" commits and follow their conventions.
 
 3. **Sources.** Check every source in `docs/events-sources.md`, following its fetching notes. In particular, fetch Riverhouse Barn event pages one at a time with a pause of several seconds, never in parallel. Deduplicate against what is already published.
    - Facebook URLs are expected to fail. Try each once, record "not readable" and move on.
    - Treat any login wall, 403, Cloudflare challenge or ticketing waiting room as a block. Record it and move on: never work round it with other user agents, mirrors, caches or scripts.
-   - If a host fails to resolve because the session's network does not allow it, list it in your report as needing to be allowed and carry on with what you can reach.
+   - A connection fault is not a block. If a fetch fails with an HTTP/2 protocol error, a reset or a timeout, retry it once with `curl --http1.1`; if that fails too, record it as unreadable and move on.
+   - If a host fails to resolve because the session's network does not allow it, list it in your report as needing to be allowed and carry on with what you can reach. Don't investigate the sandbox's network or proxy: record the failure and move on.
    - If you find a useful source that is not in the file, use it and add it to `docs/events-sources.md` in the same commit.
 
 4. **Changes.**
@@ -37,4 +38,4 @@ Refresh the local events listings for walton-on-thames.org. You run unattended i
 
 8. **Report.** Before finishing, report: sources checked (and which were unreadable or blocked), events added, events expired, events re-dated, events dropped or retired and why, check error count before and after, and whether a commit was made (with its hash).
 
-9. **Notify only when needed.** Send a push notification only if the build failed, the push was refused, a source not marked "expected to fail" in `docs/events-sources.md` was blocked, or an event needs the owner's decision. A routine refresh that committed cleanly, or found nothing to change, gets no notification.
+9. **Notify only when needed.** Send a push notification only if the build failed, the push was refused, a source not marked "expected to fail" or "intermittent" in `docs/events-sources.md` was blocked, an intermittent source was blocked on two runs in a row (check the previous "Refresh events listings" commit message), or an event needs the owner's decision. A routine refresh that committed cleanly, or found nothing to change, gets no notification.
