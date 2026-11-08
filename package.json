@@ -15,6 +15,7 @@
     "seo:meta-descriptions": "node scripts/check-meta-descriptions.mjs",
     "content:stale-events": "node scripts/check-stale-events.mjs",
     "content:past-events": "node scripts/check-stale-events.mjs --all",
+    "events:fetch": "node scripts/fetch-event-sources.mjs",
     "content:em-dashes": "node scripts/check-em-dashes.mjs",
     "seo:lastmod": "node scripts/generate-lastmod.mjs",
     "map:areas": "node scripts/build-areas-map.mjs",

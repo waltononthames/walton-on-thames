@@ -13,8 +13,9 @@ npm run build    # production build → dist/ (prebuild fails the build if any [
 npm run preview  # serve dist/ locally: required to test search; astro dev has no Pagefind index, /search/ shows a graceful "not available in preview" message instead
 npm run check    # Astro type-check (run before pushing)
 npm run content:stale-events  # advisory: flags recurring events whose date has lapsed (see Content-type requirements > Events listings below)
-npm run seo:meta-descriptions # advisory: lists indexable pages whose meta description is outside 140-160 characters (also runs after every build; reads dist/)
 npm run content:past-events   # the same, plus one-off events that have finished and should be deleted
+npm run events:fetch          # fetches every events source politely (scripts/event-sources.json), writes text files and updates docs/events-refresh-state.json
+npm run seo:meta-descriptions # advisory: lists indexable pages whose meta description is outside 140-160 characters (also runs after every build; reads dist/)
 ```
 
 ## Architecture

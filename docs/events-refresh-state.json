@@ -1,0 +1,33 @@
+{
+  "sources": {
+    "riverhouse-barn": {
+      "lastRun": "2026-11-08",
+      "outcome": "blocked",
+      "note": "HTTP 403 (seeded from the 8 November 2026 cloud run log)",
+      "consecutiveBlocks": 1,
+      "lastOk": null
+    },
+    "love-walton": {
+      "lastRun": "2026-11-08",
+      "outcome": "unreadable",
+      "note": "HTTP/2 protocol error (seeded from the 8 November 2026 cloud run log)",
+      "consecutiveBlocks": 0,
+      "lastOk": null
+    },
+    "dramacube": {
+      "lastRun": "2026-11-08",
+      "outcome": "unreadable",
+      "note": "HTTP/2 protocol error (seeded from the 8 November 2026 cloud run log)",
+      "consecutiveBlocks": 0,
+      "lastOk": null
+    },
+    "walton-village-quiz": {
+      "lastRun": "2026-11-08",
+      "outcome": "unreadable",
+      "note": "HTTP 502 (seeded from the 8 November 2026 cloud run log)",
+      "consecutiveBlocks": 0,
+      "lastOk": null
+    }
+  },
+  "updated": "2026-11-08"
+}

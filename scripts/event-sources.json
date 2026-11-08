@@ -1,0 +1,33 @@
+{
+  "_comment": "Pages scripts/fetch-event-sources.mjs fetches on every events refresh. docs/events-sources.md explains what each source is good for and the house policies; keep the two in step when a source is added or removed. status: \"intermittent\" sources only trigger a notification after two blocked runs in a row; \"expected-fail\" sources never do. Hosts in expectedFailHosts are treated as expected-fail wherever they appear, including in event files' source_url.",
+  "expectedFailHosts": ["facebook.com", "ticketsource.co.uk", "ticketsource.com"],
+  "riverhouse": {
+    "id": "riverhouse-barn",
+    "name": "Riverhouse Barn Arts Centre",
+    "listing": "https://www.riverhousebarn.co.uk/whatson?language=en",
+    "eventUrl": "https://www.riverhousebarn.co.uk/events/{id}?language=en",
+    "status": "intermittent",
+    "pauseSeconds": 8
+  },
+  "sources": [
+    { "id": "walton-library", "name": "Walton Library events (Surrey County Council)", "url": "https://www.surreycc.gov.uk/libraries/your-library/find-your-nearest/walton/events-and-activities" },
+    { "id": "hersham-library", "name": "Hersham Library events (Surrey County Council)", "url": "https://www.surreycc.gov.uk/libraries/your-library/find-your-nearest/hersham/events-and-activities" },
+    { "id": "surrey-term-dates", "name": "Surrey school term dates", "url": "https://www.surreycc.gov.uk/schools-and-learning/schools/term-dates" },
+    { "id": "cecil-hepworth-playhouse", "name": "Cecil Hepworth Playhouse what's on", "url": "https://www.cecilhepworthplayhouse.co.uk/whats-on" },
+    { "id": "crafty-pots-home", "name": "Crafty Pots Cafe home (what's on menu)", "url": "https://www.craftypotscafe.com/" },
+    { "id": "crafty-pots-adult-events", "name": "Crafty Pots Cafe adult events", "url": "https://www.craftypotscafe.com/adult-events" },
+    { "id": "st-peters-cafe", "name": "St Peter's Hersham Community Cafe", "url": "https://stpetershersham.com/church-life384695/community-cafe/" },
+    { "id": "st-peters-mens-group", "name": "St Peter's Hersham Men's Group", "url": "https://stpetershersham.com/church-life384695/mens-group/" },
+    { "id": "walton-bowling-club", "name": "Walton Bowling Club", "url": "https://www.waltonbowlingclub.org.uk/" },
+    { "id": "connections-over-60s", "name": "Connections over-60s (A Church Near You)", "url": "https://www.achurchnearyou.com/church/8235/service-and-events/events/912783/" },
+    { "id": "repair-cafe", "name": "Repair Cafe Walton-on-Thames", "url": "https://repaircafewot.org.uk/" },
+    { "id": "rock-up", "name": "Rock Up Walton-on-Thames", "url": "https://www.rock-up.co.uk/locations/walton-on-thames" },
+    { "id": "hersham-sports-social", "name": "Hersham Sports & Social Club live music", "url": "https://www.hershamsportsandsocialclub.co.uk/tuesday-live-music-nights.html" },
+    { "id": "walton-village-quiz", "name": "The Walton Village Thursday quiz", "url": "https://thewaltonvillage.com/thursdays-quiz-night" },
+    { "id": "surrey-markets", "name": "Surrey Markets: Walton Farmers' Market", "url": "https://www.surreymarkets.co.uk/walton-on-thames-market/" },
+    { "id": "mezzacraft", "name": "Mezzacraft crochet courses", "url": "https://mezzacraft.newzenler.com/" },
+    { "id": "dramacube", "name": "Dramacube workshops", "url": "https://dramacube.co.uk/workshops/" },
+    { "id": "love-walton", "name": "Love Walton what's on (secondary)", "url": "https://lovewalton.co.uk/whats-on/" },
+    { "id": "your-elmbridge", "name": "Your Elmbridge what's on (secondary)", "url": "https://yourelmbridge.co.uk/whats-on-in-elmbridge/" }
+  ]
+}

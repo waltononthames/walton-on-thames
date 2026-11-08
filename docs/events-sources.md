@@ -1,11 +1,12 @@
 # Events sources
 
-The sources the events refresh checks, what each is good for, and how to fetch it. The refresh routine's prompt (`docs/events-refresh-prompt.md`) says "check every source in this file", so this is the single list: when a run finds a new useful source, add it here in the same commit.
+The sources the events refresh checks, what each is good for, and how to fetch it. The refresh routine's prompt (`docs/events-refresh-prompt.md`) runs `npm run events:fetch`, which fetches the pages listed in `scripts/event-sources.json`. That file is the machine list; this one explains each source and the house policies. When a run finds a new useful source, add it to both in the same commit.
 
 CLAUDE.md's Content Verification Protocol (Rule 4, Events listings) still governs what may be published. This file only records where to look and the house policies for cases the protocol leaves open.
 
 ## Before you start
 
+- `npm run events:fetch` fetches every source below one request at a time, plus the source of every lapsed recurring event and the Riverhouse Barn event pages not yet published. It applies the fetching etiquette below, saves each page as text, extracts Riverhouse JSON-LD, and updates `docs/events-refresh-state.json` with each source's outcome and run of blocks. Its `NOTIFY:` lines say whether a source problem needs a push notification.
 - `npm run content:stale-events` lists recurring events whose date has lapsed. Re-verify each one against its source, then re-date it or delete it.
 - `npm run content:past-events` lists the same and also one-off events that have finished. Delete those files: the listing pages already hide them, so this is housekeeping, not a fix.
 - An event has lapsed when the calendar day of its `end` (or `start` if there is no `end`) is before today. This is the same rule `src/pages/whats-on/index.astro` uses.
@@ -16,7 +17,7 @@ CLAUDE.md's Content Verification Protocol (Rule 4, Events listings) still govern
 - A login wall, a 403, a Cloudflare challenge or a ticketing waiting room is a block. Record it in the run report and move on. Do not work round it with other user agents, mirrors, caches or scripts.
 - A connection fault is not a block. An HTTP/2 protocol error (curl error 92), a reset or a timeout gets one retry with `curl --http1.1`; if that fails too, record the source as unreadable. Love Walton and Dramacube both failed this way on 8 November 2026.
 - If a host does not resolve because the session's network policy blocks it, list it in the report as needing to be allowed. Don't investigate the sandbox's network or proxy.
-- A source marked **intermittent** below sometimes blocks a run and reads fine the next day. Record the block in the report and in the commit message; notify only when it was also blocked on the previous run.
+- A source marked **intermittent** below sometimes blocks a run and reads fine the next day. Record the block in the report; `docs/events-refresh-state.json` counts blocked runs in a row, and `events:fetch` asks for a notification only from the second.
 
 ## Primary sources
 
