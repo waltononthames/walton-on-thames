@@ -2004,3 +2004,22 @@ A `pending-review` listing now shows "We are re-checking this listing" under its
 **Hygiene ratings were read but not published,** pending the FSA's reuse and display terms (plan, Phase 1 principle). **Result:** `npm run content:stale-listings` now shows 3 listings on the spreadsheet alone (from 40) and 54 without a map position (from 69).
 
 **Rule 6 checklist:** no markers (the prebuild scan passes). Every changed name, address, postcode and position traces to a register entry queried this session, recorded by FHRSID in `checks` and `source`. No hours, prices or contact details were added or changed. No closure was concluded: the three unmatched listings are flagged, not removed.
+
+## 9 November 2026 (night): Grok research batch 1 checked; directory pass 2 for 27 listings
+
+Grok answered `docs/grok-research-brief.md`. Its report is filed, as received, in `docs/research-inbox.md`, with the outcome for each item recorded above it. It followed the brief closely: exact quotations, URLs, page-type labels, and `NOT FOUND` rather than guesses. Every official page it cited was then fetched from this session, after the hosts were added to the Default environment in three approved batches, and each quotation was tested against the page text. **Only quotations found on the page were used.** Listings cite the pages, not Grok.
+
+**Applied (27 listings).** Each gained a `business-website` check naming the page and the fields it confirmed.
+- **Websites corrected:** The Swan (swanwalton.com; theswanwalton.co.uk is dead), Khao Sarn (khaosarn.co.uk; khaosarnrestaurant.co.uk is dead), Sushi Wakyo (its own site, replacing an OpenTable page), PizzaExpress, Pizza GoGo and Buenasado (their branch pages), Babucci (home page rather than ordering page), Squire's (the café page), KFC (branch page added), The Boathouse (waltonboathire.com, whose Boathouse links go to the http-only coffeeattheboathouse.com). Cinnamon's dead cinnamonhersham.co.uk was removed, with no replacement: its two newer sites could not be loaded from here.
+- **Phones:** The Anglers changed from 01932 223996 to **020 4629 8317**, per its Visit page. Red Rose gained 01932 391428. Full Moon's second number, 01932 267255, was dropped, because its site gives only 01932 225531. The others were confirmed unchanged.
+- **Names, from the businesses' own sites:** "Moondrop Cafe" is now "The Moondrop Cafe", "Pizza Joker" is now "Joker Takeaway", "Olive Kitchen" is now "Olive Pizza Kitchen", and "Squire's Garden Centre Cafe" is now "Squire's Hersham Café Bar" (the page title; the FSA register says "Seasons Cafe"). Buenasado's branch page settles the register's "Buenos Aires". Slugs, and so URLs, are unchanged.
+- **The Boathouse is no longer pending review:** its address, phone and dog-friendly policy are confirmed on waltonboathire.com.
+
+**Conflicts kept open:** Babucci's own site gives KT12 1AD and the register KT12 1AA; Tops Pizza's branch page gives 27 Bridge St and the register 27A. As with The Mogul, the register's version is kept, both are recorded in `source`, and the question is for Darren. Wagamama's page says "almost ready to welcome you back", which may mean a refit; its status is unchanged and the question is for Darren.
+
+**Not used.**
+- Seven businesses have only a Facebook or Just Eat presence, which is Tier 3: Archway, Halfway, Le Petit Cafe, The Surrey Coffee Company, Mañana, Romaan and Uzzal.
+- Six pages could not be checked from here: IRO Sushi, China Chef, McDonald's and Papa Johns refuse automated requests with 403, and that was not worked around; Pizza Hut and The Mogul load their details with JavaScript.
+- Grok's Perfect Pizza branch list was confirmed (no Walton), but it included Guildford, which is not on the page now.
+
+**Rule 6 checklist:** no markers (the prebuild scan passes). Every changed phone, website and name was read on the business's own page this session. Grok's report is recorded as the lead, never the source. No hours or prices were added. Nothing was concluded about the three possible closures.

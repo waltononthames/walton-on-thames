@@ -14,8 +14,14 @@ featured: false
 status: "active"
 fhrs_id: 1779194
 verified_date: "2026-11-09"
-source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1779194): name, address, postcode. Address changed from 'New Zealand Avenue' to the register's 'Unit 1 To 2, The Heart'."
+source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1779194): name, address, postcode. Address changed from 'New Zealand Avenue' to the register's 'Unit 1 To 2, The Heart'. Pass 2, 9 November 2026: phone/website checked against https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames; lead from Grok research batch 1 (docs/research-inbox.md), confirmed by loading the page here. The branch page also says 'walton. we're almost ready to welcome you back', which may mean a refit or temporary closure; status not changed, flagged for Darren."
 checks:
+  - fields: ["phone", "website"]
+    source:
+      label: "wagamama, walton-on-thames branch page"
+      url: "https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames"
+      basis: "business-website"
+      checked: "2026-11-09"
   - fields: ["name", "address", "postcode", "fhrs_id"]
     source:
       label: "Food Standards Agency food hygiene register"

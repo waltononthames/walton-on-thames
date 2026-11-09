@@ -14,8 +14,14 @@ featured: false
 status: "active"
 fhrs_id: 1778337
 verified_date: "2026-11-09"
-source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1778337): name, address, postcode."
+source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1778337): name, address, postcode. Pass 2, 9 November 2026: phone/website checked against https://primafila.co.uk/contact-us/; lead from Grok research batch 1 (docs/research-inbox.md), confirmed by loading the page here."
 checks:
+  - fields: ["phone", "website"]
+    source:
+      label: "Prima Fila website, contact page"
+      url: "https://primafila.co.uk/contact-us/"
+      basis: "business-website"
+      checked: "2026-11-09"
   - fields: ["name", "address", "postcode", "fhrs_id"]
     source:
       label: "Food Standards Agency food hygiene register"
