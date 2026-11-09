@@ -2035,3 +2035,10 @@ Grok answered `docs/grok-research-brief.md`. Its report is filed, as received, i
 **Postcode conflicts settled.** Darren ruled that where a business's own website and the FSA register disagree on a postcode, the business's own site wins. **Babucci** goes back to its site's "16/20 Bridge Street, Walton-on-Thames KT12 1AD", read here on babucci.net. **The Mogul** goes back to KT12 2SD: the ordering link on its own domain (`the-mogul-kt122sd-surrey`) was checked here, and Grok also read "KT122SD" in the site's rendered "Find us" section, which could not be loaded here. In both, the register's check no longer claims the postcode, the business-website check does, and the register's version is kept in `source`. Tops Pizza's conflict is a street number (27 on its branch page, 27A in the register), not a postcode, so it is left at 27A pending Darren.
 
 **Tops Pizza stays at 27A Bridge Street,** as Darren confirmed. The business-website rule covers postcodes; this was a street number, and the register's 27A keeps it distinct from Mañana at 27.
+
+**Grok briefs for batches 2 and 3.** These cover the 119 listings that still have no field-level checks, split by type to keep each run about the size of batch 1: `docs/grok-research-brief-batch2.md` has 55 shops and services, and `docs/grok-research-brief-batch3.md` has 64 health, fitness, accommodation, and food and drink listings. The rules are the same as batch 1, with three additions:
+- an `OFFICIAL REGISTER` page type for the NHS, the Post Office branch finder, council pages and The Heart's own store directory
+- a rule that instructors and services with no premises are reported by teaching venue or area covered, and never by a home address
+- an instruction to stop at a complete block if the answer runs long
+
+Batch 2 asks for The Heart's full store directory, to show which tenants are missing. Batch 3 asks for the NHS entries for the ten dentists, the six new businesses in plan items 3.1 and 3.2, Walton BBQ, and one conflict found while building the table: Khan of Walton is recorded at "3 Simpson House", the unit the register gives to Pizza GoGo.
