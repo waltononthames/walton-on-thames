@@ -95,6 +95,7 @@ Each existing record is opened once: re-checked, moved onto the new fields, and 
   2. The 40 records still resting on the spreadsheet alone: cafés, takeaways, restaurants, pubs. The Swan and The Anglers are already noted in the build log as needing their own sites checked. The Default cloud environment allows `swanwalton.com`, which differs from the domain on The Swan's listing (theswanwalton.co.uk): confirm which is current before changing it. The Surrey Coffee Company's Facebook link needs confirming as the business's own page; the register also lists a "Surrey Coffee Company" at High Park Sports Ground, Hersham (FHRSID 1778854), which may or may not be the same business.
   3. The 103 June and July records, then the January one.
   4. Everything else, oldest check first.
+  **Research help:** `docs/grok-research-brief.md` (batch 1, 9 November 2026) asks Grok to find the official pages for the 40 spreadsheet-only records and quote what they say; answers go in `docs/research-inbox.md`. They are leads, never sources: each quotation is re-checked against its page before a listing changes.
   A record that cannot be confirmed is flagged to Darren, not kept on trust and not quietly deleted. Where a description can only come from the spreadsheet (no website of the business's own exists), it stays, its `source` says so, and the page tells readers it is unchecked.
 
 ---
