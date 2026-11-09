@@ -3,6 +3,7 @@ import { glob } from 'astro/loaders';
 import { fixturesLoader } from './loaders/fixtures-loader';
 import { planningLoader } from './loaders/planning-loader';
 import { awayGuideCollections } from './content/schemas/away-guide';
+import { DIRECTORY_TAG_SLUGS } from './data/directory-tags';
 
 // Healthcare fields, used by the GP practice profiles and the nearby-pharmacy
 // module. Everything is optional so the rest of the directory is unaffected.
@@ -27,6 +28,12 @@ const factBasis = z.enum([
   'organisation-confirmed',
   'timetable',
   'routing-estimate',
+  // Added for directory listings in general (docs/directory-plan.md, 1.1).
+  // `business-confirmed` means the business told us directly, as
+  // `practice-confirmed` does for a practice. Official registers such as the
+  // Food Standards Agency's are `official-data`.
+  'business-website',
+  'business-confirmed',
 ]);
 
 const checkedSource = z.object({
@@ -129,9 +136,37 @@ const businesses = defineCollection({
     name: z.string(),
     slug: z.string(),
     category: z.string(),
-    subcategories: z.array(z.string()).default([]),
+    // Controlled vocabulary: src/data/directory-tags.ts.
+    subcategories: z.array(z.enum(DIRECTORY_TAG_SLUGS)).default([]),
     neighbourhood: z.string(),
     address: z.string(),
+    // Fields added for the directory plan (docs/directory-plan.md, Phase 1).
+    // All optional, so a listing not yet re-checked stays valid as it is.
+    //
+    // Trading status. The listing page shows a notice for anything other than
+    // `active`. A `permanently-closed` listing keeps its page but leaves every
+    // list (decision D6, src/utils/listed.ts).
+    status: z.enum(['active', 'temporarily-closed', 'permanently-closed', 'pending-review']).default('active'),
+    // When we recorded a permanent closure (we rarely know the day it actually
+    // closed). Decision D6: a closed listing leaves every list at once and its
+    // URL is redirected twelve months after this date; see src/utils/listed.ts.
+    closure_recorded: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    // Postcode as its own field, for PostalAddress.postalCode. It must also
+    // appear, identically, in `address`, which stays the display string.
+    postcode: z.string().regex(/^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$/, 'postcode must be upper case with one space, e.g. KT12 1AH').optional(),
+    // Whether the business is in Walton, Hersham or Whiteley Village, or is a
+    // nearby one listed because it serves them. Left unset until decision D2.
+    area: z.enum(['core', 'nearby']).optional(),
+    // Food Standards Agency register ID (FHRSID), for food businesses. Lets a
+    // re-check query the register by ID rather than by name.
+    fhrs_id: z.number().int().optional(),
+    // Sourced practical details: access, parking, transport. Same shape as the
+    // GP profiles' `visiting` entries; every item carries its own source.
+    practical: z.array(z.object({
+      topic: z.enum(['entrance', 'step-free-access', 'accessible-toilet', 'parking', 'accessible-parking', 'bus', 'rail', 'cycle', 'other']),
+      text: z.string(),
+      source: checkedSource,
+    })).default([]),
     lat: z.number().optional(),
     lng: z.number().optional(),
     phone: z.string().optional(),

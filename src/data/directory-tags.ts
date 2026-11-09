@@ -1,0 +1,122 @@
+// The directory's controlled tag vocabulary: every value a business listing
+// may carry in `subcategories`. src/content.config.ts validates against these
+// keys, so a misspelt or invented tag fails the build instead of quietly
+// creating a category of one.
+//
+// Seeded on 9 November 2026 from the 99 values already in use (see
+// docs/directory-plan.md, item 1.1). To add a tag, add it here with a label.
+//
+// `synonyms` are words people search with (Phase 2 directory search). They are
+// search vocabulary, not claims about any business: a tag is only ever applied
+// to a listing on the strength of that listing's own sources.
+
+export interface DirectoryTag {
+  label: string;
+  synonyms?: string[];
+}
+
+export const DIRECTORY_TAGS = {
+  'accessories': { label: 'Accessories' },
+  'argentinian': { label: 'Argentinian' },
+  'asian': { label: 'Asian' },
+  'asian-groceries': { label: 'Asian groceries' },
+  'bangladeshi': { label: 'Bangladeshi' },
+  'barre': { label: 'Barre' },
+  'bed-and-breakfast': { label: 'Bed and breakfast', synonyms: ['B&B', 'b and b'] },
+  'beds': { label: 'Beds', synonyms: ['mattresses'] },
+  'books': { label: 'Books', synonyms: ['bookshop', 'bookseller'] },
+  'bootcamp': { label: 'Bootcamp' },
+  'boxing-fitness': { label: 'Boxing fitness' },
+  'bridal': { label: 'Bridal', synonyms: ['wedding dresses'] },
+  'british': { label: 'British' },
+  'brunch': { label: 'Brunch' },
+  'burgers': { label: 'Burgers' },
+  'carpets': { label: 'Carpets', synonyms: ['flooring'] },
+  'casual-dining': { label: 'Casual dining' },
+  'chain': { label: 'Chain' },
+  'charity-shop': { label: 'Charity shop', synonyms: ['second-hand', 'thrift'] },
+  'chicken': { label: 'Chicken' },
+  'chinese': { label: 'Chinese' },
+  'climbing': { label: 'Climbing', synonyms: ['bouldering'] },
+  'coaching': { label: 'Coaching' },
+  'community': { label: 'Community' },
+  'convenience': { label: 'Convenience store', synonyms: ['corner shop'] },
+  'corporate-fitness': { label: 'Corporate fitness' },
+  'creative-studio': { label: 'Creative studio' },
+  'cycles': { label: 'Bikes and cycling', synonyms: ['bike shop', 'bicycle', 'cycle shop'] },
+  'dance-fitness': { label: 'Dance fitness' },
+  'dentist': { label: 'Dentist', synonyms: ['dental practice', 'dental surgery'] },
+  'discount': { label: 'Discount store' },
+  'dog-friendly': { label: 'Dog friendly' },
+  'eveningwear': { label: 'Eveningwear' },
+  'family-activities': { label: 'Family activities' },
+  'fashion': { label: 'Fashion', synonyms: ['clothes', 'clothing'] },
+  'fast-casual': { label: 'Fast casual' },
+  'fast-food': { label: 'Fast food' },
+  'fishing-tackle': { label: 'Fishing tackle', synonyms: ['angling'] },
+  'fitness-classes': { label: 'Fitness classes', synonyms: ['exercise classes'] },
+  'food': { label: 'Serves food' },
+  'food-court': { label: 'Food court' },
+  'footwear': { label: 'Footwear', synonyms: ['shoes'] },
+  'fragrance': { label: 'Fragrance', synonyms: ['perfume'] },
+  'functional-fitness': { label: 'Functional fitness' },
+  'furniture': { label: 'Furniture' },
+  'garden-centre': { label: 'Garden centre' },
+  'general-merchandise': { label: 'General merchandise' },
+  'gp-surgery': { label: 'GP surgery', synonyms: ['doctor', 'GP', 'medical practice'] },
+  'greek': { label: 'Greek' },
+  'grocery': { label: 'Grocery', synonyms: ['groceries'] },
+  'guest-house': { label: 'Guest house' },
+  'gym': { label: 'Gym', synonyms: ['fitness centre'] },
+  'hardware': { label: 'Hardware', synonyms: ['DIY', 'tools'] },
+  'health-food': { label: 'Health food' },
+  'homeware': { label: 'Homeware' },
+  'hotel': { label: 'Hotel' },
+  'hyrox': { label: 'Hyrox' },
+  'indian': { label: 'Indian', synonyms: ['curry'] },
+  'inn': { label: 'Inn' },
+  'italian': { label: 'Italian' },
+  'japanese': { label: 'Japanese' },
+  'jewellery': { label: 'Jewellery', synonyms: ['jeweller', 'jewelry'] },
+  'library': { label: 'Library' },
+  'martial-arts': { label: 'Martial arts' },
+  'mediterranean': { label: 'Mediterranean' },
+  'mexican': { label: 'Mexican' },
+  'mobile-phones': { label: 'Mobile phones' },
+  'nutrition': { label: 'Nutrition' },
+  'online-coaching': { label: 'Online coaching' },
+  'optician': { label: 'Optician', synonyms: ['optometrist', 'eye test'] },
+  'outdoor-clothing': { label: 'Outdoor clothing' },
+  'personal-training': { label: 'Personal training', synonyms: ['personal trainer', 'PT'] },
+  'pharmacy': { label: 'Pharmacy', synonyms: ['chemist'] },
+  'phone-accessories': { label: 'Phone accessories' },
+  'physiotherapy': { label: 'Physiotherapy', synonyms: ['physio'] },
+  'pilates': { label: 'Pilates' },
+  'pizza': { label: 'Pizza' },
+  'portuguese': { label: 'Portuguese' },
+  'post-office': { label: 'Post office' },
+  'pottery-painting': { label: 'Pottery painting' },
+  'pub-with-rooms': { label: 'Pub with rooms' },
+  'racquet-restringing': { label: 'Racquet restringing' },
+  'riverside': { label: 'Riverside' },
+  'shopping-centre': { label: 'Shopping centre' },
+  'spanish': { label: 'Spanish' },
+  'sports-nutrition': { label: 'Sports nutrition' },
+  'sports-therapy': { label: 'Sports therapy', synonyms: ['sports massage'] },
+  'sportswear': { label: 'Sportswear' },
+  'stationery': { label: 'Stationery' },
+  'steakhouse': { label: 'Steakhouse' },
+  'strength': { label: 'Strength training' },
+  'supermarket': { label: 'Supermarket' },
+  'sushi': { label: 'Sushi' },
+  'swimming': { label: 'Swimming', synonyms: ['pool'] },
+  'tapas': { label: 'Tapas' },
+  'thai': { label: 'Thai' },
+  'turkish': { label: 'Turkish' },
+  'wellness': { label: 'Wellness' },
+  'yoga': { label: 'Yoga' },
+} as const satisfies Record<string, DirectoryTag>;
+
+export type DirectoryTagSlug = keyof typeof DIRECTORY_TAGS;
+
+export const DIRECTORY_TAG_SLUGS = Object.keys(DIRECTORY_TAGS) as [DirectoryTagSlug, ...DirectoryTagSlug[]];

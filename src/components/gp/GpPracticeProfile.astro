@@ -4,6 +4,7 @@
 // sources); nothing practice-specific is written here. See
 // docs/gp-directory.md for the editorial rules each section follows.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isListed } from '../../utils/listed';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatPlaceName, nameWithAddress, addressWithoutName } from '../../utils/format';
@@ -22,7 +23,7 @@ type Gp = NonNullable<Biz['data']['gp']>;
 type Link = { url: string; label: string; source: Source };
 type Img = Biz['data']['images'][number];
 type Source = { label: string; url?: string; basis: string; checked: string };
-const businesses: Biz[] = await getCollection('businesses');
+const businesses: Biz[] = await getCollection('businesses', isListed);
 const pharmacies = businesses.filter((b: Biz) => b.data.subcategories.includes('pharmacy'));
 const sharedWith = gp.premises.shared_with
   .map((slug: string) => businesses.find((b: Biz) => b.data.slug === slug))

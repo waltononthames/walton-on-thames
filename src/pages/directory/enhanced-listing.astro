@@ -5,7 +5,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // badge. `preview` is a proportionally resized WebP for on-page display; `file`
 // is the unmodified full-size PNG offered for download. The badge wording is
 // fixed artwork and is deliberately not renamed alongside the Enhanced Listing
-// tier. See the note in the "How to qualify" section below.
+// tier.
+//
+// The badge is optional. Until 9 November 2026 it was the condition for an
+// Enhanced Listing, which made a link to us the price of extra content: a
+// required reciprocal link of the kind search-engine link-spam policies warn
+// about. Enhanced Listings now depend only on the material a business sends
+// passing editorial checks. Do not reintroduce a link or badge condition.
+// See docs/directory-plan.md, item 0.1.
 const badges = [
   {
     id: 'transparent-bg',
@@ -45,7 +52,7 @@ const exampleSnippet = `<a href="https://walton-on-thames.org/directory/your-lis
 
 <BaseLayout
   title="How to Submit an Enhanced Listing"
-  description="Enhanced Listings on Walton-on-Thames.org are completely free and always will be. Add the Featured on Walton-on-Thames.org badge to your site to qualify."
+  description="Enhanced Listings on Walton-on-Thames.org are free and always will be. Send us photographs, videos and booking links to add to your listing. No badge needed."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -91,8 +98,11 @@ const exampleSnippet = `<a href="https://walton-on-thames.org/directory/your-lis
         <p>An Enhanced Listing does not receive preferential category ranking simply because it is enhanced. The distinction is the additional content available within the listing, not paid or preferential placement.</p>
 
         <h2>How to qualify</h2>
-        <p>To qualify for an Enhanced Listing, you must add the "Featured on Walton-on-Thames.org" badge to your own website and link it directly to your business or organisation's listing on Walton-on-Thames.org.</p>
-        <p>That is it. It is super easy and, best of all, it is totally free and always will be.</p>
+        <p>Any business or organisation with a listing in the directory can apply. There is nothing to do in return: just send us the extra material you would like added.</p>
+        <p>We check what you send before it is published, as we do for everything on this site. Facts such as services, facilities and booking arrangements are checked against your own website or another official source. Descriptions may be edited for accuracy, and we leave out claims we cannot check, such as awards or rankings without a source. Photographs need to be your own, or ones you have permission to share.</p>
+
+        <h2>Show you are listed (optional)</h2>
+        <p>If you would like to tell your customers that you are listed on Walton-on-Thames.org, you are welcome to use the "Featured on Walton-on-Thames.org" badge on your own website. It is entirely optional. Using it makes no difference to whether you can have an Enhanced Listing, or to where your listing appears in the directory.</p>
 
         <h3>Choose a badge</h3>
         <p>Three colour variants are available. Please use the artwork as supplied, without cropping, recolouring or otherwise altering it.</p>
@@ -122,7 +132,7 @@ const exampleSnippet = `<a href="https://walton-on-thames.org/directory/your-lis
 
       <div class="prose">
         <h3>Link the badge to your own listing</h3>
-        <p>The badge must link to your individual directory listing on Walton-on-Thames.org, not simply to the Walton-on-Thames.org homepage. Your listing URL is the address of your own page in the directory, and it looks like <code>https://walton-on-thames.org/directory/your-business-name/</code>. You can find it by opening your listing from the <a href="/directory/">directory</a> and copying the address from your browser.</p>
+        <p>If you use the badge, please link it to your individual directory listing on Walton-on-Thames.org rather than to the homepage, so your customers land on your own page. Your listing URL is the address of your own page in the directory, and it looks like <code>https://walton-on-thames.org/directory/your-business-name/</code>. You can find it by opening your listing from the <a href="/directory/">directory</a> and copying the address from your browser.</p>
 
         <h4>Example</h4>
         <div class="code-block">
@@ -130,16 +140,14 @@ const exampleSnippet = `<a href="https://walton-on-thames.org/directory/your-lis
         </div>
         <p>Save the badge image to your own website rather than linking to the copy hosted here, and keep the alternative text as "Featured on Walton-on-Thames.org".</p>
 
-        <h2>Standard Listings and events do not need the badge</h2>
-        <p>The badge is only relevant to Enhanced Listings. A Standard Listing in the directory is free and requires nothing in return, and submitting a local event is free and requires nothing in return. You are welcome to use the badge either way, but it is never a condition of appearing on the site.</p>
+        <p>The badge is never a condition of appearing on the site. Standard Listings, Enhanced Listings and event submissions are all free, and none of them requires anything in return.</p>
 
         <h2>Apply for an Enhanced Listing</h2>
-        <p>When your badge is live on your website, send us the details below using the contact form and choose <strong>Enhanced Listing application</strong> as the subject. Every application is manually reviewed, as all submissions to this site are.</p>
+        <p>Send us the details below using the contact form and choose <strong>Enhanced Listing application</strong> as the subject. Every application is manually reviewed, as all submissions to this site are.</p>
         <ul>
           <li>Your business or organisation name</li>
           <li>The URL of your existing Walton-on-Thames.org listing</li>
-          <li>The page on your website where you have added the badge</li>
-          <li>Your custom description</li>
+          <li>Your description</li>
           <li>Your photographs</li>
           <li>Links to any videos, reviews or booking pages you want included</li>
         </ul>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isListed } from '../../utils/listed';
 import BusinessCard from '../../components/BusinessCard.astro';
 import { getCollection } from 'astro:content';
 
@@ -27,7 +28,7 @@ const categories = [
   { slug: 'takeaways', label: 'Takeaways' },
 ];
 
-const businesses = await getCollection('businesses');
+const businesses = await getCollection('businesses', isListed);
 const filtered = businesses.filter(b =>
   b.data.category === category.slug ||
   (category.slug === 'pubs-and-bars' && b.data.subcategories.includes('pub-with-rooms') && CORE_AREAS.includes(b.data.neighbourhood))

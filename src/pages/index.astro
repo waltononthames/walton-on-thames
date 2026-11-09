@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { isListed } from '../utils/listed';
 import EventCard from '../components/EventCard.astro';
 import BusinessCard from '../components/BusinessCard.astro';
 import PlaceCard from '../components/PlaceCard.astro';
@@ -18,7 +19,7 @@ const upcomingEvents = allEvents
   .sort((a, b) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime())
   .slice(0, 3);
 
-const allBusinesses = await getCollection('businesses');
+const allBusinesses = await getCollection('businesses', isListed);
 const featuredBusinesses = allBusinesses.filter(b => b.data.featured).slice(0, 6);
 
 const allPlaces = await getCollection('places');

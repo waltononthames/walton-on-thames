@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isListed } from '../../utils/listed';
 import BusinessCard from '../../components/BusinessCard.astro';
 import { getCollection } from 'astro:content';
 
-const businesses = await getCollection('businesses');
+const businesses = await getCollection('businesses', isListed);
 type Biz = (typeof businesses)[number];
 
 // Every shop in the directory, grouped by what it sells. Pharmacies keep their
