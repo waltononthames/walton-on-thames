@@ -1974,3 +1974,33 @@ Governed by `docs/directory-plan.md`. Classification: current/practical content 
 **Later still: The Mogul's website.** Darren gave it as www.themogulkt12.co.uk; the bare domain 301s there. Both hosts were added to the Default environment with his approval. The site loads and is The Mogul's: its ordering link is `/rstm/resto/the-mogul-kt122sd-surrey` and its email address is themogulkt12@gmail.com. Its name, address, phone and hours are filled in by JavaScript from the ordering platform, so none of them is in the page source. A request to the platform's data endpoint was refused by the session's permission check and not pursued another way. The listing now links the site, with a `checks` entry for the website only. **Postcode conflict:** the ordering link carries KT12 2SD, as the July spreadsheet did, while the FSA register (FHRSID 1778146) gives KT12 2SA. The register's postcode stays until the restaurant's own address can be read; both are recorded in `source`. The phone and description still rest on the spreadsheet.
 
 **Research brief for Grok.** Darren offered Grok as a research assistant. Its findings are Tier 3 (AI-generated), so its role is finding sources, not being one: the same role CLAUDE.md gives Love Walton for events. `docs/grok-research-brief.md` asks it, for the 40 spreadsheet-only listings, for each business's official page and exact quotations of name, address, phone and offer, with URLs, page-type labels and dates, and `NOT FOUND` rather than guesses. It also asks five specific questions: The Mogul's rendered "Find us" address and phone; Mañana and Tops Pizza both recorded at 27 Bridge Street; The Swan's domain; The Surrey Coffee Company's own site and the Hersham sports-ground outlet; and better links for Romaan, Sushi Wakyo, Pizza Hut Delivery and Babucci. Our phone numbers are deliberately left out of the brief so it cannot echo them back. Answers go in `docs/research-inbox.md`, where each is marked Confirmed, Rejected or Unresolved after checking.
+
+## 9 November 2026 (evening): directory plan 1.4.2, pass 1, the 40 spreadsheet listings against the FSA register
+
+All 40 listings that rested only on the July 2026 spreadsheet were queried in the FSA register (`api.ratings.food.gov.uk`, header `x-api-version: 2`, one request a second). For each, I looked up every establishment at its postcode, to catch businesses that have changed name, and searched by name across KT12, to catch wrong postcodes. Each match was read by eye before anything was written. The changes were then applied by one script, so every record was edited the same way. A first run stopped part-way; its edits were reverted from git and the corrected script was run once over all 40.
+
+**What each matched listing gained:** `fhrs_id`, `postcode`, `status: active`, `verified_date` 2026-11-09, a `checks` entry naming exactly which fields the register confirmed, and a sentence appended to `source`. The name is counted as checked only where the register's name is the same business name in substance, for example "Fireaway" for Fireaway Pizza or "Manana" for Mañana. Phones, websites and descriptions still rest on the spreadsheet, and each page says so.
+
+**Map positions:** the register's geocode was used only where no other registered business in the fetched results shares the identical point. Many do not qualify: KFC, Subway and The Walton Village share one point on the High Street; Babucci, Prima Fila and Le Petit Cafe share one on Bridge Street; five Heart units share another. Those are postcode-level positions, not buildings. 15 listings gained a position. The Anglers keeps its existing coordinates. **The Souvlaki's position, added from the register this morning, was removed:** Basilo Pizza at 38 Church Street shares the identical point.
+
+**Addresses corrected to the register** (the old version is recorded in each `source`):
+- Babucci: "16/20 Bridge Street ... KT12 1AD" to "16-20 Bridge Street ... KT12 1AA". The register gives 1AA for its neighbours at 2, 6 and 14 Bridge Street as well.
+- Tops Pizza: "27 Bridge Street" to **"27A Bridge Street"**. Mañana is registered at 27. This answers one of the questions in the Grok brief.
+- IRO Sushi: "58 The Heart Shopping Mall" to "Unit 58, The Heart".
+- La Terraza: gains "Unit A Kings Court".
+- Pizza GoGo: "3 Simpson House" to "Unit 3, Simpson House". Pizza Hut Delivery gains "Unit 1, Simpson House".
+- Wagamama: "New Zealand Avenue" to "Unit 1 To 2, The Heart" (the register's wording).
+- Squire's Garden Centre Cafe: gains "153-155 Burwood Road".
+
+**Names the register disagrees with, left for pass 2** against the businesses' own sites, with the address checked but the name not: Buenasado (registered as "Buenos Aires", with "Buenasado" in the address line); Pizza Joker ("Joker Takeaway"); Squire's Garden Centre Cafe ("Seasons Cafe"); Pizza Hut Delivery ("Pizza Hut"). **Olive Kitchen** has two register entries at 71 High Street: "Olive Pizza Kitchen (aka Olive Waffle House/Olive...)" (1858568, rated August 2025) and "Olive" (1778511, February 2026). The address is checked, but no ID was set.
+
+**Not matched; marked `pending-review`, for Darren:**
+- **Uzzal**, 21 Molesey Road: no business of that name is registered anywhere, and nothing is registered at 21 Molesey Road. The register's KT12 4RN entries are at 17, 19, 29 and 33. Possible closure (plan D6).
+- **Perfect Pizza**, 99 Hersham Road: none registered in KT12, and 99 Hersham Road is registered to **Walton BBQ** (1778664, takeaway). Possible closure or a different business at the premises (D6).
+- **The Boathouse Coffee & Boathire**: the nearest entry, "The Boat House At Walton Marina", Bridge Marine Service, Cowey Sale, Walton Bridge, Shepperton KT12 1QW (1154182), differs in name and address, so it was not treated as a match. To be checked against the business's own site.
+
+A `pending-review` listing now shows "We are re-checking this listing" under its title. Its "What we checked" card says the details could not be confirmed against an official register, rather than that they have not been checked, which would be untrue for these three.
+
+**Hygiene ratings were read but not published,** pending the FSA's reuse and display terms (plan, Phase 1 principle). **Result:** `npm run content:stale-listings` now shows 3 listings on the spreadsheet alone (from 40) and 54 without a map position (from 69).
+
+**Rule 6 checklist:** no markers (the prebuild scan passes). Every changed name, address, postcode and position traces to a register entry queried this session, recorded by FHRSID in `checks` and `source`. No hours, prices or contact details were added or changed. No closure was concluded: the three unmatched listings are flagged, not removed.

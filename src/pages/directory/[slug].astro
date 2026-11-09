@@ -331,7 +331,10 @@ const openingHoursSpecification = biz.data.hours
           {provenance.restFromSpreadsheet && (
             <p class="checks-note">Other details on this page come from a list of local businesses compiled in July 2026, and have not been checked against an official source.</p>
           )}
-          {provenance.uncheckedSpreadsheet && (
+          {provenance.uncheckedSpreadsheet && biz.data.status === 'pending-review' && (
+            <p class="checks-note">These details come from a list of local businesses compiled in July 2026. We could not confirm them against an official register, so please check with the business before you travel.</p>
+          )}
+          {provenance.uncheckedSpreadsheet && biz.data.status !== 'pending-review' && (
             <p class="checks-note">These details come from a list of local businesses compiled in July 2026. They have not yet been checked against the business's own website or an official register, so please confirm them with the business before you travel.</p>
           )}
           {provenance.checks.length === 0 && !provenance.uncheckedSpreadsheet && (

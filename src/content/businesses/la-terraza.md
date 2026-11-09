@@ -4,17 +4,29 @@ slug: "la-terraza"
 category: "restaurants"
 subcategories: ["spanish", "tapas"]
 neighbourhood: "walton-on-thames"
-address: "40 Hersham Road, Walton-on-Thames KT12 1JE"
+address: "Unit A Kings Court, 40 Hersham Road, Walton-on-Thames KT12 1JE"
+postcode: "KT12 1JE"
+lat: 51.37578
+lng: -0.40917
 phone: "01932 240867"
 website: "https://laterraza.co.uk/"
 description: "Spanish tapas bar and restaurant serving small plates and sharing dishes, with daytime and evening service."
 images: []
 featured: false
-verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied)"
+status: "active"
+fhrs_id: 1778161
+verified_date: "2026-11-09"
+source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1778161): name, address, postcode, map position (the register's geocode, used because no other registered business shares it). Address gains the register's 'Unit A Kings Court'. The register's name is 'La Terraza Tapas Bar & Restaurant'."
+checks:
+  - fields: ["name", "address", "postcode", "lat", "lng", "fhrs_id"]
+    source:
+      label: "Food Standards Agency food hygiene register"
+      url: "https://ratings.food.gov.uk/business/1778161"
+      basis: "official-data"
+      checked: "2026-11-09"
 ---
 
 Spanish tapas bar and restaurant serving small plates and sharing dishes, with daytime and evening service.
 
-**Address:** 40 Hersham Road, Walton-on-Thames KT12 1JE  
+**Address:** Unit A Kings Court, 40 Hersham Road, Walton-on-Thames KT12 1JE  
 **Phone:** 01932 240867

@@ -5,13 +5,25 @@ category: "restaurants"
 subcategories: ["pizza", "italian", "chain"]
 neighbourhood: "walton-on-thames"
 address: "Unit 3, The Heart, Walton-on-Thames KT12 1GH"
+postcode: "KT12 1GH"
+lat: 51.38449
+lng: -0.42037
 phone: "01932 243404"
 website: "https://www.pizzaexpress.com/walton-on-thames"
 description: "National pizzeria chain branch serving pizza, pasta, salads and family-friendly meals in The Heart."
 images: []
 featured: false
-verified_date: "2026-07-08"
-source: "Restaurant directory spreadsheet (owner-supplied)"
+status: "active"
+fhrs_id: 1778216
+verified_date: "2026-11-09"
+source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1778216): name, address, postcode, map position (the register's geocode, used because no other registered business shares it)."
+checks:
+  - fields: ["name", "address", "postcode", "lat", "lng", "fhrs_id"]
+    source:
+      label: "Food Standards Agency food hygiene register"
+      url: "https://ratings.food.gov.uk/business/1778216"
+      basis: "official-data"
+      checked: "2026-11-09"
 ---
 
 National pizzeria chain branch serving pizza, pasta, salads and family-friendly meals in The Heart.
