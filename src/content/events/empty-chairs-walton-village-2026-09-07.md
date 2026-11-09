@@ -7,6 +7,7 @@ neighbourhood: "walton-on-thames"
 category: "community"
 recurring: true
 price: "Free"
+image: "/images/events/empty-chairs-walton-village-poster.webp"
 description: "A monthly low-pressure social meet-up at The Walton Village pub, part of the Empty Chairs initiative for anyone wanting company."
 source_url: "https://emptychairs.org.uk/events/"
 ---

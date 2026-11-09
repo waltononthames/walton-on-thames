@@ -156,6 +156,15 @@ const isFreeEvent = /^free/i.test(price);
   <section class="section">
     <div class="container content-layout">
       <article class="prose">
+        {image && (
+          <img
+            class="event-poster"
+            src={image}
+            alt={`Poster for ${title}`}
+            width="900"
+            loading="eager"
+          />
+        )}
         {kind === 'event' && Content ? <Content /> : <p>{description}</p>}
         {kind === 'event' && Astro.props.event.data.source_url && (
           <p><a href={Astro.props.event.data.source_url} target="_blank" rel="noopener noreferrer">More information on the official event page ↗</a></p>
@@ -194,6 +203,14 @@ const isFreeEvent = /^free/i.test(price);
 </BaseLayout>
 
 <style>
+  .event-poster {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin: 0 0 1.5rem;
+    border-radius: 6px;
+  }
   .hero-meta {
     display: flex;
     gap: 0.5rem;
