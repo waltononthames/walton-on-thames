@@ -14,7 +14,7 @@ featured: false
 status: "active"
 fhrs_id: 1779032
 verified_date: "2026-11-09"
-source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1779032): name, address, postcode. Address corrected from '27 Bridge Street' to the register's '27A Bridge Street'; Mañana is registered at 27 Bridge Street. Pass 2, 9 November 2026: phone/website checked against https://topspizza.co.uk/walton; lead from Grok research batch 1 (docs/research-inbox.md), confirmed by loading the page here. Address conflict: the branch page gives '27 Bridge St', the FSA register '27A Bridge Street'. The register's is kept."
+source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1779032): name, address, postcode. Address corrected from '27 Bridge Street' to the register's '27A Bridge Street'; Mañana is registered at 27 Bridge Street. Pass 2, 9 November 2026: phone/website checked against https://topspizza.co.uk/walton; lead from Grok research batch 1 (docs/research-inbox.md), confirmed by loading the page here. Address conflict: the branch page gives '27 Bridge St', the FSA register '27A Bridge Street'. The register's is kept: Darren confirmed on 9 November 2026 to leave it at 27A (Mañana is registered at 27)."
 checks:
   - fields: ["phone", "website"]
     source:
