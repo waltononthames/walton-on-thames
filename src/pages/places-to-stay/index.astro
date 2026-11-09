@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isListed } from '../../utils/listed';
 import { getCollection } from 'astro:content';
 
-const businesses = await getCollection('businesses');
+const businesses = await getCollection('businesses', isListed);
 const accommodation = businesses
   .filter(b => b.data.category === 'accommodation')
   .sort((a, b) => a.data.name.localeCompare(b.data.name));

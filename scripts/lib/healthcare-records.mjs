@@ -20,7 +20,10 @@ function readAll() {
       const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
       return m ? yaml.load(m[1]) : null;
     })
-    .filter(Boolean);
+    .filter(Boolean)
+    // Decision D6 (docs/directory-plan.md): closed businesses leave every
+    // list and map; see src/utils/listed.ts.
+    .filter((r) => r.status !== 'permanently-closed');
 }
 
 const withPoint = (r) => typeof r.lat === 'number' && typeof r.lng === 'number';

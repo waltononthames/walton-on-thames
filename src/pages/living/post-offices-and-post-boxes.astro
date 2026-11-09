@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isListed } from '../../utils/listed';
 import BusinessCard from '../../components/BusinessCard.astro';
 import { getCollection } from 'astro:content';
 
-const businesses = await getCollection('businesses');
+const businesses = await getCollection('businesses', isListed);
 const postOffices = businesses
   .filter(b => b.data.subcategories.includes('post-office'))
   .sort((a, b) => a.data.neighbourhood.localeCompare(b.data.neighbourhood) || a.data.name.localeCompare(b.data.name));

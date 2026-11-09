@@ -65,7 +65,7 @@ It combines two reviews made on 9 November 2026: one in a Claude Code session wo
 - [ ] **D3. Clubs and businesses.** One directory search across `businesses` and `organisations`, or two directories that link to each other. Affects 2.2 and 2.3.
 - [ ] **D4. Analytics.** The Cloudflare Web Analytics tag is commented out in `BaseLayout.astro`. Check whether analytics are enabled in the Cloudflare Pages dashboard (which can add the beacon without the tag); either way, click and search tracking for Phase 6 needs more than page views. `/about/` says the site uses Cloudflare Web Analytics, so make sure that stays true.
 - [ ] **D5. Network access for verification sessions.** FSA register: **done 9 November 2026**, `api.ratings.food.gov.uk` and `ratings.food.gov.uk` added to the Default environment and tested (the API answers with `x-api-version: 2`). Still open: business websites, either listed as each is checked or by running Phase 1 in an environment with wider access.
-- [ ] **D6. What a closure does.** Proposed, for Darren to accept or change: a `temporarily-closed` listing keeps its page and its place in the grids, with the notice. A `permanently-closed` listing keeps its page with the notice and drops out of the directory index and topic-page grids; after twelve months its URL 301s to its category's topic page (for example `/food-and-drink/restaurants/`). A closed business of historical interest is written up separately under the Standards document, never by leaving a stale listing up. Until this is decided, closures are recorded with `status` and the notice only.
+- [x] **D6. What a closure does. Decided by Darren, 9 November 2026.** A `permanently-closed` listing keeps its `/directory/<slug>/` page with the "This business has closed." notice and drops out of every list, grid, map and count at once (`src/utils/listed.ts`, applied as `getCollection('businesses', isListed)` on every list page, and in `scripts/lib/healthcare-records.mjs`). `closure_recorded` holds the date we recorded it; twelve months later `npm run content:stale-listings` reports it, and the URL is then 301ed to its category page in `public/_redirects` and the record removed. A `temporarily-closed` listing stays in the lists with its notice. A closed business of historical interest is written up separately under the Standards document, never by leaving a stale listing up. First applied to Uzzal and Perfect Pizza.
 
 ---
 
@@ -128,6 +128,7 @@ Each existing record is opened once: re-checked, moved onto the new fields, and 
 ## Phase 3: fill the known gaps
 
 - [ ] **3.1 The five café-guide venues:** Cacao Route, Caffè Nero, Starbucks, Greggs, Riverhouse Barn café. Each verified this session against its own site or the FSA register; then link each from the working-cafés guide, as Esquires and The Walton Village already are.
+- [ ] **3.1a Walton BBQ**, 99 Hersham Road (FSA register FHRSID 1778664, takeaway): registered at Perfect Pizza's former address. A candidate listing once it has a source beyond the register.
 - [ ] **3.2 The Old Manor Inn** (named on the away-guide route; confirmed by Darren and OpenStreetMap, still needs an official source).
 - [ ] **3.3 Whatever 2.3's check reports** across the rest of the site.
 

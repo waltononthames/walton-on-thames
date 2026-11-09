@@ -318,7 +318,7 @@ const openingHoursSpecification = biz.data.hours
         <div class="info-card checks-card">
           <h2>What we checked</h2>
           {biz.data.status === 'permanently-closed' ? (
-            <p class="checks-note">Recorded as closed{biz.data.verified_date ? ` on ${formatCheckDate(biz.data.verified_date)}` : ''}. The details on this page are as they were when the business was trading.</p>
+            <p class="checks-note">Recorded as closed{(biz.data.closure_recorded ?? biz.data.verified_date) ? ` on ${formatCheckDate(biz.data.closure_recorded ?? biz.data.verified_date)}` : ''}. The details on this page are as they were when the business was trading.</p>
           ) : (<>
           {provenance.checks.length > 0 && (
             <ul class="checks-list">

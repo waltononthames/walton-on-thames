@@ -58,6 +58,7 @@ const groups = {
   noGeo: { title: 'No map position (lat/lng)', items: [] },
   noWebsite: { title: 'No website and no NHS listing', items: [] },
   status: { title: 'Status other than active', items: [] },
+  redirect: { title: 'Closed 12 months or more ago: redirect the URL to its category page in public/_redirects and remove the record (decision D6)', items: [] },
   links: { title: 'Website problems (--links)', items: [] },
 };
 
@@ -74,6 +75,12 @@ for (const { file, data } of records) {
   if (typeof data.lat !== 'number' || typeof data.lng !== 'number') groups.noGeo.items.push(`${path}  "${data.name}"  (${data.category})`);
   if (!data.website && !data.nhs_url) groups.noWebsite.items.push(`${path}  "${data.name}"`);
   if (data.status && data.status !== 'active') groups.status.items.push(`${path}  "${data.name}"  ${data.status}`);
+  if (data.status === 'permanently-closed') {
+    const recorded = data.closure_recorded ? new Date(`${data.closure_recorded}T00:00:00Z`) : null;
+    const yearAgo = new Date(today); yearAgo.setFullYear(yearAgo.getFullYear() - 1);
+    if (!recorded) groups.redirect.items.push(`${path}  "${data.name}"  no closure_recorded date: add one`);
+    else if (recorded <= yearAgo) groups.redirect.items.push(`${path}  "${data.name}"  closure recorded ${data.closure_recorded}`);
+  }
 }
 
 if (CHECK_LINKS) {

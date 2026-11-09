@@ -5,6 +5,7 @@
 // :has(), so it creates no extra URLs to index and the full list is always
 // in the HTML. See docs/gp-directory.md.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isListed } from '../../utils/listed';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatPlaceName } from '../../utils/format';
@@ -13,7 +14,7 @@ import { areaBase, project, cropAround, baseImageStyle, spreadMarkers, MAP_VERSI
 type Biz = CollectionEntry<'businesses'>;
 // Walton first: it has five of the six practices and is the site's main town.
 const LOCATION_ORDER = ['walton-on-thames', 'hersham'];
-const businesses: Biz[] = await getCollection('businesses');
+const businesses: Biz[] = await getCollection('businesses', isListed);
 const surgeries = businesses
   .filter((b: Biz) => b.data.subcategories.includes('gp-surgery'))
   .sort((a: Biz, b: Biz) => LOCATION_ORDER.indexOf(a.data.neighbourhood) - LOCATION_ORDER.indexOf(b.data.neighbourhood) || a.data.name.localeCompare(b.data.name));

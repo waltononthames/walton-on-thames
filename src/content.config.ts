@@ -144,10 +144,13 @@ const businesses = defineCollection({
     // All optional, so a listing not yet re-checked stays valid as it is.
     //
     // Trading status. The listing page shows a notice for anything other than
-    // `active`. What happens to a closed business's page and its place in
-    // the listing grids is an open decision in the plan: until it is made, a
-    // closure is recorded and shown, never acted on by deleting the record.
+    // `active`. A `permanently-closed` listing keeps its page but leaves every
+    // list (decision D6, src/utils/listed.ts).
     status: z.enum(['active', 'temporarily-closed', 'permanently-closed', 'pending-review']).default('active'),
+    // When we recorded a permanent closure (we rarely know the day it actually
+    // closed). Decision D6: a closed listing leaves every list at once and its
+    // URL is redirected twelve months after this date; see src/utils/listed.ts.
+    closure_recorded: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
     // Postcode as its own field, for PostalAddress.postalCode. It must also
     // appear, identically, in `address`, which stays the display string.
     postcode: z.string().regex(/^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$/, 'postcode must be upper case with one space, e.g. KT12 1AH').optional(),
