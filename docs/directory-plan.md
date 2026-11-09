@@ -64,7 +64,7 @@ It combines two reviews made on 9 November 2026: one in a Claude Code session wo
 - [ ] **D2. Geographic scope.** Keep the 18 nearby records only where they serve local residents (pharmacies, hotels, specialist health), labelled "Nearby"; or widen the scope deliberately. Affects 1.1 (`area` field) and 2.2.
 - [ ] **D3. Clubs and businesses.** One directory search across `businesses` and `organisations`, or two directories that link to each other. Affects 2.2 and 2.3.
 - [ ] **D4. Analytics.** The Cloudflare Web Analytics tag is commented out in `BaseLayout.astro`. Check whether analytics are enabled in the Cloudflare Pages dashboard (which can add the beacon without the tag); either way, click and search tracking for Phase 6 needs more than page views. `/about/` says the site uses Cloudflare Web Analytics, so make sure that stays true.
-- [ ] **D5. Network access for verification sessions.** Allow the FSA register hosts, and either list business hosts as each is checked or run Phase 1 in an environment with wider access.
+- [ ] **D5. Network access for verification sessions.** FSA register: **done 9 November 2026**, `api.ratings.food.gov.uk` and `ratings.food.gov.uk` added to the Default environment and tested (the API answers with `x-api-version: 2`). Still open: business websites, either listed as each is checked or by running Phase 1 in an environment with wider access.
 
 ---
 
