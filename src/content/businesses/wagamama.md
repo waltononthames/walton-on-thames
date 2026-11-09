@@ -14,7 +14,7 @@ featured: false
 status: "active"
 fhrs_id: 1779194
 verified_date: "2026-11-09"
-source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1779194): name, address, postcode. Address changed from 'New Zealand Avenue' to the register's 'Unit 1 To 2, The Heart'. Pass 2, 9 November 2026: phone/website checked against https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames; lead from Grok research batch 1 (docs/research-inbox.md), confirmed by loading the page here. The branch page also says 'walton. we're almost ready to welcome you back', which may mean a refit or temporary closure; status not changed, flagged for Darren."
+source: "Restaurant directory spreadsheet (owner-supplied). Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4, pass 1) against the Food Standards Agency register (FHRSID 1779194): name, address, postcode. Address changed from 'New Zealand Avenue' to the register's 'Unit 1 To 2, The Heart'. Pass 2, 9 November 2026: phone/website checked against https://www.wagamama.com/restaurants/walton-on-thames/walton-on-thames; lead from Grok research batch 1 (docs/research-inbox.md), confirmed by loading the page here. The branch page also says 'walton. we're almost ready to welcome you back', which may mean a refit or temporary closure. Darren confirmed on 9 November 2026 that the restaurant closed and has since reopened and is fully open, so the line is left over from the closure; status stays active."
 checks:
   - fields: ["phone", "website"]
     source:

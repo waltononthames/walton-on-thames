@@ -2023,3 +2023,5 @@ Grok answered `docs/grok-research-brief.md`. Its report is filed, as received, i
 - Grok's Perfect Pizza branch list was confirmed (no Walton), but it included Guildford, which is not on the page now.
 
 **Rule 6 checklist:** no markers (the prebuild scan passes). Every changed phone, website and name was read on the business's own page this session. Grok's report is recorded as the lead, never the source. No hours or prices were added. Nothing was concluded about the three possible closures.
+
+**Wagamama settled:** Darren confirmed the same night that it closed, has reopened and is fully open, so the branch page's "almost ready to welcome you back" is left over from the closure. Status stays active; the listing's source note records his confirmation.
