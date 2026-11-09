@@ -97,6 +97,7 @@ Each existing record is opened once: re-checked, moved onto the new fields, and 
   3. The 103 June and July records, then the January one.
   4. Everything else, oldest check first.
   **Research help:** `docs/grok-research-brief.md` (batch 1, 9 November 2026) asks Grok to find the official pages for the 40 spreadsheet-only records and quote what they say; answers go in `docs/research-inbox.md`. They are leads, never sources: each quotation is re-checked against its page before a listing changes.
+  **Conflicts between official sources (Darren, 9 November 2026):** where a business's own website and the FSA register disagree on a postcode, the business's own site wins and the register's version is recorded in `source`. Applied to Babucci (KT12 1AD) and The Mogul (KT12 2SD).
   A record that cannot be confirmed is flagged to Darren, not kept on trust and not quietly deleted. Where a description can only come from the spreadsheet (no website of the business's own exists), it stays, its `source` says so, and the page tells readers it is unchecked.
 
 ---
