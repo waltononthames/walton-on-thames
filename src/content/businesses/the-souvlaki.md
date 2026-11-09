@@ -12,7 +12,7 @@ featured: false
 status: "active"
 fhrs_id: 1833413
 verified_date: "2026-11-09"
-source: "Restaurant directory spreadsheet (owner-supplied), July 2026: name and description. Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4): address, postcode and map position against the Food Standards Agency register (FHRSID 1833413), which registers the business as 'The Souvlaki Franchise Walton' at 36 Church Street and records an inspection on 22 September 2026. A map position taken from the register's geocode the same day was removed in pass 1: Basilo Pizza at 38 Church Street shares the identical point, so it is not specific to this building. Website removed: thesouvlaki.uk could not be reached on 9 November 2026 and did not resolve on 31 October 2026, and no other site for this branch was found."
+source: "Restaurant directory spreadsheet (owner-supplied), July 2026: name and description. Re-checked 9 November 2026 (docs/directory-plan.md, item 1.4): address and postcode against the Food Standards Agency register (FHRSID 1833413), which registers the business as 'The Souvlaki Franchise Walton' at 36 Church Street and records an inspection on 22 September 2026. A map position taken from the register's geocode the same day was removed in pass 1: Basilo Pizza at 38 Church Street shares the identical point, so it is not specific to this building. Website removed: thesouvlaki.uk could not be reached on 9 November 2026 and did not resolve on 31 October 2026, and no other site for this branch was found."
 checks:
   - fields: ["address", "postcode", "fhrs_id"]
     source:
