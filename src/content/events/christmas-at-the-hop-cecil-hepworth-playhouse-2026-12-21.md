@@ -7,6 +7,7 @@ neighbourhood: "walton-on-thames"
 category: "music"
 recurring: false
 price: "Early bird £15"
+image: "/images/events/christmas-at-the-hop-2026-poster.webp"
 description: "A Christmas party night at Cecil Hepworth Playhouse with live DJs playing vinyl, recalling the Walton Hop, in support of the homeless charity Rentstart."
 source_url: "https://www.cecilhepworthplayhouse.co.uk/whats-on"
 ---
