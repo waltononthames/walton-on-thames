@@ -1,30 +1,31 @@
 # Improvement plan, November 2026: Walton-on-Thames, Hersham and Whiteley Village
 
 **Status:** research and planning only. No site content and no code was changed to produce it.
-**Prepared:** 9 and 10 November 2026, against `main` at commit `3a4f250` (10 November 2026, 05:11 UTC).
+**Prepared:** 9 and 10 November 2026, against `main` at commit `3a4f250` (10 November 2026, 05:11 UTC). Revised later on 10 November after live access to the site was approved; the changes that made are listed in Appendix D.
 **Owner:** Darren. **Goal:** be the best site on the internet for the three places, and reach Google UK's top 3 for their names and main variants where that is achievable.
 **Governing documents:** `CLAUDE.md`, *Our Charter* (`/charter/`), `docs/research-and-editorial-standards.md`, `docs/historical-content-strategy.md`, `docs/site-audit.md`. This plan sits beside `docs/hersham-head-term-plan.md` and `docs/directory-plan.md` and does not replace either. Where an item is already planned there, this plan points to it.
 
 ## Read this first: what this plan is built on
 
-Three of the four data sources the brief asked for could not be used in this session. That shapes everything below, so it is stated before anything else.
+Two of the four data sources the brief asked for could not be used, and a third arrived late and only in part. That shapes everything below, so it is stated before anything else.
 
 | Source the brief relied on | What happened | What it means |
 |---|---|---|
 | Search Console export, `docs/gsc/2026-11-09/` | **Not in the repository.** Checked the working tree, all 15 remote branches and the git history on 9 November, and again on 10 November. Nothing was uploaded to the session. | The only Search Console figures in this plan are the ones quoted in the brief. They are labelled **[B]**. Every task that needs the rows themselves is marked blocked. |
 | Semrush, UK database | **Every tool returned `no_api_units`** on 9 November and again on 10 November: domain overview, organic research, keywords, backlinks, competitors, site audit, projects. The account has an active subscription but not enough API units. More units: https://www.semrush.com/mcp-access | No search volumes, keyword difficulty, UK ranking positions, backlink profile, keyword gap or backlink gap. |
-| Live fetches of the site, Google and competitor pages | **Blocked by the cloud environment's network allowlist.** The proxy refused `walton-on-thames.org`, `www.walton-on-thames.org`, `google.co.uk`, `en.wikipedia.org`, `elmbridge.gov.uk`, `lovewalton.co.uk` and others (HTTP 403 on CONNECT; the fetch tool reported the same hosts as unresolvable). | No live check of the www redirect, no UK results pages, no reading of competitor pages. |
+| Live fetches of the site and competitor pages | **Blocked at first, then approved on 10 November** for a list of 20 hosts. The live site, Wikipedia's API, the council, the Whiteley Homes Trust, `hershamvillage.co.uk`, Visit South East England and Foxtons were read. Love Walton failed to connect twice; Surrey Live and Historic England answered with bot checks; `wotta.co.uk` redirects to a host outside the list. | The www redirect, the production build and the main competitor pages are measured. Findings from this are marked **[M live]**. |
+| Live search results | **Not obtainable.** Google answered with its "unusual traffic" page. Bing returned results unrelated to the query, which is how it treats suspected automation. DuckDuckGo reset the connection. None of this was worked around. | No UK results page was read. Section 2.3 says how to capture them by hand in ten minutes. |
 | The repository, its documents and a full production build | **Available and used in full.** Built twice (commits `b1ce661` and `3a4f250`) and audited with scripts, Lighthouse and a headless browser. | Sections 2.6 and 2.7, and the page-level parts of every other section, are measured. |
 
-A general web search tool was available. It searches a US index that is not Google, returns titles and URLs only, and did not return `walton-on-thames.org` for any query. It is used here only to confirm that a page exists, never as a ranking.
+A general web search tool was also available. It searches a US index that is not Google, returns titles and URLs only, and did not return `walton-on-thames.org` for any query. It is used here only to confirm that a page exists, never as a ranking.
 
-**So this is a plan in two parts.** Part one is what the build and the documents prove, which is a good deal, and includes faults that are costing visitors today. Part two is the ranking, keyword and competitor analysis, which is specified exactly but cannot be completed until the inputs in Appendix A arrive. Section 4, Phase 0, is how to close that gap in one session.
+**So this is a plan in two parts.** Part one is what the build, the live site and the documents prove, which is a good deal, and includes faults that are costing visitors today. Part two is the ranking, keyword and backlink analysis, which is specified exactly but cannot be completed until the inputs in Appendix A arrive. Section 4, Phase 0, is how to close that gap in one session.
 
 ### Labels used throughout
 
 | Label | Meaning |
 |---|---|
-| **[M]** | Measured in this session. The tool or file is named. |
+| **[M]** | Measured in this session. The tool or file is named. **[M live]** means measured on the production site or another live site on 10 November 2026. |
 | **[B]** | A figure quoted in the brief from the Search Console export (17 July to 7 November 2026, web search, all countries). Not seen or checked by me. |
 | **[D]** | Recorded in a repository document, named, and not re-verified this session. |
 | **[W]** | A web search result in this session: US index, title and snippet only, page not fetched. URL given. |
@@ -42,17 +43,17 @@ A general web search tool was available. It searches a US index that is not Goog
 | **Hersham** | "hersham" 10.6, "hersham village" 24 | `/hersham/` | The strongest hub on the site: about 1,080 words, fact box, linked `Place` entity, live events block. But only 24 pages link to it from body content, 14 of them inside `/hersham/`. All six internal-linking items in the Hersham plan (Phase 4) are still unticked, and none of the five outreach approaches drafted on 6 September is recorded as sent. |
 | **Whiteley Village** | "whiteley village" 6.4 | `/hersham/whiteley-village/` | One 816-word page. Its title names the county but neither Hersham nor Walton-on-Thames. Two of its six sources are Wikipedia. It does not link to the site's own listings for the village café or post office. On a phone it lays out wider than the screen. |
 
-After roughly four months in its present structure (every history and Hersham article carries a publish date between July and September 2026 [M]), the site sits between positions 6 and 11 for three of the four head terms [B]. That is a reasonable start. [I] The gap to the top 3 does not look like a shortage of content: the site has 420 indexable pages, and its best-built hub, `/hersham/`, is the one furthest from its target on "hersham village".
+After roughly four months in its present structure (every history and Hersham article carries a publish date between July and September 2026 [M]), the site sits between positions 6 and 11 for three of the four head terms [B]. That is a reasonable start. [I] The gap to the top 3 does not look like a shortage of content: the site has more than 420 indexable pages, and its best-built hub, `/hersham/`, is the one furthest from its target on "hersham village".
 
 ### The five actions that matter most
 
 1. **Make the homepage the page about Walton-on-Thames.** It is the only candidate for the head term and it is the one hub that never received the treatment `/hersham/` got. Title, H1, a sourced "at a glance" box, the blueprint's section structure, and a proper place entity. (Backlog B1 to B3.)
-2. **Send the outreach that is already written, then widen it.** `docs/outreach/hersham/README.md` states the Hersham plan's diagnosis in one line: the hub "can be beaten on links long before it is beaten on content". Five approaches were drafted on 6 September; the status table still shows all five as drafted and twelve targets as not started [D]. Nothing in this session could measure the site's links, which is itself the point: there is no evidence that any have been earned. (B20 to B23.)
+2. **Send the outreach that is already written, then widen it.** `docs/outreach/hersham/README.md` states the Hersham plan's diagnosis in one line: the hub "can be beaten on links long before it is beaten on content". Five approaches were drafted on 6 September; the status table still shows all five as drafted and twelve targets as not started [D]. The one link source this session could read was Wikipedia, and it shows the cheapest win of all: three Wikipedia articles already link to this domain, and two of those links point at pre-relaunch URLs that now return 404 [M live]. Reclaim what the old site earned before asking for anything new. (B37, B20 to B23.)
 3. **Finish the internal linking the site already planned, and extend it.** 4 of 37 Hersham and Whiteley Village listings link into `/hersham/`. None of the 97 event pages links to its venue's guide, although 46 are at Riverhouse Barn and 12 at the Playhouse. Four pairs of "visit" and "history" pages about the same place have no link in either direction, and two more link one way only. Three guides have no inbound link at all. (B8 to B12.)
 4. **Give Whiteley Village a page that earns its position.** Give it a title that names the town, replace the Wikipedia sourcing with Historic England, the Trust and the council, connect it to the listings the site already holds, and send the approach to the Trust. Build spokes only where the data, once available, shows distinct demand. (B4 to B7.)
-5. **Fix what is measurably broken on phones.** 52 pages, including the Apps Court page that is the site's top landing page [B], lay out wider than a 360px screen. The cause is three small CSS faults, proved by test. The two slowest photo pages tested take 5.2 and 8.8 seconds to show their main image in a mobile lab test. Three quarters of search traffic is mobile [B]. (B14 to B16.)
+5. **Fix what is measurably broken on phones.** 52 pages, including the Apps Court page that is the site's top landing page [B], lay out wider than a 360px screen, confirmed on the live site. The cause is three small CSS faults, proved by test. Speed is otherwise good: of 22 live pages tested, one history page takes 6.6 seconds to show its main image and five photo pages take about 3. Three quarters of search traffic is mobile [B]. (B14, then B15 and B16.)
 
-Before any of these: put the three missing inputs in place and re-run the blocked sections (Phase 0). Without them the order above is a judgement, not a ranking.
+Before any of these: put the two missing inputs in place, capture the results pages by hand, and re-run the blocked sections (Phase 0). Without them the order above is a judgement, not a ranking.
 
 ### What is realistically achievable
 
@@ -67,7 +68,7 @@ These are judgements, not forecasts. No results-page or backlink data was availa
 ### Where top 3 is unrealistic, and why
 
 - **Position 1 for any bare place name.** In this session's searches Wikipedia was the first result for "Walton-on-Thames", "Hersham" and "Whiteley Village" and the second for "Hersham Village" [W], and the Hersham plan recorded the same pattern in September [D]. A place-name query also draws a knowledge panel and map that no publisher controls [I]. The prize is the first independent guide result.
-- **"whiteley village", positions 1 and 2.** The Whiteley Homes Trust's own site and Wikipedia are the natural first two [I]. The name is also shared: the retail centre at Whiteley, Hampshire, opened as "Whiteley Village" in 1999 before being rebuilt and renamed in 2013 [W: [portsmouth.co.uk](https://www.portsmouth.co.uk/retro/whiteley-shopping-centre-ghost-town-outlet-village-demolished-rebuilt-two-years-8555127), [en.wikipedia.org/wiki/Whiteley](https://en.wikipedia.org/wiki/Whiteley)]. Some of that term's impressions belong to another county.
+- **"whiteley village", positions 1 and 2.** The Whiteley Homes Trust's own site and Wikipedia are the natural first two [I]. Neither is strong on its own terms [M live]: the Wikipedia article is short (6,897 bytes, four sections) and gives `whiteleyvillage.org.uk` as the official site instead of the Trust's present domain, and the Trust's homepage title leads with the charity's name. That is why third looks reachable. The name is also shared: the retail centre at Whiteley, Hampshire, opened as "Whiteley Village" in 1999 before being rebuilt and renamed in 2013 [W: [portsmouth.co.uk](https://www.portsmouth.co.uk/retro/whiteley-shopping-centre-ghost-town-outlet-village-demolished-rebuilt-two-years-8555127), [en.wikipedia.org/wiki/Whiteley](https://en.wikipedia.org/wiki/Whiteley)]. Some of that term's impressions belong to another county.
 - **Business-name queries in the directory.** Google answers these with the business's own profile and site [I]. See 2.0.3.
 - **Property queries.** Every result set for "Walton on Thames" this session contained estate-agent area guides (Zoopla, Foxtons, Fine & Country, Sotheby's, Curchods) [W]. Portals own this intent and the blueprint's `/living/property/` page is not recommended.
 
@@ -90,7 +91,7 @@ The export was not available, so this section answers each question as far as th
 
 **To settle the ranking URL in two minutes:** Search Console, Performance, add a Query filter set to "Exact query", then open the Pages tab. Repeat for the four terms. If two URLs share a term's impressions, record both: that is cannibalisation and it changes the fix.
 
-**What separates each from the top 3 cannot be measured in this session.** It needs the UK results page (Semrush or a live fetch). What can be said:
+**What separates each from the top 3 cannot be measured in this session.** It needs the UK results page, from Semrush or captured by hand (2.3). What can be said:
 
 - [M] The on-page gaps are in 2.0.2, 2.5 and 2.6.
 - [D] In September the Hersham plan found, on a US index, Wikipedia, Apple Maps, FamilySearch, Tripadvisor and Wikishire for "Hersham", and `hershamvillage.co.uk`, Wikipedia, Wikishire and two Facebook pages for "Hersham Village".
@@ -205,29 +206,30 @@ Candidates, ranked by how much already exists. Demand is unmeasured for all of t
 
 #### 2.0.6 Does www redirect to the apex?
 
-**I could not reach the live site from this session.** What the repository shows:
+**Yes. Verified on the live site on 10 November 2026** [M live], once network access was approved.
 
-- [M] `functions/_middleware.js` redirects every hostname other than `walton-on-thames.org` to it with a 301, keeping path and query, and exempts preview subdomains and localhost.
-- [D] Hersham plan item 1.1 records this as deployed on 4 September 2026 (commit `57a061c`) and verified live the same day. Before that date www served the whole site with a 200.
-- [I] The export runs from 17 July, so about seven of its sixteen weeks fall before the fix. 74 www URLs in the Pages report [B] is what that would produce. It does not show the redirect has failed.
+| Request | Response |
+|---|---|
+| `https://www.walton-on-thames.org/` | 301 to `https://walton-on-thames.org/` |
+| `https://www.walton-on-thames.org/hersham/?utm_source=test&x=1` | 301 to the apex with the path and query intact |
+| `https://www.walton-on-thames.org/directory/elmbridge-xcel/`, `/sitemap-index.xml`, `/images/og-default.jpg` | 301 to the same path on the apex |
+| `https://walton-on-thames.pages.dev/hersham/whiteley-village/` | 301 to the apex |
+| `https://walton-on-thames.org/hersham` (no trailing slash) | 308 to `/hersham/` |
+| An unknown URL, and an old `/forum/viewtopic.php` URL | 404 |
+| `https://walton-on-thames.org/?page_id=84` | 200, as `docs/site-audit.md` records |
+| `https://hersham.org.uk/parakeets/` | 301 to `https://www.walton-on-thames.org/hersham/`: the www host, and the path is lost. Two hops, as Hersham plan 1.2 records. |
 
-**Check it yourself:**
+So the 74 www URLs in the Pages report [B] are history, not a live fault [I]: the export starts on 17 July and the redirect was deployed on 4 September [D], so seven of its sixteen weeks fall before the fix. To confirm in Search Console, set the Performance date range to 5 September onward and filter Page to "contains www.": impressions should be at or near zero.
 
-```bash
-curl -sI https://www.walton-on-thames.org/ | head -5
-```
+**To repeat the check yourself:**
 
 ```bash
 curl -sI https://www.walton-on-thames.org/hersham/ | head -5
 ```
 
-```bash
-curl -sI https://walton-on-thames.pages.dev/ | head -5
-```
+**A related risk found while checking this.** [M] There is no `_routes.json` in `public/` or in the build. [M live] The middleware answered the www request for an image, which shows it runs on static files as well as pages. [W] Cloudflare's documentation says that without `_routes.json` every request invokes the Function, that Functions requests count against a free allowance of 100,000 a day, and that when the allowance is spent the project either fails open (static files are served, so the redirect silently stops) or fails closed (visitors see an error) according to a dashboard setting ([routing](https://developers.cloudflare.com/pages/functions/routing/), [pricing](https://developers.cloudflare.com/pages/functions/pricing/)). [I] The redirect that protects against duplicate hosts therefore depends on staying inside the allowance. On the click figures in the brief, human traffic is nowhere near it. Crawler traffic is unknown, and the Cloudflare dashboard shows the real total. This is a thing to fix before growth, not an emergency. See B18.
 
-Each should return `HTTP/2 301` with `location: https://walton-on-thames.org/...`. Then, in Search Console, set the Performance date range to 5 September onward and filter Page to "contains www.": impressions should be at or near zero. If they are not, inspect one www URL and read "Google-selected canonical".
-
-**A related risk found while checking this.** [M] There is no `_routes.json` in `public/` or in the build. [W] Cloudflare's documentation says that without one, every request invokes the Function, that Functions requests count against a free allowance of 100,000 a day, and that when the allowance is spent the project either fails open (static files are served, so the redirect silently stops) or fails closed (visitors see an error) according to a dashboard setting ([routing](https://developers.cloudflare.com/pages/functions/routing/), [pricing](https://developers.cloudflare.com/pages/functions/pricing/)). [I] Every image, font and stylesheet request therefore counts, and the redirect that protects against duplicate hosts depends on staying inside the allowance. On the click figures in the brief, human traffic is nowhere near it. Crawler traffic is unknown, and the Cloudflare dashboard shows the real total. This is a thing to fix before growth, not an emergency. See B18.
+**One more thing the live check showed.** [M live] HTML is served with `cf-cache-status: DYNAMIC` and `cache-control: public, max-age=0, must-revalidate`. On the pages sampled, nothing was being held at the edge. `CLAUDE.md` warns that a dashboard cache rule keeps HTML at the edge for up to seven days; on this evidence that warning may be out of date, possibly because every request now passes through the middleware [I]. Worth one look in the dashboard before anyone next spends time purging.
 
 #### 2.0.7 Quick wins: pages ranking 4 to 15 with over 800 impressions
 
@@ -257,7 +259,7 @@ What stands in for it:
 | Current positions | The four head-term positions in the brief | [B] |
 | Organic traffic | The page and section totals in the brief | [B] |
 | Technical audit | Section 2.6: a full audit of the build, more detailed than a crawler's | [M] |
-| Backlinks | None. The Search Console Links report (Appendix A) is the free and authoritative substitute, and should be exported whether or not Semrush returns. | |
+| Backlinks | Only what Wikipedia's API shows: three articles link to the domain (2.4). The Search Console Links report (Appendix A) is the free and authoritative substitute, and should be exported whether or not Semrush returns. | [M live] |
 
 ### 2.2 Keyword universe
 
@@ -311,7 +313,9 @@ Intent key: N navigational, I informational, L local or commercial, T transactio
 
 ### 2.3 Results-page teardown for each head term
 
-**Blocked for Google UK.** Positions 1 to 10, page types and features (map pack, knowledge panel, AI Overview, People Also Ask, images) cannot be read without Semrush or a live fetch, and I have not filled the gap from memory.
+**Blocked for Google UK.** Positions 1 to 10, page types and features (map pack, knowledge panel, AI Overview, People Also Ask, images) could not be read, and I have not filled the gap from memory. With network access approved, three attempts were made on 10 November [M live]: Google returned its "unusual traffic" page, Bing returned results that had nothing to do with the query, and DuckDuckGo reset the connection. None was retried or worked around.
+
+**The ten-minute substitute, which only a person can do.** In a private browser window, on `google.co.uk`, search each of: walton on thames; hersham; hersham village; whiteley village; things to do in walton on thames. For each, note the first ten organic results in order (URL and title), which features appear above or among them (map, knowledge panel, AI Overview, People also ask, images, "Things to do"), and where this site appears. Save one file per query under `docs/serp/2026-11/`. That is enough to complete this section and 2.0.1.
 
 What the session does support:
 
@@ -333,22 +337,51 @@ What the session does support:
 
 ### 2.4 Competitor gap
 
-**Blocked: keyword gap and backlink gap need Semrush.** The competitor set is assembled here so the exports can be run in one sitting.
+**Keyword gap and backlink gap are blocked: they need Semrush.** What could be measured is the competitor pages themselves, read on 10 November [M live], and what Wikipedia links to.
 
-| Domain | Type | Competes for | Basis |
+#### The competing pages
+
+| Page | Title | Words | What it is |
 |---|---|---|---|
-| `en.wikipedia.org` | Reference | All four head terms | [W], [D] |
-| `elmbridge.gov.uk` | Council | "Hersham Village", "Whiteley Village" (conservation area pages), civic queries | [W] |
-| `lovewalton.co.uk` | Walton BID | What's on, the BID's own events | [D] `CLAUDE.md` |
-| `hershamvillage.co.uk` | Community site on an exact-match domain | "Hersham Village", Hersham planning news | [D] Hersham plan |
-| `thewhiteleyhomestrust.org.uk` | Official | "Whiteley Village" | [M] cited by our own page |
-| `wotta.co.uk` | Trading alliance | "Walton on Thames", the Walton Trail | [W], [D] blueprint |
-| `visitsoutheastengland.com`, `visitthames.co.uk`, `visitsurrey.com` | Tourism bodies | Head term, things to do | [W]; Visit Surrey named in the brief, not seen |
-| `tripadvisor.co.uk` | Aggregator | Things to do | [D] blueprint; not seen this session |
-| Estate-agent guides: `zoopla.co.uk`, `foxtons.co.uk`, `fineandcountry.co.uk`, `sothebysrealty.co.uk`, `curchods.com` | Portals | "Walton on Thames", living, property | [W] |
-| Surrey Live | Local press | News | [D] Hersham plan |
+| Wikipedia, "Walton-on-Thames" | | 39,953 bytes of source | Eleven content sections, from History to Nearest places. 78 external links, 20 of them to web archives, which marks dead sources. Links `wotta.co.uk`. Does not link this site. |
+| Wikipedia, "Hersham" | | 24,159 bytes | 32 external links, 7 to archives. Its community links are stale, as the outreach draft of 6 September found. |
+| Wikipedia, "Whiteley Village" | | **6,897 bytes** | Four content sections: History, Architecture, Amenities, Location. 13 external links. Its official link is `whiteleyvillage.org.uk`. The Trust now publishes at `thewhiteleyhomestrust.org.uk`; whether the old address still resolves was not checked. |
+| `hershamvillage.co.uk` | "Hersham Village \| Village in Surrey \| Hershamvillage.co.uk" | 806 | No H1. A WordPress business directory with a news section given over to planning objections: "Object now: 82 homes proposed on Green Belt", a housing tracker, a refusal notice. About page 639 words. |
+| `thewhiteleyhomestrust.org.uk` | "The Whiteley Homes Trust \| Retirement Living Community Charity Surrey" | 207 | The official site. Its page on the village is 696 words and its history page 758. No H1 and no structured data on any page read. Sections on living there, applying, the café, the shop and post office, venue hire, and filming and photography. |
+| Elmbridge, Hersham Village conservation area | "Hersham Village conservation area \| Elmbridge Borough Council" | 113 | A stub. |
+| Elmbridge, Whiteley Village conservation area | "Whiteley Village conservation area \| Elmbridge Borough Council" | 230 | Links conservation area maps and a Character Appraisal and Management Plan: a Tier 1 source our page does not yet use. |
+| Visit South East England, Walton on Thames | "Walton on Thames - Towns & Villages in Walton on Thames, Elmbridge - Visit South East England" | 1,440 | "Official tourist information": an About section, things to do, a map, a Tripadvisor block and nearby attractions. |
+| Foxtons, Walton and Hersham area guides | "Living in Walton On Thames - Area Guide \| Foxtons" | not readable | Both exist, on one template: a locals' guide, property prices, "what locals say". |
 
-**The referring domains competitors hold that we could earn cannot be listed** without the Backlink Gap export. Section 2.8 ranks opportunities from the site's own assets instead.
+Not readable from this session: Love Walton (two connection failures), Surrey Live (bot check), Historic England (challenge page), `wotta.co.uk` (redirects to a host outside the approved list).
+
+None of the pages read mentions or links to `walton-on-thames.org`.
+
+[I] What this says. No competitor has a page about any of the three places that is both deep and current. Wikipedia is deep and partly stale. The Trust's and the council's pages are official and thin. `hershamvillage.co.uk` owns the exact name and campaigns on planning, which leaves a neutral, sourced account as open ground, as extension 4.11 already argued. Depth is not what this site lacks against any of them. Standing is.
+
+#### What Wikipedia links to
+
+From Wikipedia's own API [M live]. Wikipedia marks external links nofollow, so this is a measure of standing as a source, not of ranking credit.
+
+| Domain | Articles linking to it | Notes |
+|---|---|---|
+| `elmbridgemuseum.org.uk` | 20 | The local source Wikipedia editors trust |
+| `whiteleyvillage.org.uk` | 4 | Hersham, Whiteley Village, William Whiteley, Henry Lucas |
+| `wotta.co.uk` | 3 | Including the Walton-on-Thames article |
+| **`walton-on-thames.org`** | **3** | See below |
+| `lovewalton.co.uk`, `hershamvillage.co.uk`, `thewhiteleyhomestrust.org.uk` | 0 | |
+
+The three links to this site all predate the relaunch:
+
+| Wikipedia article | Links to | Today |
+|---|---|---|
+| Walton and Weybridge Urban District | `http://www.walton-on-thames.org/` | Works, through the redirect |
+| Douglas Maclean | `http://www.walton-on-thames.org/history/nzgh2.htm` | **404** |
+| Walton Casuals F.C. | `http://www.walton-on-thames.org/history/sport.htm` | **404** |
+
+[I] A domain that has been online since 2000 will have more of these than the three Wikipedia happens to show. Search Console's Links report lists every externally linked URL, and its Page indexing report lists the ones returning 404. Matching the two is the highest-certainty link work available: the links already exist. See B37.
+
+**Still blocked:** the referring domains competitors hold that this site could earn. That needs the Backlink Gap export. Section 2.8 ranks opportunities from the site's own assets instead.
 
 ### 2.5 Whiteley Village
 
@@ -377,6 +410,10 @@ What the session does support:
 
 One figure: position 6.4 [B]. No volume, no query list. The name is shared with a former retail centre in Hampshire [W], so the impression count overstates the audience.
 
+#### What the official and reference pages offer [M live]
+
+The Trust's own page on the village is 696 words, its history page 758, and it has pages for the café, the shop and post office, venue hire, and filming and photography. Wikipedia's article is 6,897 bytes with four content sections, and gives `whiteleyvillage.org.uk` as the official site. The council's conservation area page is 230 words and links a Character Appraisal and Management Plan. Wikidata's identifier for the village is `Q7996143`. Our page, at 816 words, is already as long as any of them. What it lacks is their standing as sources, and it borrows two of its six citations from the weakest of them.
+
 #### What a credible hub would need
 
 In two stages. The first is certain. The second waits for data.
@@ -399,12 +436,14 @@ Whiteley Village is a private community of older residents run by a charity. The
 
 - **Cover:** the history, the architecture seen from public roads, facilities the Trust says are open to visitors, how to get there, how to behave.
 - **Link, do not restate:** who can apply to live there and how. That is the Trust's to say and it changes.
-- **Do not cover:** individual residents, care provision or its quality, anything photographed where the Trust has not agreed, events not advertised to the public.
+- **Do not cover:** individual residents, care provision or its quality, anything photographed where the Trust has not agreed, events not advertised to the public. The Trust runs filming and photography on the estate as a service on request [M live], so pictures taken there are its to permit.
 - **First step before any expansion:** send the drafted approach and ask the Trust to correct the page. A link from the Trust's site is also the single most valuable link available for this term [I].
 
 ### 2.6 Technical and on-page review of the build
 
-All [M]: `npm run build` at `3a4f250` (426 pages), then a parse of every HTML file, Lighthouse 12 mobile on 22 templates against a local server with gzip, and headless Chromium at 360px on all 420 indexable pages. Three sections fetch live data at build time and could not here (Walton & Hersham fixtures, and both planning feeds), so those blocks rendered empty and are not assessed.
+All [M]: `npm run build` at `3a4f250` (426 pages), then a parse of every HTML file, Lighthouse 12 mobile on 22 templates, and headless Chromium at 360px on all 420 indexable pages. Three sections fetch live data at build time and could not here (Walton & Hersham fixtures, and both planning feeds), so those blocks rendered empty in the local build.
+
+[M live] Production was then compared with that build. Five pages were fetched and found identical to the local build apart from what Cloudflare adds (below). The live sitemap lists 455 URLs against 424 locally: the 31 extra are the football fixture pages. The audit below therefore covers every production page except those 31.
 
 #### 2.6.1 What is sound
 
@@ -417,12 +456,12 @@ All [M]: `npm run build` at `3a4f250` (426 pages), then a parse of every HTML fi
 | Broken internal links, links that hit a redirect, missing trailing slashes | 0 (the repository's own `seo:links` agrees) |
 | Structured data that fails to parse / pages with none | 0 / 0 (`seo:validate` passes on 425 pages) |
 | Click depth from the homepage | 44 pages at one click, 370 at two, none deeper |
-| Third-party scripts | **None on any page.** Median inline script 1.5 KB. |
+| Third-party scripts | **None in the build.** Median inline script 1.5 KB. [M live] In production Cloudflare adds two to every page: its Web Analytics beacon and its bot-detection script (`/cdn-cgi/challenge-platform/`). The second is the largest piece of script work on the site: about 470 ms of processor time on the homepage in a throttled mobile test. Cloudflare also rewrites email addresses so they need JavaScript to display. |
 | Fonts | Self-hosted, subset by unicode range, `font-display: swap` |
 | Map and video embeds | 128 pages, every iframe lazy-loaded |
-| Lighthouse SEO and best-practices | 100 on all 22 pages tested |
+| Lighthouse SEO and best-practices | 100 on all 22 pages tested locally. On the live site SEO is 100. Best-practices read 79 for two reasons that are not the site's: Cloudflare's script uses a deprecated browser feature, and the analytics beacon's host was outside this session's approved list, which logged a load error. |
 
-The blueprint's claim that Core Web Vitals "will be a strength on Astro" holds for every text-led template.
+The blueprint's claim that Core Web Vitals "will be a strength on Astro" holds for every text-led template, in the lab. Field data was not available: the public PageSpeed Insights service refused the request on quota. Cloudflare Web Analytics, which is running (2.7), records real visitors' Core Web Vitals and is the place to read them.
 
 #### 2.6.2 Titles, descriptions and headings against the clusters
 
@@ -461,8 +500,8 @@ Fourteen indexable pages other than events and listings have no H2 at all: the f
 | `Event` | 98 nodes | 96 have no `image`, 97 no `organizer`, 76 no `offers`, 12 no `endDate` |
 | `Article` | 55 | 43 have no `image`. 48 name "Darren Bayley" with a URL of `/about/`, but `/about/` carries no `Person` node. 6 news articles name the organisation as author. |
 | Business types | 180 | 170 no `image`, 153 no opening hours (deliberate: the Protocol prefers linking), 54 no `geo`. `url` is the business's own site. Covered by directory plan 2.1. |
-| `Place` for Walton | Homepage | Nested under `WebPage.about` with no `@id`, no `alternateName`, and `containedInPlace` naming Surrey only. `/hersham/` has all three, and 20 pages carry or reference its `@id`. No Walton page references a Walton entity. The Wikidata identifier `Q2003600` could not be re-checked this session. |
-| `Place` for Whiteley Village | None | |
+| `Place` for Walton | Homepage | Nested under `WebPage.about` with no `@id`, no `alternateName`, and `containedInPlace` naming Surrey only. `/hersham/` has all three, and 20 pages carry or reference its `@id`. No Walton page references a Walton entity. The Wikidata identifier `Q2003600` is correct: Wikipedia's API returns it for the Walton-on-Thames article, and `Q5744439` for Hersham [M live]. |
+| `Place` for Whiteley Village | None | Wikidata's identifier is `Q7996143` [M live] |
 | `/about/`, `/charter/`, `/contact/` | Breadcrumb only | No `AboutPage`, `Person` or `Organization` |
 | `FAQPage` | 15 pages | Valid. Rich results are limited to government and health sites [W: [Search Central](https://developers.google.com/search/blog/2023/08/howto-faq-changes)], as the Hersham plan already notes. Keep, do not extend for its own sake. |
 | Social image | | The default image is used on 389 of 420 pages |
@@ -479,6 +518,8 @@ The most consequential technical finding. On a 360px-wide phone, 52 of 420 index
 | `/hersham/` | 8 | 406 to 553. Includes Whiteley Village at 406. |
 
 Apps Court is 489px wide at every phone width tested from 320 to 430.
+
+**Confirmed on the live site** [M live], in Chromium with a phone profile: Apps Court 489, Whiteley Village 406, `/history/walton-bridge/` 1,249, the cricket club page 404, against 360 for the homepage, `/hersham/` and a listing.
 
 **Cause, established by injecting candidate fixes into the rendered page and re-measuring:**
 
@@ -498,21 +539,23 @@ Other phone findings. The header is fixed and takes 72 of 740 pixels on every pa
 
 #### 2.6.6 Performance and images
 
-Lighthouse mobile, simulated throttling, local build. Laboratory figures: field data needs the live site (Search Console, Core Web Vitals).
+[M live] Lighthouse 12, mobile, simulated throttling, against production on 10 November. Laboratory figures, not real visitors' experience. The same pages tested against the local build gave slower image figures (8.8 s and 5.2 s for the first two rows), because the local server lacks the content network's HTTP/2; the production figures are the ones to use.
 
-| Page | Performance | Largest paint | Weight | What paints last |
+| Page | Performance | Largest paint | Weight | Note |
 |---|---|---|---|---|
-| `/history/sidney-road/` | 75 | **8.8 s** | 2,223 KB | A 922 KB JPEG. The page also loads a 1,186 KB PNG. |
-| `/directory/khyber-pass/` | 81 | **5.2 s** | 1,294 KB | A 207 KB photograph with no `srcset` |
-| `/history/heraldry-walton-on-thames-hersham-whiteley/` | 89 | 3.8 s | 542 KB | |
-| `/walton-on-thames-railway-station/` | 92 | 3.3 s | 480 KB | A 284 KB photograph |
-| `/hersham/whiteley-village/` | 95 | 2.9 s | 714 KB | The lead photograph |
-| `/directory/fort-house-surgery/` | 95 | 2.9 s | 325 KB | |
-| The other 16 pages, including `/`, `/hersham/`, `/things-to-do/`, `/whats-on/`, `/directory/`, Apps Court, both Xcel pages | 98 to 100 | 1.3 to 2.0 s | 97 to 217 KB | Text |
+| `/history/sidney-road/` | 75 | **6.6 s** | 2,246 KB | A 922 KB JPEG paints last. The page also loads a 1,186 KB PNG. The one poor page found. |
+| `/walton-on-thames-railway-station/` | 89 | 3.7 s | 500 KB | A 284 KB photograph |
+| `/directory/whiteley-village-community-cafe/` | 93 | 3.3 s | 650 KB | |
+| `/directory/watermans-arms-hersham/` | 92 | 3.1 s | 950 KB | |
+| `/history/charles-sydney-spitfire-crash-station-avenue/` | 95 | 2.9 s | 292 KB | |
+| `/directory/khyber-pass/` | 96 | 2.7 s | 1,316 KB | A 207 KB photograph with no `srcset` |
+| `/walton-hersham-fc-away-fans-guide/` | 98 | 2.2 s | 314 KB | Already uses responsive images |
+| `/hersham/whiteley-village/` | 100 | 1.8 s | 734 KB | |
+| The other 14, including `/`, `/hersham/`, `/things-to-do/`, `/whats-on/`, `/directory/`, `/living/`, Apps Court | 93 to 100 | 0.9 to 1.8 s | 116 to 562 KB | Text paints last |
 
-Layout shift was 0.035 or less everywhere and blocking time was zero.
+Google's threshold for a good largest paint is 2.5 seconds. Layout shift was 0.035 or less everywhere. Blocking time ran from 40 to 310 ms, highest on `/living/` and `/whats-on/`. Against the local build, which has none of Cloudflare's scripts, it was zero on every page, so the difference is what Cloudflare adds.
 
-The risk is confined to pages with photographs, which are the pages carrying the site's most distinctive material:
+So the site is fast, and the exceptions are a handful of pages carrying original photographs:
 
 - 639 images outside the header. **Only 2 have a `srcset`** (the Hersham hero, from plan item 1.5). 136 have no width and height (73 in `/history/`, 39 in `/directory/`).
 - 65 image files over 150 KB are referenced directly by an `<img>`.
@@ -526,6 +569,8 @@ Accessibility: every page tested fails colour contrast (the footer, noted as out
 - Every URL has a `lastmod` from the committed manifest, spread across five months. Sound.
 - 40 redirect rules. No internal link uses one. The two Xcel rules will need retargeting when B10 is done.
 - `robots.txt` allows everything and names the sitemap. An IndexNow key and workflow are in place.
+- [M live] **Fingerprinted assets are cached for four hours, not a year.** `public/_headers` sets a one-year immutable cache on `/assets/*`, but Astro writes its hashed CSS, script and font files to `/_astro/`, so the rule matches nothing. The live stylesheet is served with `cache-control: public, max-age=14400, must-revalidate`. Returning visitors re-check files that can never change. One line in `_headers` fixes it (B36).
+- [M live] Pages are served compressed with Brotli, with the security headers from `_headers` present.
 
 ### 2.7 Authority and trust signals
 
@@ -538,37 +583,39 @@ How the site would look to someone assessing who is behind it and whether to bel
 - No advertising, no third-party scripts, free listings stated plainly.
 - The new "What we checked" card on every listing, naming the field, the source and the date. Few local sites do this.
 - A named editor with a photograph on `/about/`, online "since 2000".
+- [M live] **Analytics is running, and the site says so truthfully.** `/about/` and `/privacy-policy/` state that the site uses Cloudflare Web Analytics. The tag in `BaseLayout.astro` is commented out, which led two plans to treat this as open (Hersham plan 1.6, directory plan D4). On the live site Cloudflare adds its beacon at the edge, with a real token, to pages served to a browser. It is absent from the same page fetched by a command-line client, which is why it is easy to miss. The statements are accurate. Cloudflare's product records visits and real visitors' Core Web Vitals ([Web Analytics docs](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/)) [W], so the dashboard should hold both. Only Darren can open it to confirm.
 
 **Weak** [M]
 
 | Finding | Detail |
 |---|---|
 | The editor is named differently in different places | `/about/` says "I'm Darren". Bylines and structured data say "Darren Bayley". There is no surname in the prose, no `Person` markup, no link to any profile, and no mention of local roles. The blueprint asked for all four. |
-| Two pages state something that is not currently true | `/about/` and `/privacy-policy/` both say the site uses Cloudflare Web Analytics. The beacon is commented out in `BaseLayout.astro`. Directory plan D4 and Hersham plan 1.6 both note this. On a site whose pitch is accuracy, the trust pages should be the most accurate. |
 | Wikipedia is the single most cited source | 30 of 328 citations. 24 of 48 articles cite it. In 14 it is half or more of the sources. `hersham/sham-69` and `hersham/hersham-green` cite nothing else. 12 articles have two sources or fewer. Audit item M5, open since 2 November [D]. |
 | Unsourced judgements remain | The five on the Whiteley Village page (2.5). `/things-to-do/riverside-walks/`: "one of Surrey's finest stretches of river", "the jewel of Walton's riverside", "the town's living room". The superlatives sweep is open [D]. |
 | Guides and hubs carry no byline or date | A byline appears on 17 of 31 things-to-do pages, 1 of 9 under `/living/`, 1 of 6 under `/food-and-drink/`, and no event page. |
 | No public record of corrections | The build log documents many: the drill plough claim, the trophy hallmark, a fabricated school removed, addresses corrected against the food hygiene register. None is visible to a reader. The Charter promises a corrections process (its section 7); nothing shows it working. |
 | No public summary of method | `docs/research-and-editorial-standards.md` is 1,360 lines and private. |
+| The privacy page is headed "No cookies"; a browser is given one | [M live] After two page views a browser holds `cf_clearance`, set by Cloudflare's JavaScript detection, with an expiry a year ahead. The page does say Cloudflare "may set technical cookies", so the disclosure is there, but the heading says more than is true. Cloudflare documents the cookie ([JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/)) [W]. Either name it on the page, or switch the detection off in Cloudflare if neither the script nor the cookie is wanted. |
 | Everything is new | Every history and Hersham article has a publish date between July and September 2026. That is honest, and it means the site has no long record yet for anyone to judge. |
 
-**Unknown:** what other sites say about this one. No backlink or mention data was available.
+**Largely unknown:** what other sites say about this one. Wikipedia links to it from three articles, two of them through dead URLs (2.4). No other backlink or mention data was available.
 
 ### 2.8 Off-site
 
 #### Link opportunities, ranked by value and feasibility
 
-No backlink data was available, so this ranking rests on what the site already holds that someone else's readers would want [I]. It follows the rules in `docs/outreach/hersham/README.md`: offer a specific page, disclose the connection, invite correction first, no exchanges.
+Apart from Wikipedia's links (2.4), no backlink data was available, so this ranking rests on what the site already holds that someone else's readers would want [I]. It follows the rules in `docs/outreach/hersham/README.md`: offer a specific page, disclose the connection, invite correction first, no exchanges.
 
 | Rank | Target | What we offer | Value | Feasibility | State [D] |
 |---|---|---|---|---|---|
+| 0 | **Links the old site already has** | Redirects from pre-relaunch URLs that other sites still link to. Two of the three Wikipedia links to this domain return 404 [M live]. | High | High: no one has to be asked | Not started (B37) |
 | 1 | The Whiteley Homes Trust | The Whiteley Village page, with its visiting guidance | High for that term | Medium | Drafted 6 September, not recorded as sent |
 | 2 | Walton & Hersham FC | The away fans' guide, which serves their visitors, and the fixtures feed | High | High | Not started |
 | 3 | Riverhouse Barn | 46 of the 97 events listed here are theirs | High | High | Not on any list |
 | 4 | Elmbridge Museum | The industrial history of Hersham Lodge, and the Walton corpus | High | Medium | Drafted, not recorded as sent |
 | 5 | Hersham Community Group | A sourced page about them | Medium | High | Drafted, not recorded as sent |
 | 6 | Surrey History Centre, Exploring Surrey's Past | Original research: the 1775 regatta ticket, the 1864 trophies | High | Medium | Not on any list |
-| 7 | Wikipedia Talk pages | Stale links and an uncited claim on the Hersham article, with disclosure | High | Low to medium | Drafted, not recorded as posted |
+| 7 | Wikipedia Talk pages | Stale links and an uncited claim on the Hersham article, with disclosure. The Walton-on-Thames article has the same weakness: 20 of its 78 external links go to web archives [M live]. | High | Low to medium | Hersham drafted, not recorded as posted. Walton not started. |
 | 8 | Subject bodies | Lost inns (it cites CAMRA 13 times), lost breweries, Mount Felix (New Zealand heritage bodies), Hepworth (film history), baseball origins | Medium to high | Medium | Listed in the extension; not started |
 | 9 | Love Walton | Event cross-referencing | Medium | Medium | Not started |
 | 10 | Churches, libraries, clubs with events or pages here | 33 organisations are listed and 18 have a page of their own | Medium | High | Not started |
@@ -588,7 +635,8 @@ The Hersham plan allows five approaches a month. Two months have passed since th
 | Search Console: turn on bulk data export, or use the API | The interface caps at 1,000 rows and cannot show query against page. Both of the brief's hardest questions need that table. |
 | Bing Webmaster Tools: confirm verification and the sitemap | Blueprint requirement; no record that it was done |
 | Cloudflare: read Functions usage and the fail-open setting | 2.0.6 |
-| Cloudflare Web Analytics: enable it, or have the two statements removed | 2.7 |
+| Cloudflare Web Analytics: open the dashboard and confirm it holds data | It is running on the live site (2.7). Reading it closes Hersham plan 1.6 and directory plan D4, and its Core Web Vitals panel is the field data this plan could not obtain. |
+| Capture the UK results pages by hand | 2.3. Ten minutes, and nothing else available will supply them until Semrush has units. |
 | Send the five drafted approaches | 2.8 |
 | Photography | Hersham plan 2.5, unticked. Original images are the one asset no competitor can copy. |
 
@@ -601,6 +649,9 @@ The Hersham plan allows five approaches a month. Two months have passed since th
 | Hersham plan, section 7, and the outreach README | Links, not content, are the likeliest reason a milestone is missed | No approach is recorded as sent; "hersham village" is at 24 [B] with the page in good order [M] |
 | Hersham plan, Phase 4 | Internal linking is thin | Quantified: 4 of 37 listings, 0 of 12 events, 24 body-linking pages |
 | Hersham plan, section 0 | FAQ rich results are restricted | [W] |
+| Hersham plan 1.1 | www redirects to the apex | Verified again on 10 November [M live] |
+| Hersham plan 1.2 | `hersham.org.uk` reaches the hub in two hops and loses the path | Verified [M live] |
+| Directory plan D4 | Analytics may be switched on in the dashboard without the tag | It is [M live] |
 | Blueprint 6.7 | A business profile does not apply | [W] |
 | Directory plan, section 0 | 120 thin bodies, median 35 | Counted independently at `b1ce661`, before that plan was merged, with the same result: 120 and 35. At `3a4f250`: 119 and 36. |
 | Build log, 5 October | Footer contrast is outstanding | Fails on all 22 pages tested |
@@ -611,13 +662,16 @@ The Hersham plan allows five approaches a month. Two months have passed since th
 |---|---|---|
 | `docs/site-audit.md`, closing note | "The only remaining open item in the entire project" is the Walton Charity page | The homepage (row 30, ADAPT to 4.1) was not rebuilt. `/things-to-do/riverside-walks/` (ADAPT, three named walks) is 245 words without them. The riverside-pubs, property and Desborough Island pages listed as NEW do not exist. |
 | Blueprint 4.9 | The directory is "your long-term traffic engine" | 1.3 clicks per page in 16 weeks [B] |
-| Blueprint 6.3 | Core Web Vitals "will be a strength" | True of text pages. Not of photo pages (5.2 to 8.8 s), and 52 pages overflow on phones. |
+| Blueprint 6.3 | Core Web Vitals "will be a strength" | True of text pages. Less so of photo pages (one at 6.6 s and five near 3 s on the live site), and 52 pages overflow on phones. |
 | Hersham plan, milestones | "hersham village" top 3 at three months, which falls in early December | An average of 24 over the period to 7 November [B] |
 | Blueprint 3 | Sitelinks search box | Retired by Google in 2024 [W] |
+| Hersham plan, section 0, fault 5 | With the analytics tag commented out, "there is no on-site traffic data at all" | Cloudflare injects a working beacon on the live site [M live] |
+| `CLAUDE.md`, edge cache gotcha | HTML is cached at the edge for up to seven days | HTML was served `cf-cache-status: DYNAMIC` on every page sampled [M live]. One day's evidence: check the dashboard before relying on either reading. |
+| `CLAUDE.md`, deployment | `public/_headers` covers `/assets/*` and `/images/*` | Nothing is served from `/assets/`. Hashed files live in `/_astro/` and get a four-hour cache [M live] |
 
 **Untested, not contradicted:** blueprint section 1's belief that the head term is "winnable". The page it specified for the job was never built.
 
-**Extended:** the phone overflow; the Xcel and Hersham Green Shopping Centre duplicates; events and venues as two unconnected halves; the Functions allowance behind the www redirect; the orphaned market status file; the Whiteley Village name clash; the UK filter on the export; the four noindex URLs in the sitemap.
+**Extended:** the phone overflow; the Xcel and Hersham Green Shopping Centre duplicates; events and venues as two unconnected halves; the Functions allowance behind the www redirect; the orphaned market status file; the Whiteley Village name clash; the UK filter on the export; the four noindex URLs in the sitemap; the dead pre-relaunch URLs that Wikipedia still links to; the four-hour cache on fingerprinted files.
 
 ---
 
@@ -630,6 +684,7 @@ The Hersham plan allows five approaches a month. Two months have passed since th
 | 1 | B1 | Rebuild the homepage as the page about Walton-on-Thames: H1, sourced "at a glance" box, blueprint 4.1 sections as short sourced prose, events block kept. Model: `/hersham/`. Re-verify every fact; do not copy the blueprint's draft text. | Walton head | `/` | 2.0.2 | L | The largest single on-page lever for the head term. *Medium confidence it helps, low on how much.* | C | H |
 | 1 | B2 | Homepage title and description that describe the place, shipped ahead of B1 | Walton head | `/` | 2.0.2 | S | Better click rate at the current rank. *Medium.* | C | P |
 | 1 | B3 | A Walton `Place` entity with `@id`, `alternateName`, `containedInPlace` and verified `sameAs`, referenced by Walton pages. Extend `seo-validate`. Mirror of Hersham plan 2.2. | Walton head | `/`, Walton pages | 2.6.4 | M | Entity clarity; feeds panels and AI answers. *Low to medium.* | C | T |
+| 1 | B37 | Reclaim links to pre-relaunch URLs. From the Links and Page indexing exports, list externally linked URLs that return 404 and 301 each to the page that now covers the same subject. Where none does, leave the 404 and raise the dead citation on the Wikipedia Talk page. Start with `/history/nzgh2.htm` and `/history/sport.htm`. | All three | `public/_redirects` | 2.4 | S for the two known, M for the full list | Recovers links that already exist. *High confidence in the fault. Value depends on how many there are.* | C, with D's export for the full list | T |
 | 1 | B20 | Send the four remaining September approaches and post the Talk note | Hersham head |  | 2.8 | S | Referring domains. *Medium.* | D |  |
 | 1 | B5 | Send the approach to the Whiteley Homes Trust | Whiteley head |  | 2.8 | S | The most valuable link for the term, and a correction of the page. *Medium.* | D |  |
 | 1 | B21 | Draft a Walton batch: the football club, Riverhouse Barn, Elmbridge Museum, Surrey History Centre | Walton head | `docs/outreach/` | 2.8 | M | *Medium.* | C then D |  |
@@ -639,9 +694,11 @@ The Hersham plan allows five approaches a month. Two months have passed since th
 | 1 | B12 | Cross-link the six visit and history pairs in both directions; link the three orphans from their natural pages | History, things to do | Six pairs, three guides | 2.6.3 | S | Removes orphans; lets the history corpus support the visit pages. *Medium.* | C | T |
 | 1 | B4 | Repair the Whiteley Village page: a title that names the town, overflow, sources, the five judgements, links to café, post office, clubs and transport, `Place` entity | Whiteley head | `/hersham/whiteley-village/` | 2.5 | M | Holds and may improve 6.4. *Medium.* | C | S |
 | 1 | B14 | Fix the phone overflow: citation links, tables, the club button. Add a build check so it cannot return. | All | 52 pages | 2.6.5 | S | Certain benefit to phone users on the top landing page. Ranking effect small. *High confidence in the fault.* | C | T |
-| 1 | B15 | Images: width and height on 136; `srcset` and size limits for article and gallery images; re-encode the two files on `/history/sidney-road/` | History, listings | Photo pages | 2.6.6 | M | Should bring the 5 to 9 s pages much closer to the 1.3 to 2.0 s of the text pages. *Medium to high.* | C | T |
+| 2 | B15 | Images: width and height on 136; `srcset` and size limits for article and gallery images; re-encode the two files on `/history/sidney-road/` | History, listings | Photo pages | 2.6.6 | M | On the live site one page takes 6.6 s and five take about 3 s. Should bring them under 2.5 s. *Medium to high.* | C | T |
 | 2 | B17 | Remove the four noindex URLs from the sitemap |  | `astro.config.mjs` | 2.6.7 | S | Hygiene. *High.* | C | T |
-| 2 | B19 | Analytics: enable it, or correct `/about/` and `/privacy-policy/` | Trust | Two pages | 2.7 | S | The trust pages become true. *High.* | D then C | P |
+| 2 | B36 | Give `/_astro/*` a one-year immutable cache in `public/_headers`; the existing `/assets/*` rule matches nothing | All | `public/_headers` | 2.6.7 | S | Returning visitors stop re-checking files that never change. *High.* | C | T |
+| 2 | B19 | Close the analytics question: confirm the dashboard holds data, tick Hersham plan 1.6 and directory plan D4, and remove the dead placeholder tag from `BaseLayout.astro` | Trust | `BaseLayout.astro`, two plans | 2.7 | S | Ends a question two plans carry as open, and gives real Core Web Vitals. *High.* | D then C | T |
+| 2 | B38 | Privacy page: name the one Cloudflare security cookie (`cf_clearance`), or switch off Cloudflare's JavaScript detection if the script and cookie are not wanted | Trust | `/privacy-policy/`, Cloudflare | 2.7 | S | The page says exactly what happens. *High.* | D decides, then C | P |
 | 2 | B18 | Stop the redirect depending on the Functions allowance: read usage and the fail-open setting; add `_routes.json` excluding static paths, or move the www redirect to a zone rule |  | `functions/`, Cloudflare | 2.0.6 | S | Removes a way the duplicate host could return. *Medium.* | D then C | T |
 | 2 | B16 | Footer contrast and logo alt text | All | Site-wide | 2.6.6 | S | Accessibility; outstanding since October | C | T |
 | 2 | B25 | A status-staleness check for status files, before any second status page | Recurring events | `scripts/` | 2.0.5 | S | Prevents a stale "on this Friday". *High.* | C | T |
@@ -692,11 +749,12 @@ A checklist in the form of `docs/hersham-head-term-plan.md`. Each session takes 
 
 - [ ] **0.1 Search Console export** **[Darren]**. Commit the files in Appendix A.1 to `docs/gsc/2026-11-09/`. Include a United Kingdom version.
 - [ ] **0.2 Semrush** **[Darren]**. Add API units, or save the exports in Appendix A.2 to `docs/semrush/2026-11/`.
-- [ ] **0.3 Network** **[Darren]**. Approve the hosts in Appendix A.3 for a research session, or start that session in an environment with full network access.
+- [x] **0.3 Network. Done 10 November 2026.** Darren approved a research environment for the 20 hosts in Appendix A.3. It gave the live site, Wikipedia's API and most competitor pages. It did not give search results: Google, Bing and DuckDuckGo all refused or misled (2.3). See 0.8.
 - [ ] **0.4 Re-run the blocked sections.** One session, once 0.1 to 0.3 are in place: complete 2.0.1, 2.0.7, 2.1, 2.3 and 2.4, add volumes to 2.2, replace the judgements in section 1, and re-rank the backlog. Remove any item the data does not support.
-- [ ] **0.5 Check the www redirect** **[Darren]**, with the commands in 2.0.6. Record the result here.
+- [x] **0.5 Check the www redirect. Done 10 November 2026.** 301 to the apex on every path tested, path and query kept; the pages.dev alias likewise. Table in 2.0.6.
 - [ ] **0.6 Confirm properties** **[Darren]**: Search Console Domain property, Bing Webmaster Tools, and `hersham.org.uk`. This is Hersham plan 1.7.
-- [ ] **0.7 Analytics decision** **[Darren]**: Hersham plan 1.6 and directory plan D4. Either supply the token or ask for the two statements to be corrected (B19).
+- [ ] **0.7 Analytics** **[Darren]**. It is already running: Cloudflare adds the beacon on the live site (2.7). Open Web Analytics in the Cloudflare dashboard, confirm it holds data and from what date, and note the Core Web Vitals it reports for phones. That closes Hersham plan 1.6 and directory plan D4.
+- [ ] **0.8 Results pages by hand** **[Darren]**. The five searches described in 2.3, saved under `docs/serp/2026-11/`. Needed whether or not Semrush returns, because nothing automated could read them.
 
 Gate: `docs/gsc/` and either `docs/semrush/` or working Semrush tools exist; 0.4 has been run and this document amended.
 
@@ -708,10 +766,12 @@ Nothing here waits on Phase 0.
 - [ ] **1.2 Sitemap (B17).** Exclude the four noindex pages.
 - [ ] **1.3 Xcel merge (B10).** As set out in 2.0.4. Check the pool statement against Places Leisure in the session. Log the retirement in `docs/site-audit.md`.
 - [ ] **1.4 Orphans and pairs (B12).** Give Brooklands, the Sunbury ferry walk and the Hampton Court walk an inbound link from their natural pages. Cross-link the six visit and history pairs in both directions.
-- [ ] **1.5 Trust pages (B19).** After 0.7, make `/about/` and `/privacy-policy/` say what is true.
+- [ ] **1.5 Analytics tidy (B19).** After 0.7: remove the commented-out placeholder tag and its "replace TOKEN" comment from `BaseLayout.astro`, since Cloudflare supplies the real one and a second tag would double-count. Tick Hersham plan 1.6 and directory plan D4 with a note of how it was resolved. `/about/` and `/privacy-policy/` need no change.
 - [ ] **1.6 Functions allowance (B18)** **[Darren reads the dashboard first]**. Then add `_routes.json`, or move the www redirect to a zone rule and keep the middleware for the pages.dev alias.
 - [ ] **1.7 Contrast and alt text (B16).**
-- [ ] **1.8 Images (B15).** Width and height on the 136 images that lack them. `srcset` and a size limit for article and gallery photographs, following `src/utils/hero-images.ts` from Hersham plan 1.5. Re-encode the 922 KB JPEG and the 1,186 KB PNG on `/history/sidney-road/`. Re-run Lighthouse mobile on the six slow pages in 2.6.6 and log the figures.
+- [ ] **1.8 Images (B15).** Width and height on the 136 images that lack them. `srcset` and a size limit for article and gallery photographs, following `src/utils/hero-images.ts` from Hersham plan 1.5. Re-encode the 922 KB JPEG and the 1,186 KB PNG on `/history/sidney-road/`. Re-run Lighthouse mobile against the live pages in 2.6.6 that exceed 2.5 s and log the figures.
+- [ ] **1.9 Asset caching (B36).** Add a `/_astro/*` rule to `public/_headers` with `Cache-Control: public, max-age=31536000, immutable`, and remove or correct the `/assets/*` rule that matches nothing. Verify on the live site with `curl -sI` on a stylesheet.
+- [ ] **1.10 Old URLs, first pass (B37).** `/history/nzgh2.htm` and `/history/sport.htm` are linked from Wikipedia and return 404. For each, read an archived copy to confirm what the page was about, then 301 it to the current page on the same subject if one exists (`/history/mount-felix/` is the likely home for the first). If none exists, leave the 404: a redirect to an unrelated page is the soft-404 pattern `docs/site-audit.md` already rules out. The full list waits for the exports in 0.1.
 
 Gate: `npm run check`, `npm run build`, `npm run seo:validate`, `npm run seo:links` clean; the 360px check reports no page; `src/data/lastmod.json` committed.
 
@@ -740,7 +800,7 @@ Gate: no orphan other than closed listings; every event whose venue has a guide,
 ### Phase 4: Whiteley Village (two sessions, plus the Trust)
 
 - [ ] **4.1 Send the approach to the Trust (B5)** **[Darren]**. The draft is in `docs/outreach/hersham/2026-09-batch.md`.
-- [ ] **4.2 Repair the page (B4).** Standards document, Appendix C and section 20 first. Sources: the Trust, the council's designation statement, Historic England. Remove or source the five judgements.
+- [ ] **4.2 Repair the page (B4).** Standards document, Appendix C and section 20 first. Sources: the Trust's own village and history pages, the council's Character Appraisal and Management Plan, Historic England. Historic England answers automated requests with a challenge page, so its entries need a browser session. Remove or source the five judgements. Use Wikidata `Q7996143` in the `Place` entity.
 - [ ] **4.3 Decide on spokes (B7)** **[Darren]**, in `docs/site-audit.md`, after 0.4 and the Trust's reply.
 - [ ] **4.4 Build agreed spokes (B6),** one a session, each with its own sources.
 - [ ] **4.5 Photography** **[Darren]**, only as the Trust agrees.
@@ -755,6 +815,7 @@ Gate: no fact on the page rests on Wikipedia alone; the page's phone width is 36
 - [ ] **5.4 The other twelve Wikipedia-led articles (B28),** two a session.
 - [ ] **5.5 Superlatives sweep (B29),** starting with `/things-to-do/riverside-walks/` and the food and drink cards.
 - [ ] **5.6 Bylines and review dates on guide templates (B30).**
+- [ ] **5.7 The cookie on the privacy page (B38)** **[Darren decides first]**.
 
 ### Phase 6: links (monthly, five approaches a month)
 
@@ -828,14 +889,17 @@ Build baseline, measured at `3a4f250`, to re-measure after each phase:
 
 | Measure | Value |
 |---|---|
-| Indexable pages | 420 |
+| Indexable pages in the local build / URLs in the live sitemap | 420 / 455 |
 | Pages wider than a 360px screen | 52 |
 | Orphans, excluding closed listings | 3 |
 | Event pages linking to a venue page | 0 of 97 |
 | Hersham and Whiteley Village listings linking into `/hersham/` | 4 of 37 |
 | Pages linking to `/hersham/` from body content | 24 |
 | Images with `srcset` / without width and height | 2 / 136 |
-| Lighthouse mobile, slowest three largest paints | 8.8 s, 5.2 s, 3.8 s |
+| Lighthouse mobile on the live site, slowest three largest paints | 6.6 s, 3.7 s, 3.3 s |
+| Live pages tested with a largest paint over 2.5 s | 6 of 22 |
+| Wikipedia articles linking to the site / of which to a URL that returns 404 | 3 / 2 |
+| Cache lifetime on `/_astro/` files | 4 hours |
 | Articles where Wikipedia is half or more of the sources | 14 of 48 |
 | Outreach approaches sent | 0 recorded of 5 drafted |
 | noindex URLs in the sitemap | 4 |
@@ -852,11 +916,11 @@ Build baseline, measured at `3a4f250`, to re-measure after each phase:
 
 1. **Where is the Search Console export?** It is not in the repository on any branch. Can it be committed, with a United Kingdom version?
 2. **Semrush:** add API units, or export by hand (Appendix A.2)?
-3. **Network:** approve a research set of hosts, or run the follow-up in the environment that already has full access?
+3. **The research environment.** A personal cloud environment, "Walton SEO research (live site, search, competitors)", was created with your approval on 10 November. Keep it for the Phase 0 re-run, or delete it?
 4. **The homepage.** May the title and H1 be about Walton-on-Thames alone, with Hersham and Whiteley Village moving to the standfirst? All three are in the H1 now, and I take that to be deliberate.
 5. **Whiteley Village.** Was the September approach sent, and has the Trust replied? Are spokes acceptable, given Decision 3 in `docs/site-audit.md`? Are there limits on photography there?
 6. **Outreach.** Were any of the five September approaches sent? The status table says drafted.
-7. **Analytics.** Enable Cloudflare Web Analytics, or remove the two statements that say it is in use?
+7. **Analytics.** Cloudflare is adding its beacon on the live site. Does the dashboard hold data, and from when? Was that switched on deliberately?
 8. **Your name on the site.** `/about/` says "Darren"; bylines say "Darren Bayley". Are you content to be named in full there, with any local roles you choose to disclose and a profile link?
 9. **Xcel.** Agreed that the guide survives and the listing redirects? Which of the two holds the clicks?
 10. **Hersham Village Market.** A status file has been maintained and last checked on 21 October, but no page reads it. Was a page intended, and is the weekly check still running?
@@ -865,6 +929,8 @@ Build baseline, measured at `3a4f250`, to re-measure after each phase:
 13. **Search Console.** Is the Domain property verified, and is Bing Webmaster Tools? Hersham plan 1.7 is unticked.
 14. **The relaunch date.** The export begins on 17 July. Is that when the present structure went live? It decides how to read every trend.
 15. **Directory indexing.** How many `/directory/` URLs does the Page indexing report show as "Crawled, currently not indexed"?
+16. **The old site.** Is there a backup or a list of the pre-2026 pages, the `.htm` ones especially? Old links can only be matched to current pages if someone knows what the old pages said.
+17. **Cloudflare's bot detection.** It adds a script and a one-year cookie to every visit. Is it wanted? If so the privacy page should name the cookie; if not it can be switched off in the dashboard.
 
 ---
 
@@ -894,11 +960,19 @@ Simplest: add units at https://www.semrush.com/mcp-access and ask for step 0.4. 
 7. The results-page analysis for each of the four head terms.
 8. A Site Audit project for the domain, and its export.
 
-### A.3 Network, for the research session
+### A.3 Network: what was approved, and what it reached
+
+Approved on 10 November 2026, as a personal environment named "Walton SEO research (live site, search, competitors)":
 
 `walton-on-thames.org`, `www.walton-on-thames.org`, `walton-on-thames.pages.dev`, `hersham.org.uk`, `www.google.co.uk`, `www.google.com`, `www.bing.com`, `html.duckduckgo.com`, `en.wikipedia.org`, `www.elmbridge.gov.uk`, `lovewalton.co.uk`, `www.thewhiteleyhomestrust.org.uk`, `hershamvillage.co.uk`, `www.hershamvillage.co.uk`, `wotta.co.uk`, `www.visitsurrey.com`, `www.visitsoutheastengland.com`, `www.getsurrey.co.uk`, `www.foxtons.co.uk`, `historicengland.org.uk`.
 
-Search engines often refuse automated requests from data-centre addresses. If Google does, the session will say so and use Bing's United Kingdom results as the nearest substitute, labelled as such.
+| Outcome | Hosts |
+|---|---|
+| Read | The live site and its two aliases, `hersham.org.uk`, Wikipedia (its API limits requests, so calls were spaced), Elmbridge, the Whiteley Homes Trust, `hershamvillage.co.uk`, Visit South East England, Foxtons |
+| Refused or unusable | Google ("unusual traffic" page), Bing (unrelated results), DuckDuckGo (connection reset), Surrey Live (bot check), Historic England (challenge page), Love Walton (two connection failures) |
+| Outside the list | `www.wotta.co.uk` (where `wotta.co.uk` redirects), `www.hersham.org.uk`, `whiteleyvillage.org.uk`, `web.archive.org`, `static.cloudflareinsights.com` |
+
+For the re-run in step 0.4, add `web.archive.org` (to read the old pages behind B37) and `www.wotta.co.uk`. Search results will still need Semrush or the hand capture in 0.8.
 
 ## Appendix B: keyword list for volume lookup
 
@@ -947,6 +1021,21 @@ Width in pixels after the slug. Measured at `3a4f250`.
 | Phone layout | Headless Chromium, 360 by 740, mobile emulation, external requests blocked. `scrollWidth` compared with 360 on all 420 indexable pages. Causes confirmed by injecting CSS and re-measuring. |
 | Directory profile | Frontmatter of the 181 records in `src/content/businesses/` |
 | Web search | General web search, US index, title and URL only |
-| Not done | Any live request to the site, to Google or to a competitor. Any Semrush report. Any reading of the Search Console export. Field Core Web Vitals. Anything inside the three blocks that fetch live data at build time. |
+| Live site | From 10 November, after approval: response headers with `curl`, five pages compared byte for byte with the local build, the live sitemap, Lighthouse 12 mobile on 22 production URLs, and the phone-width check in Chromium on seven |
+| Wikipedia | Its public API: page properties, external links, section lists, and `exturlusage` for this domain and six others. Calls spaced to respect its rate limit. |
+| Competitor pages | One request per page, a pause between each, a refusal treated as a refusal. Title, description, headings and word count extracted. |
+| Not done | Any reading of a search results page. Any Semrush report. Any reading of the Search Console export. Field Core Web Vitals (the public PageSpeed service refused on quota). |
 
 Three things in this plan rest on the brief alone and should be checked first when the export arrives: that the homepage is the URL ranking for "walton on thames", that `/hersham/` is the URL ranking for both Hersham terms, and that the 74 www URLs predate 4 September.
+
+### What the revision of 10 November changed
+
+The first version of this plan was committed before live access was approved. Reading the live site changed five things:
+
+1. **Analytics.** The first version said `/about/` and `/privacy-policy/` claimed analytics that were not running, because the tag is commented out in the repository. Wrong: Cloudflare injects a working beacon on the live site. The finding was withdrawn and B19 rewritten.
+2. **Speed.** The first version gave local laboratory figures of 8.8 s and 5.2 s for the two slowest pages and called image weight a top-five matter. Production figures are 6.6 s for one page and about 3 s for five. The image work moved from priority 1 to priority 2.
+3. **The www redirect** moved from "could not check" to verified.
+4. **Two findings were added:** dead pre-relaunch URLs that Wikipedia links to (B37), and the four-hour cache on fingerprinted files (B36).
+5. **Section 2.4** gained measured competitor pages in place of a list of names.
+
+The phone-width overflow, the internal-linking counts and everything else measured from the build were confirmed unchanged on the live site.
