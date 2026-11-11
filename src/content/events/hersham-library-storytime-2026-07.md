@@ -1,7 +1,7 @@
 ---
 title: "Storytime at Hersham Library"
 slug: "hersham-library-storytime-2026-07"
-start: "2026-11-10T16:00:00"
+start: "2026-11-17T16:00:00"
 venue: "Hersham Library, Molesey Road, Hersham, Surrey KT12 4RF"
 neighbourhood: "hersham"
 category: "family"

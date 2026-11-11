@@ -1,8 +1,8 @@
 ---
 title: "Live Music Club at Hersham Sports & Social Club"
 slug: "hersham-live-music-club-2026-08"
-start: "2026-11-10T20:00:00"
-end: "2026-11-10T22:30:00"
+start: "2026-11-17T20:00:00"
+end: "2026-11-17T22:30:00"
 venue: "Hersham Sports & Social Club, 128 Hersham Road, Hersham, KT12 5QL"
 neighbourhood: "hersham"
 category: "music"
