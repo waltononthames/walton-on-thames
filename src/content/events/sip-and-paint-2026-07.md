@@ -1,8 +1,8 @@
 ---
 title: "Sip & Paint"
 slug: "sip-and-paint-2026-07"
-start: "2026-11-12T18:30:00"
-end: "2026-11-12T21:00:00"
+start: "2026-11-19T18:30:00"
+end: "2026-11-19T21:00:00"
 venue: "Crafty Pots Cafe, 42 The Heart Shopping Mall, Walton-on-Thames, KT12 1GH"
 neighbourhood: "walton-on-thames"
 category: "arts"

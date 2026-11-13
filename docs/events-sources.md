@@ -82,7 +82,7 @@ CLAUDE.md's Content Verification Protocol (Rule 4, Events listings) still govern
 | https://www.waltonbowlingclub.org.uk/ | Bowling club Tuesday roll-up | From 5pm, no finish time given. Love Walton's times contradict the club's. |
 | https://www.achurchnearyou.com/church/8235/service-and-events/events/912783/ | Connections over-60s | Second Saturday of the month, noon for 1 hour 30 minutes. |
 | https://repaircafewot.org.uk/ | Repair Cafe | Second Saturday of the month, 10am to 1pm, by appointment. The home page names extras for the next session. |
-| https://www.rock-up.co.uk/locations/walton-on-thames | Mini Movers Club | Thursdays. The page gives no session times; Love Walton supplies 9am to 12pm. |
+| https://www.rock-up.co.uk/locations/walton-on-thames | Mini Movers Club | Thursdays. From 13 November 2026 the page no longer mentions the club, so the listing cites Love Walton (dates and 9am to 12pm timing) and The Heart's July launch post. |
 | https://www.hershamsportsandsocialclub.co.uk/tuesday-live-music-nights.html | Tuesday Live Music Club | Every Tuesday, acts from 8pm. |
 | https://thewaltonvillage.com/thursdays-quiz-night | Thursday quiz | Every Thursday from 7:45pm. |
 | https://www.surreymarkets.co.uk/walton-on-thames-market/ | Walton Farmers' Market | First Saturday of the month, 9:30am to 2pm. |
