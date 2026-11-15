@@ -6,13 +6,13 @@
   "nextConfirmedDateISO": null,
   "nextConfirmedDateLabel": null,
   "checkedDateISO": "2026-11-15",
-  "checkedDateLabel": "15 November 2026 at 11:49 GMT",
+  "checkedDateLabel": "15 November 2026 at 23:20 GMT",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Verified 2026-11-15T11:49:09.835Z via a configured fetch service. The notice carries no date, so no date is published and no dated structured data is emitted. Authoritative notice: THE CAR BOOT IS NOT OPEN THIS SUNDAY",
+  "lastCheckNote": "Verified 2026-11-15T23:20:42.162Z via a configured fetch service. The notice carries no date, so no date is published and no dated structured data is emitted. Authoritative notice: THE CAR BOOT IS NOT OPEN THIS SUNDAY",
   "noticeText": "THE CAR BOOT IS NOT OPEN THIS SUNDAY",
   "dateConfirmed": false,
   "eventDateISO": null,
-  "verifiedAt": "2026-11-15T11:49:09.835Z"
+  "verifiedAt": "2026-11-15T23:20:42.162Z"
 }
