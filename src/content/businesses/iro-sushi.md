@@ -9,7 +9,7 @@ postcode: "KT12 1GH"
 lat: 51.38596
 lng: -0.41996
 phone: "01932 502426"
-website: "https://irosushi.com/locations/walton-on-thames/"
+website: "https://www.irosushi.com/restaurant-locations/walton/"
 description: "Modern sushi venue in The Heart, offering sushi and Japanese-style dishes for dine-in, collection or delivery."
 images: []
 featured: false
