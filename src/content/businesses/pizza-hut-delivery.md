@@ -9,7 +9,7 @@ postcode: "KT12 1QB"
 lat: 51.38447
 lng: -0.41835
 phone: "01932 240277"
-website: "https://www.pizzahut.co.uk"
+website: "https://www.pizzahut.co.uk/huts/walton-on-thames-7589"
 description: "Pizza delivery and collection outlet offering Pizza Hut pizzas, sides and meal deals."
 images: []
 featured: false
