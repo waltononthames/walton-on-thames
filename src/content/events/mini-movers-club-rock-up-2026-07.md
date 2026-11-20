@@ -1,8 +1,8 @@
 ---
 title: "Mini Movers Club at Rock Up Walton"
 slug: "mini-movers-club-rock-up-2026-07"
-start: "2026-11-19T09:00:00"
-end: "2026-11-19T12:00:00"
+start: "2026-11-26T09:00:00"
+end: "2026-11-26T12:00:00"
 venue: "Rock Up, The Heart Shopping Centre, New Zealand Avenue, Walton-on-Thames, KT12 1GH"
 neighbourhood: "walton-on-thames"
 category: "family"
@@ -12,7 +12,7 @@ description: "A weekly baby and toddler climbing and soft play session at Rock U
 source_url: "https://lovewalton.co.uk/whats-on/"
 ---
 
-Rock Up runs its Mini Movers Club, a weekly baby and toddler session, on Thursday mornings at its indoor climbing centre in The Heart Shopping Centre. Love Walton lists the sessions from 9am to 12pm on 19 and 26 November and 3 December.
+Rock Up runs its Mini Movers Club, a weekly baby and toddler session, on Thursday mornings at its indoor climbing centre in The Heart Shopping Centre. Love Walton lists the sessions from 9am to 12pm on 26 November and 3 and 10 December.
 
 The Heart announced the club's launch in July 2026 as weekly baby and toddler soft play sessions hosted by Rock Up. Booking is through the centre.
 
