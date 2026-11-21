@@ -3,6 +3,12 @@
 // rather than on improvising curl loops.
 //
 // Usage: npm run events:fetch [-- --out <dir>] [-- --no-state] [-- --max-riverhouse <n>]
+//        npm run events:fetch -- --riverhouse-snapshot   (home connection only)
+//
+// Riverhouse Barn refuses all requests from cloud servers. The snapshot mode
+// fetches only Riverhouse Barn and saves it to data/riverhouse-snapshot/; it
+// runs daily from Darren's home connection via scripts/riverhouse-home-fetch.ps1.
+// When the cloud run is refused, it uses that snapshot if under 36 hours old.
 //
 // What it fetches, one request at a time:
 //   - every source in scripts/event-sources.json;
@@ -31,7 +37,7 @@
 // Exit code is 0 even when sources fail: failures are data for the report. The
 // final NOTIFY lines say whether the run should send a push notification.
 import { spawnSync } from 'node:child_process';
-import { mkdirSync, readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, writeFileSync, existsSync, copyFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -51,6 +57,13 @@ const argValue = (flag, fallback) => {
 const OUT = argValue('--out', join(tmpdir(), 'events-fetch'));
 const WRITE_STATE = !args.includes('--no-state');
 const MAX_RIVERHOUSE = Number(argValue('--max-riverhouse', '40'));
+// --riverhouse-snapshot: fetch only Riverhouse Barn and save the result to
+// data/riverhouse-snapshot/ for committing. Run from Darren's home connection
+// (scripts/riverhouse-home-fetch.ps1), because the venue refuses all cloud
+// traffic. The cloud run reads that snapshot when its own fetch is refused.
+const SNAPSHOT_MODE = args.includes('--riverhouse-snapshot');
+const SNAPSHOT_DIR = join(ROOT, 'data', 'riverhouse-snapshot');
+const SNAPSHOT_MAX_AGE_HOURS = 36;
 mkdirSync(OUT, { recursive: true });
 
 const sleep = (s) => new Promise((r) => setTimeout(r, s * 1000));
@@ -208,7 +221,7 @@ for (const e of lapsed) {
   queue.push({ id: `lapsed-${e.file.replace(/\.md$/, '')}`, name: `Source for lapsed event: ${e.title}`, url });
 }
 
-for (const s of queue) {
+for (const s of SNAPSHOT_MODE ? [] : queue) {
   const res = await fetchPage(s.url, join(OUT, `${s.id}.html`));
   record(s.id, s.name, s.url, s.status, res);
   process.stdout.write(`${res.outcome.padEnd(20)} ${s.id}\n`);
@@ -235,6 +248,52 @@ for (const id of toFetch) {
   process.stdout.write(`${res.outcome.padEnd(20)} ${rh.id}-${id} (${reason})\n`);
 }
 writeFileSync(join(OUT, 'riverhouse-events.json'), JSON.stringify(rhEvents, null, 2) + '\n');
+
+// ---------- home snapshot ----------
+
+if (SNAPSHOT_MODE) {
+  if (listing.outcome !== 'ok') {
+    console.log(`\nRiverhouse Barn listing was ${listing.outcome} (${listing.note}) from this connection too. Snapshot not updated.`);
+    process.exit(1);
+  }
+  rmSync(SNAPSHOT_DIR, { recursive: true, force: true });
+  mkdirSync(SNAPSHOT_DIR, { recursive: true });
+  for (const r of results) {
+    const txt = join(OUT, `${r.id}.txt`);
+    if (r.outcome === 'ok' && existsSync(txt)) copyFileSync(txt, join(SNAPSHOT_DIR, `${r.id}.txt`));
+  }
+  writeFileSync(join(SNAPSHOT_DIR, 'riverhouse-events.json'), JSON.stringify(rhEvents, null, 2) + '\n');
+  writeFileSync(join(SNAPSHOT_DIR, 'snapshot.json'), JSON.stringify({
+    fetchedAt: new Date().toISOString(),
+    listed: listingIds.length,
+    fetched: toFetch.length,
+    results: results.map(({ id, url, outcome, note }) => ({ id, url, outcome, note })),
+  }, null, 2) + '\n');
+  const ok = results.filter((r) => r.outcome === 'ok').length;
+  console.log(`\nRiverhouse snapshot written to data/riverhouse-snapshot/: listing with ${listingIds.length} events, ${ok} of ${results.length} pages read.`);
+  process.exit(0);
+}
+
+// The cloud run's own fetch was refused: fall back to the home snapshot if it
+// is recent, so the run has the same files it would have fetched itself.
+let snapshotUsed = null;
+const snapMeta = join(SNAPSHOT_DIR, 'snapshot.json');
+if (listing.outcome !== 'ok' && existsSync(snapMeta)) {
+  const meta = JSON.parse(readFileSync(snapMeta, 'utf8'));
+  const ageHours = (Date.now() - Date.parse(meta.fetchedAt)) / 3600e3;
+  snapshotUsed = { fetchedAt: meta.fetchedAt, ageHours: Math.round(ageHours), fresh: ageHours <= SNAPSHOT_MAX_AGE_HOURS };
+  if (snapshotUsed.fresh) {
+    for (const f of readdirSync(SNAPSHOT_DIR)) {
+      if (f.endsWith('.txt') || f === 'riverhouse-events.json') copyFileSync(join(SNAPSHOT_DIR, f), join(OUT, f));
+    }
+    // Replace this run's blocked Riverhouse results with the snapshot's.
+    for (let i = results.length - 1; i >= 0; i--) if (results[i].id === rh.id || results[i].id.startsWith(`${rh.id}-`)) results.splice(i, 1);
+    for (const r of meta.results) {
+      results.push({ id: r.id, name: `${rh.name} (home snapshot)`, url: r.url, status: rh.status, outcome: r.outcome, note: `home snapshot ${meta.fetchedAt.slice(0, 16)}Z: ${r.note}` });
+    }
+    console.log(`Riverhouse Barn refused this connection (${listing.note}); using the home snapshot from ${meta.fetchedAt} (${snapshotUsed.ageHours} hours old).`);
+  }
+}
 
 // ---------- state and summary ----------
 
@@ -266,6 +325,11 @@ for (const [k, r] of byKey) {
   if (blocked && r.status === 'intermittent' && consecutiveBlocks >= 2) notify.push(`${k} has been blocked on ${consecutiveBlocks} runs in a row (${r.note})`);
   if (r.outcome === 'network-not-allowed') notify.push(`${k} needs allowing in the cloud environment's network settings`);
 }
+if (listing.outcome !== 'ok' && !snapshotUsed?.fresh) {
+  notify.push(snapshotUsed
+    ? `riverhouse-barn home snapshot is ${snapshotUsed.ageHours} hours old (from ${snapshotUsed.fetchedAt}); check the home fetch task on Darren's computer`
+    : 'riverhouse-barn was refused and there is no home snapshot in data/riverhouse-snapshot/');
+}
 state.updated = runDate;
 if (WRITE_STATE) writeFileSync(STATE_FILE, JSON.stringify(state, null, 2) + '\n');
 writeFileSync(join(OUT, 'status.json'), JSON.stringify({ runDate, results, riverhouse: { listed: listingIds.length, fetched: toFetch.length, skippedForCap } }, null, 2) + '\n');
@@ -273,6 +337,7 @@ writeFileSync(join(OUT, 'status.json'), JSON.stringify({ runDate, results, river
 const counts = results.reduce((m, r) => ((m[r.outcome] = (m[r.outcome] || 0) + 1), m), {});
 console.log(`\nfetch-event-sources: ${results.length} URLs, ${Object.entries(counts).map(([k, v]) => `${v} ${k}`).join(', ')}.`);
 console.log(`Riverhouse Barn: ${listingIds.length} events on the listing, fetched ${toFetch.length} (${newIds.length} not yet published, ${riverhouseIdsLapsed.size} cited by lapsed events)${skippedForCap ? `, ${skippedForCap} left for a later run by --max-riverhouse` : ''}.`);
+if (snapshotUsed?.fresh) console.log(`Riverhouse Barn files above are from the home snapshot of ${snapshotUsed.fetchedAt}; the counts on the previous line are this run's own refused attempt.`);
 console.log(`Lapsed recurring events: ${lapsed.length}. Text files, riverhouse-events.json and status.json are in ${OUT}`);
 for (const r of results.filter((x) => x.outcome !== 'ok')) console.log(`  ${r.outcome}: ${r.id} ${r.url} (${r.note})`);
 console.log(notify.length ? notify.map((n) => `NOTIFY: ${n}`).join('\n') : 'NOTIFY: none needed for sources.');
