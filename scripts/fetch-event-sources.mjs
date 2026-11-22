@@ -381,7 +381,7 @@ for (const [k, r] of byKey) {
 if (!feed) notify.push(`riverhouse-feed could not be read (${feedNote}); Riverhouse listings left untouched`);
 if (feed && !feedFresh) notify.push(`riverhouse-feed is ${Math.round(feedAgeHours)} hours old (generated ${feed.generated_at}); check Atlas's daily publish.py run`);
 if (feedFailure) notify.push(`riverhouse-feed's last run failed (status.json, last_attempt ${feedFailure.last_attempt}); the feed used is from ${feed.generated_at}`);
-if (rhCheck.notInFeed.length) notify.push(`${rhCheck.notInFeed.length} published Riverhouse listing(s) are missing from a complete feed and may be cancelled: ${rhCheck.notInFeed.map((x) => x.file).join(', ')}`);
+if (feedFresh && !feedComplete) notify.push('riverhouse-feed is marked complete: false: add and update from it, but delete nothing for being absent');
 state.updated = runDate;
 if (WRITE_STATE) writeFileSync(STATE_FILE, JSON.stringify(state, null, 2) + '\n');
 writeFileSync(join(OUT, 'status.json'), JSON.stringify({ runDate, results, riverhouse: { feed: feedNote, fresh: feedFresh, complete: feedComplete, written: rhEvents.length, ...rhCheck } }, null, 2) + '\n');
