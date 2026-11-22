@@ -2,12 +2,13 @@
   "_comment": "Pages scripts/fetch-event-sources.mjs fetches on every events refresh. docs/events-sources.md explains what each source is good for and the house policies; keep the two in step when a source is added or removed. status: \"intermittent\" sources only trigger a notification after two blocked runs in a row; \"expected-fail\" sources never do. Hosts in expectedFailHosts are treated as expected-fail wherever they appear, including in event files' source_url.",
   "expectedFailHosts": ["facebook.com", "ticketsource.co.uk", "ticketsource.com"],
   "riverhouse": {
+    "_comment": "Riverhouse Barn refuses cloud servers, so the run reads the daily feed Atlas publishes to waltononthames/riverhouse-feed instead of the venue's site. See docs/events-sources.md, Riverhouse Barn.",
     "id": "riverhouse-barn",
-    "name": "Riverhouse Barn Arts Centre",
-    "listing": "https://www.riverhousebarn.co.uk/whatson?language=en",
-    "eventUrl": "https://www.riverhousebarn.co.uk/events/{id}?language=en",
-    "status": "intermittent",
-    "pauseSeconds": 8
+    "name": "Riverhouse Barn Arts Centre (riverhouse-feed)",
+    "feedBase": "https://raw.githubusercontent.com/waltononthames/riverhouse-feed/main",
+    "repo": "https://github.com/waltononthames/riverhouse-feed",
+    "eventUrl": "https://www.riverhousebarn.co.uk/events/{id}",
+    "maxAgeHours": 36
   },
   "sources": [
     { "id": "walton-library", "name": "Walton Library events (Surrey County Council)", "url": "https://www.surreycc.gov.uk/libraries/your-library/find-your-nearest/walton/events-and-activities" },
