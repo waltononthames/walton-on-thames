@@ -9,6 +9,12 @@
     "status": "intermittent",
     "pauseSeconds": 8
   },
+  "riverhouseFeed": {
+    "_comment": "Atlas, Darren's always-on assistant, scrapes Riverhouse Barn's /browse box office daily by 04:15 Europe/London and commits events-latest.json here. events:fetch uses it in preference to fetching the venue, which refuses cloud servers.",
+    "repo": "https://github.com/waltononthames/riverhouse-feed",
+    "file": "events-latest.json",
+    "maxAgeHours": 36
+  },
   "sources": [
     { "id": "walton-library", "name": "Walton Library events (Surrey County Council)", "url": "https://www.surreycc.gov.uk/libraries/your-library/find-your-nearest/walton/events-and-activities" },
     { "id": "hersham-library", "name": "Hersham Library events (Surrey County Council)", "url": "https://www.surreycc.gov.uk/libraries/your-library/find-your-nearest/hersham/events-and-activities" },

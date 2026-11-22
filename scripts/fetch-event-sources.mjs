@@ -5,7 +5,9 @@
 // Usage: npm run events:fetch [-- --out <dir>] [-- --no-state] [-- --max-riverhouse <n>]
 //        npm run events:fetch -- --riverhouse-snapshot   (home connection only)
 //
-// Riverhouse Barn refuses all requests from cloud servers. The snapshot mode
+// Riverhouse Barn refuses all requests from cloud servers. First choice is
+// Atlas's daily feed (riverhouseFeed in scripts/event-sources.json); when it
+// is under 36 hours old the venue is not fetched at all. The snapshot mode
 // fetches only Riverhouse Barn and saves it to data/riverhouse-snapshot/; it
 // runs daily from Darren's home connection via scripts/riverhouse-home-fetch.ps1.
 // When the cloud run is refused, it uses that snapshot if under 36 hours old.
@@ -227,25 +229,61 @@ for (const s of SNAPSHOT_MODE ? [] : queue) {
   process.stdout.write(`${res.outcome.padEnd(20)} ${s.id}\n`);
 }
 
-// Riverhouse Barn: listing, then event pages one at a time.
+// Riverhouse Barn, first choice: Atlas's daily feed in a separate repo
+// (scripts/event-sources.json riverhouseFeed). If it is fresh, the venue is
+// not fetched at all. Otherwise fall back to fetching the venue directly, and
+// then to the home snapshot below.
 const rh = CONFIG.riverhouse;
 const rhEvents = [];
-const listing = await fetchPage(rh.listing, join(OUT, `${rh.id}.html`), rh.pauseSeconds);
-const listingIds = listing.outcome === 'ok' ? [...new Set([...listing.body.matchAll(/riverhousebarn\.co\.uk\/events\/(\d+)/g)].map((m) => m[1]))] : [];
-record(rh.id, `${rh.name} listing`, rh.listing, rh.status, listing, { eventIdsOnListing: listingIds.length });
-process.stdout.write(`${listing.outcome.padEnd(20)} ${rh.id} (${listingIds.length} event links)\n`);
+function readRiverhouseFeed(cfg) {
+  const dir = join(OUT, 'riverhouse-feed-repo');
+  rmSync(dir, { recursive: true, force: true });
+  const g = spawnSync('git', ['clone', '-q', '--depth', '1', cfg.repo, dir], { encoding: 'utf8', timeout: 120000 });
+  if (g.status !== 0) return { usable: false, problem: `could not clone ${cfg.repo}: ${(g.stderr || '').trim().slice(0, 160)}` };
+  let status = null;
+  try { status = JSON.parse(readFileSync(join(dir, 'status.json'), 'utf8')); } catch { /* no failed run recorded */ }
+  const file = join(dir, cfg.file);
+  if (!existsSync(file)) return { usable: false, expected: true, problem: `${cfg.file} not published yet`, status };
+  let data;
+  try { data = JSON.parse(readFileSync(file, 'utf8')); } catch (e) { return { usable: false, problem: `${cfg.file} does not parse: ${e.message}` }; }
+  const ageHours = (Date.now() - Date.parse(data.generated_at)) / 3600e3;
+  if (!Array.isArray(data.events) || !Number.isFinite(ageHours)) return { usable: false, problem: `${cfg.file} lacks generated_at or an events array` };
+  copyFileSync(file, join(OUT, 'riverhouse-feed.json'));
+  for (const [from, to] of [['changes.json', 'riverhouse-feed-changes.json'], ['status.json', 'riverhouse-feed-status.json']]) {
+    if (existsSync(join(dir, from))) copyFileSync(join(dir, from), join(OUT, to));
+  }
+  const failedSince = status && Date.parse(status.last_attempt) > Date.parse(data.generated_at) ? status : null;
+  return {
+    usable: ageHours <= cfg.maxAgeHours,
+    problem: ageHours > cfg.maxAgeHours ? `feed is ${Math.round(ageHours)} hours old (generated ${data.generated_at})` : null,
+    ageHours: Math.round(ageHours), generatedAt: data.generated_at, complete: data.complete === true, count: data.events.length, failedSince,
+  };
+}
+const feed = SNAPSHOT_MODE || !CONFIG.riverhouseFeed ? null : readRiverhouseFeed(CONFIG.riverhouseFeed);
+let listing, listingIds = [], newIds = [], toFetch = [], skippedForCap = 0;
+if (feed?.usable) {
+  listing = { outcome: 'ok', note: `Atlas feed generated ${feed.generatedAt}, ${feed.count} performances${feed.complete ? '' : ', marked incomplete'}` };
+  record(rh.id, `${rh.name} (Atlas feed)`, CONFIG.riverhouseFeed.repo, rh.status, listing);
+  process.stdout.write(`${'ok'.padEnd(20)} ${rh.id} (Atlas feed, ${feed.count} performances, ${feed.ageHours} hours old)\n`);
+} else {
+  if (feed) console.log(`Riverhouse Barn Atlas feed not used: ${feed.problem}. Fetching the venue directly.`);
+  listing = await fetchPage(rh.listing, join(OUT, `${rh.id}.html`), rh.pauseSeconds);
+  listingIds = listing.outcome === 'ok' ? [...new Set([...listing.body.matchAll(/riverhousebarn\.co\.uk\/events\/(\d+)/g)].map((m) => m[1]))] : [];
+  record(rh.id, `${rh.name} listing`, rh.listing, rh.status, listing, { eventIdsOnListing: listingIds.length });
+  process.stdout.write(`${listing.outcome.padEnd(20)} ${rh.id} (${listingIds.length} event links)\n`);
 
-const newIds = listingIds.filter((id) => !riverhouseIdsCited.has(id));
-const toFetch = [...new Set([...riverhouseIdsLapsed, ...newIds])].slice(0, MAX_RIVERHOUSE);
-const skippedForCap = [...new Set([...riverhouseIdsLapsed, ...newIds])].length - toFetch.length;
-for (const id of toFetch) {
-  const url = rh.eventUrl.replace('{id}', id);
-  const res = await fetchPage(url, join(OUT, `${rh.id}-${id}.html`), rh.pauseSeconds);
-  const reason = riverhouseIdsLapsed.has(id) ? 'cited by a lapsed event' : 'not yet published';
-  const jsonld = res.outcome === 'ok' ? jsonLdEvents(res.body) : [];
-  record(`${rh.id}-${id}`, `${rh.name} event ${id}`, url, rh.status, res, { reason });
-  rhEvents.push({ id, url, reason, outcome: res.outcome, note: res.note, jsonld });
-  process.stdout.write(`${res.outcome.padEnd(20)} ${rh.id}-${id} (${reason})\n`);
+  newIds = listingIds.filter((id) => !riverhouseIdsCited.has(id));
+  toFetch = [...new Set([...riverhouseIdsLapsed, ...newIds])].slice(0, MAX_RIVERHOUSE);
+  skippedForCap = [...new Set([...riverhouseIdsLapsed, ...newIds])].length - toFetch.length;
+  for (const id of toFetch) {
+    const url = rh.eventUrl.replace('{id}', id);
+    const res = await fetchPage(url, join(OUT, `${rh.id}-${id}.html`), rh.pauseSeconds);
+    const reason = riverhouseIdsLapsed.has(id) ? 'cited by a lapsed event' : 'not yet published';
+    const jsonld = res.outcome === 'ok' ? jsonLdEvents(res.body) : [];
+    record(`${rh.id}-${id}`, `${rh.name} event ${id}`, url, rh.status, res, { reason });
+    rhEvents.push({ id, url, reason, outcome: res.outcome, note: res.note, jsonld });
+    process.stdout.write(`${res.outcome.padEnd(20)} ${rh.id}-${id} (${reason})\n`);
+  }
 }
 writeFileSync(join(OUT, 'riverhouse-events.json'), JSON.stringify(rhEvents, null, 2) + '\n');
 
@@ -325,6 +363,9 @@ for (const [k, r] of byKey) {
   if (blocked && r.status === 'intermittent' && consecutiveBlocks >= 2) notify.push(`${k} has been blocked on ${consecutiveBlocks} runs in a row (${r.note})`);
   if (r.outcome === 'network-not-allowed') notify.push(`${k} needs allowing in the cloud environment's network settings`);
 }
+if (feed?.usable && !feed.complete) notify.push('riverhouse-barn Atlas feed is marked incomplete: add and update from it, but do not treat a missing event as removed');
+if (feed?.failedSince) notify.push(`riverhouse-barn Atlas run failed at ${feed.failedSince.last_attempt} (${feed.failedSince.outcome}: ${feed.failedSince.note})`);
+if (feed && !feed.usable && !feed.expected) notify.push(`riverhouse-barn Atlas feed not used: ${feed.problem}`);
 if (listing.outcome !== 'ok' && !snapshotUsed?.fresh) {
   notify.push(snapshotUsed
     ? `riverhouse-barn home snapshot is ${snapshotUsed.ageHours} hours old (from ${snapshotUsed.fetchedAt}); check the home fetch task on Darren's computer`
@@ -336,7 +377,8 @@ writeFileSync(join(OUT, 'status.json'), JSON.stringify({ runDate, results, river
 
 const counts = results.reduce((m, r) => ((m[r.outcome] = (m[r.outcome] || 0) + 1), m), {});
 console.log(`\nfetch-event-sources: ${results.length} URLs, ${Object.entries(counts).map(([k, v]) => `${v} ${k}`).join(', ')}.`);
-console.log(`Riverhouse Barn: ${listingIds.length} events on the listing, fetched ${toFetch.length} (${newIds.length} not yet published, ${riverhouseIdsLapsed.size} cited by lapsed events)${skippedForCap ? `, ${skippedForCap} left for a later run by --max-riverhouse` : ''}.`);
+if (feed?.usable) console.log(`Riverhouse Barn: from the Atlas feed (riverhouse-feed.json, riverhouse-feed-changes.json in the output folder), ${feed.count} performances, generated ${feed.generatedAt}${feed.complete ? '' : ', INCOMPLETE'}.`);
+else console.log(`Riverhouse Barn: ${listingIds.length} events on the listing, fetched ${toFetch.length} (${newIds.length} not yet published, ${riverhouseIdsLapsed.size} cited by lapsed events)${skippedForCap ? `, ${skippedForCap} left for a later run by --max-riverhouse` : ''}.`);
 if (snapshotUsed?.fresh) console.log(`Riverhouse Barn files above are from the home snapshot of ${snapshotUsed.fetchedAt}; the counts on the previous line are this run's own refused attempt.`);
 console.log(`Lapsed recurring events: ${lapsed.length}. Text files, riverhouse-events.json and status.json are in ${OUT}`);
 for (const r of results.filter((x) => x.outcome !== 'ok')) console.log(`  ${r.outcome}: ${r.id} ${r.url} (${r.note})`);
