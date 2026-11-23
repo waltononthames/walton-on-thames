@@ -230,7 +230,10 @@ const events = defineCollection({
     neighbourhood: z.enum(['walton-on-thames', 'hersham', 'whiteley-village']),
     category: z.enum(['festival', 'market', 'sport', 'arts', 'community', 'family', 'music', 'food-drink', 'other']),
     recurring: z.boolean().default(false),
-    price: z.string().default('Free'),
+    // Required, with no default: a default of 'Free' once badged events with
+    // no published price as free. Where none is published, write
+    // "See venue for details" (or "See organiser for details").
+    price: z.string(),
     image: z.string().optional(),
     description: z.string().optional(),
     source_url: z.string().url().optional(),
