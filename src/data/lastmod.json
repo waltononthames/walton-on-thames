@@ -54,7 +54,7 @@
   "src/components/gp/NearbyPharmacies.astro": "2026-09-22T13:42:20+01:00",
   "src/components/gp/PracticeLocalMap.astro": "2026-09-22T00:55:45+01:00",
   "src/components/gp/mapProjection.ts": "2026-09-21T22:32:38+01:00",
-  "src/content.config.ts": "2026-11-09T21:41:22+00:00",
+  "src/content.config.ts": "2026-11-23T18:28:40+00:00",
   "src/content/annual-events/.gitkeep": "2026-08-22T21:47:51+01:00",
   "src/content/annual-events/brooklands-classic-gatherings.json": "2026-08-22T21:47:51+01:00",
   "src/content/annual-events/hampton-court-palace-festival.json": "2026-08-22T21:47:51+01:00",

@@ -12,7 +12,7 @@ description: "The RC Sherriff Trust's November talk and film afternoon at Riverh
 source_url: "https://www.riverhousebarn.co.uk/events/177309"
 ---
 
-The November talk, "A Story So Elementary: Sherlock Holmes on Screen", looks at the directors and actors from across the world who have tried, with varying success, to bring Arthur Conan Doyle's most famous creation to the screen.
+The November talk, "A Story So Elementary: Sherlock Holmes on Screen", follows Sherlock Holmes from page to film, looking at the many film-makers and actors, in Britain and abroad, who have taken on the detective, some more successfully than others.
 
 The afternoon screening is Hamnet (2025, rated 12), based on Maggie O'Farrell's 2020 novel, which follows William Shakespeare and his wife Agnes Hathaway through the loss of their 11-year-old son, Hamnet. Jessie Buckley plays Agnes alongside Paul Mescal as William.
 
