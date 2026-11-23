@@ -14,6 +14,6 @@ source_url: "https://www.riverhousebarn.co.uk/events/180052"
 
 Andy Parsons returns to Mock Tudor Comedy Club at Riverhouse Barn with a new work-in-progress show. The venue notes that it follows his "100+ date sellout" tour of 2025/26 and an ITVX comedy special.
 
-Tickets are £15 and the show runs from 7.30pm to 9.30pm.
+Tickets are £15 and the show runs from 7.30pm to 9.30pm. When checked on 23 November 2026, the venue showed the show as sold out.
 
 *Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/180052). Always verify details directly with the organiser before attending.*

@@ -12,7 +12,7 @@ description: "The Forest Hill Owls play hot jazz and popular music of the 1920s 
 source_url: "https://www.riverhousebarn.co.uk/events/184993"
 ---
 
-The Forest Hill Owls bring together London early jazz musicians to play authentic transcriptions and arrangements of hot jazz and popular music from the 1920s and early 1930s, dressed in period suits or evening dress.
+The Forest Hill Owls are a new band of London early jazz players who recreate the hot jazz and dance music of the 1920s and early 1930s from original arrangements, dressed for the period in suits or evening wear.
 
 Tickets are £15 and the Sunday lunchtime session runs from 12:15pm to 2:15pm.
 

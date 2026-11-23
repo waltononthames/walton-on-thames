@@ -12,6 +12,6 @@ description: "Vintage festive swing from Sing That Swing! at Riverhouse Barn."
 source_url: "https://www.riverhousebarn.co.uk/events/156474"
 ---
 
-Sing That Swing! return for Christmas with vintage festive songs in Sinatra, Darin and Garland style. Kitty Malone, Ruby Francis and Johnny Mack perform Christmas classics from 8pm to 10pm.
+Sing That Swing! return for Christmas with vintage festive songs in Sinatra, Darin and Garland style. Kitty Malone, Ruby Francis and Johnny Mack perform Christmas classics from 8pm to 10pm. When checked on 23 November 2026, the venue showed the concert as sold out.
 
 *Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/156474). Always verify details directly with the organiser before attending.*

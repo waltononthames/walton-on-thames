@@ -7,6 +7,7 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames, KT12 2PF"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: true
+price: "Depends on the weeks left in the term"
 description: "Tuesday evening drama workshops for adults at Riverhouse Barn, using games and acting exercises, with no experience needed."
 source_url: "https://www.riverhousebarn.co.uk/events/178549"
 ---

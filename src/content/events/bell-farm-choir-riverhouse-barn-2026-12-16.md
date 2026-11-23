@@ -12,7 +12,7 @@ description: "A free morning of festive carols and poetry from Bell Farm school 
 source_url: "https://www.riverhousebarn.co.uk/events/180497"
 ---
 
-Bell Farm school choir fills Riverhouse Barn with festive carols and recited poetry on the morning of Wednesday 16 December. The venue promises "joyful voices, seasonal favourites, and the spirit of the holidays".
+On the morning of Wednesday 16 December, the Bell Farm school choir sings carols and reads poetry for the season at Riverhouse Barn. The venue promises "joyful voices, seasonal favourites, and the spirit of the holidays".
 
 Riverhouse Barn states that "admission is free, and all are welcome to share in the festive cheer", and describes the occasion as suited to families, friends and anyone who enjoys a community celebration.
 

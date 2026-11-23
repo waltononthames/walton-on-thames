@@ -12,7 +12,7 @@ description: "Thames Valley Contemporary Textiles show mixed media and textile w
 source_url: "https://www.riverhousebarn.co.uk/events/175079"
 ---
 
-Thames Valley Contemporary Textiles bring Threads of Time to the Robert Phillips Gallery, an exhibition of mixed media and textile work inspired by the personal, symbolic and cultural connections people have to an artefact, reinterpreted in modern form.
+Thames Valley Contemporary Textiles bring Threads of Time to the Robert Phillips Gallery, a small show of textile and mixed media pieces in which members take an artefact and reinterpret, in modern form, what it means to people personally and culturally.
 
 The group describes itself as diverse in its range of experience and talents, from traditional crafts through to contemporary textiles, with a mission to learn from each other while keeping traditional skills and techniques alive for the next generation.
 

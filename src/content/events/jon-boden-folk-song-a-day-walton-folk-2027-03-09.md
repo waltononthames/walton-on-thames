@@ -12,7 +12,7 @@ description: "Bellowhead singer Jon Boden plays a solo Walton Folk show at River
 source_url: "https://www.riverhousebarn.co.uk/events/180936"
 ---
 
-Jon Boden, lead singer of Bellowhead, returns to solo touring to launch his new book, A Folk Song A Day, published by Faber Music. The show includes a song from each month of the book, mixing rarities from 300 years of English folk song with songs from his own back catalogue.
+Bellowhead singer Jon Boden is on a solo tour for his new book, A Folk Song A Day, published by Faber Music. The show includes a song from each month of the book, mixing rarities from 300 years of English folk song with songs from his own back catalogue.
 
 The Walton Folk concert runs from 8pm to 10pm and tickets are £21.
 

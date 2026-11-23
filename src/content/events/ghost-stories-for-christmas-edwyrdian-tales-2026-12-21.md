@@ -14,6 +14,6 @@ source_url: "https://www.riverhousebarn.co.uk/events/172378"
 
 Edwyrdian Tales return with three ghost stories of the season told beside the Christmas tree: Lucky's Grove by H. R. Wakefield, The Wendigo by Algernon Blackwood, and The Elder Son, an original tale from the company's storyteller.
 
-The performance runs from 7:30pm to 9:30pm.
+The performance runs from 7:30pm to 9:30pm. When checked on 23 November 2026, the venue showed the performance as sold out.
 
 *Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/172378). Always verify details directly with the organiser before attending.*

@@ -12,7 +12,7 @@ description: "A family puppetry and shadow theatre show at Riverhouse Barn, tell
 source_url: "https://www.riverhousebarn.co.uk/events/181101"
 ---
 
-Steve Tiplady plays Geppetto, using the objects of a carpenter's workshop to tell the tale of the puppet who wants to be a real boy. Pinocchio is carved on stage, and puppetry, shadows, illusion and specially composed music combine in a show the venue describes as having something for all ages.
+Steve Tiplady, as Geppetto, tells Pinocchio's story with the tools and offcuts of a carpenter's bench. Pinocchio is carved on stage, and puppetry, shadows, illusion and specially composed music combine in a show the venue describes as having something for all ages.
 
 The show is suitable for ages 4 and up and lasts 60 minutes with no interval. Young siblings under 2 who do not take a seat go free.
 

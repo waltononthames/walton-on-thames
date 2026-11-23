@@ -12,7 +12,7 @@ description: "Riverhouse Barn's annual Christmas fundraising evening of words an
 source_url: "https://www.riverhousebarn.co.uk/events/179644"
 ---
 
-Riverhouse Barn holds its annual Christmas fundraising evening in December, which the venue describes as "our annual Christmas entertainment of words and music with an enchanting mix of new and familiar material capturing the joy, humour, and magic of Christmas".
+Riverhouse Barn holds its annual Christmas fundraising evening in December: words and music for Christmas, mixing new pieces with familiar ones.
 
 Tickets are £22 and the evening runs from 7pm to 9pm.
 

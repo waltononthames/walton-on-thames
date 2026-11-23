@@ -12,7 +12,7 @@ description: "Singer-songwriter Tobias Ben Jacob plays a solo acoustic set of Ne
 source_url: "https://www.riverhousebarn.co.uk/events/184586"
 ---
 
-As part of his Icons and Influences series, singer-songwriter Tobias Ben Jacob plays a solo show of Neil Young songs on acoustic guitar and harmonica, drawing on albums including After The Goldrush and Harvest.
+As part of his Icons and Influences series, singer-songwriter Tobias Ben Jacob performs Neil Young's songs alone with guitar and harmonica, drawing on albums including After The Goldrush and Harvest.
 
 Tickets are £16 and the Walton Folk lunchtime concert runs from 12:15pm to 2:15pm.
 

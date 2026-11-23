@@ -7,6 +7,7 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames, KT12 2PF"
 neighbourhood: "walton-on-thames"
 category: "music"
 recurring: true
+price: "See venue for details"
 description: "The Riverhouse Barn Choir's spring term of Tuesday morning rehearsals, led by musical director Johnny Kilhams, starts on 12 January."
 source_url: "https://www.riverhousebarn.co.uk/events/171424"
 ---

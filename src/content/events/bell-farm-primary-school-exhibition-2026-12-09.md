@@ -14,7 +14,7 @@ source_url: "https://www.riverhousebarn.co.uk/events/179359"
 
 Bell Farm Primary School holds its first public art exhibition at Riverhouse Barn, filling the Robert Phillips Gallery over the festive season with original work by pupils from across every year group.
 
-The venue describes it as a landmark celebration of young creativity, and an invitation to experience the wonder through children's eyes and support Walton's next generation of creative minds.
+The venue calls it a landmark celebration of young creativity, and a chance to see art from a child's point of view while backing young local artists.
 
 The exhibition runs daily from 10am to 4pm, from Wednesday 9 December 2026 to Sunday 3 January 2027, with free admission.
 

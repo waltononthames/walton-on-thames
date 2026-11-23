@@ -12,7 +12,7 @@ description: "Classic jazz at a Sunday lunchtime Jazz and Beer session at Riverh
 source_url: "https://www.riverhousebarn.co.uk/events/180971"
 ---
 
-Enrico Tomasso leads the Riverboat Shufflers on trumpet at Riverhouse Barn's Sunday lunchtime Jazz and Beer series. The venue describes a band that breathes new life into the golden era of jazz, playing new versions of old gems.
+Enrico Tomasso leads the Riverboat Shufflers on trumpet at Riverhouse Barn's Sunday lunchtime Jazz and Beer series. The band revive classic jazz from its golden age, giving old favourites a fresh treatment.
 
 The session runs from 12:15pm to 2:15pm and tickets are £15.
 

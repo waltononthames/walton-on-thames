@@ -14,8 +14,8 @@ source_url: "https://www.riverhousebarn.co.uk/events/177309"
 
 The November talk, "A Story So Elementary: Sherlock Holmes on Screen", looks at the directors and actors from across the world who have tried, with varying success, to bring Arthur Conan Doyle's most famous creation to the screen.
 
-The afternoon screening is Hamnet (2025, rated 12), based on Maggie O'Farrell's 2020 novel, which dramatises the family life of William Shakespeare and his wife Agnes Hathaway as they cope with the death of their eleven-year-old son. Jessie Buckley plays Agnes alongside Paul Mescal as William.
+The afternoon screening is Hamnet (2025, rated 12), based on Maggie O'Farrell's 2020 novel, which follows William Shakespeare and his wife Agnes Hathaway through the loss of their 11-year-old son, Hamnet. Jessie Buckley plays Agnes alongside Paul Mescal as William.
 
-The talk begins at 11:30am and the film at 1:30pm. Tickets are £5 for the talk or the screening and £8 for both. Seats can be booked through the Riverhouse website, with limited availability on the door on the day.
+The talk begins at 11:30am and the film at 1:30pm. Tickets are £5 for the talk or the screening and £8 for both. Tickets can be booked online, or paid for in cash at the door.
 
 *Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/177309). Always verify details directly with the organiser before attending.*

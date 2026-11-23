@@ -7,6 +7,7 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames, KT12 2PF"
 neighbourhood: "walton-on-thames"
 category: "arts"
 recurring: true
+price: "See venue for details"
 description: "Tuesday evening adult ballet classes at Riverhouse Barn in term time, starting at the barre and focused on the joy of movement."
 source_url: "https://www.riverhousebarn.co.uk/events/171262"
 ---

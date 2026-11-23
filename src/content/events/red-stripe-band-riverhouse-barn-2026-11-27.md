@@ -12,7 +12,7 @@ description: "Rock and roll, swing, jazz and boogie woogie from The Red Stripe B
 source_url: "https://www.riverhousebarn.co.uk/events/175165"
 ---
 
-Formed in 1994 by Neil Drinkwater, The Red Stripe Band return to the Barn stage for their annual show, mixing classic rock and roll, swing, jazz and boogie woogie with their own compositions.
+Formed in 1994 by Neil Drinkwater, The Red Stripe Band are back at Riverhouse Barn for their yearly show, mixing classic rock and roll, swing, jazz and boogie woogie with their own compositions.
 
 The concert runs from 8pm to 10pm.
 

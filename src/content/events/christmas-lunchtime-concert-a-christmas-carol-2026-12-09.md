@@ -7,13 +7,13 @@ venue: "Riverhouse Barn Arts Centre, Manor Road, Walton-on-Thames"
 neighbourhood: "walton-on-thames"
 category: "music"
 recurring: false
-price: "£16 to £18"
+price: "£18"
 description: "Dickens' A Christmas Carol retold as a melodrama for narrator, violin and piano at Riverhouse Barn."
 source_url: "https://www.riverhousebarn.co.uk/events/175294"
 ---
 
-A narrated lunchtime concert in which Dickens' ghost story of Christmas is recreated as a musical drama for narrator, violin and piano, performed by Leora Cohen on violin, Paul Wingfield on piano and narrator Sophie Max.
+Dickens' A Christmas Carol is told as a melodrama, with spoken narration set to violin and piano music, in this lunchtime concert performed by Leora Cohen on violin, Paul Wingfield on piano and narrator Sophie Max.
 
-The concert runs from 1pm to 2pm.
+The concert runs from 1pm to 2pm and admission is £18. The venue also sells a two-course lunch in its cafe, at 11:30am or 2pm, for £16.
 
 *Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/175294). Always verify details directly with the organiser before attending.*

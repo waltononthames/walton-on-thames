@@ -7,6 +7,7 @@ venue: "Robert Phillips Gallery, Riverhouse Barn Arts Centre, Manor Road, Walton
 neighbourhood: "walton-on-thames"
 category: "community"
 recurring: false
+price: "See venue for details"
 description: "An evening sound bath with Himalayan and crystal singing bowls in the Robert Phillips Gallery at Riverhouse Barn."
 source_url: "https://www.riverhousebarn.co.uk/events/176943"
 ---

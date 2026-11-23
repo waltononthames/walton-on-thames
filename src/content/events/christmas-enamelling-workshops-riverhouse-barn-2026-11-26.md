@@ -12,7 +12,7 @@ description: "A three week Thursday afternoon enamelling course at Riverhouse Ba
 source_url: "https://www.riverhousebarn.co.uk/events/180843"
 ---
 
-Enamelling means fusing powdered or liquid glass onto copper shapes to make jewellery, keyrings, pictures and more. This Christmas special at Riverhouse Barn turns those skills to Christmas decorations, with sessions on Thursday afternoons from 1pm to 4pm on 26 November and 3 and 10 December 2026.
+Enamelling means fusing powdered or liquid glass onto copper shapes to make jewellery, keyrings, pictures and more. The course at Riverhouse Barn runs on three Thursday afternoons, from 1pm to 4pm on 26 November and 3 and 10 December 2026, and opens with a Christmas special making Christmas decorations.
 
 Beginners learn the basics, while returning students can build on their skills or try a new technique. No experience is needed, but you must be 18 or over. Three sessions cost £88, covering teaching and use of the kiln and tools; copper and enamel are paid for in class. To enrol, email learn.enamel@gmail.com.
 
