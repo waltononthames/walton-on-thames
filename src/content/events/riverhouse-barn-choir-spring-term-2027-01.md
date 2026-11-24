@@ -9,11 +9,11 @@ category: "music"
 recurring: true
 price: "See venue for details"
 description: "The Riverhouse Barn Choir's spring term of Tuesday morning rehearsals, led by musical director Johnny Kilhams, starts on 12 January."
-source_url: "https://www.riverhousebarn.co.uk/events/171424"
+source_url: "https://www.riverhousebarn.co.uk/events/171425"
 ---
 
 The Riverhouse Barn Choir, led by musical director Johnny Kilhams, resumes for the spring term on Tuesday 12 January 2027, rehearsing from 10am to 11:30am.
 
 There are ten rehearsals: 12, 19 and 26 January, 2, 9 and 23 February, and 2, 9, 16 and 23 March. The sessions on 19 January, 23 February and 16 March are shorter, running from 10am to 11am. To find out more, email Johnny at jonathan.kilhams@gmail.com.
 
-*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/171424). Always verify details directly with the organiser before attending.*
+*Source: [Riverhouse Barn](https://www.riverhousebarn.co.uk/events/171425). Always verify details directly with the organiser before attending.*
