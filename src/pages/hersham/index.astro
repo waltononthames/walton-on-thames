@@ -30,6 +30,14 @@ const hershamEvents = (await getCollection('events'))
 // and the FAQPage JSON-LD cannot drift apart.
 const faqs = [
   {
+    // Added 25 November 2026 for "is hersham in london" / "hersham london" /
+    // "where is hersham". The answer is the hero's own opening sentence, so it
+    // also places the village. The population question it replaced repeated
+    // the fact box row directly above; the plan's seven-question cap holds.
+    q: 'Is Hersham in London?',
+    a: 'No. Hersham is a village in the Borough of Elmbridge, Surrey, sitting between Walton-on-Thames to the north and Esher to the east, with the River Mole running along its edge.',
+  },
+  {
     q: 'Is Hersham part of Walton-on-Thames?',
     a: 'Hersham is a distinct village with its own parish history, formed out of Walton in 1851, and the two now share a post town and a borough council rather than a single identity.',
   },
@@ -53,10 +61,6 @@ const faqs = [
       label: 'full guide to the Hersham parakeets',
       tail: '.',
     },
-  },
-  {
-    q: 'What is the population of Hersham?',
-    a: 'The 2021 census recorded 12,630 people in the Hersham built-up area, up from 11,260 in 2011.',
   },
   {
     // Two-tier local government is a genuine source of confusion and the fact
@@ -157,8 +161,8 @@ const exploreGroups = [
 ---
 
 <BaseLayout
-  title="Hersham Village, Surrey"
-  description="A local guide to Hersham, Surrey: the green, food and drink, walks by the River Mole, history from the Domesday era to Sham 69, and village life."
+  title="Hersham Village, Surrey | Where It Is & Living Here"
+  description="A guide to Hersham, a Surrey village in the Borough of Elmbridge, not in London: the green, walks by the River Mole, history and village life."
   image="/images/hersham-green-village-sign-hero.webp"
   preloadImage={{ srcset: HERSHAM_GREEN_HERO.srcset, sizes: HERSHAM_GREEN_HERO.sizes }}
 >
@@ -197,8 +201,8 @@ const exploreGroups = [
       "@type": "WebPage",
       "@id": "https://walton-on-thames.org/hersham/#webpage",
       "url": "https://walton-on-thames.org/hersham/",
-      "name": "Hersham Village, Surrey",
-      "description": "A local guide to Hersham, Surrey: the green, food and drink, walks by the River Mole, history from the Domesday era to Sham 69, and village life.",
+      "name": "Hersham Village, Surrey | Where It Is & Living Here",
+      "description": "A guide to Hersham, a Surrey village in the Borough of Elmbridge, not in London: the green, walks by the River Mole, history and village life.",
       "isPartOf": { "@id": SITE_ID },
       "about": { "@id": HERSHAM_PLACE_ID },
     })} />
@@ -241,7 +245,7 @@ const exploreGroups = [
           <li aria-current="page">Hersham</li>
         </ol>
       </nav>
-      <h1>Hersham</h1>
+      <h1>Hersham Village, Surrey</h1>
       <p>Hersham is a village in the Borough of Elmbridge, Surrey, sitting between Walton-on-Thames to the north and Esher to the east, with the River Mole running along its edge. The 2021 census recorded 12,630 people in the Hersham built-up area, up from 11,260 in 2011. Hersham is contiguous with Walton and shares its post town, but it has kept a distinct identity: a proper village green, its own shopping parade, its own station on the main line to Waterloo, and a history that runs from medieval field-names to the punk band that put the village's name in the charts. The ironwork sign standing on the green puts it plainly: it reads Hersham Village.</p>
     </div>
   </div>

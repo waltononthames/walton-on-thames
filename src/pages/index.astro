@@ -56,6 +56,11 @@ const nearby = [
 
 const faqs = [
   { q: 'Is Walton-on-Thames in London?', a: 'No. Walton-on-Thames is in Surrey, within the Borough of Elmbridge, although it is part of the wider London commuter belt with direct rail links to London Waterloo.' },
+  { q: 'Where is Walton-on-Thames?', a: 'Walton-on-Thames is a town in Surrey, England, within the Borough of Elmbridge, on the south bank of the River Thames about fifteen miles southwest of central London.' },
+  { q: 'What county is Walton-on-Thames in?', a: 'Surrey.' },
+  // Dated because Surrey's reorganisation abolishes both councils on 1 April
+  // 2027; same wording and source as the council FAQ on /hersham/.
+  { q: 'What borough is Walton-on-Thames?', a: 'Elmbridge. Walton-on-Thames is in the Borough of Elmbridge. From 1 April 2027 Elmbridge Borough Council and Surrey County Council are both replaced by East Surrey Council, a single unitary authority.' },
   { q: 'What is Walton-on-Thames famous for?', a: "Walton is known for Walton Bridge, the River Thames, St Mary's Church, Ashley Park, Mount Felix and its First World War New Zealand hospital, The Heart town centre, and its outsized role in the early history of British film." },
   { q: 'Who is the MP for Walton-on-Thames?', a: 'Walton-on-Thames is in the Esher and Walton constituency. The current MP is Monica Harding, Liberal Democrat, elected in July 2024.' },
   { q: 'How far is Walton-on-Thames from London?', a: "Walton-on-Thames station is on the South Western Railway network, with direct trains to London Waterloo. The fastest scheduled services are usually around 22 to 25 minutes, while many stopping services take around 30 to 35 minutes." },
@@ -64,8 +69,8 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Walton-on-Thames.org | Things to Do, Eat & Explore"
-  description="An independent community guide to Walton-on-Thames, Hersham and Whiteley Village: things to do, places to eat, local events, and a local business directory."
+  title="Walton-on-Thames, Surrey | Things to Do, Eat & Explore"
+  description="A community guide to Walton-on-Thames in Surrey, in the Borough of Elmbridge, about fifteen miles southwest of central London. Things to do and local life."
 >
   <slot name="structured-data">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -93,7 +98,7 @@ const faqs = [
     </div>
     <div class="container hero-content">
       <p class="hero-eyebrow">An independent guide to</p>
-      <h1>Walton-on-Thames,<br />Hersham & Whiteley Village</h1>
+      <h1>Walton-on-Thames,<br />Hersham & Whiteley Village, Surrey</h1>
       <p class="hero-subtitle">Walton-on-Thames is a town in Surrey, England, within the Borough of Elmbridge, on the south bank of the River Thames about fifteen miles southwest of central London. It is one of Elmbridge's larger towns, built up around the river crossing that has linked Walton to Shepperton since the eighteenth century. Walton-on-Thames railway station sits on the South Western Railway line, with direct trains to London Waterloo: the fastest scheduled services are usually around 22 to 25 minutes, and many stopping services take around 30 to 35 minutes, making the town a well-established part of the London commuter belt. Its history stretches back to the Domesday Book, but Walton is best known today for Walton Bridge and the riverside walks along Cowey Sale, the medieval core of St Mary's Church, and its formative role in early British cinema, when Cecil Hepworth's studio on Hurst Grove helped establish the industry in the early twentieth century. Just south, <a href="/hersham/">Hersham</a> and <a href="/hersham/whiteley-village/">Whiteley Village</a> add their own distinct character to the wider area. If you are weighing up a move, our <a href="/living/">guide to moving to and living here</a> covers areas, housing costs, commuting, schools and childcare.</p>
       <div class="hero-cta">
         <a href="/things-to-do/" class="btn btn-primary">Explore the area</a>

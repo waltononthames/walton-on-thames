@@ -45,6 +45,9 @@
 /community/news/birth-of-baseball-walton-on-thames/ /history/origins-of-baseball/ 301
 /community/news/birds-eye-walton-court-history/ /history/the-heart-and-town-centre/ 301
 
+# Short URL that 404s; Search Console recorded an impression on it (Nov 2026)
+/community/news/julie-andrews/ /community/news/julie-andrews-walton-on-thames/ 301
+
 # /neighbourhoods/ retired per Decision 2, content folded into homepage/hersham/living
 /neighbourhoods/walton-on-thames/ / 301
 /neighbourhoods/hersham/ /hersham/ 301

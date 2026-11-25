@@ -2042,3 +2042,19 @@ Grok answered `docs/grok-research-brief.md`. Its report is filed, as received, i
 - an instruction to stop at a complete block if the answer runs long
 
 Batch 2 asks for The Heart's full store directory, to show which tenants are missing. Batch 3 asks for the NHS entries for the ten dentists, the six new businesses in plan items 3.1 and 3.2, Walton BBQ, and one conflict found while building the table: Khan of Walton is recorded at "3 Simpson House", the unit the register gives to Pizza GoGo.
+
+## 25 November 2026: Search Console brief, top three pages and one redirect
+
+An external SEO brief (Grokbot, Search Console data for 27 August to 24 November 2026) proposed title, meta, heading and FAQ changes for `/`, `/hersham/` and `/things-to-do/apps-court-car-boot-sale/`, plus a 301. Every proposed answer was checked against text already on the page; nothing new was claimed. Implemented with five departures, each sent back to Grokbot with its reason:
+
+- **`/hersham/`:** one new FAQ ("Is Hersham in London?"), not two, and "What is the population of Hersham?" removed, so the plan's seven-question cap (item 2.4) holds. Title, meta and H1 as proposed.
+- **`/` borough answer is dated:** "What borough is Walton-on-Thames?" says Elmbridge and that East Surrey Council replaces both councils on 1 April 2027, the same wording as the `/hersham/` council FAQ. Title, meta, H1 ("..., Surrey") and the "Where is" and "What county" FAQs as proposed.
+- **Apps Court:** two new FAQs ("on today or tomorrow?", "what time this Sunday?") instead of seven near-duplicates; no appscourtfarm.com-worded questions. New h2 "Is Apps Court car boot on today or tomorrow?" above the Sunday section. Title `Apps Court Car Boot Sale: Is It On Today? Times & Phone` (55) rather than the proposed `... Today & 01932 244 822`; meta as proposed.
+- **Phone format:** the unspaced `01932 244822` came from `tools/apps-court-check/decide.mjs`, not the page; fixed there and in `src/data/apps-court-status.json`.
+- **Redirect:** `/community/news/julie-andrews/` 301s to `/community/news/julie-andrews-walton-on-thames/` in `public/_redirects`.
+
+Verified: build clean, `apps-court-check` tests 38/38, one `h1` and one valid `FAQPage` per page, existing FAQs unchanged, no em dashes, titles 54/51/55 and metas 155/142/144 characters in the built output.
+
+## Still open
+- **Measure after deployment:** send Grokbot the deploy date; it returns the same query tables for the 28 days after, plus cannibalisation pairs ("where is walton on thames" already splits between `/` and `/getting-here/`).
+- **1 April 2027 sweep:** "Borough of Elmbridge" stays in the homepage and `/hersham/` metas and hero paragraphs, and across the site. Re-word them when East Surrey Council takes over.

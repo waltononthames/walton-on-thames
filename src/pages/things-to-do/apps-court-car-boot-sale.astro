@@ -165,6 +165,8 @@ const faqs = [
   { q: 'What time does Apps Court Car Boot Sale open?', a: 'The gates open at 7am for both sellers and buyers, according to Apps Court Farm’s official car boot page.' },
   { q: 'What time does it finish?', a: 'The car boot sale is closed from 1pm. Apps Court asks sellers leaving early to drive carefully and consider buyers still on site.' },
   { q: 'Is Apps Court Car Boot Sale on this Sunday?', a: 'Check the status panel at the top of this page: it reflects what Apps Court Farm\'s own website stated when last checked. The sale runs most Sundays from early March to the autumn, plus some Bank Holiday Mondays, but is weather-dependent and can be postponed at short notice.' },
+  { q: 'Is Apps Court car boot on today or tomorrow?', a: 'The sale usually runs on Sundays, weather and ground conditions permitting, and on selected Spring, Summer and early Winter Bank Holiday Mondays. Check the status panel at the top of this page, which is updated from Apps Court Farm\'s own car boot page, or call 01932 244 822 and listen to the recorded message before travelling.' },
+  { q: 'What time is Apps Court car boot on this Sunday?', a: 'When the sale is on, gates open at 7am for sellers and buyers, and the sale is closed from 1pm. Confirm it is running via the status panel at the top of this page, or the recorded message on 01932 244 822.' },
   { q: 'Do sellers need to book a pitch in advance?', a: 'No. Apps Court allocates pitches on a first-come, first-served basis. There is no advance booking system.' },
   { q: 'How much is a standard seller pitch?', a: 'A standard car or walk-in pitch costs £15. See the full pitch price table on this page for vans, trailers and motorhomes.' },
   { q: 'How much is parking for buyers?', a: 'Buyer parking costs £2 per vehicle, including motorbikes. It is collected as you leave, not on arrival.' },
@@ -180,8 +182,8 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Apps Court Car Boot Sale: Times, Prices & Parking"
-  description="An independent guide to Apps Court Car Boot Sale, Walton-on-Thames: opening times, seller pitch prices, buyer parking, facilities, rules and directions."
+  title="Apps Court Car Boot Sale: Is It On Today? Times & Phone"
+  description="Check if Apps Court Car Boot Sale is on today or tomorrow, plus Sunday times, parking and the farm phone 01932 244 822 for the recorded message."
   type="article"
 >
   <slot name="structured-data">
@@ -323,6 +325,9 @@ const faqs = [
           </table>
         </div>
         <p class="table-source">Source: Apps Court Farm, official car boot and contact pages, checked {PAGE_VERIFIED_DATE}.</p>
+
+        <h2 id="today-or-tomorrow">Is Apps Court car boot on today or tomorrow?</h2>
+        <p>The sale usually runs on Sundays, weather and ground conditions permitting, and on selected Spring, Summer and early Winter Bank Holiday Mondays. Check the status panel at the top of this page, which is updated from Apps Court Farm's own car boot page, or call <a href="tel:01932244822">01932 244 822</a> and listen to the recorded message before travelling.</p>
 
         <h2 id="on-this-sunday">Is Apps Court Car Boot Sale on this Sunday?</h2>
         <p>Check the status panel above first: it's updated from Apps Court Farm's own car boot page. Beyond that, Apps Court Farm's FAQ states plainly: "If the weather permits, there will be a Car Boot every Sunday from early March, through to the Autumn." That means a recurring Sunday schedule should never be treated as guaranteed. Before travelling:</p>
