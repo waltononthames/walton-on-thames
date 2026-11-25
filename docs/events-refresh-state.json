@@ -1,159 +1,159 @@
 {
   "sources": {
     "riverhouse-barn": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
-      "note": "generated 2026-11-24T03:36:37+00:00, 1 hours old, 103 events, complete: true",
+      "note": "generated 2026-11-25T03:42:58+00:00, 1 hours old, 104 events, complete: true",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "love-walton": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "dramacube": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "walton-village-quiz": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "walton-library": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "hersham-library": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "surrey-term-dates": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "cecil-hepworth-playhouse": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "crafty-pots-home": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "crafty-pots-adult-events": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "st-peters-cafe": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "st-peters-mens-group": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "walton-bowling-club": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "connections-over-60s": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "repair-cafe": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "rock-up": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "hersham-sports-social": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "surrey-markets": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "unreadable",
       "note": "retried over HTTP/1.1: curl exit 60: curl: (60) SSL certificate problem: self-signed certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the s",
       "consecutiveBlocks": 0,
       "lastOk": "2026-11-23"
     },
     "mezzacraft": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "the-heart": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "walton-voices": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     },
     "your-elmbridge": {
-      "lastRun": "2026-11-24",
+      "lastRun": "2026-11-25",
       "outcome": "ok",
       "note": "HTTP 200",
       "consecutiveBlocks": 0,
-      "lastOk": "2026-11-24"
+      "lastOk": "2026-11-25"
     }
   },
-  "updated": "2026-11-24"
+  "updated": "2026-11-25"
 }

@@ -1,7 +1,7 @@
 ---
 title: "Bookchats Reading Group at Hersham Library"
 slug: "hersham-library-bookchats-2026-07"
-start: "2026-11-24T14:30:00"
+start: "2026-12-29T14:30:00"
 venue: "Hersham Library, Molesey Road, Hersham, Surrey KT12 4RF"
 neighbourhood: "hersham"
 category: "community"

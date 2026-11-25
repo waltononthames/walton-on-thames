@@ -1,7 +1,7 @@
 ---
 title: "Pebble Rhymetime at Hersham Library"
 slug: "hersham-library-pebble-rhymetime-2026-07"
-start: "2026-11-24T10:30:00"
+start: "2026-12-01T10:30:00"
 venue: "Hersham Library, Molesey Road, Hersham, Surrey KT12 4RF"
 neighbourhood: "hersham"
 category: "family"
