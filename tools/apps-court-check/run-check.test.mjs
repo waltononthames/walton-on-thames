@@ -93,14 +93,23 @@ test('failed and inconclusive checks leave published data byte-for-byte unchange
 // An unreadable source, or one whose notice cannot be understood at all, means
 // something has broken or changed and is worth an email whatever the record's
 // age. These must always exit non-zero.
-// Run against an in-season record: in a recorded closed season "no notice at
-// all" is the expected state and deliberately quiet (see decide.mjs), so this
-// must not depend on whatever the live status file happens to hold.
-test('unreadable and incomprehensible sources always exit non-zero', { skip: POSIX_ONLY }, () => {
+// These CLI tests run against the real status file. In a recorded closed
+// season that record is locked and "no notice" is deliberately quiet (see
+// decide.mjs), so each test stages an in-season copy of the live record and
+// restores the original byte for byte afterwards, whatever the live file holds.
+function withInSeasonRecord(fn) {
   const original = readFileSync(STATUS_PATH);
   try {
     const inSeason = { ...JSON.parse(original.toString('utf8')), status: 'off', seasonReturnsISO: null };
     writeFileSync(STATUS_PATH, `${JSON.stringify(inSeason, null, 2)}\n`);
+    fn();
+  } finally {
+    writeFileSync(STATUS_PATH, original);
+  }
+}
+
+test('unreadable and incomprehensible sources always exit non-zero', { skip: POSIX_ONLY }, () => {
+  withInSeasonRecord(() => {
     for (const [label, http, text, exitCode] of [
       ['source refuses the request', 403, 'THE CAR BOOT IS OPEN THIS SUNDAY', 0],
       ['curl itself fails', 200, 'THE CAR BOOT IS OPEN THIS SUNDAY', 28],
@@ -112,9 +121,7 @@ test('unreadable and incomprehensible sources always exit non-zero', { skip: POS
         assert.equal(result.status, 1, `${label}: ${result.stderr || result.stdout}`);
       });
     }
-  } finally {
-    writeFileSync(STATUS_PATH, original);
-  }
+  });
 });
 
 // The counterpart, and the fault this suite previously missed entirely: a
@@ -122,8 +129,7 @@ test('unreadable and incomprehensible sources always exit non-zero', { skip: POS
 // required day + month + year, which the farm has never published, so the
 // check could never write anything and failed twice a day indefinitely.
 test('a real notice is read, understood and written', { skip: POSIX_ONLY }, () => {
-  const original = readFileSync(STATUS_PATH);
-  try {
+  withInSeasonRecord(() => {
     withFakeCurl(respond(200, 'THE CAR BOOT IS OPEN THIS SUNDAY'), 0, (temp) => {
       const result = invoke(temp, ['--write']);
       assert.equal(result.status, 0, result.stderr || result.stdout);
@@ -139,19 +145,37 @@ test('a real notice is read, understood and written', { skip: POSIX_ONLY }, () =
       assert.equal(written.dateConfirmed, false);
       assert.equal(written.nextConfirmedDateISO, null);
     });
-  } finally {
-    writeFileSync(STATUS_PATH, original);
-  }
+  });
 });
 
 test('without --write nothing is written even when the read succeeds', { skip: POSIX_ONLY }, () => {
-  const original = readFileSync(STATUS_PATH);
-  withFakeCurl(respond(200, 'THE CAR BOOT IS OPEN THIS SUNDAY'), 0, (temp) => {
-    const result = invoke(temp);
-    assert.equal(result.status, 0, result.stderr || result.stdout);
-    const report = JSON.parse(result.stdout);
-    assertStubWasUsed(report, 'report-only');
-    assert.equal(report.wrote, false);
-    assert.deepEqual(readFileSync(STATUS_PATH), original);
+  withInSeasonRecord(() => {
+    const staged = readFileSync(STATUS_PATH);
+    withFakeCurl(respond(200, 'THE CAR BOOT IS OPEN THIS SUNDAY'), 0, (temp) => {
+      const result = invoke(temp);
+      assert.equal(result.status, 0, result.stderr || result.stdout);
+      const report = JSON.parse(result.stdout);
+      assertStubWasUsed(report, 'report-only');
+      assert.equal(report.wrote, false);
+      assert.deepEqual(readFileSync(STATUS_PATH), staged);
+    });
   });
+});
+
+// The live off-season lock, end to end through the real CLI: a weekly notice
+// read before the return month alerts and leaves the season message intact.
+test('a weekly notice during a recorded closed season is not written', { skip: POSIX_ONLY }, () => {
+  const original = readFileSync(STATUS_PATH);
+  try {
+    const closed = { ...JSON.parse(original.toString('utf8')), status: 'season-closed', seasonReturnsISO: '2999-03-01' };
+    writeFileSync(STATUS_PATH, `${JSON.stringify(closed, null, 2)}\n`);
+    const staged = readFileSync(STATUS_PATH);
+    withFakeCurl(respond(200, 'THE CAR BOOT IS OPEN THIS SUNDAY'), 0, (temp) => {
+      const result = invoke(temp, ['--write']);
+      assert.equal(result.status, 1, result.stderr || result.stdout);
+      assert.deepEqual(readFileSync(STATUS_PATH), staged);
+    });
+  } finally {
+    writeFileSync(STATUS_PATH, original);
+  }
 });

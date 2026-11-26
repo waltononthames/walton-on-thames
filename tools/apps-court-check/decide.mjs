@@ -119,22 +119,33 @@ const ordinalFor = (day) =>
 // The off-season. Between the end of one season and the return month the
 // farm replaces its weekly Sunday notice with a season-end notice, which this
 // check does not parse. While the record says the season is closed and its
-// return month has not arrived, an absent weekly notice is the expected state,
-// not a fault, so it is reported without alerting. Only "unrecognised" (the
-// page was read and holds no weekly notice) qualifies: a challenge page, two
-// notices or a malformed one still alert, because those mean something broke.
-// The first weekly notice the check does recognise replaces the record.
+// return month has not arrived, the record is LOCKED: nothing the check reads
+// replaces it (the site owner set it and wants it to stand until the return
+// month). An absent weekly notice is the expected state and is reported
+// without alerting. Anything else alerts without writing: a challenge page,
+// two notices or a malformed one mean something broke, and a weekly notice
+// before the return month is worth a human look (an early sale, or an old
+// notice reappearing) rather than an automatic overwrite. From the return
+// month the first weekly notice the check recognises replaces the record.
 const inClosedSeason = (current, now) => current?.status === 'season-closed'
   && typeof current.seasonReturnsISO === 'string'
   && londonDate(now) < current.seasonReturnsISO;
 
 export function decide({ parsed, now, current, readVia = 'a direct fetch' }) {
-  if (parsed?.verdict === 'unrecognised' && inClosedSeason(current, now)) {
-    return {
-      action: 'none',
-      alert: false,
-      reason: `No weekly notice, as expected: the season is recorded as closed until ${current.seasonReturnsISO}. Nothing changed.`,
-    };
+  if (inClosedSeason(current, now)) {
+    if (parsed?.verdict === 'unrecognised') {
+      return {
+        action: 'none',
+        alert: false,
+        reason: `No weekly notice, as expected: the season is recorded as closed until ${current.seasonReturnsISO}. Nothing changed.`,
+      };
+    }
+    const seen = parsed?.mainNotices?.[0]?.text;
+    return refuse(
+      `The season is recorded as closed until ${current.seasonReturnsISO}, so the record is locked and nothing was changed. `
+      + `The check read: ${parsed?.verdict ?? 'missing'}${seen ? ` (${JSON.stringify(seen)})` : ''}. `
+      + 'If the farm has genuinely reopened early, update src/data/apps-court-status.json by hand.',
+    );
   }
   if (!parsed || !['on', 'off'].includes(parsed.verdict) || parsed.mainNotices.length !== 1) {
     return refuse(`No single unambiguous notice in the authoritative block (${parsed?.verdict ?? 'missing'}). Nothing changed.`);

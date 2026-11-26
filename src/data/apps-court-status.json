@@ -11,7 +11,7 @@
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Set by hand on 26 November 2026 at the site owner's instruction. From 20 November the farm's page carried a season-end notice in place of its weekly Sunday notice; the automated check reads the page (HTTP 200) but does not parse that wording, so it refused every run. While this record stands and before seasonReturnsISO, decide.mjs treats an unrecognised notice as the expected off-season state and does not alert. The first weekly notice the check recognises replaces this record.",
+  "lastCheckNote": "Set by hand on 26 November 2026 at the site owner's instruction. From 20 November the farm's page carried a season-end notice in place of its weekly Sunday notice; the automated check reads the page (HTTP 200) but does not parse that wording, so it refused every run. Until seasonReturnsISO (1 March 2027) decide.mjs never replaces this record: an unrecognised notice is the expected off-season state and does not alert; any weekly notice alerts without writing. From 1 March the first weekly notice the check recognises replaces it.",
   "noticeText": "",
   "dateConfirmed": false,
   "eventDateISO": null,
