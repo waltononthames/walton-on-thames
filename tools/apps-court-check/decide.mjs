@@ -116,7 +116,26 @@ const NOTICE_RE = new RegExp(
 const ordinalFor = (day) =>
   (day % 100 >= 11 && day % 100 <= 13) ? 'TH' : ({ 1: 'ST', 2: 'ND', 3: 'RD' }[day % 10] ?? 'TH');
 
+// The off-season. Between the end of one season and the return month the
+// farm replaces its weekly Sunday notice with a season-end notice, which this
+// check does not parse. While the record says the season is closed and its
+// return month has not arrived, an absent weekly notice is the expected state,
+// not a fault, so it is reported without alerting. Only "unrecognised" (the
+// page was read and holds no weekly notice) qualifies: a challenge page, two
+// notices or a malformed one still alert, because those mean something broke.
+// The first weekly notice the check does recognise replaces the record.
+const inClosedSeason = (current, now) => current?.status === 'season-closed'
+  && typeof current.seasonReturnsISO === 'string'
+  && londonDate(now) < current.seasonReturnsISO;
+
 export function decide({ parsed, now, current, readVia = 'a direct fetch' }) {
+  if (parsed?.verdict === 'unrecognised' && inClosedSeason(current, now)) {
+    return {
+      action: 'none',
+      alert: false,
+      reason: `No weekly notice, as expected: the season is recorded as closed until ${current.seasonReturnsISO}. Nothing changed.`,
+    };
+  }
   if (!parsed || !['on', 'off'].includes(parsed.verdict) || parsed.mainNotices.length !== 1) {
     return refuse(`No single unambiguous notice in the authoritative block (${parsed?.verdict ?? 'missing'}). Nothing changed.`);
   }
@@ -209,6 +228,8 @@ export function decide({ parsed, now, current, readVia = 'a direct fetch' }) {
     headline,
     detail: `Apps Court Farm's car boot page says "${notice}". ${practical} ${caution}`,
     noticeText: notice,
+    // A weekly notice means the season is running again.
+    seasonReturnsISO: null,
     // True only when the farm itself stated the day and it matched the Sunday
     // being published. Everything date-shaped downstream keys off this.
     dateConfirmed,

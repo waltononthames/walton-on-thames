@@ -175,3 +175,34 @@ test('unreadable, unrecognised and malformed notices always alert', () => {
   assert.equal(decide({ parsed: { verdict: 'unrecognised', mainNotices: [], notes: [] }, now: now2, current: fresh }).alert, true);
   assert.equal(decide({ parsed: parseNotice('<main><p>THE CAR BOOT IS OPEN THIS SUNDAY UNLESS WET</p></main>'), now: now2, current: fresh }).alert, true);
 });
+
+// The off-season: the farm swaps its weekly notice for a season-end notice the
+// parser does not read. That must not alert twice a day until March, and the
+// first weekly notice of the new season must replace the record.
+test('a closed season stays quiet until its return month, then a weekly notice replaces it', () => {
+  const closed = { status: 'season-closed', seasonReturnsISO: '2027-03-01', verifiedAt: '2026-11-26T14:30:00Z' };
+  const seasonEnd = parseNotice('<main><p>The car boot has finished for the 2026 season.</p></main>');
+  assert.equal(seasonEnd.verdict, 'unrecognised');
+
+  const january = decide({ parsed: seasonEnd, now: new Date('2027-01-15T04:05:00Z'), current: closed });
+  assert.equal(january.action, 'none');
+  assert.equal(january.alert, false);
+
+  // From the return month an absent weekly notice is a fault again.
+  const march = decide({ parsed: seasonEnd, now: new Date('2027-03-02T04:05:00Z'), current: closed });
+  assert.equal(march.alert, true);
+
+  // Breakage still alerts during the closed season.
+  const blocked = decide({ parsed: { verdict: 'blocked', mainNotices: [], notes: [] }, now: new Date('2027-01-15T04:05:00Z'), current: closed });
+  assert.equal(blocked.alert, true);
+
+  // The first weekly notice the check recognises reopens the record.
+  const reopened = decide({
+    parsed: parseNotice('<main><p>THE CAR BOOT IS OPEN THIS SUNDAY</p></main>'),
+    now: new Date('2027-03-05T18:05:00Z'),
+    current: closed,
+  });
+  assert.equal(reopened.action, 'write');
+  assert.equal(reopened.status.status, 'on');
+  assert.equal(reopened.status.seasonReturnsISO, null);
+});

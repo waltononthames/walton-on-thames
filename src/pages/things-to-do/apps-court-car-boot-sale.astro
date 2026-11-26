@@ -56,10 +56,23 @@ const londonToday = new Intl.DateTimeFormat('en-CA', {
 }).format(new Date());
 const datePassed = dateConfirmed && record.eventDateISO! < londonToday;
 
-const showAsCurrent = currentSchema && !isStale && !datePassed;
+// The off-season. A season-end notice is not about "this Sunday", so the
+// eight-day staleness rule does not apply: it stands until the month the farm
+// says the sale returns (seasonReturnsISO, the 1st of that month), after which
+// the page falls back to "not confirmed" until the first weekly notice of the
+// new season is read and replaces this record.
+const seasonReturnsISO = (record as { seasonReturnsISO?: string | null }).seasonReturnsISO ?? null;
+const seasonClosed = record.status === 'season-closed'
+  && typeof seasonReturnsISO === 'string'
+  && londonToday < seasonReturnsISO;
 
-const STATUS = showAsCurrent ? (record.status as 'on' | 'off') : 'unconfirmed';
-const STATUS_LABEL = showAsCurrent
+const showAsCurrent = seasonClosed
+  || (currentSchema && !isStale && !datePassed && (record.status === 'on' || record.status === 'off'));
+
+const STATUS = seasonClosed ? 'off' : showAsCurrent ? (record.status as 'on' | 'off') : 'unconfirmed';
+const STATUS_LABEL = seasonClosed
+  ? 'Season finished'
+  : showAsCurrent
   ? (dateConfirmed
     ? (record.status === 'on' ? 'Confirmed on' : 'Not taking place')
     : 'Reported by the farm')

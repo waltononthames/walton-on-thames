@@ -93,17 +93,27 @@ test('failed and inconclusive checks leave published data byte-for-byte unchange
 // An unreadable source, or one whose notice cannot be understood at all, means
 // something has broken or changed and is worth an email whatever the record's
 // age. These must always exit non-zero.
+// Run against an in-season record: in a recorded closed season "no notice at
+// all" is the expected state and deliberately quiet (see decide.mjs), so this
+// must not depend on whatever the live status file happens to hold.
 test('unreadable and incomprehensible sources always exit non-zero', { skip: POSIX_ONLY }, () => {
-  for (const [label, http, text, exitCode] of [
-    ['source refuses the request', 403, 'THE CAR BOOT IS OPEN THIS SUNDAY', 0],
-    ['curl itself fails', 200, 'THE CAR BOOT IS OPEN THIS SUNDAY', 28],
-    ['notice carries an unknown qualification', 200, 'THE CAR BOOT IS OPEN THIS SUNDAY UNLESS WET', 0],
-    ['no notice at all', 200, 'Welcome to the farm', 0],
-  ]) {
-    withFakeCurl(respond(http, text), exitCode, (temp) => {
-      const result = invoke(temp, ['--write']);
-      assert.equal(result.status, 1, `${label}: ${result.stderr || result.stdout}`);
-    });
+  const original = readFileSync(STATUS_PATH);
+  try {
+    const inSeason = { ...JSON.parse(original.toString('utf8')), status: 'off', seasonReturnsISO: null };
+    writeFileSync(STATUS_PATH, `${JSON.stringify(inSeason, null, 2)}\n`);
+    for (const [label, http, text, exitCode] of [
+      ['source refuses the request', 403, 'THE CAR BOOT IS OPEN THIS SUNDAY', 0],
+      ['curl itself fails', 200, 'THE CAR BOOT IS OPEN THIS SUNDAY', 28],
+      ['notice carries an unknown qualification', 200, 'THE CAR BOOT IS OPEN THIS SUNDAY UNLESS WET', 0],
+      ['no notice at all', 200, 'Welcome to the farm', 0],
+    ]) {
+      withFakeCurl(respond(http, text), exitCode, (temp) => {
+        const result = invoke(temp, ['--write']);
+        assert.equal(result.status, 1, `${label}: ${result.stderr || result.stdout}`);
+      });
+    }
+  } finally {
+    writeFileSync(STATUS_PATH, original);
   }
 });
 

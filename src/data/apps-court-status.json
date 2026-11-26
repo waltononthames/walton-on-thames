@@ -1,18 +1,19 @@
 {
   "$schema": "Last successfully verified notice. Failed attempts are reported outside this file and never advance verifiedAt.",
-  "status": "off",
-  "headline": "Apps Court Farm says the sale is not on this Sunday",
-  "detail": "Apps Court Farm's car boot page says \"THE CAR BOOT IS NOT OPEN THIS SUNDAY\". The farm gives no reason for the call-off and says nothing about later Sundays. Please confirm on the Apps Court page or by calling 01932 244 822 before travelling.",
+  "status": "season-closed",
+  "headline": "The car boot has finished for the 2026 season. It will return in March 2027.",
+  "detail": "Once the new season starts, Apps Court Farm posts each week's notice at the top of its own car boot page, and 01932 244 822 has a recorded message saying whether the sale is on.",
+  "seasonReturnsISO": "2027-03-01",
   "nextConfirmedDateISO": null,
   "nextConfirmedDateLabel": null,
-  "checkedDateISO": "2026-11-20",
-  "checkedDateLabel": "20 November 2026 at 01:05 GMT",
+  "checkedDateISO": "2026-11-26",
+  "checkedDateLabel": "26 November 2026",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Verified 2026-11-20T01:05:49.528Z via a configured fetch service. The notice carries no date, so no date is published and no dated structured data is emitted. Authoritative notice: THE CAR BOOT IS NOT OPEN THIS SUNDAY",
-  "noticeText": "THE CAR BOOT IS NOT OPEN THIS SUNDAY",
+  "lastCheckNote": "Set by hand on 26 November 2026 at the site owner's instruction. From 20 November the farm's page carried a season-end notice in place of its weekly Sunday notice; the automated check reads the page (HTTP 200) but does not parse that wording, so it refused every run. While this record stands and before seasonReturnsISO, decide.mjs treats an unrecognised notice as the expected off-season state and does not alert. The first weekly notice the check recognises replaces this record.",
+  "noticeText": "",
   "dateConfirmed": false,
   "eventDateISO": null,
-  "verifiedAt": "2026-11-20T01:05:49.528Z"
+  "verifiedAt": "2026-11-26T14:30:00.000Z"
 }

@@ -2058,3 +2058,14 @@ Verified: build clean, `apps-court-check` tests 38/38, one `h1` and one valid `F
 ## Still open
 - **Measure after deployment:** send Grokbot the deploy date; it returns the same query tables for the 28 days after, plus cannibalisation pairs ("where is walton on thames" already splits between `/` and `/getting-here/`).
 - **1 April 2027 sweep:** "Borough of Elmbridge" stays in the homepage and `/hersham/` metas and hero paragraphs, and across the site. Re-word them when East Surrey Council takes over.
+
+## 26 November 2026: Apps Court off-season status
+
+The scheduled car boot check last wrote on 20 November. Every run since then read the farm's page (HTTP 200 via the configured fetch service) but found no weekly "open / not open this Sunday" notice, so it refused as "unrecognised" and failed twice a day. Darren reports that the farm's page now says the season has finished.
+
+- **Status record set by hand** at Darren's instruction: `status: "season-closed"`, headline "The car boot has finished for the 2026 season. It will return in March 2027.", `seasonReturnsISO: "2027-03-01"`. The farm's exact wording could not be read from this session (Cloudflare 403 from the cloud container), so `noticeText` is left empty rather than quoting the farm.
+- **Page:** a closed-season record is shown as current, labelled "Season finished", whatever its age, until 1 March 2027. After that it falls back to "Not confirmed for this Sunday" until the first weekly notice is read.
+- **Check (`decide.mjs`):** in a recorded closed season, an "unrecognised" page (read fine, no weekly notice) is reported without alerting, so the job runs green again. A challenge page, two notices or a malformed notice still alert. The first recognised weekly notice replaces the record and clears `seasonReturnsISO`. Tests added; the CLI "always exits non-zero" test now sets up its own in-season record.
+
+## Still open
+- **March 2027:** confirm the farm's first weekly notice of the new season is read and published. If the farm states a different return month, update `seasonReturnsISO`.
