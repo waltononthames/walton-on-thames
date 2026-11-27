@@ -171,7 +171,7 @@ const businesses = defineCollection({
     lng: z.number().optional(),
     phone: z.string().optional(),
     website: z.string().url().optional(),
-    hours: z.record(z.string()).optional(),
+    hours: z.record(z.string(), z.string()).optional(),
     description: z.string(),
     // Listing photographs. The first entry is used as the page hero and as
     // the Open Graph image; the rest render as a gallery. Objects rather than
