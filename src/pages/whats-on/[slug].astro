@@ -3,6 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { formatEventDate, formatEventTime, isMultiDay } from '../../utils/eventDates';
 import { buildMetaDescription } from '../../utils/metaDescription';
+import { formatCheckDate } from '../../utils/listingChecks';
+import fixtureNotes from '../../data/fixture-notes.json';
+
+type FixtureNote = { checked: string; text: string; sources: { label: string; url: string }[] };
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -38,7 +42,10 @@ const { kind } = Astro.props;
 const title = kind === 'event' ? Astro.props.event.data.title : `${Astro.props.fixture.data.homeTeam} vs ${Astro.props.fixture.data.awayTeam}`;
 const slug = kind === 'event' ? Astro.props.event.data.slug : Astro.props.fixture.data.slug;
 const startRaw = kind === 'event' ? Astro.props.event.data.start : Astro.props.fixture.data.start;
-const endRaw = kind === 'event' ? Astro.props.event.data.end : Astro.props.fixture.data.end;
+// A fixture's DTEND in the club's feed is an estimated finish, not a
+// published one, so fixtures show and mark up the kick-off only
+// (audit M19, 23 November 2026). The feed's end still drives expiry above.
+const endRaw = kind === 'event' ? Astro.props.event.data.end : undefined;
 const venue = kind === 'event' ? Astro.props.event.data.venue : Astro.props.fixture.data.venue;
 const price = kind === 'event' ? Astro.props.event.data.price : 'See club for ticket prices';
 const categoryLabel = kind === 'event'
@@ -77,6 +84,10 @@ const metaDescription = buildMetaDescription(description ?? `${title}, ${venue}`
   kind === 'event' && price ? `Price: ${price}` : null,
 ]);
 const isFreeEvent = /^free/i.test(price);
+const fixtureNote = kind === 'fixture'
+  ? (fixtureNotes as unknown as Record<string, FixtureNote | string>)[slug]
+  : undefined;
+const note = typeof fixtureNote === 'object' ? fixtureNote : undefined;
 ---
 
 <BaseLayout
@@ -147,7 +158,7 @@ const isFreeEvent = /^free/i.test(price);
       </div>
       <h1>{title}</h1>
       <div class="event-datetime">
-        <time datetime={startRaw}>{dateStr}{timeStr ? ` · ${timeStr}` : ''}</time>
+        <time datetime={startRaw}>{dateStr}{timeStr ? ` · ${kind === 'fixture' ? `kick-off ${timeStr}` : timeStr}` : ''}</time>
       </div>
       <p class="event-venue">📍 {venue}</p>
     </div>
@@ -169,6 +180,17 @@ const isFreeEvent = /^free/i.test(price);
         {kind === 'event' && Astro.props.event.data.source_url && (
           <p><a href={Astro.props.event.data.source_url} target="_blank" rel="noopener noreferrer">More information on the official event page ↗</a></p>
         )}
+        {note && (
+          <div class="fixture-note">
+            <p><strong>Check this date before you travel.</strong> {note.text}</p>
+            <p class="fixture-note-sources">Checked {formatCheckDate(note.checked)}: {note.sources.map((s, i) => (
+              <>{i > 0 ? '; ' : ''}<a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a></>
+            ))}.</p>
+          </div>
+        )}
+        {kind === 'fixture' && (
+          <p>The date and kick-off time come from the club's official fixtures calendar. Fixtures are sometimes rearranged at short notice, so check the club's fixture list before you travel.</p>
+        )}
         {kind === 'fixture' && (
           <p><a href="https://waltonhershamfc.com/fixtures/first-team/" target="_blank" rel="noopener noreferrer">Full fixture list on the official Walton & Hersham FC site ↗</a></p>
         )}
@@ -183,7 +205,7 @@ const isFreeEvent = /^free/i.test(price);
           <dl class="event-details">
             <dt>{multiDay ? 'Dates' : 'Date'}</dt>
             <dd><time datetime={startRaw}>{dateStr}</time></dd>
-            <dt>{multiDay ? 'Times' : 'Time'}</dt>
+            <dt>{kind === 'fixture' ? 'Kick-off' : multiDay ? 'Times' : 'Time'}</dt>
             <dd>{timeStr ?? 'Vary: see the event description'}</dd>
             <dt>Venue</dt>
             <dd>{venue}</dd>
@@ -203,6 +225,23 @@ const isFreeEvent = /^free/i.test(price);
 </BaseLayout>
 
 <style>
+  .fixture-note {
+    margin: 0 0 1.5rem;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+  }
+  .fixture-note p {
+    margin: 0 0 0.5rem;
+  }
+  .fixture-note p:last-child {
+    margin-bottom: 0;
+  }
+  .fixture-note-sources {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+  }
   .event-poster {
     display: block;
     width: 100%;

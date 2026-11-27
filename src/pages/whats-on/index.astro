@@ -41,7 +41,9 @@ const fixtureItems: UpcomingItem[] = fixtures.map(f => ({
   title: `${f.data.homeTeam} vs ${f.data.awayTeam}`,
   slug: f.data.slug,
   start: f.data.start,
-  end: f.data.end,
+  // No end: the feed's DTEND is an estimated finish, not a published
+  // one, so cards and markup give the kick-off only (audit M19).
+  // Fixtures are single-day, so expiry by start day is unchanged.
   venue: f.data.venue,
   category: 'sport',
   price: 'See club for ticket prices',
