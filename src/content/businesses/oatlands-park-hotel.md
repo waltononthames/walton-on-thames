@@ -6,14 +6,15 @@ subcategories: ["hotel"]
 neighbourhood: "weybridge"
 address: "146 Oatlands Drive, Weybridge, Surrey, KT13 9HB"
 postcode: "KT13 9HB"
-lat: 51.3755
-lng: -0.4427
+lat: 51.375137
+lng: -0.442416
+fhrs_id: 1778083
 website: "https://www.oatlandsparkhotel.com"
 description: "Four-star hotel in 10 acres of grounds on Oatlands Drive, Weybridge, near the site of the Tudor palace: 157 bedrooms and a fitness suite free to hotel guests."
 images: []
 featured: true
 verified_date: "2026-11-27"
-source: "Operator website: homepage, FAQ and fitness suite pages, checked 27 November 2026. Corrected after the factual accuracy audit of 23 November 2026 (H2, M17): the hotel has no swimming pool or spa, advertises 157 bedrooms, and stands near, not on, the site of Oatlands Palace."
+source: "Operator website: homepage, FAQ and fitness suite pages, checked 27 November 2026. Corrected after the factual accuracy audit of 23 November 2026 (H2, M17): the hotel has no swimming pool or spa, advertises 157 bedrooms, and stands near, not on, the site of Oatlands Palace. Map position is the Food Standards Agency register's geocode (FHRSID 1778083), used because no other registered business shares the postcode; the earlier coordinates had no recorded source."
 checks:
   - fields: ["name", "address", "postcode", "website", "bedrooms", "grounds", "dining", "parking"]
     source:
@@ -32,6 +33,12 @@ checks:
       label: "Oatlands Park Hotel Fitness Suite"
       url: "https://www.oatlandsparkhotel.com/leisure-facilities/fitness-suite"
       basis: "business-website"
+      checked: "2026-11-27"
+  - fields: ["address", "postcode", "lat", "lng", "fhrs_id"]
+    source:
+      label: "Food Standards Agency food hygiene register"
+      url: "https://ratings.food.gov.uk/business/1778083"
+      basis: "official-data"
       checked: "2026-11-27"
   - fields: ["palace history"]
     source:
@@ -56,7 +63,7 @@ practical:
       checked: "2026-11-27"
 ---
 
-Oatlands Park Hotel is a four-star hotel on Oatlands Drive in Weybridge, set in 10 acres of grounds. It stands on the later Oatlands estate, near the original site of Oatlands Palace, the Tudor palace Henry VIII created from an existing manor house from 1537. The palace was demolished in 1652, and the only part still standing above ground is the Tudor gateway in Weybridge's Palace Gardens, a separate site from the hotel. Our history of [Oatlands and the royal connection](/history/oatlands-and-the-royal-connection/) tells the palace's story and Walton's link to it.
+Oatlands Park Hotel is a four-star hotel on Oatlands Drive in Weybridge, set in 10 acres of grounds. The hotel describes itself as standing on a historic estate near the original site of Oatlands Palace, the Tudor palace Henry VIII created from an existing manor house from 1537. The palace was demolished in 1652, and the only part still standing above ground is the Tudor gateway in Weybridge's Palace Gardens. Our history of [Oatlands and the royal connection](/history/oatlands-and-the-royal-connection/) tells the palace's story and Walton's link to it.
 
 **Rooms and facilities:** The hotel advertises 157 bedrooms, from small rooms to large suites, along with function suites and meeting rooms for weddings, conferences and private events. It has no swimming pool, spa or treatment rooms. It does have a fitness suite, free for hotel guests.
 

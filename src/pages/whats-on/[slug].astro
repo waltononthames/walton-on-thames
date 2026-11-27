@@ -42,9 +42,9 @@ const { kind } = Astro.props;
 const title = kind === 'event' ? Astro.props.event.data.title : `${Astro.props.fixture.data.homeTeam} vs ${Astro.props.fixture.data.awayTeam}`;
 const slug = kind === 'event' ? Astro.props.event.data.slug : Astro.props.fixture.data.slug;
 const startRaw = kind === 'event' ? Astro.props.event.data.start : Astro.props.fixture.data.start;
-// A fixture's DTEND in the club's feed is an estimated finish, not a
-// published one, so fixtures show and mark up the kick-off only
-// (audit M19, 23 November 2026). The feed's end still drives expiry above.
+// The club's own fixture list publishes kick-off times only, so fixtures show
+// and mark up the kick-off only, never the feed's DTEND (audit M19,
+// 23 November 2026). The feed's end still drives expiry above.
 const endRaw = kind === 'event' ? Astro.props.event.data.end : undefined;
 const venue = kind === 'event' ? Astro.props.event.data.venue : Astro.props.fixture.data.venue;
 const price = kind === 'event' ? Astro.props.event.data.price : 'See club for ticket prices';
@@ -189,7 +189,7 @@ const note = typeof fixtureNote === 'object' ? fixtureNote : undefined;
           </div>
         )}
         {kind === 'fixture' && (
-          <p>The date and kick-off time come from the club's official fixtures calendar. Fixtures are sometimes rearranged at short notice, so check the club's fixture list before you travel.</p>
+          <p>The date and kick-off time come from a fixtures calendar feed, not from the club's website. Check the club's own fixture list before you travel.</p>
         )}
         {kind === 'fixture' && (
           <p><a href="https://waltonhershamfc.com/fixtures/first-team/" target="_blank" rel="noopener noreferrer">Full fixture list on the official Walton & Hersham FC site ↗</a></p>

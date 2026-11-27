@@ -2,7 +2,7 @@
   "$schema": "Notes shown on a single fixture page, keyed by the fixture slug the feed loader builds. Use only for a dated, sourced observation readers need before travelling, such as official sources disagreeing about a rearranged date. A note whose slug no longer exists simply stops rendering; delete it once the conflict is resolved.",
   "whfc-vs-dover-athletic-2027-01-12": {
     "checked": "2026-11-27",
-    "text": "Official sources disagree about it. When we checked on 27 November 2026, the club's own fixture list showed the original Tuesday 1 December date as postponed without listing a new one, and Dover Athletic's calendar and its 4 November announcement still gave Tuesday 1 December.",
+    "text": "We could not find this date on either club's website. When we checked on 27 November 2026, Walton & Hersham's fixture list showed \"P-P\" against the home game with Dover on Tuesday 1 December and listed no other home game against Dover, and Dover Athletic's calendar and its 4 November announcement still gave Tuesday 1 December.",
     "sources": [
       {
         "label": "Walton & Hersham FC first-team fixtures",
