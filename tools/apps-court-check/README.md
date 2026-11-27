@@ -25,6 +25,22 @@ THE CAR BOOT IS NOT OPEN THIS SUNDAY
 THE CAR BOOT IS CLOSED THIS SUNDAY THE 25TH
 ```
 
+Out of season the weekly notice is replaced by an end-of-season statement,
+first seen in November 2026:
+
+```
+THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON.
+WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.
+SEE YOU NEXT YEAR!
+```
+
+That is a confirmed position, not a failed read: it is published as `off`
+("Finished for the 2026 season"), with no sale date, and re-verified on every
+run while it stays up. The return line is optional. It is refused if it sits
+alongside a weekly notice, if the season named is older than the current
+closed season (this year, or last year from January to March), or if the
+stated return month has already passed.
+
 A previous version of `decide.mjs` required day **and** month name **and** year
 ("...SUNDAY THE 25TH OCTOBER 2026"). The farm has never published that, so the
 check refused every real notice, including ones that were accurate and current,
