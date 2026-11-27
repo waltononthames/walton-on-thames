@@ -1,8 +1,8 @@
 {
   "$schema": "Last successfully verified notice. Failed attempts are reported outside this file and never advance verifiedAt.",
-  "status": "off",
-  "headline": "Finished for the 2026 season",
-  "detail": "The Apps Court Farm car boot has finished for the 2026 season and will return in March 2027. We will confirm the first Sunday here once Apps Court Farm announces it. Recorded message: 01932 244 822.",
+  "status": "season-closed",
+  "headline": "The car boot has finished for the 2026 season. It will return in March 2027.",
+  "detail": "We will confirm the first Sunday here once Apps Court Farm announces it. Recorded message: 01932 244 822.",
   "nextConfirmedDateISO": null,
   "nextConfirmedDateLabel": null,
   "checkedDateISO": "2026-11-27",
@@ -14,5 +14,6 @@
   "noticeText": "THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON. WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.",
   "dateConfirmed": false,
   "eventDateISO": null,
-  "verifiedAt": "2026-11-27T09:54:40.693Z"
+  "verifiedAt": "2026-11-27T09:54:40.693Z",
+  "seasonReturnsISO": "2027-03-01"
 }

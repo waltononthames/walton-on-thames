@@ -145,6 +145,7 @@ function decideSeasonEnded({ parsed, now, current, readVia }) {
   const returns = texts.map((text) => text.match(RETURN_NOTICE_RE)).filter(Boolean);
   if (returns.length > 1) return refuse('The page states more than one return date. Nothing changed.');
   let returnLabel = null;
+  let returnISO = null;
   if (returns.length === 1) {
     const [, monthText, yearText] = returns[0];
     const month = MONTHS.indexOf(monthText.toUpperCase()) + 1;
@@ -153,6 +154,7 @@ function decideSeasonEnded({ parsed, now, current, readVia }) {
       return refuse(`The stated return, ${monthText} ${year}, is already past. Nothing changed.`);
     }
     returnLabel = `${monthText[0].toUpperCase()}${monthText.slice(1).toLowerCase()} ${year}`;
+    returnISO = `${year}-${String(month).padStart(2, '0')}-01`;
   }
 
   const notice = texts.join(' ');
@@ -165,11 +167,18 @@ function decideSeasonEnded({ parsed, now, current, readVia }) {
   const status = {
     ...current,
     $schema: 'Last successfully verified notice. Failed attempts are reported outside this file and never advance verifiedAt.',
-    status: 'off',
-    headline: `Finished for the ${seasonYear} season`,
+    // With a stated return month the record is a closed season: the page
+    // shows it until the 1st of that month whatever its age, and nothing but
+    // another end-of-season notice replaces it before then (see
+    // inClosedSeason). The headline is the site owner's chosen wording.
+    status: returnISO ? 'season-closed' : 'off',
+    headline: returnLabel
+      ? `The car boot has finished for the ${seasonYear} season. It will return in ${returnLabel}.`
+      : `The car boot has finished for the ${seasonYear} season.`,
     detail: returnLabel
-      ? `The Apps Court Farm car boot has finished for the ${seasonYear} season and will return in ${returnLabel}. We will confirm the first Sunday here once Apps Court Farm announces it. Recorded message: 01932 244 822.`
-      : `The Apps Court Farm car boot has finished for the ${seasonYear} season. The farm has not yet said when it will return; we will confirm the first Sunday here once it does. Recorded message: 01932 244 822.`,
+      ? 'We will confirm the first Sunday here once Apps Court Farm announces it. Recorded message: 01932 244 822.'
+      : 'The farm has not yet said when it will return; we will confirm the first Sunday here once it does. Recorded message: 01932 244 822.',
+    seasonReturnsISO: returnISO,
     noticeText: notice,
     dateConfirmed: false,
     eventDateISO: null,
@@ -193,9 +202,37 @@ function decideSeasonEnded({ parsed, now, current, readVia }) {
   };
 }
 
+// The closed season is LOCKED until its return month, at the site owner's
+// instruction that the season-end message stand until then. Only another
+// end-of-season notice (handled above, which re-verifies or moves the return
+// month) may replace it. A page with no notice at all is reported without
+// alerting. Anything else alerts without writing: a challenge page, a
+// conflicting or malformed page means something broke, and a weekly notice
+// before the return month (an early sale, or an old notice reappearing) is
+// worth a human look rather than an automatic overwrite. From the return
+// month the first weekly notice the check recognises replaces the record.
+const inClosedSeason = (current, now) => current?.status === 'season-closed'
+  && typeof current.seasonReturnsISO === 'string'
+  && londonDate(now) < current.seasonReturnsISO;
+
 export function decide({ parsed, now, current, readVia = 'a direct fetch' }) {
   if (parsed?.verdict === 'season-ended' && parsed.mainNotices?.length >= 1) {
     return decideSeasonEnded({ parsed, now, current, readVia });
+  }
+  if (inClosedSeason(current, now)) {
+    if (parsed?.verdict === 'unrecognised') {
+      return {
+        action: 'none',
+        alert: false,
+        reason: `No notice found, and the season is recorded as closed until ${current.seasonReturnsISO}. Nothing changed.`,
+      };
+    }
+    const seen = parsed?.mainNotices?.[0]?.text;
+    return refuse(
+      `The season is recorded as closed until ${current.seasonReturnsISO}, so the record is locked and nothing was changed. `
+      + `The check read: ${parsed?.verdict ?? 'missing'}${seen ? ` (${JSON.stringify(seen)})` : ''}. `
+      + 'If the farm has genuinely reopened early, update src/data/apps-court-status.json by hand.',
+    );
   }
   if (!parsed || !['on', 'off'].includes(parsed.verdict) || parsed.mainNotices.length !== 1) {
     return refuse(`No single unambiguous notice in the authoritative block (${parsed?.verdict ?? 'missing'}). Nothing changed.`);
@@ -289,6 +326,8 @@ export function decide({ parsed, now, current, readVia = 'a direct fetch' }) {
     headline,
     detail: `Apps Court Farm's car boot page says "${notice}". ${practical} ${caution}`,
     noticeText: notice,
+    // A weekly notice means the season is running again.
+    seasonReturnsISO: null,
     // True only when the farm itself stated the day and it matched the Sunday
     // being published. Everything date-shaped downstream keys off this.
     dateConfirmed,

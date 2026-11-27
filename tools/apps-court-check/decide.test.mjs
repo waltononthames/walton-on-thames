@@ -182,13 +182,13 @@ const seasonPage = (seasonYear = 2026, back = 'WE WILL BE BACK IN MARCH 2027. TH
   parseNotice(`<main><h2>THE CAR BOOT HAS FINISHED FOR THE ${seasonYear} SEASON.</h2>${back ? `<h2>${back}</h2>` : ''}<h2>SEE YOU NEXT YEAR!</h2></main>`);
 const november = new Date('2026-11-27T04:05:00Z');
 
-test('an end-of-season notice is published as off, with no date', () => {
+test('an end-of-season notice is published as a closed season, with no date', () => {
   const r = decide({ parsed: seasonPage(), now: november, current });
   assert.equal(r.action, 'write');
   assert.equal(r.alert, false);
-  assert.equal(r.status.status, 'off');
-  assert.equal(r.status.headline, 'Finished for the 2026 season');
-  assert.match(r.status.detail, /return in March 2027/);
+  assert.equal(r.status.status, 'season-closed');
+  assert.equal(r.status.seasonReturnsISO, '2027-03-01');
+  assert.equal(r.status.headline, 'The car boot has finished for the 2026 season. It will return in March 2027.');
   assert.match(r.status.detail, /01932 244 822/);
   assert.equal(r.status.dateConfirmed, false);
   assert.equal(r.status.eventDateISO, null);
@@ -203,6 +203,10 @@ test('an end-of-season notice without a return line says the return is not yet k
   const r = decide({ parsed: seasonPage(2026, null), now: november, current });
   assert.equal(r.action, 'write');
   assert.match(r.status.detail, /has not yet said when it will return/);
+  // No return month, so nothing to hold the record until: an ordinary "off".
+  assert.equal(r.status.status, 'off');
+  assert.equal(r.status.seasonReturnsISO, null);
+  assert.equal(r.status.headline, 'The car boot has finished for the 2026 season.');
 });
 
 test('the closed season carries over the new year, but an older season notice is refused', () => {
@@ -210,4 +214,47 @@ test('the closed season carries over the new year, but an older season notice is
   assert.equal(decide({ parsed: seasonPage(2025), now: november, current }).action, 'none');
   assert.equal(decide({ parsed: seasonPage(2026, 'WE WILL BE BACK IN MARCH 2026.'), now: november, current }).action, 'none');
   assert.equal(decide({ parsed: seasonPage(), now: new Date('2027-04-12T05:00:00Z'), current }).action, 'none');
+});
+
+// The closed season is locked until its return month: a page with no notice is
+// quiet, a weekly notice or a broken page alerts without writing, and from the
+// return month the first weekly notice replaces the record.
+test('a closed season is locked until its return month, then a weekly notice replaces it', () => {
+  const closed = decide({ parsed: seasonPage(), now: november, current }).status;
+  const empty = parseNotice('<main><p>Welcome to the farm</p></main>');
+
+  const january = decide({ parsed: empty, now: new Date('2027-01-15T04:05:00Z'), current: closed });
+  assert.equal(january.action, 'none');
+  assert.equal(january.alert, false);
+
+  // Re-reading the season-end notice re-verifies it and keeps it closed.
+  const reread = decide({ parsed: seasonPage(), now: new Date('2027-02-28T18:05:00Z'), current: closed });
+  assert.equal(reread.action, 'write');
+  assert.equal(reread.status.status, 'season-closed');
+
+  for (const text of ['THE CAR BOOT IS OPEN THIS SUNDAY', 'THE CAR BOOT IS NOT OPEN THIS SUNDAY']) {
+    const february = decide({
+      parsed: parseNotice(`<main><p>${text}</p></main>`),
+      now: new Date('2027-02-28T18:05:00Z'),
+      current: closed,
+    });
+    assert.equal(february.action, 'none', text);
+    assert.equal(february.alert, true, text);
+  }
+
+  const blocked = decide({ parsed: { verdict: 'blocked', mainNotices: [], notes: [] }, now: new Date('2027-01-15T04:05:00Z'), current: closed });
+  assert.equal(blocked.alert, true);
+
+  // From the return month an empty page is a fault again...
+  assert.equal(decide({ parsed: empty, now: new Date('2027-03-02T04:05:00Z'), current: closed }).alert, true);
+
+  // ...and the first weekly notice of the new season replaces the record.
+  const reopened = decide({
+    parsed: parseNotice('<main><p>THE CAR BOOT IS OPEN THIS SUNDAY</p></main>'),
+    now: new Date('2027-03-05T18:05:00Z'),
+    current: closed,
+  });
+  assert.equal(reopened.action, 'write');
+  assert.equal(reopened.status.status, 'on');
+  assert.equal(reopened.status.seasonReturnsISO, null);
 });
