@@ -6,13 +6,13 @@
   "nextConfirmedDateISO": null,
   "nextConfirmedDateLabel": null,
   "checkedDateISO": "2026-11-27",
-  "checkedDateLabel": "27 November 2026 at 09:54 GMT",
+  "checkedDateLabel": "27 November 2026 at 13:35 GMT",
   "sourceLabel": "Apps Court Farm: Car Boot page",
   "sourceUrl": "https://www.appscourtfarm.com/carboot",
   "lastCheckSucceeded": true,
-  "lastCheckNote": "Verified 2026-11-27T09:54:40.693Z via a configured fetch service. End-of-season notice, taken at face value; it names no sale date, so none is published. Authoritative notice: THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON. WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.",
+  "lastCheckNote": "Verified 2026-11-27T13:35:18.479Z via a configured fetch service. End-of-season notice, taken at face value; it names no sale date, so none is published. Authoritative notice: THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON. WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.",
   "noticeText": "THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON. WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.",
   "dateConfirmed": false,
   "eventDateISO": null,
-  "verifiedAt": "2026-11-27T09:54:40.693Z"
+  "verifiedAt": "2026-11-27T13:35:18.479Z"
 }
