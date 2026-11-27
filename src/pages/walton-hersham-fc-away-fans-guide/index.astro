@@ -27,7 +27,7 @@ import NeedToKnowRow from '../../components/away-guide/NeedToKnowRow.astro';
 import Fact from '../../components/away-guide/Fact.astro';
 import AttractionCard from '../../components/AttractionCard.astro';
 import { attractionCardProps } from '../../utils/attractionCardProps';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionKey } from 'astro:content';
 import {
   awayBase, clock12, containsPlaceholder, latestChecked, longDate, shows, valueOf, GUIDE_PATH,
   PLATFORM_ALLOWANCE_MINS,
@@ -42,8 +42,8 @@ const AUTHOR = 'Darren Bayley';
 // site relies on do not resolve under `astro check` (149 errors on main of
 // this kind), and this page should add none.
 type Entry<T> = { id: string; data: T };
-const entries = async <T,>(name: Parameters<typeof getCollection>[0]) => (await getCollection(name)) as Entry<T>[];
-const data = async <T,>(name: Parameters<typeof getCollection>[0]) => (await entries<T>(name)).map((e) => e.data);
+const entries = async <T,>(name: CollectionKey) => (await getCollection(name)) as unknown as Entry<T>[];
+const data = async <T,>(name: CollectionKey) => (await entries<T>(name)).map((e) => e.data);
 
 type VenueData = Omit<Venue, 'slug' | 'badge'> & { lat?: number; lng?: number; area: string; featured: boolean };
 type InfoData = { published?: string; history: { year: string; f: FactT<string> }[]; nickname: FactT<string>; aAndE: FactT<string>; police: FactT<string> };

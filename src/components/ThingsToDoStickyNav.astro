@@ -21,7 +21,7 @@ const { sections } = Astro.props;
 
 <nav aria-label="Page sections" class="stdn-desktop-bar" id="things-to-do-sticky-nav" inert>
   <ul class="stdn-list" role="list">
-    {sections.map((s) => (
+    {sections.map((s: Section) => (
       <li><a href={`#${s.id}`}>{s.label}</a></li>
     ))}
   </ul>
@@ -30,7 +30,7 @@ const { sections } = Astro.props;
 <details class="stdn-mobile-disclosure">
   <summary>On this page</summary>
   <ul class="stdn-list" role="list">
-    {sections.map((s) => (
+    {sections.map((s: Section) => (
       <li><a href={`#${s.id}`}>{s.label}</a></li>
     ))}
   </ul>

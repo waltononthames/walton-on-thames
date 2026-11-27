@@ -2059,13 +2059,18 @@ Verified: build clean, `apps-court-check` tests 38/38, one `h1` and one valid `F
 - **Measure after deployment:** send Grokbot the deploy date; it returns the same query tables for the 28 days after, plus cannibalisation pairs ("where is walton on thames" already splits between `/` and `/getting-here/`).
 - **1 April 2027 sweep:** "Borough of Elmbridge" stays in the homepage and `/hersham/` metas and hero paragraphs, and across the site. Re-word them when East Surrey Council takes over.
 
-## 26 November 2026: Apps Court off-season status
+## 27 November 2026: Apps Court checker reads the end-of-season notice
 
-The scheduled car boot check last wrote on 20 November. Every run since then read the farm's page (HTTP 200 via the configured fetch service) but found no weekly "open / not open this Sunday" notice, so it refused as "unrecognised" and failed twice a day. Darren reports that the farm's page now says the season has finished.
+The GitHub workflow had reached the farm's page through the configured fetch service on every run since 20 November but refused it as "unrecognised": the weekly notice had been replaced by "THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON." and "WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.", which the parser did not know. Wording confirmed from Darren's screenshot of the live page on 27 November 2026. `parse-notice.mjs` now recognises an end-of-season paragraph (with an optional return line) as its own verdict, and `decide.mjs` publishes it as `off`, headline "Finished for the 2026 season", no sale date and no dated structured data. It refuses an end-of-season notice alongside a weekly one, a season older than the current closed season, or a return month already past. Five new tests; all 43 pass. The panel and JSON field set are unchanged. The duplicate Claude scheduled task that also wrote `apps-court-status.json` was disabled at Darren's request; the workflow is now the only writer.
 
-- **Status record set by hand** at Darren's instruction: `status: "season-closed"`, headline "The car boot has finished for the 2026 season. It will return in March 2027.", `seasonReturnsISO: "2027-03-01"`. The farm's exact wording could not be read from this session (Cloudflare 403 from the cloud container), so `noticeText` is left empty rather than quoting the farm.
-- **Page:** a closed-season record is shown as current, labelled "Season finished", whatever its age, until 1 March 2027. After that it falls back to "Not confirmed for this Sunday" until the first weekly notice is read.
-- **Check (`decide.mjs`):** in a recorded closed season the record is locked until `seasonReturnsISO`, at Darren's instruction that the message stand until at least the end of February 2027. An "unrecognised" page (read fine, no weekly notice) is reported without alerting, so the job runs green again. Any weekly notice before 1 March, a challenge page, two notices or a malformed notice alert without writing. From 1 March the first recognised weekly notice replaces the record and clears `seasonReturnsISO`. Tests added; the CLI "always exits non-zero" test now sets up its own in-season record.
+## 27 November 2026 (later): Apps Court season-end message locked until March
+
+Merges the 26 November off-season branch with the 27 November parser work above. At Darren's instruction the page must read "The car boot has finished for the 2026 season. It will return in March 2027." until at least the end of February 2027.
+
+- **Check (`decide.mjs`):** an end-of-season notice with a return line is now written as `status: "season-closed"` with that headline and `seasonReturnsISO` (the 1st of the return month, here `2027-03-01`); without a return line it stays an ordinary `off`. A closed season is locked until `seasonReturnsISO`: re-reading the season-end notice re-verifies it, a page with no notice is quiet, and a weekly notice, challenge page or conflicting page alerts without writing. From 1 March the first recognised weekly notice replaces the record and clears `seasonReturnsISO`.
+- **Page:** a `season-closed` record is shown as current, labelled "Season finished", whatever its age, until `seasonReturnsISO`. After that it falls back to "Not confirmed for this Sunday" until the first weekly notice is read.
+- **Status record** regenerated with the merged check from the 09:54 GMT reading of the farm's notice (same `verifiedAt`), so it is exactly what the next run will write.
+- **Tests:** closed-season lock cases added; the CLI tests stage an in-season copy of the live record.
 
 ## Still open
-- **March 2027:** confirm the farm's first weekly notice of the new season is read and published. If the farm states a different return month, update `seasonReturnsISO`.
+- **March 2027:** confirm the farm's first weekly notice of the new season is read and published. If the farm announces a sale before 1 March, update `src/data/apps-court-status.json` by hand.

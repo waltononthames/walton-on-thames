@@ -25,6 +25,32 @@ THE CAR BOOT IS NOT OPEN THIS SUNDAY
 THE CAR BOOT IS CLOSED THIS SUNDAY THE 25TH
 ```
 
+Out of season the weekly notice is replaced by an end-of-season statement,
+first seen in November 2026:
+
+```
+THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON.
+WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.
+SEE YOU NEXT YEAR!
+```
+
+That is a confirmed position, not a failed read: it is published with no sale
+date and re-verified on every run while it stays up. With a return line it is
+recorded as `season-closed`, headline "The car boot has finished for the 2026
+season. It will return in March 2027.", and `seasonReturnsISO` set to the 1st
+of the return month; without one it is an ordinary `off`. It is refused if it
+sits alongside a weekly notice, if the season named is older than the current
+closed season (this year, or last year from January to March), or if the
+stated return month has already passed.
+
+A `season-closed` record is **locked until `seasonReturnsISO`** (the site
+owner's instruction: the message stands until at least the end of February).
+The page shows it whatever its age. Only another end-of-season notice updates
+it; a page with no notice is reported quietly; a weekly notice, a challenge
+page or a conflicting page alerts without writing. From the return month the
+first weekly notice the check recognises replaces it. To publish an early sale
+before then, edit `src/data/apps-court-status.json` by hand.
+
 A previous version of `decide.mjs` required day **and** month name **and** year
 ("...SUNDAY THE 25TH OCTOBER 2026"). The farm has never published that, so the
 check refused every real notice, including ones that were accurate and current,
