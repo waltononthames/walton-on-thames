@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, render } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import {
   CATEGORY_LABELS, LOCALITY_LABELS, AUDIENCE_LABELS,
   schemaTypeFor, checkedLabel,
@@ -44,7 +44,7 @@ const { entry, related } = Astro.props as {
   related: { name: string; href: string }[];
 };
 const o = entry.data;
-const { Content } = await render(entry);
+const { Content } = await render(entry as unknown as CollectionEntry<'organisations'>);
 
 const site = 'https://walton-on-thames.org';
 const pageUrl = `${site}/clubs/${o.slug}/`;

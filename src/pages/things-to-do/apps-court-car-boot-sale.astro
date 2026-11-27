@@ -6,7 +6,7 @@ import statusData from '../../data/apps-court-status.json';
 
 // Only the practical status panel is changed here; historical content keeps
 // its separate verification date. Failed checks never refresh this record.
-const record = statusData as typeof statusData & {
+const record = statusData as Omit<typeof statusData, 'verifiedAt' | 'eventDateISO' | 'dateConfirmed' | 'noticeText'> & {
   verifiedAt?: string;
   eventDateISO?: string | null;
   dateConfirmed?: boolean;
