@@ -175,3 +175,39 @@ test('unreadable, unrecognised and malformed notices always alert', () => {
   assert.equal(decide({ parsed: { verdict: 'unrecognised', mainNotices: [], notes: [] }, now: now2, current: fresh }).alert, true);
   assert.equal(decide({ parsed: parseNotice('<main><p>THE CAR BOOT IS OPEN THIS SUNDAY UNLESS WET</p></main>'), now: now2, current: fresh }).alert, true);
 });
+
+// Closed season. Read today, the end-of-season notice is a confirmed position,
+// not a failure, and it publishes no date.
+const seasonPage = (seasonYear = 2026, back = 'WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.') =>
+  parseNotice(`<main><h2>THE CAR BOOT HAS FINISHED FOR THE ${seasonYear} SEASON.</h2>${back ? `<h2>${back}</h2>` : ''}<h2>SEE YOU NEXT YEAR!</h2></main>`);
+const november = new Date('2026-11-27T04:05:00Z');
+
+test('an end-of-season notice is published as off, with no date', () => {
+  const r = decide({ parsed: seasonPage(), now: november, current });
+  assert.equal(r.action, 'write');
+  assert.equal(r.alert, false);
+  assert.equal(r.status.status, 'off');
+  assert.equal(r.status.headline, 'Finished for the 2026 season');
+  assert.match(r.status.detail, /return in March 2027/);
+  assert.match(r.status.detail, /01932 244 822/);
+  assert.equal(r.status.dateConfirmed, false);
+  assert.equal(r.status.eventDateISO, null);
+  assert.equal(r.status.nextConfirmedDateISO, null);
+  assert.equal(r.status.nextConfirmedDateLabel, null);
+  assert.equal(r.status.lastCheckSucceeded, true);
+  assert.equal(r.status.verifiedAt, november.toISOString());
+  assert.match(r.status.noticeText, /^THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON\. WE WILL BE BACK IN MARCH 2027/);
+});
+
+test('an end-of-season notice without a return line says the return is not yet known', () => {
+  const r = decide({ parsed: seasonPage(2026, null), now: november, current });
+  assert.equal(r.action, 'write');
+  assert.match(r.status.detail, /has not yet said when it will return/);
+});
+
+test('the closed season carries over the new year, but an older season notice is refused', () => {
+  assert.equal(decide({ parsed: seasonPage(), now: new Date('2027-02-14T05:00:00Z'), current }).action, 'write');
+  assert.equal(decide({ parsed: seasonPage(2025), now: november, current }).action, 'none');
+  assert.equal(decide({ parsed: seasonPage(2026, 'WE WILL BE BACK IN MARCH 2026.'), now: november, current }).action, 'none');
+  assert.equal(decide({ parsed: seasonPage(), now: new Date('2027-04-12T05:00:00Z'), current }).action, 'none');
+});

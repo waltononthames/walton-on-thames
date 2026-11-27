@@ -116,7 +116,87 @@ const NOTICE_RE = new RegExp(
 const ordinalFor = (day) =>
   (day % 100 >= 11 && day % 100 <= 13) ? 'TH' : ({ 1: 'ST', 2: 'ND', 3: 'RD' }[day % 10] ?? 'TH');
 
+// End of season. The farm closes for the winter with a statement such as
+//
+//   THE CAR BOOT HAS FINISHED FOR THE 2026 SEASON.
+//   WE WILL BE BACK IN MARCH 2027. THANK YOU ALL FOR YOUR CUSTOM.
+//
+// Read today, that is a confirmed position ("off" until further notice), not a
+// failed read, so it is published and re-verified on every run while it stays
+// up. It names no sale date, so none is published. Two sanity rules stop a
+// notice left over from an earlier year being taken as current: the season
+// must be this calendar year, or last year during January to March; and a
+// stated return must not already be in the past.
+const SEASON_NOTICE_RE = /^(?:THE\s+)?CAR\s+BOOT\s+HAS\s+FINISHED\s+FOR\s+THE\s+(\d{4})\s+SEASON\b/i;
+const RETURN_NOTICE_RE = new RegExp(`\\bBACK\\s+IN\\s+(${MONTHS.join('|')})\\s+(\\d{4})\\b`, 'i');
+
+function decideSeasonEnded({ parsed, now, current, readVia }) {
+  const texts = parsed.mainNotices.map(({ text }) => text);
+  const season = texts[0].match(SEASON_NOTICE_RE);
+  if (!season) {
+    return refuse(`The end-of-season notice is not in a form this check understands: ${JSON.stringify(texts[0])}. Nothing changed.`);
+  }
+  const seasonYear = Number(season[1]);
+  const [todayYear, todayMonth] = londonDate(now).split('-').map(Number);
+  if (!(seasonYear === todayYear || (seasonYear === todayYear - 1 && todayMonth <= 3))) {
+    return refuse(`The notice says the ${seasonYear} season has finished, which cannot describe the current closed season. Nothing changed.`);
+  }
+
+  const returns = texts.map((text) => text.match(RETURN_NOTICE_RE)).filter(Boolean);
+  if (returns.length > 1) return refuse('The page states more than one return date. Nothing changed.');
+  let returnLabel = null;
+  if (returns.length === 1) {
+    const [, monthText, yearText] = returns[0];
+    const month = MONTHS.indexOf(monthText.toUpperCase()) + 1;
+    const year = Number(yearText);
+    if (year < seasonYear || year * 12 + month < todayYear * 12 + todayMonth) {
+      return refuse(`The stated return, ${monthText} ${year}, is already past. Nothing changed.`);
+    }
+    returnLabel = `${monthText[0].toUpperCase()}${monthText.slice(1).toLowerCase()} ${year}`;
+  }
+
+  const notice = texts.join(' ');
+  const verifiedAt = now.toISOString();
+  const checkedLabel = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London', day: 'numeric', month: 'long', year: 'numeric',
+    hour: '2-digit', minute: '2-digit', timeZoneName: 'short',
+  }).format(now);
+
+  const status = {
+    ...current,
+    $schema: 'Last successfully verified notice. Failed attempts are reported outside this file and never advance verifiedAt.',
+    status: 'off',
+    headline: `Finished for the ${seasonYear} season`,
+    detail: returnLabel
+      ? `The Apps Court Farm car boot has finished for the ${seasonYear} season and will return in ${returnLabel}. We will confirm the first Sunday here once Apps Court Farm announces it. Recorded message: 01932 244 822.`
+      : `The Apps Court Farm car boot has finished for the ${seasonYear} season. The farm has not yet said when it will return; we will confirm the first Sunday here once it does. Recorded message: 01932 244 822.`,
+    noticeText: notice,
+    dateConfirmed: false,
+    eventDateISO: null,
+    verifiedAt,
+    nextConfirmedDateISO: null,
+    nextConfirmedDateLabel: null,
+    checkedDateISO: londonDate(now),
+    checkedDateLabel: checkedLabel,
+    sourceLabel: 'Apps Court Farm: Car Boot page',
+    sourceUrl: 'https://www.appscourtfarm.com/carboot',
+    lastCheckSucceeded: true,
+    lastCheckNote: `Verified ${verifiedAt} via ${readVia}. End-of-season notice, taken at face value; it names no sale date, so none is published. Authoritative notice: ${notice}`,
+  };
+
+  return {
+    action: 'write',
+    alert: false,
+    status,
+    changed: Object.keys(status).filter((key) => JSON.stringify(status[key]) !== JSON.stringify(current?.[key])),
+    reason: `Recorded the farm's end-of-season notice for ${seasonYear}${returnLabel ? `, returning ${returnLabel}` : ''}; no date published.`,
+  };
+}
+
 export function decide({ parsed, now, current, readVia = 'a direct fetch' }) {
+  if (parsed?.verdict === 'season-ended' && parsed.mainNotices?.length >= 1) {
+    return decideSeasonEnded({ parsed, now, current, readVia });
+  }
   if (!parsed || !['on', 'off'].includes(parsed.verdict) || parsed.mainNotices.length !== 1) {
     return refuse(`No single unambiguous notice in the authoritative block (${parsed?.verdict ?? 'missing'}). Nothing changed.`);
   }
